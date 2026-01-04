@@ -110,7 +110,7 @@ body{
 }
 .pod-base{
  position:absolute; inset:0;
- background-image: url('assets/podcast-logo-v2.png');
+ background-image: url('./podcast-logo-v2.png');
  background-size: cover;
  background-position: center;
  background-repeat: no-repeat;
