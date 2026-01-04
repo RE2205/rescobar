@@ -110,7 +110,7 @@ body{
 }
 .pod-base{
  position:absolute; inset:0;
- background-image: url('./podcast-logo-v2.png');
+ background-image: url('./podcast-logo.png');
  background-size: cover;
  background-position: center;
  background-repeat: no-repeat;
@@ -227,7 +227,7 @@ body{
  height: 52px;
  border-radius: 10px;
  border: 1px solid rgba(255,255,255,.10);
- background-image: url('./podcast-logo-v2.png');
+ background-image: url('./podcast-logo.png');
  background-size: cover;
  background-position: center;
  background-repeat: no-repeat;
@@ -260,14 +260,14 @@ body{
 }
 /* Player: logo fijo a la izquierda */
 .rr-cover{
-  background-image: url('./podcast-logo-v2.png');
+  background-image: url('./podcast-logo.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 }
 /* === Player inferior: logo del podcast (v2) === */
 .rr-cover{
-  background-image: url('assets/podcast-logo-v2.png');
+  background-image: url('assets/podcast-logo.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
