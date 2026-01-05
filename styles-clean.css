@@ -262,3 +262,32 @@ body{
 #creser{
   padding-bottom: 48px;
 }
+/* Ajuste fino entre CreSer y Escritura */
+#creser {
+  padding-bottom: 48px;
+}
+
+#escritura {
+  padding-top: 48px;
+}
+/* --- HERO: finura editorial (menos vacío, más presencia) --- */
+.hero{
+  min-height: 66vh;        /* antes 76vh → recorta el “vacío” */
+  padding-top: 40px;       /* acerca el contenido al tope */
+  padding-bottom: 22px;    /* acerca la franja */
+}
+
+.kicker{
+  margin-bottom: 14px;     /* compacta */
+}
+
+.headline{
+  line-height: 1.08;       /* más contundente */
+  font-size: clamp(44px, 5.4vw, 82px); /* más grande */
+}
+
+.signature{
+  margin-top: 28px;        /* antes 56px → menos distancia */
+  font-size: 16px;         /* un poco más presente */
+  color: rgba(243,243,243,.72);
+}
