@@ -391,3 +391,7 @@ body{
     height: 480px;
   }
 }
+/* Quitar etiqueta flotante "Documental" sobre la imagen */
+#documental .ph::after{
+  display: none;
+}
