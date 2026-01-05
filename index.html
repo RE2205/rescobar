@@ -4,34 +4,234 @@
   <meta charset="UTF-8" />
   <title>Ronald Escobar</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="robots" content="noindex, nofollow">
+  <meta name="robots" content="noindex, nofollow" />
+
   <style>
+    * { box-sizing: border-box; }
+
     body {
       margin: 0;
-      height: 100vh;
       background: #0b0b0c;
       color: #f3f3f3;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ===== HEADER ===== */
+    header {
+      position: relative;
+      padding: 40px 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .socials a {
+      margin-right: 16px;
+      opacity: .75;
+      font-size: 18px;
+    }
+
+    .socials a:hover { opacity: 1; }
+
+    nav a {
+      margin-left: 28px;
+      font-size: 13px;
+      letter-spacing: .14em;
+      opacity: .7;
+    }
+
+    nav a:hover { opacity: 1; }
+
+    /* ===== HERO ===== */
+    .hero {
+      height: 70vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 0 60px;
+    }
+
+    .hero h1 {
+      font-size: clamp(36px, 6vw, 64px);
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+
+    .hero p {
+      opacity: .75;
+      letter-spacing: .12em;
+      font-size: 13px;
+    }
+
+    /* ===== SECTION ===== */
+    section {
+      padding: 80px 60px;
+    }
+
+    h2 {
+      font-size: 28px;
+      margin-bottom: 16px;
+    }
+
+    .muted {
+      opacity: .6;
+      font-size: 14px;
+    }
+
+    /* ===== PODCAST GRID ===== */
+    .pod-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+      margin-top: 40px;
+    }
+
+    .pod {
+      position: relative;
+      height: 160px;
+      border-radius: 14px;
+      background: #111;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      letter-spacing: 0.08em;
+      overflow: hidden;
     }
-    .wrap {
-      text-align: center;
-      opacity: 0.85;
+
+    .pod img {
+      max-width: 60%;
+      z-index: 1;
+      transition: opacity .35s ease;
     }
-    .small {
-      font-size: 12px;
-      margin-top: 12px;
-      opacity: 0.6;
+
+    .pod::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      transition: opacity .35s ease;
+    }
+
+    .pod:hover img { opacity: 0; }
+    .pod:hover::after { opacity: 1; }
+
+    .ep1::after { background-image: url("assets/ep1.jpg"); }
+    .ep2::after { background-image: url("assets/ep2.jpg"); }
+    .ep3::after { background-image: url("assets/ep3.jpg"); }
+    .ep4::after { background-image: url("assets/ep4.jpg"); }
+    .ep5::after { background-image: url("assets/ep5.jpg"); }
+    .ep6::after { background-image: url("assets/ep6.jpg"); }
+
+    /* ===== LOGOS PSYCHE ===== */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .card {
+      border-radius: 18px;
+      overflow: hidden;
+    }
+
+    .card img {
+      width: 100%;
+      display: block;
+    }
+
+    /* ===== FOOT PLAYER ===== */
+    .player {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: #151515;
+      display: flex;
+      align-items: center;
+      padding: 12px 20px;
+      gap: 14px;
+      font-size: 13px;
+    }
+
+    .player img {
+      width: 36px;
+      height: 36px;
+      border-radius: 6px;
+    }
+
+    @media (max-width: 900px) {
+      .pod-grid { grid-template-columns: 1fr 1fr; }
+      .two-col { grid-template-columns: 1fr; }
+      header { flex-direction: column; gap: 20px; }
     }
   </style>
 </head>
+
 <body>
-  <div class="wrap">
-    <div>EN CONSTRUCCIÓN</div>
-    <div class="small">Próximamente</div>
+
+<header>
+  <div class="socials">
+    <a href="#">IG</a>
+    <a href="#"></a>
+    <a href="#">SP</a>
+    <a href="#">YT</a>
   </div>
+  <nav>
+    <a href="#">PODCAST</a>
+    <a href="#">ESCRITURA</a>
+    <a href="#">CONTACTO</a>
+  </nav>
+</header>
+
+<div class="hero">
+  <h1>Un espacio para detener el ruido<br>y habitar lo humano</h1>
+  <p>NEUROCIENCIA · ARTE · HUMANIDAD</p>
+</div>
+
+<section>
+  <h2>Podcast</h2>
+  <p class="muted">Desapre(he)nder — últimos episodios</p>
+
+  <div class="pod-grid">
+    <a class="pod ep1" href="#"><img src="assets/podcast-logo.png"></a>
+    <a class="pod ep2" href="#"><img src="assets/podcast-logo.png"></a>
+    <a class="pod ep3" href="#"><img src="assets/podcast-logo.png"></a>
+    <a class="pod ep4" href="#"><img src="assets/podcast-logo.png"></a>
+    <a class="pod ep5" href="#"><img src="assets/podcast-logo.png"></a>
+    <a class="pod ep6" href="#"><img src="assets/podcast-logo.png"></a>
+  </div>
+</section>
+
+<section class="two-col">
+  <div>
+    <p class="muted">PSIQUIATRÍA</p>
+    <h2>Logos Psyche</h2>
+    <p class="muted">Psiquiatría con evidencia, escucha y humanidad.</p>
+  </div>
+  <div class="card">
+    <img src="assets/logos-psyche-black.png">
+  </div>
+</section>
+
+<section class="two-col">
+  <div>
+    <p class="muted">EXPERIENCIA</p>
+    <h2>Inner Sound</h2>
+    <p class="muted">Escuchar hacia adentro. Crear hacia afuera.</p>
+  </div>
+  <div class="card">
+    <img src="assets/inner-sound.jpg">
+  </div>
+</section>
+
+<div class="player">
+  <img src="assets/podcast-logo.png">
+  <div>Podcast — Desapre(he)nder · Episodio demo</div>
+</div>
+
 </body>
 </html>
