@@ -395,3 +395,11 @@ body{
 #documental .ph::after{
   display: none;
 }
+/* Reducir espacio entre CreSer y Documental */
+#creser{
+  padding-bottom: 48px;   /* antes ~84px */
+}
+
+#documental{
+  padding-top: 48px;      /* antes ~84px */
+}
