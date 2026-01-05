@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Ronald Escobar</title>
   <meta name="description" content="Un espacio para detener el ruido y habitar lo humano." />
+  <meta name="robots" content="noindex, nofollow" />
   <link rel="stylesheet" href="styles-clean.css?v=11001" />
 </head>
 <body>
@@ -12,9 +13,7 @@
   <header class="hero">
     <div class="wrap">
       <p class="kicker">Neurociencia · Arte · Humanidad</p>
-      <h1 class="headline">
-        Un espacio para detener el ruido<br />y habitar lo humano
-      </h1>
+      <h1 class="headline">Un espacio para detener el ruido<br />y habitar lo humano</h1>
       <p class="signature">— Ronald Escobar</p>
     </div>
   </header>
@@ -27,22 +26,24 @@
     </div>
   </section>
 
-  <section class="block logos-light">
+  <section class="block logos-light" id="logos-psyche">
     <div class="wrap two-col">
-      <a class="silent-link media logo-holder" href="logos-psyche.html">
-        <img src="assets/logos-psyche.png" class="logo-image" alt="Logos Psyche">
+      <a class="silent-link media logo-holder" href="logos-psyche.html" aria-label="Ir a Logos Psyche">
+        <img src="assets/logos-psyche-black.png" alt="Logos Psyche" class="logo-image" />
       </a>
       <div class="copy">
         <p class="tag dark">PSIQUIATRÍA</p>
         <h2><a class="silent-link" href="logos-psyche.html">Logos Psyche</a></h2>
         <p class="lead dark">
-          Psiquiatría basada en evidencia, escucha profunda y humanidad.
+          Psiquiatría basada en evidencia, escucha profunda y humanidad.<br>
+          Un espacio clínico para pensar, sentir y sostener procesos reales,
+          sin prisa y sin juicio.
         </p>
       </div>
     </div>
   </section>
 
-  <section class="block podcast-block">
+  <section class="block podcast-block" id="podcast">
     <div class="wrap">
       <div class="head-row">
         <h2><a class="silent-link" href="podcast.html">Podcast</a></h2>
@@ -50,43 +51,71 @@
       </div>
 
       <div class="pod-grid">
-        <a class="pod-tile" href="podcast.html" style="--cover:url('assets/ep1-v2.jpg')"></a>
-        <a class="pod-tile" href="podcast.html" style="--cover:url('assets/ep2-v2.jpg')"></a>
-        <a class="pod-tile" href="podcast.html" style="--cover:url('assets/ep3-v2.jpg')"></a>
-        <a class="pod-tile" href="podcast.html" style="--cover:url('assets/ep4-v2.jpg')"></a>
-        <a class="pod-tile" href="podcast.html" style="--cover:url('assets/ep5-v2.jpg')"></a>
-        <a class="pod-tile" href="podcast.html" style="--cover:url('assets/ep6-v2.jpg')"></a>
+        <a class="pod-tile" href="podcast.html" style="--cover:url('assets/ep1.jpg')" aria-label="Episodio 1"><div class="pod-base"></div><div class="pod-cover"></div></a>
+        <a class="pod-tile" href="podcast.html" style="--cover:url('assets/ep2.jpg')" aria-label="Episodio 2"><div class="pod-base"></div><div class="pod-cover"></div></a>
+        <a class="pod-tile" href="podcast.html" style="--cover:url('assets/ep3.jpg')" aria-label="Episodio 3"><div class="pod-base"></div><div class="pod-cover"></div></a>
+        <a class="pod-tile" href="podcast.html" style="--cover:url('assets/ep4.jpg')" aria-label="Episodio 4"><div class="pod-base"></div><div class="pod-cover"></div></a>
+        <a class="pod-tile" href="podcast.html" style="--cover:url('assets/ep5.jpg')" aria-label="Episodio 5"><div class="pod-base"></div><div class="pod-cover"></div></a>
+        <a class="pod-tile" href="podcast.html" style="--cover:url('assets/ep6.jpg')" aria-label="Episodio 6"><div class="pod-base"></div><div class="pod-cover"></div></a>
       </div>
     </div>
   </section>
 
-  <section class="block">
+  <section class="block" id="inner-sound">
     <div class="wrap two-col">
       <div class="copy">
         <p class="tag">EXPERIENCIA</p>
         <h2><a class="silent-link" href="inner-sound.html">Inner Sound</a></h2>
         <p class="lead">
-          Un espacio para escuchar sin interferencias.
+          Un espacio para escuchar sin interferencias.<br>
+          La música como medio para aquietar el ruido,<br>
+          alinear el pensamiento<br>
+          y permitir que el cuerpo participe del proceso.
         </p>
       </div>
-      <a class="silent-link media" href="inner-sound.html">
-        <div class="img ph" style="background-image:url('assets/inner-sound.jpg');"></div>
+      <a class="silent-link media" href="inner-sound.html" aria-label="Ir a Inner Sound">
+        <div class="img ph" style="background-image:url('assets/inner-sound.jpg');" data-label="Inner Sound"></div>
       </a>
     </div>
   </section>
 
-  <section class="block">
+  <section class="band-long">
+    <div class="wrap">
+      <p class="band-quote">
+        Así como los libros están hechos de libros, las personas estamos hechas de personas.
+        Cada historia es una cita con otra historia.
+      </p>
+      <p class="band-author">— Ronald Escobar</p>
+    </div>
+  </section>
+
+  <section class="block" id="creser">
     <div class="wrap two-col">
       <div class="copy">
         <p class="tag">MARCO</p>
         <h2><a class="silent-link" href="creser.html">CreSer</a></h2>
         <p class="lead">
-          Psicoeducación, comunidad y conciencia.
+          Un proyecto grande e inclusivo de psicoeducación y conciencia.
+          Pensamiento, práctica y comunidad para impactar vidas y cultura.
         </p>
       </div>
-      <a class="silent-link media" href="creser.html">
+      <a class="silent-link media" href="creser.html" aria-label="Ir a CreSer">
         <div class="img ph creser-card" style="background-image:url('assets/creser.jpg');"></div>
       </a>
+    </div>
+  </section>
+
+  <section class="block" id="escritura">
+    <div class="wrap">
+      <p class="tag">ESCRITURA</p>
+      <h2><a class="silent-link" href="escritura.html">Entre libros y pastillas</a></h2>
+      <p class="lead">Textos para leer con tiempo: ensayo, clínica, cultura y vida interior.</p>
+
+      <div class="escritura-grid">
+        <a class="escritura-card" href="escritura.html"><span class="escritura-label">Textos</span></a>
+        <a class="escritura-card escritura-center" href="escritura.html"><span class="escritura-label">Mi Substack</span></a>
+        <a class="escritura-card" href="escritura.html"><span class="escritura-label">Fotos</span></a>
+      </div>
     </div>
   </section>
 
@@ -95,9 +124,9 @@
       <div class="rr-cover"></div>
       <div class="rr-meta">
         <div class="rr-show">Podcast — Desapre(he)nder</div>
-        <div class="rr-episode">Episodio demo</div>
+        <div class="rr-episode">Episodio demo: Conversaciones que nos hicieron</div>
       </div>
-      <audio class="rr-audio" controls>
+      <audio class="rr-audio" controls preload="none">
         <source src="assets/podcast-sample.mp3" type="audio/mpeg" />
       </audio>
     </div>
