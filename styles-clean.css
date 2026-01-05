@@ -258,3 +258,7 @@ body{
   }
   .rr-audio{ grid-column: 1 / -1; }
 }
+/* Ajuste fino: reducir espacio entre CreSer y Escritura */
+#creser{
+  padding-bottom: 48px;
+}
