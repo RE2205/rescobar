@@ -291,3 +291,72 @@ body{
   font-size: 16px;         /* un poco más presente */
   color: rgba(243,243,243,.72);
 }
+/* ======================================================
+   AJUSTE GLOBAL DE ESPACIADO — versión compacta elegante
+   ====================================================== */
+
+/* Reduce padding vertical de TODAS las secciones */
+.block{
+  padding: 56px 0;           /* antes 84px */
+}
+
+/* Hero ya ajustado, pero afinamos transición */
+.hero{
+  min-height: 56vh;
+  padding-top: 24px;
+  padding-bottom: 12px;
+}
+
+/* Línea de respiración más corta */
+.breath{
+  margin: 24px 0;
+}
+
+/* Franja mantra más pegada */
+.band{
+  padding: 16px 0;
+}
+
+/* Franja amarilla (cita) más compacta */
+.band-long{
+  padding: 36px 0;
+}
+.band-long .wrap{
+  max-width: 820px;
+}
+
+/* Títulos de sección un poco más juntos */
+.copy h2{
+  margin: 6px 0 10px 0;
+}
+
+/* Texto lead más cercano al título */
+.lead{
+  margin-top: 6px;
+  line-height: 1.55;
+}
+
+/* Grid podcast más compacto */
+.pod-grid{
+  gap: 24px;                 /* antes 34px */
+  margin-top: 14px;
+}
+
+/* Escritura (3 columnas) más integrada */
+.escritura-grid{
+  margin-top: 24px;
+  gap: 20px;
+}
+.escritura-card{
+  height: 200px;             /* antes 220px */
+}
+
+/* Ajuste general en móvil */
+@media (max-width: 900px){
+  .block{
+    padding: 44px 0;
+  }
+  .hero{
+    min-height: 52vh;
+  }
+}
