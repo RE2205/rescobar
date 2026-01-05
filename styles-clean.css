@@ -16,11 +16,19 @@ body{
 
 .wrap{max-width:1120px;margin:0 auto;padding:0 24px;}
 
-.hero{min-height:76vh;display:grid;align-items:center;}
-.kicker{margin:0 0 18px 0;letter-spacing:.12em;text-transform:uppercase;font-size:14px;color:var(--muted);}
+.hero{
+  min-height:64vh;
+  display:grid;
+  align-items:center;
+}.kicker{margin:0 0 18px 0;letter-spacing:.12em;text-transform:uppercase;font-size:14px;color:var(--muted);}
 .headline{margin:0;font-weight:540;letter-spacing:-.015em;line-height:1.15;font-size:clamp(40px,5vw,72px);}
-.signature{margin-top:56px;font-size:14px;letter-spacing:.04em;color:rgba(243,243,243,.6);text-align:right;}
-
+.signature{
+  margin-top:36px;
+  font-size:15px;
+  letter-spacing:.06em;
+  color:rgba(243,243,243,.7);
+  text-align:right;
+}
 .breath{height:1px;background:rgba(243,243,243,.10);margin:56px 0;}
 
 .silent-link{ color:inherit; text-decoration:none; }
