@@ -1,237 +1,452 @@
-<!DOCTYPE html>
+cd ~/RE
+
+cat > aplicar_ayer.sh <<'BASH'
+#!/usr/bin/env bash
+set -e
+cd "$(dirname "$0")"
+
+# Seguridad: si solo existe podcast-logo.png, crear podcast-logo-v2.png
+if [ -f "assets/podcast-logo.png" ] && [ ! -f "assets/podcast-logo-v2.png" ]; then
+  cp "assets/podcast-logo.png" "assets/podcast-logo-v2.png"
+fi
+
+cat > index.html <<'EOF'
+<!doctype html>
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <title>Ronald Escobar</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="robots" content="noindex, nofollow" />
-
-  <style>
-    * { box-sizing: border-box; }
-
-    body {
-      margin: 0;
-      background: #0b0b0c;
-      color: #f3f3f3;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    }
-
-    a { color: inherit; text-decoration: none; }
-
-    /* ===== HEADER ===== */
-    header {
-      position: relative;
-      padding: 40px 60px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .socials a {
-      margin-right: 16px;
-      opacity: .75;
-      font-size: 18px;
-    }
-
-    .socials a:hover { opacity: 1; }
-
-    nav a {
-      margin-left: 28px;
-      font-size: 13px;
-      letter-spacing: .14em;
-      opacity: .7;
-    }
-
-    nav a:hover { opacity: 1; }
-
-    /* ===== HERO ===== */
-    .hero {
-      height: 70vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 0 60px;
-    }
-
-    .hero h1 {
-      font-size: clamp(36px, 6vw, 64px);
-      font-weight: 600;
-      margin-bottom: 16px;
-    }
-
-    .hero p {
-      opacity: .75;
-      letter-spacing: .12em;
-      font-size: 13px;
-    }
-
-    /* ===== SECTION ===== */
-    section {
-      padding: 80px 60px;
-    }
-
-    h2 {
-      font-size: 28px;
-      margin-bottom: 16px;
-    }
-
-    .muted {
-      opacity: .6;
-      font-size: 14px;
-    }
-
-    /* ===== PODCAST GRID ===== */
-    .pod-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 28px;
-      margin-top: 40px;
-    }
-
-    .pod {
-      position: relative;
-      height: 160px;
-      border-radius: 14px;
-      background: #111;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-    }
-
-    .pod img {
-      max-width: 60%;
-      z-index: 1;
-      transition: opacity .35s ease;
-    }
-
-    .pod::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background-size: cover;
-      background-position: center;
-      opacity: 0;
-      transition: opacity .35s ease;
-    }
-
-    .pod:hover img { opacity: 0; }
-    .pod:hover::after { opacity: 1; }
-
-    .ep1::after { background-image: url("assets/ep1.jpg"); }
-    .ep2::after { background-image: url("assets/ep2.jpg"); }
-    .ep3::after { background-image: url("assets/ep3.jpg"); }
-    .ep4::after { background-image: url("assets/ep4.jpg"); }
-    .ep5::after { background-image: url("assets/ep5.jpg"); }
-    .ep6::after { background-image: url("assets/ep6.jpg"); }
-
-    /* ===== LOGOS PSYCHE ===== */
-    .two-col {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
-      align-items: center;
-    }
-
-    .card {
-      border-radius: 18px;
-      overflow: hidden;
-    }
-
-    .card img {
-      width: 100%;
-      display: block;
-    }
-
-    /* ===== FOOT PLAYER ===== */
-    .player {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: #151515;
-      display: flex;
-      align-items: center;
-      padding: 12px 20px;
-      gap: 14px;
-      font-size: 13px;
-    }
-
-    .player img {
-      width: 36px;
-      height: 36px;
-      border-radius: 6px;
-    }
-
-    @media (max-width: 900px) {
-      .pod-grid { grid-template-columns: 1fr 1fr; }
-      .two-col { grid-template-columns: 1fr; }
-      header { flex-direction: column; gap: 20px; }
-    }
-  </style>
+  <title>Ronald Escobar</title>
+  <meta name="description" content="Un espacio para detener el ruido y habitar lo humano." />
+  <link rel="stylesheet" href="styles-clean.css?v=11001" />
 </head>
-
 <body>
 
-<header>
-  <div class="socials">
-    <a href="#">IG</a>
-    <a href="#"></a>
-    <a href="#">SP</a>
-    <a href="#">YT</a>
-  </div>
-  <nav>
-    <a href="#">PODCAST</a>
-    <a href="#">ESCRITURA</a>
-    <a href="#">CONTACTO</a>
-  </nav>
-</header>
+  <!-- HERO -->
+  <header class="hero">
+    <div class="wrap">
+      <p class="kicker">Neurociencia · Arte · Humanidad</p>
+      <h1 class="headline">Un espacio para detener el ruido<br />y habitar lo humano</h1>
+      <p class="signature">— Ronald Escobar</p>
+    </div>
+  </header>
 
-<div class="hero">
-  <h1>Un espacio para detener el ruido<br>y habitar lo humano</h1>
-  <p>NEUROCIENCIA · ARTE · HUMANIDAD</p>
-</div>
+  <div class="wrap"><div class="breath"></div></div>
 
-<section>
-  <h2>Podcast</h2>
-  <p class="muted">Desapre(he)nder — últimos episodios</p>
+  <!-- FRANJA MANTRA -->
+  <section class="band">
+    <div class="wrap">
+      <p class="band-text">Ser es el verbo más revolucionario.</p>
+    </div>
+  </section>
 
-  <div class="pod-grid">
-    <a class="pod ep1" href="#"><img src="assets/podcast-logo.png"></a>
-    <a class="pod ep2" href="#"><img src="assets/podcast-logo.png"></a>
-    <a class="pod ep3" href="#"><img src="assets/podcast-logo.png"></a>
-    <a class="pod ep4" href="#"><img src="assets/podcast-logo.png"></a>
-    <a class="pod ep5" href="#"><img src="assets/podcast-logo.png"></a>
-    <a class="pod ep6" href="#"><img src="assets/podcast-logo.png"></a>
-  </div>
-</section>
+  <!-- LOGOS PSYCHE -->
+  <section class="block logos-light" id="logos-psyche">
+    <div class="wrap two-col">
+      <a class="silent-link media logo-holder" href="logos-psyche.html" aria-label="Ir a Logos Psyche">
+        <img src="assets/logos-psyche.png" alt="Logos Psyche" class="logo-image" />
+      </a>
+      <div class="copy">
+        <p class="tag dark">PSIQUIATRÍA</p>
+        <h2><a class="silent-link" href="logos-psyche.html">Logos Psyche</a></h2>
+        <p class="lead dark">
+          Psiquiatría basada en evidencia, escucha profunda y humanidad.<br>
+          Un espacio clínico para pensar, sentir y sostener procesos reales,
+          sin prisa y sin juicio.
+        </p>
+      </div>
+    </div>
+  </section>
 
-<section class="two-col">
-  <div>
-    <p class="muted">PSIQUIATRÍA</p>
-    <h2>Logos Psyche</h2>
-    <p class="muted">Psiquiatría con evidencia, escucha y humanidad.</p>
-  </div>
-  <div class="card">
-    <img src="assets/logos-psyche-black.png">
-  </div>
-</section>
+  <!-- PODCAST -->
+  <section class="block podcast-block" id="podcast">
+    <div class="wrap">
+      <div class="head-row">
+        <h2><a class="silent-link" href="podcast.html">Podcast</a></h2>
+        <p class="muted">Desapre(he)nder — últimos episodios</p>
+      </div>
 
-<section class="two-col">
-  <div>
-    <p class="muted">EXPERIENCIA</p>
-    <h2>Inner Sound</h2>
-    <p class="muted">Escuchar hacia adentro. Crear hacia afuera.</p>
-  </div>
-  <div class="card">
-    <img src="assets/inner-sound.jpg">
-  </div>
-</section>
+      <div class="pod-grid">
+        <a class="pod-tile" href="podcast.html" style="--cover:url('assets/ep1.jpg')" aria-label="Episodio 1">
+          <div class="pod-base"></div><div class="pod-cover" aria-hidden="true"></div>
+        </a>
+        <a class="pod-tile" href="podcast.html" style="--cover:url('assets/ep2.jpg')" aria-label="Episodio 2">
+          <div class="pod-base"></div><div class="pod-cover" aria-hidden="true"></div>
+        </a>
+        <a class="pod-tile" href="podcast.html" style="--cover:url('assets/ep3.jpg')" aria-label="Episodio 3">
+          <div class="pod-base"></div><div class="pod-cover" aria-hidden="true"></div>
+        </a>
+        <a class="pod-tile" href="podcast.html" style="--cover:url('assets/ep4.jpg')" aria-label="Episodio 4">
+          <div class="pod-base"></div><div class="pod-cover" aria-hidden="true"></div>
+        </a>
+        <a class="pod-tile" href="podcast.html" style="--cover:url('assets/ep5.jpg')" aria-label="Episodio 5">
+          <div class="pod-base"></div><div class="pod-cover" aria-hidden="true"></div>
+        </a>
+        <a class="pod-tile" href="podcast.html" style="--cover:url('assets/ep6.jpg')" aria-label="Episodio 6">
+          <div class="pod-base"></div><div class="pod-cover" aria-hidden="true"></div>
+        </a>
+      </div>
+    </div>
+  </section>
 
-<div class="player">
-  <img src="assets/podcast-logo.png">
-  <div>Podcast — Desapre(he)nder · Episodio demo</div>
-</div>
+  <!-- INNER SOUND -->
+  <section class="block" id="inner-sound">
+    <div class="wrap two-col">
+      <div class="copy">
+        <p class="tag">EXPERIENCIA</p>
+        <h2><a class="silent-link" href="inner-sound.html">Inner Sound</a></h2>
+        <p class="lead">
+          Un espacio para escuchar sin interferencias.<br>
+          La música como medio para aquietar el ruido,<br>
+          alinear el pensamiento<br>
+          y permitir que el cuerpo participe del proceso.
+        </p>
+      </div>
+      <a class="silent-link media" href="inner-sound.html" aria-label="Ir a Inner Sound">
+        <div class="img ph" style="background-image:url('assets/inner-sound.jpg');" data-label="Inner Sound"></div>
+      </a>
+    </div>
+  </section>
+
+  <!-- FRANJA AMARILLA -->
+  <section class="band-long">
+    <div class="wrap">
+      <p class="band-quote">
+        Así como los libros están hechos de libros, las personas estamos hechas de personas.
+        Cada historia es una cita con otra historia.
+      </p>
+      <p class="band-author">— Ronald Escobar</p>
+    </div>
+  </section>
+
+  <!-- DOCUMENTAL -->
+  <section class="block" id="documental">
+    <div class="wrap two-col">
+      <a class="silent-link media" href="documental.html" aria-label="Ir a Documental">
+        <div class="img ph" data-label="Documental"></div>
+      </a>
+      <div class="copy">
+        <p class="tag">DOCUMENTAL</p>
+        <h2><a class="silent-link" href="documental.html">Documental</a></h2>
+        <p class="lead">
+          Historias reales observadas con cuidado.
+          No para explicar lo humano, sino para mirarlo de frente.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CRESER -->
+  <section class="block" id="creser">
+    <div class="wrap two-col">
+      <div class="copy">
+        <p class="tag">MARCO</p>
+        <h2><a class="silent-link" href="creser.html">CreSer</a></h2>
+        <p class="lead">
+          Un proyecto grande e inclusivo de psicoeducación y conciencia.
+          Pensamiento, práctica y comunidad para impactar vidas y cultura.
+        </p>
+      </div>
+      <a class="silent-link media" href="creser.html" aria-label="Ir a CreSer">
+        <div class="img ph creser-card" style="background-image:url('assets/creser.jpg');"></div>
+      </a>
+    </div>
+  </section>
+
+  <!-- ESCRITURA (3 columnas) -->
+  <section class="block" id="escritura">
+    <div class="wrap">
+      <p class="tag">ESCRITURA</p>
+      <h2><a class="silent-link" href="escritura.html">Entre libros y pastillas</a></h2>
+      <p class="lead">Textos para leer con tiempo: ensayo, clínica, cultura y vida interior.</p>
+
+      <div class="escritura-grid">
+        <a class="escritura-card" href="escritura.html" aria-label="Textos"><span class="escritura-label">Textos</span></a>
+        <a class="escritura-card escritura-center" href="escritura.html" aria-label="Mi Substack"><span class="escritura-label">Mi Substack</span></a>
+        <a class="escritura-card" href="escritura.html" aria-label="Fotos"><span class="escritura-label">Fotos</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PLAYER FIJO -->
+  <div class="rr-player" aria-label="Podcast player">
+    <div class="rr-inner">
+      <div class="rr-cover" aria-hidden="true"></div>
+      <div class="rr-meta">
+        <div class="rr-show">Podcast — Desapre(he)nder</div>
+        <div class="rr-episode">Episodio demo: Conversaciones que nos hicieron</div>
+      </div>
+      <audio class="rr-audio" controls preload="none">
+        <source src="assets/podcast-sample.mp3" type="audio/mpeg" />
+      </audio>
+    </div>
+  </div>
 
 </body>
 </html>
+EOF
+
+cat > styles-clean.css <<'EOF'
+:root{
+  --bg:#0b0b0c;
+  --fg:#f3f3f3;
+  --muted:rgba(243,243,243,.68);
+}
+
+*{box-sizing:border-box;}
+html,body{height:100%;}
+body{
+  margin:0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+  background:var(--bg);
+  color:var(--fg);
+  padding-bottom: 92px;
+}
+
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px;}
+
+.hero{min-height:76vh;display:grid;align-items:center;}
+.kicker{margin:0 0 18px 0;letter-spacing:.12em;text-transform:uppercase;font-size:14px;color:var(--muted);}
+.headline{margin:0;font-weight:540;letter-spacing:-.015em;line-height:1.15;font-size:clamp(40px,5vw,72px);}
+.signature{margin-top:56px;font-size:14px;letter-spacing:.04em;color:rgba(243,243,243,.6);text-align:right;}
+
+.breath{height:1px;background:rgba(243,243,243,.10);margin:56px 0;}
+
+.silent-link{ color:inherit; text-decoration:none; }
+.silent-link:hover{ text-decoration:none; }
+
+.band{
+  padding:22px 0;
+  background:
+    radial-gradient(120% 140% at 85% 50%, rgba(150,120,255,.45), rgba(0,0,0,0) 60%),
+    linear-gradient(90deg, rgba(12,10,22,1), rgba(8,6,16,1));
+  border-top:1px solid rgba(255,255,255,.08);
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+.band-text{margin:0;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.96);text-align:left;}
+
+.block{padding:84px 0;border-bottom:1px solid rgba(243,243,243,.08);}
+.two-col{display:grid;grid-template-columns:1fr;gap:28px;align-items:center;}
+@media (min-width:900px){ .two-col{grid-template-columns:1.1fr .9fr;} }
+
+.copy h2{margin:10px 0 14px 0;font-size:42px;letter-spacing:-.02em;}
+.tag{
+  display:inline-block;margin:0;padding:8px 12px;border-radius:999px;
+  font-size:12px;letter-spacing:.10em;text-transform:uppercase;
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.10);
+  color:rgba(243,243,243,.80);
+}
+.tag.dark{ background: rgba(0,0,0,.06); border:1px solid rgba(0,0,0,.10); color:#111; }
+.lead{margin:0;color:rgba(243,243,243,.78);max-width:62ch;line-height:1.6;font-size:18px;}
+.lead.dark{ color:#333; }
+.head-row{display:flex;justify-content:space-between;align-items:baseline;gap:24px;margin-bottom:18px;}
+.muted{margin:0;color:var(--muted);}
+
+.img{width:100%;border-radius:22px;border:1px solid rgba(243,243,243,.10);background:rgba(255,255,255,.02);}
+.ph{
+  height:320px;position:relative;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image:
+    radial-gradient(120% 120% at 20% 10%, rgba(120,80,255,.26), rgba(0,0,0,0)),
+    radial-gradient(120% 120% at 80% 30%, rgba(255,180,0,.18), rgba(0,0,0,0)),
+    rgba(255,255,255,.03);
+}
+.ph::after{
+  content:attr(data-label);
+  position:absolute;left:16px;bottom:14px;
+  font-size:12px;letter-spacing:.10em;text-transform:uppercase;
+  color:rgba(243,243,243,.70);
+}
+
+/* Logos Psyche */
+.logos-light{ background:#f6f6f4; }
+.logos-light .copy h2, .logos-light .copy p{ color:#111; }
+.logo-holder{
+  height:320px;
+  padding:16px;
+  border-radius:22px;
+  border:1px solid rgba(0,0,0,.10);
+  background:#f6f6f4;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+}
+.logo-image{ display:block; width:100%; height:100%; object-fit:contain; }
+
+/* Podcast base = logo v2 + hover covers */
+.podcast-block .wrap{ max-width: 980px; }
+.pod-grid{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:34px;
+  margin-top:18px;
+}
+@media (min-width:860px){
+  .pod-grid{ grid-template-columns: repeat(3, 1fr); }
+}
+.pod-tile{
+  position:relative;
+  display:block;
+  aspect-ratio:16/9;
+  border-radius:14px;
+  overflow:hidden;
+  background: rgba(255,255,255,.03);
+  border:1px solid rgba(255,255,255,.08);
+}
+.pod-base{
+  position:absolute; inset:0;
+  background-image: url('assets/podcast-logo-v2.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity:1;
+  transition: opacity .35s ease;
+}
+.pod-cover{
+  position:absolute; inset:0;
+  background-image: var(--cover);
+  background-size: cover;
+  background-position: center;
+  opacity:0;
+  transition: opacity .35s ease;
+}
+.pod-tile:hover .pod-base{ opacity:0; }
+.pod-tile:hover .pod-cover{ opacity:1; }
+
+/* Franja amarilla */
+.band-long{
+  position:relative;overflow:hidden;
+  padding:44px 0;
+  background: linear-gradient(135deg, rgba(255,215,90,1), rgba(250,190,60,1));
+}
+.band-long::before{
+  content:"";position:absolute;inset:0;
+  background-image:url("assets/band-texture.png");
+  background-size:cover;background-position:center;
+  opacity:.12;mix-blend-mode:multiply;pointer-events:none;
+}
+.band-long .wrap{position:relative;z-index:1;max-width:900px;}
+.band-quote{
+  margin:0;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(22px, 2.2vw, 30px);
+  line-height:1.45;
+  letter-spacing:.01em;
+  color:#0a0a0a;
+}
+.band-author{
+  margin-top:22px;
+  font-size:12px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:rgba(10,10,10,.90);
+}
+
+/* CreSer */
+.creser-card{
+  height: 420px;
+  border:none;
+  border-radius:0;
+  background-color:transparent;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Escritura 3 columnas */
+.escritura-grid{
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap:24px;
+  margin-top:32px;
+}
+.escritura-card{
+  height:220px;
+  border-radius:18px;
+  background: linear-gradient(135deg, #2b2b2b, #1a1a1a);
+  border:1px solid rgba(255,255,255,.08);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-decoration:none;
+  color:#fff;
+  transition: transform .25s ease, background .25s ease;
+}
+.escritura-card:hover{
+  transform: translateY(-4px);
+  background: linear-gradient(135deg, #3a3a3a, #1f1f1f);
+}
+.escritura-center{
+  background: linear-gradient(135deg, rgba(150,120,255,.22), rgba(0,0,0,.15));
+}
+.escritura-center:hover{
+  background: linear-gradient(135deg, rgba(150,120,255,.30), rgba(0,0,0,.18));
+}
+.escritura-label{
+  font-size: 1.1rem;
+  letter-spacing:.04em;
+}
+@media (max-width:900px){
+  .escritura-grid{ grid-template-columns:1fr; }
+}
+
+/* Player inferior: logo izquierda */
+.rr-player{
+  position: fixed;left: 0; right: 0; bottom: 0;
+  z-index: 9999;
+  background: rgba(10,10,14,.94);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(255,255,255,.10);
+}
+.rr-inner{
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 10px 16px;
+  display: grid;
+  grid-template-columns: 52px 1fr minmax(260px, 420px);
+  gap: 14px;
+  align-items: center;
+}
+.rr-cover{
+  width: 52px;
+  height: 52px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,.10);
+  background-image: url('assets/podcast-logo-v2.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.rr-meta{ min-width:0; }
+.rr-show{
+  font-size: 11px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: rgba(230,225,255,.86);
+  margin-bottom: 4px;
+}
+.rr-episode{
+  font-size: 14px;
+  color: rgba(243,243,243,.86);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.rr-audio{
+  width: 100%;
+  height: 28px;
+}
+@media (max-width: 760px){
+  .rr-inner{
+    grid-template-columns: 52px 1fr;
+    grid-template-rows: auto auto;
+  }
+  .rr-audio{ grid-column: 1 / -1; }
+}
+EOF
+BASH
+
+bash aplicar_ayer.sh
