@@ -1,17 +1,17 @@
 :root{
- --bg:#0b0b0c;
- --fg:#f3f3f3;
- --muted:rgba(243,243,243,.68);
+  --bg:#0b0b0c;
+  --fg:#f3f3f3;
+  --muted:rgba(243,243,243,.68);
 }
 
 *{box-sizing:border-box;}
 html,body{height:100%;}
 body{
- margin:0;
- font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
- background:var(--bg);
- color:var(--fg);
- padding-bottom: 92px; /* player fijo */
+  margin:0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+  background:var(--bg);
+  color:var(--fg);
+  padding-bottom: 92px; /* player fijo */
 }
 
 .wrap{max-width:1120px;margin:0 auto;padding:0 24px;}
@@ -27,12 +27,12 @@ body{
 .silent-link:hover{ text-decoration:none; }
 
 .band{
- padding:22px 0;
- background:
-   radial-gradient(120% 140% at 85% 50%, rgba(150,120,255,.45), rgba(0,0,0,0) 60%),
-   linear-gradient(90deg, rgba(12,10,22,1), rgba(8,6,16,1));
- border-top:1px solid rgba(255,255,255,.08);
- border-bottom:1px solid rgba(255,255,255,.08);
+  padding:22px 0;
+  background:
+    radial-gradient(120% 140% at 85% 50%, rgba(150,120,255,.45), rgba(0,0,0,0) 60%),
+    linear-gradient(90deg, rgba(12,10,22,1), rgba(8,6,16,1));
+  border-top:1px solid rgba(255,255,255,.08);
+  border-bottom:1px solid rgba(255,255,255,.08);
 }
 .band-text{margin:0;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.96);text-align:left;}
 
@@ -42,10 +42,10 @@ body{
 
 .copy h2{margin:10px 0 14px 0;font-size:42px;letter-spacing:-.02em;}
 .tag{
- display:inline-block;margin:0;padding:8px 12px;border-radius:999px;
- font-size:12px;letter-spacing:.10em;text-transform:uppercase;
- background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.10);
- color:rgba(243,243,243,.80);
+  display:inline-block;margin:0;padding:8px 12px;border-radius:999px;
+  font-size:12px;letter-spacing:.10em;text-transform:uppercase;
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.10);
+  color:rgba(243,243,243,.80);
 }
 .tag.dark{ background: rgba(0,0,0,.06); border:1px solid rgba(0,0,0,.10); color:#111; }
 .lead{margin:0;color:rgba(243,243,243,.78);max-width:62ch;line-height:1.6;font-size:18px;}
@@ -53,222 +53,208 @@ body{
 .head-row{display:flex;justify-content:space-between;align-items:baseline;gap:24px;margin-bottom:18px;}
 .muted{margin:0;color:var(--muted);}
 
-/* Placeholders */
+/* tarjetas / placeholders */
 .img{width:100%;border-radius:22px;border:1px solid rgba(243,243,243,.10);background:rgba(255,255,255,.02);}
 .ph{
- height:320px;position:relative;
- background-size: cover;
- background-position: center;
- background-repeat: no-repeat;
- background-image:
-   radial-gradient(120% 120% at 20% 10%, rgba(120,80,255,.26), rgba(0,0,0,0)),
-   radial-gradient(120% 120% at 80% 30%, rgba(255,180,0,.18), rgba(0,0,0,0)),
-   rgba(255,255,255,.03);
+  height:320px;position:relative;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image:
+    radial-gradient(120% 120% at 20% 10%, rgba(120,80,255,.26), rgba(0,0,0,0)),
+    radial-gradient(120% 120% at 80% 30%, rgba(255,180,0,.18), rgba(0,0,0,0)),
+    rgba(255,255,255,.03);
 }
 .ph::after{
- content:attr(data-label);
- position:absolute;left:16px;bottom:14px;
- font-size:12px;letter-spacing:.10em;text-transform:uppercase;
- color:rgba(243,243,243,.70);
+  content:attr(data-label);
+  position:absolute;left:16px;bottom:14px;
+  font-size:12px;letter-spacing:.10em;text-transform:uppercase;
+  color:rgba(243,243,243,.70);
 }
 
 /* Logos Psyche (pausa luminosa) */
 .logos-light{ background:#f6f6f4; }
 .logos-light .copy h2, .logos-light .copy p{ color:#111; }
 .logo-holder{
- height:320px;
- padding:16px;
- border-radius:22px;
- border:1px solid rgba(0,0,0,.10);
- background:#f6f6f4;
- display:flex;
- align-items:center;
- justify-content:center;
- overflow:hidden;
+  height:320px;
+  padding:16px;
+  border-radius:22px;
+  border:1px solid rgba(0,0,0,.10);
+  background:#f6f6f4;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
 }
 .logo-image{ display:block; width:100%; height:100%; object-fit:contain; }
 
-/* Podcast 2x3 con aire + base logo v2 + hover cover */
+/* Podcast 2x3 + base logo + hover cover */
 .podcast-block .wrap{ max-width: 980px; }
 .pod-grid{
- display:grid;
- grid-template-columns:1fr;
- gap:34px;
- margin-top:18px;
+  display:grid;
+  grid-template-columns:1fr;
+  gap:34px;
+  margin-top:18px;
 }
 @media (min-width:860px){
- .pod-grid{ grid-template-columns: repeat(3, 1fr); }
+  .pod-grid{ grid-template-columns: repeat(3, 1fr); }
 }
 .pod-tile{
- position:relative;
- display:block;
- aspect-ratio:16/9;
- border-radius:14px;
- overflow:hidden;
- background: rgba(255,255,255,.03);
- border:1px solid rgba(255,255,255,.08);
+  position:relative;
+  display:block;
+  aspect-ratio:16/9;
+  border-radius:14px;
+  overflow:hidden;
+  background: rgba(255,255,255,.03);
+  border:1px solid rgba(255,255,255,.08);
 }
 .pod-base{
- position:absolute; inset:0;
- background-image: url('./podcast-logo.png');
- background-size: cover;
- background-position: center;
- background-repeat: no-repeat;
- opacity:1;
- transition: opacity .35s ease;
-}
-.pod-cover{
- position:absolute; inset:0;
- background-image: var(--cover);
- background-size: cover;
- background-position: center;
- opacity:0;
- transition: opacity .35s ease;
-}
-.pod-tile:hover .pod-base{ opacity:0; }
-.pod-tile:hover .pod-cover{ opacity:1; }
-
-/* Franja amarilla */
-.band-long{
- position:relative;overflow:hidden;
- padding:44px 0;
- background: linear-gradient(135deg, rgba(255,215,90,1), rgba(250,190,60,1));
-}
-.band-long::before{
- content:"";position:absolute;inset:0;
- background-image:url("assets/band-texture.png");
- background-size:cover;background-position:center;
- opacity:.12;mix-blend-mode:multiply;pointer-events:none;
-}
-.band-long .wrap{position:relative;z-index:1;max-width:900px;}
-.band-quote{
- margin:0;
- font-family: Georgia, 'Times New Roman', serif;
- font-size: clamp(22px, 2.2vw, 30px);
- line-height:1.45;
- letter-spacing:.01em;
- color:#0a0a0a;
-}
-.band-author{
- margin-top:22px;
- font-size:12px;
- letter-spacing:.18em;
- text-transform:uppercase;
- color:rgba(10,10,10,.90);
-}
-
-/* CreSer editorial */
-.creser-card{
- height: 420px;
- border:none;
- border-radius:0;
- background-color:transparent;
- background-size: cover;
- background-position: center;
- background-repeat: no-repeat;
-}
-
-/* Escritura 3 columnas */
-.escritura-grid{
- display:grid;
- grid-template-columns: repeat(3, 1fr);
- gap:24px;
- margin-top:32px;
-}
-.escritura-card{
- height:220px;
- border-radius:18px;
- background: linear-gradient(135deg, #2b2b2b, #1a1a1a);
- border:1px solid rgba(255,255,255,.08);
- display:flex;
- align-items:center;
- justify-content:center;
- text-decoration:none;
- color:#fff;
- transition: transform .25s ease, background .25s ease;
-}
-.escritura-card:hover{
- transform: translateY(-4px);
- background: linear-gradient(135deg, #3a3a3a, #1f1f1f);
-}
-.escritura-center{
- background: linear-gradient(135deg, rgba(150,120,255,.22), rgba(0,0,0,.15));
-}
-.escritura-center:hover{
- background: linear-gradient(135deg, rgba(150,120,255,.30), rgba(0,0,0,.18));
-}
-.escritura-label{
- font-size: 1.1rem;
- letter-spacing:.04em;
-}
-@media (max-width:900px){
- .escritura-grid{ grid-template-columns:1fr; }
-}
-
-/* Player fijo inferior (logo izquierda estilo Rich Roll) */
-.rr-player{
- position: fixed;left: 0; right: 0; bottom: 0;
- z-index: 9999;
- background: rgba(10,10,14,.94);
- backdrop-filter: blur(10px);
- border-top: 1px solid rgba(255,255,255,.10);
-}
-.rr-inner{
- max-width: 1120px;
- margin: 0 auto;
- padding: 10px 16px;
- display: grid;
- grid-template-columns: 52px 1fr minmax(260px, 420px);
- gap: 14px;
- align-items: center;
-}
-.rr-cover{
- width: 52px;
- height: 52px;
- border-radius: 10px;
- border: 1px solid rgba(255,255,255,.10);
- background-image: url('./podcast-logo.png');
- background-size: cover;
- background-position: center;
- background-repeat: no-repeat;
-}
-.rr-meta{ min-width:0; }
-.rr-show{
- font-size: 11px;
- letter-spacing: .14em;
- text-transform: uppercase;
- color: rgba(230,225,255,.86);
- margin-bottom: 4px;
-}
-.rr-episode{
- font-size: 14px;
- color: rgba(243,243,243,.86);
- white-space: nowrap;
- overflow: hidden;
- text-overflow: ellipsis;
-}
-.rr-audio{
- width: 100%;
- height: 28px;
-}
-@media (max-width: 760px){
- .rr-inner{
-   grid-template-columns: 52px 1fr;
-   grid-template-rows: auto auto;
- }
- .rr-audio{ grid-column: 1 / -1; }
-}
-/* Player: logo fijo a la izquierda */
-.rr-cover{
-  background-image: url('./podcast-logo.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-/* === Player inferior: logo del podcast (v2) === */
-.rr-cover{
+  position:absolute; inset:0;
   background-image: url('assets/podcast-logo.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  opacity:1;
+  transition: opacity .35s ease;
+}
+.pod-cover{
+  position:absolute; inset:0;
+  background-image: var(--cover);
+  background-size: cover;
+  background-position: center;
+  opacity:0;
+  transition: opacity .35s ease;
+}
+.pod-tile:hover .pod-base{ opacity:0; }
+.pod-tile:hover .pod-cover{ opacity:1; }
+
+/* Franja amarilla con textura */
+.band-long{
+  position:relative;overflow:hidden;
+  padding:44px 0;
+  background: linear-gradient(135deg, rgba(255,215,90,1), rgba(250,190,60,1));
+}
+.band-long::before{
+  content:"";position:absolute;inset:0;
+  background-image:url("assets/band-texture.png");
+  background-size:cover;background-position:center;
+  opacity:.12;mix-blend-mode:multiply;pointer-events:none;
+}
+.band-long .wrap{position:relative;z-index:1;max-width:900px;}
+.band-quote{
+  margin:0;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(22px, 2.2vw, 30px);
+  line-height:1.45;
+  letter-spacing:.01em;
+  color:#0a0a0a;
+}
+.band-author{
+  margin-top:22px;
+  font-size:12px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:rgba(10,10,10,.90);
+}
+
+/* CreSer editorial */
+.creser-card{
+  height: 420px;
+  border:none;
+  border-radius:0;
+  background-color:transparent;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Escritura 3 columnas */
+.escritura-grid{
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap:24px;
+  margin-top:32px;
+}
+.escritura-card{
+  height:220px;
+  border-radius:18px;
+  background: linear-gradient(135deg, #2b2b2b, #1a1a1a);
+  border:1px solid rgba(255,255,255,.08);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-decoration:none;
+  color:#fff;
+  transition: transform .25s ease, background .25s ease;
+}
+.escritura-card:hover{
+  transform: translateY(-4px);
+  background: linear-gradient(135deg, #3a3a3a, #1f1f1f);
+}
+.escritura-center{
+  background: linear-gradient(135deg, rgba(150,120,255,.22), rgba(0,0,0,.15));
+}
+.escritura-center:hover{
+  background: linear-gradient(135deg, rgba(150,120,255,.30), rgba(0,0,0,.18));
+}
+.escritura-label{
+  font-size: 1.1rem;
+  letter-spacing:.04em;
+}
+@media (max-width:900px){
+  .escritura-grid{ grid-template-columns:1fr; }
+}
+
+/* Player fijo inferior (logo izquierda) */
+.rr-player{
+  position: fixed;left: 0; right: 0; bottom: 0;
+  z-index: 9999;
+  background: rgba(10,10,14,.94);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(255,255,255,.10);
+}
+.rr-inner{
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 10px 16px;
+  display: grid;
+  grid-template-columns: 52px 1fr minmax(260px, 420px);
+  gap: 14px;
+  align-items: center;
+}
+.rr-cover{
+  width: 52px;
+  height: 52px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,.10);
+  background-image: url('assets/podcast-logo.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.rr-meta{ min-width:0; }
+.rr-show{
+  font-size: 11px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: rgba(230,225,255,.86);
+  margin-bottom: 4px;
+}
+.rr-episode{
+  font-size: 14px;
+  color: rgba(243,243,243,.86);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.rr-audio{
+  width: 100%;
+  height: 28px;
+}
+@media (max-width: 760px){
+  .rr-inner{
+    grid-template-columns: 52px 1fr;
+    grid-template-rows: auto auto;
+  }
+  .rr-audio{ grid-column: 1 / -1; }
 }
