@@ -403,3 +403,17 @@ body{
 #documental{
   padding-top: 48px;      /* antes ~84px */
 }
+/* Documental: imagen izquierda, texto derecha */
+#documental .two-col{
+  grid-template-columns: .9fr 1.1fr;
+}
+
+@media (min-width: 900px){
+  #documental .two-col{
+    direction: rtl;
+  }
+
+  #documental .two-col > *{
+    direction: ltr;
+  }
+}
