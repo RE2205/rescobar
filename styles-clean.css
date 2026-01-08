@@ -202,9 +202,19 @@ body{
   background: linear-gradient(135deg, #3a3a3a, #1f1f1f);
 }
 .escritura-center{
-  background: linear-gradient(135deg, rgba(150,120,255,.22), rgba(0,0,0,.15));
+  background-image: url('assets/substack.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
 }
-.escritura-center:hover{
+.escritura-center .escritura-label{
+  background: rgba(0,0,0,.55);
+  padding: 10px 16px;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  letter-spacing: .05em;
+}.escritura-center:hover{
   background: linear-gradient(135deg, rgba(150,120,255,.30), rgba(0,0,0,.18));
 }
 .escritura-label{
