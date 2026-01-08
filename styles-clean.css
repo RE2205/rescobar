@@ -435,3 +435,10 @@ body{
     height: 340px !important;
   }
 }
+/* PROYECTOS: foto más legible (menos recorte de rostro/mesa) */
+.doc-cover{
+  background-position: center 22% !important; /* sube un poco el encuadre */
+}
+.doc-cover::after{
+  content:"" !important; /* elimina etiqueta flotante */
+}
