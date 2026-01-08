@@ -427,3 +427,18 @@ body{
     direction: ltr;
   }
 }
+/* Substack: tarjeta vertical para que la foto no se recorte */
+.escritura-center{
+  height: 320px !important;          /* más alta, estilo portada */
+  background-size: contain !important;/* NO recorta */
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  background-color: rgba(255,255,255,.03) !important; /* fondo sobrio */
+}
+
+/* En desktop, que se sienta aún más "portada" */
+@media (min-width: 900px){
+  .escritura-center{
+    height: 340px !important;
+  }
+}
