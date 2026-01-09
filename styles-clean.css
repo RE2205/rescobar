@@ -31,10 +31,27 @@ body{
   border-top:1px solid rgba(255,255,255,.08);
   border-bottom:1px solid rgba(255,255,255,.08);
 }
-.band-text{margin:0;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.96);text-align:left;}
+/* Bloques base */
+.block {
+  padding: 60px 0;
+  border-bottom: 1px solid rgba(243,243,243,.08);
+}
+
+/* Layout dos columnas */
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 48px;
+  align-items: center;
+}
+
+@media (min-width: 900px) {
+  .two-col {
+    grid-template-columns: 1fr 1fr;
+  }
+}.band-text{margin:0;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.96);text-align:left;}
 /* Ritmo vertical unificado (más compacto, estilo Inner Sound) */
-.block{padding:60px 0;border-bottom:1px solid rgba(243,243,243,.08);}two-col{display:grid;grid-template-columns:1fr;gap:28px;align-items:center;}
-@media (min-width:900px){ .two-col{grid-template-columns:1.1fr .9fr;} }
+ }
 
 .copy h2{margin:10px 0 14px 0;font-size:42px;letter-spacing:-.02em;}
 .tag{
@@ -442,3 +459,4 @@ body{
 .doc-cover::after{
   content:"" !important; /* elimina etiqueta flotante */
 }
+Fix two-col layout and project image crop
