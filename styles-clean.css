@@ -460,3 +460,10 @@ body{
   content:"" !important; /* elimina etiqueta flotante */
 }
 Fix two-col layout and project image crop
+/* === DOCUMENTAL: forzar visibilidad === */
+.doc-cover {
+  min-height: 320px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 16px;
+}
