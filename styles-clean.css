@@ -467,3 +467,32 @@ Fix two-col layout and project image crop
   background-position: center;
   border-radius: 16px;
 }
+/* === FIX: espacio excesivo entre FRANJA AMARILLA y PROYECTOS === */
+
+/* 1) La franja amarilla: menos “cola” abajo */
+.band-long{
+  padding-bottom: 28px !important;
+}
+
+/* 2) El bloque siguiente (PROYECTOS) sube y respira menos arriba */
+#proyectos,
+#documental,
+#proyectos.block,
+#documental.block{
+  padding-top: 36px !important;
+}
+
+/* 3) Si quedó un divisor/breath metiendo aire justo ahí, lo aplastamos */
+.band-long + .block .breath,
+.band-long + section .breath{
+  margin: 0 !important;
+  height: 0 !important;
+  background: transparent !important;
+}
+
+/* 4) Opcional (por si el “marco grande” de proyectos está reservando altura):
+   baja el min-height del cover dentro de proyectos */
+#proyectos .doc-cover,
+#documental .doc-cover{
+  min-height: 260px !important;
+}
