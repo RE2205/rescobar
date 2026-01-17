@@ -513,3 +513,25 @@ Fix two-col layout and project image crop
     height: 360px;
   }
 }
+/* ================================
+   CRESER — LOGO OCUPA TODO EL MARCO
+   ================================ */
+
+#creser .img.ph {
+  height: 360px;
+
+  /* clave */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  /* elimina el “marco falso” */
+  padding: 0;
+}
+
+/* evita recorte feo en desktop */
+@media (min-width: 900px) {
+  #creser .img.ph {
+    height: 420px;
+  }
+}
