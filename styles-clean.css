@@ -513,4 +513,24 @@ Fix two-col layout and project image crop
     height: 360px;
   }
 }
+/* =====================================================
+   CRESER — LOGO LEGIBLE, MISMO MARCO QUE LOS OTROS
+   ===================================================== */
 
+#creser .img.ph {
+  height: 420px;               /* MISMO ALTO que Inner Sound */
+  background-size: contain;    /* CLAVE: NO RECORTA */
+  background-position: center;
+  background-repeat: no-repeat;
+
+  /* Compensa visualmente el logo */
+  padding: 24px;               /* aire simétrico */
+  box-sizing: border-box;
+}
+
+/* En desktop mantiene proporción visual */
+@media (min-width: 900px) {
+  #creser .img.ph {
+    height: 420px;
+  }
+}
