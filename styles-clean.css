@@ -534,3 +534,23 @@ Fix two-col layout and project image crop
     height: 420px;
   }
 }
+/* =========================
+   CRESER (logo): NO recorte + marco cuadrado
+   ========================= */
+#creser .creser-logo{
+  aspect-ratio: 1 / 1 !important;   /* marco cuadrado */
+  height: auto !important;          /* mata el height fijo de .ph */
+  min-height: 360px !important;     /* se ve grande */
+  width: 100% !important;
+
+  background-size: contain !important;  /* NO recorta */
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+}
+
+/* en pantallas grandes, un poco más alto */
+@media (min-width: 900px){
+  #creser .creser-logo{
+    min-height: 420px !important;
+  }
+}
