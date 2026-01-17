@@ -534,3 +534,33 @@ Fix two-col layout and project image crop
     height: 420px;
   }
 }
+/* ================================
+   UNIFICAR MARCOS (Proyectos / Documental / CreSer)
+   ================================ */
+
+/* Marco base: MISMO tamaño que Inner Sound */
+.block .img.ph {
+  height: 360px;
+  width: 100%;
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+/* Desktop: mismo alto que los otros */
+@media (min-width: 900px) {
+  .block .img.ph {
+    height: 420px;
+  }
+}
+
+/* DOCUMENTAL y CRESER: imagen legible completa */
+.doc-cover {
+  background-size: contain;   /* CLAVE: no recorta */
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Quita márgenes falsos internos */
+.img.ph {
+  padding: 0;
+}
