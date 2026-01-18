@@ -95,7 +95,7 @@ body{
 .logos-light .copy h2, .logos-light .copy p{ color:#111; }
 .logo-holder{
   height:320px;
-  padding:16px;
+  padding:22px;                 /* aire intencional (simétrico) */
   border-radius:22px;
   border:1px solid rgba(0,0,0,.10);
   background:#f6f6f4;
@@ -104,6 +104,7 @@ body{
   justify-content:center;
   overflow:hidden;
 }
+
 .logo-image{
   display:block;
   width:100%;
