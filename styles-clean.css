@@ -104,8 +104,13 @@ body{
   justify-content:center;
   overflow:hidden;
 }
-.logo-image{ display:block; width:100%; height:100%; object-fit:contain; }
-
+.logo-image{
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit: contain;       /* zoom out: se ve TODO */
+  object-position: center;
+}
 /* Podcast 2x3 + base logo + hover cover */
 .podcast-block .wrap{ max-width: 980px; }
 .pod-grid{
@@ -545,14 +550,6 @@ Fix two-col layout and project image crop
   padding: 0;              /* elimina aire */
 }
 
-.logo-image{
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  object-position: center;
-  transform: scale(0.9);
-}
 /* ==============================
    INNER SOUND — FONDO CLARO
    ============================== */
