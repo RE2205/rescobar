@@ -525,3 +525,18 @@ Fix two-col layout and project image crop
 @media (min-width: 900px){
   .logo-holder.logo-psyche{ height: 360px; }
 }
+/* LOGOS PSYCHE — llenar el marco sin aire */
+.logo-holder.logo-psyche{
+  height: 320px;
+  padding: 0;
+  border-radius: 22px;
+  border: 1px solid rgba(0,0,0,.10);
+  background-color: #f6f6f4;
+  background-image: url('assets/logos-psyche.png');
+  background-size: cover;      /* llena el marco */
+  background-position: center; /* centra el cerebro */
+  background-repeat: no-repeat;
+}
+@media (min-width: 900px){
+  .logo-holder.logo-psyche{ height: 360px; }
+}
