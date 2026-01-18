@@ -181,7 +181,30 @@
       </audio>
     </div>
   </div>
+<script>
+  const izquierda = [
+    "assets/foto-izquierda.jpg",
+    "assets/foto-izquierda-2.jpg"
+  ];
 
+  const derecha = [
+    "assets/foto-derecha.jpg",
+    "assets/foto-derecha-2.jpg"
+  ];
+
+  let i = 0;
+  let d = 0;
+
+  setInterval(() => {
+    i = (i + 1) % izquierda.length;
+    document.querySelector("#foto-izquierda img").src = izquierda[i];
+  }, 4000);
+
+  setInterval(() => {
+    d = (d + 1) % derecha.length;
+    document.querySelector("#foto-derecha img").src = derecha[d];
+  }, 4500);
+</script>
 </body>
 </html>
 
