@@ -540,3 +540,15 @@ Fix two-col layout and project image crop
 @media (min-width: 900px){
   .logo-holder.logo-psyche{ height: 360px; }
 }
+/* Logos Psyche – ocupar marco completo con presencia */
+.logo-holder {
+  padding: 0;              /* elimina aire */
+}
+
+.logo-image.logo-cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;       /* CLAVE */
+  object-position: center;
+  display: block;
+}
