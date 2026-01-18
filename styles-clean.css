@@ -507,3 +507,23 @@ Fix two-col layout and project image crop
     min-height: 420px !important;
   }
 }
+/* ================================
+   LOGOS PSYCHE — imagen llena marco
+   mismo tamaño que los demás
+================================ */
+
+.logo-holder.logo-psyche{
+  height: 320px;              /* mismo alto visual */
+  padding: 0;                 /* sin marco interno */
+  background-image: url('assets/logos-psyche.png');
+  background-size: contain;   /* se ve completo */
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* desktop */
+@media (min-width: 900px){
+  .logo-holder.logo-psyche{
+    height: 360px;
+  }
+}
