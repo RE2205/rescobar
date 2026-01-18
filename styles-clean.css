@@ -513,32 +513,6 @@ Fix two-col layout and project image crop
     min-height: 420px !important;
   }
 }
-/* ================================
-   LOGOS PSYCHE — fondo en el marco
-================================ */
-.logo-holder.logo-psyche{
-  height: 320px;
-  padding: 0;
-  border-radius: 22px;
-  border: 1px solid rgba(0,0,0,.10);
-  background-color: #f6f6f4;
-  background-image: url('assets/logos-psyche.png'); /* <-- si tu archivo tiene otro nombre, lo cambiamos */
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-@media (min-width: 900px){
-  .logo-holder.logo-psyche{ height: 360px; }
-}
-
-@media (min-width: 900px){
-  .logo-holder.logo-psyche{ height: 360px; }
-}
-/* Logos Psyche – ocupar marco completo con presencia */
-.logo-holder {
-  padding: 0;              /* elimina aire */
-}
 
 /* ==============================
    INNER SOUND — FONDO CLARO
