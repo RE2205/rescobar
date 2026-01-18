@@ -508,22 +508,20 @@ Fix two-col layout and project image crop
   }
 }
 /* ================================
-   LOGOS PSYCHE — imagen llena marco
-   mismo tamaño que los demás
+   LOGOS PSYCHE — fondo en el marco
 ================================ */
-
 .logo-holder.logo-psyche{
-  height: 320px;              /* mismo alto visual */
-  padding: 0;                 /* sin marco interno */
-  background-image: url('assets/logos-psyche.png');
-  background-size: contain;   /* se ve completo */
+  height: 320px;
+  padding: 0;
+  border-radius: 22px;
+  border: 1px solid rgba(0,0,0,.10);
+  background-color: #f6f6f4;
+  background-image: url('assets/logos-psyche.png'); /* <-- si tu archivo tiene otro nombre, lo cambiamos */
+  background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
 }
 
-/* desktop */
 @media (min-width: 900px){
-  .logo-holder.logo-psyche{
-    height: 360px;
-  }
+  .logo-holder.logo-psyche{ height: 360px; }
 }
