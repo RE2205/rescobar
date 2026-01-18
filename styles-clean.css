@@ -27,7 +27,12 @@ body{
   padding:22px 0;
   background:
     radial-gradient(120% 140% at 85% 50%, rgba(150,120,255,.45), rgba(0,0,0,0) 60%),
-    linear-gradient(90deg, rgba(12,10,22,1), rgba(8,6,16,1));
+    linear-gradient(
+  90deg,
+  rgba(26,22,40,1),
+  rgba(12,10,22,1),
+  rgba(8,6,16,1)
+);  
   border-top:1px solid rgba(255,255,255,.08);
   border-bottom:1px solid rgba(255,255,255,.08);
 }
