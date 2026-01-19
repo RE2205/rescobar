@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Logos Psyche — Ronald Escobar</title>
+
+  <meta name="description" content="Psiquiatría basada en evidencia, escucha profunda y humanidad. Logos Psyche por Ronald Escobar." />
+
+  <!-- Estilos compartidos del sitio -->
+  <link rel="stylesheet" href="styles-clean.css" />
+</head>
+
+<body class="logos-light">
+
+  <!-- Header simple, sin hero grande -->
+  <header class="wrap" style="padding-top:48px; padding-bottom:48px;">
+    <p class="tag">PSIQUIATRÍA</p>
+    <h1>Logos Psyche</h1>
+    <p class="lead">
+      Psiquiatría basada en evidencia, escucha profunda y humanidad.
+    </p>
+  </header>
+
+  <!-- Contenido principal -->
+  <main>
+
+    <section class="block logos-light">
+      <div class="wrap two-col">
+
+        <!-- Imagen -->
+        <div class="logo-holder logo-psyche">
+          <img
+            src="assets/logos-psyche.png"
+            alt="Logos Psyche — Neurociencia, Arte y Humanidad"
+            class="logo-image"
+          />
+        </div>
+
+        <!-- Texto -->
+        <div class="copy">
+          <p class="lead">
+            Un espacio clínico para pensar, sentir y sostener procesos reales,
+            sin prisa y sin juicio.
+          </p>
+
+          <p>
+            Logos Psyche integra neurociencia, arte y humanidad en el acompañamiento
+            psiquiátrico, reconociendo a la persona más allá del síntoma.
+          </p>
+
+          <p>
+            Aquí, el tiempo importa. La escucha importa. El vínculo importa.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer mínimo -->
+  <footer class="wrap" style="padding:48px 0; opacity:.6;">
+    <p>
+      <a href="index.html" class="silent-link">← Volver a ronaldescobar.com</a>
+    </p>
+  </footer>
+
+</body>
+</html>
