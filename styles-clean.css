@@ -602,3 +602,7 @@ Fix two-col layout and project image crop
     border-radius:16px;
   }
 }
+/* Escritura: ocultar etiqueta "Fotos" (solo laterales), dejar "Mi Substack" */
+.strip-3 .strip-item:not(.strip-center) .strip-label{
+  display: none;
+}
