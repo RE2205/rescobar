@@ -607,43 +607,40 @@ Fix two-col layout and project image crop
   display: none;
 }
 /* ==================================================
-   LOGOS PSYCHE — HEADER + FRANJA
+   LOGOS PSYCHE — HEADER + FRANJA (definitivo)
    ================================================== */
 
+/* HEADER */
 .lp-hero-compact{
-  position: relative;
-  min-height: 55vh;
+  position:relative;
+  min-height:55vh;
   display:flex;
   align-items:center;
-  background:#57CACC;
+  justify-content:center;
+  background:#57CAC; /* fondo elegido */
 }
 
-.lp-hero-inner{
-  text-align:center;
-}
+.lp-hero-inner{ text-align:center; }
 
 .lp-title{
-  font-size: clamp(42px, 6vw, 72px);
-  line-height: 1.05;
-  color: #1F1F1F;
-  margin: 0 0 12px 0;
+  font-size:clamp(42px,6vw,72px);
+  line-height:1.05;
+  color:#1F1F1F;
+  margin:0;
 }
 
-.lp-subtitle{
-  font-size: 18px;
-  color: rgba(31,31,31,.75);
-  margin: 0;
-}
-
-/* texto esquina inferior izquierda */
-.lp-kicker-bottom{
+/* Logo blanco discreto esquina inferior derecha */
+.lp-logo-corner{
   position:absolute;
-  left:24px;
+  right:24px;
   bottom:18px;
-  font-size:12px;
-  letter-spacing:.14em;
-  text-transform:uppercase;
-  color: rgba(31,31,31,.6);
+  width:90px;
+  opacity:.25;
+}
+
+.lp-logo-corner img{
+  width:100%;
+  height:auto;
 }
 
 /* FRANJA */
@@ -655,8 +652,8 @@ Fix two-col layout and project image crop
 .lp-band-text{
   text-align:center;
   font-size:13px;
-  letter-spacing:.12em;
+  letter-spacing:.14em;
   text-transform:uppercase;
-  color: rgba(31,31,31,.75);
+  color:rgba(31,31,31,.8);
   margin:0;
 }
