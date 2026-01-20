@@ -661,3 +661,38 @@ Fix two-col layout and project image crop
   text-transform: uppercase;
   color: #F6F4EF;
 }
+/* ================================
+   LOGOS PSYCHE — HERO + FRANJA (calma viva)
+   ================================ */
+
+.hero-logos{
+  /* base marfil */
+  background: #F6F4EF;
+
+  /* “vida” sutil: lavanda + salvia */
+  background-image:
+    radial-gradient(1200px 520px at 20% 15%, rgba(140,122,169,.22), rgba(246,244,239,0) 60%),
+    radial-gradient(1100px 560px at 82% 10%, rgba(122,143,133,.20), rgba(246,244,239,0) 62%),
+    linear-gradient(180deg, rgba(246,244,239,1) 0%, rgba(246,244,239,1) 100%);
+}
+
+.hero-logos .headline{
+  color: #2F2F2D; /* gris cálido */
+  text-shadow: 0 1px 0 rgba(255,255,255,.35);
+}
+
+/* Franja con misticismo morado, pero luminosa */
+.band-logos{
+  background:
+    linear-gradient(90deg,
+      rgba(140,122,169,.65) 0%,
+      rgba(140,122,169,.35) 35%,
+      rgba(122,143,133,.28) 70%,
+      rgba(246,244,239,0) 100%);
+  border-top: 1px solid rgba(0,0,0,.06);
+  border-bottom: 1px solid rgba(0,0,0,.06);
+}
+
+.band-logos .band-text{
+  color: rgba(20,20,20,.88);
+}
