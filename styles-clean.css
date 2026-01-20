@@ -662,58 +662,51 @@ Fix two-col layout and project image crop
   background: #F3E1B3; /* color 2 */
   padding: 18px 0;
 }
-/* =========================
-   FRANJA LOGOS PSYCHE
-   (misma altura que la franja de home)
-   ========================= */
+/* =========================================
+   HEADER LOGOS PSYCHE — versión clínica
+   ========================================= */
 
-.band-logos {
-  background:
-    linear-gradient(
-      90deg,
-      rgba(140,122,169,.35),
-      rgba(122,143,133,.25)
-    );
+/* HERO */
+.hero-logos {
+  min-height: 70vh; /* MISMO TAMAÑO QUE HOME */
+  display: flex;
+  align-items: center;
+  background: #547CAC; /* fondo principal (4º color) */
 }
 
-.band-logos .band-text {
-  font-size: 13px;
+/* Texto principal */
+.hero-logos .headline {
+  max-width: 18ch;
+  font-size: clamp(42px, 6vw, 72px);
+  line-height: 1.05;
+  color: #2F2F2D; /* gris cálido */
+}
+
+/* Esquina inferior izquierda */
+.hero-logos .kicker {
+  position: absolute;
+  bottom: 16px;
+  left: 24px;
+  font-size: 12px;
   letter-spacing: .14em;
   text-transform: uppercase;
-  color: #F6F4EF;
-}
-/* ================================
-   LOGOS PSYCHE — HERO + FRANJA (calma viva)
-   ================================ */
-
-.hero-logos{
-  /* base marfil */
-  background: #F6F4EF;
-
-  /* “vida” sutil: lavanda + salvia */
-  background-image:
-    radial-gradient(1200px 520px at 20% 15%, rgba(140,122,169,.22), rgba(246,244,239,0) 60%),
-    radial-gradient(1100px 560px at 82% 10%, rgba(122,143,133,.20), rgba(246,244,239,0) 62%),
-    linear-gradient(180deg, rgba(246,244,239,1) 0%, rgba(246,244,239,1) 100%);
+  color: rgba(47,47,45,.75);
 }
 
-.hero-logos .headline{
-  color: #2F2F2D; /* gris cálido */
-  text-shadow: 0 1px 0 rgba(255,255,255,.35);
-}
+/* =========================================
+   FRANJA LOGOS PSYCHE
+   ========================================= */
 
-/* Franja con misticismo morado, pero luminosa */
-.band-logos{
-  background:
-    linear-gradient(90deg,
-      rgba(140,122,169,.65) 0%,
-      rgba(140,122,169,.35) 35%,
-      rgba(122,143,133,.28) 70%,
-      rgba(246,244,239,0) 100%);
+.band-logos {
+  background: #EBC48C; /* 2º color de la paleta */
+  padding: 14px 0;
   border-top: 1px solid rgba(0,0,0,.06);
   border-bottom: 1px solid rgba(0,0,0,.06);
 }
 
-.band-logos .band-text{
-  color: rgba(20,20,20,.88);
+.band-logos .band-text {
+  font-size: 13px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: #2F2F2D;
 }
