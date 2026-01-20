@@ -606,54 +606,166 @@ Fix two-col layout and project image crop
 .strip-3 .strip-item:not(.strip-center) .strip-label{
   display: none;
 }
-/* ==================================================
-   LOGOS PSYCHE — HEADER + FRANJA (definitivo)
-   ================================================== */
+/* =========================
+   LOGOS PSYCHE — HERO
+========================= */
 
-/* HEADER */
-.lp-hero-compact{
-  position:relative;
-  min-height:55vh;
+.lp-hero{
+  position: relative;
+  min-height: 70vh;
+  border-radius: 22px;
+  overflow: hidden;
+  margin: 0 auto;
+  max-width: 1200px;
+  /* Gradiente suave, no plano */
+  background:
+    radial-gradient(1200px 600px at 50% 15%, rgba(246,244,239,.85), rgba(246,244,239,0) 60%),
+    radial-gradient(900px 600px at 15% 75%, rgba(233,226,210,.35), rgba(233,226,210,0) 62%),
+    radial-gradient(900px 600px at 85% 85%, rgba(140,122,169,.18), rgba(140,122,169,0) 60%),
+    linear-gradient(135deg,
+      #76C7C9 0%,
+      #A9DAD6 34%,
+      #BFD7C6 64%,
+      #E9E2D2 100%);
+  box-shadow: 0 24px 60px rgba(0,0,0,.12);
+}
+
+/* textura/grano sutil (sin distraer) */
+.lp-hero::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background-image:
+    radial-gradient(rgba(0,0,0,.06) 1px, transparent 1px);
+  background-size: 22px 22px;
+  opacity: .10;
+  pointer-events:none;
+  mix-blend-mode: soft-light;
+}
+
+.lp-hero__inner{
+  position: relative;
+  height: calc(70vh - 60px); /* resta la franja dorada */
+  min-height: 420px;
+  padding: 44px 54px 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.lp-hero__top{
+  position: absolute;
+  top: 26px;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+
+.lp-hero__brand{
+  font-family: "Georgia", "Times New Roman", serif;
+  font-size: 28px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: rgba(46,46,44,.78);
+}
+
+.lp-hero__sub{
+  margin-top: 10px;
+  font-family: system-ui, -apple-system, "Inter", Arial, sans-serif;
+  font-size: 14px;
+  letter-spacing: .14em;
+  text-transform: none;
+  color: rgba(46,46,44,.62);
+  position: relative;
+  display: inline-block;
+  padding: 0 16px;
+}
+
+/* líneas finas a los lados del subtítulo */
+.lp-hero__sub::before,
+.lp-hero__sub::after{
+  content:"";
+  position:absolute;
+  top: 50%;
+  width: 46px;
+  height: 1px;
+  background: rgba(194,164,95,.55);
+}
+.lp-hero__sub::before{ left: -52px; }
+.lp-hero__sub::after{ right: -52px; }
+
+.lp-hero__headline{
+  margin: 0;
+  text-align: center;
+  font-family: "Georgia", "Times New Roman", serif;
+  font-weight: 500;
+  font-size: clamp(44px, 5.4vw, 72px);
+  line-height: 1.08;
+  letter-spacing: .01em;
+  color: rgba(46,46,44,.80);
+  text-shadow: 0 6px 22px rgba(255,255,255,.35);
+}
+
+/* logo en esquina inferior derecha dentro del hero */
+.lp-hero__logo{
+  position: absolute;
+  right: 26px;
+  bottom: 78px; /* por encima de la franja dorada */
+  width: 150px;
+  opacity: .55;
+  filter: drop-shadow(0 10px 20px rgba(0,0,0,.18));
+}
+
+.lp-hero__logo img{
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* franja dorada */
+.lp-hero__band{
+  height: 60px;
   display:flex;
   align-items:center;
   justify-content:center;
-  background:#57CAC; /* fondo elegido */
+  padding: 0 22px;
+  background: #C2A45F;
+  color: rgba(46,46,44,.78);
+  font-family: system-ui, -apple-system, "Inter", Arial, sans-serif;
+  font-size: 12px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
 }
 
-.lp-hero-inner{ text-align:center; }
+/* Responsive */
+@media (max-width: 760px){
+  .lp-hero{
+    border-radius: 18px;
+  }
+  .lp-hero__inner{
+    padding: 34px 22px 22px;
+    height: calc(68vh - 56px);
+    min-height: 380px;
+  }
+  .lp-hero__brand{ font-size: 22px; }
+  .lp-hero__sub{ font-size: 12px; }
+  .lp-hero__sub::before,
+  .lp-hero__sub::after{ width: 28px; }
+  .lp-hero__sub::before{ left: -36px; }
+  .lp-hero__sub::after{ right: -36px; }
 
-.lp-title{
-  font-size:clamp(42px,6vw,72px);
-  line-height:1.05;
-  color:#1F1F1F;
-  margin:0;
-}
+  .lp-hero__logo{
+    width: 108px;
+    right: 16px;
+    bottom: 72px;
+    opacity: .50;
+  }
 
-/* Logo blanco discreto esquina inferior derecha */
-.lp-logo-corner{
-  position:absolute;
-  right:24px;
-  bottom:18px;
-  width:90px;
-  opacity:.25;
-}
-
-.lp-logo-corner img{
-  width:100%;
-  height:auto;
-}
-
-/* FRANJA */
-.lp-band{
-  background:#EBC48C;
-  padding:18px 0;
-}
-
-.lp-band-text{
-  text-align:center;
-  font-size:13px;
-  letter-spacing:.14em;
-  text-transform:uppercase;
-  color:rgba(31,31,31,.8);
-  margin:0;
+  .lp-hero__band{
+    height: 56px;
+    font-size: 11px;
+    letter-spacing: .14em;
+    text-align: center;
+  }
 }
