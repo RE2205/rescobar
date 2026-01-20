@@ -617,3 +617,47 @@ Fix two-col layout and project image crop
     </div>
   </div>
 </header>
+/* =========================
+   HERO LOGOS PSYCHE
+   (misma escala que home)
+   ========================= */
+
+.hero-logos {
+  min-height: 70vh; /* mismo peso visual que la home */
+  display: flex;
+  align-items: center;
+  background:
+    radial-gradient(
+      120% 120% at 20% 20%,
+      rgba(140,122,169,.18),
+      rgba(0,0,0,.85)
+    );
+}
+
+.hero-logos .headline {
+  max-width: 18ch;
+  font-size: clamp(42px, 6vw, 72px);
+  line-height: 1.05;
+  color: #F6F4EF;
+}
+
+/* =========================
+   FRANJA LOGOS PSYCHE
+   (misma altura que la franja de home)
+   ========================= */
+
+.band-logos {
+  background:
+    linear-gradient(
+      90deg,
+      rgba(140,122,169,.35),
+      rgba(122,143,133,.25)
+    );
+}
+
+.band-logos .band-text {
+  font-size: 13px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: #F6F4EF;
+}
