@@ -606,3 +606,50 @@ Fix two-col layout and project image crop
 .strip-3 .strip-item:not(.strip-center) .strip-label{
   display: none;
 }
+/* =========================
+   LOGOS PSYCHE — HEADER
+   ========================= */
+
+.lp-hero{
+  min-height: 70vh;
+  display: grid;
+  align-items: center;
+  background:
+    radial-gradient(1100px 520px at 70% 88%, rgba(140,122,169,.30), rgba(0,0,0,0) 60%),
+    radial-gradient(900px 420px at 85% 90%, rgba(194,164,95,.22), rgba(0,0,0,0) 62%),
+    linear-gradient(180deg, #F6F4EF 0%, #F6F4EF 62%, rgba(246,244,239,.92) 100%);
+}
+
+.lp-hero-inner{
+  text-align: center;
+  padding: 56px 0;
+}
+
+.lp-hero-logo{
+  width: min(560px, 86vw);
+  height: auto;
+  display: block;
+  margin: 0 auto 24px auto;
+}
+
+.lp-hero-quote{
+  font-size: clamp(26px, 3.2vw, 44px);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin: 0 auto 18px auto;
+  max-width: 22ch;
+  color: #2F2F2E;
+}
+
+.lp-hero-sub{
+  margin: 0 auto 22px auto;
+  font-size: 12px;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: rgba(47,47,46,.62);
+}
+
+.lp-hero-back{
+  margin: 0;
+  font-size: 14px;
+}
