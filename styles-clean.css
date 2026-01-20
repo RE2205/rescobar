@@ -606,20 +606,57 @@ Fix two-col layout and project image crop
 .strip-3 .strip-item:not(.strip-center) .strip-label{
   display: none;
 }
-<!-- HEADER Logos Psyche -->
-<header class="lp-hero-compact">
-  <div class="wrap lp-hero-inner">
-    <h1 class="lp-title">Toma un tiempo para escucharte.</h1>
+/* ==================================================
+   LOGOS PSYCHE — HEADER + FRANJA
+   ================================================== */
 
-    <p class="lp-kicker-bottom">Neurociencia · Arte · Humanidad</p>
-  </div>
-</header>
+.lp-hero-compact{
+  position: relative;
+  min-height: 55vh;
+  display:flex;
+  align-items:center;
+  background:#57CACC;
+}
 
-<!-- FRANJA Logos Psyche -->
-<section class="lp-band">
-  <div class="wrap">
-    <p class="lp-band-text">La psiquiatría es ciencia en su base y arte en su ejercicio.</p>
-  </div>
-</section>
+.lp-hero-inner{
+  text-align:center;
+}
 
-<div class="wrap"><div class="breath"></div></div>
+.lp-title{
+  font-size: clamp(42px, 6vw, 72px);
+  line-height: 1.05;
+  color: #1F1F1F;
+  margin: 0 0 12px 0;
+}
+
+.lp-subtitle{
+  font-size: 18px;
+  color: rgba(31,31,31,.75);
+  margin: 0;
+}
+
+/* texto esquina inferior izquierda */
+.lp-kicker-bottom{
+  position:absolute;
+  left:24px;
+  bottom:18px;
+  font-size:12px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color: rgba(31,31,31,.6);
+}
+
+/* FRANJA */
+.lp-band{
+  background:#EBC48C;
+  padding:18px 0;
+}
+
+.lp-band-text{
+  text-align:center;
+  font-size:13px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color: rgba(31,31,31,.75);
+  margin:0;
+}
