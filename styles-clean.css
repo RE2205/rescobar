@@ -606,107 +606,20 @@ Fix two-col layout and project image crop
 .strip-3 .strip-item:not(.strip-center) .strip-label{
   display: none;
 }
-<!-- HEADER Logos Psyche (compacto) -->
+<!-- HEADER Logos Psyche -->
 <header class="lp-hero-compact">
   <div class="wrap lp-hero-inner">
-    <h1 class="lp-title">Logos Psyche</h1>
-    <p class="lp-subtitle">Un tiempo para escucharte.</p>
+    <h1 class="lp-title">Toma un tiempo para escucharte.</h1>
 
-    <div class="lp-band">
-      <p class="lp-band-text">La psiquiatría es ciencia en su base; arte en su ejercicio.</p>
-    </div>
+    <p class="lp-kicker-bottom">Neurociencia · Arte · Humanidad</p>
   </div>
 </header>
-/* =========================
-   HERO LOGOS PSYCHE
-   (misma escala que home)
-   ========================= */
 
-/* ================================
-   LOGOS PSYCHE — HERO + FRANJA (calma viva)
-   ================================ */
+<!-- FRANJA Logos Psyche -->
+<section class="lp-band">
+  <div class="wrap">
+    <p class="lp-band-text">La psiquiatría es ciencia en su base y arte en su ejercicio.</p>
+  </div>
+</section>
 
-.hero-logos{
-  /* base marfil */
-  background: #F6F4EF;
-
-  /* “vida” sutil: lavanda + salvia */
-  background-image:
-    radial-gradient(1200px 520px at 20% 15%, rgba(140,122,169,.22), rgba(246,244,239,0) 60%),
-    radial-gradient(1100px 560px at 82% 10%, rgba(122,143,133,.20), rgba(246,244,239,0) 62%),
-    linear-gradient(180deg, rgba(246,244,239,1) 0%, rgba(246,244,239,1) 100%);
-}
-
-.hero-logos .headline {
-  max-width: 18ch;
-  font-size: clamp(42px, 6vw, 72px);
-  line-height: 1.05;
-  color: #1F1F1F;
-}
-/* Franja con misticismo morado, pero luminosa */
-.band-logos{
-  background:
-    linear-gradient(90deg,
-      rgba(140,122,169,.65) 0%,
-      rgba(140,122,169,.35) 35%,
-      rgba(122,143,133,.28) 70%,
-      rgba(246,244,239,0) 100%);
-  border-top: 1px solid rgba(0,0,0,.06);
-  border-bottom: 1px solid rgba(0,0,0,.06);
-}
-
-.band-logos .band-text{
-  color: rgba(20,20,20,.88);
-}
-.band-logos {
-  background: #F3E1B3; /* color 2 */
-  padding: 18px 0;
-}
-/* =========================================
-   HEADER LOGOS PSYCHE — versión clínica
-   ========================================= */
-
-/* HERO */
-.hero-logos {
-  min-height: 70vh; /* MISMO TAMAÑO QUE HOME */
-  display: flex;
-  align-items: center;
-  background: #547CAC; /* fondo principal (4º color) */
-}
-
-/* Texto principal */
-.hero-logos .headline {
-  max-width: 18ch;
-  font-size: clamp(42px, 6vw, 72px);
-  line-height: 1.05;
-  color: #2F2F2D; /* gris cálido */
-}
-
-/* Esquina inferior izquierda */
-.hero-logos .kicker {
-  position: absolute;
-  bottom: 16px;
-  left: 24px;
-  font-size: 12px;
-  letter-spacing: .14em;
-  text-transform: uppercase;
-  color: rgba(47,47,45,.75);
-}
-
-/* =========================================
-   FRANJA LOGOS PSYCHE
-   ========================================= */
-
-.band-logos {
-  background: #EBC48C; /* 2º color de la paleta */
-  padding: 14px 0;
-  border-top: 1px solid rgba(0,0,0,.06);
-  border-bottom: 1px solid rgba(0,0,0,.06);
-}
-
-.band-logos .band-text {
-  font-size: 13px;
-  letter-spacing: .12em;
-  text-transform: uppercase;
-  color: #2F2F2D;
-}
+<div class="wrap"><div class="breath"></div></div>
