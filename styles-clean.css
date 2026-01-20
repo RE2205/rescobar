@@ -622,25 +622,46 @@ Fix two-col layout and project image crop
    (misma escala que home)
    ========================= */
 
-.hero-logos {
-  min-height: 70vh; /* mismo peso visual que la home */
-  display: flex;
-  align-items: center;
-  background:
-    radial-gradient(
-      120% 120% at 20% 20%,
-      rgba(140,122,169,.18),
-      rgba(0,0,0,.85)
-    );
+/* ================================
+   LOGOS PSYCHE — HERO + FRANJA (calma viva)
+   ================================ */
+
+.hero-logos{
+  /* base marfil */
+  background: #F6F4EF;
+
+  /* “vida” sutil: lavanda + salvia */
+  background-image:
+    radial-gradient(1200px 520px at 20% 15%, rgba(140,122,169,.22), rgba(246,244,239,0) 60%),
+    radial-gradient(1100px 560px at 82% 10%, rgba(122,143,133,.20), rgba(246,244,239,0) 62%),
+    linear-gradient(180deg, rgba(246,244,239,1) 0%, rgba(246,244,239,1) 100%);
 }
 
 .hero-logos .headline {
   max-width: 18ch;
   font-size: clamp(42px, 6vw, 72px);
   line-height: 1.05;
-  color: #F6F4EF;
+  color: #1F1F1F;
+}
+/* Franja con misticismo morado, pero luminosa */
+.band-logos{
+  background:
+    linear-gradient(90deg,
+      rgba(140,122,169,.65) 0%,
+      rgba(140,122,169,.35) 35%,
+      rgba(122,143,133,.28) 70%,
+      rgba(246,244,239,0) 100%);
+  border-top: 1px solid rgba(0,0,0,.06);
+  border-bottom: 1px solid rgba(0,0,0,.06);
 }
 
+.band-logos .band-text{
+  color: rgba(20,20,20,.88);
+}
+.band-logos {
+  background: #F3E1B3; /* color 2 */
+  padding: 18px 0;
+}
 /* =========================
    FRANJA LOGOS PSYCHE
    (misma altura que la franja de home)
