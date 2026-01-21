@@ -1019,3 +1019,26 @@ Fix two-col layout and project image crop
     max-width: 260px;
   }
 }
+/* =========================
+   LOGOS PSYCHE — IMAGEN BLOQUE 2
+========================= */
+
+.lp-intro__visual{
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.lp-intro__visual img{
+  max-width: 320px;
+  height: auto;
+
+  /* Integración estética */
+  opacity: 0.85;
+  filter:
+    saturate(0.85)
+    brightness(0.95);
+
+  /* Respiración visual */
+  margin-top: 10px;
+}
