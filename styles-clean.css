@@ -893,7 +893,11 @@ Fix two-col layout and project image crop
   bottom: 78px; /* encima de franja dorada */
   width: 150px;
   opacity: .55;
-  filter: drop-shadow(0 10px 22px rgba(0,0,0,0.18));
+  filter:
+  brightness(0.88)
+  sepia(0.32)
+  saturate(0.85)
+  hue-rotate(-6deg);
 }
 .lp-hero__logo img{
   width: 100%;
