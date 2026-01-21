@@ -951,3 +951,71 @@ Fix two-col layout and project image crop
     letter-spacing: .14em;
   }
 }
+/* =========================
+   LOGOS PSYCHE — BLOQUE INTRO
+========================= */
+
+.lp-intro{
+  background: #F6F4EF;
+  padding: 110px 0;
+}
+
+.lp-intro__inner{
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 40px;
+  display: grid;
+  grid-template-columns: 1.1fr .9fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.lp-intro__text h2{
+  font-family: "Georgia", "Times New Roman", serif;
+  font-size: 36px;
+  line-height: 1.25;
+  font-weight: 500;
+  color: rgba(58,58,54,.85);
+  margin-bottom: 28px;
+}
+
+.lp-intro__text p{
+  font-family: system-ui, -apple-system, "Inter", Arial, sans-serif;
+  font-size: 17px;
+  line-height: 1.7;
+  color: rgba(58,58,54,.75);
+  margin-bottom: 18px;
+}
+
+.lp-intro__em{
+  margin-top: 28px;
+  font-style: italic;
+  color: rgba(58,58,54,.85);
+}
+
+.lp-intro__visual{
+  display: flex;
+  justify-content: center;
+}
+
+.lp-intro__visual img{
+  max-width: 340px;
+  opacity: .85;
+}
+
+/* Responsive */
+@media (max-width: 860px){
+  .lp-intro{
+    padding: 90px 0;
+  }
+
+  .lp-intro__inner{
+    grid-template-columns: 1fr;
+    gap: 56px;
+    text-align: center;
+  }
+
+  .lp-intro__visual img{
+    max-width: 260px;
+  }
+}
