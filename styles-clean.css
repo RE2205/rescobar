@@ -895,7 +895,7 @@ Fix two-col layout and project image crop
   opacity: .55;
   filter:
   brightness(0.88)
-  sepia(0.32)
+  sepia(0.38)
   saturate(0.85)
   hue-rotate(-6deg);
 }
