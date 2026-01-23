@@ -1066,7 +1066,7 @@ Fix two-col layout and project image crop
 
 .lp-intro__img{
   width: 100% !important;
-  max-width: 680px !important;   /* tamaño tipo Inner Sound */
+  max-width: 700px !important;   /* tamaño tipo Inner Sound */
   height: auto !important;
 }
 
