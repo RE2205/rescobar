@@ -1116,3 +1116,21 @@ Fix two-col layout and project image crop
 .block.logos-light.inverted .copy p:last-of-type{
   margin-top: 26px;
 }
+/* =========================
+   AJUSTE FINAL — IMAGEN BLOQUE CÓMO TRABAJO
+   Reducir tamaño (≈50%) manteniendo ritmo
+========================= */
+
+/* Tamaño base (mobile / tablet) */
+.block.logos-light.inverted .lp-intro__img{
+  width: 100%;
+  max-width: 360px;   /* mitad visual del tamaño anterior */
+  height: auto;
+}
+
+/* Desktop */
+@media (min-width: 900px){
+  .block.logos-light.inverted .lp-intro__img{
+    max-width: 380px; /* ligeramente mayor en desktop, pero contenida */
+  }
+}
