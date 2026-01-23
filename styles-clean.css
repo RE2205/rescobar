@@ -1134,3 +1134,37 @@ Fix two-col layout and project image crop
     max-width: 380px; /* ligeramente mayor en desktop, pero contenida */
   }
 }
+/* =========================
+   OBRA ABSTRACTA — BAJAR PROTAGONISMO
+   Convertir imagen en acompañamiento
+========================= */
+
+/* Contenedor */
+.block.logos-light.inverted .visual{
+  max-width: 420px;
+  height: 320px;
+  overflow: hidden;
+  border-radius: 18px;
+  position: relative;
+}
+
+/* Imagen */
+.block.logos-light.inverted .lp-intro__img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  opacity: 0.55;                 /* CLAVE: baja presencia */
+  filter: saturate(0.7)          /* menos color */
+          contrast(0.9)
+          brightness(1.05);
+}
+
+/* Velo sutil para "escenario" */
+.block.logos-light.inverted .visual::after{
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(246,244,239,0.35); /* marfil del sitio */
+  pointer-events: none;
+}
