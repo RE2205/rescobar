@@ -1088,3 +1088,28 @@ Fix two-col layout and project image crop
     order: 2;
   }
 }
+/* =========================
+   LOGOS PSYCHE — TIPOGRAFÍA QUE RESPIRA
+   (Bloque invertido: CÓMO TRABAJO)
+   Pegar AL FINAL de styles-clean.css
+========================= */
+
+.block.logos-light.inverted .copy{
+  padding-right: 8px;
+}
+
+.block.logos-light.inverted .copy h2{
+  line-height: 1.25;
+  margin: 0 0 28px 0;
+}
+
+.block.logos-light.inverted .copy p{
+  line-height: 1.75;
+  margin: 0 0 22px 0;
+}
+
+/* Si tu párrafo final usa esta clase */
+.block.logos-light.inverted .copy .lp-intro__em{
+  line-height: 1.8;
+  margin-top: 26px;
+}
