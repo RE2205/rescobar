@@ -1113,3 +1113,6 @@ Fix two-col layout and project image crop
   line-height: 1.8;
   margin-top: 26px;
 }
+.block.logos-light.inverted .copy p:last-of-type{
+  margin-top: 26px;
+}
