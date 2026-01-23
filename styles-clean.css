@@ -1168,3 +1168,6 @@ Fix two-col layout and project image crop
   background: rgba(246,244,239,0.35); /* marfil del sitio */
   pointer-events: none;
 }
+.block.logos-light.inverted{
+  background: #EEECE8;
+}
