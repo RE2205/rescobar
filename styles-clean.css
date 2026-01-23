@@ -1075,3 +1075,16 @@ Fix two-col layout and project image crop
     max-width: 420px !important;
   }
 }
+/* Bloque invertido */
+.inverted .two-col{
+  grid-template-columns: 1fr 1fr;
+}
+
+@media (min-width: 900px){
+  .inverted .visual{
+    order: 1;
+  }
+  .inverted .copy{
+    order: 2;
+  }
+}
