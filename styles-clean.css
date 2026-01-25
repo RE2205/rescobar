@@ -1378,3 +1378,29 @@ Fix two-col layout and project image crop
     display:none !important;
   }
 }
+@media (max-width: 768px){
+
+  /* La tile debe ser el marco */
+  #podcast .pod-tile{
+    position: relative !important;
+  }
+
+  /* El cover debe ocupar TODO el marco y usar la variable --cover */
+  #podcast .pod-cover{
+    position: absolute !important;
+    inset: 0 !important;
+    background-image: var(--cover) !important;
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    z-index: 2 !important;
+  }
+
+  /* La base NO debe tapar: la dejamos atrás */
+  #podcast .pod-base{
+    position: absolute !important;
+    inset: 0 !important;
+    z-index: 1 !important;
+    opacity: 0 !important; /* o quítala si no la usas */
+  }
+}
