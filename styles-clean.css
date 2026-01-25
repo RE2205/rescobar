@@ -1259,3 +1259,27 @@ Fix two-col layout and project image crop
     line-height: 1.5;
   }
 }
+@media (max-width: 768px) {
+
+  /* Reordenar elementos */
+  .logos-psyche img,
+  .logos-section img,
+  .section-logos img {
+    order: 4;
+  }
+
+  .logos-psyche .tag,
+  .logos-section .tag {
+    order: 1;
+  }
+
+  .logos-psyche h2,
+  .logos-section h2 {
+    order: 2;
+  }
+
+  .logos-psyche p,
+  .logos-section p {
+    order: 3;
+  }
+}
