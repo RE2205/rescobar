@@ -1456,3 +1456,41 @@ Fix two-col layout and project image crop
     display:none !important;
   }
 }
+/* =========================
+   MOBILE – Podcast (ajuste final)
+   ========================= */
+@media (max-width: 768px){
+
+  /* Quitar azul de links */
+  #podcast a.pod-tile{
+    color: rgba(255,255,255,0.9) !important;
+  }
+
+  #podcast a.pod-tile:visited,
+  #podcast a.pod-tile:hover,
+  #podcast a.pod-tile:active{
+    color: rgba(255,255,255,0.9) !important;
+  }
+
+  /* Asegurar que la portada SÍ se vea */
+  #podcast .pod-cover{
+    display:block !important;
+    flex-shrink:0 !important;
+    width:64px !important;
+    height:64px !important;
+    min-width:64px !important;
+    min-height:64px !important;
+
+    background-image: var(--cover) !important;
+    background-size:cover !important;
+    background-position:center !important;
+    background-repeat:no-repeat !important;
+  }
+
+  /* Alinear mejor el texto */
+  #podcast .pod-title{
+    margin:0 !important;
+    text-decoration:none !important;
+    font-weight:400 !important;
+  }
+}
