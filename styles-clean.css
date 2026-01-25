@@ -1275,3 +1275,50 @@ Fix two-col layout and project image crop
     max-width: 34rem; /* líneas más bonitas */
   }
 }
+/* =========================
+   MOBILE – Podcast block
+   ========================= */
+@media (max-width: 768px){
+
+  /* 1) Header: de fila a columna */
+  #podcast .head-row{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+    margin-bottom: 14px;
+  }
+
+  #podcast .head-row .muted{
+    font-size: 0.9rem;
+    line-height: 1.35;
+    opacity: 0.85;
+  }
+
+  /* 2) Grid: una columna, pero con tiles compactas */
+  #podcast .pod-grid{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  /* 3) Tile: que no sea gigante (tipo tarjeta editorial) */
+  #podcast .pod-tile{
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: 16px;
+    overflow: hidden;
+  }
+
+  /* Asegurar que las capas llenen la tile */
+  #podcast .pod-base,
+  #podcast .pod-cover{
+    width: 100%;
+    height: 100%;
+  }
+}
+@media (max-width: 768px){
+  #podcast .pod-tile:nth-child(n+4){
+    display: none;
+  }
+}
