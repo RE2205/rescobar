@@ -1244,7 +1244,7 @@ Fix two-col layout and project image crop
 
   #logos-psyche .logo-image{
     width: 100%;
-    max-width: 280px;
+    max-width: 240px;
     height: auto;
     margin-top: 8px;
   }
