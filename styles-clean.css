@@ -1280,3 +1280,65 @@ Fix two-col layout and project image crop
     background-image: var(--cover, none) !important;
   }
 }
+/* =========================
+   MOBILE – Podcast (final, único)
+   ========================= */
+@media (max-width: 768px){
+
+  /* Header */
+  #podcast .head-row{
+    display:flex !important;
+    flex-direction:column !important;
+    align-items:flex-start !important;
+    gap:6px !important;
+    margin-bottom:14px !important;
+  }
+  #podcast .head-row .muted{
+    font-size:0.9rem !important;
+    line-height:1.35 !important;
+    opacity:.85 !important;
+  }
+
+  /* Grid: 1 columna */
+  #podcast .pod-grid{
+    display:grid !important;
+    grid-template-columns:1fr !important;
+    gap:14px !important;
+  }
+
+  /* Tile: compacta (16:9) */
+  #podcast a.pod-tile{
+    display:block !important;
+    width:100% !important;
+    max-width:100% !important;
+    aspect-ratio:16/9 !important;
+    height:auto !important;
+    border-radius:16px !important;
+    overflow:hidden !important;
+    position:relative !important;
+  }
+
+  /* Cover: que llene toda la tile usando tu variable --cover */
+  #podcast .pod-cover{
+    position:absolute !important;
+    inset:0 !important;
+    background-image: var(--cover) !important;
+    background-size:cover !important;
+    background-position:center !important;
+    background-repeat:no-repeat !important;
+    z-index:2 !important;
+  }
+
+  /* Base: detrás (sin tapar) */
+  #podcast .pod-base{
+    position:absolute !important;
+    inset:0 !important;
+    z-index:1 !important;
+    opacity:0 !important;
+  }
+
+  /* Mostrar solo 3 episodios en móvil (curado/editorial) */
+  #podcast .pod-tile:nth-child(n+4){
+    display:none !important;
+  }
+}
