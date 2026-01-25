@@ -1623,3 +1623,80 @@ Fix two-col layout and project image crop
     font-size: 0.98rem !important;
   }
 }
+/* =========================
+   MOBILE – Podcast (RESET limpio: cover + titulo)
+   ========================= */
+@media (max-width: 768px){
+
+  /* Lista vertical */
+  #podcast .pod-grid{
+    display:flex !important;
+    flex-direction:column !important;
+    gap:12px !important;
+  }
+
+  /* Cada item: 2 columnas claras */
+  #podcast a.pod-tile{
+    display:grid !important;
+    grid-template-columns: 72px 1fr !important;
+    align-items:center !important;
+    gap:14px !important;
+
+    padding:12px 14px !important;
+    border-radius:16px !important;
+    background: rgba(255,255,255,0.035) !important;
+
+    position:relative !important;
+    text-decoration:none !important;
+    color: rgba(255,255,255,0.9) !important;
+
+    /* mata cualquier resto anterior */
+    background-image:none !important;
+  }
+
+  /* Desactiva cualquier pseudo-elemento previo */
+  #podcast a.pod-tile::before,
+  #podcast a.pod-tile::after{
+    content:none !important;
+    display:none !important;
+  }
+
+  /* Miniatura real */
+  #podcast .pod-cover{
+    display:block !important;
+    width:72px !important;
+    height:72px !important;
+    border-radius:12px !important;
+
+    background-image: var(--cover) !important;
+    background-size:cover !important;
+    background-position:center !important;
+    background-repeat:no-repeat !important;
+  }
+
+  /* No usamos base en móvil */
+  #podcast .pod-base{ display:none !important; }
+
+  /* Título: 2 líneas, sin meterse bajo la imagen */
+  #podcast .pod-title{
+    display:block !important;
+    margin:0 !important;
+
+    font-size:0.98rem !important;
+    line-height:1.25 !important;
+
+    color: rgba(255,255,255,0.92) !important;
+    text-decoration:none !important;
+
+    white-space:normal !important;
+    overflow:hidden !important;
+    display:-webkit-box !important;
+    -webkit-line-clamp:2 !important;
+    -webkit-box-orient:vertical !important;
+  }
+
+  /* Solo 3 episodios */
+  #podcast .pod-tile:nth-child(n+4){
+    display:none !important;
+  }
+}
