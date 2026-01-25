@@ -1342,3 +1342,63 @@ Fix two-col layout and project image crop
     display:none !important;
   }
 }
+/* =========================
+   MOBILE – Podcast como lista (thumb + título)
+   ========================= */
+@media (max-width: 768px){
+
+  /* Contenedor: lista vertical */
+  #podcast .pod-grid{
+    display:flex !important;
+    flex-direction:column !important;
+    gap:12px !important;
+  }
+
+  /* Cada episodio = fila compacta */
+  #podcast a.pod-tile{
+    display:grid !important;
+    grid-template-columns: 64px 1fr !important; /* mini imagen + texto */
+    align-items:center !important;
+    gap:12px !important;
+
+    padding:10px 12px !important;
+    border-radius:14px !important;
+    background: rgba(255,255,255,0.04) !important;
+
+    aspect-ratio:auto !important; /* MATA el 16:9 en lista */
+    height:auto !important;
+    position:relative !important;
+  }
+
+  /* Thumbnail pequeño a la izquierda */
+  #podcast .pod-cover{
+    position:relative !important;
+    width:64px !important;
+    height:48px !important;
+    border-radius:10px !important;
+
+    background-image: var(--cover) !important;
+    background-size:cover !important;
+    background-position:center !important;
+    background-repeat:no-repeat !important;
+  }
+
+  /* No necesitamos la base en móvil */
+  #podcast .pod-base{
+    display:none !important;
+  }
+
+  /* Título del episodio (lado derecho) */
+  #podcast .pod-title{
+    display:block !important;
+    font-size:0.95rem !important;
+    line-height:1.25 !important;
+    color: inherit !important;
+    text-decoration:none !important;
+  }
+
+  /* Mostrar solo 3 episodios en móvil */
+  #podcast .pod-tile:nth-child(n+4){
+    display:none !important;
+  }
+}
