@@ -1404,3 +1404,8 @@ Fix two-col layout and project image crop
     opacity: 0 !important; /* o quítala si no la usas */
   }
 }
+@media (max-width: 768px){
+  #podcast .pod-cover{
+    background-image: var(--cover, none) !important;
+  }
+}
