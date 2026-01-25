@@ -1598,3 +1598,28 @@ Fix two-col layout and project image crop
     line-height: 1.25 !important;
   }
 }
+@media (max-width: 768px){
+
+  /* darle MÁS ancho real al texto */
+  #podcast a.pod-tile{
+    grid-template-columns: 68px minmax(0, 1fr) !important;
+    padding-left: 16px !important;  /* quitamos padding falso */
+  }
+
+  /* el texto puede usar TODO el espacio */
+  #podcast .pod-title{
+    max-width: 100% !important;
+    width: 100% !important;
+
+    white-space: normal !important;
+    overflow: visible !important;
+    text-overflow: unset !important;
+
+    display: -webkit-box !important;
+    -webkit-line-clamp: 2 !important;
+    -webkit-box-orient: vertical !important;
+
+    line-height: 1.25 !important;
+    font-size: 0.98rem !important;
+  }
+}
