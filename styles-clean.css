@@ -1220,3 +1220,42 @@ Fix two-col layout and project image crop
 .umbral-link:hover{
   border-color: #2F2F2F;
 }
+/* =========================
+   MOBILE – Logos Psyche
+   ========================= */
+
+@media (max-width: 768px) {
+
+  /* Contenedor de la sección */
+  .logos-psyche,
+  .logos-section,
+  .section-logos {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  /* Imagen / logo */
+  .logos-psyche img,
+  .logos-section img,
+  .section-logos img {
+    max-width: 280px;
+    margin: 20px auto 0 auto;
+    height: auto;
+  }
+
+  /* Título */
+  .logos-psyche h2,
+  .logos-section h2,
+  .section-logos h2 {
+    font-size: 1.55rem;
+  }
+
+  /* Texto */
+  .logos-psyche p,
+  .logos-section p,
+  .section-logos p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+}
