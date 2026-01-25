@@ -1221,65 +1221,57 @@ Fix two-col layout and project image crop
   border-color: #2F2F2F;
 }
 /* =========================
-   MOBILE – Logos Psyche
+   MOBILE – Logos Psyche (home block)
    ========================= */
-
 @media (max-width: 768px) {
 
-  /* Contenedor de la sección */
-  .logos-psyche,
-  .logos-section,
-  .section-logos {
+  /* 1) Pasar de 2 columnas a stack */
+  #logos-psyche .wrap.two-col{
     display: flex;
     flex-direction: column;
     gap: 16px;
   }
 
-  /* Imagen / logo */
-  .logos-psyche img,
-  .logos-section img,
-  .section-logos img {
+  /* 2) Reordenar: texto primero, imagen después */
+  #logos-psyche .copy{ order: 1; }
+  #logos-psyche .logo-holder{ order: 2; }
+
+  /* 3) Logo como “sello”, no hero */
+  #logos-psyche .logo-holder{
+    display: flex;
+    justify-content: center;
+  }
+
+  #logos-psyche .logo-image{
+    width: 100%;
     max-width: 280px;
-    margin: 20px auto 0 auto;
     height: auto;
+    margin-top: 8px;
   }
 
-  /* Título */
-  .logos-psyche h2,
-  .logos-section h2,
-  .section-logos h2 {
+  /* 4) Tipografía móvil */
+  #logos-psyche h2{
     font-size: 1.55rem;
+    line-height: 1.15;
   }
 
-  /* Texto */
-  .logos-psyche p,
-  .logos-section p,
-  .section-logos p {
+  #logos-psyche .lead{
     font-size: 0.95rem;
     line-height: 1.5;
   }
+
+  /* 5) Ajuste fino del “tag” para que no flote raro */
+  #logos-psyche .tag{
+    margin-bottom: 10px;
+  }
 }
 @media (max-width: 768px) {
-
-  /* Reordenar elementos */
-  .logos-psyche img,
-  .logos-section img,
-  .section-logos img {
-    order: 4;
+  #logos-psyche{
+    padding-top: 28px;
+    padding-bottom: 28px;
   }
 
-  .logos-psyche .tag,
-  .logos-section .tag {
-    order: 1;
-  }
-
-  .logos-psyche h2,
-  .logos-section h2 {
-    order: 2;
-  }
-
-  .logos-psyche p,
-  .logos-section p {
-    order: 3;
+  #logos-psyche .copy{
+    max-width: 34rem; /* líneas más bonitas */
   }
 }
