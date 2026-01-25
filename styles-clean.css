@@ -1322,3 +1322,59 @@ Fix two-col layout and project image crop
     display: none;
   }
 }
+/* =========================
+   MOBILE – Podcast block (FORCE)
+   ========================= */
+@media (max-width: 768px){
+
+  #podcast .head-row{
+    display:flex !important;
+    flex-direction:column !important;
+    align-items:flex-start !important;
+    gap:6px !important;
+    margin-bottom:14px !important;
+  }
+
+  #podcast .head-row .muted{
+    font-size:0.9rem !important;
+    line-height:1.35 !important;
+    opacity:0.85 !important;
+  }
+
+  /* fuerza 1 columna */
+  #podcast .pod-grid{
+    display:grid !important;
+    grid-template-columns:1fr !important;
+    gap:14px !important;
+  }
+
+  /* fuerza tarjeta compacta */
+  #podcast a.pod-tile{
+    display:block !important;
+    width:100% !important;
+    max-width:100% !important;
+    height:auto !important;
+    aspect-ratio:16 / 9 !important;
+    border-radius:16px !important;
+    overflow:hidden !important;
+  }
+
+  /* IMPORTANTÍSIMO: si dentro hay height fijo, lo matamos */
+  #podcast .pod-base,
+  #podcast .pod-cover{
+    height:100% !important;
+    min-height:0 !important;
+  }
+
+  /* Si tu cover usa background-image con variable --cover, aseguramos cover */
+  #podcast .pod-cover{
+    background-size:cover !important;
+    background-position:center !important;
+    background-repeat:no-repeat !important;
+  }
+
+  /* Opcional: solo 3 tiles en móvil */
+  #podcast .pod-tile:nth-child(n+4){
+    display:none !important;
+  }
+}
