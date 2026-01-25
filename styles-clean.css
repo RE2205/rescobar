@@ -1577,3 +1577,24 @@ Fix two-col layout and project image crop
     text-overflow: ellipsis !important;
   }
 }
+/* MOBILE – Podcast: título completo (2 líneas) */
+@media (max-width: 768px){
+
+  /* dale un poco más de espacio al texto */
+  #podcast a.pod-tile{
+    padding-left: 104px !important; /* antes 98 */
+  }
+
+  /* permitir 2 líneas y quitar ellipsis de 1 línea */
+  #podcast .pod-title{
+    white-space: normal !important;
+    overflow: hidden !important;
+    text-overflow: clip !important;
+
+    display: -webkit-box !important;
+    -webkit-line-clamp: 2 !important;
+    -webkit-box-orient: vertical !important;
+
+    line-height: 1.25 !important;
+  }
+}
