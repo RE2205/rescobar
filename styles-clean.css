@@ -1494,3 +1494,23 @@ Fix two-col layout and project image crop
     font-weight:400 !important;
   }
 }
+/* =========================
+   MOBILE – Podcast: portada garantizada
+   ========================= */
+@media (max-width: 768px){
+
+  /* La portada vive en el <a> */
+  #podcast a.pod-tile{
+    background-image: var(--cover) !important;
+    background-size: 64px 64px !important;   /* tamaño de la mini portada */
+    background-position: 14px center !important;
+    background-repeat: no-repeat !important;
+    padding-left: 92px !important;           /* espacio para la portada */
+  }
+
+  /* Ocultamos la capa cover/base para que no estorben */
+  #podcast .pod-cover,
+  #podcast .pod-base{
+    display:none !important;
+  }
+}
