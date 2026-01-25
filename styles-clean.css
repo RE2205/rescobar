@@ -1514,3 +1514,66 @@ Fix two-col layout and project image crop
     display:none !important;
   }
 }
+/* =========================
+   MOBILE – Podcast (refinar aire + no distorsión)
+   ========================= */
+@media (max-width: 768px){
+
+  /* más aire del bloque completo */
+  #podcast{
+    padding-top: 32px !important;
+    padding-bottom: 32px !important;
+  }
+
+  #podcast .pod-grid{
+    gap: 12px !important;
+  }
+
+  /* tarjeta */
+  #podcast a.pod-tile{
+    padding: 14px 16px !important;      /* aire real */
+    padding-left: 98px !important;      /* espacio para portada */
+    border-radius: 16px !important;
+  }
+
+  /* portada: NO se estira, se recorta con cover */
+  #podcast a.pod-tile{
+    background-size: 68px 68px !important;
+    background-position: 16px center !important;
+  }
+
+  /* truco: hacemos que el “cuadro” sea cover usando background-clip + un pseudo-elemento */
+  #podcast a.pod-tile{
+    position: relative !important;
+  }
+
+  #podcast a.pod-tile::before{
+    content:"" !important;
+    position:absolute !important;
+    left:16px !important;
+    top:50% !important;
+    width:68px !important;
+    height:68px !important;
+    transform: translateY(-50%) !important;
+
+    border-radius: 12px !important;
+    background-image: var(--cover) !important;
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+  }
+
+  /* apagamos el background del <a> porque ahora lo pinta ::before */
+  #podcast a.pod-tile{
+    background-image: none !important;
+  }
+
+  /* texto más limpio: una línea */
+  #podcast .pod-title{
+    font-size: 0.98rem !important;
+    letter-spacing: 0.02em !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+}
