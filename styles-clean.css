@@ -2151,3 +2151,78 @@ body { padding-bottom: 56px; }
   background-size:contain;
   opacity:1;
 }
+/* =========================
+   LOGOS PSYCHE — BLOQUE AGENDA (FIX REAL)
+   Usa tus clases lp-contact__*
+========================= */
+
+/* Contenedor del bloque (si tu section ya tiene class="block logos-light") */
+.lp-contact__main,
+.lp-contact__aside{
+  opacity: 1 !important;
+}
+
+/* Título y párrafos: volver legibles */
+.lp-contact__title{
+  color: #2F2F2F !important;
+  font-weight: 500 !important;
+  line-height: 1.25 !important;
+  margin: 0 0 22px 0 !important;
+}
+
+.lp-contact__p{
+  color: #6A6A6A !important;
+  opacity: 1 !important;
+  line-height: 1.75 !important;
+  margin: 0 0 18px 0 !important;
+}
+
+.lp-contact__muted{
+  color: rgba(106,106,106,.92) !important;
+  opacity: 1 !important;
+}
+
+/* Nota */
+.lp-contact__note{
+  color: rgba(106,106,106,.9) !important;
+  opacity: 1 !important;
+  font-style: italic;
+  margin-top: 22px !important;
+}
+
+/* Links: quitar azul/morado default (incluye visited) */
+.lp-contact__link,
+.lp-contact__list a,
+.lp-contact__link:visited,
+.lp-contact__list a:visited{
+  color: rgba(47,47,47,.78) !important;
+  text-decoration: none !important;
+  border-bottom: 1px solid rgba(198,184,166,.75) !important;
+  padding-bottom: 4px !important;
+}
+
+/* Enlaces lista */
+.lp-contact__list{
+  list-style: none;
+  padding: 0;
+  margin: 18px 0 0 0 !important;
+}
+
+.lp-contact__list li{
+  margin: 0 0 10px 0;
+}
+
+/* Espaciado de métodos */
+.lp-contact__methods{
+  margin-top: 22px !important;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Responsive: que no se apriete */
+@media (max-width: 900px){
+  .lp-contact__methods{
+    gap: 10px;
+  }
+}
