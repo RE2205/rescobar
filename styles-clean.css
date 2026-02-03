@@ -1985,10 +1985,10 @@ body {
 }
 
 /* Icons (usa tus SVG en /icons) */
-#backward { background: url("./icons/backward.svg") no-repeat center/contain; }
-#forward  { background: url("./icons/forward.svg")  no-repeat center/contain; }
-#play     { background: url("./icons/play.svg")     no-repeat center/contain; }
-#play.paused { background: url("./icons/pause.svg") no-repeat center/contain; }
+#backward { background: url("./assets/icons/backward.svg") no-repeat center/contain; }
+#forward  { background: url("./assets/icons/forward.svg")  no-repeat center/contain; }
+#play     { background: url("./assets/icons/play.svg")     no-repeat center/contain; }
+#play.paused { background: url("./assets/icons/pause.svg") no-repeat center/contain; }
 
 /* Progress */
 #progress {
