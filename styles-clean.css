@@ -2010,3 +2010,9 @@ body {
 
 /* Deja espacio para la barra */
 body { padding-bottom: 56px; }
+#cover {
+  width: 40px;
+  height: 40px;
+  border-radius: 6px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+}
