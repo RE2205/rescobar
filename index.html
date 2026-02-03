@@ -257,15 +257,26 @@
   }, 4500);
 </script>
 <div id="podcast-fixed-player">
- <iframe
-  title="Reproductor del podcast"
-  src="https://play.libsyn.com/embed/destination/id/4201718/height/80/theme/modern/size/compact/thumbnail/no/custom-color/111111/hide-show/yes/playlist-height/0/direction/backward/hide-subscribe/yes/hide-share/yes/font-color/FFFFFF"
-  width="100%"
-  height="80"
-  scrolling="no"
-  frameborder="0"
-  allowfullscreen>
-</iframe>
+<div id="audio-footer">
+  <button id="rewind" aria-label="Retroceder 15 segundos">⏪</button>
+  <button id="play" aria-label="Reproducir / Pausar">▶︎</button>
+  <button id="forward" aria-label="Adelantar 30 segundos">⏩</button>
+
+  <input
+    type="range"
+    id="progress"
+    value="0"
+    min="0"
+    step="1"
+    aria-label="Progreso del audio"
+  />
+
+  <audio
+    id="audio"
+    src="https://content.libsyn.com/p/8/a/9/8a9619e30ebe00ed/Episodio_12_termporada_2.mp3"
+    preload="metadata">
+  </audio>
+</div>
 </div>
 </body>
 </html>
