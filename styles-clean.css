@@ -2016,3 +2016,25 @@ body { padding-bottom: 56px; }
   border-radius: 6px;
   box-shadow: 0 6px 18px rgba(0,0,0,0.35);
 }
+/* === ICONOS VISIBLES EN FONDO NEGRO === */
+#audio-footer button{
+  width:22px;
+  height:22px;
+  display:inline-block;
+  background-repeat:no-repeat;
+  background-position:center;
+  background-size:contain;
+  border:none;
+  background-color:transparent;
+  cursor:pointer;
+  opacity:.95;
+  filter: invert(1); /* <-- esto los vuelve blancos */
+}
+
+#audio-footer button:hover { opacity: 1; }
+
+/* soporta ambos nombres por si cambiaste ids */
+#backward, #rewind { background-image: url("./icons/backward.svg"); }
+#forward { background-image: url("./icons/forward.svg"); }
+#play { background-image: url("./icons/play.svg"); }
+#play.paused { background-image: url("./icons/pause.svg"); }
