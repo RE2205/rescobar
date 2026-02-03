@@ -256,20 +256,21 @@
     document.querySelector("#foto-derecha img").src = derecha[d];
   }, 4500);
 </script>
-<div id="podcast-fixed-player">
+<!-- PLAYER MINIMAL FIXED FOOTER -->
 <div id="audio-footer">
-  <button id="rewind" aria-label="Retroceder 15 segundos">⏪</button>
-  <button id="play" aria-label="Reproducir / Pausar">▶︎</button>
-  <button id="forward" aria-label="Adelantar 30 segundos">⏩</button>
-
-  <input
-    type="range"
-    id="progress"
-    value="0"
-    min="0"
-    step="1"
-    aria-label="Progreso del audio"
+  <img
+    src="https://ronaldescobar.com/images/podcast-cover.jpg"
+    alt="Podcast cover"
+    id="cover"
   />
+
+  <div class="controls">
+    <button id="rewind" aria-label="Retroceder"></button>
+    <button id="play" aria-label="Play / Pause"></button>
+    <button id="forward" aria-label="Adelantar"></button>
+  </div>
+
+  <input type="range" id="progress" value="0" min="0" step="1" />
 
   <audio
     id="audio"
@@ -277,7 +278,42 @@
     preload="metadata">
   </audio>
 </div>
-</div>
+
+<!-- JAVASCRIPT PLAYER -->
+<script>
+  const audio = document.getElementById('audio');
+  const playBtn = document.getElementById('play');
+  const rewind = document.getElementById('rewind');
+  const forward = document.getElementById('forward');
+  const progress = document.getElementById('progress');
+
+  playBtn.onclick = () => {
+    if (audio.paused) {
+      audio.play();
+      playBtn.classList.add('paused');
+    } else {
+      audio.pause();
+      playBtn.classList.remove('paused');
+    }
+  };
+
+  rewind.onclick = () => {
+    audio.currentTime = Math.max(0, audio.currentTime - 15);
+  };
+
+  forward.onclick = () => {
+    audio.currentTime = Math.min(audio.duration, audio.currentTime + 30);
+  };
+
+  audio.addEventListener('timeupdate', () => {
+    progress.max = audio.duration || 0;
+    progress.value = audio.currentTime || 0;
+  });
+
+  progress.addEventListener('input', () => {
+    audio.currentTime = progress.value;
+  });
+</script>
 </body>
 </html>
 
