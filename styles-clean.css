@@ -1857,3 +1857,82 @@ body {
 body {
   padding-bottom: 64px;
 }
+/* ===== AUDIO FOOTER MINIMAL ===== */
+
+#audio-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 56px;
+  background: #000;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 0 20px;
+  z-index: 9999;
+}
+
+/* Cover */
+#audio-footer img {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+/* Controls */
+#audio-footer .controls {
+  display: flex;
+  gap: 14px;
+}
+
+#audio-footer button {
+  width: 22px;
+  height: 22px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  opacity: 0.85;
+}
+
+#audio-footer button:hover {
+  opacity: 1;
+}
+
+/* SVG Icons */
+#rewind {
+  background: url('/icons/backward.svg') no-repeat center;
+}
+#play {
+  background: url('/icons/play.svg') no-repeat center;
+}
+#play.paused {
+  background: url('/icons/pause.svg') no-repeat center;
+}
+#forward {
+  background: url('/icons/forward.svg') no-repeat center;
+}
+
+/* Progress bar */
+#audio-footer input[type="range"] {
+  flex: 1;
+  height: 2px;
+  background: #444;
+  appearance: none;
+  outline: none;
+}
+
+#audio-footer input[type="range"]::-webkit-slider-thumb {
+  appearance: none;
+  width: 8px;
+  height: 8px;
+  background: #fff;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* Page spacing */
+body {
+  padding-bottom: 56px;
+}
