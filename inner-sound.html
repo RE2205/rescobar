@@ -1,175 +1,147 @@
 <!doctype html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Inner Sound</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Inner Sound</title>
 
-  <style>
-    body {
-      margin: 0;
-      background: #000000;
-      color: #F5F5F7;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    }
+<style>
+body {
+  margin: 0;
+  background: #000;
+  color: #F5F5F7;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
 
-    section {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 90px 24px;
-    }
+.wrapper {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 120px 32px;
+}
 
-    .image-full {
-      width: 100%;
-      height: 100vh;
-      object-fit: cover;
-    }
+.hero h1 {
+  font-size: 4.2rem;
+  font-weight: 600;
+  color: #8B5CF6;
+  margin-bottom: 20px;
+}
 
-    h1 {
-      font-size: 3rem;
-      font-weight: 600;
-      color: #8B5CF6;
-      margin-bottom: 12px;
-    }
+.hero h2 {
+  font-size: 1.3rem;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #CFCFD4;
+  margin-bottom: 80px;
+}
 
-    h2 {
-      font-size: 1.2rem;
-      font-weight: 400;
-      color: #E5E5E7;
-      margin-bottom: 40px;
-    }
+.block {
+  display: flex;
+  align-items: center;
+  gap: 80px;
+  margin-bottom: 140px;
+}
 
-    p {
-      max-width: 680px;
-      font-size: 1.05rem;
-      line-height: 1.8;
-      color: #CFCFD4;
-      margin-bottom: 26px;
-    }
+.block.reverse {
+  flex-direction: row-reverse;
+}
 
-    .accent {
-      color: #8B5CF6;
-    }
+.block img {
+  width: 32%;
+  opacity: 0.85;
+}
 
-    .fade {
-      background: linear-gradient(180deg, #000000 0%, #1a102a 100%);
-    }
+.block p {
+  font-size: 1.6rem;
+  line-height: 1.6;
+  max-width: 520px;
+  color: #E5E5E7;
+}
 
-    .cta {
-      margin-top: 40px;
-      padding: 14px 30px;
-      border: 1px solid #8B5CF6;
-      color: #8B5CF6;
-      text-decoration: none;
-      font-size: 0.85rem;
-      letter-spacing: 0.08em;
-      transition: all 0.3s ease;
-    }
+.full-text {
+  font-size: 1.9rem;
+  line-height: 1.6;
+  max-width: 720px;
+  margin: 0 auto 140px;
+  text-align: center;
+}
 
-    .cta:hover {
-      background: #8B5CF6;
-      color: #000000;
-    }
-  </style>
+.accent {
+  color: #8B5CF6;
+}
+
+.cta {
+  display: inline-block;
+  margin-top: 40px;
+  padding: 16px 36px;
+  border: 1px solid #8B5CF6;
+  color: #8B5CF6;
+  text-decoration: none;
+  letter-spacing: 0.1em;
+  font-size: 0.9rem;
+}
+</style>
 </head>
 
 <body>
 
-  <!-- PANTALLA 1 · IDENTIDAD -->
-  <section>
-    <img src="inner-sound.jpg" alt="Inner Sound" class="image-full">
+<div class="wrapper">
+
+  <!-- HERO -->
+  <section class="hero">
+    <h1>INNER SOUND</h1>
+    <h2>Escucha guiada · Frecuencia · Neurociencia</h2>
   </section>
 
-  <!-- PANTALLA 2 · ESCUCHA -->
-  <section>
-   <h1>Inner Sound</h1>
-<h2>Escucha guiada · Frecuencia · Neurociencia</h2>
-
+  <!-- BLOQUE 1 -->
+  <section class="block">
     <p>
-      Inner Sound no es un concierto.
-      No es una meditación guiada.
+      No es música de fondo.<br>
+      Es una <span class="accent">condición interna</span><br>
+      que permite crear.
     </p>
-
-    <p>
-      Es un <span class="accent">ritual creativo íntimo</span>
-      donde el sonido,
-      la narrativa
-      y la presencia
-      abren un espacio interno
-      para crear.
-    </p>
+    <img src="inner-sound-1.jpg" alt="">
   </section>
 
-  <!-- PANTALLA 3 · CUERPO -->
-  <section>
-    <img src="inner-sound-1.jpg" alt="Escucha corporal" class="image-full">
+  <!-- BLOQUE 2 -->
+  <section class="block reverse">
+    <p>
+      El cerebro responde a la frecuencia<br>
+      antes de que la mente<br>
+      intente comprender.
+    </p>
+    <img src="inner-sound-2.jpg" alt="">
   </section>
 
-  <!-- PANTALLA 4 · CIENCIA INSINUADA -->
-  <section class="fade">
-    <p>
-      El cerebro responde a la frecuencia.
-    </p>
-
-    <p>
-      Ciertos paisajes sonoros
-      regulan el sistema nervioso,
-      disminuyen la defensa
-      y favorecen estados de
-      <span class="accent">flujo creativo</span>.
-    </p>
-
-    <p>
-      Cuando el ritmo interno se ordena,
-      la creatividad emerge
-      sin ser forzada.
-    </p>
+  <!-- TEXTO CENTRAL -->
+  <section class="full-text">
+    Cuando el sistema se regula,<br>
+    el cuerpo deja de resistir.<br><br>
+    Y entonces,<br>
+    la creatividad aparece.
   </section>
 
-  <!-- PANTALLA 5 · RITUAL -->
-  <section>
-    <img src="inner-sound-2.jpg" alt="Ritual sonoro" class="image-full">
+  <!-- BLOQUE 3 -->
+  <section class="block">
+    <p>
+      No se explica.<br>
+      No se enseña.<br>
+      <span class="accent">Se experimenta.</span>
+    </p>
+    <img src="inner-sound-3.jpg" alt="">
   </section>
 
-  <!-- PANTALLA 6 · EXPERIENCIA -->
-  <section>
-    <p>
-      Cada sesión es única.
-      Irrepetible.
-    </p>
-
-    <p>
-      Un círculo pequeño.
-      Un viaje sonoro compartido.
-    </p>
-
-    <p>
-      Arte vivo.
-      Ciencia en silencio.
-      Creación colectiva.
-    </p>
-  </section>
-
-  <!-- PANTALLA 7 · CIERRE -->
-  <section class="fade">
-    <p>
-      No todos los procesos creativos
-      necesitan explicación.
-    </p>
-
-    <p>
-      Algunos necesitan
-      <span class="accent">frecuencia</span>,
-      <span class="accent">ritmo</span>,
-      <span class="accent">presencia</span>.
-    </p>
-
+  <!-- CIERRE -->
+  <section class="full-text">
+    Algunos procesos creativos<br>
+    no necesitan estímulo.<br><br>
+    Necesitan<br>
+    frecuencia, ritmo, presencia.
+    <br><br>
     <a href="#" class="cta">Solicitar experiencia Inner Sound</a>
   </section>
+
+</div>
 
 </body>
 </html>
