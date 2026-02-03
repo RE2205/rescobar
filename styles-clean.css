@@ -1857,7 +1857,7 @@ body {
 body {
   padding-bottom: 64px;
 }
-/* ===== AUDIO FOOTER MINIMAL ===== */
+/* ===== MINIMAL AUDIO FOOTER ===== */
 
 #audio-footer {
   position: fixed;
@@ -1868,15 +1868,16 @@ body {
   background: #000;
   display: flex;
   align-items: center;
-  gap: 16px;
+  justify-content: center;
+  gap: 18px;
   padding: 0 20px;
   z-index: 9999;
 }
 
 /* Cover */
 #audio-footer img {
-  width: 40px;
-  height: 40px;
+  width: 38px;
+  height: 38px;
   object-fit: cover;
   border-radius: 4px;
 }
@@ -1884,7 +1885,7 @@ body {
 /* Controls */
 #audio-footer .controls {
   display: flex;
-  gap: 14px;
+  gap: 16px;
 }
 
 #audio-footer button {
@@ -1893,28 +1894,31 @@ body {
   background: none;
   border: none;
   cursor: pointer;
-  opacity: 0.85;
+  opacity: 0.9;
 }
 
 #audio-footer button:hover {
   opacity: 1;
 }
 
-/* SVG Icons */
-#rewind {
-  background: url('/icons/backward.svg') no-repeat center;
-}
-#play {
-  background: url('/icons/play.svg') no-repeat center;
-}
-#play.paused {
-  background: url('/icons/pause.svg') no-repeat center;
-}
-#forward {
-  background: url('/icons/forward.svg') no-repeat center;
+/* Icons */
+#backward {
+  background: url('/icons/backward.svg') no-repeat center / contain;
 }
 
-/* Progress bar */
+#play {
+  background: url('/icons/play.svg') no-repeat center / contain;
+}
+
+#play.paused {
+  background: url('/icons/pause.svg') no-repeat center / contain;
+}
+
+#forward {
+  background: url('/icons/forward.svg') no-repeat center / contain;
+}
+
+/* Progress */
 #audio-footer input[type="range"] {
   flex: 1;
   height: 2px;
@@ -1932,7 +1936,7 @@ body {
   cursor: pointer;
 }
 
-/* Page spacing */
+/* Space for footer */
 body {
   padding-bottom: 56px;
 }
