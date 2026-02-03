@@ -2038,3 +2038,7 @@ body { padding-bottom: 56px; }
 #forward { background-image: url("./icons/forward.svg"); }
 #play { background-image: url("./icons/play.svg"); }
 #play.paused { background-image: url("./icons/pause.svg"); }
+#backward, #rewind { background-image: url("./assets/icons/backward.svg"); }
+#forward { background-image: url("./assets/icons/forward.svg"); }
+#play { background-image: url("./assets/icons/play.svg"); }
+#play.paused { background-image: url("./assets/icons/pause.svg"); }
