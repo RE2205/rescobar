@@ -256,16 +256,16 @@
     document.querySelector("#foto-derecha img").src = derecha[d];
   }, 4500);
 </script>
-<!-- PLAYER MINIMAL FIXED FOOTER -->
+<!-- AUDIO PLAYER FIXED FOOTER -->
 <div id="audio-footer">
   <img
-    src="https://ronaldescobar.com/images/podcast-cover.jpg"
+    src="https://traffic.libsyn.com/secure/desaprehender/cover.jpg"
     alt="Podcast cover"
     id="cover"
   />
 
   <div class="controls">
-    <button id="rewind" aria-label="Retroceder"></button>
+    <button id="backward" aria-label="Retroceder"></button>
     <button id="play" aria-label="Play / Pause"></button>
     <button id="forward" aria-label="Adelantar"></button>
   </div>
@@ -279,12 +279,11 @@
   </audio>
 </div>
 
-<!-- JAVASCRIPT PLAYER -->
 <script>
   const audio = document.getElementById('audio');
   const playBtn = document.getElementById('play');
-  const rewind = document.getElementById('rewind');
-  const forward = document.getElementById('forward');
+  const backBtn = document.getElementById('backward');
+  const forwardBtn = document.getElementById('forward');
   const progress = document.getElementById('progress');
 
   playBtn.onclick = () => {
@@ -297,11 +296,11 @@
     }
   };
 
-  rewind.onclick = () => {
+  backBtn.onclick = () => {
     audio.currentTime = Math.max(0, audio.currentTime - 15);
   };
 
-  forward.onclick = () => {
+  forwardBtn.onclick = () => {
     audio.currentTime = Math.min(audio.duration, audio.currentTime + 30);
   };
 
