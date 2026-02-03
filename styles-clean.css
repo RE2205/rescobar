@@ -1940,3 +1940,73 @@ body {
 body {
   padding-bottom: 56px;
 }
+/* ===== MINIMAL AUDIO FOOTER ===== */
+#audio-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 56px;
+  background: rgba(0,0,0,0.96);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 0 18px;
+  z-index: 99999;
+  box-shadow: 0 -10px 25px rgba(0,0,0,0.35);
+}
+
+#cover {
+  width: 38px;
+  height: 38px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+/* Controls */
+#audio-footer .controls {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+#audio-footer button {
+  width: 22px;
+  height: 22px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  opacity: 0.9;
+}
+
+#audio-footer button:hover {
+  opacity: 1;
+}
+
+/* Icons (usa tus SVG en /icons) */
+#backward { background: url("./icons/backward.svg") no-repeat center/contain; }
+#forward  { background: url("./icons/forward.svg")  no-repeat center/contain; }
+#play     { background: url("./icons/play.svg")     no-repeat center/contain; }
+#play.paused { background: url("./icons/pause.svg") no-repeat center/contain; }
+
+/* Progress */
+#progress {
+  flex: 1;
+  height: 2px;
+  background: #4a4a4a;
+  appearance: none;
+  outline: none;
+}
+
+#progress::-webkit-slider-thumb {
+  appearance: none;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #fff;
+  cursor: pointer;
+}
+
+/* Deja espacio para la barra */
+body { padding-bottom: 56px; }
