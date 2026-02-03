@@ -2139,3 +2139,15 @@ body { padding-bottom: 56px; }
     font-size: 28px;
   }
 }
+/* ICONOS desde /assets/icons (cache-bust) */
+#backward { background-image: url("./assets/icons/backward.svg?v=2"); }
+#forward  { background-image: url("./assets/icons/forward.svg?v=2"); }
+#play     { background-image: url("./assets/icons/play.svg?v=2"); }
+#play.paused { background-image: url("./assets/icons/pause.svg?v=2"); }
+
+#audio-footer button{
+  background-repeat:no-repeat;
+  background-position:center;
+  background-size:contain;
+  opacity:1;
+}
