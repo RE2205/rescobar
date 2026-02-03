@@ -2042,3 +2042,100 @@ body { padding-bottom: 56px; }
 #forward { background-image: url("./assets/icons/forward.svg"); }
 #play { background-image: url("./assets/icons/play.svg"); }
 #play.paused { background-image: url("./assets/icons/pause.svg"); }
+/* =========================
+   BLOQUE FINAL — CONTACTO / AGENDA
+========================= */
+
+.block.lp-contact{
+  background: #F6F4EF;
+  padding: 120px 0;
+}
+
+.lp-contact__inner{
+  align-items: flex-start;
+  gap: 64px;
+}
+
+.lp-contact__main{
+  max-width: 680px;
+}
+
+.lp-contact__title{
+  margin: 0 0 22px 0;
+  font-weight: 500;
+  font-size: 34px;
+  line-height: 1.25;
+  color: #2F2F2F;
+}
+
+.lp-contact__p{
+  margin: 0 0 18px 0;
+  font-size: 17px;
+  line-height: 1.75;
+  color: #6A6A6A;
+}
+
+.lp-contact__muted{
+  margin-top: 10px;
+  color: rgba(106,106,106,.9);
+}
+
+.lp-contact__methods{
+  margin-top: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.lp-contact__link{
+  font-size: 14px;
+  letter-spacing: .02em;
+  color: rgba(47,47,47,.78);
+  text-decoration: none;
+  display: inline-block;
+  width: fit-content;
+  border-bottom: 1px solid rgba(198,184,166,.75);
+  padding-bottom: 4px;
+}
+
+.lp-contact__note{
+  margin-top: 26px;
+  font-size: 14px;
+  line-height: 1.7;
+  color: rgba(106,106,106,.9);
+  font-style: italic;
+}
+
+.lp-contact__aside{
+  padding-top: 4px;
+}
+
+.lp-contact__list{
+  list-style: none;
+  padding: 0;
+  margin: 18px 0 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.lp-contact__list a{
+  font-size: 14px;
+  color: rgba(47,47,47,.72);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(198,184,166,.55);
+  padding-bottom: 3px;
+  width: fit-content;
+}
+
+@media (max-width: 900px){
+  .block.lp-contact{
+    padding: 96px 0;
+  }
+  .lp-contact__inner{
+    gap: 42px;
+  }
+  .lp-contact__title{
+    font-size: 28px;
+  }
+}
