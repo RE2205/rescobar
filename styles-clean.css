@@ -2132,7 +2132,9 @@ body { padding-bottom: 56px; }
 #backward { background-image: url("./assets/backward.svg"); }
 #forward  { background-image: url("./assets/forward.svg"); }
 #play     { background-image: url("./assets/play.svg"); }
-#play.paused { background-image: url("./assets/pause.svg"); }/* =========================
+#play.paused { background-image: url("./assets/pause.svg"); }
+
+/* =========================
    LOGOS PSYCHE — BLOQUE AGENDA (FIX REAL)
    Usa tus clases lp-contact__*
 ========================= */
@@ -2291,5 +2293,56 @@ body { padding-bottom: 56px; }
   margin-top: 5rem;
   font-style: italic;
   font-size: 0.95rem;
+  color: rgba(0,0,0,0.55);
+}
+/* === PODCAST PAGE – CLEAN & HYBRID === */
+
+/* CONTENEDOR GENERAL */
+section {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 4rem 1.5rem;
+}
+
+/* TITULO PRINCIPAL */
+h1 {
+  font-size: 2.6rem;
+  letter-spacing: 0.02em;
+  margin-bottom: 1rem;
+}
+
+/* TEXTO INTRO */
+p {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: rgba(0,0,0,0.75);
+  margin-bottom: 1.5rem;
+}
+
+/* BOTÓN PRINCIPAL */
+a.button,
+a[href*="youtube"] {
+  display: inline-block;
+  margin: 2rem 0 3rem 0;
+  padding: 0.75rem 1.75rem;
+  border: 1px solid rgba(0,0,0,0.4);
+  text-decoration: none;
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+  color: #000;
+  transition: all 0.25s ease;
+}
+
+/* HOVER BOTÓN */
+a.button:hover,
+a[href*="youtube"]:hover {
+  background-color: #000;
+  color: #fff;
+}
+
+/* TEXTO FINAL / MANIFIESTO */
+p:last-of-type {
+  margin-top: 4rem;
+  font-style: italic;
   color: rgba(0,0,0,0.55);
 }
