@@ -1421,3 +1421,71 @@ Fix two-col layout and project image crop
   }
 } 
 }
+/* =========================
+   PODCAST PLAYER — STICKY
+   ========================= */
+
+#podcast-player{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  height: 68px;
+  background: rgba(11,11,12,0.96);
+  backdrop-filter: blur(8px);
+
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+
+  padding: 0 18px;
+  gap: 18px;
+
+  border-top: 1px solid rgba(255,255,255,0.08);
+  z-index: 9999;
+}
+
+/* Izquierda: portada */
+.player-left img{
+  width: 44px;
+  height: 44px;
+  border-radius: 6px;
+  object-fit: cover;
+}
+
+/* Centro: controles */
+.player-center{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+}
+
+.player-center .ctrl{
+  background: none;
+  border: none;
+  color: rgba(243,243,243,0.75);
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.player-center .play{
+  font-size: 18px;
+}
+
+/* Derecha: volumen */
+.player-right input[type="range"]{
+  width: 90px;
+}
+
+/* Mobile */
+@media (max-width: 768px){
+  #podcast-player{
+    grid-template-columns: auto 1fr;
+  }
+
+  .player-right{
+    display: none;
+  }
+}
