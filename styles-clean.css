@@ -1394,16 +1394,15 @@ Fix two-col layout and project image crop
   border-bottom: none;
 }
 
-/* Cabecera */
+/* =========================
+   PODCAST — CABECERA + LÍNEA EDITORIAL
+   ========================= */
+
 .podcast-head{
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-
-  margin-bottom: 28px;
-
-  padding-bottom: 12px;
- border-bottom: 1px solid rgba(255,255,255,0.14);
+  margin-bottom: 16px;
 }
 
 .podcast-title{
@@ -1419,6 +1418,31 @@ Fix two-col layout and project image crop
   letter-spacing: .18em;
   text-transform: uppercase;
   color: rgba(243,243,243,.55);
+}
+
+/* Línea editorial (no full-width) */
+.podcast-divider{
+  width: 68%;
+  height: 1px;
+  background: rgba(255,255,255,0.14);
+  margin-bottom: 24px;
+}
+
+/* Mobile */
+@media (max-width: 768px){
+  .podcast-head{
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .podcast-title{
+    font-size: 22px;
+  }
+
+  .podcast-divider{
+    width: 72%; /* un poco más larga en móvil */
+  }
 }
 
 /* =========================
