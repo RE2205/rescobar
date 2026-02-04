@@ -6,26 +6,9 @@
   <title>Ronald Escobar</title>
   <meta name="description" content="Un espacio para detener el ruido y habitar lo humano." />
   <meta name="robots" content="noindex, nofollow" />
- <link rel="stylesheet" href="styles-clean.css?v=11003" />
+  <link rel="stylesheet" href="styles-clean.css?v=11003" />
 </head>
-  <!-- PODCAST PLAYER STICKY -->
-<div id="podcast-player">
 
-  <div class="player-left">
-    <img src="assets/podcast-logo.png" alt="Podcast cover">
-  </div>
-
-  <div class="player-center">
-    <button class="ctrl">⏮</button>
-    <button class="ctrl play">▶</button>
-    <button class="ctrl">⏭</button>
-  </div>
-
-  <div class="player-right">
-    <input type="range" min="0" max="100" value="80">
-  </div>
-
-</div>
 <body>
 
   <header class="hero">
@@ -46,15 +29,17 @@
 
   <section class="block logos-light" id="logos-psyche">
     <div class="wrap two-col">
-<a class="silent-link media logo-holder logo-psyche"
-   href="logos-psyche.html"
-   aria-label="Ir a Logos Psyche">
-  <img
-    src="assets/logos-psyche.png"
-    alt="Logos Psyche"
-    class="logo-image"
-  />
-</a> 
+
+      <a class="silent-link media logo-holder logo-psyche"
+         href="logos-psyche.html"
+         aria-label="Ir a Logos Psyche">
+        <img
+          src="assets/logos-psyche.png"
+          alt="Logos Psyche"
+          class="logo-image"
+        />
+      </a>
+
       <div class="copy">
         <p class="tag dark">PSIQUIATRÍA</p>
         <h2><a class="silent-link" href="logos-psyche.html">Logos Psyche</a></h2>
@@ -64,55 +49,69 @@
           sin prisa y sin juicio.
         </p>
       </div>
+
     </div>
   </section>
-<div class="podcast-head">
-  <h2 class="podcast-title">Desapre(he)nder para CreSer</h2>
-  <span class="podcast-label">Podcast</span>
-</div>
 
-<div class="podcast-divider"></div>
+  <!-- PODCAST ENTRY -->
+  <section id="podcast-entry" class="block">
+    <div class="wrap">
 
-<div class="podcast-roll">
+      <div class="podcast-head">
+        <h2 class="podcast-title">Desapre(he)nder para CreSer</h2>
+        <span class="podcast-label">Podcast</span>
+      </div>
 
-  <!-- EPISODIOS IZQUIERDA -->
-  <a href="https://www.youtube.com/channel/UC-LSnhNhnhZ_dkiOh98HXiA"
-     target="_blank"
-     class="podcast-card"
-     aria-label="Ir al podcast en YouTube">
-    <img src="assets/ep1.jpg" alt="Podcast episodio">
-  </a>
+      <div class="podcast-divider"></div>
 
-  <a href="https://www.youtube.com/channel/UC-LSnhNhnhZ_dkiOh98HXiA"
-     target="_blank"
-     class="podcast-card"
-     aria-label="Ir al podcast en YouTube">
-    <img src="assets/ep2.jpg" alt="Podcast episodio">
-  </a>
+      <div class="podcast-roll">
 
-  <!-- IMAGEN CENTRAL / MANIFIESTO -->
-  <div class="podcast-card podcast-center">
-    <img src="assets/desapreheinder-manifiesto.jpg"
-         alt="Desapre(he)nder para CreSer">
-  </div>
+        <!-- EPISODIOS IZQUIERDA -->
+        <a href="https://www.youtube.com/channel/UC-LSnhNhnhZ_dkiOh98HXiA"
+           target="_blank"
+           class="podcast-card"
+           aria-label="Ir al podcast en YouTube">
+          <img src="assets/ep1.jpg" alt="Podcast episodio">
+        </a>
 
-  <!-- EPISODIOS DERECHA -->
-  <a href="https://www.youtube.com/channel/UC-LSnhNhnhZ_dkiOh98HXiA"
-     target="_blank"
-     class="podcast-card"
-     aria-label="Ir al podcast en YouTube">
-    <img src="assets/ep3.jpg" alt="Podcast episodio">
-  </a>
+        <a href="https://www.youtube.com/channel/UC-LSnhNhnhZ_dkiOh98HXiA"
+           target="_blank"
+           class="podcast-card"
+           aria-label="Ir al podcast en YouTube">
+          <img src="assets/ep2.jpg" alt="Podcast episodio">
+        </a>
 
-  <a href="https://www.youtube.com/channel/UC-LSnhNhnhZ_dkiOh98HXiA"
-     target="_blank"
-     class="podcast-card"
-     aria-label="Ir al podcast en YouTube">
-    <img src="assets/ep4.jpg" alt="Podcast episodio">
-  </a>
+        <!-- IMAGEN CENTRAL / MANIFIESTO -->
+        <div class="podcast-card podcast-center">
+          <img src="assets/desapreheinder-manifiesto.jpg" alt="Desapre(he)nder para CreSer">
+        </div>
 
-</div>
-</section>
+        <!-- EPISODIOS DERECHA -->
+        <a href="https://www.youtube.com/channel/UC-LSnhNhnhZ_dkiOh98HXiA"
+           target="_blank"
+           class="podcast-card"
+           aria-label="Ir al podcast en YouTube">
+          <img src="assets/ep3.jpg" alt="Podcast episodio">
+        </a>
+
+        <a href="https://www.youtube.com/channel/UC-LSnhNhnhZ_dkiOh98HXiA"
+           target="_blank"
+           class="podcast-card"
+           aria-label="Ir al podcast en YouTube">
+          <img src="assets/ep4.jpg" alt="Podcast episodio">
+        </a>
+
+      </div>
+
+      <!-- CTA a subpágina -->
+      <div class="podcast-cta">
+        <a href="podcast.html">Entrar al podcast · clips · qué es Desapre(he)nder</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- INNER SOUND -->
   <section class="block" id="inner-sound">
     <div class="wrap two-col">
       <div class="copy">
@@ -140,196 +139,111 @@
       <p class="band-author">— Ronald Escobar</p>
     </div>
   </section>
-<!-- PROYECTOS -->
-<section class="block" id="proyectos">
-  <div class="wrap two-col">
-    <!-- IZQUIERDA: FOTO -->
-    <a class="silent-link media" href="documental.html" aria-label="Ir a Documental">
-      <div
-        class="img ph doc-cover"
-        style="background-image:url('assets/documental-portada-v2.jpg');"
-        data-label=""
-      ></div>
-    </a>
 
-    <!-- DERECHA: TEXTO -->
-    <div class="copy">
-      <p class="tag">PROYECTOS</p>
-      <h2><a class="silent-link" href="documental.html">Documental</a></h2>
-      <p class="lead">
-        Historias reales observadas con cuidado.<br>
-        No para explicar lo humano,<br>
-        sino para mirarlo de frente.
-      </p>
-    </div>
-  </div>
+  <!-- PROYECTOS -->
+  <section class="block" id="proyectos">
+    <div class="wrap two-col">
 
-</div>
-</section> 
-<!-- CRESER -->
-<section class="block" id="creser">
-  <div class="wrap two-col">
-
-    <!-- IZQUIERDA: TEXTO -->
-    <div class="copy">
-      <p class="tag">CULTURA</p>
-      <h2>CreSer</h2>
-      <p class="lead">
-        Un proyecto grande e inclusivo de psicoeducación y conciencia.<br>
-        Pensamiento, práctica y comunidad para impactar vidas y cultura.
-      </p>
-    </div>
-
-    <!-- DERECHA: IMAGEN -->
-    <a class="silent-link media" href="creser.html" aria-label="Ir a CreSer">
-<div class="img ph creser-logo" style="background-image:url('assets/creser-square.jpg');"></div> 
-  </div>
- </div>
-</section> 
-  <section class="block" id="escritura">
-  <div class="wrap">
-    <p class="tag">ESCRITURA</p>
-    <h2>
-      <a class="silent-link" href="escritura.html">
-        Entre libros y pastillas
+      <a class="silent-link media" href="documental.html" aria-label="Ir a Documental">
+        <div class="img ph doc-cover"
+             style="background-image:url('assets/documental-portada-v2.jpg');"
+             data-label=""></div>
       </a>
-    </h2>
-    <p class="lead">
-      Textos para leer con tiempo: ensayo, clínica, cultura y vida interior.
-    </p>
 
-    <div class="strip-3">
-     <a class="strip-item" id="foto-izquierda" href="escritura.html" aria-label="Fotos (izquierda)">
-  <img src="assets/foto-izquierda.jpg" alt="" />
-  <span class="strip-label">Fotos</span>
-</a>
+      <div class="copy">
+        <p class="tag">PROYECTOS</p>
+        <h2><a class="silent-link" href="documental.html">Documental</a></h2>
+        <p class="lead">
+          Historias reales observadas con cuidado.<br>
+          No para explicar lo humano,<br>
+          sino para mirarlo de frente.
+        </p>
+      </div>
 
-<a class="strip-item strip-center" href="https://ronaldescobar.substack.com" aria-label="Mi Substack" target="_blank" rel="noopener">
-  <img src="assets/substack.jpg" alt="" />
-  <span class="strip-label">Mi Substack</span>
-</a>
+    </div>
+  </section>
 
-<a class="strip-item" id="foto-derecha" href="escritura.html" aria-label="Fotos (derecha)">
-  <img src="assets/foto-derecha.jpg" alt="" />
-  <span class="strip-label">Fotos</span>
-</a>
+  <!-- CRESER -->
+  <section class="block" id="creser">
+    <div class="wrap two-col">
+
+      <div class="copy">
+        <p class="tag">CULTURA</p>
+        <h2>CreSer</h2>
+        <p class="lead">
+          Un proyecto grande e inclusivo de psicoeducación y conciencia.<br>
+          Pensamiento, práctica y comunidad para impactar vidas y cultura.
+        </p>
+      </div>
+
+      <a class="silent-link media" href="creser.html" aria-label="Ir a CreSer">
+        <div class="img ph creser-logo" style="background-image:url('assets/creser-square.jpg');"></div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ESCRITURA -->
+  <section class="block" id="escritura">
+    <div class="wrap">
+      <p class="tag">ESCRITURA</p>
+      <h2><a class="silent-link" href="escritura.html">Entre libros y pastillas</a></h2>
+      <p class="lead">Textos para leer con tiempo: ensayo, clínica, cultura y vida interior.</p>
+
+      <div class="strip-3">
+        <a class="strip-item" id="foto-izquierda" href="escritura.html" aria-label="Fotos (izquierda)">
+          <img src="assets/foto-izquierda.jpg" alt="" />
+          <span class="strip-label">Fotos</span>
+        </a>
+
+        <a class="strip-item strip-center" href="https://ronaldescobar.substack.com" aria-label="Mi Substack" target="_blank" rel="noopener">
+          <img src="assets/substack.jpg" alt="" />
+          <span class="strip-label">Mi Substack</span>
+        </a>
+
+        <a class="strip-item" id="foto-derecha" href="escritura.html" aria-label="Fotos (derecha)">
+          <img src="assets/foto-derecha.jpg" alt="" />
+          <span class="strip-label">Fotos</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Rotación de imágenes -->
+  <script>
+    const izquierda = ["assets/foto-izquierda.jpg", "assets/foto-izquierda-2.jpg"];
+    const derecha = ["assets/foto-derecha.jpg", "assets/foto-derecha-2.jpg"];
+
+    let i = 0;
+    let d = 0;
+
+    setInterval(() => {
+      i = (i + 1) % izquierda.length;
+      document.querySelector("#foto-izquierda img").src = izquierda[i];
+    }, 4000);
+
+    setInterval(() => {
+      d = (d + 1) % derecha.length;
+      document.querySelector("#foto-derecha img").src = derecha[d];
+    }, 4500);
+  </script>
+
+  <!-- PODCAST PLAYER STICKY (solo visual por ahora) -->
+  <div id="podcast-player">
+    <div class="player-left">
+      <img src="assets/podcast-logo.png" alt="Podcast cover">
+    </div>
+
+    <div class="player-center">
+      <button class="ctrl" aria-label="Anterior">⏮</button>
+      <button class="ctrl play" aria-label="Play/Pause">▶️</button>
+      <button class="ctrl" aria-label="Siguiente">⏭</button>
+    </div>
+
+    <div class="player-right">
+      <input type="range" min="0" max="100" value="80" aria-label="Volumen">
     </div>
   </div>
-</section>   
- 
-<script>
-  const izquierda = [
-    "assets/foto-izquierda.jpg",
-    "assets/foto-izquierda-2.jpg"
-  ];
 
-  const derecha = [
-    "assets/foto-derecha.jpg",
-    "assets/foto-derecha-2.jpg"
-  ];
-
-  let i = 0;
-  let d = 0;
-
-  setInterval(() => {
-    i = (i + 1) % izquierda.length;
-    document.querySelector("#foto-izquierda img").src = izquierda[i];
-  }, 4000);
-
-  setInterval(() => {
-    d = (d + 1) % derecha.length;
-    document.querySelector("#foto-derecha img").src = derecha[d];
-  }, 4500);
-</script>
-<!-- AUDIO PLAYER FIXED FOOTER -->
-<div id="audio-footer">
-  <img
-  src="./assets/podcast-logo.png"
-  alt="Podcast cover"
-  id="cover"
-/>
-
-  <div class="controls">
-    <button id="backward" aria-label="Retroceder"></button>
-    <button id="play" aria-label="Play / Pause"></button>
-    <button id="forward" aria-label="Adelantar"></button>
-  </div>
-
-  <input type="range" id="progress" value="0" min="0" step="1" />
-
-  <audio
-    id="audio"
-    src="https://content.libsyn.com/p/8/a/9/8a9619e30ebe00ed/Episodio_12_termporada_2.mp3"
-    preload="metadata">
-  </audio>
-</div>
-
-<script>
- <!-- AUDIO PLAYER FIXED FOOTER (MINIMAL / RICH ROLL STYLE) -->
-<div id="audio-footer">
-  <img src="./assets/podcast-logo.png" alt="Podcast" id="cover" />
-
-  <div class="controls">
-    <button id="backward" aria-label="Retroceder 15s"></button>
-    <button id="play" aria-label="Play / Pause"></button>
-    <button id="forward" aria-label="Adelantar 30s"></button>
-  </div>
-
-  <input type="range" id="progress" value="0" min="0" step="1" />
-
-  <audio
-    id="audio"
-    src="https://content.libsyn.com/p/8/a/9/8a9619e30ebe00ed/Episodio_12_termporada_2.mp3"
-    preload="metadata">
-  </audio>
-</div>
-
-<script>
-  const audio = document.getElementById("audio");
-  const playBtn = document.getElementById("play");
-  const backBtn = document.getElementById("backward");
-  const fwdBtn  = document.getElementById("forward");
-  const progress = document.getElementById("progress");
-
-  function setPlayIcon() {
-    if (audio.paused) playBtn.classList.remove("paused");
-    else playBtn.classList.add("paused");
-  }
-
-  playBtn.addEventListener("click", async () => {
-    try {
-      if (audio.paused) await audio.play();
-      else audio.pause();
-      setPlayIcon();
-    } catch (e) {
-      // Si el navegador bloquea autoplay, el clic suele resolverlo.
-      console.log(e);
-    }
-  });
-
-  backBtn.addEventListener("click", () => {
-    audio.currentTime = Math.max(0, audio.currentTime - 15);
-  });
-
-  fwdBtn.addEventListener("click", () => {
-    audio.currentTime = Math.min(audio.duration || 0, audio.currentTime + 30);
-  });
-
-  audio.addEventListener("loadedmetadata", () => {
-    progress.max = Math.floor(audio.duration || 0);
-    setPlayIcon();
-  });
-
-  audio.addEventListener("timeupdate", () => {
-    progress.value = Math.floor(audio.currentTime || 0);
-  });
-
-  progress.addEventListener("input", () => {
-    audio.currentTime = Number(progress.value || 0);
-  });
-
-  audio.addEventListener("play", setPlayIcon);
-  audio.addEventListener("pause", setPlayIcon);
-</script>
 </body>
 </html>
