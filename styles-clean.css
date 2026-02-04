@@ -1426,8 +1426,10 @@ Fix two-col layout and project image crop
 .podcast-divider{
   width: 68%;
   height: 1px;
-  background: rgba(255,255,255,0.18); /* un poco más visible */
-  margin: 0 0 22px 16px;               /* ← ALINEA con el título */
+  background: rgba(255,255,255,0.18);
+
+  margin-left: 16px;     /* mismo eje que el título */
+  margin-bottom: 22px;
 }
 
 /* Mobile */
