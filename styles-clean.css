@@ -1386,25 +1386,115 @@ Fix two-col layout and project image crop
   }
 }
 /* =========================
-   PODCAST — CENTRO EDITORIAL
+   PODCAST — PUERTA EDITORIAL
    ========================= */
 
-/* Card central: apenas mayor, gesto editorial */
-.podcast-center{
-  width: 280px;              /* apenas más grande que las laterales */
-  transform: translateY(-6px);
-  pointer-events: none;      /* manifiesto, no CTA */
+#podcast-entry{
+  background: #0b0b0c;
+  border-bottom: none;
 }
 
-/* Imagen central: limpia, sin filtros */
+/* Cabecera */
+.podcast-head{
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 28px;
+}
+
+.podcast-title{
+  margin: 0;
+  font-size: 32px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: #f3f3f3;
+}
+
+.podcast-label{
+  font-size: 13px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: rgba(243,243,243,.55);
+}
+
+/* =========================
+   FRANJA HORIZONTAL REAL
+   ========================= */
+
+.podcast-roll{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  padding: 14px 0;
+  scroll-behavior: smooth;
+
+  scrollbar-width: none;        /* Firefox */
+}
+.podcast-roll::-webkit-scrollbar{
+  display: none;                /* Chrome / Safari */
+}
+
+/* =========================
+   CARDS PODCAST
+   ========================= */
+
+.podcast-card{
+  flex: 0 0 auto;               /* CLAVE: no se estiran */
+  width: 240px;
+  height: auto;
+
+  display: block;
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+/* Imagen */
+.podcast-card img{
+  width: 100%;
+  height: auto;
+  display: block;
+
+  filter: grayscale(100%);
+  opacity: 0.82;
+}
+
+/* =========================
+   CARD CENTRAL — MANIFIESTO
+   ========================= */
+
+.podcast-center{
+  width: 280px;                 /* apenas mayor */
+  transform: translateY(-6px);
+  pointer-events: none;         /* no CTA */
+}
+
 .podcast-center img{
   filter: none;
   opacity: 1;
 }
 
-/* Cards laterales: archivo / documento */
-.podcast-card:not(.podcast-center){
-  width: 240px;
+/* =========================
+   MOBILE
+   ========================= */
+
+@media (max-width: 768px){
+
+  .podcast-title{
+    font-size: 24px;
+  }
+
+  .podcast-card{
+    width: 220px;
+  }
+
+  .podcast-center{
+    width: 250px;
+  }
 }
 
 .podcast-card:not(.podcast-center) img{
