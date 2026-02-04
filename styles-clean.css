@@ -1901,22 +1901,7 @@ body {
   opacity: 1;
 }
 
-/* Icons */
-#backward {
-  background: url('/icons/backward.svg') no-repeat center / contain;
-}
 
-#play {
-  background: url('/icons/play.svg') no-repeat center / contain;
-}
-
-#play.paused {
-  background: url('/icons/pause.svg') no-repeat center / contain;
-}
-
-#forward {
-  background: url('/icons/forward.svg') no-repeat center / contain;
-}
 
 /* Progress */
 #audio-footer input[type="range"] {
@@ -2033,15 +2018,6 @@ body { padding-bottom: 56px; }
 
 #audio-footer button:hover { opacity: 1; }
 
-/* soporta ambos nombres por si cambiaste ids */
-#backward, #rewind { background-image: url("./icons/backward.svg"); }
-#forward { background-image: url("./icons/forward.svg"); }
-#play { background-image: url("./icons/play.svg"); }
-#play.paused { background-image: url("./icons/pause.svg"); }
-#backward, #rewind { background-image: url("./assets/icons/backward.svg"); }
-#forward { background-image: url("./assets/icons/forward.svg"); }
-#play { background-image: url("./assets/icons/play.svg"); }
-#play.paused { background-image: url("./assets/icons/pause.svg"); }
 /* =========================
    BLOQUE FINAL — CONTACTO / AGENDA
 ========================= */
