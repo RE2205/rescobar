@@ -1385,3 +1385,29 @@ Fix two-col layout and project image crop
     gap: 10px;
   }
 }
+/* =========================
+   PODCAST — CENTRO EDITORIAL
+   ========================= */
+
+/* Card central: apenas mayor, gesto editorial */
+.podcast-center{
+  width: 280px;              /* apenas más grande que las laterales */
+  transform: translateY(-6px);
+  pointer-events: none;      /* manifiesto, no CTA */
+}
+
+/* Imagen central: limpia, sin filtros */
+.podcast-center img{
+  filter: none;
+  opacity: 1;
+}
+
+/* Cards laterales: archivo / documento */
+.podcast-card:not(.podcast-center){
+  width: 240px;
+}
+
+.podcast-card:not(.podcast-center) img{
+  filter: grayscale(100%);
+  opacity: 0.82;
+}
