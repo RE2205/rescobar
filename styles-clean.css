@@ -2139,19 +2139,24 @@ body { padding-bottom: 56px; }
     font-size: 28px;
   }
 }
-/* ICONOS desde /assets/icons (cache-bust) */
-#backward { background-image: url("./assets/icons/backward.svg?v=2"); }
-#forward  { background-image: url("./assets/icons/forward.svg?v=2"); }
-#play     { background-image: url("./assets/icons/play.svg?v=2"); }
-#play.paused { background-image: url("./assets/icons/pause.svg?v=2"); }
-
+/* ===== ICONOS (DESDE /assets, RUTA FINAL CORRECTA) ===== */
 #audio-footer button{
+  width:22px;
+  height:22px;
+  display:inline-block;
   background-repeat:no-repeat;
   background-position:center;
   background-size:contain;
-  opacity:1;
+  border:none;
+  background-color:transparent;
+  cursor:pointer;
+  opacity:0.95;
 }
-/* =========================
+
+#backward { background-image: url("./assets/backward.svg"); }
+#forward  { background-image: url("./assets/forward.svg"); }
+#play     { background-image: url("./assets/play.svg"); }
+#play.paused { background-image: url("./assets/pause.svg"); }/* =========================
    LOGOS PSYCHE — BLOQUE AGENDA (FIX REAL)
    Usa tus clases lp-contact__*
 ========================= */
