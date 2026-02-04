@@ -1497,3 +1497,111 @@ Fix two-col layout and project image crop
   filter: grayscale(100%);
   opacity: 0.82;
 }
+/* =========================
+   PODCAST — RESET DEFINITIVO
+   ========================= */
+
+#podcast-entry{
+  background:#0b0b0c;
+}
+
+/* Cabecera */
+#podcast-entry .podcast-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:baseline;
+  padding:0 16px;
+  margin-bottom:14px;
+}
+
+#podcast-entry .podcast-title{
+  margin:0;
+  font-size:32px;
+  font-weight:500;
+  letter-spacing:-0.01em;
+  color:#f3f3f3;
+}
+
+#podcast-entry .podcast-label{
+  font-size:13px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:rgba(243,243,243,.55);
+}
+
+/* Línea editorial centrada */
+#podcast-entry .podcast-divider{
+  width:68%;
+  height:1px;
+  background:rgba(255,255,255,.18);
+  margin:0 auto 22px auto;
+}
+
+/* Franja horizontal */
+#podcast-entry .podcast-roll{
+  display:flex;
+  flex-direction:row;
+  align-items:center;
+  gap:20px;
+  overflow-x:auto;
+  overflow-y:hidden;
+  padding:14px 0;
+  scroll-behavior:smooth;
+}
+
+#podcast-entry .podcast-roll::-webkit-scrollbar{
+  display:none;
+}
+
+/* Cards */
+#podcast-entry .podcast-card{
+  flex:0 0 auto;
+  width:240px;
+  border-radius:14px;
+  overflow:hidden;
+}
+
+#podcast-entry .podcast-card img{
+  width:100%;
+  height:auto;
+  display:block;
+  filter:grayscale(100%);
+  opacity:.82;
+}
+
+/* Centro */
+#podcast-entry .podcast-center{
+  width:280px;
+  transform:translateY(-6px);
+  pointer-events:none;
+}
+
+#podcast-entry .podcast-center img{
+  filter:none;
+  opacity:1;
+}
+
+/* Mobile */
+@media (max-width:768px){
+  #podcast-entry .podcast-head{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:6px;
+  }
+
+  #podcast-entry .podcast-title{
+    font-size:22px;
+  }
+
+  #podcast-entry .podcast-divider{
+    width:72%;
+  }
+
+  #podcast-entry .podcast-card{
+    width:220px;
+  }
+
+  #podcast-entry .podcast-center{
+    width:250px;
+  }
+}
