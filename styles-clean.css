@@ -1444,6 +1444,7 @@ Fix two-col layout and project image crop
   }
 
  .podcast-divider{
+   display: block;
   width: 68%;
   height: 1px;
   background: rgba(255,255,255,0.18);
