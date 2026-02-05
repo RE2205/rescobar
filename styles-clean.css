@@ -1589,3 +1589,28 @@ body{
     display: none;
   }
 }
+/* ICONOS MINIMALISTAS */
+
+.ctrl{
+  width: 24px;
+  height: 24px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.ctrl.backward{
+  background-image: url("assets/icon-back.svg");
+}
+
+.ctrl.play{
+  background-image: url("assets/icon-play.svg");
+}
+
+.ctrl.play.paused{
+  background-image: url("assets/icon-pause.svg");
+}
+
+.ctrl.forward{
+  background-image: url("assets/icon-forward.svg");
+}
