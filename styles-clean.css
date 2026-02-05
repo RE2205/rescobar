@@ -1674,3 +1674,76 @@ body{
   color: #ffffff;
   border-color: #ffffff;
 }
+/* =========================
+   UMBRAL ARTISTA — FONDO GESTUAL
+========================= */
+
+.lp-umbral-artista{
+  background-color: #F6F4EF;
+  background-image: url("assets/pollock-texture.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  padding: 160px 0;
+}
+
+.lp-umbral-artista__inner{
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 24px;
+  text-align: center;
+}
+
+/* Capa de silencio */
+.lp-umbral-artista::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(246,244,239,0.88);
+  pointer-events: none;
+}
+
+/* Asegura que el contenido esté arriba */
+.lp-umbral-artista__inner{
+  position: relative;
+  z-index: 1;
+}
+
+.lp-umbral-artista__kicker{
+  font-size: 12px;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: rgba(47,47,47,.4);
+  margin-bottom: 28px;
+}
+
+.lp-umbral-artista__title{
+  font-weight: 500;
+  font-size: 34px;
+  line-height: 1.25;
+  color: #2F2F2F;
+  margin-bottom: 22px;
+}
+
+.lp-umbral-artista__subtitle{
+  font-size: 17px;
+  line-height: 1.75;
+  color: #6A6A6A;
+  margin-bottom: 34px;
+}
+
+.lp-umbral-artista__quote{
+  font-size: 18px;
+  line-height: 1.6;
+  color: #2F2F2F;
+  font-style: italic;
+  margin: 0 0 40px 0;
+}
+
+.lp-umbral-artista__cta{
+  font-size: 14px;
+  color: rgba(47,47,47,.75);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(198,184,166,.7);
+  padding-bottom: 4px;
+}
