@@ -1569,9 +1569,37 @@ body{
 }
 
 #podcast-player input[type="range"]{
-  width: 120px;
-  accent-color: #ffffff;
-  opacity: .8;
+  -webkit-appearance: none;
+  width: 160px;
+  height: 2px;
+  background: rgba(255,255,255,.25);
+  border-radius: 2px;
+  outline: none;
+}
+
+/* Track */
+#podcast-player input[type="range"]::-webkit-slider-runnable-track{
+  height: 2px;
+  background: rgba(255,255,255,.25);
+}
+
+/* Thumb */
+#podcast-player input[type="range"]::-webkit-slider-thumb{
+  -webkit-appearance: none;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #ffffff;
+  margin-top: -4px;
+}
+
+/* Firefox */
+#podcast-player input[type="range"]::-moz-range-thumb{
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: none;
 }
 
 /* =========================
