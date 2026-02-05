@@ -1383,8 +1383,15 @@ Fix two-col layout and project image crop
   height: auto;
   display: block;
 
-  filter: grayscale(100%);
-  opacity: 0.82;
+  filter: grayscale(60%);
+  opacity: 0.9;
+  transition: filter .3s ease, opacity .3s ease;
+}
+
+/* Hover: vuelve a la vida */
+.podcast-card:hover img{
+  filter: grayscale(0%);
+  opacity: 1;
 }
 
 /* =========================
