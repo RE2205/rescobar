@@ -1649,3 +1649,21 @@ body{
 .ctrl.forward{
   background-image: url("assets/icon-forward.svg");
 }
+/* =========================
+   PODCAST — CTA EDITORIAL
+   ========================= */
+
+.podcast-cta{
+  display: inline-block;
+  margin-top: 18px;
+  font-size: 14px;
+  letter-spacing: .02em;
+  color: rgba(255,255,255,.7);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255,255,255,.3);
+}
+
+.podcast-cta:hover{
+  color: #ffffff;
+  border-color: #ffffff;
+}
