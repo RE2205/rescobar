@@ -99,3 +99,29 @@
     font-size:clamp(26px,6vw,38px);
   }
 }
+/* =====================================================
+   FIX DEFINITIVO — FOTO ARTE Y VIDA
+   Anula herencias de styles-clean.css
+   ===================================================== */
+
+.lp-espacio-creativo-split__media{
+  max-width:480px;
+  height:auto;
+}
+
+.lp-espacio-creativo-split__media img{
+  all: unset;                 /* rompe TODA herencia previa */
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: none;
+
+  object-fit: contain;
+  object-position: center;
+}
+
+@media (max-width: 900px){
+  .lp-espacio-creativo-split__media{
+    max-width:100%;
+  }
+}
