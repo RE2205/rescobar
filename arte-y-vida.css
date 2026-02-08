@@ -174,3 +174,40 @@ body.arte-vida-page .lp-hero__headline{
   color:#2F2F2F;
   margin:0;
 }
+/* =====================================================
+   ARTE Y VIDA — AJUSTE FINO FINAL
+   ===================================================== */
+
+/* Hero aún más contenido */
+.arte-vida-hero{
+  padding:40px 0 32px;
+}
+
+/* Título más íntimo */
+.arte-vida-hero__headline{
+  font-size: clamp(24px, 3vw, 36px);
+  line-height:1.22;
+}
+
+/* Split más compacto */
+.lp-espacio-creativo-split{
+  padding:56px 0 64px;
+}
+
+/* Imagen un poco más contenida */
+.lp-espacio-creativo-split__media{
+  max-width:420px;
+}
+
+/* Texto no tan ancho */
+.lp-espacio-creativo-split__text{
+  max-width:520px;
+}
+
+/* Bloques siguientes más cercanos */
+.lp-espacio-creativo-frame,
+.lp-espacio-creativo-duo,
+.lp-espacio-creativo-fit,
+.lp-espacio-creativo-contact{
+  padding:64px 0;
+}
