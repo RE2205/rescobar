@@ -1,1 +1,101 @@
+/* =====================================================
+   ARTE Y VIDA — CSS PROPIO
+   ===================================================== */
 
+/* ---------- HERO ---------- */
+
+.lp-hero--minimal{
+  background:#F6F4EF;
+  padding:56px 0 48px;
+}
+
+.lp-hero__headline{
+  max-width:680px;
+  margin:0 auto;
+  text-align:center;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size:clamp(28px,3.6vw,44px);
+  line-height:1.18;
+  color:#2F2F2F;
+}
+
+/* ---------- SPLIT IMAGEN / TEXTO ---------- */
+
+.lp-espacio-creativo-split{
+  background:#F6F4EF;
+  padding:72px 0 96px;
+}
+
+.lp-espacio-creativo-split__inner{
+  max-width:1120px;
+  margin:0 auto;
+  padding:0 24px;
+  display:grid;
+  grid-template-columns:480px 1fr;
+  gap:72px;
+  align-items:flex-start;
+}
+
+.lp-espacio-creativo-split__media{
+  max-width:480px;
+}
+
+.lp-espacio-creativo-split__media img{
+  width:100%;
+  height:auto;
+  display:block;
+  object-fit:contain;
+  border-radius:8px;
+}
+
+.lp-espacio-creativo-split__text{
+  max-width:560px;
+}
+
+/* ---------- SECCIONES ---------- */
+
+.lp-artevida-frame,
+.lp-artevida-duo,
+.lp-artevida-fit,
+.lp-artevida-contact{
+  background:#F6F4EF;
+  padding:88px 0;
+}
+
+.lp-artevida-fit h3{
+  margin-top:42px;
+}
+
+/* ---------- CONTACTO ---------- */
+
+.lp-artevida-contact a{
+  display:inline-block;
+  margin-top:18px;
+  font-size:15px;
+  color:rgba(47,47,47,.75);
+  text-decoration:none;
+  border-bottom:1px solid rgba(198,184,166,.75);
+  padding-bottom:4px;
+}
+
+/* ---------- RESPONSIVE ---------- */
+
+@media (max-width:900px){
+
+  .lp-hero--minimal{
+    padding:48px 0 40px;
+  }
+
+  .lp-espacio-creativo-split__inner{
+    grid-template-columns:1fr;
+    gap:40px;
+  }
+
+  .lp-espacio-creativo-split__media{
+    max-width:100%;
+  }
+
+  .lp-hero__headline{
+    font-size:clamp(26px,6vw,38px);
+  }
+}
