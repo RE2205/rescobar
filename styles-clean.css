@@ -1789,3 +1789,144 @@ body{
   padding-bottom: 4px;
   text-decoration: none;
 }
+/* =========================
+   ARTE Y VIDA — AISLADO TOTAL
+   ========================= */
+
+/* HERO */
+.lp-hero--minimal{
+  background:#F6F4EF;
+  padding:120px 0 96px;
+}
+
+.lp-hero--minimal .lp-hero__headline{
+  max-width:820px;
+  margin:0 auto;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(42px, 5vw, 64px);
+  line-height:1.12;
+  color:#2F2F2F;
+  text-align:center;
+}
+
+/* =========================
+   BLOQUE SPLIT (IMAGEN / TEXTO)
+========================= */
+
+.lp-espacio-creativo-split{
+  background:#F6F4EF;
+  padding:96px 0;
+}
+
+/* CONTENEDOR — NO hereda two-col ni block */
+.lp-espacio-creativo-split__inner{
+  max-width:1120px;
+  margin:0 auto;
+  padding:0 24px;
+
+  display:grid;
+  grid-template-columns: 480px 1fr;
+  gap:72px;
+  align-items:flex-start;
+}
+
+/* COLUMNA IZQUIERDA — IMAGEN */
+.lp-espacio-creativo-split__media{
+  width:100%;
+  max-width:480px;
+}
+
+/* IMAGEN REAL — SIN RECORTE */
+.lp-espacio-creativo-split__media img{
+  width:100%;
+  height:auto;
+  display:block;
+
+  /* rompe herencias */
+  max-height:none !important;
+  object-fit:contain !important;
+
+  border-radius:8px;
+}
+
+/* COLUMNA DERECHA — TEXTO */
+.lp-espacio-creativo-split__text{
+  max-width:560px;
+}
+
+.lp-espacio-creativo-split__text p{
+  margin:0 0 1.4em 0;
+  font-size:17px;
+  line-height:1.75;
+  color:#6A6A6A;
+}
+
+/* =========================
+   BLOQUES SIGUIENTES
+========================= */
+
+.lp-artevida-frame,
+.lp-artevida-duo,
+.lp-artevida-fit,
+.lp-artevida-contact{
+  background:#F6F4EF;
+  padding:88px 0;
+}
+
+.lp-artevida-frame h2,
+.lp-artevida-duo h2,
+.lp-artevida-fit h2,
+.lp-artevida-contact h2{
+  font-size:28px;
+  font-weight:500;
+  color:#2F2F2F;
+  margin-bottom:22px;
+}
+
+.lp-artevida-frame p,
+.lp-artevida-duo p,
+.lp-artevida-fit p,
+.lp-artevida-contact p{
+  max-width:640px;
+  font-size:17px;
+  line-height:1.75;
+  color:#6A6A6A;
+}
+
+.lp-artevida-fit h3{
+  margin-top:42px;
+  font-size:18px;
+  font-weight:500;
+  color:#2F2F2F;
+}
+
+/* LINK */
+.lp-artevida-contact a{
+  display:inline-block;
+  margin-top:18px;
+  font-size:15px;
+  color:rgba(47,47,47,.75);
+  text-decoration:none;
+  border-bottom:1px solid rgba(198,184,166,.75);
+  padding-bottom:4px;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width:900px){
+
+  .lp-espacio-creativo-split__inner{
+    grid-template-columns:1fr;
+    gap:40px;
+  }
+
+  .lp-espacio-creativo-split__media{
+    max-width:100%;
+  }
+
+  .lp-hero--minimal{
+    padding:96px 0 72px;
+  }
+}
