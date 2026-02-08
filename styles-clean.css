@@ -1740,3 +1740,52 @@ body{
   height: auto;
   border-radius: 8px;
 }
+/* =========================
+   UMBRAL — FONDO GESTUAL (POLLOCK)
+========================= */
+
+.block.umbral{
+  position: relative;
+  background-color: #F6F4EF;
+  background-image: url("assets/pollock.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  padding: 140px 0;
+}
+
+/* Velo clínico para que NO robe protagonismo */
+.block.umbral::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(246,244,239,0.88);
+  pointer-events: none;
+}
+
+/* Contenido por encima del fondo */
+.block.umbral .umbral-inner{
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  max-width: 720px;
+}
+
+/* Ajustes finos de texto (por si acaso) */
+.block.umbral h3{
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+.block.umbral p{
+  color: #6A6A6A;
+  line-height: 1.75;
+  margin-bottom: 28px;
+}
+
+.block.umbral .umbral-link{
+  color: rgba(47,47,47,.75);
+  border-bottom: 1px solid rgba(198,184,166,.7);
+  padding-bottom: 4px;
+  text-decoration: none;
+}
