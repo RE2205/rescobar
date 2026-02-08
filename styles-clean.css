@@ -1720,3 +1720,23 @@ body{
   border-bottom: 1px solid rgba(198,184,166,.75);
   padding-bottom: 4px;
 }
+/* =========================
+   ESPACIO CLÍNICO — FOTO DE INGRESO
+========================= */
+
+.lp-space{
+  background: #F6F4EF;
+  padding: 64px 0 96px 0;
+}
+
+.lp-space__inner{
+  display: flex;
+  justify-content: center;
+}
+
+.lp-space__img{
+  max-width: 1100px;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
