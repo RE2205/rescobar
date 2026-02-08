@@ -100,28 +100,41 @@
   }
 }
 /* =====================================================
-   FIX DEFINITIVO — FOTO ARTE Y VIDA
-   Anula herencias de styles-clean.css
+   FIX REAL — FOTO ARTE Y VIDA
    ===================================================== */
 
+/* 1. El contenedor NO puede comportarse como .ph */
 .lp-espacio-creativo-split__media{
-  max-width:480px;
-  height:auto;
+  max-width: 480px;
+  height: auto;
+  overflow: visible;          /* clave */
+  background: none !important;
 }
 
+/* 2. Aseguramos que sea IMG real, no background */
 .lp-espacio-creativo-split__media img{
-  all: unset;                 /* rompe TODA herencia previa */
   display: block;
   width: 100%;
   height: auto;
-  max-height: none;
 
-  object-fit: contain;
-  object-position: center;
+  /* anulaciones explícitas */
+  background: none !important;
+  border: none !important;
+  border-radius: 0 !important;
+
+  /* contra .ph */
+  position: static !important;
 }
 
+/* 3. Si por error heredó clase .img o .ph */
+.lp-espacio-creativo-split__media.img,
+.lp-espacio-creativo-split__media.ph{
+  height: auto !important;
+}
+
+/* 4. Responsive */
 @media (max-width: 900px){
   .lp-espacio-creativo-split__media{
-    max-width:100%;
+    max-width: 100%;
   }
 }
