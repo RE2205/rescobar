@@ -1,213 +1,180 @@
 /* =====================================================
-   ARTE Y VIDA — CSS PROPIO
+   ARTE Y VIDA — CSS COMPLETO Y LIMPIO
+   Página clínica–creativa independiente
    ===================================================== */
+
+/* ---------- RESET ---------- */
+
+*,
+*::before,
+*::after{
+  box-sizing: border-box;
+}
+
+html, body{
+  margin: 0;
+  padding: 0;
+}
+
+body{
+  font-family: system-ui, -apple-system, "Inter", Arial, sans-serif;
+  background: #F6F4EF;
+  color: #2F2F2F;
+  line-height: 1.6;
+}
+
+/* ---------- CONTENEDOR ---------- */
+
+.wrap{
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
 
 /* ---------- HERO ---------- */
 
-.lp-hero--minimal{
-  background:#F6F4EF;
-  padding:56px 0 48px;
+.arte-vida-hero{
+  background: #F6F4EF;
+  padding: 40px 0 32px;
 }
 
-.lp-hero__headline{
-  max-width:680px;
-  margin:0 auto;
-  text-align:center;
+.arte-vida-hero__inner{
+  max-width: 760px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.arte-vida-hero__headline{
+  margin: 0;
   font-family: Georgia, "Times New Roman", serif;
-  font-size:clamp(28px,3.6vw,44px);
-  line-height:1.18;
-  color:#2F2F2F;
+  font-size: clamp(24px, 3vw, 36px);
+  line-height: 1.22;
+  color: #2F2F2F;
 }
 
-/* ---------- SPLIT IMAGEN / TEXTO ---------- */
+/* ---------- BLOQUE IMAGEN + TEXTO ---------- */
 
 .lp-espacio-creativo-split{
-  background:#F6F4EF;
-  padding:72px 0 96px;
+  padding: 56px 0 64px;
 }
 
 .lp-espacio-creativo-split__inner{
-  max-width:1120px;
-  margin:0 auto;
-  padding:0 24px;
-  display:grid;
-  grid-template-columns:480px 1fr;
-  gap:72px;
-  align-items:flex-start;
+  display: grid;
+  grid-template-columns: 420px 1fr;
+  gap: 56px;
+  align-items: flex-start;
 }
 
+/* Imagen clínica (sin recorte, sin trucos) */
 .lp-espacio-creativo-split__media{
-  max-width:480px;
+  max-width: 420px;
 }
 
 .lp-espacio-creativo-split__media img{
-  width:100%;
-  height:auto;
-  display:block;
-  object-fit:contain;
-  border-radius:8px;
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
 }
 
+/* Texto */
 .lp-espacio-creativo-split__text{
-  max-width:560px;
+  max-width: 520px;
 }
 
-/* ---------- SECCIONES ---------- */
-
-.lp-artevida-frame,
-.lp-artevida-duo,
-.lp-artevida-fit,
-.lp-artevida-contact{
-  background:#F6F4EF;
-  padding:88px 0;
+.lp-espacio-creativo-split__text p{
+  margin: 0 0 1.4em 0;
+  font-size: 17px;
+  line-height: 1.75;
+  color: #6A6A6A;
 }
 
-.lp-artevida-fit h3{
-  margin-top:42px;
+/* ---------- BLOQUES DE CONTENIDO ---------- */
+
+section.block{
+  padding: 64px 0;
+}
+
+/* Etiqueta */
+.tag{
+  display: inline-block;
+  margin-bottom: 18px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-size: 12px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  background: rgba(0,0,0,.05);
+  border: 1px solid rgba(0,0,0,.08);
+  color: #555;
+}
+
+/* Títulos */
+h2{
+  margin: 0 0 22px 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 28px;
+  font-weight: 500;
+  color: #2F2F2F;
+}
+
+h3{
+  margin: 42px 0 18px 0;
+  font-size: 18px;
+  font-weight: 500;
+  color: #2F2F2F;
+}
+
+/* Párrafos generales */
+p{
+  margin: 0 0 1.4em 0;
+  font-size: 17px;
+  line-height: 1.75;
+  color: #6A6A6A;
 }
 
 /* ---------- CONTACTO ---------- */
 
-.lp-artevida-contact a{
-  display:inline-block;
-  margin-top:18px;
-  font-size:15px;
-  color:rgba(47,47,47,.75);
-  text-decoration:none;
-  border-bottom:1px solid rgba(198,184,166,.75);
-  padding-bottom:4px;
+.lp-espacio-creativo-contact a{
+  display: inline-block;
+  margin-top: 18px;
+  font-size: 15px;
+  color: rgba(47,47,47,.75);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(198,184,166,.75);
+  padding-bottom: 4px;
+}
+
+/* ---------- FOOTER ---------- */
+
+footer{
+  padding: 28px 0;
+  background: #F6F4EF;
+}
+
+footer .wrap{
+  font-size: 14px;
+  color: #6A6A6A;
 }
 
 /* ---------- RESPONSIVE ---------- */
 
-@media (max-width:900px){
+@media (max-width: 900px){
 
-  .lp-hero--minimal{
-    padding:48px 0 40px;
+  .arte-vida-hero{
+    padding: 32px 0 24px;
+  }
+
+  .arte-vida-hero__headline{
+    font-size: clamp(22px, 6vw, 32px);
   }
 
   .lp-espacio-creativo-split__inner{
-    grid-template-columns:1fr;
-    gap:40px;
+    grid-template-columns: 1fr;
+    gap: 40px;
   }
 
   .lp-espacio-creativo-split__media{
-    max-width:100%;
+    max-width: 100%;
   }
-
-  .lp-hero__headline{
-    font-size:clamp(26px,6vw,38px);
-  }
-}
-/* =====================================================
-   FIX DEFINITIVO — ARTE Y VIDA
-   Anula el hero de Logos Psyche
-   ===================================================== */
-
-body.arte-vida-page .lp-hero{
-  all: unset;                /* rompe el hero grande */
-  display: block;
-  background: #F6F4EF;
-}
-
-body.arte-vida-page .lp-hero--minimal{
-  padding: 56px 0 48px;
-}
-
-body.arte-vida-page .lp-hero__inner{
-  all: unset;
-  max-width: 760px;
-  margin: 0 auto;
-  padding: 0 24px;
-  text-align: center;
-}
-
-body.arte-vida-page .lp-hero__headline{
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(28px, 3.6vw, 44px);
-  line-height: 1.18;
-  color: #2F2F2F;
-}
-/* =====================================================
-   ARTE Y VIDA — HERO PROPIO (SIN HERENCIA)
-   ===================================================== */
-
-.arte-vida-hero{
-  background:#F6F4EF;
-  padding:56px 0 48px;
-}
-
-.arte-vida-hero .lp-hero__inner{
-  max-width:760px;
-  margin:0 auto;
-  padding:0 24px;
-  text-align:center;
-}
-
-.arte-vida-hero .lp-hero__headline{
-  font-family: Georgia, "Times New Roman", serif;
-  font-size:clamp(28px,3.6vw,44px);
-  line-height:1.18;
-  color:#2F2F2F;
-  margin:0;
-}
-/* =====================================================
-   ARTE Y VIDA — HERO LIMPIO (SIN HERENCIAS)
-   ===================================================== */
-
-.arte-vida-hero{
-  background:#F6F4EF;
-  padding:56px 0 48px;
-}
-
-.arte-vida-hero__inner{
-  max-width:760px;
-  margin:0 auto;
-  padding:0 24px;
-  text-align:center;
-}
-
-.arte-vida-hero__headline{
-  font-family: Georgia, "Times New Roman", serif;
-  font-size:clamp(28px, 3.6vw, 44px);
-  line-height:1.18;
-  color:#2F2F2F;
-  margin:0;
-}
-/* =====================================================
-   ARTE Y VIDA — AJUSTE FINO FINAL
-   ===================================================== */
-
-/* Hero aún más contenido */
-.arte-vida-hero{
-  padding:40px 0 32px;
-}
-
-/* Título más íntimo */
-.arte-vida-hero__headline{
-  font-size: clamp(24px, 3vw, 36px);
-  line-height:1.22;
-}
-
-/* Split más compacto */
-.lp-espacio-creativo-split{
-  padding:56px 0 64px;
-}
-
-/* Imagen un poco más contenida */
-.lp-espacio-creativo-split__media{
-  max-width:420px;
-}
-
-/* Texto no tan ancho */
-.lp-espacio-creativo-split__text{
-  max-width:520px;
-}
-
-/* Bloques siguientes más cercanos */
-.lp-espacio-creativo-frame,
-.lp-espacio-creativo-duo,
-.lp-espacio-creativo-fit,
-.lp-espacio-creativo-contact{
-  padding:64px 0;
 }
