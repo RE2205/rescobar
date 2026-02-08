@@ -1674,3 +1674,49 @@ body{
   color: #ffffff;
   border-color: #ffffff;
 }
+/* =========================
+   ARTE Y VIDA — SUBPÁGINA
+========================= */
+
+.lp-hero--minimal{
+  padding: 120px 0;
+  background: #F6F4EF;
+}
+
+.lp-artevida-intro p,
+.lp-artevida-frame p,
+.lp-artevida-duo p,
+.lp-artevida-fit p,
+.lp-artevida-contact p{
+  max-width: 640px;
+  font-size: 17px;
+  line-height: 1.75;
+  color: #6A6A6A;
+}
+
+.lp-artevida-frame h2,
+.lp-artevida-duo h2,
+.lp-artevida-fit h2,
+.lp-artevida-contact h2{
+  font-size: 28px;
+  font-weight: 500;
+  color: #2F2F2F;
+  margin-bottom: 22px;
+}
+
+.lp-artevida-fit h3{
+  margin-top: 42px;
+  font-size: 18px;
+  font-weight: 500;
+  color: #2F2F2F;
+}
+
+.lp-artevida-contact a{
+  display: inline-block;
+  margin-top: 18px;
+  font-size: 15px;
+  color: rgba(47,47,47,.75);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(198,184,166,.75);
+  padding-bottom: 4px;
+}
