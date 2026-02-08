@@ -1,1 +1,139 @@
+/* =====================================================
+   BASE.CSS — FUNDACIÓN DEL SITIO
+   No identidad. No narrativa. Solo estructura.
+   ===================================================== */
 
+/* -------- Variables base -------- */
+
+:root{
+  --bg-light:#F6F4EF;
+  --bg-dark:#0b0b0c;
+
+  --text-dark:#2F2F2F;
+  --text-mid:#6A6A6A;
+  --text-light:#f3f3f3;
+
+  --border-soft:rgba(0,0,0,.08);
+}
+
+/* -------- Reset esencial -------- */
+
+*,
+*::before,
+*::after{
+  box-sizing:border-box;
+}
+
+html,body{
+  margin:0;
+  padding:0;
+}
+
+/* -------- Body -------- */
+
+body{
+  font-family: system-ui, -apple-system, "Inter", Arial, sans-serif;
+  background:var(--bg-light);
+  color:var(--text-dark);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* -------- Contenedor -------- */
+
+.wrap{
+  max-width:1120px;
+  margin:0 auto;
+  padding:0 24px;
+}
+
+/* -------- Secciones -------- */
+
+.block{
+  padding:88px 0;
+}
+
+/* -------- Tipografía base -------- */
+
+h1,h2,h3{
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight:500;
+  margin:0 0 22px 0;
+  color:var(--text-dark);
+}
+
+h1{
+  font-size:clamp(36px,5vw,64px);
+  line-height:1.1;
+}
+
+h2{
+  font-size:28px;
+  line-height:1.25;
+}
+
+h3{
+  font-size:18px;
+  line-height:1.35;
+}
+
+p{
+  font-size:17px;
+  line-height:1.75;
+  color:var(--text-mid);
+  margin:0 0 1.4em 0;
+}
+
+/* -------- Elementos comunes -------- */
+
+.tag{
+  display:inline-block;
+  padding:8px 14px;
+  border-radius:999px;
+  font-size:12px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  background:rgba(0,0,0,.04);
+  border:1px solid var(--border-soft);
+  color:#555;
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
+  border-bottom:1px solid rgba(0,0,0,.25);
+  padding-bottom:2px;
+}
+
+a:hover{
+  border-color:#000;
+}
+
+/* -------- Imágenes -------- */
+
+img{
+  max-width:100%;
+  height:auto;
+  display:block;
+}
+
+/* -------- Responsive base -------- */
+
+@media (max-width:900px){
+
+  .block{
+    padding:64px 0;
+  }
+
+  h1{
+    font-size:clamp(30px,7vw,44px);
+  }
+
+  h2{
+    font-size:24px;
+  }
+
+  p{
+    font-size:16px;
+  }
+}
