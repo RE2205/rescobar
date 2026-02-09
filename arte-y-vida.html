@@ -8,15 +8,179 @@
   <meta name="description" content="Un encuadre clínico–creativo para artistas con bloqueo profundo." />
   <meta name="robots" content="noindex, nofollow" />
 
-  <!-- CSS ÚNICO DE ESTA PÁGINA -->
- <link rel="stylesheet" href="css/arte-y-vida.css?v=FORZAR">
+  <style>
+    /* =====================================================
+       ARTE Y VIDA — CSS INLINE (CONTROL ABSOLUTO)
+       ===================================================== */
+
+    *,
+    *::before,
+    *::after{
+      box-sizing: border-box;
+    }
+
+    html, body{
+      margin: 0;
+      padding: 0;
+    }
+
+    body{
+      font-family: system-ui, -apple-system, "Inter", Arial, sans-serif;
+      background: #F6F4EF;
+      color: #2F2F2F;
+      line-height: 1.6;
+    }
+
+    .wrap{
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ---------- HERO ---------- */
+
+    .arte-vida-hero{
+      padding: 40px 0 32px;
+      background: #F6F4EF;
+      text-align: center;
+    }
+
+    .arte-vida-hero__inner{
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .arte-vida-hero__headline{
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(24px, 3vw, 36px);
+      line-height: 1.22;
+      color: #2F2F2F;
+    }
+
+    /* ---------- IMAGEN + TEXTO ---------- */
+
+    .lp-espacio-creativo-split{
+      padding: 56px 0 64px;
+    }
+
+    .lp-espacio-creativo-split__inner{
+      display: grid;
+      grid-template-columns: 420px 1fr;
+      gap: 56px;
+      align-items: flex-start;
+    }
+
+    .lp-espacio-creativo-split__media{
+      max-width: 420px;
+    }
+
+    .lp-espacio-creativo-split__media img{
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 8px;
+    }
+
+    .lp-espacio-creativo-split__text{
+      max-width: 520px;
+    }
+
+    .lp-espacio-creativo-split__text p{
+      margin: 0 0 1.4em;
+      font-size: 17px;
+      line-height: 1.75;
+      color: #6A6A6A;
+    }
+
+    /* ---------- BLOQUES ---------- */
+
+    section.block{
+      padding: 64px 0;
+    }
+
+    .tag{
+      display: inline-block;
+      margin-bottom: 18px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: 12px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      background: rgba(0,0,0,.05);
+      border: 1px solid rgba(0,0,0,.08);
+      color: #555;
+    }
+
+    h2{
+      margin: 0 0 22px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 28px;
+      font-weight: 500;
+      color: #2F2F2F;
+    }
+
+    h3{
+      margin: 42px 0 18px;
+      font-size: 18px;
+      font-weight: 500;
+      color: #2F2F2F;
+    }
+
+    p{
+      margin: 0 0 1.4em;
+      font-size: 17px;
+      line-height: 1.75;
+      color: #6A6A6A;
+    }
+
+    /* ---------- CONTACTO ---------- */
+
+    .lp-espacio-creativo-contact a{
+      display: inline-block;
+      margin-top: 18px;
+      font-size: 15px;
+      color: #555;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(198,184,166,.75);
+      padding-bottom: 4px;
+    }
+
+    /* ---------- FOOTER ---------- */
+
+    footer{
+      padding: 28px 0;
+      text-align: center;
+      font-size: 14px;
+      color: #6A6A6A;
+    }
+
+    /* ---------- RESPONSIVE ---------- */
+
+    @media (max-width: 900px){
+      .lp-espacio-creativo-split__inner{
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .lp-espacio-creativo-split__media{
+        max-width: 100%;
+      }
+
+      .arte-vida-hero{
+        padding: 32px 0 24px;
+      }
+
+      .arte-vida-hero__headline{
+        font-size: clamp(22px, 6vw, 32px);
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-  <!-- =========================
-       HERO
-  ========================= -->
+  <!-- HERO -->
   <header class="arte-vida-hero">
     <div class="arte-vida-hero__inner">
       <h1 class="arte-vida-hero__headline">
@@ -26,9 +190,7 @@
     </div>
   </header>
 
-  <!-- =========================
-       IMAGEN + TEXTO
-  ========================= -->
+  <!-- IMAGEN + TEXTO -->
   <section class="lp-espacio-creativo-split">
     <div class="wrap lp-espacio-creativo-split__inner">
 
@@ -57,9 +219,7 @@
     </div>
   </section>
 
-  <!-- =========================
-       EL ENCUADRE
-  ========================= -->
+  <!-- EL ENCUADRE -->
   <section class="block">
     <div class="wrap">
 
@@ -81,9 +241,7 @@
     </div>
   </section>
 
-  <!-- =========================
-       EL DÚO
-  ========================= -->
+  <!-- EL DÚO -->
   <section class="block">
     <div class="wrap">
 
@@ -105,9 +263,7 @@
     </div>
   </section>
 
-  <!-- =========================
-       PARA QUIÉN ES / NO ES
-  ========================= -->
+  <!-- PARA QUIÉN ES / NO ES -->
   <section class="block">
     <div class="wrap">
 
@@ -134,38 +290,6 @@
     </div>
   </section>
 
-  <!-- =========================
-       CONTACTO
-  ========================= -->
+  <!-- CONTACTO -->
   <section class="block lp-espacio-creativo-contact">
-    <div class="wrap">
-
-      <h2>Primer contacto</h2>
-
-      <p>
-        Si este encuadre resuena,
-        el primer paso es una conversación.
-      </p>
-
-      <p>
-        Sin compromiso. Sin promesas.
-      </p>
-
-      <a href="https://wa.me/50230607168" target="_blank" rel="noopener">
-        Escribir por WhatsApp →
-      </a>
-
-    </div>
-  </section>
-
-  <!-- =========================
-       FOOTER
-  ========================= -->
-  <footer>
-    <div class="wrap">
-      © Ronald Escobar · Logos Psyche
-    </div>
-  </footer>
-
-</body>
-</html>
+    <
