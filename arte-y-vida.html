@@ -10,8 +10,8 @@
 
   <style>
     /* =========================================
-       ARTE Y VIDA — DOPAMINA
-       Rick Rubin x Austin Kleon x Ronald Escobar
+       ARTE Y VIDA — DOPAMINA PURA
+       Rick Rubin × Austin Kleon × Ronald Escobar
        ========================================= */
 
     :root{
@@ -25,9 +25,7 @@
       --neon-amarillo:#ffd23f;
     }
 
-    *{
-      box-sizing:border-box;
-    }
+    *{ box-sizing:border-box; }
 
     html,body{
       margin:0;
@@ -73,15 +71,23 @@
 
     h1{
       font-family: Georgia, "Times New Roman", serif;
-      font-size:clamp(40px,6vw,84px);
+      font-size:clamp(42px,6vw,86px);
       line-height:1.05;
       font-weight:400;
       margin:0;
     }
 
-    .underline{
-      margin:20px auto 0;
-      width:420px;
+    .subrayado{
+      display:inline-block;
+      position:relative;
+    }
+
+    .subrayado::after{
+      content:"";
+      position:absolute;
+      left:-6%;
+      right:-6%;
+      bottom:-12px;
       height:6px;
       background:linear-gradient(
         90deg,
@@ -125,10 +131,9 @@
       font-size:18px;
       color:var(--gris);
       margin:0 auto 28px;
-      text-align:left;
     }
 
-    .manifiesto p strong{
+    .manifiesto strong{
       color:var(--blanco);
       font-weight:500;
     }
@@ -140,14 +145,13 @@
       text-align:center;
       font-family: Georgia, "Times New Roman", serif;
       font-size:clamp(26px,4vw,44px);
-      color:var(--blanco);
     }
 
     .gesto span{
       color:var(--neon-rosa);
     }
 
-    /* ================= FOTO + TEXTO ================= */
+    /* ================= CLÍNICA ================= */
 
     .split{
       padding:80px 0;
@@ -193,9 +197,7 @@
 
     @media (max-width:900px){
       header{ padding:80px 0 60px; }
-      .underline{ width:280px; }
       .split{ grid-template-columns:1fr; }
-      .manifiesto p{ text-align:left; }
     }
   </style>
 </head>
@@ -208,9 +210,8 @@
       <h1>
         Si quieres trabajar<br>
         en tu arte,<br>
-        trabaja en tu vida.
+        <span class="subrayado">trabaja en tu vida.</span>
       </h1>
-      <div class="underline"></div>
     </div>
   </header>
 
@@ -246,7 +247,7 @@
 
   <!-- CLÍNICA -->
   <section class="split wrap">
-    <img src="assets/clinica1.png" alt="Espacio de trabajo" />
+    <img src="assets/clinica1.png" alt="Espacio clínico" />
     <p>
       A veces el bloqueo no es técnico.<br>
       Es vital.<br><br>
