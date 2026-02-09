@@ -9,11 +9,10 @@
   <meta name="robots" content="noindex, nofollow" />
 
   <style>
-    /* =====================================================
+    /* =========================================
        ARTE Y VIDA — DOPAMINA PURA
        Rick Rubin × Austin Kleon × Ronald Escobar
-       TODO INLINE · SIN DEPENDENCIAS
-       ===================================================== */
+       ========================================= */
 
     :root{
       --negro:#0b0b0c;
@@ -40,6 +39,7 @@
       line-height:1.6;
     }
 
+    /* Layout */
     .wrap{
       max-width:1100px;
       margin:0 auto;
@@ -86,8 +86,8 @@
     .subrayado::after{
       content:"";
       position:absolute;
-      left:-8%;
-      right:-8%;
+      left:-6%;
+      right:-6%;
       bottom:-14px;
       height:6px;
       background:linear-gradient(
@@ -104,7 +104,7 @@
     /* ================= LA PILA ================= */
 
     .la-pila{
-      padding:64px 0 32px;
+      padding:64px 0 8px; /* unión directa con el manifiesto */
     }
 
     .la-pila img{
@@ -112,7 +112,6 @@
       max-width:720px;
       display:block;
       margin:0 auto;
-
       border-radius:12px;
       transform:rotate(-0.6deg);
       filter:contrast(1.05) saturate(1.15);
@@ -124,7 +123,7 @@
     /* ================= MANIFIESTO ================= */
 
     .manifiesto{
-      padding:32px 0 64px;
+      padding:16px 0 64px;
       text-align:center;
     }
 
@@ -132,7 +131,7 @@
       max-width:640px;
       font-size:18px;
       color:var(--gris);
-      margin:0 auto 14px;
+      margin:0 auto 8px;
     }
 
     .manifiesto strong{
@@ -141,13 +140,13 @@
     }
 
     .manifiesto .nota{
-      margin-top:28px;
+      margin-top:24px;
     }
 
     /* ================= KLEON ================= */
 
     .kleon{
-      padding:80px 0;
+      padding:72px 0;
     }
 
     .kleon h2{
@@ -155,7 +154,7 @@
       font-size:clamp(26px,4vw,44px);
       font-weight:400;
       text-align:center;
-      margin-bottom:48px;
+      margin-bottom:40px;
     }
 
     .kleon ul{
@@ -168,7 +167,7 @@
     .kleon li{
       color:var(--gris);
       font-size:18px;
-      margin-bottom:18px;
+      margin-bottom:16px;
       padding-left:18px;
       position:relative;
     }
@@ -213,6 +212,7 @@
     .split img{
       width:100%;
       border-radius:12px;
+      filter:contrast(1.05) saturate(1.1);
       box-shadow:0 12px 40px rgba(0,0,0,.4);
     }
 
