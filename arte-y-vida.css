@@ -1,51 +1,68 @@
-mira esto menoarece que asi estaba mejor, notas diferencias? /* =====================================================
-   ARTE Y VIDA — CSS ENCÁPSULADO
-   Solo afecta a .arte-vida-page
+/* =====================================================
+   BASE LIMPIA
    ===================================================== */
 
-.arte-vida-page{
-  background:#F6F4EF;
-  color:#2F2F2F;
+:root{
+  --bg-dark:#0b0b0c;
+  --bg-light:#F6F4EF;
+  --text-dark:#2F2F2F;
+  --text-mid:#6A6A6A;
+  --border-soft:rgba(0,0,0,.08);
 }
 
-/* -------- RESET LOCAL -------- */
-
-.arte-vida-page p,
-.arte-vida-page h1,
-.arte-vida-page h2,
-.arte-vida-page h3,
-.arte-vida-page span{
-  opacity:1;
-  filter:none;
+*,
+*::before,
+*::after{
+  box-sizing:border-box;
 }
 
-.arte-vida-page p{
-  color:#6A6A6A;
+html,body{
+  margin:0;
+  padding:0;
+}
+
+body{
+  font-family: system-ui, -apple-system, "Inter", Arial, sans-serif;
+  background: var(--bg-light);
+  color: var(--text-dark);
+  line-height:1.6;
+}
+
+/* Contenedor estándar */
+.wrap{
+  max-width:1120px;
+  margin:0 auto;
+  padding:0 24px;
+}
+
+/* Bloques */
+.block{
+  padding:88px 0;
+}
+
+/* Títulos */
+h1,h2,h3{
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight:500;
+  margin:0 0 22px 0;
+  color:var(--text-dark);
+}
+
+h2{ font-size:28px; }
+h3{ font-size:18px; }
+
+/* Texto */
+p{
+  margin:0 0 1.4em 0;
   font-size:17px;
   line-height:1.75;
-  margin-bottom:1.4em;
+  color:var(--text-mid);
 }
 
-.arte-vida-page h2{
-  font-family: Georgia, "Times New Roman", serif;
-  font-size:28px;
-  font-weight:500;
-  color:#2F2F2F;
-  margin-bottom:22px;
-}
-
-.arte-vida-page h3{
-  font-size:18px;
-  font-weight:500;
-  color:#2F2F2F;
-  margin-top:42px;
-  margin-bottom:18px;
-}
-
-/* -------- TAGS -------- */
-
-.arte-vida-page .tag{
+/* Etiquetas */
+.tag{
   display:inline-block;
+  margin-bottom:18px;
   padding:8px 14px;
   border-radius:999px;
   font-size:12px;
@@ -54,102 +71,120 @@ mira esto menoarece que asi estaba mejor, notas diferencias? /* ================
   background:rgba(0,0,0,.04);
   border:1px solid rgba(0,0,0,.08);
   color:#555;
-  margin-bottom:18px;
 }
 
-/* -------- HERO -------- */
+/* Links */
+a{
+  color:inherit;
+  text-decoration:none;
+  border-bottom:1px solid rgba(0,0,0,.25);
+  padding-bottom:2px;
+}
+a:hover{
+  border-color:#000;
+}
 
-.arte-vida-page .lp-hero--minimal{
-  background:#F6F4EF;
+/* =====================================================
+   HERO — ARTE Y VIDA
+   ===================================================== */
+
+.lp-hero--minimal{
+  background:var(--bg-light);
   padding:84px 0 72px;
 }
 
-.arte-vida-page .lp-hero__headline{
+.lp-hero__headline{
   max-width:760px;
   margin:0 auto;
   text-align:center;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size:clamp(36px,4.4vw,56px);
+  font-size: clamp(36px, 4.4vw, 56px);
   line-height:1.14;
-  color:#2F2F2F;
+  color:var(--text-dark);
 }
 
-/* -------- SPLIT IMAGEN / TEXTO -------- */
+/* =====================================================
+   SPLIT — IMAGEN IZQ / TEXTO DER
+   ===================================================== */
 
-.arte-vida-page .lp-espacio-creativo-split{
+.lp-espacio-creativo-split{
+  background:var(--bg-light);
   padding:72px 0 96px;
-  background:#F6F4EF;
 }
 
-.arte-vida-page .lp-espacio-creativo-split__inner{
-  max-width:1120px;
-  margin:0 auto;
-  padding:0 24px;
+.lp-espacio-creativo-split__inner{
   display:grid;
   grid-template-columns:480px 1fr;
   gap:72px;
   align-items:flex-start;
 }
 
-/* Imagen izquierda — NO se recorta */
-.arte-vida-page .lp-espacio-creativo-split__media{
+/* Imagen */
+.lp-espacio-creativo-split__media{
   max-width:480px;
 }
 
-.arte-vida-page .lp-espacio-creativo-split__media img{
+.lp-espacio-creativo-split__media img{
   width:100%;
   height:auto;
   display:block;
   object-fit:contain;
-  max-height:none;
   border-radius:8px;
 }
 
-/* Texto derecha */
-.arte-vida-page .lp-espacio-creativo-split__text{
+/* Texto */
+.lp-espacio-creativo-split__text{
   max-width:560px;
 }
 
-/* -------- SECCIONES DE ABAJO -------- */
+/* =====================================================
+   SECCIONES DE CONTENIDO
+   ===================================================== */
 
-.arte-vida-page .lp-artevida-frame,
-.arte-vida-page .lp-artevida-duo,
-.arte-vida-page .lp-artevida-fit,
-.arte-vida-page .lp-artevida-contact{
-  background:#F6F4EF;
-  padding:88px 0;
+.lp-artevida-frame,
+.lp-artevida-duo,
+.lp-artevida-fit,
+.lp-artevida-contact{
+  background:var(--bg-light);
 }
 
-/* -------- CONTACTO -------- */
+/* Ajuste específico de “no es” */
+.lp-artevida-fit h3{
+  margin-top:42px;
+}
 
-.arte-vida-page .lp-artevida-contact a{
+/* Contacto */
+.lp-artevida-contact a{
   display:inline-block;
   margin-top:18px;
   font-size:15px;
   color:rgba(47,47,47,.75);
-  text-decoration:none;
   border-bottom:1px solid rgba(198,184,166,.75);
-  padding-bottom:4px;
 }
 
-/* -------- RESPONSIVE -------- */
+/* =====================================================
+   RESPONSIVE
+   ===================================================== */
 
 @media (max-width:900px){
 
-  .arte-vida-page .lp-hero--minimal{
+  .block{
+    padding:64px 0;
+  }
+
+  .lp-hero--minimal{
     padding:72px 0 64px;
   }
 
-  .arte-vida-page .lp-espacio-creativo-split__inner{
+  .lp-espacio-creativo-split__inner{
     grid-template-columns:1fr;
     gap:40px;
   }
 
-  .arte-vida-page .lp-espacio-creativo-split__media{
+  .lp-espacio-creativo-split__media{
     max-width:100%;
   }
 
-  .arte-vida-page .lp-hero__headline{
-    font-size:clamp(30px,6vw,44px);
+  .lp-hero__headline{
+    font-size: clamp(30px, 6vw, 44px);
   }
-}
+}  Este es igual?
