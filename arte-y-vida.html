@@ -48,7 +48,7 @@
     /* ================= HERO ================= */
 
     header{
-      padding:120px 0 80px;
+      padding:120px 0 72px;
       position:relative;
       overflow:hidden;
     }
@@ -87,7 +87,7 @@
       position:absolute;
       left:-6%;
       right:-6%;
-      bottom:-12px;
+      bottom:-14px;
       height:6px;
       background:linear-gradient(
         90deg,
@@ -103,7 +103,7 @@
     /* ================= LA PILA ================= */
 
     .la-pila{
-      padding:80px 0 40px;
+      padding:40px 0 16px;
     }
 
     .la-pila img{
@@ -123,42 +123,63 @@
     /* ================= MANIFIESTO ================= */
 
     .manifiesto{
-      padding:80px 0;
+      padding:32px 0 64px;
     }
 
     .manifiesto p{
       max-width:640px;
       font-size:18px;
       color:var(--gris);
-      margin:0 auto 28px;
+      margin:0 auto 24px;
+      text-align:center;
     }
 
     .manifiesto strong{
       color:var(--blanco);
       font-weight:500;
     }
-<!-- KLEON -->
-<section class="kleon">
-  <div class="wrap">
 
-    <h2 class="kleon-title">Algunas verdades incómodas</h2>
+    /* ================= KLEON ================= */
 
-    <ul class="kleon-list">
-      <li>La inspiración no llega cuando la llamas.</li>
-      <li>Llega cuando estás presente.</li>
-      <li>No todo lo que bloquea se resuelve creando.</li>
-      <li>A veces se resuelve <span>viviendo distinto</span>.</li>
-      <li>La obra no se empuja.</li>
-      <li>Se escucha.</li>
-      <li>Lo que evitas sentir<br>termina escribiéndose solo.</li>
-      <li>El cuerpo siempre va adelante.</li>
-      <li>La mente llega tarde.</li>
-      <li>Crear también es descansar.</li>
-      <li>Y a veces, desaparecer.</li>
-    </ul>
+    .kleon{
+      padding:80px 0;
+    }
 
-  </div>
-</section>
+    .kleon-title{
+      font-family: Georgia, "Times New Roman", serif;
+      font-size:clamp(26px,4vw,44px);
+      font-weight:400;
+      margin-bottom:48px;
+      text-align:center;
+    }
+
+    .kleon-list{
+      list-style:none;
+      padding:0;
+      margin:0 auto;
+      max-width:520px;
+    }
+
+    .kleon-list li{
+      font-size:18px;
+      line-height:1.7;
+      color:var(--gris);
+      margin-bottom:18px;
+      position:relative;
+      padding-left:20px;
+    }
+
+    .kleon-list li::before{
+      content:"—";
+      position:absolute;
+      left:0;
+      color:var(--neon-amarillo);
+    }
+
+    .kleon-list span{
+      color:var(--neon-verde);
+    }
+
     /* ================= GESTO ================= */
 
     .gesto{
@@ -217,7 +238,7 @@
     /* ================= RESPONSIVE ================= */
 
     @media (max-width:900px){
-      header{ padding:80px 0 60px; }
+      header{ padding:80px 0 56px; }
       .split{ grid-template-columns:1fr; }
     }
   </style>
@@ -239,7 +260,7 @@
   <!-- LA PILA -->
   <section class="la-pila">
     <div class="wrap">
-      <img src="assets/la-pila.jpg" alt="La pila" />
+      <img src="assets/la-pila.jpg" alt="La pila de libros" />
     </div>
   </section>
 
@@ -256,6 +277,29 @@
         lo que tu obra ya sabe<br>
         pero tú todavía no quieres escuchar.
       </p>
+    </div>
+  </section>
+
+  <!-- KLEON -->
+  <section class="kleon">
+    <div class="wrap">
+
+      <h2 class="kleon-title">Algunas verdades incómodas</h2>
+
+      <ul class="kleon-list">
+        <li>La inspiración no llega cuando la llamas.</li>
+        <li>Llega cuando estás presente.</li>
+        <li>No todo lo que bloquea se resuelve creando.</li>
+        <li>A veces se resuelve <span>viviendo distinto</span>.</li>
+        <li>La obra no se empuja.</li>
+        <li>Se escucha.</li>
+        <li>Lo que evitas sentir<br>termina escribiéndose solo.</li>
+        <li>El cuerpo siempre va adelante.</li>
+        <li>La mente llega tarde.</li>
+        <li>Crear también es descansar.</li>
+        <li>Y a veces, desaparecer.</li>
+      </ul>
+
     </div>
   </section>
 
