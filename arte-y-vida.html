@@ -11,7 +11,7 @@
   <style>
     /* =========================================
        ARTE Y VIDA — DOPAMINA
-       Rick Rubin x Austin Kleon
+       Rick Rubin × Austin Kleon × Ronald Escobar
        ========================================= */
 
     :root{
@@ -76,9 +76,19 @@
       margin:0;
     }
 
-    .underline{
-      margin:24px auto 0;
-      width:280px;
+    /* subrayado SOLO “trabaja en tu vida” */
+    .subrayado{
+      display:inline-block;
+      position:relative;
+      padding-bottom:10px;
+    }
+
+    .subrayado::after{
+      content:"";
+      position:absolute;
+      left:-6%;
+      right:-6%;
+      bottom:0;
       height:6px;
       background:linear-gradient(
         90deg,
@@ -128,18 +138,20 @@
     .split{
       padding:80px 0;
       display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:64px;
-      align-items:center;
+      grid-template-columns:520px 1fr; /* imagen manda */
+      gap:72px;
+      align-items:flex-start;
     }
 
     .split img{
       width:100%;
-      border-radius:12px;
-      filter:contrast(1.05) saturate(1.1);
+      border-radius:10px;
+      filter:contrast(1.05) saturate(1.05);
+      align-self:flex-start; /* alineada arriba */
     }
 
     .split p{
+      margin-top:48px; /* el texto entra después */
       font-size:17px;
       color:var(--gris);
       max-width:420px;
@@ -168,7 +180,15 @@
 
     @media (max-width:900px){
       header{ padding:80px 0 60px; }
-      .split{ grid-template-columns:1fr; }
+
+      .split{
+        grid-template-columns:1fr;
+        gap:40px;
+      }
+
+      .split p{
+        margin-top:0;
+      }
     }
   </style>
 </head>
@@ -181,9 +201,8 @@
       <h1>
         Si quieres trabajar<br>
         en tu arte,<br>
-        trabaja en tu vida.
+        <span class="subrayado">trabaja en tu vida.</span>
       </h1>
-      <div class="underline"></div>
     </div>
   </header>
 
