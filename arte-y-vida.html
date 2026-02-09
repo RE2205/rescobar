@@ -66,10 +66,6 @@
       pointer-events:none;
     }
 
-    .hero-inner{
-      position:relative;
-    }
-
     h1{
       font-family: Georgia, "Times New Roman", serif;
       font-size:clamp(42px,6vw,86px);
@@ -138,10 +134,16 @@
       margin:24px auto;
     }
 
+    .manifiesto p:first-of-type,
+    .manifiesto p:nth-of-type(odd):not(.nota){
+      font-weight:600;
+      color:var(--blanco);
+    }
+
     /* ================= FRANJA GESTO ================= */
 
     .franja-gesto{
-      padding:56px 0 64px;
+      padding:64px 0;
       text-align:center;
       background:
         linear-gradient(
@@ -164,6 +166,54 @@
 
     .franja-gesto .verdad{
       color:var(--rosa);
+    }
+
+    /* ================= PERSONAS ================= */
+
+    .personas{
+      padding:120px 0;
+    }
+
+    .personas-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:96px;
+      max-width:900px;
+      margin:0 auto;
+    }
+
+    .persona img{
+      width:100%;
+      max-width:320px;
+      border-radius:12px;
+      margin-bottom:24px;
+      filter:grayscale(1) contrast(1.05);
+      box-shadow:0 12px 40px rgba(0,0,0,.4);
+    }
+
+    .persona h3{
+      font-family: Georgia, serif;
+      font-size:26px;
+      font-weight:400;
+      margin:0 0 12px;
+    }
+
+    .persona p{
+      color:var(--gris);
+      font-size:17px;
+      max-width:360px;
+    }
+
+    @media (max-width:900px){
+      .personas-grid{
+        grid-template-columns:1fr;
+        gap:72px;
+        text-align:center;
+      }
+
+      .persona p{
+        margin:0 auto;
+      }
     }
 
     /* ================= KLEON ================= */
@@ -250,13 +300,6 @@
     .contacto a:hover{
       color:var(--verde);
     }
-
-    /* ================= RESPONSIVE ================= */
-
-    @media (max-width:900px){
-      header{ padding:80px 0 60px; }
-      .split-grid{ grid-template-columns:1fr; }
-    }
   </style>
 </head>
 
@@ -264,7 +307,7 @@
 
   <!-- HERO -->
   <header>
-    <div class="wrap hero-inner">
+    <div class="wrap">
       <h1>
         Si quieres trabajar<br>
         en tu arte,<br>
@@ -283,24 +326,24 @@
   <!-- MANIFIESTO -->
   <section class="manifiesto">
     <div class="wrap">
-  <p><strong>Esto no es productividad.</strong></p>
-  <p>No es bienestar.</p>
-  <p><strong>No es una técnica para crear más.</strong></p>
+      <p>Esto no es productividad.</p>
+      <p>No es bienestar.</p>
+      <p>No es una técnica para crear más.</p>
 
-  <p class="nota">
-    Es un espacio para mirar<br>
-    lo que evitas<br>
-    cuando sientes que estás bloqueado.
-  </p>
+      <p class="nota">
+        Es un espacio para mirar<br>
+        lo que evitas<br>
+        cuando sientes que estás bloqueado.
+      </p>
 
-  <p><strong>Crear no es hacer.</strong></p>
-  <p>Crear es exponerse.</p>
+      <p>Crear no es hacer.</p>
+      <p>Crear es exponerse.</p>
 
-  <p class="nota">
-    Y casi nadie quiere hacer eso<br>
-    sin anestesia.
-  </p>
-</div>
+      <p class="nota">
+        Y casi nadie quiere hacer eso<br>
+        sin anestesia.
+      </p>
+    </div>
   </section>
 
   <!-- FRANJA GESTO -->
@@ -313,14 +356,44 @@
     </div>
   </section>
 
+  <!-- PERSONAS -->
+  <section class="personas">
+    <div class="wrap personas-grid">
+
+      <div class="persona">
+        <img src="assets/ronald.jpg" alt="Ronald Escobar" />
+        <h3>Ronald Escobar</h3>
+        <p>
+          Psiquiatría, arte y vínculo.<br><br>
+          Acompaña procesos cuando la vida aprieta
+          y la palabra todavía no alcanza.
+        </p>
+      </div>
+
+      <div class="persona">
+        <img src="assets/alejandro-marre.jpg" alt="Alejandro Marré" />
+        <h3>Alejandro Marré</h3>
+        <p>
+          Artista y poeta.<br><br>
+          Explora el gesto creativo como territorio de verdad,
+          ahí donde la palabra falla y la imagen todavía resiste.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
   <!-- KLEON -->
   <section class="kleon">
     <div class="wrap">
       <h2>Algunas verdades incómodas</h2>
       <ul>
-        <li>La inspiración no llega cuando la llamas, llega cuando estás presente.</li>
-        <li>No todo bloqueo se resuelve creando.A veces se resuelve <span>viviendo distinto</span>.</li>
-        <li>La obra no se empuja.Se escucha.</li>
+        <li>La inspiración no llega cuando la llamas.</li>
+        <li>Llega cuando estás presente.</li>
+        <li>No todo bloqueo se resuelve creando.</li>
+        <li>A veces se resuelve <span>viviendo distinto</span>.</li>
+        <li>La obra no se empuja.</li>
+        <li>Se escucha.</li>
         <li>El cuerpo va adelante.</li>
         <li>La mente llega tarde.</li>
       </ul>
