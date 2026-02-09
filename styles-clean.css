@@ -1724,3 +1724,36 @@ body{
   padding-bottom: 4px;
   text-decoration: none;
 }
+/* =========================
+   CONTACTO — ENLACES DISCRETOS
+========================= */
+
+.lp-contact__methods{
+  margin-top: 28px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 15px;
+}
+
+.contact-link{
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #2F2F2F;
+  text-decoration: none;
+  opacity: .75;
+}
+
+.contact-link:hover{
+  opacity: 1;
+}
+
+.contact-sep{
+  color: #C6B8A6;
+}
+
+.icon{
+  font-size: 14px;
+  line-height: 1;
+}
