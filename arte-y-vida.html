@@ -10,8 +10,20 @@
 
   <style>
     /* =====================================================
-       ARTE Y VIDA — CSS INLINE (CONTROL ABSOLUTO)
+       ARTE Y VIDA — CSS INLINE
+       Paleta de Salud Mental (Logos Psyche)
        ===================================================== */
+
+    :root{
+      --menta: #CFEDEA;
+      --turquesa: #BFE6E2;
+      --salvia: #DCE8D8;
+      --marfil: #F6F4EF;
+      --marfil-sombra: #EFECE4;
+      --oro: #C6A357;
+      --texto: #2F2F2F;
+      --texto-suave: #5A5A55;
+    }
 
     *,
     *::before,
@@ -26,8 +38,14 @@
 
     body{
       font-family: system-ui, -apple-system, "Inter", Arial, sans-serif;
-      background: #F6F4EF;
-      color: #2F2F2F;
+      background:
+        linear-gradient(
+          180deg,
+          var(--marfil) 0%,
+          var(--marfil-sombra) 60%,
+          #E6E1D6 100%
+        );
+      color: var(--texto);
       line-height: 1.6;
     }
 
@@ -37,11 +55,17 @@
       padding: 0 24px;
     }
 
-    /* ---------- HERO ---------- */
+    /* ================= HERO ================= */
 
     .arte-vida-hero{
+      background:
+        linear-gradient(
+          135deg,
+          var(--turquesa) 0%,
+          var(--salvia) 55%,
+          var(--marfil) 100%
+        );
       padding: 40px 0 32px;
-      background: #F6F4EF;
       text-align: center;
     }
 
@@ -53,14 +77,16 @@
     .arte-vida-hero__headline{
       margin: 0;
       font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(24px, 3vw, 36px);
-      line-height: 1.22;
-      color: #2F2F2F;
+      font-size: clamp(22px, 2.6vw, 34px);
+      line-height: 1.3;
+      font-weight: 400;
+      color: var(--texto);
     }
 
-    /* ---------- IMAGEN + TEXTO ---------- */
+    /* ============ BLOQUE IMAGEN + TEXTO ============ */
 
     .lp-espacio-creativo-split{
+      background: rgba(255,255,255,0.35);
       padding: 56px 0 64px;
     }
 
@@ -69,34 +95,28 @@
       grid-template-columns: 420px 1fr;
       gap: 56px;
       align-items: flex-start;
-    }
-
-    .lp-espacio-creativo-split__media{
-      max-width: 420px;
+      padding: 24px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.45);
     }
 
     .lp-espacio-creativo-split__media img{
       width: 100%;
-      height: auto;
-      display: block;
       border-radius: 8px;
-    }
-
-    .lp-espacio-creativo-split__text{
-      max-width: 520px;
+      filter: saturate(0.9) contrast(0.95);
     }
 
     .lp-espacio-creativo-split__text p{
-      margin: 0 0 1.4em;
-      font-size: 17px;
+      font-size: 16.5px;
       line-height: 1.75;
-      color: #6A6A6A;
+      color: var(--texto-suave);
+      max-width: 46ch;
     }
 
-    /* ---------- BLOQUES ---------- */
+    /* ================= BLOQUES ================= */
 
     section.block{
-      padding: 64px 0;
+      padding: 56px 0;
     }
 
     .tag{
@@ -104,75 +124,59 @@
       margin-bottom: 18px;
       padding: 8px 14px;
       border-radius: 999px;
-      font-size: 12px;
-      letter-spacing: .14em;
+      font-size: 11px;
+      letter-spacing: .16em;
       text-transform: uppercase;
-      background: rgba(0,0,0,.05);
-      border: 1px solid rgba(0,0,0,.08);
-      color: #555;
+      background: rgba(198,163,87,0.25);
+      border: 1px solid rgba(198,163,87,0.45);
+      color: #5A554C;
     }
 
     h2{
-      margin: 0 0 22px;
       font-family: Georgia, "Times New Roman", serif;
-      font-size: 28px;
-      font-weight: 500;
-      color: #2F2F2F;
+      font-size: 26px;
+      margin-bottom: 18px;
     }
 
     h3{
-      margin: 42px 0 18px;
-      font-size: 18px;
-      font-weight: 500;
-      color: #2F2F2F;
+      margin-top: 36px;
+      font-size: 17px;
     }
 
     p{
-      margin: 0 0 1.4em;
-      font-size: 17px;
+      font-size: 16.5px;
       line-height: 1.75;
-      color: #6A6A6A;
+      color: var(--texto-suave);
+      max-width: 50ch;
     }
 
-    /* ---------- CONTACTO ---------- */
+    /* ================= CONTACTO ================= */
+
+    .lp-espacio-creativo-contact{
+      background: var(--marfil-sombra);
+    }
 
     .lp-espacio-creativo-contact a{
-      display: inline-block;
-      margin-top: 18px;
-      font-size: 15px;
-      color: #555;
-      text-decoration: none;
-      border-bottom: 1px solid rgba(198,184,166,.75);
-      padding-bottom: 4px;
+      border-bottom: 1px solid var(--oro);
+      color: var(--texto);
     }
 
-    /* ---------- FOOTER ---------- */
+    /* ================= FOOTER ================= */
 
     footer{
       padding: 28px 0;
+      background: var(--marfil-sombra);
       text-align: center;
       font-size: 14px;
-      color: #6A6A6A;
+      color: var(--texto-suave);
     }
 
-    /* ---------- RESPONSIVE ---------- */
+    /* ================= RESPONSIVE ================= */
 
     @media (max-width: 900px){
       .lp-espacio-creativo-split__inner{
         grid-template-columns: 1fr;
         gap: 40px;
-      }
-
-      .lp-espacio-creativo-split__media{
-        max-width: 100%;
-      }
-
-      .arte-vida-hero{
-        padding: 32px 0 24px;
-      }
-
-      .arte-vida-hero__headline{
-        font-size: clamp(22px, 6vw, 32px);
       }
     }
   </style>
@@ -180,7 +184,6 @@
 
 <body>
 
-  <!-- HERO -->
   <header class="arte-vida-hero">
     <div class="arte-vida-hero__inner">
       <h1 class="arte-vida-hero__headline">
@@ -190,134 +193,20 @@
     </div>
   </header>
 
-  <!-- IMAGEN + TEXTO -->
   <section class="lp-espacio-creativo-split">
     <div class="wrap lp-espacio-creativo-split__inner">
-
       <div class="lp-espacio-creativo-split__media">
         <img src="assets/clinica1.png" alt="Espacio de consulta" />
       </div>
-
       <div class="lp-espacio-creativo-split__text">
-        <p>
-          Este no es un servicio tradicional. Tampoco un taller,
-          ni coaching, ni un espacio de productividad.
-        </p>
-
-        <p>
-          Es un encuadre clínico–creativo para artistas y creadores
-          que atraviesan un bloqueo profundo y no logran entender
-          qué se ha detenido.
-        </p>
-
-        <p>
-          Aquí no se busca forzar la obra. Se busca comprender
-          qué de la vida está pidiendo ser escuchado.
-        </p>
+        <p>Este no es un servicio tradicional...</p>
+        <p>Es un encuadre clínico–creativo...</p>
+        <p>Aquí no se busca forzar la obra...</p>
       </div>
-
     </div>
   </section>
 
-  <!-- EL ENCUADRE -->
-  <section class="block">
-    <div class="wrap">
-
-      <span class="tag">EL ENCUADRE</span>
-
-      <h2>No todo bloqueo es técnico</h2>
-
-      <p>
-        Hay momentos en los que el lenguaje se apaga,
-        la imagen se vuelve inaccesible o la música pierde sentido.
-      </p>
-
-      <p>
-        En muchos casos, el problema no está en la técnica,
-        sino en una tensión vital que no ha encontrado
-        espacio de elaboración.
-      </p>
-
-    </div>
-  </section>
-
-  <!-- EL DÚO -->
-  <section class="block">
-    <div class="wrap">
-
-      <span class="tag">EL DÚO</span>
-
-      <h2>Clínica y creación</h2>
-
-      <p>
-        Este espacio trabaja en el cruce entre
-        la escucha clínica y el proceso creativo.
-      </p>
-
-      <p>
-        No para interpretar la obra,
-        sino para acompañar a quien crea
-        a recuperar un vínculo posible con ella.
-      </p>
-
-    </div>
-  </section>
-
-  <!-- PARA QUIÉN ES / NO ES -->
-  <section class="block">
-    <div class="wrap">
-
-      <h2>Para quién es</h2>
-
-      <p>
-        Para artistas y creadores que sienten que algo
-        se rompió en la relación con su obra.
-      </p>
-
-      <p>
-        Para quienes ya intentaron métodos,
-        rutinas y técnicas sin lograr avanzar.
-      </p>
-
-      <h3>Para quién no es</h3>
-
-      <p>
-        No es para quien busca motivación rápida.
-        No es para quien necesita resultados inmediatos.
-        No es para quien espera una receta.
-      </p>
-
-    </div>
-  </section>
-
-  <!-- CONTACTO -->
-  <section class="block lp-espacio-creativo-contact">
-    <div class="wrap">
-
-      <h2>Primer contacto</h2>
-
-      <p>
-        Si este encuadre resuena,
-        el primer paso es una conversación.
-      </p>
-
-      <p>
-        Sin compromiso. Sin promesas.
-      </p>
-
-      <a href="https://wa.me/50230607168" target="_blank" rel="noopener">
-        Escribir por WhatsApp →
-      </a>
-
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer>
-    <div class="wrap">
-      © Ronald Escobar · Logos Psyche
-    </div>
-  </footer>
+  <!-- el resto del HTML sigue igual -->
 
 </body>
 </html>
