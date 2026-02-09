@@ -11,20 +11,23 @@
   <style>
     /* =========================================
        ARTE Y VIDA — DOPAMINA
-       Rick Rubin × Austin Kleon × Ronald Escobar
+       Rick Rubin x Austin Kleon x Ronald Escobar
        ========================================= */
 
     :root{
       --negro:#0b0b0c;
       --blanco:#f5f5f2;
       --gris:#9a9a95;
+
       --neon-rosa:#ff4ecd;
       --neon-verde:#3dff9c;
       --neon-azul:#4ddcff;
       --neon-amarillo:#ffd23f;
     }
 
-    *{ box-sizing:border-box; }
+    *{
+      box-sizing:border-box;
+    }
 
     html,body{
       margin:0;
@@ -76,19 +79,9 @@
       margin:0;
     }
 
-    /* subrayado SOLO “trabaja en tu vida” */
-    .subrayado{
-      display:inline-block;
-      position:relative;
-      padding-bottom:10px;
-    }
-
-    .subrayado::after{
-      content:"";
-      position:absolute;
-      left:-6%;
-      right:-6%;
-      bottom:0;
+    .underline{
+      margin:20px auto 0;
+      width:420px;
       height:6px;
       background:linear-gradient(
         90deg,
@@ -101,7 +94,27 @@
       transform:rotate(-1.5deg);
     }
 
-    /* ============== MANIFIESTO ============== */
+    /* ================= LA PILA ================= */
+
+    .la-pila{
+      padding:80px 0 40px;
+    }
+
+    .la-pila img{
+      width:100%;
+      max-width:720px;
+      display:block;
+      margin:0 auto;
+
+      border-radius:12px;
+      transform:rotate(-0.6deg);
+      filter:contrast(1.05) saturate(1.15);
+      box-shadow:
+        0 20px 60px rgba(0,0,0,.45),
+        0 0 0 1px rgba(255,255,255,.06);
+    }
+
+    /* ================= MANIFIESTO ================= */
 
     .manifiesto{
       padding:80px 0;
@@ -112,6 +125,7 @@
       font-size:18px;
       color:var(--gris);
       margin:0 auto 28px;
+      text-align:left;
     }
 
     .manifiesto p strong{
@@ -119,7 +133,7 @@
       font-weight:500;
     }
 
-    /* ============== FRASE GESTO ============== */
+    /* ================= GESTO ================= */
 
     .gesto{
       padding:100px 0;
@@ -133,31 +147,30 @@
       color:var(--neon-rosa);
     }
 
-    /* ============== FOTO + TEXTO ============== */
+    /* ================= FOTO + TEXTO ================= */
 
     .split{
       padding:80px 0;
       display:grid;
-      grid-template-columns:520px 1fr; /* imagen manda */
-      gap:72px;
-      align-items:flex-start;
+      grid-template-columns:1fr 1fr;
+      gap:64px;
+      align-items:center;
     }
 
     .split img{
       width:100%;
-      border-radius:10px;
-      filter:contrast(1.05) saturate(1.05);
-      align-self:flex-start; /* alineada arriba */
+      border-radius:12px;
+      filter:contrast(1.05) saturate(1.1);
+      box-shadow:0 12px 40px rgba(0,0,0,.4);
     }
 
     .split p{
-      margin-top:48px; /* el texto entra después */
       font-size:17px;
       color:var(--gris);
       max-width:420px;
     }
 
-    /* ============== CONTACTO ============== */
+    /* ================= CONTACTO ================= */
 
     .contacto{
       padding:120px 0;
@@ -176,19 +189,13 @@
       color:var(--neon-verde);
     }
 
-    /* ============== RESPONSIVE ============== */
+    /* ================= RESPONSIVE ================= */
 
     @media (max-width:900px){
       header{ padding:80px 0 60px; }
-
-      .split{
-        grid-template-columns:1fr;
-        gap:40px;
-      }
-
-      .split p{
-        margin-top:0;
-      }
+      .underline{ width:280px; }
+      .split{ grid-template-columns:1fr; }
+      .manifiesto p{ text-align:left; }
     }
   </style>
 </head>
@@ -201,10 +208,18 @@
       <h1>
         Si quieres trabajar<br>
         en tu arte,<br>
-        <span class="subrayado">trabaja en tu vida.</span>
+        trabaja en tu vida.
       </h1>
+      <div class="underline"></div>
     </div>
   </header>
+
+  <!-- LA PILA -->
+  <section class="la-pila">
+    <div class="wrap">
+      <img src="assets/la-pila.jpg" alt="La pila" />
+    </div>
+  </section>
 
   <!-- MANIFIESTO -->
   <section class="manifiesto">
@@ -229,7 +244,7 @@
     sin saber todavía cómo.
   </section>
 
-  <!-- FOTO + TEXTO -->
+  <!-- CLÍNICA -->
   <section class="split wrap">
     <img src="assets/clinica1.png" alt="Espacio de trabajo" />
     <p>
