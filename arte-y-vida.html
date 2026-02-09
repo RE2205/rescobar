@@ -131,4 +131,237 @@
     }
 
     .manifiesto .nota{
-      ma
+      margin:24px auto;
+    }
+
+    .manifiesto p:first-of-type,
+    .manifiesto p:nth-of-type(odd):not(.nota){
+      font-weight:600;
+      color:var(--blanco);
+    }
+
+    /* ================= FRANJA GESTO ================= */
+
+    .franja-gesto{
+      padding:56px 0;
+      text-align:center;
+      background:
+        linear-gradient(
+          180deg,
+          rgba(0,0,0,0) 0%,
+          var(--violeta) 50%,
+          rgba(0,0,0,0) 100%
+        );
+      border-top:1px solid rgba(255,255,255,.06);
+      border-bottom:1px solid rgba(255,255,255,.06);
+    }
+
+    .franja-gesto p{
+      font-family: Georgia, "Times New Roman", serif;
+      font-size:clamp(28px,4vw,46px);
+      line-height:1.25;
+      margin:0;
+      color:var(--blanco);
+    }
+
+    .franja-gesto .verdad{
+      color:var(--rosa);
+    }
+
+    /* ================= PERSONAS ================= */
+
+    .personas{
+      padding:96px 0;
+    }
+
+    .personas-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:96px;
+      max-width:900px;
+      margin:0 auto;
+    }
+
+    .persona img{
+      width:100%;
+      max-width:320px;
+      border-radius:12px;
+      margin-bottom:24px;
+      filter:grayscale(1) contrast(1.05);
+      box-shadow:0 12px 40px rgba(0,0,0,.4);
+    }
+
+    .persona h3{
+      font-family: Georgia, serif;
+      font-size:26px;
+      font-weight:400;
+      margin:0 0 12px;
+    }
+
+    .persona p{
+      color:var(--gris);
+      font-size:17px;
+      max-width:360px;
+    }
+
+    @media (max-width:900px){
+      .personas-grid{
+        grid-template-columns:1fr;
+        gap:72px;
+        text-align:center;
+      }
+
+      .persona p{
+        margin:0 auto;
+      }
+    }
+
+    /* ================= CLÍNICA ================= */
+
+    .split{
+      padding:88px 0;
+    }
+
+    .split-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:64px;
+      align-items:center;
+    }
+
+    .split img{
+      width:100%;
+      border-radius:12px;
+      filter:contrast(1.05) saturate(1.1);
+      box-shadow:0 12px 40px rgba(0,0,0,.4);
+    }
+
+    .split p{
+      font-size:17px;
+      color:var(--gris);
+      max-width:420px;
+    }
+
+    /* ================= CONTACTO ================= */
+
+    .contacto{
+      padding:104px 0;
+      text-align:center;
+    }
+
+    .contacto a{
+      font-size:20px;
+      color:var(--blanco);
+      text-decoration:none;
+      border-bottom:2px solid var(--verde);
+      padding-bottom:6px;
+    }
+
+    .contacto a:hover{
+      color:var(--verde);
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HERO -->
+  <header>
+    <div class="wrap">
+      <h1>
+        Si quieres trabajar<br>
+        en tu arte,<br>
+        <span class="subrayado">trabaja en tu vida.</span>
+      </h1>
+    </div>
+  </header>
+
+  <!-- LA PILA -->
+  <section class="la-pila">
+    <div class="wrap">
+      <img src="assets/la-pila.jpg" alt="La pila de libros" />
+    </div>
+  </section>
+
+  <!-- MANIFIESTO -->
+  <section class="manifiesto">
+    <div class="wrap">
+      <p>Esto no es productividad.</p>
+      <p>No es bienestar.</p>
+      <p>No es una técnica para crear más.</p>
+
+      <p class="nota">
+        Es un espacio para mirar<br>
+        lo que evitas<br>
+        cuando sientes que estás bloqueado.
+      </p>
+
+      <p>Crear no es hacer.</p>
+      <p>Crear es exponerse.</p>
+
+      <p class="nota">
+        Y casi nadie quiere hacer eso<br>
+        sin anestesia.
+      </p>
+    </div>
+  </section>
+
+  <!-- FRANJA GESTO -->
+  <section class="franja-gesto">
+    <div class="wrap">
+      <p>
+        Crear es <span class="verdad">decir la verdad</span><br>
+        sin saber todavía cómo.
+      </p>
+    </div>
+  </section>
+
+  <!-- PERSONAS -->
+  <section class="personas">
+    <div class="wrap personas-grid">
+
+      <div class="persona">
+        <img src="assets/ronald.jpg" alt="Ronald Escobar" />
+        <h3>Ronald Escobar</h3>
+        <p>
+          Psiquiatría, arte y vínculo.<br><br>
+          Acompaña procesos cuando la vida aprieta
+          y la palabra todavía no alcanza.
+        </p>
+      </div>
+
+      <div class="persona">
+        <img src="assets/alejandro-marre.jpg" alt="Alejandro Marré" />
+        <h3>Alejandro Marré</h3>
+        <p>
+          Artista y poeta.<br><br>
+          Explora el gesto creativo como territorio de verdad,
+          ahí donde la palabra falla y la imagen todavía resiste.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CLÍNICA -->
+  <section class="split">
+    <div class="wrap split-grid">
+      <img src="assets/clinica1.png" alt="Espacio clínico" />
+      <p>
+        A veces el bloqueo no es técnico.<br>
+        Es vital.<br><br>
+        Cuando la vida se aprieta,<br>
+        la obra se calla.
+      </p>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section class="contacto">
+    <a href="https://wa.me/50230607168" target="_blank" rel="noopener">
+      Hablemos →
+    </a>
+  </section>
+
+</body>
+</html>
