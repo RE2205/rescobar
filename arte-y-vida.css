@@ -27,3 +27,62 @@
   line-height:1.75;
   color:rgba(0,0,0,.65);
 }
+/* =====================================================
+   ARTE Y VIDA — HERO SALUD MENTAL
+   Inspirado en Logos Psyche
+   ===================================================== */
+
+.arte-vida-hero{
+  position: relative;
+  padding: 84px 0 72px;
+  background:
+    linear-gradient(
+      135deg,
+      #A7E3DF 0%,
+      #CFEDEA 35%,
+      #E3EFE1 70%,
+      #F6F4EF 100%
+    );
+}
+
+/* Contenedor */
+.arte-vida-hero__inner{
+  max-width: 760px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+/* Título */
+.arte-vida-hero__headline{
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(28px, 3.6vw, 44px);
+  line-height: 1.18;
+  font-weight: 400;
+  color: #2F2F2F;
+}
+
+/* Franja inferior (umbral) */
+.arte-vida-hero::after{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:0;
+  height:56px;
+  background:
+    linear-gradient(
+      to right,
+      #C6A357,
+      #D6B872,
+      #C6A357
+    );
+  opacity:0.9;
+}
+
+/* Separación natural con el contenido */
+.arte-vida-hero + section{
+  margin-top: 0;
+}
