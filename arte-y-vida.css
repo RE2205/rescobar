@@ -1,6 +1,7 @@
 /* =====================================================
    ARTE Y VIDA — CSS COMPLETO
    Página clínica–creativa independiente
+   Paleta Salud Mental (Logos Psyche)
    ===================================================== */
 
 /* ---------- RESET ---------- */
@@ -18,7 +19,13 @@ html, body{
 
 body{
   font-family: system-ui, -apple-system, "Inter", Arial, sans-serif;
-  background: #F6F4EF;
+  background:
+    linear-gradient(
+      180deg,
+      #F6F4EF 0%,
+      #EFECE4 55%,
+      #E6E1D6 100%
+    );
   color: #2F2F2F;
   line-height: 1.6;
 }
@@ -38,9 +45,10 @@ body{
 .arte-vida-hero{
   background:
     linear-gradient(
-      to bottom,
-      #F6F4EF 0%,
-      #EFECE4 100%
+      135deg,
+      #BFE6E2 0%,
+      #DCE8D8 55%,
+      #F6F4EF 100%
     );
   padding: 28px 0 20px;
 }
@@ -71,6 +79,12 @@ body{
 
 .lp-espacio-creativo-split{
   padding: 48px 0 64px;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255,255,255,0.55),
+      rgba(246,244,239,0.9)
+    );
 }
 
 .lp-espacio-creativo-split__inner{
@@ -78,16 +92,11 @@ body{
   grid-template-columns: 420px 1fr;
   gap: 56px;
   align-items: flex-start;
-}
-.lp-espacio-creativo-split{
-  background: #F6F4EF;
-}
-
-.lp-espacio-creativo-split__inner{
   padding: 24px;
   border-radius: 12px;
   background: rgba(255,255,255,0.35);
 }
+
 /* Imagen clínica */
 .lp-espacio-creativo-split__media{
   max-width: 420px;
@@ -98,9 +107,7 @@ body{
   height: auto;
   display: block;
   border-radius: 8px;
-
-  /* bajar peso visual */
-  filter: saturate(0.9) contrast(0.95);
+  filter: saturate(0.9) contrast(0.95) brightness(0.98);
 }
 
 /* Texto */
@@ -112,7 +119,7 @@ body{
   margin: 0 0 1.4em 0;
   font-size: 16.5px;
   line-height: 1.75;
-  color: #6A6A6A;
+  color: #5A5A55;
   max-width: 46ch;
 }
 
@@ -133,9 +140,9 @@ section.block{
   font-size: 12px;
   letter-spacing: .14em;
   text-transform: uppercase;
-  background: rgba(0,0,0,.05);
-  border: 1px solid rgba(0,0,0,.08);
-  color: #555;
+  background: rgba(198,163,87,0.25);
+  border: 1px solid rgba(198,163,87,0.45);
+  color: #5A554C;
 }
 
 /* Títulos */
@@ -159,13 +166,17 @@ p{
   margin: 0 0 1.4em 0;
   font-size: 16.5px;
   line-height: 1.75;
-  color: #6A6A6A;
+  color: #5A5A55;
   max-width: 50ch;
 }
 
 /* =====================================================
    CONTACTO
    ===================================================== */
+
+.lp-espacio-creativo-contact{
+  background: #EFECE4;
+}
 
 .lp-espacio-creativo-contact a{
   display: inline-block;
@@ -183,7 +194,7 @@ p{
 
 footer{
   padding: 28px 0;
-  background: #F6F4EF;
+  background: #EFECE4;
 }
 
 footer .wrap{
