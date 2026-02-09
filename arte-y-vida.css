@@ -1,88 +1,194 @@
-/* ======================================
-   ARTE Y VIDA — AJUSTE FINO
-   ====================================== */
-
-.lp-arteyvida-split{
-  background: #F6F4EF;
-}
-
-.lp-arteyvida-split__inner{
-  display:grid;
-  grid-template-columns: 480px 1fr;
-  gap:72px;
-  align-items:flex-start;
-}
-
-.lp-arteyvida-split__media img{
-  object-fit:contain;
-  filter:none;
-}
-
-.lp-arteyvida-split__text{
-  max-width:560px;
-}
-
-.lp-arteyvida-split__text p{
-  font-size:17px;
-  line-height:1.75;
-  color:rgba(0,0,0,.65);
-}
 /* =====================================================
-   ARTE Y VIDA — HERO SALUD MENTAL
-   Inspirado en Logos Psyche
+   ARTE Y VIDA — MANIFIESTO VISUAL
+   Rick Rubin × Ronald Escobar
+   ===================================================== */
+
+/* ---------- RESET TOTAL ---------- */
+
+*,
+*::before,
+*::after{
+  box-sizing: border-box;
+}
+
+html, body{
+  margin: 0;
+  padding: 0;
+}
+
+body{
+  font-family: system-ui, -apple-system, "Inter", Arial, sans-serif;
+  background: #FAF9F6; /* papel */
+  color: #2A2A2A;      /* carbón */
+  line-height: 1.7;
+}
+
+/* ---------- CONTENEDOR ---------- */
+
+.wrap{
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 28px;
+}
+
+/* =====================================================
+   HERO — EL GESTO
    ===================================================== */
 
 .arte-vida-hero{
-  position: relative;
-  padding: 84px 0 72px;
+  padding: 140px 0 120px;
   background:
     linear-gradient(
       135deg,
-      #A7E3DF 0%,
-      #CFEDEA 35%,
-      #E3EFE1 70%,
-      #F6F4EF 100%
+      #E7EFEA 0%,
+      #F4F3EE 60%,
+      #FAF9F6 100%
     );
-}
-
-/* Contenedor */
-.arte-vida-hero__inner{
-  max-width: 760px;
-  margin: 0 auto;
   text-align: center;
-  position: relative;
-  z-index: 2;
 }
 
-/* Título */
+.arte-vida-hero__inner{
+  max-width: 820px;
+  margin: 0 auto;
+}
+
 .arte-vida-hero__headline{
   margin: 0;
   font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(28px, 3.6vw, 44px);
-  line-height: 1.18;
+  font-size: clamp(40px, 5vw, 64px);
+  line-height: 1.08;
   font-weight: 400;
-  color: #2F2F2F;
+  letter-spacing: -0.01em;
+  color: #1F1F1F;
 }
 
-/* Franja inferior (umbral) */
+/* Línea de pausa (arte, no UI) */
 .arte-vida-hero::after{
-  content:"";
-  position:absolute;
-  left:0;
-  right:0;
-  bottom:0;
-  height:56px;
-  background:
-    linear-gradient(
-      to right,
-      #C6A357,
-      #D6B872,
-      #C6A357
-    );
-  opacity:0.9;
+  content: "";
+  display: block;
+  width: 72px;
+  height: 2px;
+  background: #C9B37E;
+  margin: 64px auto 0;
 }
 
-/* Separación natural con el contenido */
-.arte-vida-hero + section{
-  margin-top: 0;
+/* =====================================================
+   BLOQUE IMAGEN + TEXTO — LA OBRA
+   ===================================================== */
+
+.arte-vida-split{
+  padding: 120px 0;
+}
+
+.arte-vida-split__inner{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 96px;
+  align-items: center;
+}
+
+/* Imagen como pieza artística */
+.arte-vida-split__media img{
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 0;
+  filter: grayscale(100%) contrast(1.05);
+}
+
+/* Texto como voz */
+.arte-vida-split__text p{
+  font-size: 18px;
+  line-height: 1.8;
+  color: #3A3A3A;
+  max-width: 42ch;
+  margin-bottom: 1.6em;
+}
+
+/* =====================================================
+   SECCIONES — PALABRA
+   ===================================================== */
+
+.arte-vida-section{
+  padding: 120px 0;
+}
+
+.arte-vida-section h2{
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 32px;
+  font-weight: 400;
+  margin-bottom: 28px;
+  color: #1F1F1F;
+}
+
+.arte-vida-section h3{
+  margin-top: 56px;
+  font-size: 20px;
+  font-weight: 500;
+  color: #1F1F1F;
+}
+
+.arte-vida-section p{
+  font-size: 18px;
+  line-height: 1.8;
+  color: #4A4A4A;
+  max-width: 48ch;
+}
+
+/* Etiqueta mínima (susurro) */
+.arte-vida-tag{
+  font-size: 11px;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: #9A9A9A;
+  margin-bottom: 24px;
+  display: block;
+}
+
+/* =====================================================
+   CONTACTO — INVITACIÓN
+   ===================================================== */
+
+.arte-vida-contact a{
+  font-size: 16px;
+  color: #1F1F1F;
+  text-decoration: none;
+  border-bottom: 1px solid #C9B37E;
+  padding-bottom: 4px;
+}
+
+/* =====================================================
+   FOOTER — FIRMA
+   ===================================================== */
+
+footer{
+  padding: 80px 0;
+  text-align: center;
+  font-size: 14px;
+  color: #8A8A8A;
+}
+
+/* =====================================================
+   RESPONSIVE
+   ===================================================== */
+
+@media (max-width: 900px){
+
+  .arte-vida-hero{
+    padding: 96px 0 80px;
+  }
+
+  .arte-vida-hero__headline{
+    font-size: clamp(32px, 8vw, 44px);
+  }
+
+  .arte-vida-split__inner{
+    grid-template-columns: 1fr;
+    gap: 64px;
+  }
+
+  .arte-vida-split__text p,
+  .arte-vida-section p{
+    max-width: none;
+  }
 }
