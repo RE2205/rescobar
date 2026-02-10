@@ -44,11 +44,11 @@
     /* ================= APERTURA ================= */
 
     .apertura{
-      padding:180px 0 140px;
+      padding:190px 0 150px;
     }
 
     .apertura h1{
-      max-width:780px;
+      max-width:580px;              /* ⬅️ HEADER MÁS ÍNTIMO */
       font-size:clamp(36px,4.8vw,58px);
       font-weight:400;
       line-height:1.15;
@@ -59,52 +59,31 @@
 
     .axioma{
       background:var(--negro);
-      padding:64px 0;
+      padding:72px 0;
       position:relative;
     }
 
-    .axioma::before{
+    .axioma::before,
+    .axioma::after{
       content:"";
       position:absolute;
-      top:0;
       left:0;
       right:0;
       height:4px;
       background:var(--acento);
     }
 
-    .axioma::after{
-      content:"";
-      position:absolute;
-      bottom:0;
-      left:0;
-      right:0;
-      height:1px;
-      background:rgba(255,255,255,.12);
-    }
+    .axioma::before{ top:0; }
+    .axioma::after{ bottom:0; }
 
     .axioma p{
       margin:0;
       text-align:center;
-      color:#f3f3f0;
-      font-size:13px;
-      letter-spacing:0.22em;
+      color:#f4f4f1;
+      font-size:15px;              /* ⬅️ TEXTO MÁS PRESENTE */
+      letter-spacing:0.24em;
       text-transform:uppercase;
-      line-height:1.8;
-    }
-
-    /* ================= BLOQUE NEGRO ================= */
-
-    .bloque-negro{
-      background:var(--negro);
-      color:var(--blanco);
-      padding:140px 0;
-    }
-
-    .bloque-negro p{
-      max-width:640px;
-      font-size:20px;
-      margin:0 0 36px;
+      line-height:1.9;
     }
 
     /* ================= BLOQUE BLANCO ================= */
@@ -116,6 +95,20 @@
     }
 
     .bloque-blanco p{
+      max-width:640px;
+      font-size:20px;
+      margin:0 0 36px;
+    }
+
+    /* ================= BLOQUE NEGRO ================= */
+
+    .bloque-negro{
+      background:var(--negro);
+      color:var(--blanco);
+      padding:140px 0;
+    }
+
+    .bloque-negro p{
       max-width:640px;
       font-size:20px;
       margin:0 0 36px;
@@ -179,11 +172,15 @@
 
     @media (max-width:700px){
       .apertura{
-        padding:140px 0 120px;
+        padding:150px 0 120px;
       }
 
-      .bloque-negro,
+      .apertura h1{
+        max-width:100%;
+      }
+
       .bloque-blanco,
+      .bloque-negro,
       .contacto,
       .dedicatoria{
         padding:110px 0;
@@ -204,25 +201,12 @@
     </div>
   </section>
 
-  <!-- AXIOMA -->
+  <!-- AXIOMA / SEPARADOR -->
   <section class="axioma">
     <div class="wrap">
       <p>
         La psiquiatría es ciencia en su base<br>
         y arte en su ejercicio
-      </p>
-    </div>
-  </section>
-
-  <!-- BLOQUE NEGRO · ESCUCHA -->
-  <section class="bloque-negro">
-    <div class="wrap">
-      <p>
-        Escucho sin prisa, pero no sin dirección.
-      </p>
-      <p>
-        El trabajo empieza cuando dejamos de evitar
-        lo que insiste.
       </p>
     </div>
   </section>
@@ -237,6 +221,19 @@
       <p>
         No acompaño para tranquilizar,
         sino para pensar lo que duele.
+      </p>
+    </div>
+  </section>
+
+  <!-- BLOQUE NEGRO · ESCUCHA -->
+  <section class="bloque-negro">
+    <div class="wrap">
+      <p>
+        Escucho sin prisa, pero no sin dirección.
+      </p>
+      <p>
+        El trabajo empieza cuando dejamos de evitar
+        lo que insiste.
       </p>
     </div>
   </section>
