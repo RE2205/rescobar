@@ -1,234 +1,228 @@
 <!doctype html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Inner Sound</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Inner Sound · CreSer</title>
+  <meta name="description" content="Escucha guiada basada en frecuencia y neurociencia. Una experiencia creativa íntima." />
 
   <style>
+    /* ==================================================
+       INNER SOUND
+       Subpágina · Experiencia Editorial Seductora
+       ================================================== */
 
-    /* =========================
-       BASE
-       ========================= */
-
-    body {
-      margin: 0;
-      background: #000000;
-      color: #F5F5F7;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    :root{
+      --negro:#0b0b0c;
+      --blanco:#f6f6f2;
+      --gris:#a1a1a1;
+      --violeta:#7b5cff;
+      --violeta-suave:#b7a9ff;
+      --linea:rgba(255,255,255,.10);
     }
 
-    .wrapper {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 120px 32px;
+    *{ box-sizing:border-box; }
+
+    body{
+      margin:0;
+      background:var(--negro);
+      color:var(--blanco);
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      line-height:1.6;
+      -webkit-font-smoothing:antialiased;
     }
 
-    .accent {
-      color: #8B5CF6;
+    .wrap{
+      max-width:1100px;
+      margin:0 auto;
+      padding:0 32px;
     }
 
-    /* =========================
-       HERO
-       ========================= */
+    /* ================= HERO ================= */
 
-    .hero h1 {
-      font-size: 4.2rem;
-      font-weight: 600;
-      color: #8B5CF6;
-      margin: 0 0 20px 0;
+    .hero{
+      padding:120px 0 72px;
     }
 
-    .hero h2 {
-      font-size: 1.2rem;
-      font-weight: 400;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: #CFCFD4;
-      margin-bottom: 100px;
+    .hero .kicker{
+      font-size:13px;
+      letter-spacing:.28em;
+      text-transform:uppercase;
+      color:rgba(255,255,255,.55);
+      margin:0 0 28px;
     }
 
-    /* =========================
-       BLOQUES TEXTO + IMAGEN
-       ========================= */
-
-    .block {
-      display: flex;
-      align-items: center;
-      gap: 80px;
-      margin-bottom: 140px;
+    .hero h1{
+      max-width:760px;
+      font-size:clamp(40px,5vw,58px);
+      font-weight:500;
+      line-height:1.15;
+      margin:0 0 20px;
     }
 
-    .block.reverse {
-      flex-direction: row-reverse;
+    .hero p{
+      max-width:560px;
+      font-size:18px;
+      color:rgba(255,255,255,.80);
+      margin:0;
     }
 
-    .block img {
-      width: 32%;
-      opacity: 0.8;
+    /* ================= AXIOMA ================= */
+
+    .axioma{
+      padding:36px 0 48px;
+      border-top:1px solid var(--linea);
+      border-bottom:1px solid var(--linea);
+      text-align:center;
     }
 
-    .block p {
-      font-size: 1.6rem;
-      line-height: 1.6;
-      max-width: 520px;
-      color: #E5E5E7;
+    .axioma p{
+      margin:0;
+      font-size:14px;
+      letter-spacing:.30em;
+      text-transform:uppercase;
+      color:var(--violeta);
     }
 
-    /* =========================
-       TEXTO CENTRAL
-       ========================= */
+    /* ================= IMÁGENES ================= */
 
-    .full-text {
-      font-size: 1.9rem;
-      line-height: 1.6;
-      max-width: 720px;
-      margin: 0 auto 160px;
-      text-align: center;
-      color: #E5E5E7;
+    .imagenes{
+      padding:72px 0 96px;
     }
 
-    /* =========================
-       CTA
-       ========================= */
-
-    .cta {
-      display: inline-block;
-      margin-top: 40px;
-      padding: 16px 36px;
-      border: 1px solid #8B5CF6;
-      color: #8B5CF6;
-      text-decoration: none;
-      letter-spacing: 0.1em;
-      font-size: 0.9rem;
-      transition: all 0.3s ease;
+    .imagenes-grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:28px;
     }
 
-    .cta:hover {
-      background: #8B5CF6;
-      color: #000000;
+    .imagen{
+      aspect-ratio:4/5;
+      border-radius:18px;
+      overflow:hidden;
+      background:#000;
+      border:1px solid var(--linea);
     }
 
-    /* =========================
-       MOBILE
-       ========================= */
-
-    @media (max-width: 768px) {
-
-      .wrapper {
-        padding: 80px 24px;
-      }
-
-      .hero h1 {
-        font-size: 2.8rem;
-        line-height: 1.1;
-      }
-
-      .hero h2 {
-        font-size: 0.95rem;
-        letter-spacing: 0.18em;
-        margin-bottom: 72px;
-      }
-
-      .block {
-        flex-direction: column;
-        gap: 40px;
-        margin-bottom: 110px;
-      }
-
-      .block.reverse {
-        flex-direction: column;
-      }
-
-      .block img {
-        width: 100%;
-        max-width: 360px;
-        opacity: 0.7;
-      }
-
-      .block p {
-        font-size: 1.35rem;
-        line-height: 1.6;
-        text-align: left;
-      }
-
-      .full-text {
-        font-size: 1.5rem;
-        line-height: 1.6;
-        padding: 0 6px;
-        margin-bottom: 130px;
-      }
-
-      .cta {
-        font-size: 0.85rem;
-        padding: 14px 28px;
-        margin-top: 56px;
-      }
+    .imagen img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      filter:grayscale(100%);
+      opacity:.80;
     }
 
+    /* ================= BLOQUE TEXTO ================= */
+
+    .bloque{
+      background:#000;
+      padding:96px 0;
+    }
+
+    .bloque p{
+      max-width:640px;
+      font-size:20px;
+      margin:0 0 28px;
+      color:rgba(255,255,255,.88);
+    }
+
+    /* ================= CIERRE / CTA ================= */
+
+    .cierre{
+      padding:96px 0 120px;
+      border-top:1px solid var(--linea);
+      text-align:center;
+    }
+
+    .cierre p{
+      max-width:620px;
+      margin:0 auto 36px;
+      font-size:18px;
+      color:rgba(255,255,255,.78);
+    }
+
+    .cierre a{
+      display:inline-block;
+      font-size:14px;
+      letter-spacing:.28em;
+      text-transform:uppercase;
+      color:var(--blanco);
+      text-decoration:none;
+      border-bottom:1px solid var(--blanco);
+      padding-bottom:4px;
+      transition:.3s ease;
+    }
+
+    .cierre a:hover{
+      color:var(--violeta-suave);
+      border-color:var(--violeta-suave);
+    }
+
+    /* ================= RESPONSIVE ================= */
+
+    @media (max-width:900px){
+      .imagenes-grid{ grid-template-columns:1fr; }
+    }
+
+    @media (max-width:700px){
+      .hero{ padding:96px 0 56px; }
+      .imagenes{ padding:56px 0 72px; }
+      .bloque{ padding:72px 0; }
+      .cierre{ padding:72px 0 96px; }
+    }
   </style>
 </head>
 
 <body>
 
-  <div class="wrapper">
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap">
+      <p class="kicker">Experiencia creativa</p>
+      <h1>Inner Sound</h1>
+      <p>Escucha guiada · Frecuencia · Neurociencia</p>
+    </div>
+  </section>
 
-    <!-- HERO -->
-    <section class="hero">
-      <h1>INNER SOUND</h1>
-      <h2>Escucha guiada · Frecuencia · Neurociencia</h2>
-    </section>
+  <!-- AXIOMA -->
+  <section class="axioma">
+    <div class="wrap">
+      <p>El sonido también desea ser escuchado</p>
+    </div>
+  </section>
 
-    <!-- BLOQUE 1 -->
-    <section class="block">
+  <!-- IMÁGENES -->
+  <section class="imagenes">
+    <div class="wrap imagenes-grid">
+      <div class="imagen">
+        <img src="/assets/inner-sound-1.jpg" alt="Escucha guiada">
+      </div>
+      <div class="imagen">
+        <img src="/assets/inner-sound-2.jpg" alt="Frecuencia y cuerpo">
+      </div>
+    </div>
+  </section>
+
+  <!-- BLOQUE NEGRO -->
+  <section class="bloque">
+    <div class="wrap">
+      <p>No es música de fondo. Es una experiencia diseñada para modificar el estado interno desde el sonido.</p>
+      <p>La frecuencia regula, el cuerpo responde y la creatividad aparece sin esfuerzo.</p>
+    </div>
+  </section>
+
+  <!-- CIERRE -->
+  <section class="cierre">
+    <div class="wrap">
       <p>
-        No es música de fondo.<br>
-        Es una <span class="accent">condición interna</span><br>
-        que permite crear.
+        Inner Sound se vive en grupos pequeños,
+        en sesiones íntimas pensadas para quienes
+        desean experimentar antes que entender.
       </p>
-      <img src="inner-sound-1.jpg" alt="Escucha guiada">
-    </section>
-
-    <!-- BLOQUE 2 -->
-    <section class="block reverse">
-      <p>
-        El cerebro responde a la frecuencia<br>
-        antes de que la mente<br>
-        intente comprender.
-      </p>
-      <img src="inner-sound-2.jpg" alt="Frecuencia y sonido">
-    </section>
-
-    <!-- TEXTO CENTRAL -->
-    <section class="full-text">
-      Cuando el sistema se regula,<br>
-      el cuerpo deja de resistir.<br><br>
-      Y entonces,<br>
-      la creatividad aparece.
-    </section>
-
-    <!-- BLOQUE DE DESEABILIDAD -->
-    <section class="full-text">
-      Inner Sound se vive en<br>
-      <span class="accent">grupos reducidos</span>.<br><br>
-
-      Cada sesión es distinta.<br>
-      No se repite.<br>
-      No se escala.
-    </section>
-
-    <!-- CIERRE / CTA -->
-    <section class="full-text">
-      Algunos procesos creativos<br>
-      no necesitan estímulo.<br><br>
-
-      Necesitan<br>
-      frecuencia, ritmo, presencia.<br><br>
-
-      <a href="#" class="cta">Solicitar acceso a Inner Sound</a>
-    </section>
-
-  </div>
+      <a href="/contacto.html">Solicitar acceso a Inner Sound</a>
+    </div>
+  </section>
 
 </body>
 </html>
