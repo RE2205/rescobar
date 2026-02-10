@@ -3,182 +3,219 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Logos Psyche — Ronald Escobar</title>
-  <meta name="description" content="Logos Psyche: psiquiatría basada en evidencia, escucha profunda y humanidad." />
-  <meta name="robots" content="noindex, nofollow" />
-  <link rel="stylesheet" href="styles-clean.css?v=11002" />
+
+  <title>Logos Psyche</title>
+  <meta name="description" content="Psiquiatría y psicoterapia. Un espacio de escucha y encuadre clínico." />
+
+  <style>
+    /* =========================================
+       LOGOS PSYCHE
+       Libro clínico · Ronald Escobar
+       ========================================= */
+
+    :root{
+      --negro:#000000;
+      --blanco:#f6f6f2;
+      --gris:#8e8e8a;
+    }
+
+    *{ box-sizing:border-box; }
+
+    html,body{
+      margin:0;
+      padding:0;
+    }
+
+    body{
+      background:var(--blanco);
+      color:var(--negro);
+      font-family: Georgia, "Times New Roman", serif;
+      line-height:1.7;
+    }
+
+    .wrap{
+      max-width:880px;
+      margin:0 auto;
+      padding:0 24px;
+    }
+
+    /* ================= APERTURA ================= */
+
+    .apertura{
+      padding:140px 0 120px;
+    }
+
+    .apertura h1{
+      font-size:clamp(34px,4.8vw,56px);
+      font-weight:400;
+      line-height:1.2;
+      margin:0;
+    }
+
+    /* ================= FRANJA AXIOMA ================= */
+
+    .axioma{
+      background:var(--negro);
+      color:var(--blanco);
+      padding:48px 0;
+      text-align:center;
+    }
+
+    .axioma p{
+      font-size:13px;
+      letter-spacing:0.22em;
+      text-transform:uppercase;
+      margin:0;
+    }
+
+    /* ================= BLOQUE NEGRO ================= */
+
+    .bloque-negro{
+      background:var(--negro);
+      color:var(--blanco);
+      padding:120px 0;
+    }
+
+    .bloque-negro p{
+      max-width:640px;
+      margin:0 0 32px;
+      font-size:20px;
+    }
+
+    /* ================= BLOQUE BLANCO ================= */
+
+    .bloque-blanco{
+      background:var(--blanco);
+      color:var(--negro);
+      padding:120px 0;
+    }
+
+    .bloque-blanco p{
+      max-width:640px;
+      margin:0 0 32px;
+      font-size:20px;
+    }
+
+    /* ================= CONTACTO ================= */
+
+    .contacto{
+      padding:120px 0 160px;
+    }
+
+    .contacto p{
+      max-width:640px;
+      font-size:20px;
+      margin-bottom:40px;
+    }
+
+    .contacto a{
+      display:inline-block;
+      font-size:18px;
+      color:var(--negro);
+      text-decoration:none;
+      border-bottom:1px solid var(--negro);
+      padding-bottom:4px;
+      margin-right:24px;
+    }
+
+    .contacto a:hover{
+      opacity:.6;
+    }
+
+    /* ================= DEDICATORIA ================= */
+
+    .dedicatoria{
+      background:var(--negro);
+      color:var(--blanco);
+      padding:140px 0;
+    }
+
+    .dedicatoria p{
+      max-width:640px;
+      font-size:18px;
+      font-style:italic;
+      margin:0;
+    }
+
+    .dedicatoria a{
+      color:var(--blanco);
+      text-decoration:none;
+      border-bottom:1px solid var(--blanco);
+      padding-bottom:2px;
+    }
+  </style>
 </head>
 
-<body class="logos-light">
+<body>
 
-<!-- =========================
-     LOGOS PSYCHE — HERO
-========================= -->
-<header class="lp-hero" role="banner">
-  <div class="lp-hero__inner">
-    <div class="lp-hero__top">
-      <div class="lp-hero__brand">LOGOS PSYCHE</div>
-      <div class="lp-hero__sub">Psiquiatría · Psicoterapia</div>
+  <!-- APERTURA -->
+  <section class="apertura">
+    <div class="wrap">
+      <h1>
+        Escuchar no es asentir.<br>
+        Es quedarse cuando lo que aparece incomoda.
+      </h1>
     </div>
+  </section>
 
-    <h1 class="lp-hero__headline">
-      Tómate un tiempo<br>para escucharte.
-    </h1>
-
-    <div class="lp-hero__logo" aria-hidden="true">
-      <img src="assets/logos-psyche-white.png" alt="Logos Psyche" />
-    </div>
-  </div>
-
-  <div class="lp-hero__band">
-    LA PSIQUIATRÍA ES CIENCIA EN SU BASE Y ARTE EN SU EJERCICIO.
-  </div>
-</header>
-
-<!-- =========================
-     BLOQUE 1: IDENTIDAD CLÍNICA
-========================= -->
-<section class="lp-intro">
-  <div class="lp-intro__inner">
-
-    <div class="lp-intro__text">
-      <span class="tag">ENFOQUE</span>
-
-      <h2>Un espacio clínico para pensar, sentir y sostener procesos reales.</h2>
-
+  <!-- AXIOMA -->
+  <section class="axioma">
+    <div class="wrap">
       <p>
-        Trabajo con calma, claridad y método. Sin prisa y sin juicio.
+        LA PSIQUIATRÍA ES CIENCIA EN SU BASE<br>
+        Y ARTE EN SU EJERCICIO
       </p>
+    </div>
+  </section>
 
+  <!-- BLOQUE NEGRO -->
+  <section class="bloque-negro">
+    <div class="wrap">
       <p>
-        Integramos ciencia, historia personal y decisiones concretas,
-        respetando el ritmo de cada persona.
+        Escucho sin prisa, pero no sin dirección.
       </p>
-
-      <p class="lp-intro__em">
-        Con una base existencial y humanista te acompañamos en tu proceso.
-      </p>
-    </div>
-
-    <div class="lp-intro__visual">
-      <img src="assets/clinica.png" alt="Sala de consulta" class="lp-intro__img" />
-    </div>
-
-  </div>
-</section>
-
-<!-- =========================
-     BLOQUE UMBRAL
-========================= -->
-<section class="block umbral">
-  <div class="wrap umbral-inner">
-
-    <span class="umbral-tag">OTRO ENCUADRE</span>
-
-    <h3>Cuando el bloqueo no es técnico</h3>
-
-    <p>
-      Hay procesos creativos que no se resuelven con método,
-      sino con escucha y encuadre.
-    </p>
-
-    <a href="/arte-y-vida.html" class="umbral-link">
-      Leer sobre este espacio →
-    </a>
-
-  </div>
-</section>
-
-<!-- =========================
-     BLOQUE 2: CÓMO TRABAJO
-========================= -->
-<section class="block logos-light inverted">
-  <div class="wrap two-col">
-
-    <div class="visual">
-      <img src="assets/obra-proceso.png" alt="Obra abstracta" class="lp-intro__img" />
-    </div>
-
-    <div class="copy">
-      <span class="tag">CÓMO TRABAJO</span>
-
-      <h2>Evaluación clínica + acompañamiento</h2>
-
       <p>
-        Primero entendemos la historia completa: síntomas, contexto, hábitos, vínculos y biografía.
-        Luego elegimos una ruta: psicoterapia, psiquiatría, o ambas, según tu caso.
+        El trabajo empieza cuando dejamos de evitar
+        lo que insiste.
       </p>
+    </div>
+  </section>
 
+  <!-- BLOQUE BLANCO -->
+  <section class="bloque-blanco">
+    <div class="wrap">
       <p>
-        Si se indica medicación, se decide con criterio, seguimiento y objetivos claros.
+        Trabajo con encuadre, porque sin límites
+        no hay profundidad.
+      </p>
+      <p>
+        No acompaño para tranquilizar,
+        sino para pensar lo que duele.
       </p>
     </div>
+  </section>
 
-  </div>
-</section>
-
-<!-- =========================
-     BLOQUE FINAL: CONTACTO
-========================= -->
-<section class="block lp-contact">
-  <div class="wrap two-col lp-contact__inner">
-
-    <div class="lp-contact__main">
-      <span class="tag">SI ESTÁS LISTO</span>
-
-      <h2 class="lp-contact__title">
-        Agendemos una primera conversación
-      </h2>
-
-      <p class="lp-contact__p">
-        Una primera cita para comprender lo que pasa y definir el siguiente paso.
+  <!-- CONTACTO -->
+  <section class="contacto">
+    <div class="wrap">
+      <p>
+        Una primera conversación sirve para saber
+        si este puede ser el espacio adecuado.
       </p>
+      <a href="https://wa.me/50230607168">WhatsApp</a>
+      <a href="mailto:correo@logospsyche.com">Correo</a>
+    </div>
+  </section>
 
-      <p class="lp-contact__p lp-contact__muted">
-        La forma más simple es escribir por WhatsApp. Si prefieres correo, también está disponible.
-      </p>
-
-      <div class="lp-contact__methods">
-  <a href="https://wa.me/50230607168" target="_blank" rel="noopener" class="contact-link">
-    <span class="icon">🟢</span>
-    WhatsApp
-  </a>
-
-  <span class="contact-sep">·</span>
-
-  <a href="mailto:logos@ronaldescobar.me" class="contact-link">
-    <span class="icon">✉️</span>
-    Correo
-  </a>
-</div>
-
-      <p class="lp-contact__note">
-        *Escribir no implica compromiso. Solo abre una primera conversación.*
+  <!-- DEDICATORIA -->
+  <section class="dedicatoria">
+    <div class="wrap">
+      <p>
+        Para quienes descubren que no todo puede decirse en voz alta.<br><br>
+        <a href="/arte-y-vida">Arte y Vida →</a>
       </p>
     </div>
-
-    <aside class="lp-contact__aside" aria-label="Enlaces">
-      <span class="tag">ENLACES</span>
-
-      <ul class="lp-contact__list">
-        <li><a href="/podcast.html">Podcast</a></li>
-        <li><a href="/escritura.html">Escritura</a></li>
-        <li><a href="/inner-sound.html">Inner Sound</a></li>
-      </ul>
-    </aside>
-
-  </div>
-</section>
-
-<!-- =========================
-     FOOTER
-========================= -->
-<footer class="block logos-light" style="padding:28px 0;">
-  <div class="wrap" style="display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap;">
-    <div class="muted">© Ronald Escobar</div>
-    <div class="muted">Logos Psyche</div>
-  </div>
-</footer>
+  </section>
 
 </body>
 </html>
