@@ -17,26 +17,23 @@
       --negro:#0b0b0c;
       --blanco:#f6f6f2;
       --gris:#9a9a96;
-      --azul:#6f8f9f;     /* acento sobrio */
+      --azul:#6f8f9f;
       --linea:rgba(255,255,255,.10);
     }
 
     *{ box-sizing:border-box; }
 
-    html,body{
-      margin:0;
-      padding:0;
-    }
-
     body{
+      margin:0;
       background:var(--negro);
       color:var(--blanco);
       font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
       line-height:1.6;
+      -webkit-font-smoothing:antialiased;
     }
 
     .wrap{
-      max-width:980px;
+      max-width:1100px;
       margin:0 auto;
       padding:0 32px;
     }
@@ -88,46 +85,77 @@
       text-shadow:0 0 18px rgba(111,143,159,.25);
     }
 
-    /* ================= EPISODIOS ================= */
+    /* ================= CLIPS ================= */
 
-    .episodios{
-      padding:64px 0 96px;
+    .clips{
+      padding:72px 0 96px;
     }
 
-    .episodios-grid{
+    .clips-grid{
       display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-      gap:36px;
+      grid-template-columns:repeat(5, 1fr);
+      gap:20px;
     }
 
-    .episodio{
-      text-decoration:none;
-      color:var(--blanco);
-    }
-
-    .episodio img{
-      width:100%;
-      display:block;
+    .clip{
+      position:relative;
+      aspect-ratio:9/16;
       border-radius:16px;
-      filter:grayscale(100%);
-      opacity:.82;
-      transition:.35s ease;
+      overflow:hidden;
+      background:#000;
+      border:1px solid var(--linea);
     }
 
-    .episodio:hover img{
+    .clip video{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+      filter:grayscale(100%);
+      opacity:.85;
+      transition:.4s ease;
+    }
+
+    .clip:hover video{
       filter:none;
       opacity:1;
     }
 
-    .episodio h3{
-      font-size:16px;
-      font-weight:500;
-      margin:16px 0 4px;
+    .clip::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(
+        to top,
+        rgba(0,0,0,.65),
+        rgba(0,0,0,.15) 45%,
+        transparent
+      );
+      pointer-events:none;
     }
 
-    .episodio span{
-      font-size:13px;
-      color:var(--gris);
+    .clip-info{
+      position:absolute;
+      bottom:14px;
+      left:14px;
+      right:14px;
+      z-index:2;
+    }
+
+    .clip-info span{
+      display:block;
+      font-size:11px;
+      letter-spacing:.22em;
+      text-transform:uppercase;
+      color:rgba(255,255,255,.55);
+      margin-bottom:6px;
+    }
+
+    .clip-info p{
+      margin:0;
+      font-size:14px;
+      line-height:1.4;
+      font-weight:500;
     }
 
     /* ================= BLOQUE NEGRO ================= */
@@ -180,24 +208,21 @@
 
     /* ================= RESPONSIVE ================= */
 
-    @media (max-width:700px){
-      .hero{
-        padding:96px 0 48px;
-      }
-
-      .episodios{
-        padding:56px 0 72px;
-      }
-
-      .bloque{
-        padding:72px 0;
-      }
-
-      .cta{
-        padding:64px 0 96px;
-      }
+    @media (max-width:1100px){
+      .clips-grid{ grid-template-columns:repeat(3,1fr); }
     }
 
+    @media (max-width:700px){
+      .hero{ padding:96px 0 48px; }
+      .clips{ padding:56px 0 72px; }
+      .clips-grid{ grid-template-columns:repeat(2,1fr); }
+      .bloque{ padding:72px 0; }
+      .cta{ padding:64px 0 96px; }
+    }
+
+    @media (max-width:420px){
+      .clips-grid{ grid-template-columns:1fr; }
+    }
   </style>
 </head>
 
@@ -227,27 +252,49 @@
     </div>
   </section>
 
-  <!-- EPISODIOS -->
-  <section class="episodios">
-    <div class="wrap episodios-grid">
+  <!-- CLIPS -->
+  <section class="clips">
+    <div class="wrap clips-grid">
 
-      <a class="episodio" href="#">
-        <img src="assets/ep12.jpg" alt="Episodio 12">
-        <h3>Episodio 12 · El amor en tu cerebro</h3>
-        <span>Temporada 2</span>
-      </a>
+      <div class="clip">
+        <video src="clip1.mp4" preload="metadata" controls></video>
+        <div class="clip-info">
+          <span>Clip 01</span>
+          <p>No todo síntoma es un error</p>
+        </div>
+      </div>
 
-      <a class="episodio" href="#">
-        <img src="assets/ep11.jpg" alt="Episodio 11">
-        <h3>Episodio 11 · Vínculo y deseo</h3>
-        <span>Temporada 2</span>
-      </a>
+      <div class="clip">
+        <video src="clip2.mp4" preload="metadata" controls></video>
+        <div class="clip-info">
+          <span>Clip 02</span>
+          <p>El problema no siempre es químico</p>
+        </div>
+      </div>
 
-      <a class="episodio" href="#">
-        <img src="assets/ep10.jpg" alt="Episodio 10">
-        <h3>Episodio 10 · Pensar lo que duele</h3>
-        <span>Temporada 2</span>
-      </a>
+      <div class="clip">
+        <video src="clip3.mp4" preload="metadata" controls></video>
+        <div class="clip-info">
+          <span>Clip 03</span>
+          <p>Cuando el cuerpo habla primero</p>
+        </div>
+      </div>
+
+      <div class="clip">
+        <video src="clip4.mp4" preload="metadata" controls></video>
+        <div class="clip-info">
+          <span>Clip 04</span>
+          <p>Pensar duele más que anestesiar</p>
+        </div>
+      </div>
+
+      <div class="clip">
+        <video src="clip5.mp4" preload="metadata" controls></video>
+        <div class="clip-info">
+          <span>Clip 05</span>
+          <p>La clínica también es conversación</p>
+        </div>
+      </div>
 
     </div>
   </section>
@@ -274,7 +321,7 @@
         de qué significa Desapre(he)nder.
       </p>
 
-      <a href="index.html">Volver al inicio</a>
+      <a href="/">Volver al inicio</a>
     </div>
   </section>
 
