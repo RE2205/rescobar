@@ -4,305 +4,279 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Desapre(he)nder para CreSer — Podcast</title>
-  <meta name="description" content="Desapre(he)nder para CreSer: conversaciones para detener el ruido y pensar lo humano." />
-  <meta name="robots" content="noindex, nofollow" />
+  <title>Desapre(he)nder para CreSer · Podcast</title>
+  <meta name="description" content="Conversaciones para detener el ruido y pensar lo humano sin prisa ni fórmulas." />
 
   <style>
+    /* ==================================================
+       DESAPRE(HE)NDER PARA CRESER
+       Podcast · Conversación · Pensamiento
+       ================================================== */
+
     :root{
-      --bg:#0b0b0c;
-      --ink:#f6f6f2;
-      --muted:rgba(246,246,242,.72);
-      --muted2:rgba(246,246,242,.54);
-      --hair:rgba(246,246,242,.14);
-      --hair2:rgba(246,246,242,.09);
-
-      --accent:#8fa2b6;
-
-      --max:1100px;
-      --pad:28px;
-      --radius:14px;
-
-      --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      --negro:#0b0b0c;
+      --blanco:#f6f6f2;
+      --gris:#9a9a96;
+      --azul:#6f8f9f;     /* acento sobrio */
+      --linea:rgba(255,255,255,.10);
     }
 
     *{ box-sizing:border-box; }
-    body{
+
+    html,body{
       margin:0;
-      background:var(--bg);
-      color:var(--ink);
-      font-family:var(--font);
-      -webkit-font-smoothing:antialiased;
+      padding:0;
+    }
+
+    body{
+      background:var(--negro);
+      color:var(--blanco);
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      line-height:1.6;
     }
 
     .wrap{
-      width:min(var(--max), calc(100% - (var(--pad) * 2)));
+      max-width:980px;
       margin:0 auto;
+      padding:0 32px;
     }
 
-    /* ---------------- HERO (ya afinado) ---------------- */
+    /* ================= HERO ================= */
 
     .hero{
-      padding:clamp(36px,5vw,64px) 0 22px;
-      border-bottom:1px solid var(--hair2);
+      padding:120px 0 56px;
     }
 
-    .hero-grid{
+    .hero .kicker{
+      font-size:13px;
+      letter-spacing:.24em;
+      text-transform:uppercase;
+      color:rgba(255,255,255,.55);
+      margin:0 0 28px;
+    }
+
+    .hero h1{
+      max-width:760px;
+      font-size:clamp(38px,5vw,58px);
+      font-weight:500;
+      line-height:1.15;
+      margin:0 0 22px;
+    }
+
+    .hero p{
+      max-width:560px;
+      font-size:18px;
+      color:rgba(255,255,255,.75);
+      margin:0;
+    }
+
+    /* ================= AXIOMA ================= */
+
+    .axioma{
+      padding:36px 0 48px;
+      border-top:1px solid var(--linea);
+      border-bottom:1px solid var(--linea);
+    }
+
+    .axioma p{
+      margin:0;
+      text-align:center;
+      font-size:15px;
+      letter-spacing:.28em;
+      text-transform:uppercase;
+      color:var(--azul);
+      text-shadow:0 0 18px rgba(111,143,159,.25);
+    }
+
+    /* ================= EPISODIOS ================= */
+
+    .episodios{
+      padding:64px 0 96px;
+    }
+
+    .episodios-grid{
       display:grid;
-      grid-template-columns:1.15fr .85fr;
-      gap:32px;
-      align-items:end;
+      grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+      gap:36px;
     }
 
-    .kicker{
-      display:flex;
-      align-items:center;
-      gap:10px;
-      font-size:12px;
-      letter-spacing:.18em;
-      text-transform:uppercase;
-      color:var(--muted2);
-      margin-bottom:10px;
+    .episodio{
+      text-decoration:none;
+      color:var(--blanco);
     }
 
-    .kicker .dot{
-      width:6px;height:6px;border-radius:50%;
-      background:var(--accent);
+    .episodio img{
+      width:100%;
+      display:block;
+      border-radius:16px;
+      filter:grayscale(100%);
+      opacity:.82;
+      transition:.35s ease;
     }
 
-    h1{
-      margin:0;
-      font-size:clamp(30px,4vw,46px);
-      line-height:1.05;
-      letter-spacing:-0.035em;
-      font-weight:640;
+    .episodio:hover img{
+      filter:none;
+      opacity:1;
     }
 
-    .subhead{
-      margin-top:12px;
-      max-width:56ch;
-      font-size:clamp(14.5px,1.4vw,17px);
-      line-height:1.55;
-      color:var(--muted);
+    .episodio h3{
+      font-size:16px;
+      font-weight:500;
+      margin:16px 0 4px;
     }
 
-    .axiom{
-      border:1px solid var(--hair);
-      border-radius:var(--radius);
-      padding:16px;
-      background:linear-gradient(180deg, rgba(143,162,182,.12), rgba(246,246,242,.04));
-    }
-
-    .axiom-label{
-      font-size:11.5px;
-      letter-spacing:.18em;
-      text-transform:uppercase;
-      color:var(--muted2);
-      margin-bottom:10px;
-    }
-
-    .axiom-quote{
-      font-size:clamp(16px,1.7vw,20px);
-      font-weight:700;
-      line-height:1.25;
-      letter-spacing:-0.02em;
-    }
-
-    .axiom-note{
-      margin-top:10px;
+    .episodio span{
       font-size:13px;
-      line-height:1.45;
-      color:var(--muted);
+      color:var(--gris);
     }
 
-    /* ---------------- CLIPS ---------------- */
+    /* ================= BLOQUE NEGRO ================= */
 
-    .clips{
-      padding:26px 0 30px;
-      border-bottom:1px solid var(--hair2);
+    .bloque{
+      background:#000;
+      padding:96px 0;
     }
 
-    .clips-header{
-      display:flex;
-      justify-content:space-between;
-      align-items:flex-end;
-      margin-bottom:16px;
-      gap:16px;
+    .bloque p{
+      max-width:640px;
+      font-size:20px;
+      margin:0 0 28px;
     }
 
-    .clips-header h2{
-      margin:0;
-      font-size:13px;
-      letter-spacing:.18em;
-      text-transform:uppercase;
-      color:var(--muted2);
-      font-weight:600;
+    .bloque p:last-child{
+      margin-bottom:0;
     }
 
-    .clips-header p{
-      margin:0;
-      font-size:13px;
-      color:var(--muted);
-      max-width:42ch;
+    /* ================= CTA ================= */
+
+    .cta{
+      padding:72px 0 120px;
+      border-top:1px solid var(--linea);
+      text-align:center;
     }
 
-    .clips-grid{
-      display:grid;
-      grid-template-columns:repeat(5, 1fr);
-      gap:14px;
+    .cta p{
+      max-width:560px;
+      margin:0 auto 32px;
+      font-size:18px;
+      color:rgba(255,255,255,.8);
     }
 
-    .clip{
-      border:1px solid var(--hair);
-      border-radius:var(--radius);
-      padding:14px 12px;
-      background:rgba(246,246,242,.03);
-      display:flex;
-      flex-direction:column;
-      justify-content:space-between;
-      min-height:150px;
-    }
-
-    .clip span{
-      font-size:11px;
-      letter-spacing:.14em;
-      text-transform:uppercase;
-      color:var(--muted2);
-    }
-
-    .clip p{
-      margin:10px 0 0;
+    .cta a{
+      display:inline-block;
       font-size:14px;
-      line-height:1.45;
-      color:var(--ink);
-      font-weight:520;
+      letter-spacing:.24em;
+      text-transform:uppercase;
+      color:var(--blanco);
+      text-decoration:none;
+      border-bottom:1px solid var(--blanco);
+      padding-bottom:4px;
     }
 
-    .clip em{
-      margin-top:12px;
-      font-size:12px;
-      color:var(--muted);
-      font-style:normal;
+    .cta a:hover{
+      color:var(--azul);
+      border-color:var(--azul);
     }
 
-    .clip:hover{
-      background:rgba(143,162,182,.08);
-      border-color:rgba(143,162,182,.35);
+    /* ================= RESPONSIVE ================= */
+
+    @media (max-width:700px){
+      .hero{
+        padding:96px 0 48px;
+      }
+
+      .episodios{
+        padding:56px 0 72px;
+      }
+
+      .bloque{
+        padding:72px 0;
+      }
+
+      .cta{
+        padding:64px 0 96px;
+      }
     }
 
-    /* ---------------- Responsive ---------------- */
-
-    @media (max-width: 1000px){
-      .clips-grid{ grid-template-columns:repeat(3,1fr); }
-    }
-
-    @media (max-width: 700px){
-      .hero-grid{ grid-template-columns:1fr; }
-      .clips-grid{ grid-template-columns:repeat(2,1fr); }
-    }
-
-    @media (max-width: 420px){
-      :root{ --pad:18px; }
-      .clips-grid{ grid-template-columns:1fr; }
-    }
-
-    footer{
-      padding:18px 0;
-      border-top:1px solid var(--hair2);
-      font-size:12.5px;
-      color:var(--muted2);
-    }
   </style>
 </head>
 
 <body>
 
   <!-- HERO -->
-  <header class="hero">
+  <section class="hero">
     <div class="wrap">
-      <div class="hero-grid">
+      <p class="kicker">Podcast</p>
 
-        <div>
-          <div class="kicker">
-            <span class="dot"></span>
-            <span>Podcast</span>
-          </div>
+      <h1>
+        Desapre(he)nder<br>
+        para CreSer
+      </h1>
 
-          <h1>Desapre(he)nder<br>para CreSer</h1>
-
-          <p class="subhead">
-            Conversaciones para detener el ruido y pensar lo humano.
-          </p>
-        </div>
-
-        <aside class="axiom">
-          <div class="axiom-label">Axioma</div>
-          <div class="axiom-quote">NO TODO LO QUE DUELE ES PATOLOGÍA</div>
-          <div class="axiom-note">
-            A veces lo que duele es el dato más honesto.
-            Aquí lo miramos de frente, con palabras precisas.
-          </div>
-        </aside>
-
-      </div>
+      <p>
+        Conversaciones para detener el ruido
+        y pensar lo humano sin prisa ni fórmulas.
+      </p>
     </div>
-  </header>
+  </section>
 
-  <!-- CLIPS -->
-  <section class="clips">
+  <!-- AXIOMA -->
+  <section class="axioma">
     <div class="wrap">
+      <p>No todo lo que duele es patología</p>
+    </div>
+  </section>
 
-      <div class="clips-header">
-        <h2>Clips</h2>
-        <p>Piezas breves. Ideas que insisten. Fragmentos que abren preguntas.</p>
-      </div>
+  <!-- EPISODIOS -->
+  <section class="episodios">
+    <div class="wrap episodios-grid">
 
-      <div class="clips-grid">
+      <a class="episodio" href="#">
+        <img src="assets/ep12.jpg" alt="Episodio 12">
+        <h3>Episodio 12 · El amor en tu cerebro</h3>
+        <span>Temporada 2</span>
+      </a>
 
-        <article class="clip">
-          <span>Clip 01</span>
-          <p>No todo síntoma es un error.</p>
-          <em>1:12 min</em>
-        </article>
+      <a class="episodio" href="#">
+        <img src="assets/ep11.jpg" alt="Episodio 11">
+        <h3>Episodio 11 · Vínculo y deseo</h3>
+        <span>Temporada 2</span>
+      </a>
 
-        <article class="clip">
-          <span>Clip 02</span>
-          <p>El problema no siempre es químico.</p>
-          <em>0:58 min</em>
-        </article>
-
-        <article class="clip">
-          <span>Clip 03</span>
-          <p>Cuando el cuerpo habla antes que el lenguaje.</p>
-          <em>1:34 min</em>
-        </article>
-
-        <article class="clip">
-          <span>Clip 04</span>
-          <p>Pensar duele más que anestesiar.</p>
-          <em>1:05 min</em>
-        </article>
-
-        <article class="clip">
-          <span>Clip 05</span>
-          <p>La clínica también es conversación.</p>
-          <em>1:21 min</em>
-        </article>
-
-      </div>
+      <a class="episodio" href="#">
+        <img src="assets/ep10.jpg" alt="Episodio 10">
+        <h3>Episodio 10 · Pensar lo que duele</h3>
+        <span>Temporada 2</span>
+      </a>
 
     </div>
   </section>
 
-  <footer>
+  <!-- BLOQUE NEGRO -->
+  <section class="bloque">
     <div class="wrap">
-      © <span id="y"></span> Ronald Escobar — Desapre(he)nder para CreSer
+      <p>
+        Aquí no se habla para tranquilizar,
+        sino para sostener lo que aparece.
+      </p>
+      <p>
+        Pensar también es una forma de cuidado.
+      </p>
     </div>
-  </footer>
+  </section>
 
-  <script>
-    document.getElementById("y").textContent = new Date().getFullYear();
-  </script>
+  <!-- CTA -->
+  <section class="cta">
+    <div class="wrap">
+      <p>
+        En esta página encontrarás episodios completos,
+        clips seleccionados y una explicación más clara
+        de qué significa Desapre(he)nder.
+      </p>
+
+      <a href="index.html">Volver al inicio</a>
+    </div>
+  </section>
 
 </body>
 </html>
