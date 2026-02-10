@@ -89,6 +89,7 @@
       overflow:hidden;
       background:#000;
       border:1px solid var(--linea);
+      cursor:pointer;
     }
 
     .clip video{
@@ -98,13 +99,61 @@
       display:block;
       filter:grayscale(100%);
       opacity:.85;
-      transition:.4s ease;
-      background:#000;
     }
 
-    .clip:hover video{
+    .clip.playing video{
       filter:none;
       opacity:1;
+    }
+
+    /* Poster overlay */
+    .clip-poster{
+      position:absolute;
+      inset:0;
+      background-size:cover;
+      background-position:center;
+      filter:grayscale(100%);
+      transition:.3s ease;
+    }
+
+    .clip.playing .clip-poster{
+      opacity:0;
+      pointer-events:none;
+    }
+
+    /* Play editorial */
+    .play-btn{
+      position:absolute;
+      inset:0;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      z-index:3;
+      transition:.3s ease;
+    }
+
+    .play-btn span{
+      width:64px;
+      height:64px;
+      border-radius:50%;
+      background:rgba(0,0,0,.6);
+      border:1px solid rgba(255,255,255,.4);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .play-btn span::before{
+      content:"";
+      margin-left:4px;
+      border-style:solid;
+      border-width:10px 0 10px 16px;
+      border-color:transparent transparent transparent var(--blanco);
+    }
+
+    .clip.playing .play-btn{
+      opacity:0;
+      pointer-events:none;
     }
 
     .clip::after{
@@ -125,7 +174,7 @@
       bottom:14px;
       left:14px;
       right:14px;
-      z-index:2;
+      z-index:4;
     }
 
     .clip-info span{
@@ -177,38 +226,43 @@
 <section class="clips">
   <div class="wrap clips-grid">
 
-    <div class="clip">
-      <video preload="none" loading="lazy" muted playsinline controls>
-        <source src="/assets/clip1.mp4" type="video/mp4">
-      </video>
+    <!-- CLIP 01 -->
+    <div class="clip" data-video="/assets/clip1.mp4">
+      <div class="clip-poster" style="background-image:url('/assets/poster1.jpg')"></div>
+      <div class="play-btn"><span></span></div>
+      <video muted playsinline preload="none"></video>
       <div class="clip-info"><span>Clip 01</span><p>Acerca del placer</p></div>
     </div>
 
-    <div class="clip">
-      <video preload="none" loading="lazy" muted playsinline controls>
-        <source src="/assets/clip2.mp4" type="video/mp4">
-      </video>
+    <!-- CLIP 02 -->
+    <div class="clip" data-video="/assets/clip2.mp4">
+      <div class="clip-poster" style="background-image:url('/assets/poster2.jpg')"></div>
+      <div class="play-btn"><span></span></div>
+      <video muted playsinline preload="none"></video>
       <div class="clip-info"><span>Clip 02</span><p>Vida y vacío</p></div>
     </div>
 
-    <div class="clip">
-      <video preload="none" loading="lazy" muted playsinline controls>
-        <source src="/assets/clip3.mp4" type="video/mp4">
-      </video>
+    <!-- CLIP 03 -->
+    <div class="clip" data-video="/assets/clip3.mp4">
+      <div class="clip-poster" style="background-image:url('/assets/poster3.jpg')"></div>
+      <div class="play-btn"><span></span></div>
+      <video muted playsinline preload="none"></video>
       <div class="clip-info"><span>Clip 03</span><p>Nacido y criado en Guatemala</p></div>
     </div>
 
-    <div class="clip">
-      <video preload="none" loading="lazy" muted playsinline controls>
-        <source src="/assets/clip4.mp4" type="video/mp4">
-      </video>
+    <!-- CLIP 04 -->
+    <div class="clip" data-video="/assets/clip4.mp4">
+      <div class="clip-poster" style="background-image:url('/assets/poster4.jpg')"></div>
+      <div class="play-btn"><span></span></div>
+      <video muted playsinline preload="none"></video>
       <div class="clip-info"><span>Clip 04</span><p>Neurodivergente</p></div>
     </div>
 
-    <div class="clip">
-      <video preload="none" loading="lazy" muted playsinline controls>
-        <source src="/assets/clip5.mp4" type="video/mp4">
-      </video>
+    <!-- CLIP 05 -->
+    <div class="clip" data-video="/assets/clip5.mp4">
+      <div class="clip-poster" style="background-image:url('/assets/poster5.jpg')"></div>
+      <div class="play-btn"><span></span></div>
+      <video muted playsinline preload="none"></video>
       <div class="clip-info"><span>Clip 05</span><p>Lo que toca</p></div>
     </div>
 
@@ -216,14 +270,18 @@
 </section>
 
 <script>
-  // Activa sonido SOLO cuando el usuario da play (patrón correcto)
-  document.querySelectorAll("video").forEach(video => {
-    video.addEventListener("play", () => {
-      if (video.muted) {
-        video.muted = false;
-        video.volume = 1;
+  document.querySelectorAll(".clip").forEach(clip => {
+    const video = clip.querySelector("video");
+    const src = clip.dataset.video;
+
+    clip.addEventListener("click", () => {
+      if (!video.src) {
+        video.src = src;
       }
-    }, { once: true });
+      clip.classList.add("playing");
+      video.muted = false;
+      video.play();
+    });
   });
 </script>
 
