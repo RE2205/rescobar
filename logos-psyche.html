@@ -5,18 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>Logos Psyche</title>
-  <meta name="description" content="Psiquiatría y psicoterapia. Un espacio de escucha y encuadre clínico." />
+  <meta name="description" content="Psiquiatría y psicoterapia. Escucha, encuadre y responsabilidad clínica." />
 
   <style>
     /* =========================================
        LOGOS PSYCHE
-       Libro clínico · Ronald Escobar
+       Libro clínico · Blanco / Negro
+       Ronald Escobar
        ========================================= */
 
     :root{
       --negro:#000000;
       --blanco:#f6f6f2;
       --gris:#8e8e8a;
+      --acento:#b89a5b; /* bronce sobrio */
     }
 
     *{ box-sizing:border-box; }
@@ -42,30 +44,53 @@
     /* ================= APERTURA ================= */
 
     .apertura{
-      padding:140px 0 120px;
+      padding:180px 0 140px;
     }
 
     .apertura h1{
-      font-size:clamp(34px,4.8vw,56px);
+      max-width:780px;
+      font-size:clamp(36px,4.8vw,58px);
       font-weight:400;
-      line-height:1.2;
+      line-height:1.15;
       margin:0;
     }
 
-    /* ================= FRANJA AXIOMA ================= */
+    /* ================= AXIOMA ================= */
 
     .axioma{
       background:var(--negro);
-      color:var(--blanco);
-      padding:48px 0;
-      text-align:center;
+      padding:64px 0;
+      position:relative;
+    }
+
+    .axioma::before{
+      content:"";
+      position:absolute;
+      top:0;
+      left:0;
+      right:0;
+      height:4px;
+      background:var(--acento);
+    }
+
+    .axioma::after{
+      content:"";
+      position:absolute;
+      bottom:0;
+      left:0;
+      right:0;
+      height:1px;
+      background:rgba(255,255,255,.12);
     }
 
     .axioma p{
+      margin:0;
+      text-align:center;
+      color:#f3f3f0;
       font-size:13px;
       letter-spacing:0.22em;
       text-transform:uppercase;
-      margin:0;
+      line-height:1.8;
     }
 
     /* ================= BLOQUE NEGRO ================= */
@@ -73,13 +98,13 @@
     .bloque-negro{
       background:var(--negro);
       color:var(--blanco);
-      padding:120px 0;
+      padding:140px 0;
     }
 
     .bloque-negro p{
       max-width:640px;
-      margin:0 0 32px;
       font-size:20px;
+      margin:0 0 36px;
     }
 
     /* ================= BLOQUE BLANCO ================= */
@@ -87,39 +112,40 @@
     .bloque-blanco{
       background:var(--blanco);
       color:var(--negro);
-      padding:120px 0;
+      padding:140px 0;
     }
 
     .bloque-blanco p{
       max-width:640px;
-      margin:0 0 32px;
       font-size:20px;
+      margin:0 0 36px;
     }
 
     /* ================= CONTACTO ================= */
 
     .contacto{
-      padding:120px 0 160px;
+      padding:140px 0 180px;
     }
 
     .contacto p{
       max-width:640px;
       font-size:20px;
-      margin-bottom:40px;
+      margin:0 0 48px;
     }
 
     .contacto a{
       display:inline-block;
+      margin-right:28px;
       font-size:18px;
       color:var(--negro);
       text-decoration:none;
       border-bottom:1px solid var(--negro);
       padding-bottom:4px;
-      margin-right:24px;
     }
 
     .contacto a:hover{
-      opacity:.6;
+      color:var(--acento);
+      border-color:var(--acento);
     }
 
     /* ================= DEDICATORIA ================= */
@@ -127,7 +153,7 @@
     .dedicatoria{
       background:var(--negro);
       color:var(--blanco);
-      padding:140px 0;
+      padding:160px 0;
     }
 
     .dedicatoria p{
@@ -142,6 +168,26 @@
       text-decoration:none;
       border-bottom:1px solid var(--blanco);
       padding-bottom:2px;
+    }
+
+    .dedicatoria a:hover{
+      color:var(--acento);
+      border-color:var(--acento);
+    }
+
+    /* ================= RESPONSIVE ================= */
+
+    @media (max-width:700px){
+      .apertura{
+        padding:140px 0 120px;
+      }
+
+      .bloque-negro,
+      .bloque-blanco,
+      .contacto,
+      .dedicatoria{
+        padding:110px 0;
+      }
     }
   </style>
 </head>
@@ -160,62 +206,4 @@
 
   <!-- AXIOMA -->
   <section class="axioma">
-    <div class="wrap">
-      <p>
-        LA PSIQUIATRÍA ES CIENCIA EN SU BASE<br>
-        Y ARTE EN SU EJERCICIO
-      </p>
-    </div>
-  </section>
-
-  <!-- BLOQUE NEGRO -->
-  <section class="bloque-negro">
-    <div class="wrap">
-      <p>
-        Escucho sin prisa, pero no sin dirección.
-      </p>
-      <p>
-        El trabajo empieza cuando dejamos de evitar
-        lo que insiste.
-      </p>
-    </div>
-  </section>
-
-  <!-- BLOQUE BLANCO -->
-  <section class="bloque-blanco">
-    <div class="wrap">
-      <p>
-        Trabajo con encuadre, porque sin límites
-        no hay profundidad.
-      </p>
-      <p>
-        No acompaño para tranquilizar,
-        sino para pensar lo que duele.
-      </p>
-    </div>
-  </section>
-
-  <!-- CONTACTO -->
-  <section class="contacto">
-    <div class="wrap">
-      <p>
-        Una primera conversación sirve para saber
-        si este puede ser el espacio adecuado.
-      </p>
-      <a href="https://wa.me/50230607168">WhatsApp</a>
-      <a href="mailto:correo@logospsyche.com">Correo</a>
-    </div>
-  </section>
-
-  <!-- DEDICATORIA -->
-  <section class="dedicatoria">
-    <div class="wrap">
-      <p>
-        Para quienes descubren que no todo puede decirse en voz alta.<br><br>
-        <a href="/arte-y-vida">Arte y Vida →</a>
-      </p>
-    </div>
-  </section>
-
-</body>
-</html>
+    <div
