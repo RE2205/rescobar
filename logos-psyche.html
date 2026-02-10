@@ -89,7 +89,7 @@
 
     .encuadre{
       background:var(--blanco);
-      padding:140px 0;
+      padding:140px 0 120px;
     }
 
     .encuadre-grid{
@@ -106,6 +106,10 @@
       filter:grayscale(1) contrast(1.05);
     }
 
+    .encuadre-texto{
+      align-self:start;
+    }
+
     .encuadre-texto p{
       font-size:20px;
       max-width:420px;
@@ -115,6 +119,33 @@
 
     .encuadre-texto p:last-child{
       margin-bottom:0;
+    }
+
+    /* ================= ARTE Y VIDA · NOTA AL MARGEN ================= */
+
+    .arte-margen{
+      background:var(--blanco);
+      padding:56px 0 96px;
+    }
+
+    .arte-margen p{
+      max-width:420px;
+      font-size:16px;
+      line-height:1.6;
+      margin:0;
+      color:var(--negro);
+    }
+
+    .arte-margen a{
+      color:var(--negro);
+      text-decoration:none;
+      border-bottom:1px solid var(--negro);
+      padding-bottom:2px;
+    }
+
+    .arte-margen a:hover{
+      color:var(--acento);
+      border-color:var(--acento);
     }
 
     /* ================= BLOQUE NEGRO ================= */
@@ -198,7 +229,7 @@
       }
 
       .encuadre-texto p,
-      .puente p{
+      .arte-margen p{
         max-width:100%;
       }
     }
@@ -254,8 +285,8 @@
 
       <div class="encuadre-texto">
         <p>
-          Aquí, los límites no recortan:
-          hacen posible la profundidad.
+          Trabajo con límites claros, porque sin ellos
+          no hay profundidad.
         </p>
         <p>
           El tiempo, el ritmo y los límites no están
@@ -268,6 +299,16 @@
         </p>
       </div>
 
+    </div>
+  </section>
+
+  <!-- ARTE Y VIDA · NOTA AL MARGEN -->
+  <section class="arte-margen">
+    <div class="wrap">
+      <p>
+        Algunas cosas no se trabajan solo desde la clínica.<br>
+        <a href="arte-y-vida.html">Arte y Vida →</a>
+      </p>
     </div>
   </section>
 
@@ -287,7 +328,7 @@
         si este puede ser el espacio adecuado.
       </p>
       <a href="https://wa.me/50230607168">WhatsApp</a>
-      <a href="mailto:clinicalogos@ronaldescobar.com">Correo</a>
+      <a href="mailto:correo@logospsyche.com">Correo</a>
     </div>
   </section>
 
@@ -296,7 +337,7 @@
     <div class="wrap">
       <p>
         Para quienes descubren que no todo puede decirse en voz alta.<br><br>
-        <a href="/arte-y-vida.html">Arte y Vida →</a>
+        <a href="arte-y-vida.html">Arte y Vida →</a>
       </p>
     </div>
   </section>
