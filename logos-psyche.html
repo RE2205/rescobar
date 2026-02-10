@@ -11,7 +11,6 @@
     /* =========================================
        LOGOS PSYCHE
        Libro clínico · Blanco / Negro
-       Ronald Escobar
        ========================================= */
 
     :root{
@@ -44,16 +43,16 @@
     /* ================= APERTURA ================= */
 
     .apertura{
-      padding:190px 0 150px;
+      padding:180px 0 150px;
     }
 
     .apertura h1{
-  max-width:560px;                 /* un poco más íntimo */
-  font-size:clamp(30px,3.6vw,44px);/* ⬅️ BAJAMOS DRÁSTICO */
-  font-weight:400;
-  line-height:1.28;                /* ⬅️ más respirable */
-  margin:0;
-}
+      max-width:560px;
+      font-size:clamp(30px,3.6vw,44px);
+      font-weight:400;
+      line-height:1.28;
+      margin:0;
+    }
 
     /* ================= AXIOMA ================= */
 
@@ -80,24 +79,36 @@
       margin:0;
       text-align:center;
       color:#f4f4f1;
-      font-size:15px;              /* ⬅️ TEXTO MÁS PRESENTE */
+      font-size:15px;
       letter-spacing:0.24em;
       text-transform:uppercase;
       line-height:1.9;
     }
 
-    /* ================= BLOQUE BLANCO ================= */
+    /* ================= ENCUADRE ================= */
 
-    .bloque-blanco{
+    .encuadre{
       background:var(--blanco);
-      color:var(--negro);
       padding:140px 0;
     }
 
-    .bloque-blanco p{
-      max-width:640px;
+    .encuadre-grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:96px;
+      align-items:start;
+    }
+
+    .encuadre-img img{
+      width:100%;
+      display:block;
+      filter:grayscale(1) contrast(1.05);
+    }
+
+    .encuadre-texto p{
       font-size:20px;
-      margin:0 0 36px;
+      max-width:420px;
+      margin:0 0 32px;
     }
 
     /* ================= BLOQUE NEGRO ================= */
@@ -170,6 +181,17 @@
 
     /* ================= RESPONSIVE ================= */
 
+    @media (max-width:900px){
+      .encuadre-grid{
+        grid-template-columns:1fr;
+        gap:64px;
+      }
+
+      .encuadre-texto p{
+        max-width:100%;
+      }
+    }
+
     @media (max-width:700px){
       .apertura{
         padding:150px 0 120px;
@@ -179,8 +201,8 @@
         max-width:100%;
       }
 
-      .bloque-blanco,
       .bloque-negro,
+      .encuadre,
       .contacto,
       .dedicatoria{
         padding:110px 0;
@@ -201,7 +223,7 @@
     </div>
   </section>
 
-  <!-- AXIOMA / SEPARADOR -->
+  <!-- AXIOMA -->
   <section class="axioma">
     <div class="wrap">
       <p>
@@ -211,17 +233,31 @@
     </div>
   </section>
 
-  <!-- BLOQUE BLANCO · ENCUADRE -->
-  <section class="bloque-blanco">
-    <div class="wrap">
-      <p>
-        Trabajo con encuadre, porque sin límites
-        no hay profundidad.
-      </p>
-      <p>
-        No acompaño para tranquilizar,
-        sino para pensar lo que duele.
-      </p>
+  <!-- ENCUADRE · IMAGEN IZQUIERDA / TEXTO DERECHA -->
+  <section class="encuadre">
+    <div class="wrap encuadre-grid">
+
+      <div class="encuadre-img">
+        <img src="clinica.pgn" alt="Espacio clínico Logos Psyche">
+      </div>
+
+      <div class="encuadre-texto">
+        <p>
+          Trabajo con encuadre, porque sin límites
+          no hay profundidad.
+        </p>
+        <p>
+          El tiempo, el ritmo y los límites
+          no están para apurar procesos,
+          sino para que puedan desplegarse
+          con seguridad.
+        </p>
+        <p>
+          No acompaño para tranquilizar,
+          sino para pensar lo que duele.
+        </p>
+      </div>
+
     </div>
   </section>
 
