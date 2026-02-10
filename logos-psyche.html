@@ -94,29 +94,47 @@
 
     .encuadre-grid{
       display:grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns:1fr 1fr;
       gap:96px;
       align-items:start;
     }
 
     .encuadre-img img{
       width:100%;
-      max-width:720px;       
+      max-width:720px;
       display:block;
       filter:grayscale(1) contrast(1.05);
     }
+
     .encuadre-texto{
-      padding-top: 8px;
+      padding-top:8px;
     }
+
     .encuadre-texto p{
       font-size:20px;
       max-width:420px;
-      line-height:1.75;       
+      line-height:1.75;
       margin:0 0 32px;
     }
+
     .encuadre-texto p:last-child{
-  margin-bottom: 0;
-}
+      margin-bottom:0;
+    }
+
+    /* ================= PUENTE ================= */
+
+    .puente{
+      background:var(--blanco);
+      padding:96px 0;
+    }
+
+    .puente p{
+      max-width:420px;
+      font-size:18px;
+      line-height:1.6;
+      margin:0;
+      color:var(--negro);
+    }
 
     /* ================= BLOQUE NEGRO ================= */
 
@@ -130,6 +148,10 @@
       max-width:640px;
       font-size:20px;
       margin:0 0 36px;
+    }
+
+    .bloque-negro p:last-child{
+      margin-bottom:0;
     }
 
     /* ================= CONTACTO ================= */
@@ -194,7 +216,8 @@
         gap:64px;
       }
 
-      .encuadre-texto p{
+      .encuadre-texto p,
+      .puente p{
         max-width:100%;
       }
     }
@@ -208,8 +231,8 @@
         max-width:100%;
       }
 
-      .bloque-negro,
       .encuadre,
+      .bloque-negro,
       .contacto,
       .dedicatoria{
         padding:110px 0;
@@ -240,7 +263,7 @@
     </div>
   </section>
 
-  <!-- ENCUADRE · IMAGEN IZQUIERDA / TEXTO DERECHA -->
+  <!-- ENCUADRE -->
   <section class="encuadre">
     <div class="wrap encuadre-grid">
 
@@ -250,14 +273,13 @@
 
       <div class="encuadre-texto">
         <p>
-          Trabajo con encuadre, porque sin límites
-          no hay profundidad.
+          Aquí, los límites no recortan:
+          hacen posible la profundidad.
         </p>
         <p>
-          El tiempo, el ritmo y los límites
-          no están para apurar procesos,
-          sino para que puedan desplegarse
-          con seguridad.
+          El tiempo, el ritmo y los límites no están
+          para apurar procesos, sino para que puedan
+          desplegarse con seguridad.
         </p>
         <p>
           No acompaño para tranquilizar,
@@ -268,16 +290,18 @@
     </div>
   </section>
 
-  <!-- BLOQUE NEGRO · ESCUCHA -->
+  <!-- PUENTE -->
+  <section class="puente">
+    <div class="wrap">
+      <p>A partir de aquí, escuchar implica decisión.</p>
+    </div>
+  </section>
+
+  <!-- BLOQUE NEGRO -->
   <section class="bloque-negro">
     <div class="wrap">
-      <p>
-        Escucho sin prisa, pero no sin dirección.
-      </p>
-      <p>
-        El trabajo empieza cuando dejamos de evitar
-        lo que insiste.
-      </p>
+      <p>Escucho sin prisa, pero no sin dirección.</p>
+      <p>El trabajo empieza cuando dejamos de evitar lo que insiste.</p>
     </div>
   </section>
 
