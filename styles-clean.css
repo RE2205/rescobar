@@ -1757,3 +1757,55 @@ body{
   font-size: 14px;
   line-height: 1;
 }
+/* =========================
+   HERO CORE — LOGOS PSYCHE
+========================= */
+
+.lp-hero-core{
+  background: #F6F4EF;
+  padding: 160px 0 140px 0;
+}
+
+.lp-hero-core__inner{
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.lp-hero-core__brand{
+  font-size: 12px;
+  letter-spacing: .28em;
+  text-transform: uppercase;
+  color: rgba(47,47,47,.45);
+  margin-bottom: 42px;
+}
+
+.lp-hero-core__headline{
+  font-size: 56px;
+  line-height: 1.1;
+  font-weight: 500;
+  color: #1F1F1F;
+  margin-bottom: 32px;
+}
+
+.lp-hero-core__sub{
+  font-size: 18px;
+  line-height: 1.75;
+  color: #6A6A6A;
+  max-width: 520px;
+}
+
+/* Responsive */
+@media (max-width: 700px){
+  .lp-hero-core{
+    padding: 120px 0 100px 0;
+  }
+
+  .lp-hero-core__headline{
+    font-size: 36px;
+  }
+
+  .lp-hero-core__sub{
+    font-size: 16px;
+  }
+}
