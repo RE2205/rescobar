@@ -3,94 +3,324 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>Desapre(he)nder para CreSer · Podcast</title>
   <meta name="description" content="Conversaciones para detener el ruido y pensar lo humano." />
-  <link rel="stylesheet" href="styles-clean.css" />
+  <meta name="robots" content="noindex, nofollow" />
+
+  <style>
+    /* =========================================
+       DESAPRE(HE)NDER PARA CRESER
+       Podcast · Conversación editorial
+       ========================================= */
+
+    :root{
+      --negro:#0b0b0c;
+      --blanco:#f4f4f1;
+      --gris:#9a9a96;
+      --gris-suave:#cfcfca;
+      --acento:#b89a5b;
+    }
+
+    *{ box-sizing:border-box; }
+
+    html,body{
+      margin:0;
+      padding:0;
+    }
+
+    body{
+      background:var(--negro);
+      color:var(--blanco);
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      line-height:1.65;
+    }
+
+    .wrap{
+      max-width:900px;
+      margin:0 auto;
+      padding:0 24px;
+    }
+
+    /* ================= APERTURA ================= */
+
+    .apertura{
+      padding:160px 0 120px;
+    }
+
+    .apertura span{
+      display:block;
+      font-size:12px;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      color:var(--gris);
+      margin-bottom:22px;
+    }
+
+    .apertura h1{
+      max-width:620px;
+      font-size:clamp(36px,5.4vw,64px);
+      font-weight:500;
+      line-height:1.08;
+      margin:0 0 28px;
+      letter-spacing:-.02em;
+    }
+
+    .apertura p{
+      max-width:520px;
+      font-size:18px;
+      color:var(--gris-suave);
+      margin:0;
+    }
+
+    /* ================= FRASE EJE ================= */
+
+    .axioma{
+      padding:72px 0;
+      border-top:1px solid rgba(255,255,255,.08);
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+
+    .axioma p{
+      margin:0;
+      text-align:center;
+      font-size:15px;
+      letter-spacing:.22em;
+      text-transform:uppercase;
+      color:var(--gris);
+      line-height:1.9;
+    }
+
+    /* ================= QUÉ ES ================= */
+
+    .que-es{
+      padding:120px 0 100px;
+    }
+
+    .que-es p{
+      max-width:560px;
+      font-size:20px;
+      margin:0 0 28px;
+      color:var(--blanco);
+    }
+
+    .que-es p:last-child{
+      margin-bottom:0;
+      color:var(--gris-suave);
+    }
+
+    /* ================= FRAGMENTOS ================= */
+
+    .fragmentos{
+      padding:120px 0 100px;
+      border-top:1px solid rgba(255,255,255,.08);
+    }
+
+    .fragmentos h2{
+      font-size:28px;
+      margin:0 0 18px;
+      letter-spacing:-.01em;
+    }
+
+    .fragmentos p{
+      margin:0 0 36px;
+      color:var(--gris);
+    }
+
+    .fragmentos ul{
+      list-style:none;
+      padding:0;
+      margin:0;
+    }
+
+    .fragmentos li{
+      padding:18px 0;
+      border-bottom:1px solid rgba(255,255,255,.08);
+      font-size:18px;
+      color:var(--blanco);
+    }
+
+    .fragmentos li span{
+      display:block;
+      margin-top:6px;
+      font-size:14px;
+      color:var(--gris);
+    }
+
+    /* ================= EPISODIOS ================= */
+
+    .episodios{
+      padding:120px 0 100px;
+    }
+
+    .episodios h2{
+      font-size:28px;
+      margin:0 0 28px;
+      letter-spacing:-.01em;
+    }
+
+    .episodios a{
+      display:block;
+      padding:22px 0;
+      border-bottom:1px solid rgba(255,255,255,.08);
+      text-decoration:none;
+      color:var(--blanco);
+      font-size:18px;
+    }
+
+    .episodios a span{
+      display:block;
+      margin-top:6px;
+      font-size:14px;
+      color:var(--gris);
+    }
+
+    .episodios a:hover{
+      color:var(--acento);
+    }
+
+    /* ================= CIERRE ================= */
+
+    .cierre{
+      background:var(--blanco);
+      color:#111;
+      padding:120px 0;
+    }
+
+    .cierre p{
+      max-width:520px;
+      font-size:18px;
+      margin:0 0 22px;
+    }
+
+    .cierre a{
+      color:#111;
+      text-decoration:none;
+      border-bottom:1px solid #111;
+      padding-bottom:3px;
+      margin-right:22px;
+    }
+
+    .cierre a:hover{
+      color:var(--acento);
+      border-color:var(--acento);
+    }
+
+    /* ================= RESPONSIVE ================= */
+
+    @media (max-width:768px){
+
+      .apertura{
+        padding:120px 0 90px;
+      }
+
+      .que-es,
+      .fragmentos,
+      .episodios{
+        padding:90px 0 72px;
+      }
+
+      .cierre{
+        padding:90px 0;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-  <!-- HERO PODCAST -->
-  <header class="block" style="background:#0b0b0c;">
+  <!-- APERTURA -->
+  <section class="apertura">
     <div class="wrap">
-      <h1 style="margin:0 0 12px 0;">Desapre(he)nder para CreSer</h1>
-      <p class="lead" style="max-width:52ch;">
-        Conversaciones para detener el ruido<br>
-        y pensar lo humano sin prisa ni juicio.
-      </p>
-    </div>
-  </header>
-
-  <!-- QUÉ ES -->
-  <section class="block">
-    <div class="wrap">
-      <p class="lead" style="max-width:62ch;">
-        Desapre(he)nder no busca respuestas rápidas.<br>
-        Es un espacio de conversación donde el cuerpo,
-        el síntoma, la cultura y el vínculo se piensan
-        sin fórmulas cerradas ni verdades cómodas.
+      <span>Podcast</span>
+      <h1>
+        Desapre(he)nder<br>
+        para CreSer
+      </h1>
+      <p>
+        Conversaciones para detener el ruido
+        y pensar lo humano sin prisa ni fórmulas.
       </p>
     </div>
   </section>
 
-  <!-- CLIPS -->
-  <section class="block">
+  <!-- FRASE EJE -->
+  <section class="axioma">
     <div class="wrap">
-      <p class="tag">CLIPS</p>
-      <h2>Fragmentos para pensar</h2>
+      <p>
+        No todo lo que duele es patología
+      </p>
+    </div>
+  </section>
 
-      <div class="pod-grid">
-        <a class="pod-tile" href="https://www.youtube.com/channel/UC-LSnhNhnhZ_dkiOh98HXiA" target="_blank">
-          <div class="pod-cover" style="--cover:url('assets/ep1.jpg')"></div>
-          <span class="pod-title">No todo lo que duele es patología</span>
-        </a>
+  <!-- QUÉ ES -->
+  <section class="que-es">
+    <div class="wrap">
+      <p>
+        Desapre(he)nder no busca convencer ni tranquilizar.
+        Es un espacio de conversación donde el síntoma,
+        el cuerpo, el vínculo y la cultura se piensan
+        sin respuestas rápidas.
+      </p>
+      <p>
+        Aquí no se habla para cerrar temas,
+        sino para abrir preguntas que suelen evitarse.
+      </p>
+    </div>
+  </section>
 
-        <a class="pod-tile" href="https://www.youtube.com/channel/UC-LSnhNhnhZ_dkiOh98HXiA" target="_blank">
-          <div class="pod-cover" style="--cover:url('assets/ep2.jpg')"></div>
-          <span class="pod-title">La ansiedad también es social</span>
-        </a>
+  <!-- FRAGMENTOS -->
+  <section class="fragmentos">
+    <div class="wrap">
+      <h2>Fragmentos</h2>
+      <p>Ideas breves que abren conversación.</p>
 
-        <a class="pod-tile" href="https://www.youtube.com/channel/UC-LSnhNhnhZ_dkiOh98HXiA" target="_blank">
-          <div class="pod-cover" style="--cover:url('assets/ep3.jpg')"></div>
-          <span class="pod-title">El cuerpo recuerda antes que la mente</span>
-        </a>
-      </div>
+      <ul>
+        <li>
+          La ansiedad también es social
+          <span>1:12</span>
+        </li>
+        <li>
+          El cuerpo recuerda antes que la mente
+          <span>1:34</span>
+        </li>
+        <li>
+          No todo silencio es ausencia
+          <span>0:58</span>
+        </li>
+      </ul>
     </div>
   </section>
 
   <!-- EPISODIOS -->
-  <section class="block">
+  <section class="episodios">
     <div class="wrap">
-      <p class="tag">EPISODIOS</p>
-      <h2>Conversaciones completas</h2>
+      <h2>Episodios completos</h2>
 
-      <div class="pod-grid">
-        <a class="pod-tile" href="https://www.youtube.com/channel/UC-LSnhNhnhZ_dkiOh98HXiA" target="_blank">
-          <div class="pod-cover" style="--cover:url('assets/ep4.jpg')"></div>
-          <span class="pod-title">Episodio 12 · El amor en tu cerebro</span>
-        </a>
+      <a href="#">
+        Episodio 12 · El amor en tu cerebro
+        <span>Con Eduardo Calixto</span>
+      </a>
 
-        <a class="pod-tile" href="https://www.youtube.com/channel/UC-LSnhNhnhZ_dkiOh98HXiA" target="_blank">
-          <div class="pod-cover" style="--cover:url('assets/ep5.jpg')"></div>
-          <span class="pod-title">Adaptados a una sociedad enferma</span>
-        </a>
-      </div>
+      <a href="#">
+        Adaptados a una sociedad enferma
+        <span>Conversación abierta</span>
+      </a>
     </div>
   </section>
 
-  <!-- CONTEXTO -->
-  <section class="block logos-light">
+  <!-- CIERRE -->
+  <section class="cierre">
     <div class="wrap">
-      <p class="lead dark" style="max-width:60ch;">
-        Este podcast forma parte de un trabajo más amplio
-        que cruza clínica, escritura y experiencia.
+      <p>
+        Este podcast forma parte de un trabajo
+        más amplio que cruza clínica,
+        escritura y experiencia.
       </p>
 
-      <p class="muted" style="margin-top:16px;">
-        <a class="silent-link" href="logos-psyche.html">Logos Psyche</a> ·
-        <a class="silent-link" href="escritura.html">Escritura</a> ·
-        <a class="silent-link" href="inner-sound.html">Inner Sound</a>
-      </p>
+      <a href="logos-psyche.html">Logos Psyche</a>
+      <a href="inner-sound.html">Inner Sound</a>
+      <a href="escritura.html">Escritura</a>
     </div>
   </section>
 
