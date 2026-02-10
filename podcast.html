@@ -153,6 +153,24 @@
       font-weight:500;
     }
 
+    /* Aviso solo si falla el video */
+    .clip-fail{
+      position:absolute;
+      inset:0;
+      display:none;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding:18px;
+      z-index:3;
+      background:rgba(0,0,0,.78);
+      color:rgba(246,246,242,.78);
+      font-size:12px;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+    }
+    .clip.is-broken .clip-fail{ display:flex; }
+
     /* ================= BLOQUE NEGRO ================= */
 
     .bloque{
@@ -251,44 +269,59 @@
   <section class="clips">
     <div class="wrap clips-grid">
 
-      <div class="clip">
-        <video src="assets/clip1.mp4" preload="metadata" muted playsinline controls></video>
+      <div class="clip" data-clip="1">
+        <video preload="metadata" muted playsinline controls>
+          <source src="/assets/clip1.mp4" type="video/mp4">
+        </video>
         <div class="clip-info">
           <span>Clip 01</span>
           <p>No todo síntoma es un error</p>
         </div>
+        <div class="clip-fail">No se encontró / no se pudo cargar</div>
       </div>
 
-      <div class="clip">
-        <video src="assets/clip2.mp4" preload="metadata" muted playsinline controls></video>
+      <div class="clip" data-clip="2">
+        <video preload="metadata" muted playsinline controls>
+          <source src="/assets/clip2.mp4" type="video/mp4">
+        </video>
         <div class="clip-info">
           <span>Clip 02</span>
           <p>El problema no siempre es químico</p>
         </div>
+        <div class="clip-fail">No se encontró / no se pudo cargar</div>
       </div>
 
-      <div class="clip">
-        <video src="assets/clip3.mp4" preload="metadata" muted playsinline controls></video>
+      <div class="clip" data-clip="3">
+        <video preload="metadata" muted playsinline controls>
+          <source src="/assets/clip3.mp4" type="video/mp4">
+        </video>
         <div class="clip-info">
           <span>Clip 03</span>
           <p>Cuando el cuerpo habla primero</p>
         </div>
+        <div class="clip-fail">No se encontró / no se pudo cargar</div>
       </div>
 
-      <div class="clip">
-        <video src="assets/clip4.mp4" preload="metadata" muted playsinline controls></video>
+      <div class="clip" data-clip="4">
+        <video preload="metadata" muted playsinline controls>
+          <source src="/assets/clip4.mp4" type="video/mp4">
+        </video>
         <div class="clip-info">
           <span>Clip 04</span>
           <p>Pensar duele más que anestesiar</p>
         </div>
+        <div class="clip-fail">No se encontró / no se pudo cargar</div>
       </div>
 
-      <div class="clip">
-        <video src="assets/clip5.mp4" preload="metadata" muted playsinline controls></video>
+      <div class="clip" data-clip="5">
+        <video preload="metadata" muted playsinline controls>
+          <source src="/assets/clip5.mp4" type="video/mp4">
+        </video>
         <div class="clip-info">
           <span>Clip 05</span>
           <p>La clínica también es conversación</p>
         </div>
+        <div class="clip-fail">No se encontró / no se pudo cargar</div>
       </div>
 
     </div>
@@ -319,6 +352,25 @@
       <a href="/">Volver al inicio</a>
     </div>
   </section>
+
+  <script>
+    // Marca visualmente clips rotos (sin ensuciar la estética)
+    document.querySelectorAll(".clip").forEach(card => {
+      const v = card.querySelector("video");
+      const markBroken = () => card.classList.add("is-broken");
+      v.addEventListener("error", markBroken);
+      v.addEventListener("stalled", () => { /* no marcamos por stall */ });
+
+      // Si no hay metadata en unos segundos, suele ser 404/MIME/codec
+      setTimeout(() => {
+        if (!v.duration || Number.isNaN(v.duration)) {
+          // No siempre significa error, pero ayuda a detectar “no carga”
+          // Si ya cargó, duration existe.
+          if (v.networkState === 3 || v.readyState === 0) markBroken();
+        }
+      }, 2500);
+    });
+  </script>
 
 </body>
 </html>
