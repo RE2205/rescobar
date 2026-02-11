@@ -370,25 +370,15 @@
     </div>
   </section>
 
-  <!-- FOOTER PODCAST -->
+  <!-- FOOTER -->
   <footer class="footer">
     <div class="wrap footer-inner">
       <div class="footer-note">Escuchar en</div>
 
-      <div class="platforms" aria-label="Plataformas del podcast">
-        <!-- Apple Podcasts -->
-        <a class="platform" href="#" target="_blank" rel="noopener" aria-label="Apple Podcasts">
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M12 20.2c4.53 0 8.2-3.67 8.2-8.2S16.53 3.8 12 3.8 3.8 7.47 3.8 12s3.67 8.2 8.2 8.2Z"/>
-            <path d="M12 13.2a1.2 1.2 0 1 0 0-2.4 1.2 1.2 0 0 0 0 2.4Z"/>
-            <path d="M9.6 16.4c.3-1.6 1.23-2.5 2.4-2.5s2.1.9 2.4 2.5"/>
-            <path d="M9.2 9.6c.7-.8 1.7-1.2 2.8-1.2s2.1.4 2.8 1.2"/>
-          </svg>
-        </a>
-
+      <div class="platforms">
         <!-- Spotify -->
-        <a class="platform" href="#" target="_blank" rel="noopener" aria-label="Spotify">
-          <svg viewBox="0 0 24 24" aria-hidden="true">
+        <a class="platform" href="https://open.spotify.com/show/5NllZfPwaPRuVHUwCcgCbH?si=82a0e185c6204f8d" target="_blank" rel="noopener" aria-label="Spotify">
+          <svg viewBox="0 0 24 24">
             <path d="M12 20.2c4.53 0 8.2-3.67 8.2-8.2S16.53 3.8 12 3.8 3.8 7.47 3.8 12s3.67 8.2 8.2 8.2Z"/>
             <path d="M8.2 11.1c2.8-1 6-.7 8.2.5"/>
             <path d="M8.6 13.7c2.3-.7 4.9-.4 6.8.5"/>
@@ -396,52 +386,12 @@
           </svg>
         </a>
 
-        <!-- YouTube -->
-        <a class="platform" href="#" target="_blank" rel="noopener" aria-label="YouTube">
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M10 9.2 16 12l-6 2.8V9.2Z"/>
-            <path d="M21 12s0-3.1-.4-4.5c-.3-1-1.1-1.8-2.1-2.1C17 5 12 5 12 5s-5 0-6.5.4c-1 .3-1.8 1.1-2.1 2.1C3 8.9 3 12 3 12s0 3.1.4 4.5c.3 1 1.1 1.8 2.1 2.1C7 19 12 19 12 19s5 0 6.5-.4c1-.3 1.8-1.1 2.1-2.1.4-1.4.4-4.5.4-4.5Z"/>
+        <!-- Apple Podcasts -->
+        <a class="platform" href="https://podcasts.apple.com/gt/podcast/desapre-he-nder-para-creser/id1714893342" target="_blank" rel="noopener" aria-label="Apple Podcasts">
+          <svg viewBox="0 0 24 24">
+            <path d="M12 20.2c4.53 0 8.2-3.67 8.2-8.2S16.53 3.8 12 3.8 3.8 7.47 3.8 12s3.67 8.2 8.2 8.2Z"/>
+            <path d="M12 13.2a1.2 1.2 0 1 0 0-2.4 1.2 1.2 0 0 0 0 2.4Z"/>
+            <path d="M9.6 16.4c.3-1.6 1.23-2.5 2.4-2.5s2.1.9 2.4 2.5"/>
+            <path d="M9.2 9.6c.7-.8 1.7-1.2 2.8-1.2s2.1.4 2.8 1.2"/>
           </svg>
-        </a>
-      </div>
-    </div>
-  </footer>
-
-  <script>
-    /* ==================================================
-       Reproducción editorial:
-       - Carga el video solo al click
-       - Activa sonido
-       - Pausa los demás clips
-       ================================================== */
-
-    const clips = document.querySelectorAll(".clip");
-
-    clips.forEach(clip => {
-      const video = clip.querySelector("video");
-      const src = clip.dataset.video;
-
-      clip.addEventListener("click", () => {
-        // pausa otros
-        clips.forEach(c => {
-          if (c !== clip) {
-            const v = c.querySelector("video");
-            v.pause();
-            c.classList.remove("playing");
-          }
-        });
-
-        // carga bajo demanda
-        if (!video.src) video.src = src;
-
-        clip.classList.add("playing");
-
-        // activar audio al primer gesto del usuario
-        video.muted = false;
-        video.play();
-      });
-    });
-  </script>
-
-</body>
-</html>
+        </a
