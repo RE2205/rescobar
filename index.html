@@ -1,257 +1,317 @@
 <!doctype html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ronald Escobar</title>
-  <meta name="description" content="Un espacio para detener el ruido y habitar lo humano." />
-  <meta name="robots" content="noindex, nofollow" />
-  <link rel="stylesheet" href="styles-clean.css?v=11003" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<title>Ronald Escobar</title>
+<meta name="description" content="Neurociencia · Arte · Humanidad" />
+
+<style>
+/* ==================================================
+   RONALD ESCOBAR · HOME (Eje + Órbitas)
+   - Hero territorial 100vh
+   - Logos Psyche como eje (1 CTA)
+   - Órbitas editoriales (Podcast · Blog · CreSer)
+   - Líneas finas (sin saturación)
+   ================================================== */
+
+/* RESET */
+*{ margin:0; padding:0; box-sizing:border-box; }
+html,body{ height:100%; }
+
+:root{
+  --negro:#0b0b0c;
+  --hueso:#f6f4ef;
+  --tinta:#101113;
+  --texto:#2a2b2f;
+  --gris:#6f7076;
+  --linea:rgba(16,17,19,.14);
+}
+
+/* BASE */
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"Inter",system-ui,Segoe UI,Roboto,Arial,sans-serif;
+  background:var(--negro);
+  color:#f5f5f5;
+  line-height:1.6;
+}
+
+a{ color:inherit; }
+
+/* UTIL */
+.wrap{
+  max-width:860px;
+  margin:0 auto;
+  padding:0 20px;
+}
+
+.kicker{
+  font-size:12px;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  opacity:.65;
+}
+
+.hr{
+  height:1px;
+  background:var(--linea);
+  width:100%;
+}
+
+/* ---------------- HERO (territorio) ---------------- */
+
+.hero{
+  height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:0 20px;
+  background:var(--negro);
+}
+
+.hero-inner{
+  max-width:980px;
+}
+
+.hero h1{
+  font-size:clamp(28px,5vw,64px);
+  font-weight:500;
+  letter-spacing:.08em;
+  line-height:1.15;
+}
+
+.hero .name{
+  margin-top:22px;
+  font-size:13px;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  opacity:.6;
+}
+
+/* Microajuste mobile */
+@media (max-width:600px){
+  .hero h1{ letter-spacing:.05em; }
+}
+
+/* ---------------- SECCIÓN CLARA ---------------- */
+
+.surface{
+  background:var(--hueso);
+  color:var(--tinta);
+}
+
+.section{
+  padding:88px 0;
+}
+
+@media (max-width:600px){
+  .section{ padding:64px 0; }
+}
+
+/* ---------------- LOGOS PSYCHE (eje) ---------------- */
+
+.logos{
+  padding-top:96px;
+  padding-bottom:72px;
+}
+
+.logos h2{
+  font-size:clamp(24px,4vw,42px);
+  font-weight:520;
+  margin-top:18px;
+  margin-bottom:18px;
+  letter-spacing:.01em;
+}
+
+.logos p{
+  font-size:18px;
+  color:var(--texto);
+  margin-bottom:14px;
+  max-width:72ch;
+}
+
+.logos .cta{
+  display:inline-block;
+  margin-top:22px;
+  text-decoration:none;
+  font-size:13px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  padding:14px 26px;
+  border:1px solid var(--tinta);
+  color:var(--tinta);
+  transition:all .22s ease;
+}
+
+.logos .cta:hover{
+  background:var(--tinta);
+  color:var(--hueso);
+}
+
+/* Línea de separación fuerte (pero fina) bajo el eje */
+.after-axis{
+  padding-bottom:0;
+}
+.after-axis .wrap{
+  padding-bottom:48px;
+}
+@media (max-width:600px){
+  .after-axis .wrap{ padding-bottom:36px; }
+}
+
+/* ---------------- ÓRBITAS (editorial, vertical) ---------------- */
+
+.orbits{
+  padding-top:0;
+}
+
+.orbit{
+  padding:44px 0;
+}
+
+.orbit:first-child{
+  padding-top:54px;
+}
+
+@media (max-width:600px){
+  .orbit{ padding:34px 0; }
+  .orbit:first-child{ padding-top:40px; }
+}
+
+.orbit h3{
+  font-size:clamp(18px,3vw,26px);
+  font-weight:520;
+  margin-bottom:12px;
+  letter-spacing:.01em;
+}
+
+.orbit p{
+  font-size:16px;
+  color:var(--texto);
+  margin-bottom:10px;
+  max-width:78ch;
+}
+
+/* Link editorial (discreto, no botón) */
+.orbit a.more{
+  display:inline-block;
+  margin-top:10px;
+  font-size:13px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--tinta);
+  text-decoration:underline;
+  text-decoration-thickness:1px;
+  text-underline-offset:4px;
+  opacity:.9;
+}
+
+.orbit a.more:hover{
+  opacity:1;
+}
+
+/* ---------------- CIERRE HUMANO (sin CTA) ---------------- */
+
+.close{
+  padding-top:56px;
+  padding-bottom:70px;
+}
+
+.close p{
+  font-size:15px;
+  color:var(--gris);
+  max-width:78ch;
+}
+
+.close .sig{
+  margin-top:18px;
+  font-size:12px;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:var(--tinta);
+  opacity:.65;
+}
+</style>
 </head>
 
 <body>
 
-  <header class="hero">
+<!-- 1) HERO · territorio -->
+<section class="hero">
+  <div class="hero-inner">
+    <h1>Neurociencia · Arte · Humanidad</h1>
+    <div class="name">Ronald Escobar</div>
+  </div>
+</section>
+
+<!-- 2) SUPERFICIE CLARA (eje + órbitas) -->
+<section class="surface">
+
+  <!-- 2) LOGOS PSYCHE · eje -->
+  <div class="section logos after-axis">
     <div class="wrap">
-      <p class="kicker">Neurociencia · Arte · Humanidad</p>
-      <h1 class="headline">Un espacio para detener el ruido<br />y habitar lo humano</h1>
-      <p class="signature">— Ronald Escobar</p>
+      <div class="kicker">Clínica · Eje</div>
+      <h2>Logos Psyche</h2>
+
+      <p>Práctica clínica en psiquiatría y psicoterapia.</p>
+      <p>Diagnóstico cuando es necesario. Sentido cuando es indispensable.</p>
+      <p>El tiempo, el encuadre y el vínculo también son parte del tratamiento.</p>
+
+      <a class="cta" href="/logos-psyche">Entrar a la clínica</a>
+
+      <div style="margin-top:46px" class="hr"></div>
     </div>
-  </header>
-
-  <div class="wrap"><div class="breath"></div></div>
-
-  <section class="band">
-    <div class="wrap">
-      <p class="band-text">Ser es el verbo más revolucionario.</p>
-    </div>
-  </section>
-
-  <section class="block logos-light" id="logos-psyche">
-    <div class="wrap two-col">
-
-      <a class="silent-link media logo-holder logo-psyche"
-         href="logos-psyche.html"
-         aria-label="Ir a Logos Psyche">
-        <img
-          src="assets/logos-psyche.png"
-          alt="Logos Psyche"
-          class="logo-image"
-        />
-      </a>
-
-      <div class="copy">
-        <p class="tag dark">PSIQUIATRÍA</p>
-        <h2><a class="silent-link" href="logos-psyche.html">Logos Psyche</a></h2>
-        <p class="lead dark">
-          Psiquiatría basada en evidencia, escucha profunda y humanidad.<br>
-          Un espacio clínico para pensar, sentir y sostener procesos reales,
-          sin prisa y sin juicio.
-        </p>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- PODCAST ENTRY -->
-  <section id="podcast-entry" class="block">
-    <div class="wrap">
-
-      <div class="podcast-head">
-        <h2 class="podcast-title">Desapre(he)nder para CreSer</h2>
-        <span class="podcast-label">Podcast</span>
-      </div>
-
-      <div class="podcast-divider"></div>
-
-      <div class="podcast-roll">
-
-        <!-- EPISODIOS IZQUIERDA -->
-        <a href="https://www.youtube.com/channel/UC-LSnhNhnhZ_dkiOh98HXiA"
-           target="_blank"
-           class="podcast-card"
-           aria-label="Ir al podcast en YouTube">
-          <img src="assets/ep1.jpg" alt="Podcast episodio">
-        </a>
-
-        <a href="https://www.youtube.com/channel/UC-LSnhNhnhZ_dkiOh98HXiA"
-           target="_blank"
-           class="podcast-card"
-           aria-label="Ir al podcast en YouTube">
-          <img src="assets/ep2.jpg" alt="Podcast episodio">
-        </a>
-
-        <!-- IMAGEN CENTRAL / MANIFIESTO -->
-        <div class="podcast-card podcast-center">
-          <img src="assets/desapreheinder-manifiesto.jpg" alt="Desapre(he)nder para CreSer">
-        </div>
-
-        <!-- EPISODIOS DERECHA -->
-        <a href="https://www.youtube.com/channel/UC-LSnhNhnhZ_dkiOh98HXiA"
-           target="_blank"
-           class="podcast-card"
-           aria-label="Ir al podcast en YouTube">
-          <img src="assets/ep3.jpg" alt="Podcast episodio">
-        </a>
-
-        <a href="https://www.youtube.com/channel/UC-LSnhNhnhZ_dkiOh98HXiA"
-           target="_blank"
-           class="podcast-card"
-           aria-label="Ir al podcast en YouTube">
-          <img src="assets/ep4.jpg" alt="Podcast episodio">
-        </a>
-
-      </div>
-
-      <!-- CTA a subpágina -->
-      <div class="podcast-cta">
-        <a href="podcast.html" class="podcast-cta">
-  Entrar al podcast · clips · qué es Desapre(he)nder
-</a>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- INNER SOUND -->
-  <section class="block" id="inner-sound">
-    <div class="wrap two-col">
-      <div class="copy">
-        <p class="tag">EXPERIENCIA</p>
-        <h2><a class="silent-link" href="inner-sound.html">Inner Sound</a></h2>
-        <p class="lead">
-          Un espacio para escuchar sin interferencias.<br>
-          La música como medio para aquietar el ruido,<br>
-          alinear el pensamiento<br>
-          y permitir que el cuerpo participe del proceso.
-        </p>
-      </div>
-      <a class="silent-link media" href="inner-sound.html" aria-label="Ir a Inner Sound">
-        <div class="img ph" style="background-image:url('assets/inner-sound.jpg');" data-label="Inner Sound"></div>
-      </a>
-    </div>
-  </section>
-
-  <section class="band-long">
-    <div class="wrap">
-      <p class="band-quote">
-        Así como los libros están hechos de libros, las personas estamos hechas de personas.
-        Cada historia es una cita con otra historia.
-      </p>
-      <p class="band-author">— Ronald Escobar</p>
-    </div>
-  </section>
-
-  <!-- PROYECTOS -->
-  <section class="block" id="proyectos">
-    <div class="wrap two-col">
-
-      <a class="silent-link media" href="documental.html" aria-label="Ir a Documental">
-        <div class="img ph doc-cover"
-             style="background-image:url('assets/documental-portada-v2.jpg');"
-             data-label=""></div>
-      </a>
-
-      <div class="copy">
-        <p class="tag">PROYECTOS</p>
-        <h2><a class="silent-link" href="documental.html">Documental</a></h2>
-        <p class="lead">
-          Historias reales observadas con cuidado.<br>
-          No para explicar lo humano,<br>
-          sino para mirarlo de frente.
-        </p>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- CRESER -->
-  <section class="block" id="creser">
-    <div class="wrap two-col">
-
-      <div class="copy">
-        <p class="tag">CULTURA</p>
-        <h2>CreSer</h2>
-        <p class="lead">
-          Un proyecto grande e inclusivo de psicoeducación y conciencia.<br>
-          Pensamiento, práctica y comunidad para impactar vidas y cultura.
-        </p>
-      </div>
-
-      <a class="silent-link media" href="creser.html" aria-label="Ir a CreSer">
-        <div class="img ph creser-logo" style="background-image:url('assets/creser-square.jpg');"></div>
-      </a>
-
-    </div>
-  </section>
-
-  <!-- ESCRITURA -->
-  <section class="block" id="escritura">
-    <div class="wrap">
-      <p class="tag">ESCRITURA</p>
-      <h2><a class="silent-link" href="escritura.html">Entre libros y pastillas</a></h2>
-      <p class="lead">Textos para leer con tiempo: ensayo, clínica, cultura y vida interior.</p>
-
-      <div class="strip-3">
-        <a class="strip-item" id="foto-izquierda" href="escritura.html" aria-label="Fotos (izquierda)">
-          <img src="assets/foto-izquierda.jpg" alt="" />
-          <span class="strip-label">Fotos</span>
-        </a>
-
-        <a class="strip-item strip-center" href="https://ronaldescobar.substack.com" aria-label="Mi Substack" target="_blank" rel="noopener">
-          <img src="assets/substack.jpg" alt="" />
-          <span class="strip-label">Mi Substack</span>
-        </a>
-
-        <a class="strip-item" id="foto-derecha" href="escritura.html" aria-label="Fotos (derecha)">
-          <img src="assets/foto-derecha.jpg" alt="" />
-          <span class="strip-label">Fotos</span>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Rotación de imágenes -->
-  <script>
-    const izquierda = ["assets/foto-izquierda.jpg", "assets/foto-izquierda-2.jpg"];
-    const derecha = ["assets/foto-derecha.jpg", "assets/foto-derecha-2.jpg"];
-
-    let i = 0;
-    let d = 0;
-
-    setInterval(() => {
-      i = (i + 1) % izquierda.length;
-      document.querySelector("#foto-izquierda img").src = izquierda[i];
-    }, 4000);
-
-    setInterval(() => {
-      d = (d + 1) % derecha.length;
-      document.querySelector("#foto-derecha img").src = derecha[d];
-    }, 4500);
-  </script>
-
-<!-- PODCAST PLAYER STICKY (solo visual por ahora) -->
-<div id="podcast-player">
-
-  <div class="player-left">
-    <img src="assets/desapreheinder-manifiesto.jpg" alt="Desapre(he)nder para CreSer">
   </div>
 
-  <div class="player-meta">
-    Episodio 12 · El amor en tu cerebro
+  <!-- 3) ÓRBITAS · editorial (A · C · E) -->
+  <div class="section orbits">
+    <div class="wrap">
+
+      <!-- A) Podcast -->
+      <div class="orbit">
+        <div class="kicker">Órbita · Voz</div>
+        <h3>Desapre(he)nder para CreSer</h3>
+        <p>Conversaciones para pensar lo humano sin fórmulas.</p>
+        <p>A veces clínica. A veces cultura. Siempre pregunta antes que respuesta.</p>
+        <a class="more" href="/podcast">Ver episodios</a>
+      </div>
+
+      <div class="hr"></div>
+
+      <!-- E) Entre libros y pastillas -->
+      <div class="orbit">
+        <div class="kicker">Órbita · Pensamiento</div>
+        <h3>Entre libros y pastillas</h3>
+        <p>Notas, ensayos y fragmentos.</p>
+        <p>Pensar también es una forma de cuidar. Escritura como proceso, no como exhibición.</p>
+        <a class="more" href="/entre-libros-y-pastillas">Leer textos</a>
+      </div>
+
+      <div class="hr"></div>
+
+      <!-- C) CreSer -->
+      <div class="orbit">
+        <div class="kicker">Órbita · Cultura</div>
+        <h3>CreSer</h3>
+        <p>Un movimiento que no nace del espectáculo, sino de la necesidad de formar criterio.</p>
+        <p>Psicoeducación como acto cultural: conversación, comunidad y responsabilidad.</p>
+        <a class="more" href="/creser">Conocer CreSer</a>
+      </div>
+
+      <div class="hr"></div>
+
+      <!-- 4) CIERRE HUMANO (sin CTA) -->
+      <div class="close">
+        <p>Este sitio no intenta abarcarlo todo de una vez. Está diseñado para entrar con calma, avanzar por capas y volver cuando haga falta.</p>
+        <div class="sig">Ronald Escobar</div>
+      </div>
+
+    </div>
   </div>
 
-  <div class="player-center">
-    <button id="backward" class="ctrl backward" aria-label="Retroceder"></button>
-    <button id="play" class="ctrl play" aria-label="Play / Pause"></button>
-    <button id="forward" class="ctrl forward" aria-label="Adelantar"></button>
-  </div>
-
-  <div class="player-right">
-    <input type="range" min="0" max="100" value="80" aria-label="Volumen">
-  </div>
-
-</div>
+</section>
 
 </body>
 </html>
