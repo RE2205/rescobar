@@ -394,7 +394,7 @@ body{
   border-radius: 22px;
 
   background-size: cover;
-  background-position: center 30%; /* equilibrio real */
+  background-position: center 25%; /* equilibrio real */
   background-repeat: no-repeat;
 
   filter: saturate(0.9) contrast(0.95);
