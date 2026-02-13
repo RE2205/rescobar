@@ -1,351 +1,304 @@
 <!doctype html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Ronald Escobar</title>
-  <meta name="description" content="Neurociencia · Arte · Humanidad" />
+<title>Ronald Escobar</title>
+<meta name="description" content="Neurociencia · Arte · Humanidad" />
 
-  <style>
-  /* ==================================================
-     RONALD ESCOBAR · HOME (Arquitectura final)
-     - Hero territorial 100vh
-     - Barra superior derecha (NO fija) + dropdown Clínica
-     - Logos Psyche como eje (fondo hueso) + 1 CTA
-     - Órbitas editoriales (Podcast · Escritura · CreSer)
-     - Líneas finas (sin saturación)
-     ================================================== */
+<style>
+/* ==================================================
+   RONALD ESCOBAR · HOME (Elegancia refinada)
+   ================================================== */
 
-  /* -------- Reset / Base -------- */
-  *{ margin:0; padding:0; box-sizing:border-box; }
-  html,body{ height:100%; }
-  a{ color:inherit; }
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{height:100%;}
+a{color:inherit;}
 
-  :root{
-    --negro:#0b0b0c;
-    --hueso:#f6f4ef;
-    --tinta:#101113;
-    --texto:#2a2b2f;
-    --gris:#6f7076;
+:root{
+  --negro:#0b0b0c;
+  --hueso:#f6f4ef;
+  --tinta:#111213;
+  --texto:#2e2f34;
+  --gris:#707278;
+  --linea:rgba(16,17,19,.08);
+  --linea-osc:rgba(255,255,255,.08);
+}
 
-    --linea:rgba(16,17,19,.10);
-    --linea-osc:rgba(255,255,255,.10);
-  }
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"Inter",system-ui,sans-serif;
+  background:var(--negro);
+  color:#f5f5f5;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
 
-  body{
-    font-family:-apple-system,BlinkMacSystemFont,"Inter",system-ui,Segoe UI,Roboto,Arial,sans-serif;
-    background:var(--negro);
-    color:#f5f5f5;
-    line-height:1.6;
-  }
+.wrap{
+  max-width:780px;
+  margin:0 auto;
+  padding:0 24px;
+}
 
-  .wrap{
-    max-width:820px;
-    margin:0 auto;
-    padding:0 20px;
-  }
+/* ---------------- NAV ---------------- */
 
-  .kicker{
-    font-size:12px;
-    letter-spacing:.22em;
-    text-transform:uppercase;
-    opacity:.55;
-  }
+.nav{
+  position:absolute;
+  top:24px;
+  right:48px;
+  font-size:12px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+}
 
-  .hr{
-    height:1px;
-    width:100%;
-    background:var(--linea);
-    margin:60px 0;
-  }
+.nav ul{
+  list-style:none;
+  display:flex;
+  gap:32px;
+}
 
-  /* -------- Nav superior (NO fija) -------- */
-  .nav{
-    position:absolute;
-    top:22px;
-    right:40px;
-    z-index:20;
-    font-size:12px;
-    letter-spacing:.18em;
-    text-transform:uppercase;
-  }
+.nav a{
+  text-decoration:none;
+  opacity:.65;
+  transition:opacity .2s ease;
+}
 
-  .nav ul{
-    list-style:none;
-    display:flex;
-    align-items:center;
-    gap:28px;
-  }
+.nav a:hover{opacity:1;}
 
-  .nav a{
-    text-decoration:none;
-    opacity:.70;
-    transition:opacity .2s ease;
-    white-space:nowrap;
-  }
+.nav li{position:relative;}
 
-  .nav a:hover{ opacity:1; }
+.nav .submenu{
+  position:absolute;
+  top:28px;
+  right:0;
+  background:#0e0e0f;
+  border:1px solid var(--linea-osc);
+  padding:18px 22px;
+  display:none;
+  flex-direction:column;
+  gap:14px;
+  min-width:220px;
+}
 
-  .nav li{ position:relative; }
+.nav .submenu a{
+  font-size:11px;
+  letter-spacing:.12em;
+  opacity:.8;
+}
 
-  /* Dropdown minimal */
-  .nav .submenu{
-    position:absolute;
-    top:26px;
-    right:0;
-    display:none;
-    flex-direction:column;
-    gap:14px;
+.nav li:hover .submenu{display:flex;}
 
-    background:#0f0f10;
-    border:1px solid var(--linea-osc);
-    padding:16px 18px;
-    min-width:210px;
-  }
+/* ---------------- HERO ---------------- */
 
-  .nav .submenu a{
-    font-size:11px;
-    letter-spacing:.14em;
-    opacity:.78;
-  }
+.hero{
+  height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:0 24px;
+}
 
-  .nav li:hover .submenu{ display:flex; }
+.hero-inner{
+  max-width:640px;
+}
 
-  @media (max-width:768px){
-    .nav{ right:18px; top:18px; }
-    .nav ul{ gap:18px; }
-  }
+.hero h1{
+  font-size:clamp(32px,4.8vw,60px);
+  font-weight:600;
+  letter-spacing:.04em;
+  line-height:1.1;
+}
 
-  /* -------- Hero territorial -------- */
-  .hero{
-    height:100vh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    padding:0 20px;
-    background:var(--negro);
-  }
+.hero .name{
+  margin-top:24px;
+  font-size:12px;
+  letter-spacing:.24em;
+  text-transform:uppercase;
+  opacity:.5;
+}
 
-  .hero-inner{
-    max-width:720px; /* contención (no tan ancho) */
-  }
+/* ---------------- SUPERFICIE ---------------- */
 
-  .hero h1{
-    font-size:clamp(28px,4.5vw,56px);
-    font-weight:500;
-    letter-spacing:.06em;
-    line-height:1.15;
-  }
+.surface{
+  background:var(--hueso);
+  color:var(--tinta);
+}
 
-  .hero .name{
-    margin-top:20px;
-    font-size:12px;
-    letter-spacing:.22em;
-    text-transform:uppercase;
-    opacity:.55;
-  }
+.section{
+  padding:120px 0;
+}
 
-  /* -------- Superficie clara (eje + órbitas) -------- */
-  .surface{
-    background:var(--hueso);
-    color:var(--tinta);
-  }
+@media (max-width:600px){
+  .section{padding:80px 0;}
+}
 
-  .section{ padding:96px 0; }
-  @media (max-width:600px){
-    .section{ padding:66px 0; }
-  }
+.kicker{
+  font-size:11px;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  opacity:.5;
+}
 
-  /* -------- Logos Psyche (eje) -------- */
-  .logos h2{
-    font-size:clamp(24px,3.5vw,38px);
-    font-weight:520;
-    margin-top:18px;
-    margin-bottom:24px;
-    letter-spacing:.01em;
-  }
+.hr{
+  height:1px;
+  background:var(--linea);
+  margin:70px 0;
+}
 
-  .logos p{
-    font-size:18px;
-    color:var(--texto);
-    margin-bottom:16px;
-    max-width:74ch;
-  }
+/* ---------------- LOGOS ---------------- */
 
-  .logos .cta{
-    display:inline-block;
-    margin-top:26px;
-    font-size:12px;
-    letter-spacing:.16em;
-    text-transform:uppercase;
-    padding:12px 22px;
-    border:1px solid var(--tinta);
-    text-decoration:none;
-    color:var(--tinta);
-    transition:all .2s ease;
-  }
+.logos h2{
+  font-size:clamp(28px,3.5vw,44px);
+  font-weight:600;
+  margin-top:20px;
+  margin-bottom:28px;
+}
 
-  .logos .cta:hover{
-    background:var(--tinta);
-    color:var(--hueso);
-  }
+.logos p{
+  font-size:17px;
+  margin-bottom:18px;
+  color:var(--texto);
+}
 
-  /* -------- Órbitas editoriales -------- */
-  .orbits{ padding-top:0; }
-  .orbit{ padding:44px 0; }
-  .orbit:first-child{ padding-top:54px; }
-  @media (max-width:600px){
-    .orbit{ padding:34px 0; }
-    .orbit:first-child{ padding-top:40px; }
-  }
+.logos .cta{
+  display:inline-block;
+  margin-top:32px;
+  font-size:12px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  padding:12px 24px;
+  border:1px solid var(--tinta);
+  text-decoration:none;
+  transition:all .25s ease;
+}
 
-  .orbit h3{
-    font-size:clamp(18px,3vw,26px);
-    font-weight:520;
-    margin-top:14px;
-    margin-bottom:20px; /* respiración */
-    letter-spacing:.01em;
-  }
+.logos .cta:hover{
+  background:var(--tinta);
+  color:var(--hueso);
+}
 
-  .orbit p{
-    font-size:16px;
-    color:var(--texto);
-    margin-bottom:14px;
-    max-width:78ch;
-  }
+/* ---------------- ÓRBITAS ---------------- */
 
-  .orbit a.more{
-    display:inline-block;
-    margin-top:10px;
-    font-size:12px;
-    letter-spacing:.14em;
-    text-transform:uppercase;
-    text-decoration:underline;
-    text-decoration-thickness:1px;
-    text-underline-offset:4px;
-    color:var(--tinta);
-    opacity:.92;
-  }
+.orbit{
+  padding:56px 0;
+}
 
-  .orbit a.more:hover{ opacity:1; }
+.orbit h3{
+  font-size:26px;
+  font-weight:600;
+  margin-top:18px;
+  margin-bottom:24px;
+}
 
-  /* -------- Cierre humano -------- */
-  .close{
-    padding-top:56px;
-    padding-bottom:70px;
-  }
+.orbit p{
+  font-size:16px;
+  margin-bottom:16px;
+  color:var(--texto);
+}
 
-  .close p{
-    font-size:15px;
-    color:var(--gris);
-    max-width:80ch;
-  }
+.orbit a{
+  font-size:12px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  text-decoration:underline;
+  text-underline-offset:5px;
+}
 
-  .close .sig{
-    margin-top:18px;
-    font-size:12px;
-    letter-spacing:.22em;
-    text-transform:uppercase;
-    color:var(--tinta);
-    opacity:.65;
-  }
-  </style>
+/* ---------------- CIERRE ---------------- */
+
+.close{
+  padding-top:80px;
+  padding-bottom:100px;
+}
+
+.close p{
+  font-size:15px;
+  color:var(--gris);
+}
+
+.close .sig{
+  margin-top:22px;
+  font-size:12px;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  opacity:.6;
+}
+</style>
 </head>
 
 <body>
 
-  <!-- NAV (derecha, NO fija) -->
-  <nav class="nav" aria-label="Navegación principal">
-    <ul>
-      <li>
-        <a href="/logos-psyche">Clínica</a>
-        <div class="submenu" aria-label="Submenú clínica">
-          <a href="/logos-psyche">Logos Psyche</a>
-          <a href="/reconectar">ReConectar</a>
-        </div>
-      </li>
-      <li><a href="/podcast">Podcast</a></li>
-      <li><a href="/entre-libros-y-pastillas">Escritura</a></li>
-      <li><a href="/creser">CreSer</a></li>
-    </ul>
-  </nav>
+<nav class="nav">
+  <ul>
+    <li>
+      <a href="/logos-psyche">Clínica</a>
+      <div class="submenu">
+        <a href="/logos-psyche">Logos Psyche</a>
+        <a href="/reconectar">ReConectar</a>
+      </div>
+    </li>
+    <li><a href="/podcast">Podcast</a></li>
+    <li><a href="/entre-libros-y-pastillas">Escritura</a></li>
+    <li><a href="/creser">CreSer</a></li>
+  </ul>
+</nav>
 
-  <!-- HERO (territorio) -->
-  <header class="hero">
-    <div class="hero-inner">
-      <h1>Neurociencia · Arte · Humanidad</h1>
-      <div class="name">Ronald Escobar</div>
+<section class="hero">
+  <div class="hero-inner">
+    <h1>Neurociencia · Arte · Humanidad</h1>
+    <div class="name">Ronald Escobar</div>
+  </div>
+</section>
+
+<section class="surface">
+  <div class="section logos">
+    <div class="wrap">
+      <div class="kicker">Clínica · Eje</div>
+      <h2>Logos Psyche</h2>
+      <p>Práctica clínica en psiquiatría y psicoterapia.</p>
+      <p>Diagnóstico cuando es necesario. Sentido cuando es indispensable.</p>
+      <p>El tiempo, el encuadre y el vínculo también son parte del tratamiento.</p>
+      <a class="cta" href="/logos-psyche">Entrar a la clínica</a>
+
+      <div class="hr"></div>
+
+      <div class="orbit">
+        <div class="kicker">Órbita · Voz</div>
+        <h3>Desapre(he)nder para CreSer</h3>
+        <p>Conversaciones para pensar lo humano sin fórmulas.</p>
+        <p>A veces clínica. A veces cultura. Siempre pregunta antes que respuesta.</p>
+        <a href="/podcast">Ver episodios</a>
+      </div>
+
+      <div class="hr"></div>
+
+      <div class="orbit">
+        <div class="kicker">Órbita · Pensamiento</div>
+        <h3>Entre libros y pastillas</h3>
+        <p>Notas, ensayos y fragmentos.</p>
+        <p>Pensar también es una forma de cuidar.</p>
+        <a href="/entre-libros-y-pastillas">Leer textos</a>
+      </div>
+
+      <div class="hr"></div>
+
+      <div class="orbit">
+        <div class="kicker">Órbita · Cultura</div>
+        <h3>CreSer</h3>
+        <p>Psicoeducación como acto cultural: conversación, comunidad y responsabilidad.</p>
+        <a href="/creser">Conocer CreSer</a>
+      </div>
+
+      <div class="hr"></div>
+
+      <div class="close">
+        <p>Este sitio está diseñado para entrar con calma, avanzar por capas y volver cuando haga falta.</p>
+        <div class="sig">Ronald Escobar</div>
+      </div>
     </div>
-  </header>
-
-  <!-- SUPERFICIE CLARA -->
-  <main class="surface">
-
-    <!-- EJE: LOGOS PSYCHE -->
-    <section class="section logos">
-      <div class="wrap">
-        <div class="kicker">Clínica · Eje</div>
-        <h2>Logos Psyche</h2>
-
-        <p>Práctica clínica en psiquiatría y psicoterapia.</p>
-        <p>Diagnóstico cuando es necesario. Sentido cuando es indispensable.</p>
-        <p>El tiempo, el encuadre y el vínculo también son parte del tratamiento.</p>
-
-        <a class="cta" href="/logos-psyche">Entrar a la clínica</a>
-
-        <div class="hr"></div>
-      </div>
-    </section>
-
-    <!-- ÓRBITAS (A · E · C) -->
-    <section class="section orbits">
-      <div class="wrap">
-
-        <!-- Podcast -->
-        <article class="orbit">
-          <div class="kicker">Órbita · Voz</div>
-          <h3>Desapre(he)nder para CreSer</h3>
-          <p>Conversaciones para pensar lo humano sin fórmulas.</p>
-          <p>A veces clínica. A veces cultura. Siempre pregunta antes que respuesta.</p>
-          <a class="more" href="/podcast">Ver episodios</a>
-        </article>
-
-        <div class="hr"></div>
-
-        <!-- Escritura -->
-        <article class="orbit">
-          <div class="kicker">Órbita · Pensamiento</div>
-          <h3>Entre libros y pastillas</h3>
-          <p>Notas, ensayos y fragmentos.</p>
-          <p>Pensar también es una forma de cuidar. Escritura como proceso, no como exhibición.</p>
-          <a class="more" href="/entre-libros-y-pastillas">Leer textos</a>
-        </article>
-
-        <div class="hr"></div>
-
-        <!-- CreSer -->
-        <article class="orbit">
-          <div class="kicker">Órbita · Cultura</div>
-          <h3>CreSer</h3>
-          <p>Un movimiento que no nace del espectáculo, sino de la necesidad de formar criterio.</p>
-          <p>Psicoeducación como acto cultural: conversación, comunidad y responsabilidad.</p>
-          <a class="more" href="/creser">Conocer CreSer</a>
-        </article>
-
-        <div class="hr"></div>
-
-        <!-- Cierre humano -->
-        <footer class="close">
-          <p>Este sitio no intenta abarcarlo todo de una vez. Está diseñado para entrar con calma, avanzar por capas y volver cuando haga falta.</p>
-          <div class="sig">Ronald Escobar</div>
-        </footer>
-
-      </div>
-    </section>
-
-  </main>
+  </div>
+</section>
 
 </body>
 </html>
