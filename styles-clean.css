@@ -480,26 +480,3 @@ body{
   text-transform: uppercase;
   color: rgba(10,10,10,.85);
 }
-/* =========================
-   DOCUMENTAL — ACOMPAÑAMIENTO
-========================= */
-.doc-cover{
-  height: 380px;
-  border-radius: 22px;
-
-  background-size: cover;
-  background-position: center 25%;
-  background-repeat: no-repeat;
-
-  filter: saturate(0.92) contrast(0.97);
-  opacity: 0.96;
-}
-
-#proyectos .media::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background: rgba(11,11,12,0.16); /* menos velo */
-  border-radius:22px;
-  pointer-events:none;
-}
