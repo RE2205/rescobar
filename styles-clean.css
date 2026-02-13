@@ -1792,11 +1792,15 @@ body{
 
 .nav-item > a{
   font-size:12px;
-  letter-spacing:.16em;
+  letter-spacing:.14em;
   text-transform:uppercase;
   text-decoration:none;
-  opacity:.7;
-  transition:opacity .2s ease;
+  color: rgba(255,255,255,0.65);
+  transition: color .2s ease;
+}
+
+.nav-item > a:hover{
+  color: rgba(255,255,255,1);
 }
 
 .nav-item > a:hover{
