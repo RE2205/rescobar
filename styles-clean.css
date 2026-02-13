@@ -390,15 +390,15 @@ body{
    DOCUMENTAL (HOME)
 ========================= */
 .doc-cover{
-  height: 380px;               /* más espacio vertical */
+  height: 380px;
   border-radius: 22px;
 
   background-size: cover;
-  background-position: center 25%; /* equilibrio real */
+  background-position: center 25%;
   background-repeat: no-repeat;
 
-  filter: saturate(0.9) contrast(0.95);
-  opacity: 0.95;
+  filter: saturate(0.8) contrast(0.9) brightness(0.95);
+  opacity: 0.9;
 }
 /* =========================
    CRESER (HOME)
