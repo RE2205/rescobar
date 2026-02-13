@@ -389,12 +389,11 @@ body{
 /* =========================
    DOCUMENTAL (HOME)
 ========================= */
-
 .doc-cover{
   height: 320px;
   border-radius: 22px;
   background-size: cover;
-  background-position: center 30%;
+  background-position: center 42%;
   background-repeat: no-repeat;
 }
 
