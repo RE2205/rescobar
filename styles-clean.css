@@ -480,3 +480,32 @@ body{
   text-transform: uppercase;
   color: rgba(10,10,10,.85);
 }
+/* =========================
+   DOCUMENTAL — ACOMPAÑAMIENTO
+========================= */
+
+.doc-cover{
+  height: 380px;
+  border-radius: 22px;
+
+  background-size: cover;
+  background-position: center 25%;
+  background-repeat: no-repeat;
+
+  filter: saturate(0.8) contrast(0.9) brightness(0.95);
+  opacity: 0.9;
+}
+
+/* Velo para bajar protagonismo */
+#proyectos .media{
+  position: relative;
+}
+
+#proyectos .media::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background: rgba(11,11,12,0.28);
+  border-radius:22px;
+  pointer-events:none;
+}
