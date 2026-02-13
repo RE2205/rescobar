@@ -390,13 +390,30 @@ body{
    DOCUMENTAL (HOME)
 ========================= */
 .doc-cover{
-  height: 320px;
+  height: 340px;               /* ligeramente menor */
   border-radius: 22px;
+
   background-size: cover;
-  background-position: center 42%;
+  background-position: center 58%; /* rostro completo */
   background-repeat: no-repeat;
+
+  filter: saturate(0.85) contrast(0.95);
+  opacity: 0.92;
 }
 
+/* Velo sutil para que no compita */
+#proyectos .media{
+  position: relative;
+}
+
+#proyectos .media::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background: rgba(11,11,12,0.18);
+  border-radius: 22px;
+  pointer-events:none;
+}
 /* =========================
    CRESER (HOME)
 ========================= */
