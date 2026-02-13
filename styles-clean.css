@@ -374,3 +374,74 @@ body{
   border-radius:6px;
   object-fit:cover;
 }
+/* =========================
+   INNER SOUND (HOME)
+========================= */
+
+#inner-sound .img.ph{
+  height: 320px;
+  border-radius: 22px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* =========================
+   DOCUMENTAL (HOME)
+========================= */
+
+.doc-cover{
+  height: 320px;
+  border-radius: 22px;
+  background-size: cover;
+  background-position: center 30%;
+  background-repeat: no-repeat;
+}
+
+/* =========================
+   CRESER (HOME)
+========================= */
+
+.creser-logo{
+  height: 320px;
+  border-radius: 22px;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: rgba(255,255,255,.03);
+}
+
+/* =========================
+   ESCRITURA (HOME)
+========================= */
+
+.strip-3{
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-top: 24px;
+}
+
+.strip-item{
+  position: relative;
+  height: 240px;
+  overflow: hidden;
+  border-radius: 18px;
+}
+
+.strip-item img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Mobile */
+@media (max-width: 900px){
+  .strip-3{
+    grid-template-columns: 1fr;
+  }
+  .strip-item{
+    height: 220px;
+  }
+}
