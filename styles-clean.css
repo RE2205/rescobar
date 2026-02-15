@@ -480,3 +480,25 @@ body{
   text-transform: uppercase;
   color: rgba(10,10,10,.85);
 }
+/* =========================
+   INNER SOUND — FONDO CLARO
+========================= */
+
+#inner-sound{
+  background:#f6f6f4;
+}
+
+#inner-sound .copy h2,
+#inner-sound .copy p{
+  color:#111;
+}
+
+#inner-sound .lead{
+  color:#333;
+}
+
+#inner-sound .tag{
+  background:rgba(0,0,0,.06);
+  border:1px solid rgba(0,0,0,.10);
+  color:#111;
+}
