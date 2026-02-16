@@ -419,24 +419,58 @@ body{
 }
 
 /* =========================
-   ESCRITURA (equilibrada)
+   ESCRITURA (blanco / revista+bitácora)
 ========================= */
+
+#escritura{
+  padding:60px 0 56px 0;
+}
 
 #escritura h2{
   font-family: Georgia, 'Times New Roman', serif;
-  font-size: clamp(32px, 3.2vw, 44px); /* antes demasiado grande */
+  font-size: clamp(42px, 4.5vw, 60px);
   font-weight: 500;
   letter-spacing: -.01em;
   color:#111;
-  margin: 8px 0 14px 0;
+  margin: 10px 0 18px 0;
 }
 
 #escritura .lead.dark{
-  font-size: 18px;
-  line-height: 1.7;
-  max-width: 58ch;
-  margin-bottom: 28px;
+  font-size: 20px;
+  line-height: 1.75;
+  max-width: 62ch;
+  margin-bottom: 36px;
 }
+
+.strip-3{
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap:18px;
+  margin-top:28px;
+}
+
+.strip-item{
+  position:relative;
+  height:340px;
+  overflow:hidden;
+  border-radius:20px;
+}
+
+.strip-item img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+  filter: contrast(1.02) saturate(0.97);
+  transition: transform 1.2s cubic-bezier(.22,.61,.36,1),
+              filter .8s ease;
+}
+
+.strip-item:hover img{
+  transform: scale(1.015);
+  filter: contrast(1.05) saturate(1);
+}
+
 /* =========================
    PODCAST PLAYER STICKY
 ========================= */
@@ -547,37 +581,4 @@ body{
     height:64px;
   }
   .player-right{ display:none; }
-}
-#escritura{
-  background:#f6f6f4;
-}
-
-#escritura h2{
-  font-family: Georgia, 'Times New Roman', serif;
-  font-size: clamp(32px, 3.2vw, 44px);
-  font-weight: 500;
-  letter-spacing:-.01em;
-  color:#111;
-}
-
-#escritura .lead.dark{
-  font-size:18px;
-  line-height:1.7;
-  color:#333;
-}
-
-.strip-item{
-  position:relative;
-  height:320px;
-  overflow:hidden;
-  border-radius:20px;
-}
-
-.strip-item img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  transition:
-    opacity .9s ease-in-out,
-    filter .9s ease-in-out;
 }
