@@ -502,3 +502,25 @@ body{
   border:1px solid rgba(0,0,0,.10);
   color:#111;
 }
+/* =========================
+   CRESER — FONDO CLARO
+========================= */
+
+#creser{
+  background:#f6f6f4;
+}
+
+#creser .copy h2,
+#creser .copy p{
+  color:#111;
+}
+
+#creser .lead{
+  color:#333;
+}
+
+#creser .tag{
+  background:rgba(0,0,0,.06);
+  border:1px solid rgba(0,0,0,.10);
+  color:#111;
+}
