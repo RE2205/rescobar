@@ -548,3 +548,36 @@ body{
   }
   .player-right{ display:none; }
 }
+#escritura{
+  background:#f6f6f4;
+}
+
+#escritura h2{
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(32px, 3.2vw, 44px);
+  font-weight: 500;
+  letter-spacing:-.01em;
+  color:#111;
+}
+
+#escritura .lead.dark{
+  font-size:18px;
+  line-height:1.7;
+  color:#333;
+}
+
+.strip-item{
+  position:relative;
+  height:320px;
+  overflow:hidden;
+  border-radius:20px;
+}
+
+.strip-item img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transition:
+    opacity .9s ease-in-out,
+    filter .9s ease-in-out;
+}
