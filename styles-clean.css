@@ -386,21 +386,33 @@ body{
   background-repeat: no-repeat;
 }
 
-/* =========================
-   DOCUMENTAL (HOME)
-========================= */
 .doc-cover{
   height: 380px;
   border-radius: 22px;
+  position: relative;
 
   background-size: cover;
   background-position: center 25%;
   background-repeat: no-repeat;
 
-  filter: saturate(0.8) contrast(0.9) brightness(0.95);
-  opacity: 0.9;
+  /* Tratamiento cinematográfico */
+  filter: saturate(0.9) contrast(1.08) brightness(0.92);
 }
-/* =========================
+
+/* Vignette sutil cinematográfica */
+.doc-cover::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:22px;
+  background:
+    radial-gradient(
+      ellipse at center,
+      rgba(0,0,0,0) 55%,
+      rgba(0,0,0,0.35) 100%
+    );
+  pointer-events:none;
+}/* =========================
    CRESER (HOME)
 ========================= */
 
