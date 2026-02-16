@@ -1,374 +1,583 @@
 :root{
-  --bg: #0b0b0c;
-  --fg: #f3f3f3;
-  --muted: rgba(243,243,243,.68);
-  --line: rgba(243,243,243,.12);
+  --bg:#0b0b0c;
+  --fg:#f3f3f3;
+  --muted:rgba(243,243,243,.68);
 }
 
-*{ box-sizing: border-box; }
-html,body{ height:100%; }
+/* =========================
+   BASE
+========================= */
+
+*{box-sizing:border-box;}
+html,body{height:100%;}
+
 body{
   margin:0;
   font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
-  background: var(--bg);
-  color: var(--fg);
+  background:var(--bg);
+  color:var(--fg);
+  padding-bottom: 110px; /* para que el player no tape el contenido */
 }
 
 .wrap{
-  max-width: 1120px;
-  margin: 0 auto;
-  padding: 0 24px;
+  max-width:1120px;
+  margin:0 auto;
+  padding:0 24px;
 }
 
+.silent-link{
+  color:inherit;
+  text-decoration:none;
+}
+.silent-link:hover{ text-decoration:none; }
+
+/* =========================
+   NAV SUPERIOR (desktop)
+========================= */
+
+.top-nav{
+  position:absolute;
+  top:28px;
+  right:48px;
+  z-index:100;
+}
+
+.nav-inner{
+  display:flex;
+  justify-content:flex-end;
+}
+
+.nav-list{
+  list-style:none;
+  display:flex;
+  gap:28px;
+  margin:0;
+  padding:0;
+}
+
+.nav-item{
+  position:relative;
+}
+
+.nav-item > a{
+  font-size:12px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  text-decoration:none;
+  color: rgba(255,255,255,0.68);
+  transition: color .2s ease;
+}
+
+.nav-item > a:hover{
+  color: rgba(255,255,255,1);
+}
+
+/* submenu estable */
+.nav-item.has-submenu{
+  padding-bottom:12px; /* amplía área hover */
+}
+
+.submenu{
+  display:none;
+  position:absolute;
+  top:100%;
+  right:0;
+  margin-top:8px;
+  list-style:none;
+  background:#0e0e0f;
+  border:1px solid rgba(255,255,255,.08);
+  padding:18px 22px;
+  min-width:220px;
+  z-index:200;
+}
+
+.submenu li{ margin-bottom:10px; }
+.submenu li:last-child{ margin-bottom:0; }
+
+.submenu a{
+  font-size:12px;
+  letter-spacing:.12em;
+  color:rgba(255,255,255,0.78);
+  text-decoration:none;
+  transition:color .2s ease;
+}
+.submenu a:hover{ color:#ffffff; }
+
+.nav-item.has-submenu:hover .submenu{
+  display:block;
+}
+
+/* =========================
+   HERO
+========================= */
+
 .hero{
-  min-height: 76vh;
-  display: grid;
-  align-items: center;
+  min-height:56vh;
+  display:grid;
+  align-items:center;
+  padding-top:24px;
+  padding-bottom:12px;
 }
 
 .kicker{
-  margin:0 0 18px 0;
-  letter-spacing:.12em;
+  margin-bottom:14px;
+  font-size:12px;
+  letter-spacing:.22em;
   text-transform:uppercase;
-  font-size:14px;
-  color: var(--muted);
+  opacity:.6;
 }
 
 .headline{
-  margin:0;
-  font-weight:540;
-  letter-spacing:-0.015em;
-  line-height:1.15;
-  font-size: clamp(40px, 5vw, 72px);
+  line-height:1.08;
+  font-size: clamp(44px, 5.4vw, 82px);
+  font-weight:700;
+  letter-spacing:-.01em;
 }
 
-.signature{
-  margin-top: 56px;
-  font-size: 14px;
-  letter-spacing: .04em;
-  color: rgba(243,243,243,.6);
-  text-align: right;
-}
+/* =========================
+   BAND (morado)
+========================= */
 
-.breath{
-  height: 1px;
-  background: rgba(243,243,243,.10);
-  margin: 56px 0;
-}
-
-/* franja */
 .band{
-  background: linear-gradient(90deg, rgba(255,180,0,.22), rgba(120,80,255,.18));
-  border-top: 1px solid rgba(255,255,255,.10);
-  border-bottom: 1px solid rgba(255,255,255,.10);
-  padding: 22px 0;
+  padding:16px 0;
+  background:
+    radial-gradient(120% 140% at 85% 50%, rgba(150,120,255,.45), rgba(0,0,0,0) 60%),
+    linear-gradient(90deg, rgba(26,22,40,1), rgba(12,10,22,1), rgba(8,6,16,1));
+  border-top:1px solid rgba(255,255,255,.08);
+  border-bottom:1px solid rgba(255,255,255,.08);
 }
 
 .band-text{
   margin:0;
-  letter-spacing:.08em;
+  font-size:12px;
+  letter-spacing:.14em;
   text-transform:uppercase;
-  font-size: 12px;
-  color: rgba(243,243,243,.82);
+  color:rgba(255,255,255,.96);
 }
 
-/* bloques */
+/* =========================
+   BLOQUES GENERALES
+========================= */
+
 .block{
-  padding: 84px 0;
-  border-bottom: 1px solid rgba(243,243,243,.08);
+  padding:56px 0;
+  border-bottom:1px solid rgba(243,243,243,.08);
 }
 
 .two-col{
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 28px;
-  align-items: center;
+  display:grid;
+  grid-template-columns:1fr;
+  gap:48px;
+  align-items:center;
 }
 
-@media (min-width: 900px){
-  .two-col{ grid-template-columns: 1.1fr .9fr; }
-  .two-col .media{ order: 1; }
-  .two-col .copy{ order: 2; }
+@media (min-width:900px){
+  .two-col{ grid-template-columns:1fr 1fr; }
 }
 
 .copy h2{
-  margin: 10px 0 14px 0;
-  font-size: 42px;
-  letter-spacing: -0.02em;
+  margin:6px 0 10px 0;
+  font-size:42px;
+  letter-spacing:-.02em;
 }
 
 .tag{
   display:inline-block;
-  margin: 0;
-  padding: 8px 12px;
-  border-radius: 999px;
-  font-size: 12px;
-  letter-spacing: .10em;
-  text-transform: uppercase;
-  background: rgba(255,255,255,.06);
-  border: 1px solid rgba(255,255,255,.10);
-  color: rgba(243,243,243,.80);
+  padding:8px 12px;
+  border-radius:999px;
+  font-size:12px;
+  letter-spacing:.10em;
+  text-transform:uppercase;
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.10);
+  color:rgba(243,243,243,.80);
+}
+
+.tag.dark{
+  background:rgba(0,0,0,.06);
+  border:1px solid rgba(0,0,0,.10);
+  color:#111;
 }
 
 .lead{
-  margin: 0;
-  color: rgba(243,243,243,.78);
-  max-width: 62ch;
-  line-height: 1.6;
-  font-size: 18px;
+  margin:6px 0 0 0;
+  color:rgba(243,243,243,.78);
+  max-width:62ch;
+  line-height:1.6;
+  font-size:18px;
 }
 
-.head-row{
+.lead.dark{ color:#333; }
+
+/* util blanco */
+.white{
+  background:#f6f6f4;
+  color:#111;
+}
+
+/* =========================
+   CLÍNICA (Logos Psyche) — blanco
+========================= */
+
+.logos-light{
+  background:#f6f6f4;
+}
+
+.logos-light .copy h2,
+.logos-light .copy p{ color:#111; }
+
+.logo-holder{
+  height:320px;
+  padding:22px;
+  border-radius:22px;
+  border:1px solid rgba(0,0,0,.10);
+  background:#f6f6f4;
   display:flex;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 24px;
-  margin-bottom: 18px;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
 }
 
-/* imágenes (placeholder por ahora) */
-.img{
-  width: 100%;
-  border-radius: 22px;
-  border: 1px solid rgba(243,243,243,.10);
-  background: rgba(255,255,255,.02);
+.logo-image{
+  width:100%;
+  height:100%;
+  object-fit:contain;
 }
 
-.ph{
-  height: 320px;
-  position: relative;
-  background:
-    radial-gradient(120% 120% at 20% 10%, rgba(120,80,255,.26), rgba(0,0,0,0)),
-    radial-gradient(120% 120% at 80% 30%, rgba(255,180,0,.18), rgba(0,0,0,0)),
-    rgba(255,255,255,.03);
+/* costura sutil en bloques claros */
+.logos-light,
+#proyectos,
+#escritura{
+  box-shadow: inset 0 1px 0 rgba(0,0,0,.08);
 }
 
-.ph.light{
-  background: #f2f2f2;
+/* =========================
+   PODCAST (negro)
+========================= */
+
+#podcast-entry{
+  background:#0b0b0c;
+  border-bottom:none;
 }
 
-.ph::after{
-  content: attr(data-label);
-  position: absolute;
-  left: 16px;
-  bottom: 14px;
-  font-size: 12px;
-  letter-spacing: .10em;
-  text-transform: uppercase;
-  color: rgba(243,243,243,.70);
+.podcast-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:baseline;
+  margin-bottom:28px;
 }
 
-.ph.light::after{
-  color: rgba(0,0,0,.55);
-}
-
-/* grid episodios */
-.grid{
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 14px;
-}
-
-@media (min-width: 860px){
-  .grid{ grid-template-columns: 1fr 1fr 1fr; }
-}
-
-.card{
-  display:block;
-  text-decoration: none;
-}
-
-/* botones */
-.btn{
-  display:inline-block;
-  margin-top: 18px;
-  margin-right: 10px;
-  padding: 12px 16px;
-  border-radius: 14px;
-  border: 1px solid rgba(243,243,243,.22);
-  background: rgba(255,255,255,.06);
-  color: var(--fg);
-  text-decoration: none;
-  font-weight: 600;
-}
-
-.btn.ghost{
-  background: transparent;
-  border-color: rgba(243,243,243,.16);
-}
-
-.btn:hover{
-  border-color: rgba(243,243,243,.35);
-}
-
-/* footer */
-.footer{
-  padding: 36px 0 54px;
-}
-
-.muted{
+.podcast-title{
   margin:0;
-  color: var(--muted);
+  font-size:32px;
+  font-weight:500;
 }
 
-.link{
-  color: var(--fg);
-  text-decoration: none;
-  border-bottom: 1px solid rgba(243,243,243,.25);
-}
-
-.link:hover{
-  border-bottom-color: rgba(243,243,243,.55);
-}
-
-/* FRANJA EDITORIAL (cita larga) */
-.band-long{
-  padding: 44px 0;
-  border-top: 1px solid rgba(0,0,0,.06);
-  border-bottom: 1px solid rgba(0,0,0,.06);
-  background:
-    repeating-linear-gradient(
-      135deg,
-      rgba(0,0,0,.04) 0px,
-      rgba(0,0,0,.04) 1px,
-      rgba(0,0,0,0) 8px,
-      rgba(0,0,0,0) 18px
-    ),
-    linear-gradient(
-      135deg,
-      rgba(255,210,80,1),
-      rgba(250,190,60,1)
-    );
-  font-size: clamp(22px, 2.2vw, 30px);
-  line-height: 1.45;
-  letter-spacing: .01em;
-  color: rgba(10,10,10,1);
-}
-
-.band-author{
-  margin-top: 22px;
-  font-size: 12px;
-  letter-spacing: .18em;
-  text-transform: uppercase;
-  color: rgba(10,10,10,.88);
-}
-
-/* Textura sutil para la franja amarilla (usa assets/band-texture.png) */
-.band-long{
-  padding: 44px 0;
-  border-top: 1px solid rgba(0,0,0,.06);
-  border-bottom: 1px solid rgba(0,0,0,.06);
-  background:
-    repeating-linear-gradient(
-      135deg,
-      rgba(0,0,0,.04) 0px,
-      rgba(0,0,0,.04) 1px,
-      rgba(0,0,0,0) 8px,
-      rgba(0,0,0,0) 18px
-    ),
-    linear-gradient(
-      135deg,
-      rgba(255,210,80,1),
-      rgba(250,190,60,1)
-    );
-.band-long .wrap{
-  position: relative;
-  z-index: 1;
-}
-
-/* Si quieres todavía más “vida” sin perder elegancia */
-.band-quote{
-  text-rendering: geometricPrecision;
-}
-
-/* === FRANJA AMARILLA CON TEXTURA REAL (LA ELEGIDA) === */
-.band-long{
-  position: relative;
-  overflow: hidden;
-  padding: 44px 0;
-  background: linear-gradient(
-    135deg,
-    rgba(255,215,90,1),
-    rgba(250,190,60,1)
-  );
-}
-
-.band-long::before{
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image: url("assets/band-texture.png");
-  background-size: cover;
-  background-position: center;
-  opacity: 0.12;              /* MUY sutil */
-  mix-blend-mode: multiply;   /* integra la pintura al amarillo */
-  pointer-events: none;
-}
-
-.band-long .wrap{
-  position: relative;
-  z-index: 1;
-}
-
-.band-quote{
-  color: #0a0a0a;             /* negro profundo */
-}
-
-.band-author{
-  color: rgba(10,10,10,.9);
-}
-
-/* Franja breve con colores Inner Sound */
-.band{
-  background: linear-gradient(
-    90deg,
-    rgba(92,68,255,.30),
-    rgba(0,170,255,.16)
-  );
-  border-top: 1px solid rgba(255,255,255,.10);
-  border-bottom: 1px solid rgba(255,255,255,.10);
-  padding: 18px 0; /* un poco más delgada */
-}
-
-.band-text{
-  margin:0;
-  letter-spacing:.10em;
+.podcast-label{
+  font-size:13px;
+  letter-spacing:.18em;
   text-transform:uppercase;
-  font-size: 12px;
-  color: rgba(243,243,243,.88);
+  color:rgba(243,243,243,.55);
 }
 
-/* Override final: subir luminosidad del texto de la franja mantra */
-.band .band-text{
-  color: rgba(255,255,255,.96) !important;
+.podcast-roll{
+  display:flex;
+  gap:20px;
+  overflow-x:auto;
+  overflow-y:hidden;
+  padding:14px 0;
+  scrollbar-width:none;
+}
+.podcast-roll::-webkit-scrollbar{ display:none; }
+
+.podcast-card{
+  flex:0 0 auto;
+  width:240px;
+  border-radius:14px;
+  overflow:hidden;
+  display:block;
 }
 
-/* ==================================================
-   OVERRIDE FINAL — FRANJA INNER SOUND (MANTRA)
-   Este bloque manda sobre TODO lo anterior
-   ================================================== */
+.podcast-card img{
+  width:100%;
+  height:auto;
+  display:block;
+  filter:grayscale(60%);
+  opacity:.9;
+  transition:filter .35s ease, opacity .35s ease;
+}
+.podcast-card:hover img{
+  filter:none;
+  opacity:1;
+}
 
-.band{
+.podcast-center{
+  width:280px;
+  transform:translateY(-6px);
+  pointer-events:none;
+}
+
+.podcast-cta{
+  display:flex;
+  justify-content:center;
+  margin-top:22px;
+}
+.podcast-cta a{
+  font-size:14px;
+  letter-spacing:.04em;
+  color:rgba(255,255,255,.7);
+  text-decoration:none;
+  border-bottom:1px solid rgba(255,255,255,.35);
+  padding-bottom:4px;
+}
+.podcast-cta a:hover{
+  color:#fff;
+  border-color:#fff;
+}
+
+/* =========================
+   FRANJA AMARILLA (tal cual)
+========================= */
+
+.band-long{
+  position:relative;
+  overflow:hidden;
+  padding:44px 0;
+  background: linear-gradient(135deg, rgba(255,215,90,1), rgba(250,190,60,1));
+}
+
+.band-long .wrap{
+  position:relative;
+  z-index:1;
+  max-width:900px;
+}
+
+.band-quote{
+  margin:0;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(22px, 2.2vw, 30px);
+  line-height:1.45;
+  letter-spacing:.01em;
+  color:#0a0a0a;
+}
+
+.band-author{
+  margin-top:22px;
+  font-size:12px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:rgba(10,10,10,.90);
+}
+
+/* =========================
+   DOCUMENTAL (blanco + cine)
+========================= */
+
+.doc-cover{
+  height:380px;
+  border-radius:22px;
+  position:relative;
+  background-size:cover;
+  background-position:center 25%;
+  background-repeat:no-repeat;
+  filter: saturate(0.92) contrast(1.06) brightness(0.96);
+}
+
+/* viñeta cinematográfica suave */
+.doc-cover::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:22px;
   background:
-    radial-gradient(
-      120% 140% at 85% 50%,
-      rgba(150,120,255,.45),
-      rgba(0,0,0,0) 60%
-    ),
-    linear-gradient(
-      90deg,
-      rgba(12,10,22,1),
-      rgba(8,6,16,1)
-    ) !important;
-
-  padding: 22px 0 !important;
-  border-top: 1px solid rgba(255,255,255,.08) !important;
-  border-bottom: 1px solid rgba(255,255,255,.08) !important;
+    radial-gradient(ellipse at center,
+      rgba(0,0,0,0) 55%,
+      rgba(0,0,0,0.32) 100%);
+  pointer-events:none;
 }
 
-.band .band-text{
-  color: rgba(255,255,255,.96) !important;
-  letter-spacing: .14em !important;
-  font-size: 12px !important;
-  text-align: center !important;
+/* =========================
+   CRESER (negro)
+========================= */
+
+#creser{
+  background:#0b0b0c;
+}
+
+#creser .copy h2,
+#creser .copy p{ color:#f3f3f3; }
+
+#creser .lead{ color:rgba(243,243,243,.78); }
+
+.creser-logo{
+  height:320px;
+  border-radius:22px;
+  background-size:contain;
+  background-position:center;
+  background-repeat:no-repeat;
+  background-color:rgba(255,255,255,.03);
+}
+
+/* =========================
+   ESCRITURA (equilibrada)
+========================= */
+
+#escritura h2{
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(32px, 3.2vw, 44px); /* antes demasiado grande */
+  font-weight: 500;
+  letter-spacing: -.01em;
+  color:#111;
+  margin: 8px 0 14px 0;
+}
+
+#escritura .lead.dark{
+  font-size: 18px;
+  line-height: 1.7;
+  max-width: 58ch;
+  margin-bottom: 28px;
+}
+/* =========================
+   PODCAST PLAYER STICKY
+========================= */
+
+#podcast-player{
+  position:fixed;
+  left:0;
+  bottom:0;
+  width:100%;
+  height:68px;
+  background:rgba(10,10,10,.92);
+  display:grid;
+  grid-template-columns:auto 1fr auto;
+  align-items:center;
+  gap:20px;
+  padding:0 18px;
+  border-top:1px solid rgba(255,255,255,.08);
+  z-index:9999;
+}
+
+.player-left img{
+  width:42px;
+  height:42px;
+  border-radius:6px;
+  object-fit:cover;
+}
+
+.player-meta{
+  color:rgba(243,243,243,.70);
+  font-size:13px;
+  letter-spacing:.02em;
+}
+
+.player-center{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:16px;
+}
+
+.ctrl{
+  width:26px;
+  height:26px;
+  background:none;
+  border:none;
+  opacity:.8;
+}
+
+.player-right input[type="range"]{
+  width:120px;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width:768px){
+
+  /* NAV */
+  .top-nav{
+    position:relative;
+    top:0;
+    right:0;
+    padding:18px 0 8px 0;
+  }
+
+  .nav-inner{ justify-content:center; }
+
+  .nav-list{
+    gap:18px;
+    flex-wrap:wrap;
+    justify-content:center;
+  }
+
+  .nav-item > a{
+    font-size:11px;
+    letter-spacing:.12em;
+  }
+
+  /* HERO */
+  .hero{
+    min-height:auto;
+    padding-top:18px;
+    padding-bottom:26px;
+  }
+
+  .headline{
+    font-size: clamp(32px, 8vw, 46px);
+    line-height:1.15;
+  }
+
+  .kicker{
+    font-size:11px;
+    letter-spacing:.18em;
+  }
+
+  /* escritura */
+  .strip-3{
+    grid-template-columns:1fr;
+    gap:16px;
+  }
+  .strip-item{ height:260px; }
+
+  /* player */
+  body{ padding-bottom: 120px; }
+  #podcast-player{
+    grid-template-columns:auto 1fr;
+    height:64px;
+  }
+  .player-right{ display:none; }
+}
+#escritura{
+  background:#f6f6f4;
+}
+
+#escritura h2{
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(32px, 3.2vw, 44px);
+  font-weight: 500;
+  letter-spacing:-.01em;
+  color:#111;
+}
+
+#escritura .lead.dark{
+  font-size:18px;
+  line-height:1.7;
+  color:#333;
+}
+
+.strip-item{
+  position:relative;
+  height:320px;
+  overflow:hidden;
+  border-radius:20px;
+}
+
+.strip-item img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transition:
+    opacity .9s ease-in-out,
+    filter .9s ease-in-out;
 }
