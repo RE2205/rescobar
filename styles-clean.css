@@ -10,13 +10,11 @@
 
 *{box-sizing:border-box;}
 html,body{height:100%;}
-
 body{
   margin:0;
   font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
   background:var(--bg);
   color:var(--fg);
-  padding-bottom: 110px; /* para que el player no tape el contenido */
 }
 
 .wrap{
@@ -29,10 +27,13 @@ body{
   color:inherit;
   text-decoration:none;
 }
-.silent-link:hover{ text-decoration:none; }
+
+.silent-link:hover{
+  text-decoration:none;
+}
 
 /* =========================
-   NAV SUPERIOR (desktop)
+   NAV SUPERIOR
 ========================= */
 
 .top-nav{
@@ -50,7 +51,7 @@ body{
 .nav-list{
   list-style:none;
   display:flex;
-  gap:28px;
+  gap:32px;
   margin:0;
   padding:0;
 }
@@ -64,7 +65,7 @@ body{
   letter-spacing:.14em;
   text-transform:uppercase;
   text-decoration:none;
-  color: rgba(255,255,255,0.68);
+  color: rgba(255,255,255,0.65);
   transition: color .2s ease;
 }
 
@@ -72,9 +73,10 @@ body{
   color: rgba(255,255,255,1);
 }
 
-/* submenu estable */
+/* Submenu */
+
 .nav-item.has-submenu{
-  padding-bottom:12px; /* amplía área hover */
+  padding-bottom:10px;
 }
 
 .submenu{
@@ -87,21 +89,29 @@ body{
   background:#0e0e0f;
   border:1px solid rgba(255,255,255,.08);
   padding:18px 22px;
-  min-width:220px;
+  min-width:200px;
   z-index:200;
 }
 
-.submenu li{ margin-bottom:10px; }
-.submenu li:last-child{ margin-bottom:0; }
+.submenu li{
+  margin-bottom:10px;
+}
+
+.submenu li:last-child{
+  margin-bottom:0;
+}
 
 .submenu a{
   font-size:12px;
   letter-spacing:.12em;
-  color:rgba(255,255,255,0.78);
+  color:rgba(255,255,255,0.75);
   text-decoration:none;
   transition:color .2s ease;
 }
-.submenu a:hover{ color:#ffffff; }
+
+.submenu a:hover{
+  color:#ffffff;
+}
 
 .nav-item.has-submenu:hover .submenu{
   display:block;
@@ -131,18 +141,22 @@ body{
   line-height:1.08;
   font-size: clamp(44px, 5.4vw, 82px);
   font-weight:700;
-  letter-spacing:-.01em;
 }
 
 /* =========================
-   BAND (morado)
+   BAND
 ========================= */
 
 .band{
   padding:16px 0;
   background:
     radial-gradient(120% 140% at 85% 50%, rgba(150,120,255,.45), rgba(0,0,0,0) 60%),
-    linear-gradient(90deg, rgba(26,22,40,1), rgba(12,10,22,1), rgba(8,6,16,1));
+    linear-gradient(
+      90deg,
+      rgba(26,22,40,1),
+      rgba(12,10,22,1),
+      rgba(8,6,16,1)
+    );
   border-top:1px solid rgba(255,255,255,.08);
   border-bottom:1px solid rgba(255,255,255,.08);
 }
@@ -172,7 +186,9 @@ body{
 }
 
 @media (min-width:900px){
-  .two-col{ grid-template-columns:1fr 1fr; }
+  .two-col{
+    grid-template-columns:1fr 1fr;
+  }
 }
 
 .copy h2{
@@ -207,16 +223,12 @@ body{
   font-size:18px;
 }
 
-.lead.dark{ color:#333; }
-
-/* util blanco */
-.white{
-  background:#f6f6f4;
-  color:#111;
+.lead.dark{
+  color:#333;
 }
 
 /* =========================
-   CLÍNICA (Logos Psyche) — blanco
+   LOGOS PSYCHE HOME BLOCK
 ========================= */
 
 .logos-light{
@@ -224,7 +236,9 @@ body{
 }
 
 .logos-light .copy h2,
-.logos-light .copy p{ color:#111; }
+.logos-light .copy p{
+  color:#111;
+}
 
 .logo-holder{
   height:320px;
@@ -244,15 +258,8 @@ body{
   object-fit:contain;
 }
 
-/* costura sutil en bloques claros */
-.logos-light,
-#proyectos,
-#escritura{
-  box-shadow: inset 0 1px 0 rgba(0,0,0,.08);
-}
-
 /* =========================
-   PODCAST (negro)
+   PODCAST HOME
 ========================= */
 
 #podcast-entry{
@@ -284,28 +291,29 @@ body{
   display:flex;
   gap:20px;
   overflow-x:auto;
-  overflow-y:hidden;
   padding:14px 0;
   scrollbar-width:none;
 }
-.podcast-roll::-webkit-scrollbar{ display:none; }
+
+.podcast-roll::-webkit-scrollbar{
+  display:none;
+}
 
 .podcast-card{
   flex:0 0 auto;
   width:240px;
   border-radius:14px;
   overflow:hidden;
-  display:block;
 }
 
 .podcast-card img{
   width:100%;
   height:auto;
-  display:block;
   filter:grayscale(60%);
   opacity:.9;
-  transition:filter .35s ease, opacity .35s ease;
+  transition:all .3s ease;
 }
+
 .podcast-card:hover img{
   filter:none;
   opacity:1;
@@ -314,7 +322,6 @@ body{
 .podcast-center{
   width:280px;
   transform:translateY(-6px);
-  pointer-events:none;
 }
 
 .podcast-cta{
@@ -322,6 +329,7 @@ body{
   justify-content:center;
   margin-top:22px;
 }
+
 .podcast-cta a{
   font-size:14px;
   letter-spacing:.04em;
@@ -330,115 +338,14 @@ body{
   border-bottom:1px solid rgba(255,255,255,.35);
   padding-bottom:4px;
 }
+
 .podcast-cta a:hover{
   color:#fff;
   border-color:#fff;
 }
 
 /* =========================
-   FRANJA AMARILLA (tal cual)
-========================= */
-
-.band-long{
-  position:relative;
-  overflow:hidden;
-  padding:44px 0;
-  background: linear-gradient(135deg, rgba(255,215,90,1), rgba(250,190,60,1));
-}
-
-.band-long .wrap{
-  position:relative;
-  z-index:1;
-  max-width:900px;
-}
-
-.band-quote{
-  margin:0;
-  font-family: Georgia, 'Times New Roman', serif;
-  font-size: clamp(22px, 2.2vw, 30px);
-  line-height:1.45;
-  letter-spacing:.01em;
-  color:#0a0a0a;
-}
-
-.band-author{
-  margin-top:22px;
-  font-size:12px;
-  letter-spacing:.18em;
-  text-transform:uppercase;
-  color:rgba(10,10,10,.90);
-}
-
-/* =========================
-   DOCUMENTAL (blanco + cine)
-========================= */
-
-.doc-cover{
-  height:380px;
-  border-radius:22px;
-  position:relative;
-  background-size:cover;
-  background-position:center 25%;
-  background-repeat:no-repeat;
-  filter: saturate(0.92) contrast(1.06) brightness(0.96);
-}
-
-/* viñeta cinematográfica suave */
-.doc-cover::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  border-radius:22px;
-  background:
-    radial-gradient(ellipse at center,
-      rgba(0,0,0,0) 55%,
-      rgba(0,0,0,0.32) 100%);
-  pointer-events:none;
-}
-
-/* =========================
-   CRESER (negro)
-========================= */
-
-#creser{
-  background:#0b0b0c;
-}
-
-#creser .copy h2,
-#creser .copy p{ color:#f3f3f3; }
-
-#creser .lead{ color:rgba(243,243,243,.78); }
-
-.creser-logo{
-  height:320px;
-  border-radius:22px;
-  background-size:contain;
-  background-position:center;
-  background-repeat:no-repeat;
-  background-color:rgba(255,255,255,.03);
-}
-
-/* =========================
-   ESCRITURA (equilibrada)
-========================= */
-
-#escritura h2{
-  font-family: Georgia, 'Times New Roman', serif;
-  font-size: clamp(32px, 3.2vw, 44px); /* antes demasiado grande */
-  font-weight: 500;
-  letter-spacing: -.01em;
-  color:#111;
-  margin: 8px 0 14px 0;
-}
-
-#escritura .lead.dark{
-  font-size: 18px;
-  line-height: 1.7;
-  max-width: 58ch;
-  margin-bottom: 28px;
-}
-/* =========================
-   PODCAST PLAYER STICKY
+   PODCAST PLAYER
 ========================= */
 
 #podcast-player{
@@ -457,127 +364,176 @@ body{
   z-index:9999;
 }
 
+body{
+  padding-bottom:72px;
+}
+
 .player-left img{
   width:42px;
   height:42px;
   border-radius:6px;
   object-fit:cover;
 }
+/* =========================
+   INNER SOUND (HOME)
+========================= */
 
-.player-meta{
-  color:rgba(243,243,243,.70);
-  font-size:13px;
-  letter-spacing:.02em;
-}
-
-.player-center{
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  gap:16px;
-}
-
-.ctrl{
-  width:26px;
-  height:26px;
-  background:none;
-  border:none;
-  opacity:.8;
-}
-
-.player-right input[type="range"]{
-  width:120px;
+#inner-sound .img.ph{
+  height: 320px;
+  border-radius: 22px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 /* =========================
-   MOBILE
+   DOCUMENTAL (HOME)
+========================= */
+.doc-cover{
+  height: 380px;
+  border-radius: 22px;
+
+  background-size: cover;
+  background-position: center 25%;
+  background-repeat: no-repeat;
+
+  filter: saturate(0.8) contrast(0.9) brightness(0.95);
+  opacity: 0.9;
+}
+/* =========================
+   CRESER (HOME)
 ========================= */
 
-@media (max-width:768px){
-
-  /* NAV */
-  .top-nav{
-    position:relative;
-    top:0;
-    right:0;
-    padding:18px 0 8px 0;
-  }
-
-  .nav-inner{ justify-content:center; }
-
-  .nav-list{
-    gap:18px;
-    flex-wrap:wrap;
-    justify-content:center;
-  }
-
-  .nav-item > a{
-    font-size:11px;
-    letter-spacing:.12em;
-  }
-
-  /* HERO */
-  .hero{
-    min-height:auto;
-    padding-top:18px;
-    padding-bottom:26px;
-  }
-
-  .headline{
-    font-size: clamp(32px, 8vw, 46px);
-    line-height:1.15;
-  }
-
-  .kicker{
-    font-size:11px;
-    letter-spacing:.18em;
-  }
-
-  /* escritura */
-  .strip-3{
-    grid-template-columns:1fr;
-    gap:16px;
-  }
-  .strip-item{ height:260px; }
-
-  /* player */
-  body{ padding-bottom: 120px; }
-  #podcast-player{
-    grid-template-columns:auto 1fr;
-    height:64px;
-  }
-  .player-right{ display:none; }
-}
-#escritura{
-  background:#f6f6f4;
+.creser-logo{
+  height: 320px;
+  border-radius: 22px;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: rgba(255,255,255,.03);
 }
 
-#escritura h2{
-  font-family: Georgia, 'Times New Roman', serif;
-  font-size: clamp(32px, 3.2vw, 44px);
-  font-weight: 500;
-  letter-spacing:-.01em;
-  color:#111;
-}
+/* =========================
+   ESCRITURA (HOME)
+========================= */
 
-#escritura .lead.dark{
-  font-size:18px;
-  line-height:1.7;
-  color:#333;
+.strip-3{
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-top: 24px;
 }
 
 .strip-item{
-  position:relative;
-  height:320px;
-  overflow:hidden;
-  border-radius:20px;
+  position: relative;
+  height: 240px;
+  overflow: hidden;
+  border-radius: 18px;
 }
 
 .strip-item img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  transition:
-    opacity .9s ease-in-out,
-    filter .9s ease-in-out;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Mobile */
+@media (max-width: 900px){
+  .strip-3{
+    grid-template-columns: 1fr;
+  }
+  .strip-item{
+    height: 220px;
+  }
+}
+/* =========================
+   FRANJA AMARILLA (CITA)
+========================= */
+
+.band-long{
+  position: relative;
+  padding: 56px 0;
+  background: linear-gradient(135deg, #FFD65C, #F0B84F);
+  overflow: hidden;
+}
+
+.band-long .wrap{
+  max-width: 900px;
+  position: relative;
+  z-index: 1;
+}
+
+.band-quote{
+  margin: 0;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(22px, 2.2vw, 30px);
+  line-height: 1.45;
+  letter-spacing: .01em;
+  color: #0a0a0a;
+}
+
+.band-author{
+  margin-top: 22px;
+  font-size: 12px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: rgba(10,10,10,.85);
+}
+/* =========================
+   INNER SOUND — FONDO CLARO
+========================= */
+
+#inner-sound{
+  background:#f6f6f4;
+}
+
+#inner-sound .copy h2,
+#inner-sound .copy p{
+  color:#111;
+}
+
+#inner-sound .lead{
+  color:#333;
+}
+
+#inner-sound .tag{
+  background:rgba(0,0,0,.06);
+  border:1px solid rgba(0,0,0,.10);
+  color:#111;
+}
+/* =========================
+   CRESER — FONDO CLARO
+========================= */
+
+#creser{
+  background:#f6f6f4;
+}
+
+#creser .copy h2,
+#creser .copy p{
+  color:#111;
+}
+
+#creser .lead{
+  color:#333;
+}
+
+#creser .tag{
+  background:rgba(0,0,0,.06);
+  border:1px solid rgba(0,0,0,.10);
+  color:#111;
+}
+/* =========================
+   TRANSICIÓN ENTRE BLOQUES
+========================= */
+
+.block{
+  border-bottom: 1px solid rgba(255,255,255,.06);
+}
+
+.logos-light,
+#inner-sound,
+#creser{
+  border-top: 1px solid rgba(0,0,0,.06);
 }
