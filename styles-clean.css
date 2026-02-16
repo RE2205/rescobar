@@ -587,3 +587,76 @@ body{
   }
 
 }
+/* =========================
+   RITMO EDITORIAL FINAL
+========================= */
+
+/* Clínica (Logos Psyche) — blanco */
+.logos-light{
+  background:#f6f6f4;
+}
+
+/* Podcast — negro (ya lo es) */
+#podcast-entry{
+  background:#0b0b0c;
+}
+
+/* Documental — blanco */
+#proyectos{
+  background:#f6f6f4;
+}
+
+#proyectos .copy h2,
+#proyectos .copy p{
+  color:#111;
+}
+
+#proyectos .lead{
+  color:#333;
+}
+
+#proyectos .tag{
+  background:rgba(0,0,0,.06);
+  border:1px solid rgba(0,0,0,.10);
+  color:#111;
+}
+
+/* CreSer — negro */
+#creser{
+  background:#0b0b0c;
+}
+
+#creser .copy h2,
+#creser .copy p{
+  color:#f3f3f3;
+}
+
+#creser .lead{
+  color:rgba(243,243,243,.78);
+}
+
+#creser .tag{
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.10);
+  color:rgba(243,243,243,.8);
+}
+
+/* Escritura — blanco */
+#escritura{
+  background:#f6f6f4;
+}
+
+#escritura .copy h2,
+#escritura .copy p{
+  color:#111;
+}
+
+#escritura .lead{
+  color:#333;
+}
+
+#escritura .tag{
+  background:rgba(0,0,0,.06);
+  border:1px solid rgba(0,0,0,.10);
+  color:#111;
+}
