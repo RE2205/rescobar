@@ -173,36 +173,84 @@
     </div>
   </section>
 
-  <!-- ESCRITURA (BLANCO / REVISTA + BITÁCORA) -->
-  <section class="block white" id="escritura">
-    <div class="wrap">
-      <p class="tag dark">ESCRITURA</p>
-      <h2><a class="silent-link" href="escritura.html">Entre libros y pastillas</a></h2>
-      <p class="lead dark">Textos para leer con tiempo: ensayo, clínica, cultura y vida interior.</p>
+  <!-- ESCRITURA -->
+<section class="block white" id="escritura">
+  <div class="wrap">
 
-      <div class="strip-3">
-        <a class="strip-item" id="foto-izquierda" href="escritura.html" aria-label="Fotos (izquierda)">
-          <img src="assets/foto-izquierda.jpg" alt="" />
-          <span class="strip-label">Fotos</span>
-        </a>
+    <p class="tag dark">ESCRITURA</p>
 
-        <a class="strip-item strip-center"
-           href="https://ronaldescobar.substack.com"
-           aria-label="Mi Substack"
-           target="_blank"
-           rel="noopener">
-          <img src="assets/substack.jpg" alt="" />
-          <span class="strip-label">Mi Substack</span>
-        </a>
+    <h2>
+      <a class="silent-link" href="escritura.html">
+        Entre libros y pastillas
+      </a>
+    </h2>
 
-        <a class="strip-item" id="foto-derecha" href="escritura.html" aria-label="Fotos (derecha)">
-          <img src="assets/foto-derecha.jpg" alt="" />
-          <span class="strip-label">Fotos</span>
-        </a>
-      </div>
+    <p class="lead dark">
+      Textos para leer con tiempo: ensayo, clínica, cultura y vida interior.
+    </p>
+
+    <div class="strip-3">
+
+      <!-- LATERAL IZQUIERDA (ROTA) -->
+      <a class="strip-item" id="foto-izquierda" href="escritura.html">
+        <img src="assets/foto-izquierda.jpg" alt="">
+      </a>
+
+      <!-- CENTRO (FIJA) -->
+      <a class="strip-item strip-center"
+         href="https://ronaldescobar.substack.com"
+         target="_blank"
+         rel="noopener">
+        <img src="assets/substack.jpg" alt="">
+      </a>
+
+      <!-- LATERAL DERECHA (ROTA) -->
+      <a class="strip-item" id="foto-derecha" href="escritura.html">
+        <img src="assets/foto-derecha.jpg" alt="">
+      </a>
+
     </div>
-  </section>
 
+  </div>
+</section>
+
+<!-- SCRIPT ROTACIÓN SUAVE SOLO LATERALES -->
+<script>
+function fadeSwap(containerId, images, interval){
+  const container = document.querySelector(containerId);
+  if(!container) return;
+
+  const img = container.querySelector("img");
+  let index = 0;
+
+  setInterval(() => {
+
+    img.style.opacity = 0;
+    img.style.filter = "blur(2px)";
+
+    setTimeout(() => {
+      index = (index + 1) % images.length;
+      img.src = images[index];
+      img.style.opacity = 1;
+      img.style.filter = "blur(0)";
+    }, 900);
+
+  }, interval);
+}
+
+/* Solo laterales */
+fadeSwap(
+  "#foto-izquierda",
+  ["assets/foto-izquierda.jpg","assets/foto-izquierda-2.jpg"],
+  9000
+);
+
+fadeSwap(
+  "#foto-derecha",
+  ["assets/foto-derecha.jpg","assets/foto-derecha-2.jpg"],
+  11000
+);
+</script>
   <!-- Rotación de imágenes -->
   <script>
     const izquierda = ["assets/foto-izquierda.jpg", "assets/foto-izquierda-2.jpg"];
