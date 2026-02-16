@@ -537,3 +537,53 @@ body{
 #creser{
   border-top: 1px solid rgba(0,0,0,.06);
 }
+/* =========================
+   MOBILE FIX
+========================= */
+
+@media (max-width: 768px){
+
+  /* NAV */
+  .top-nav{
+    position: relative;
+    top: 0;
+    right: 0;
+    padding: 20px 0 10px 0;
+  }
+
+  .nav-inner{
+    justify-content: center;
+  }
+
+  .nav-list{
+    gap: 18px;
+  }
+
+  .nav-item > a{
+    font-size: 11px;
+    letter-spacing: .12em;
+  }
+
+  /* HERO */
+  .hero{
+    min-height: auto;
+    padding-top: 20px;
+    padding-bottom: 24px;
+  }
+
+  .headline{
+    font-size: clamp(32px, 8vw, 46px);
+    line-height: 1.15;
+  }
+
+  .kicker{
+    font-size: 11px;
+    letter-spacing: .18em;
+  }
+
+  /* Espacio inferior para player */
+  body{
+    padding-bottom: 80px;
+  }
+
+}
