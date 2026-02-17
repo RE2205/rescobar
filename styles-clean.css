@@ -397,8 +397,8 @@ body{
   background-position: center 25%;
   background-repeat: no-repeat;
 
-  filter: saturate(0.8) contrast(0.9) brightness(0.95);
-  opacity: 0.9;
+  filter: contrast(1.08) saturate(1.05) brightness(1.02);
+  opacity: 1;
 }
 /* =========================
    CRESER (HOME)
