@@ -1,7 +1,6 @@
 :root{
   --bg:#0b0b0c;
   --fg:#f3f3f3;
-  --muted:rgba(243,243,243,.68);
 }
 
 /* =========================
@@ -16,7 +15,7 @@ body{
   font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
   background:var(--bg);
   color:var(--fg);
-  padding-bottom:72px; /* espacio para sticky */
+  padding-bottom:72px;
 }
 
 .wrap{
@@ -41,11 +40,6 @@ body{
   z-index:100;
 }
 
-.nav-inner{
-  display:flex;
-  justify-content:flex-end;
-}
-
 .nav-list{
   list-style:none;
   display:flex;
@@ -53,8 +47,6 @@ body{
   margin:0;
   padding:0;
 }
-
-.nav-item{ position:relative; }
 
 .nav-item > a{
   font-size:12px;
@@ -66,40 +58,6 @@ body{
 
 .nav-item > a:hover{
   color:#fff;
-}
-
-/* Submenu */
-
-.nav-item.has-submenu{ padding-bottom:10px; }
-
-.submenu{
-  display:none;
-  position:absolute;
-  top:100%;
-  right:0;
-  margin-top:8px;
-  list-style:none;
-  background:#0e0e0f;
-  border:1px solid rgba(255,255,255,.08);
-  padding:18px 22px;
-  min-width:200px;
-  z-index:200;
-}
-
-.submenu li{ margin-bottom:10px; }
-.submenu li:last-child{ margin-bottom:0; }
-
-.submenu a{
-  font-size:12px;
-  letter-spacing:.12em;
-  color:rgba(255,255,255,.75);
-  transition:.2s ease;
-}
-
-.submenu a:hover{ color:#fff; }
-
-.nav-item.has-submenu:hover .submenu{
-  display:block;
 }
 
 /* =========================
@@ -128,61 +86,24 @@ body{
 }
 
 /* =========================
-   BAND
+   FRANJA AXIOMA (OSCURA)
 ========================= */
 
-/* =========================
-   FRANJA AMARILLA — EDITORIAL
-========================= */
-
-.band-long{
-  position: relative;
-  padding: 72px 0;
-  overflow: hidden;
-
-  background:
-    radial-gradient(120% 100% at 50% 50%, rgba(255,255,255,.15), transparent 60%),
-    repeating-linear-gradient(
-      90deg,
-      rgba(255,255,255,.05) 0px,
-      rgba(255,255,255,.05) 2px,
-      transparent 2px,
-      transparent 28px
-    ),
-    linear-gradient(135deg, #FFD800 0%, #F2C400 100%);
+.band{
+  padding:16px 0;
+  background:#0b0b0c;
+  border-top:1px solid rgba(255,255,255,.08);
+  border-bottom:1px solid rgba(255,255,255,.08);
 }
 
-.band-long::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:
-    radial-gradient(60% 80% at 70% 40%, rgba(0,0,0,.05), transparent 70%);
-  pointer-events:none;
-}
-
-.band-long .wrap{
-  max-width: 900px;
-  position: relative;
-  z-index: 2;
-}
-
-.band-quote{
+.band-text{
   margin:0;
-  font-family: Georgia, 'Times New Roman', serif;
-  font-size: clamp(24px, 2.4vw, 34px);
-  line-height:1.45;
-  letter-spacing:.01em;
-  color:#0a0a0a;
+  font-size:12px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:#fff;
 }
 
-.band-author{
-  margin-top:28px;
-  font-size:12px;
-  letter-spacing:.22em;
-  text-transform:uppercase;
-  color:rgba(0,0,0,.85);
-}
 /* =========================
    BLOQUES
 ========================= */
@@ -203,39 +124,59 @@ body{
   .two-col{ grid-template-columns:1fr 1fr; }
 }
 
-.copy h2{
-  margin:6px 0 10px;
-  font-size:42px;
-  letter-spacing:-.02em;
-}
-
 .tag{
   display:inline-block;
   padding:8px 12px;
   border-radius:999px;
   font-size:12px;
-  letter-spacing:.10em;
+  letter-spacing:.14em;
   text-transform:uppercase;
-  background:rgba(255,255,255,.06);
-  border:1px solid rgba(255,255,255,.10);
-  color:rgba(243,243,243,.80);
-}
-
-.tag.dark{
-  background:rgba(0,0,0,.06);
-  border:1px solid rgba(0,0,0,.10);
-  color:#111;
 }
 
 .lead{
-  margin:6px 0 0;
-  color:rgba(243,243,243,.78);
-  max-width:62ch;
-  line-height:1.6;
   font-size:18px;
+  line-height:1.6;
+  max-width:62ch;
 }
 
-.lead.dark{ color:#333; }
+/* =========================
+   LOGOS PSYCHE (BLANCO)
+========================= */
+
+.logos-light{
+  background:#f6f6f4;
+}
+
+.logos-light .copy h2,
+.logos-light .copy p{
+  color:#111;
+}
+
+.logo-holder{
+  height:320px;
+  padding:22px;
+  border-radius:22px;
+  border:1px solid rgba(0,0,0,.10);
+  background:#f6f6f4;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.logo-image{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+}
+
+/* =========================
+   PODCAST (NEGRO)
+========================= */
+
+#podcast-entry{
+  background:#0b0b0c;
+}
+
 /* =========================
    FRANJA AMARILLA
 ========================= */
@@ -260,153 +201,9 @@ body{
   text-transform:uppercase;
   color:rgba(0,0,0,.85);
 }
-   LOGOS PSYCHE
-========================= */
-
-.logos-light{
-  background:#f6f6f4;
-}
-
-.logos-light .copy h2,
-.logos-light .copy p{ color:#111; }
-
-.logo-holder{
-  height:320px;
-  padding:22px;
-  border-radius:22px;
-  border:1px solid rgba(0,0,0,.10);
-  background:#f6f6f4;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  overflow:hidden;
-}
-
-.logo-image{
-  width:100%;
-  height:100%;
-  object-fit:contain;
-}
 
 /* =========================
-   PODCAST HOME
-========================= */
-
-#podcast-entry{ background:#0b0b0c; }
-
-.podcast-head{
-  display:flex;
-  justify-content:space-between;
-  align-items:baseline;
-  margin-bottom:28px;
-}
-
-.podcast-title{
-  margin:0;
-  font-size:32px;
-  font-weight:500;
-}
-
-.podcast-label{
-  font-size:13px;
-  letter-spacing:.18em;
-  text-transform:uppercase;
-  color:rgba(243,243,243,.55);
-}
-
-.podcast-roll{
-  display:flex;
-  gap:20px;
-  overflow-x:auto;
-  padding:14px 0;
-  scrollbar-width:none;
-}
-
-.podcast-roll::-webkit-scrollbar{ display:none; }
-
-.podcast-card{
-  flex:0 0 auto;
-  width:240px;
-  border-radius:14px;
-  overflow:hidden;
-}
-
-.podcast-card img{
-  width:100%;
-  filter:grayscale(60%);
-  opacity:.9;
-  transition:.3s ease;
-}
-
-.podcast-card:hover img{
-  filter:none;
-  opacity:1;
-}
-
-.podcast-center{
-  width:280px;
-  transform:translateY(-6px);
-}
-
-.podcast-cta{
-  display:flex;
-  justify-content:center;
-  margin-top:22px;
-}
-
-.podcast-cta a{
-  font-size:14px;
-  letter-spacing:.04em;
-  color:rgba(255,255,255,.7);
-  border-bottom:1px solid rgba(255,255,255,.35);
-  padding-bottom:4px;
-}
-
-/* =========================
-   DOCUMENTAL
-========================= */
-
-.doc-cover{
-  height:380px;
-  border-radius:22px;
-  background-size:cover;
-  background-position:center 25%;
-  background-repeat:no-repeat;
-  filter:contrast(1.08) saturate(1.05) brightness(1.02);
-}
-
-/* =========================
-   CRESER
-========================= */
-
-#creser{
-  background:#0b0b0c;
-}
-
-#creser .copy h2,
-#creser .copy p{ color:#f3f3f3; }
-
-#creser .lead{ color:rgba(243,243,243,.78); }
-
-#creser .tag{
-  background:rgba(255,255,255,.06);
-  border:1px solid rgba(255,255,255,.10);
-  color:rgba(243,243,243,.8);
-}
-/* =========================
-   CRESER — IMAGEN
-========================= */
-
-.creser-logo{
-  height: 320px;
-  border-radius: 22px;
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-color: rgba(255,255,255,.03);
-}
-/* =========================
-   DOCUMENTAL — FONDO BLANCO
+   DOCUMENTAL (BLANCO)
 ========================= */
 
 #proyectos{
@@ -422,13 +219,59 @@ body{
   color:#333;
 }
 
-#proyectos .tag{
-  background:rgba(0,0,0,.06);
-  border:1px solid rgba(0,0,0,.10);
-  color:#111;
+.doc-cover{
+  height:380px;
+  border-radius:22px;
+  background-size:cover;
+  background-position:center 25%;
+  background-repeat:no-repeat;
+  filter:contrast(1.05) saturate(1.05);
 }
+
 /* =========================
-   ESCRITURA — LIMPIA
+   CRESER (NEGRO)
+========================= */
+
+#creser{
+  background:#0b0b0c;
+}
+
+#creser .copy h2,
+#creser .copy p{
+  color:#f3f3f3;
+}
+
+#creser .lead{
+  color:rgba(243,243,243,.78);
+}
+
+.creser-logo{
+  height:320px;
+  border-radius:22px;
+  background-size:contain;
+  background-position:center;
+  background-repeat:no-repeat;
+  background-color:rgba(255,255,255,.05);
+}
+
+/* =========================
+   INVERTIR DOCUMENTAL / CRESER
+========================= */
+
+@media (min-width:900px){
+
+  /* Documental: texto izquierda */
+  #proyectos .copy{ order:1; }
+  #proyectos .media{ order:2; }
+
+  /* CreSer: imagen izquierda */
+  #creser .media{ order:1; }
+  #creser .copy{ order:2; }
+
+}
+
+/* =========================
+   ESCRITURA (BLANCO)
 ========================= */
 
 #escritura{
@@ -454,13 +297,6 @@ body{
   color:#333;
 }
 
-#escritura .tag{
-  background:rgba(0,0,0,.04);
-  border:1px solid rgba(0,0,0,.08);
-  color:#111;
-  letter-spacing:.16em;
-}
-
 #escritura .strip-3{
   display:grid;
   grid-template-columns:repeat(3,1fr);
@@ -469,14 +305,12 @@ body{
 }
 
 #escritura .strip-item{
-  position:relative;
   height:240px;
   border-radius:18px;
-  overflow:hidden;
   background-size:cover;
   background-position:center;
   background-repeat:no-repeat;
-  transition:opacity 2200ms ease-in-out;
+  transition:opacity 2600ms ease-in-out;
 }
 
 /* =========================
@@ -493,17 +327,9 @@ body{
   display:grid;
   grid-template-columns:auto 1fr auto;
   align-items:center;
-  gap:20px;
   padding:0 18px;
   border-top:1px solid rgba(255,255,255,.08);
   z-index:9999;
-}
-
-.player-left img{
-  width:42px;
-  height:42px;
-  border-radius:6px;
-  object-fit:cover;
 }
 
 /* =========================
@@ -511,47 +337,15 @@ body{
 ========================= */
 
 @media (max-width:900px){
-  .strip-3{ grid-template-columns:1fr; }
-  .strip-item{ height:220px; }
+  .two-col{ grid-template-columns:1fr; }
+  #escritura .strip-3{ grid-template-columns:1fr; }
+  #escritura .strip-item{ height:220px; }
 }
 
 @media (max-width:768px){
-
-  .top-nav{
-    position:relative;
-    top:0;
-    right:0;
-    padding:20px 0 10px;
-  }
-
-  .nav-inner{ justify-content:center; }
-  .nav-list{ gap:18px; }
-
   body{ padding-bottom:80px; }
-
   .headline{
-/* =========================
-   ORDEN EDITORIAL — INVERSIÓN DESKTOP
-========================= */
-
-@media (min-width:900px){
-
-  /* DOCUMENTAL: texto izquierda, imagen derecha */
-  #proyectos .copy{
-    order:1;
+    font-size:clamp(32px,8vw,46px);
+    line-height:1.15;
   }
-
-  #proyectos .media{
-    order:2;
-  }
-
-  /* CRESER: imagen izquierda, texto derecha */
-  #creser .media{
-    order:1;
-  }
-
-  #creser .copy{
-    order:2;
-  }
-
 }
