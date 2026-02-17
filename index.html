@@ -6,61 +6,12 @@
   <title>Ronald Escobar</title>
   <meta name="description" content="Detener el ruido. Habitar lo humano." />
   <meta name="robots" content="noindex, nofollow" />
-  <link rel="stylesheet" href="styles-clean.css?v=11004" />
-
-  <!-- ESCRITURA: crossfade editorial + contención segura (solo afecta esta sección) -->
-  <style>
-    /* Scope estricto: solo los dos ítems de fotos en ESCRITURA */
-    #escritura .strip-item{
-      position: relative;
-      overflow: hidden;          /* evita la “imagen gigante fuera de contenedor” */
-      max-width: 100%;
-      -webkit-transform: translateZ(0);
-      transform: translateZ(0);
-      isolation: isolate;
-    }
-
-    /* Imagen base (sigue en el flujo para mantener altura y no romper layout/mobile) */
-    #escritura .strip-item img{
-      display: block;
-      width: 100%;
-      height: auto;
-      max-width: 100%;
-    }
-
-    /* Capa overlay para crossfade real */
-    #escritura .strip-item .xf-overlay{
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;         /* llena el contenedor sin deformar */
-      object-position: center;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 1800ms ease-in-out;  /* lento, editorial */
-      will-change: opacity;
-    }
-
-    /* El base también puede transicionar (suave, sin espectáculo) */
-    #escritura .strip-item .xf-base{
-      transition: opacity 1800ms ease-in-out;
-      will-change: opacity;
-    }
-
-    /* Respeta usuarios con reducción de movimiento */
-    @media (prefers-reduced-motion: reduce){
-      #escritura .strip-item .xf-overlay,
-      #escritura .strip-item .xf-base{
-        transition: none !important;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="styles-clean.css?v=11005" />
 </head>
 
 <body>
 
-  <!-- NAV SUPERIOR DERECHA -->
+  <!-- NAV -->
   <nav class="top-nav">
     <div class="wrap nav-inner">
       <ul class="nav-list">
@@ -82,7 +33,6 @@
   <header class="hero">
     <div class="wrap hero-inner">
       <p class="kicker">Neurociencia · Arte · Humanidad</p>
-
       <h1 class="headline">
         Detener el ruido.<br>
         Habitar lo humano.
@@ -92,25 +42,21 @@
 
   <div class="wrap"><div class="breath"></div></div>
 
+  <!-- BAND -->
   <section class="band">
     <div class="wrap">
       <p class="band-text">Ser es el verbo más revolucionario.</p>
     </div>
   </section>
 
+  <!-- LOGOS PSYCHE -->
   <section class="block logos-light" id="logos-psyche">
     <div class="wrap two-col">
-
       <a class="silent-link media logo-holder logo-psyche"
          href="logos-psyche.html"
          aria-label="Ir a Logos Psyche">
-        <img
-          src="assets/logos-psyche.png"
-          alt="Logos Psyche"
-          class="logo-image"
-        />
+        <img src="assets/logos-psyche.png" alt="Logos Psyche" class="logo-image"/>
       </a>
-
       <div class="copy">
         <p class="tag dark">PSIQUIATRÍA</p>
         <h2><a class="silent-link" href="logos-psyche.html">Logos Psyche</a></h2>
@@ -120,66 +66,45 @@
           sin prisa y sin juicio.
         </p>
       </div>
-
     </div>
   </section>
 
-  <!-- PODCAST ENTRY -->
+  <!-- PODCAST -->
   <section id="podcast-entry" class="block">
     <div class="wrap">
-
       <div class="podcast-head">
         <h2 class="podcast-title">Desapre(he)nder para CreSer</h2>
         <span class="podcast-label">Podcast</span>
       </div>
-
       <div class="podcast-divider"></div>
-
       <div class="podcast-roll">
-
         <a href="https://www.youtube.com/channel/UC-LSnhNhnhZ_dkiOh98HXiA"
-           target="_blank"
-           class="podcast-card"
-           aria-label="Ir al podcast en YouTube">
+           target="_blank" class="podcast-card">
           <img src="assets/ep1.jpg" alt="Podcast episodio">
         </a>
-
         <a href="https://www.youtube.com/channel/UC-LSnhNhnhZ_dkiOh98HXiA"
-           target="_blank"
-           class="podcast-card"
-           aria-label="Ir al podcast en YouTube">
+           target="_blank" class="podcast-card">
           <img src="assets/ep2.jpg" alt="Podcast episodio">
         </a>
-
         <div class="podcast-card podcast-center">
-          <img src="assets/desapreheinder-manifiesto.jpg" alt="Desapre(he)nder para CreSer">
+          <img src="assets/desapreheinder-manifiesto.jpg" alt="">
         </div>
-
         <a href="https://www.youtube.com/channel/UC-LSnhNhnhZ_dkiOh98HXiA"
-           target="_blank"
-           class="podcast-card"
-           aria-label="Ir al podcast en YouTube">
+           target="_blank" class="podcast-card">
           <img src="assets/ep3.jpg" alt="Podcast episodio">
         </a>
-
         <a href="https://www.youtube.com/channel/UC-LSnhNhnhZ_dkiOh98HXiA"
-           target="_blank"
-           class="podcast-card"
-           aria-label="Ir al podcast en YouTube">
+           target="_blank" class="podcast-card">
           <img src="assets/ep4.jpg" alt="Podcast episodio">
         </a>
-
       </div>
-
       <div class="podcast-cta">
-        <a href="podcast.html" class="podcast-cta">
-          Entrar al podcast · clips · qué es Desapre(he)nder
-        </a>
+        <a href="podcast.html">Entrar al podcast · clips · qué es Desapre(he)nder</a>
       </div>
-
     </div>
   </section>
 
+  <!-- BAND LONG -->
   <section class="band-long">
     <div class="wrap">
       <p class="band-quote">
@@ -193,13 +118,11 @@
   <!-- PROYECTOS -->
   <section class="block" id="proyectos">
     <div class="wrap two-col">
-
-      <a class="silent-link media" href="documental.html" aria-label="Ir a Documental">
+      <a class="silent-link media" href="documental.html">
         <div class="img ph doc-cover"
              style="background-image:url('assets/documental-portada-v2.jpg');">
         </div>
       </a>
-
       <div class="copy">
         <p class="tag">PROYECTOS</p>
         <h2><a class="silent-link" href="documental.html">Documental</a></h2>
@@ -209,14 +132,12 @@
           sino para mirarlo de frente.
         </p>
       </div>
-
     </div>
   </section>
 
   <!-- CRESER -->
   <section class="block" id="creser">
     <div class="wrap two-col">
-
       <div class="copy">
         <p class="tag">CULTURA</p>
         <h2>CreSer</h2>
@@ -225,13 +146,11 @@
           Pensamiento, práctica y comunidad para impactar vidas y cultura.
         </p>
       </div>
-
-      <a class="silent-link media" href="creser.html" aria-label="Ir a CreSer">
+      <a class="silent-link media" href="creser.html">
         <div class="img ph creser-logo"
              style="background-image:url('assets/creser-square.jpg');">
         </div>
       </a>
-
     </div>
   </section>
 
@@ -243,131 +162,77 @@
       <p class="lead">Textos para leer con tiempo: ensayo, clínica, cultura y vida interior.</p>
 
       <div class="strip-3">
-        <a class="strip-item" id="foto-izquierda" href="escritura.html">
-          <img src="assets/foto-izquierda.jpg" alt="" />
-          <span class="strip-label">Fotos</span>
-        </a>
+        <a class="strip-item" id="foto-izquierda" href="escritura.html"></a>
 
         <a class="strip-item strip-center"
            href="https://ronaldescobar.substack.com"
-           target="_blank" rel="noopener">
-          <img src="assets/substack.jpg" alt="" />
-          <span class="strip-label">Mi Substack</span>
+           target="_blank" rel="noopener"
+           style="background-image:url('assets/substack.jpg');">
         </a>
 
-        <a class="strip-item" id="foto-derecha" href="escritura.html">
-          <img src="assets/foto-derecha.jpg" alt="" />
-          <span class="strip-label">Fotos</span>
-        </a>
+        <a class="strip-item" id="foto-derecha" href="escritura.html"></a>
       </div>
     </div>
   </section>
 
-  <!-- Crossfade real (editorial) para las dos fotos laterales -->
+  <!-- TRANSICIÓN ESTABLE SIN MOVIMIENTO -->
   <script>
-    (function(){
-      const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  (function(){
 
-      const config = [
-        {
-          anchor: "#foto-izquierda",
-          images: ["assets/foto-izquierda.jpg", "assets/foto-izquierda-2.jpg"],
-          interval: 5200
-        },
-        {
-          anchor: "#foto-derecha",
-          images: ["assets/foto-derecha.jpg", "assets/foto-derecha-2.jpg"],
-          interval: 5600
-        }
-      ];
-
-      function preload(src){
-        return new Promise((resolve) => {
-          const img = new Image();
-          img.onload = () => resolve(true);
-          img.onerror = () => resolve(false);
-          img.src = src;
-        });
+    const config = [
+      {
+        id:"#foto-izquierda",
+        images:["assets/foto-izquierda.jpg","assets/foto-izquierda-2.jpg"],
+        interval:7000
+      },
+      {
+        id:"#foto-derecha",
+        images:["assets/foto-derecha.jpg","assets/foto-derecha-2.jpg"],
+        interval:7800
       }
+    ];
 
-      function setupCrossfade(anchorSel, images, interval){
-        const a = document.querySelector(anchorSel);
-        if(!a) return;
+    config.forEach(item=>{
+      const el=document.querySelector(item.id);
+      if(!el) return;
 
-        const base = a.querySelector("img");
-        if(!base) return;
+      el.style.position="relative";
+      el.style.backgroundSize="cover";
+      el.style.backgroundPosition="center";
+      el.style.transition="opacity 2200ms ease-in-out";
 
-        base.classList.add("xf-base");
+      let index=0;
+      el.style.backgroundImage=`url(${item.images[0]})`;
 
-        // Overlay (segunda capa real)
-        const overlay = document.createElement("img");
-        overlay.className = "xf-overlay";
-        overlay.alt = "";               // decorativo
-        overlay.decoding = "async";
-        overlay.loading = "eager";
-        a.appendChild(overlay);
+      setInterval(()=>{
+        index=(index+1)%item.images.length;
+        el.style.opacity="0";
+        setTimeout(()=>{
+          el.style.backgroundImage=`url(${item.images[index]})`;
+          el.style.opacity="1";
+        },1100);
+      },item.interval);
+    });
 
-        // Estado
-        let idx = 0;
-        if(images && images.length){
-          base.src = images[0];
-        }
-
-        if(prefersReduced || !images || images.length < 2) return;
-
-        const FADE_MS = 1800; // debe coincidir con CSS
-
-        async function tick(){
-          const next = (idx + 1) % images.length;
-          const nextSrc = images[next];
-
-          // Preload para que el fade no “parpadee”
-          await preload(nextSrc);
-
-          // Prepara overlay con la siguiente imagen
-          overlay.src = nextSrc;
-
-          // Crossfade real: overlay entra, base sale
-          overlay.style.opacity = "1";
-          base.style.opacity = "0";
-
-          // Al terminar el fade, consolidamos: base adopta la nueva imagen y reseteamos opacidades
-          window.setTimeout(() => {
-            base.src = nextSrc;
-            base.style.opacity = "1";
-            overlay.style.opacity = "0";
-            idx = next;
-          }, FADE_MS + 30);
-        }
-
-        window.setInterval(tick, interval);
-      }
-
-      config.forEach(c => setupCrossfade(c.anchor, c.images, c.interval));
-    })();
+  })();
   </script>
 
-  <!-- PODCAST PLAYER STICKY -->
+  <!-- STICKY PLAYER -->
   <div id="podcast-player">
-
     <div class="player-left">
-      <img src="assets/desapreheinder-manifiesto.jpg" alt="Desapre(he)nder para CreSer">
+      <img src="assets/desapreheinder-manifiesto.jpg" alt="">
     </div>
-
     <div class="player-meta">
       Episodio 12 · El amor en tu cerebro
     </div>
-
     <div class="player-center">
       <button id="backward" class="ctrl backward"></button>
       <button id="play" class="ctrl play"></button>
       <button id="forward" class="ctrl forward"></button>
     </div>
-
     <div class="player-right">
       <input type="range" min="0" max="100" value="80">
     </div>
-
   </div>
 
 </body>
