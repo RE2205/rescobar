@@ -5,14 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 <title>Desapre(he)nder para CreSer · Podcast</title>
-<meta name="description" content="Conversaciones para detener el ruido y pensar lo humano sin prisa ni fórmulas." />
 
 <style>
-
-/* ==================================================
-   DESAPRE(HE)NDER PARA CRESER
-   Subpágina Podcast · Editorial refinado
-   ================================================== */
 
 :root{
   --negro:#0b0b0c;
@@ -21,41 +15,8 @@
   --azul:#6f8f9f;
   --linea:rgba(255,255,255,.10);
 }
-<script>
-  const clips = document.querySelectorAll('.clip');
 
-  clips.forEach(clip => {
-    const video = clip.querySelector('video');
-    const source = clip.dataset.video;
-
-    clip.addEventListener('click', () => {
-
-      // Si ya está reproduciendo → pausa
-      if (clip.classList.contains('playing')) {
-        video.pause();
-        video.currentTime = 0;
-        clip.classList.remove('playing');
-        return;
-      }
-
-      // Pausar todos los demás
-      clips.forEach(other => {
-        const otherVideo = other.querySelector('video');
-        other.classList.remove('playing');
-        otherVideo.pause();
-        otherVideo.currentTime = 0;
-      });
-
-      // Cargar video si aún no tiene src
-      if (!video.src) {
-        video.src = source;
-      }
-
-      video.play();
-      clip.classList.add('playing');
-    });
-  });
-</script>*{ box-sizing:border-box; }
+*{ box-sizing:border-box; }
 
 body{
   margin:0;
@@ -63,7 +24,6 @@ body{
   color:var(--blanco);
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
   line-height:1.6;
-  -webkit-font-smoothing:antialiased;
 }
 
 .wrap{
@@ -72,36 +32,30 @@ body{
   padding:0 32px;
 }
 
-/* ================= HERO ================= */
+/* HERO */
 
 .hero{
-  padding:96px 0 40px;   /* ↓ menos aire */
+  padding:96px 0 40px;
 }
 
-.hero .kicker{
+.kicker{
   font-size:12px;
   letter-spacing:.28em;
   text-transform:uppercase;
   color:rgba(255,255,255,.55);
-  margin:0 0 20px;
+  margin-bottom:20px;
 }
 
-.hero h1{
-  max-width:760px;
+h1{
   font-size:clamp(36px,5vw,54px);
-  font-weight:500;
-  line-height:1.12;
   margin:0 0 16px;
 }
 
 .hero p{
-  max-width:560px;
-  font-size:17px;
   color:rgba(255,255,255,.72);
-  margin:0;
 }
 
-/* ================= AXIOMA ================= */
+/* AXIOMA */
 
 .axioma{
   padding:28px 0 32px;
@@ -111,30 +65,28 @@ body{
 }
 
 .axioma p{
-  margin:0;
   font-size:14px;
   letter-spacing:.32em;
   text-transform:uppercase;
   color:var(--azul);
-  font-weight:500;
 }
 
-/* ================= CLIPS ================= */
+/* CLIPS */
 
 .clips{
   padding:64px 0 80px;
 }
 
 .clips-grid{
-  display:flex;                     /* ← FLEX en lugar de grid rígido */
-  justify-content:center;           /* ← CENTRADO REAL */
+  display:flex;
+  justify-content:center;
   gap:32px;
   flex-wrap:wrap;
 }
 
 .clip{
   position:relative;
-  width:280px;                      /* tamaño fijo elegante */
+  width:280px;
   aspect-ratio:9/16;
   border-radius:18px;
   overflow:hidden;
@@ -158,7 +110,6 @@ body{
   height:100%;
   object-fit:cover;
   opacity:0;
-  z-index:0;
 }
 
 .clip.playing video{
@@ -167,7 +118,6 @@ body{
 
 .clip.playing .clip-poster{
   opacity:0;
-  pointer-events:none;
 }
 
 .play-btn{
@@ -177,7 +127,6 @@ body{
   align-items:center;
   justify-content:center;
   z-index:2;
-  transition:.3s ease;
 }
 
 .play-btn span{
@@ -201,73 +150,11 @@ body{
 
 .clip.playing .play-btn{
   opacity:0;
-  pointer-events:none;
 }
-
-.clip::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:linear-gradient(
-    to top,
-    rgba(0,0,0,.65),
-    rgba(0,0,0,.15) 45%,
-    transparent
-  );
-  pointer-events:none;
-  z-index:3;
-}
-
-.clip-info{
-  position:absolute;
-  bottom:14px;
-  left:14px;
-  right:14px;
-  z-index:4;
-}
-
-.clip-info span{
-  display:block;
-  font-size:10px;
-  letter-spacing:.28em;
-  text-transform:uppercase;
-  color:rgba(255,255,255,.55);
-  margin-bottom:6px;
-}
-
-.clip-info p{
-  margin:0;
-  font-size:14px;
-  line-height:1.4;
-  font-weight:500;
-}
-
-/* ================= BLOQUE NEGRO ================= */
 
 .bloque{
   background:#000;
   padding:80px 0;
-}
-
-.bloque p{
-  max-width:640px;
-  font-size:18px;
-  margin:0 0 22px;
-}
-
-/* ================= RESPONSIVE ================= */
-
-@media (max-width:768px){
-  .hero{ padding:72px 0 36px; }
-  .clips{ padding:48px 0 64px; }
-  .clip{ width:240px; }
-}
-
-@media (max-width:500px){
-  .clips-grid{
-    flex-direction:column;
-    align-items:center;
-  }
 }
 
 </style>
@@ -275,66 +162,79 @@ body{
 
 <body>
 
-<!-- HERO -->
 <section class="hero">
   <div class="wrap">
-    <p class="kicker">Podcast</p>
-    <h1>Desapre(he)nder<br>para CreSer</h1>
-    <p>Conversaciones para detener el ruido y pensar lo humano sin prisa ni fórmulas.</p>
+    <div class="kicker">Podcast</div>
+    <h1>Desapre(he)nder para CreSer</h1>
+    <p>Conversaciones para detener el ruido y pensar lo humano.</p>
   </div>
 </section>
 
-<!-- AXIOMA -->
 <section class="axioma">
   <div class="wrap">
     <p>No todo lo que duele es patología</p>
   </div>
 </section>
 
-<!-- CLIPS -->
 <section class="clips">
   <div class="wrap clips-grid">
 
-    <div class="clip" data-video="assets/clip1.mp4">
+    <div class="clip" data-video="/assets/clip1.mp4">
       <div class="clip-poster" style="background-image:url('/assets/poster1.jpg')"></div>
       <div class="play-btn"><span></span></div>
       <video muted playsinline preload="none"></video>
-      <div class="clip-info">
-        <span>Clip 01</span>
-        <p>Acerca del placer</p>
-      </div>
     </div>
 
-    <div class="clip" data-video="assets/clip2.mp4">
+    <div class="clip" data-video="/assets/clip2.mp4">
       <div class="clip-poster" style="background-image:url('/assets/poster2.jpg')"></div>
       <div class="play-btn"><span></span></div>
       <video muted playsinline preload="none"></video>
-      <div class="clip-info">
-        <span>Clip 02</span>
-        <p>Vida y vacío</p>
-      </div>
     </div>
 
-    <div class="clip" data-video="assets/clip3.mp4">
+    <div class="clip" data-video="/assets/clip3.mp4">
       <div class="clip-poster" style="background-image:url('/assets/poster3.jpg')"></div>
       <div class="play-btn"><span></span></div>
       <video muted playsinline preload="none"></video>
-      <div class="clip-info">
-        <span>Clip 03</span>
-        <p>Nacido y criado en Guatemala</p>
-      </div>
     </div>
 
   </div>
 </section>
 
-<!-- BLOQUE -->
 <section class="bloque">
   <div class="wrap">
-    <p>Aquí no se habla para tranquilizar, sino para sostener lo que aparece.</p>
-    <p>Pensar también es una forma de cuidado.</p>
+    <p>Aquí no se habla para tranquilizar.</p>
   </div>
 </section>
+
+<script>
+document.querySelectorAll('.clip').forEach(clip => {
+  const video = clip.querySelector('video');
+  const src = clip.dataset.video;
+
+  clip.addEventListener('click', () => {
+
+    if (clip.classList.contains('playing')) {
+      video.pause();
+      video.currentTime = 0;
+      clip.classList.remove('playing');
+      return;
+    }
+
+    document.querySelectorAll('.clip').forEach(other => {
+      const otherVideo = other.querySelector('video');
+      other.classList.remove('playing');
+      otherVideo.pause();
+      otherVideo.currentTime = 0;
+    });
+
+    if (!video.src) video.src = src;
+
+    video.muted = false;
+    video.play();
+    clip.classList.add('playing');
+  });
+});
+</script>
 
 </body>
 </html>
