@@ -176,47 +176,78 @@
   </section>
 
   <!-- TRANSICIÓN ESTABLE SIN MOVIMIENTO -->
-  <script>
-  (function(){
+ <script>
+(function(){
 
-    const config = [
-      {
-        id:"#foto-izquierda",
-        images:["assets/foto-izquierda.jpg","assets/foto-izquierda-2.jpg"],
-        interval:7000
-      },
-      {
-        id:"#foto-derecha",
-        images:["assets/foto-derecha.jpg","assets/foto-derecha-2.jpg"],
-        interval:7800
-      }
-    ];
+  const config = [
+    {
+      id:"#foto-izquierda",
+      images:["assets/foto-izquierda.jpg","assets/foto-izquierda-2.jpg"],
+      interval:7500
+    },
+    {
+      id:"#foto-derecha",
+      images:["assets/foto-derecha.jpg","assets/foto-derecha-2.jpg"],
+      interval:8200
+    }
+  ];
 
-    config.forEach(item=>{
-      const el=document.querySelector(item.id);
-      if(!el) return;
+  config.forEach(item=>{
 
-      el.style.position="relative";
-      el.style.backgroundSize="cover";
-      el.style.backgroundPosition="center";
-      el.style.transition="opacity 2200ms ease-in-out";
+    const el = document.querySelector(item.id);
+    if(!el) return;
 
-      let index=0;
-      el.style.backgroundImage=`url(${item.images[0]})`;
+    el.style.position="relative";
+    el.style.overflow="hidden";
 
-      setInterval(()=>{
-        index=(index+1)%item.images.length;
-        el.style.opacity="0";
-        setTimeout(()=>{
-          el.style.backgroundImage=`url(${item.images[index]})`;
-          el.style.opacity="1";
-        },1100);
-      },item.interval);
+    // Creamos dos capas
+    const layerA = document.createElement("div");
+    const layerB = document.createElement("div");
+
+    [layerA,layerB].forEach(layer=>{
+      layer.style.position="absolute";
+      layer.style.inset="0";
+      layer.style.backgroundSize="cover";
+      layer.style.backgroundPosition="center";
+      layer.style.transition="opacity 2600ms ease-in-out";
+      layer.style.willChange="opacity";
     });
 
-  })();
-  </script>
+    layerA.style.opacity="1";
+    layerB.style.opacity="0";
 
+    layerA.style.backgroundImage = `url(${item.images[0]})`;
+
+    el.appendChild(layerA);
+    el.appendChild(layerB);
+
+    let index = 0;
+    let showingA = true;
+
+    function crossfade(){
+
+      const next = (index+1) % item.images.length;
+      const nextSrc = item.images[next];
+
+      const incoming = showingA ? layerB : layerA;
+      const outgoing = showingA ? layerA : layerB;
+
+      incoming.style.backgroundImage = `url(${nextSrc})`;
+
+      // activamos crossfade real
+      incoming.style.opacity = "1";
+      outgoing.style.opacity = "0";
+
+      index = next;
+      showingA = !showingA;
+    }
+
+    setInterval(crossfade,item.interval);
+
+  });
+
+})();
+</script>
   <!-- STICKY PLAYER -->
   <div id="podcast-player">
     <div class="player-left">
