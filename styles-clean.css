@@ -729,3 +729,5 @@ body{
   object-position: center center;
 }
 object-position: center 35%;
+object-fit: contain;
+background:#000;
