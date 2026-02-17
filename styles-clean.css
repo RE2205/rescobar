@@ -1,6 +1,7 @@
 :root{
   --bg:#0b0b0c;
   --fg:#f3f3f3;
+  --muted:rgba(243,243,243,.68);
 }
 
 /* =========================
@@ -15,7 +16,7 @@ body{
   font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
   background:var(--bg);
   color:var(--fg);
-  padding-bottom:72px;
+  padding-bottom:72px; /* espacio para sticky */
 }
 
 .wrap{
@@ -40,6 +41,11 @@ body{
   z-index:100;
 }
 
+.nav-inner{
+  display:flex;
+  justify-content:flex-end;
+}
+
 .nav-list{
   list-style:none;
   display:flex;
@@ -47,6 +53,8 @@ body{
   margin:0;
   padding:0;
 }
+
+.nav-item{ position:relative; }
 
 .nav-item > a{
   font-size:12px;
@@ -58,6 +66,40 @@ body{
 
 .nav-item > a:hover{
   color:#fff;
+}
+
+/* Submenu */
+
+.nav-item.has-submenu{ padding-bottom:10px; }
+
+.submenu{
+  display:none;
+  position:absolute;
+  top:100%;
+  right:0;
+  margin-top:8px;
+  list-style:none;
+  background:#0e0e0f;
+  border:1px solid rgba(255,255,255,.08);
+  padding:18px 22px;
+  min-width:200px;
+  z-index:200;
+}
+
+.submenu li{ margin-bottom:10px; }
+.submenu li:last-child{ margin-bottom:0; }
+
+.submenu a{
+  font-size:12px;
+  letter-spacing:.12em;
+  color:rgba(255,255,255,.75);
+  transition:.2s ease;
+}
+
+.submenu a:hover{ color:#fff; }
+
+.nav-item.has-submenu:hover .submenu{
+  display:block;
 }
 
 /* =========================
@@ -72,19 +114,75 @@ body{
 }
 
 .kicker{
+  margin-bottom:14px;
   font-size:12px;
   letter-spacing:.22em;
   text-transform:uppercase;
   opacity:.6;
-  margin-bottom:14px;
 }
 
 .headline{
-  font-size:clamp(44px,5.4vw,82px);
   line-height:1.08;
+  font-size:clamp(44px,5.4vw,82px);
   font-weight:700;
 }
 
+/* =========================
+   BAND
+========================= */
+
+/* =========================
+   FRANJA AMARILLA — EDITORIAL
+========================= */
+
+.band-long{
+  position: relative;
+  padding: 72px 0;
+  overflow: hidden;
+
+  background:
+    radial-gradient(120% 100% at 50% 50%, rgba(255,255,255,.15), transparent 60%),
+    repeating-linear-gradient(
+      90deg,
+      rgba(255,255,255,.05) 0px,
+      rgba(255,255,255,.05) 2px,
+      transparent 2px,
+      transparent 28px
+    ),
+    linear-gradient(135deg, #FFD800 0%, #F2C400 100%);
+}
+
+.band-long::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(60% 80% at 70% 40%, rgba(0,0,0,.05), transparent 70%);
+  pointer-events:none;
+}
+
+.band-long .wrap{
+  max-width: 900px;
+  position: relative;
+  z-index: 2;
+}
+
+.band-quote{
+  margin:0;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(24px, 2.4vw, 34px);
+  line-height:1.45;
+  letter-spacing:.01em;
+  color:#0a0a0a;
+}
+
+.band-author{
+  margin-top:28px;
+  font-size:12px;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:rgba(0,0,0,.85);
+}
 /* =========================
    BLOQUES
 ========================= */
@@ -105,23 +203,74 @@ body{
   .two-col{ grid-template-columns:1fr 1fr; }
 }
 
+.copy h2{
+  margin:6px 0 10px;
+  font-size:42px;
+  letter-spacing:-.02em;
+}
+
 .tag{
   display:inline-block;
   padding:8px 12px;
   border-radius:999px;
   font-size:12px;
-  letter-spacing:.16em;
+  letter-spacing:.10em;
   text-transform:uppercase;
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.10);
+  color:rgba(243,243,243,.80);
+}
+
+.tag.dark{
+  background:rgba(0,0,0,.06);
+  border:1px solid rgba(0,0,0,.10);
+  color:#111;
 }
 
 .lead{
-  font-size:18px;
-  line-height:1.6;
+  margin:6px 0 0;
+  color:rgba(243,243,243,.78);
   max-width:62ch;
+  line-height:1.6;
+  font-size:18px;
 }
 
+.lead.dark{ color:#333; }
 /* =========================
-   CLÍNICA (BLANCO)
+   FRANJA AMARILLA (CITA)
+========================= */
+
+.band-long{
+  position: relative;
+  padding: 56px 0;
+  background: linear-gradient(135deg, #FFD65C, #F0B84F);
+  overflow: hidden;
+}
+
+.band-long .wrap{
+  max-width: 900px;
+  position: relative;
+  z-index: 1;
+}
+
+.band-quote{
+  margin: 0;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(22px, 2.2vw, 30px);
+  line-height: 1.45;
+  letter-spacing: .01em;
+  color: #0a0a0a;
+}
+
+.band-author{
+  margin-top: 22px;
+  font-size: 12px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: rgba(10,10,10,.85);
+}
+/* =========================
+   LOGOS PSYCHE
 ========================= */
 
 .logos-light{
@@ -129,17 +278,18 @@ body{
 }
 
 .logos-light .copy h2,
-.logos-light .copy p{
-  color:#111;
-}
+.logos-light .copy p{ color:#111; }
 
 .logo-holder{
   height:320px;
+  padding:22px;
   border-radius:22px;
+  border:1px solid rgba(0,0,0,.10);
+  background:#f6f6f4;
   display:flex;
   align-items:center;
   justify-content:center;
-  background:#f6f6f4;
+  overflow:hidden;
 }
 
 .logo-image{
@@ -149,11 +299,29 @@ body{
 }
 
 /* =========================
-   PODCAST (NEGRO)
+   PODCAST HOME
 ========================= */
 
-#podcast-entry{
-  background:#0b0b0c;
+#podcast-entry{ background:#0b0b0c; }
+
+.podcast-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:baseline;
+  margin-bottom:28px;
+}
+
+.podcast-title{
+  margin:0;
+  font-size:32px;
+  font-weight:500;
+}
+
+.podcast-label{
+  font-size:13px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:rgba(243,243,243,.55);
 }
 
 .podcast-roll{
@@ -161,9 +329,13 @@ body{
   gap:20px;
   overflow-x:auto;
   padding:14px 0;
+  scrollbar-width:none;
 }
 
+.podcast-roll::-webkit-scrollbar{ display:none; }
+
 .podcast-card{
+  flex:0 0 auto;
   width:240px;
   border-radius:14px;
   overflow:hidden;
@@ -181,33 +353,70 @@ body{
   opacity:1;
 }
 
+.podcast-center{
+  width:280px;
+  transform:translateY(-6px);
+}
+
+.podcast-cta{
+  display:flex;
+  justify-content:center;
+  margin-top:22px;
+}
+
+.podcast-cta a{
+  font-size:14px;
+  letter-spacing:.04em;
+  color:rgba(255,255,255,.7);
+  border-bottom:1px solid rgba(255,255,255,.35);
+  padding-bottom:4px;
+}
+
 /* =========================
-   FRANJA AMARILLA
+   DOCUMENTAL
 ========================= */
 
-.band-long{
-  padding:72px 0;
-  background:#FFD800;
-}
-
-.band-quote{
-  font-family:Georgia,'Times New Roman',serif;
-  font-size:clamp(24px,2.4vw,34px);
-  line-height:1.45;
-  color:#0a0a0a;
-  margin:0;
-}
-
-.band-author{
-  margin-top:28px;
-  font-size:12px;
-  letter-spacing:.22em;
-  text-transform:uppercase;
-  color:rgba(0,0,0,.85);
+.doc-cover{
+  height:380px;
+  border-radius:22px;
+  background-size:cover;
+  background-position:center 25%;
+  background-repeat:no-repeat;
+  filter:contrast(1.08) saturate(1.05) brightness(1.02);
 }
 
 /* =========================
-   DOCUMENTAL (BLANCO)
+   CRESER
+========================= */
+
+#creser{
+  background:#0b0b0c;
+}
+
+#creser .copy h2,
+#creser .copy p{ color:#f3f3f3; }
+
+#creser .lead{ color:rgba(243,243,243,.78); }
+
+#creser .tag{
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.10);
+  color:rgba(243,243,243,.8);
+}
+/* =========================
+   CRESER — IMAGEN
+========================= */
+
+.creser-logo{
+  height: 320px;
+  border-radius: 22px;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: rgba(255,255,255,.03);
+}
+/* =========================
+   DOCUMENTAL — FONDO BLANCO
 ========================= */
 
 #proyectos{
@@ -223,43 +432,13 @@ body{
   color:#333;
 }
 
-.doc-cover{
-  height:380px;
-  border-radius:22px;
-  background-size:cover;
-  background-position:center 25%;
-  background-repeat:no-repeat;
-  filter:contrast(1.05) saturate(1.05);
+#proyectos .tag{
+  background:rgba(0,0,0,.06);
+  border:1px solid rgba(0,0,0,.10);
+  color:#111;
 }
-
 /* =========================
-   CRESER (NEGRO)
-========================= */
-
-#creser{
-  background:#0b0b0c;
-}
-
-#creser .copy h2,
-#creser .copy p{
-  color:#f3f3f3;
-}
-
-#creser .lead{
-  color:rgba(243,243,243,.78);
-}
-
-.creser-logo{
-  height:320px;
-  border-radius:22px;
-  background-size:contain;
-  background-position:center;
-  background-repeat:no-repeat;
-  background-color:rgba(255,255,255,.05);
-}
-
-/* =========================
-   ESCRITURA (BLANCO)
+   ESCRITURA — LIMPIA
 ========================= */
 
 #escritura{
@@ -285,6 +464,13 @@ body{
   color:#333;
 }
 
+#escritura .tag{
+  background:rgba(0,0,0,.04);
+  border:1px solid rgba(0,0,0,.08);
+  color:#111;
+  letter-spacing:.16em;
+}
+
 #escritura .strip-3{
   display:grid;
   grid-template-columns:repeat(3,1fr);
@@ -293,12 +479,14 @@ body{
 }
 
 #escritura .strip-item{
+  position:relative;
   height:240px;
   border-radius:18px;
+  overflow:hidden;
   background-size:cover;
   background-position:center;
   background-repeat:no-repeat;
-  transition:opacity 2600ms ease-in-out;
+  transition:opacity 2200ms ease-in-out;
 }
 
 /* =========================
@@ -307,6 +495,7 @@ body{
 
 #podcast-player{
   position:fixed;
+  left:0;
   bottom:0;
   width:100%;
   height:68px;
@@ -314,6 +503,7 @@ body{
   display:grid;
   grid-template-columns:auto 1fr auto;
   align-items:center;
+  gap:20px;
   padding:0 18px;
   border-top:1px solid rgba(255,255,255,.08);
   z-index:9999;
@@ -331,15 +521,47 @@ body{
 ========================= */
 
 @media (max-width:900px){
-  .two-col{ grid-template-columns:1fr; }
-  #escritura .strip-3{ grid-template-columns:1fr; }
-  #escritura .strip-item{ height:220px; }
+  .strip-3{ grid-template-columns:1fr; }
+  .strip-item{ height:220px; }
 }
 
 @media (max-width:768px){
-  body{ padding-bottom:80px; }
-  .headline{
-    font-size:clamp(32px,8vw,46px);
-    line-height:1.15;
+
+  .top-nav{
+    position:relative;
+    top:0;
+    right:0;
+    padding:20px 0 10px;
   }
+
+  .nav-inner{ justify-content:center; }
+  .nav-list{ gap:18px; }
+
+  body{ padding-bottom:80px; }
+
+  .headline{
+/* =========================
+   ORDEN EDITORIAL — INVERSIÓN DESKTOP
+========================= */
+
+@media (min-width:900px){
+
+  /* DOCUMENTAL: texto izquierda, imagen derecha */
+  #proyectos .copy{
+    order:1;
+  }
+
+  #proyectos .media{
+    order:2;
+  }
+
+  /* CRESER: imagen izquierda, texto derecha */
+  #creser .media{
+    order:1;
+  }
+
+  #creser .copy{
+    order:2;
+  }
+
 }
