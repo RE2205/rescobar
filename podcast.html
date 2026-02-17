@@ -21,8 +21,41 @@
   --azul:#6f8f9f;
   --linea:rgba(255,255,255,.10);
 }
+<script>
+  const clips = document.querySelectorAll('.clip');
 
-*{ box-sizing:border-box; }
+  clips.forEach(clip => {
+    const video = clip.querySelector('video');
+    const source = clip.dataset.video;
+
+    clip.addEventListener('click', () => {
+
+      // Si ya está reproduciendo → pausa
+      if (clip.classList.contains('playing')) {
+        video.pause();
+        video.currentTime = 0;
+        clip.classList.remove('playing');
+        return;
+      }
+
+      // Pausar todos los demás
+      clips.forEach(other => {
+        const otherVideo = other.querySelector('video');
+        other.classList.remove('playing');
+        otherVideo.pause();
+        otherVideo.currentTime = 0;
+      });
+
+      // Cargar video si aún no tiene src
+      if (!video.src) {
+        video.src = source;
+      }
+
+      video.play();
+      clip.classList.add('playing');
+    });
+  });
+</script>*{ box-sizing:border-box; }
 
 body{
   margin:0;
