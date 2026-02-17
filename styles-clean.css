@@ -660,3 +660,7 @@ body{
   border:1px solid rgba(0,0,0,.10);
   color:#111;
 }
+/* Base tonal para evitar lavado en crossfade */
+#escritura .strip-item{
+  background:#111;   /* base oscura neutra */
+}
