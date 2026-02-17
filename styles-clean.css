@@ -505,3 +505,28 @@ body{
   body{ padding-bottom:80px; }
 
   .headline{
+/* =========================
+   ORDEN EDITORIAL — INVERSIÓN DESKTOP
+========================= */
+
+@media (min-width:900px){
+
+  /* DOCUMENTAL: texto izquierda, imagen derecha */
+  #proyectos .copy{
+    order:1;
+  }
+
+  #proyectos .media{
+    order:2;
+  }
+
+  /* CRESER: imagen izquierda, texto derecha */
+  #creser .media{
+    order:1;
+  }
+
+  #creser .copy{
+    order:2;
+  }
+
+}
