@@ -131,23 +131,58 @@ body{
    BAND
 ========================= */
 
-.band{
-  padding:16px 0;
+/* =========================
+   FRANJA AMARILLA — EDITORIAL
+========================= */
+
+.band-long{
+  position: relative;
+  padding: 72px 0;
+  overflow: hidden;
+
   background:
-    radial-gradient(120% 140% at 85% 50%, rgba(150,120,255,.45), rgba(0,0,0,0) 60%),
-    linear-gradient(90deg,#1a1628,#0c0a16,#080610);
-  border-top:1px solid rgba(255,255,255,.08);
-  border-bottom:1px solid rgba(255,255,255,.08);
+    radial-gradient(120% 100% at 50% 50%, rgba(255,255,255,.15), transparent 60%),
+    repeating-linear-gradient(
+      90deg,
+      rgba(255,255,255,.05) 0px,
+      rgba(255,255,255,.05) 2px,
+      transparent 2px,
+      transparent 28px
+    ),
+    linear-gradient(135deg, #FFD800 0%, #F2C400 100%);
 }
 
-.band-text{
+.band-long::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(60% 80% at 70% 40%, rgba(0,0,0,.05), transparent 70%);
+  pointer-events:none;
+}
+
+.band-long .wrap{
+  max-width: 900px;
+  position: relative;
+  z-index: 2;
+}
+
+.band-quote{
   margin:0;
-  font-size:12px;
-  letter-spacing:.14em;
-  text-transform:uppercase;
-  color:#fff;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(24px, 2.4vw, 34px);
+  line-height:1.45;
+  letter-spacing:.01em;
+  color:#0a0a0a;
 }
 
+.band-author{
+  margin-top:28px;
+  font-size:12px;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:rgba(0,0,0,.85);
+}
 /* =========================
    BLOQUES
 ========================= */
