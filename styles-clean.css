@@ -664,3 +664,7 @@ body{
 #escritura .strip-item{
   background:#111;   /* base oscura neutra */
 }
+/* Espacio editorial antes del sticky player */
+#escritura{
+  padding-bottom:120px;
+}
