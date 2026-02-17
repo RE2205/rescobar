@@ -724,3 +724,7 @@ body{
   color:#111;
   letter-spacing:.16em;
 }
+#escritura .strip-item img,
+#escritura .strip-item .xf-overlay{
+  object-position: center center;
+}
