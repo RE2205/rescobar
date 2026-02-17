@@ -668,3 +668,18 @@ body{
 #escritura{
   padding-bottom:120px;
 }
+/* Escritura — jerarquía editorial real */
+
+#escritura .strip-3{
+  grid-template-columns: 1fr 1.15fr 1fr;
+}
+
+/* Centro ligeramente más alto */
+#escritura .strip-item.strip-center{
+  height: 280px;
+}
+
+/* Opcional: micro elevación sutil */
+#escritura .strip-item.strip-center{
+  transform: translateY(-8px);
+}
