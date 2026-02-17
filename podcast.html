@@ -8,11 +8,6 @@
 
 <style>
 
-/* ==================================================
-   DESAPRE(HE)NDER PARA CRESER
-   Ajuste estratégico de atmósfera
-   ================================================== */
-
 :root{
   --negro:#0b0b0c;
   --blanco:#f6f6f2;
@@ -38,7 +33,7 @@ body{
   padding:0 32px;
 }
 
-/* ================= HERO (BLANCO) ================= */
+/* HERO */
 
 .hero{
   background:var(--blanco);
@@ -64,7 +59,7 @@ h1{
   color:rgba(0,0,0,.65);
 }
 
-/* ================= AXIOMA (NEGRO) ================= */
+/* AXIOMA */
 
 .axioma{
   background:var(--negro);
@@ -82,25 +77,25 @@ h1{
   font-weight:500;
 }
 
-/* ================= CLIPS (BLANCO) ================= */
+/* CLIPS */
 
 .clips{
   background:var(--blanco);
-  padding:72px 0 80px;
+  padding:90px 0 100px;   /* más aire arriba y abajo */
 }
 
 .clips-grid{
   display:flex;
   justify-content:center;
-  gap:32px;
+  gap:40px;               /* más espacio entre ellos */
   flex-wrap:wrap;
 }
 
 .clip{
   position:relative;
-  width:280px;
+  width:220px;            /* ↓ REDUCCIÓN */
   aspect-ratio:9/16;
-  border-radius:18px;
+  border-radius:14px;     /* más fino */
   overflow:hidden;
   background:#000;
   border:1px solid var(--linea);
@@ -148,8 +143,8 @@ h1{
 }
 
 .play-btn span{
-  width:60px;
-  height:60px;
+  width:48px;             /* ↓ más pequeño */
+  height:48px;
   border-radius:50%;
   background:rgba(0,0,0,.6);
   border:1px solid rgba(255,255,255,.4);
@@ -160,9 +155,9 @@ h1{
 
 .play-btn span::before{
   content:"";
-  margin-left:4px;
+  margin-left:3px;
   border-style:solid;
-  border-width:10px 0 10px 16px;
+  border-width:8px 0 8px 12px;  /* triángulo más pequeño */
   border-color:transparent transparent transparent #fff;
 }
 
@@ -170,7 +165,7 @@ h1{
   opacity:0;
 }
 
-/* ================= BLOQUE FINAL (NEGRO) ================= */
+/* BLOQUE */
 
 .bloque{
   background:var(--negro);
@@ -185,16 +180,17 @@ h1{
   color:rgba(255,255,255,.85);
 }
 
-/* ================= RESPONSIVE ================= */
+/* RESPONSIVE */
 
 @media (max-width:768px){
-  .clip{ width:240px; }
+  .clip{ width:200px; }
 }
 
 @media (max-width:500px){
   .clips-grid{
     flex-direction:column;
     align-items:center;
+    gap:32px;
   }
 }
 
@@ -203,7 +199,6 @@ h1{
 
 <body>
 
-<!-- HERO BLANCO -->
 <section class="hero">
   <div class="wrap">
     <div class="kicker">Podcast</div>
@@ -212,14 +207,12 @@ h1{
   </div>
 </section>
 
-<!-- AXIOMA NEGRO -->
 <section class="axioma">
   <div class="wrap">
     <p>No todo lo que duele es patología</p>
   </div>
 </section>
 
-<!-- CLIPS BLANCO -->
 <section class="clips">
   <div class="wrap clips-grid">
 
@@ -244,7 +237,6 @@ h1{
   </div>
 </section>
 
-<!-- BLOQUE FINAL NEGRO -->
 <section class="bloque">
   <div class="wrap">
     <p>Aquí no se habla para tranquilizar.</p>
