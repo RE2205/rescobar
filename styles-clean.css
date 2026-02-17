@@ -10,11 +10,13 @@
 
 *{box-sizing:border-box;}
 html,body{height:100%;}
+
 body{
   margin:0;
   font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
   background:var(--bg);
   color:var(--fg);
+  padding-bottom:72px; /* espacio para sticky */
 }
 
 .wrap{
@@ -28,12 +30,8 @@ body{
   text-decoration:none;
 }
 
-.silent-link:hover{
-  text-decoration:none;
-}
-
 /* =========================
-   NAV SUPERIOR
+   NAV
 ========================= */
 
 .top-nav{
@@ -56,28 +54,23 @@ body{
   padding:0;
 }
 
-.nav-item{
-  position:relative;
-}
+.nav-item{ position:relative; }
 
 .nav-item > a{
   font-size:12px;
   letter-spacing:.14em;
   text-transform:uppercase;
-  text-decoration:none;
-  color: rgba(255,255,255,0.65);
-  transition: color .2s ease;
+  color:rgba(255,255,255,.65);
+  transition:.2s ease;
 }
 
 .nav-item > a:hover{
-  color: rgba(255,255,255,1);
+  color:#fff;
 }
 
 /* Submenu */
 
-.nav-item.has-submenu{
-  padding-bottom:10px;
-}
+.nav-item.has-submenu{ padding-bottom:10px; }
 
 .submenu{
   display:none;
@@ -93,25 +86,17 @@ body{
   z-index:200;
 }
 
-.submenu li{
-  margin-bottom:10px;
-}
-
-.submenu li:last-child{
-  margin-bottom:0;
-}
+.submenu li{ margin-bottom:10px; }
+.submenu li:last-child{ margin-bottom:0; }
 
 .submenu a{
   font-size:12px;
   letter-spacing:.12em;
-  color:rgba(255,255,255,0.75);
-  text-decoration:none;
-  transition:color .2s ease;
+  color:rgba(255,255,255,.75);
+  transition:.2s ease;
 }
 
-.submenu a:hover{
-  color:#ffffff;
-}
+.submenu a:hover{ color:#fff; }
 
 .nav-item.has-submenu:hover .submenu{
   display:block;
@@ -125,8 +110,7 @@ body{
   min-height:56vh;
   display:grid;
   align-items:center;
-  padding-top:24px;
-  padding-bottom:12px;
+  padding:24px 0 12px;
 }
 
 .kicker{
@@ -139,7 +123,7 @@ body{
 
 .headline{
   line-height:1.08;
-  font-size: clamp(44px, 5.4vw, 82px);
+  font-size:clamp(44px,5.4vw,82px);
   font-weight:700;
 }
 
@@ -151,12 +135,7 @@ body{
   padding:16px 0;
   background:
     radial-gradient(120% 140% at 85% 50%, rgba(150,120,255,.45), rgba(0,0,0,0) 60%),
-    linear-gradient(
-      90deg,
-      rgba(26,22,40,1),
-      rgba(12,10,22,1),
-      rgba(8,6,16,1)
-    );
+    linear-gradient(90deg,#1a1628,#0c0a16,#080610);
   border-top:1px solid rgba(255,255,255,.08);
   border-bottom:1px solid rgba(255,255,255,.08);
 }
@@ -166,16 +145,16 @@ body{
   font-size:12px;
   letter-spacing:.14em;
   text-transform:uppercase;
-  color:rgba(255,255,255,.96);
+  color:#fff;
 }
 
 /* =========================
-   BLOQUES GENERALES
+   BLOQUES
 ========================= */
 
 .block{
   padding:56px 0;
-  border-bottom:1px solid rgba(243,243,243,.08);
+  border-bottom:1px solid rgba(255,255,255,.06);
 }
 
 .two-col{
@@ -186,13 +165,11 @@ body{
 }
 
 @media (min-width:900px){
-  .two-col{
-    grid-template-columns:1fr 1fr;
-  }
+  .two-col{ grid-template-columns:1fr 1fr; }
 }
 
 .copy h2{
-  margin:6px 0 10px 0;
+  margin:6px 0 10px;
   font-size:42px;
   letter-spacing:-.02em;
 }
@@ -216,19 +193,17 @@ body{
 }
 
 .lead{
-  margin:6px 0 0 0;
+  margin:6px 0 0;
   color:rgba(243,243,243,.78);
   max-width:62ch;
   line-height:1.6;
   font-size:18px;
 }
 
-.lead.dark{
-  color:#333;
-}
+.lead.dark{ color:#333; }
 
 /* =========================
-   LOGOS PSYCHE HOME BLOCK
+   LOGOS PSYCHE
 ========================= */
 
 .logos-light{
@@ -236,9 +211,7 @@ body{
 }
 
 .logos-light .copy h2,
-.logos-light .copy p{
-  color:#111;
-}
+.logos-light .copy p{ color:#111; }
 
 .logo-holder{
   height:320px;
@@ -262,10 +235,7 @@ body{
    PODCAST HOME
 ========================= */
 
-#podcast-entry{
-  background:#0b0b0c;
-  border-bottom:none;
-}
+#podcast-entry{ background:#0b0b0c; }
 
 .podcast-head{
   display:flex;
@@ -295,9 +265,7 @@ body{
   scrollbar-width:none;
 }
 
-.podcast-roll::-webkit-scrollbar{
-  display:none;
-}
+.podcast-roll::-webkit-scrollbar{ display:none; }
 
 .podcast-card{
   flex:0 0 auto;
@@ -308,10 +276,9 @@ body{
 
 .podcast-card img{
   width:100%;
-  height:auto;
   filter:grayscale(60%);
   opacity:.9;
-  transition:all .3s ease;
+  transition:.3s ease;
 }
 
 .podcast-card:hover img{
@@ -334,18 +301,96 @@ body{
   font-size:14px;
   letter-spacing:.04em;
   color:rgba(255,255,255,.7);
-  text-decoration:none;
   border-bottom:1px solid rgba(255,255,255,.35);
   padding-bottom:4px;
 }
 
-.podcast-cta a:hover{
-  color:#fff;
-  border-color:#fff;
+/* =========================
+   DOCUMENTAL
+========================= */
+
+.doc-cover{
+  height:380px;
+  border-radius:22px;
+  background-size:cover;
+  background-position:center 25%;
+  background-repeat:no-repeat;
+  filter:contrast(1.08) saturate(1.05) brightness(1.02);
 }
 
 /* =========================
-   PODCAST PLAYER
+   CRESER
+========================= */
+
+#creser{
+  background:#0b0b0c;
+}
+
+#creser .copy h2,
+#creser .copy p{ color:#f3f3f3; }
+
+#creser .lead{ color:rgba(243,243,243,.78); }
+
+#creser .tag{
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.10);
+  color:rgba(243,243,243,.8);
+}
+
+/* =========================
+   ESCRITURA — LIMPIA
+========================= */
+
+#escritura{
+  background:#f6f6f4;
+  padding-bottom:120px;
+}
+
+#escritura h2{
+  font-family:Georgia,'Times New Roman',serif;
+  font-weight:400;
+  font-size:clamp(42px,4.8vw,72px);
+  line-height:1.05;
+  letter-spacing:-.02em;
+  margin:14px 0 18px;
+  color:#111;
+}
+
+#escritura .lead{
+  font-family:Georgia,'Times New Roman',serif;
+  font-size:20px;
+  line-height:1.75;
+  max-width:60ch;
+  color:#333;
+}
+
+#escritura .tag{
+  background:rgba(0,0,0,.04);
+  border:1px solid rgba(0,0,0,.08);
+  color:#111;
+  letter-spacing:.16em;
+}
+
+#escritura .strip-3{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:14px;
+  margin-top:24px;
+}
+
+#escritura .strip-item{
+  position:relative;
+  height:240px;
+  border-radius:18px;
+  overflow:hidden;
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+  transition:opacity 2200ms ease-in-out;
+}
+
+/* =========================
+   STICKY PLAYER
 ========================= */
 
 #podcast-player{
@@ -364,370 +409,34 @@ body{
   z-index:9999;
 }
 
-body{
-  padding-bottom:72px;
-}
-
 .player-left img{
   width:42px;
   height:42px;
   border-radius:6px;
   object-fit:cover;
 }
-/* =========================
-   INNER SOUND (HOME)
-========================= */
-
-#inner-sound .img.ph{
-  height: 320px;
-  border-radius: 22px;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
 
 /* =========================
-   DOCUMENTAL (HOME)
-========================= */
-.doc-cover{
-  height: 380px;
-  border-radius: 22px;
-
-  background-size: cover;
-  background-position: center 25%;
-  background-repeat: no-repeat;
-
-  filter: contrast(1.08) saturate(1.05) brightness(1.02);
-  opacity: 1;
-}
-/* =========================
-   CRESER (HOME)
+   MOBILE
 ========================= */
 
-.creser-logo{
-  height: 320px;
-  border-radius: 22px;
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-color: rgba(255,255,255,.03);
+@media (max-width:900px){
+  .strip-3{ grid-template-columns:1fr; }
+  .strip-item{ height:220px; }
 }
 
-/* =========================
-   ESCRITURA (HOME)
-========================= */
+@media (max-width:768px){
 
-.strip-3{
-  display:grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 14px;
-  margin-top: 24px;
-}
-
-.strip-item{
-  position: relative;
-  height: 240px;
-  overflow: hidden;
-  border-radius: 18px;
-}
-
-.strip-item img{
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-/* Mobile */
-@media (max-width: 900px){
-  .strip-3{
-    grid-template-columns: 1fr;
-  }
-  .strip-item{
-    height: 220px;
-  }
-}
-/* =========================
-   FRANJA AMARILLA (CITA)
-========================= */
-
-.band-long{
-  position: relative;
-  padding: 56px 0;
-  background: linear-gradient(135deg, #FFD65C, #F0B84F);
-  overflow: hidden;
-}
-
-.band-long .wrap{
-  max-width: 900px;
-  position: relative;
-  z-index: 1;
-}
-
-.band-quote{
-  margin: 0;
-  font-family: Georgia, 'Times New Roman', serif;
-  font-size: clamp(22px, 2.2vw, 30px);
-  line-height: 1.45;
-  letter-spacing: .01em;
-  color: #0a0a0a;
-}
-
-.band-author{
-  margin-top: 22px;
-  font-size: 12px;
-  letter-spacing: .18em;
-  text-transform: uppercase;
-  color: rgba(10,10,10,.85);
-}
-/* =========================
-   INNER SOUND — FONDO CLARO
-========================= */
-
-#inner-sound{
-  background:#f6f6f4;
-}
-
-#inner-sound .copy h2,
-#inner-sound .copy p{
-  color:#111;
-}
-
-#inner-sound .lead{
-  color:#333;
-}
-
-#inner-sound .tag{
-  background:rgba(0,0,0,.06);
-  border:1px solid rgba(0,0,0,.10);
-  color:#111;
-}
-/* =========================
-   CRESER — FONDO CLARO
-========================= */
-
-#creser{
-  background:#f6f6f4;
-}
-
-#creser .copy h2,
-#creser .copy p{
-  color:#111;
-}
-
-#creser .lead{
-  color:#333;
-}
-
-#creser .tag{
-  background:rgba(0,0,0,.06);
-  border:1px solid rgba(0,0,0,.10);
-  color:#111;
-}
-/* =========================
-   TRANSICIÓN ENTRE BLOQUES
-========================= */
-
-.block{
-  border-bottom: 1px solid rgba(255,255,255,.06);
-}
-
-.logos-light,
-#inner-sound,
-#creser{
-  border-top: 1px solid rgba(0,0,0,.06);
-}
-/* =========================
-   MOBILE FIX
-========================= */
-
-@media (max-width: 768px){
-
-  /* NAV */
   .top-nav{
-    position: relative;
-    top: 0;
-    right: 0;
-    padding: 20px 0 10px 0;
+    position:relative;
+    top:0;
+    right:0;
+    padding:20px 0 10px;
   }
 
-  .nav-inner{
-    justify-content: center;
-  }
+  .nav-inner{ justify-content:center; }
+  .nav-list{ gap:18px; }
 
-  .nav-list{
-    gap: 18px;
-  }
-
-  .nav-item > a{
-    font-size: 11px;
-    letter-spacing: .12em;
-  }
-
-  /* HERO */
-  .hero{
-    min-height: auto;
-    padding-top: 20px;
-    padding-bottom: 24px;
-  }
+  body{ padding-bottom:80px; }
 
   .headline{
-    font-size: clamp(32px, 8vw, 46px);
-    line-height: 1.15;
-  }
-
-  .kicker{
-    font-size: 11px;
-    letter-spacing: .18em;
-  }
-
-  /* Espacio inferior para player */
-  body{
-    padding-bottom: 80px;
-  }
-
-}
-/* =========================
-   RITMO EDITORIAL FINAL
-========================= */
-
-/* Clínica (Logos Psyche) — blanco */
-.logos-light{
-  background:#f6f6f4;
-}
-
-/* Podcast — negro (ya lo es) */
-#podcast-entry{
-  background:#0b0b0c;
-}
-
-/* Documental — blanco */
-#proyectos{
-  background:#f6f6f4;
-}
-
-#proyectos .copy h2,
-#proyectos .copy p{
-  color:#111;
-}
-
-#proyectos .lead{
-  color:#333;
-}
-
-#proyectos .tag{
-  background:rgba(0,0,0,.06);
-  border:1px solid rgba(0,0,0,.10);
-  color:#111;
-}
-
-/* CreSer — negro */
-#creser{
-  background:#0b0b0c;
-}
-
-#creser .copy h2,
-#creser .copy p{
-  color:#f3f3f3;
-}
-
-#creser .lead{
-  color:rgba(243,243,243,.78);
-}
-
-#creser .tag{
-  background:rgba(255,255,255,.06);
-  border:1px solid rgba(255,255,255,.10);
-  color:rgba(243,243,243,.8);
-}
-
-/* Escritura — blanco */
-#escritura{
-  background:#f6f6f4;
-}
-
-#escritura .copy h2,
-#escritura .copy p{
-  color:#111;
-}
-
-#escritura .lead{
-  color:#333;
-}
-
-#escritura .tag{
-  background:rgba(0,0,0,.06);
-  border:1px solid rgba(0,0,0,.10);
-  color:#111;
-}
-/* Base tonal para evitar lavado en crossfade */
-#escritura .strip-item{
-  background:#111;   /* base oscura neutra */
-}
-/* Espacio editorial antes del sticky player */
-#escritura{
-  padding-bottom:120px;
-}
-/* Escritura — jerarquía editorial real */
-
-#escritura .strip-3{
-  grid-template-columns: 1fr 1.15fr 1fr;
-}
-
-/* Centro ligeramente más alto */
-#escritura .strip-item.strip-center{
-  height: 280px;
-}
-
-/* Opcional: micro elevación sutil */
-#escritura .strip-item.strip-center{
-  transform: translateY(-8px);
-}
-/* Escritura — centro mismo comportamiento visual */
-
-#escritura .strip-item.strip-center{
-  background: transparent;  /* elimina fondo claro */
-  padding: 0;               /* elimina padding interno si lo hubiera */
-}
-
-#escritura .strip-item.strip-center img{
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-/* =========================
-   ESCRITURA — VERSIÓN EDITORIAL
-========================= */
-
-#escritura h2{
-  font-family: Georgia, 'Times New Roman', serif;
-  font-weight: 400;
-  font-size: clamp(42px, 4.8vw, 72px);
-  line-height: 1.05;
-  letter-spacing: -0.02em;
-  margin: 14px 0 18px 0;
-  color:#111;
-}
-
-#escritura .lead{
-  font-family: Georgia, 'Times New Roman', serif;
-  font-size: 20px;
-  line-height: 1.75;
-  max-width: 60ch;
-  color:#333;
-}
-
-#escritura .tag{
-  background: rgba(0,0,0,.04);
-  border: 1px solid rgba(0,0,0,.08);
-  color:#111;
-  letter-spacing:.16em;
-}
-#escritura .strip-item img,
-#escritura .strip-item .xf-overlay{
-  object-position: center center;
-}
-object-position: center 35%;
-object-fit: contain;
-background:#000;
