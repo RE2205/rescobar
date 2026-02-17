@@ -368,7 +368,28 @@ body{
   border:1px solid rgba(255,255,255,.10);
   color:rgba(243,243,243,.8);
 }
+/* =========================
+   DOCUMENTAL — FONDO BLANCO
+========================= */
 
+#proyectos{
+  background:#f6f6f4;
+}
+
+#proyectos .copy h2,
+#proyectos .copy p{
+  color:#111;
+}
+
+#proyectos .lead{
+  color:#333;
+}
+
+#proyectos .tag{
+  background:rgba(0,0,0,.06);
+  border:1px solid rgba(0,0,0,.10);
+  color:#111;
+}
 /* =========================
    ESCRITURA — LIMPIA
 ========================= */
