@@ -8,22 +8,28 @@
 
 <style>
 
+/* ==================================================
+   DESAPRE(HE)NDER PARA CRESER
+   Ajuste estratégico de atmósfera
+   ================================================== */
+
 :root{
   --negro:#0b0b0c;
   --blanco:#f6f6f2;
   --gris:#9a9a96;
   --azul:#6f8f9f;
-  --linea:rgba(255,255,255,.10);
+  --linea:rgba(0,0,0,.08);
+  --linea-oscura:rgba(255,255,255,.10);
 }
 
 *{ box-sizing:border-box; }
 
 body{
   margin:0;
-  background:var(--negro);
-  color:var(--blanco);
-  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
   line-height:1.6;
+  background:var(--blanco);
+  color:var(--negro);
 }
 
 .wrap{
@@ -32,9 +38,10 @@ body{
   padding:0 32px;
 }
 
-/* HERO */
+/* ================= HERO (BLANCO) ================= */
 
 .hero{
+  background:var(--blanco);
   padding:96px 0 40px;
 }
 
@@ -42,39 +49,44 @@ body{
   font-size:12px;
   letter-spacing:.28em;
   text-transform:uppercase;
-  color:rgba(255,255,255,.55);
+  color:rgba(0,0,0,.45);
   margin-bottom:20px;
 }
 
 h1{
   font-size:clamp(36px,5vw,54px);
   margin:0 0 16px;
+  font-weight:500;
 }
 
 .hero p{
-  color:rgba(255,255,255,.72);
+  max-width:600px;
+  color:rgba(0,0,0,.65);
 }
 
-/* AXIOMA */
+/* ================= AXIOMA (NEGRO) ================= */
 
 .axioma{
-  padding:28px 0 32px;
-  border-top:1px solid var(--linea);
-  border-bottom:1px solid var(--linea);
+  background:var(--negro);
+  color:var(--blanco);
+  padding:40px 0;
   text-align:center;
 }
 
 .axioma p{
-  font-size:14px;
+  margin:0;
+  font-size:15px;
   letter-spacing:.32em;
   text-transform:uppercase;
   color:var(--azul);
+  font-weight:500;
 }
 
-/* CLIPS */
+/* ================= CLIPS (BLANCO) ================= */
 
 .clips{
-  padding:64px 0 80px;
+  background:var(--blanco);
+  padding:72px 0 80px;
 }
 
 .clips-grid{
@@ -95,6 +107,8 @@ h1{
   cursor:pointer;
 }
 
+/* Poster */
+
 .clip-poster{
   position:absolute;
   inset:0;
@@ -104,6 +118,8 @@ h1{
   transition:.35s ease;
   z-index:1;
 }
+
+/* Video */
 
 .clip video{
   width:100%;
@@ -119,6 +135,8 @@ h1{
 .clip.playing .clip-poster{
   opacity:0;
 }
+
+/* Play */
 
 .play-btn{
   position:absolute;
@@ -145,16 +163,39 @@ h1{
   margin-left:4px;
   border-style:solid;
   border-width:10px 0 10px 16px;
-  border-color:transparent transparent transparent var(--blanco);
+  border-color:transparent transparent transparent #fff;
 }
 
 .clip.playing .play-btn{
   opacity:0;
 }
 
+/* ================= BLOQUE FINAL (NEGRO) ================= */
+
 .bloque{
-  background:#000;
+  background:var(--negro);
+  color:var(--blanco);
   padding:80px 0;
+  border-top:1px solid var(--linea-oscura);
+}
+
+.bloque p{
+  max-width:640px;
+  margin:0 0 22px;
+  color:rgba(255,255,255,.85);
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width:768px){
+  .clip{ width:240px; }
+}
+
+@media (max-width:500px){
+  .clips-grid{
+    flex-direction:column;
+    align-items:center;
+  }
 }
 
 </style>
@@ -162,20 +203,23 @@ h1{
 
 <body>
 
+<!-- HERO BLANCO -->
 <section class="hero">
   <div class="wrap">
     <div class="kicker">Podcast</div>
     <h1>Desapre(he)nder para CreSer</h1>
-    <p>Conversaciones para detener el ruido y pensar lo humano.</p>
+    <p>Conversaciones que cuestionan lo que creemos entender.</p>
   </div>
 </section>
 
+<!-- AXIOMA NEGRO -->
 <section class="axioma">
   <div class="wrap">
     <p>No todo lo que duele es patología</p>
   </div>
 </section>
 
+<!-- CLIPS BLANCO -->
 <section class="clips">
   <div class="wrap clips-grid">
 
@@ -200,9 +244,11 @@ h1{
   </div>
 </section>
 
+<!-- BLOQUE FINAL NEGRO -->
 <section class="bloque">
   <div class="wrap">
     <p>Aquí no se habla para tranquilizar.</p>
+    <p>Pensar también es una forma de cuidado.</p>
   </div>
 </section>
 
