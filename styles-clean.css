@@ -696,3 +696,31 @@ body{
   object-fit: cover;
   display: block;
 }
+/* =========================
+   ESCRITURA — VERSIÓN EDITORIAL
+========================= */
+
+#escritura h2{
+  font-family: Georgia, 'Times New Roman', serif;
+  font-weight: 400;
+  font-size: clamp(42px, 4.8vw, 72px);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin: 14px 0 18px 0;
+  color:#111;
+}
+
+#escritura .lead{
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 20px;
+  line-height: 1.75;
+  max-width: 60ch;
+  color:#333;
+}
+
+#escritura .tag{
+  background: rgba(0,0,0,.04);
+  border: 1px solid rgba(0,0,0,.08);
+  color:#111;
+  letter-spacing:.16em;
+}
