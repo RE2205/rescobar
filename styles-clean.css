@@ -1,21 +1,22 @@
 :root{
   --bg:#0b0b0c;
   --fg:#f3f3f3;
+  --muted:rgba(243,243,243,.68);
 }
 
 /* =========================
    BASE
 ========================= */
 
-*{box-sizing:border-box;}
-html,body{height:100%;}
+*{ box-sizing:border-box; }
+html,body{ height:100%; }
 
 body{
   margin:0;
   font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
   background:var(--bg);
   color:var(--fg);
-  padding-bottom:72px;
+  padding-bottom:72px; /* espacio para sticky */
 }
 
 .wrap{
@@ -30,7 +31,7 @@ body{
 }
 
 /* =========================
-   NAV
+   NAV + SUBMENU
 ========================= */
 
 .top-nav{
@@ -38,6 +39,11 @@ body{
   top:28px;
   right:48px;
   z-index:100;
+}
+
+.nav-inner{
+  display:flex;
+  justify-content:flex-end;
 }
 
 .nav-list{
@@ -48,16 +54,53 @@ body{
   padding:0;
 }
 
+.nav-item{ position:relative; }
+
 .nav-item > a{
   font-size:12px;
   letter-spacing:.14em;
   text-transform:uppercase;
   color:rgba(255,255,255,.65);
-  transition:.2s ease;
+  text-decoration:none;
+  transition:color .2s ease;
 }
 
 .nav-item > a:hover{
   color:#fff;
+}
+
+/* Submenu */
+.nav-item.has-submenu{ padding-bottom:10px; }
+
+.submenu{
+  display:none;
+  position:absolute;
+  top:100%;
+  right:0;
+  margin-top:8px;
+  list-style:none;
+  background:#0e0e0f;
+  border:1px solid rgba(255,255,255,.08);
+  padding:18px 22px;
+  min-width:200px;
+  z-index:200;
+}
+
+.submenu li{ margin-bottom:10px; }
+.submenu li:last-child{ margin-bottom:0; }
+
+.submenu a{
+  font-size:12px;
+  letter-spacing:.12em;
+  color:rgba(255,255,255,.75);
+  text-decoration:none;
+  transition:color .2s ease;
+}
+
+.submenu a:hover{ color:#fff; }
+
+.nav-item.has-submenu:hover .submenu{
+  display:block;
 }
 
 /* =========================
@@ -68,7 +111,8 @@ body{
   min-height:56vh;
   display:grid;
   align-items:center;
-  padding:24px 0 12px;
+  padding-top:24px;
+  padding-bottom:12px;
 }
 
 .kicker{
@@ -81,17 +125,20 @@ body{
 
 .headline{
   line-height:1.08;
-  font-size:clamp(44px,5.4vw,82px);
+  font-size: clamp(44px, 5.4vw, 82px);
   font-weight:700;
 }
 
 /* =========================
-   FRANJA AXIOMA (OSCURA)
+   FRANJA AXIOMA (CON COLOR)
+   (la que habíamos logrado)
 ========================= */
 
 .band{
   padding:16px 0;
-  background:#0b0b0c;
+  background:
+    radial-gradient(120% 140% at 85% 50%, rgba(150,120,255,.45), rgba(0,0,0,0) 60%),
+    linear-gradient(90deg, rgba(26,22,40,1), rgba(12,10,22,1), rgba(8,6,16,1));
   border-top:1px solid rgba(255,255,255,.08);
   border-bottom:1px solid rgba(255,255,255,.08);
 }
@@ -101,11 +148,11 @@ body{
   font-size:12px;
   letter-spacing:.14em;
   text-transform:uppercase;
-  color:#fff;
+  color:rgba(255,255,255,.96);
 }
 
 /* =========================
-   BLOQUES
+   BLOQUES GENERALES
 ========================= */
 
 .block{
@@ -121,7 +168,15 @@ body{
 }
 
 @media (min-width:900px){
-  .two-col{ grid-template-columns:1fr 1fr; }
+  .two-col{
+    grid-template-columns:1fr 1fr;
+  }
+}
+
+.copy h2{
+  margin:6px 0 10px 0;
+  font-size:42px;
+  letter-spacing:-.02em;
 }
 
 .tag{
@@ -129,15 +184,28 @@ body{
   padding:8px 12px;
   border-radius:999px;
   font-size:12px;
-  letter-spacing:.14em;
+  letter-spacing:.10em;
   text-transform:uppercase;
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.10);
+  color:rgba(243,243,243,.80);
+}
+
+.tag.dark{
+  background:rgba(0,0,0,.06);
+  border:1px solid rgba(0,0,0,.10);
+  color:#111;
 }
 
 .lead{
-  font-size:18px;
-  line-height:1.6;
+  margin:6px 0 0 0;
+  color:rgba(243,243,243,.78);
   max-width:62ch;
+  line-height:1.6;
+  font-size:18px;
 }
+
+.lead.dark{ color:#333; }
 
 /* =========================
    LOGOS PSYCHE (BLANCO)
@@ -161,6 +229,7 @@ body{
   display:flex;
   align-items:center;
   justify-content:center;
+  overflow:hidden;
 }
 
 .logo-image{
@@ -170,28 +239,146 @@ body{
 }
 
 /* =========================
-   PODCAST (NEGRO)
+   PODCAST HOME (NEGRO) — REPARADO
+   (evita imagen gigante + mantiene roll horizontal)
 ========================= */
 
 #podcast-entry{
   background:#0b0b0c;
+  border-bottom:none;
+}
+
+.podcast-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:baseline;
+  margin-bottom:28px;
+}
+
+.podcast-title{
+  margin:0;
+  font-size:32px;
+  font-weight:500;
+}
+
+.podcast-label{
+  font-size:13px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:rgba(243,243,243,.55);
+}
+
+.podcast-divider{
+  height:1px;
+  background:rgba(255,255,255,.08);
+  margin:10px 0 16px 0;
+}
+
+.podcast-roll{
+  display:flex;
+  gap:20px;
+  overflow-x:auto;
+  padding:14px 0;
+  scrollbar-width:none;
+  align-items:stretch;
+}
+
+.podcast-roll::-webkit-scrollbar{ display:none; }
+
+.podcast-card{
+  flex:0 0 auto;
+  width:240px;
+  border-radius:14px;
+  overflow:hidden;
+  background:#0b0b0c;
+}
+
+/* CLAVE: limitar altura para que jamás “se vaya” a viewport */
+.podcast-card img{
+  width:100%;
+  height:150px;          /* fija altura editorial */
+  object-fit:cover;
+  display:block;
+  filter:grayscale(60%);
+  opacity:.9;
+  transition:all .3s ease;
+}
+
+.podcast-card:hover img{
+  filter:none;
+  opacity:1;
+}
+
+.podcast-center{
+  width:280px;
+  transform:translateY(-6px);
+}
+
+.podcast-center img{
+  height:170px;          /* un poquito más protagonista */
+}
+
+.podcast-cta{
+  display:flex;
+  justify-content:center;
+  margin-top:22px;
+}
+
+.podcast-cta a{
+  font-size:14px;
+  letter-spacing:.04em;
+  color:rgba(255,255,255,.7);
+  text-decoration:none;
+  border-bottom:1px solid rgba(255,255,255,.35);
+  padding-bottom:4px;
+}
+
+.podcast-cta a:hover{
+  color:#fff;
+  border-color:#fff;
 }
 
 /* =========================
-   FRANJA AMARILLA
+   FRANJA AMARILLA (UNA SOLA, SIN DUPLICAR)
 ========================= */
 
 .band-long{
-  padding:72px 0;
-  background:#FFD800;
+  position: relative;
+  padding: 72px 0;
+  overflow: hidden;
+  background:
+    radial-gradient(120% 100% at 50% 50%, rgba(255,255,255,.15), transparent 60%),
+    repeating-linear-gradient(
+      90deg,
+      rgba(255,255,255,.05) 0px,
+      rgba(255,255,255,.05) 2px,
+      transparent 2px,
+      transparent 28px
+    ),
+    linear-gradient(135deg, #FFD800 0%, #F2C400 100%);
+}
+
+.band-long::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background: radial-gradient(60% 80% at 70% 40%, rgba(0,0,0,.05), transparent 70%);
+  pointer-events:none;
+}
+
+.band-long .wrap{
+  max-width: 900px;
+  position: relative;
+  z-index: 2;
 }
 
 .band-quote{
-  font-family:Georgia,'Times New Roman',serif;
-  font-size:clamp(24px,2.4vw,34px);
-  line-height:1.45;
-  color:#0a0a0a;
   margin:0;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(24px, 2.4vw, 34px);
+  line-height:1.45;
+  letter-spacing:.01em;
+  color:#0a0a0a;
 }
 
 .band-author{
@@ -215,8 +402,12 @@ body{
   color:#111;
 }
 
-#proyectos .lead{
-  color:#333;
+#proyectos .lead{ color:#333; }
+
+#proyectos .tag{
+  background:rgba(0,0,0,.06);
+  border:1px solid rgba(0,0,0,.10);
+  color:#111;
 }
 
 .doc-cover{
@@ -225,7 +416,8 @@ body{
   background-size:cover;
   background-position:center 25%;
   background-repeat:no-repeat;
-  filter:contrast(1.05) saturate(1.05);
+  filter:contrast(1.08) saturate(1.05) brightness(1.02);
+  opacity:1;
 }
 
 /* =========================
@@ -245,29 +437,33 @@ body{
   color:rgba(243,243,243,.78);
 }
 
+#creser .tag{
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.10);
+  color:rgba(243,243,243,.8);
+}
+
 .creser-logo{
   height:320px;
   border-radius:22px;
   background-size:contain;
   background-position:center;
   background-repeat:no-repeat;
-  background-color:rgba(255,255,255,.05);
+  background-color:rgba(255,255,255,.03);
 }
 
 /* =========================
-   INVERTIR DOCUMENTAL / CRESER
+   INVERSIÓN DESKTOP (FUNCIONA)
 ========================= */
 
 @media (min-width:900px){
-
-  /* Documental: texto izquierda */
+  /* Documental: texto izquierda / imagen derecha */
   #proyectos .copy{ order:1; }
   #proyectos .media{ order:2; }
 
-  /* CreSer: imagen izquierda */
+  /* CreSer: imagen izquierda / texto derecha */
   #creser .media{ order:1; }
   #creser .copy{ order:2; }
-
 }
 
 /* =========================
@@ -307,6 +503,7 @@ body{
 #escritura .strip-item{
   height:240px;
   border-radius:18px;
+  overflow:hidden;
   background-size:cover;
   background-position:center;
   background-repeat:no-repeat;
@@ -327,9 +524,17 @@ body{
   display:grid;
   grid-template-columns:auto 1fr auto;
   align-items:center;
+  gap:20px;
   padding:0 18px;
   border-top:1px solid rgba(255,255,255,.08);
   z-index:9999;
+}
+
+.player-left img{
+  width:42px;
+  height:42px;
+  border-radius:6px;
+  object-fit:cover;
 }
 
 /* =========================
@@ -343,7 +548,17 @@ body{
 }
 
 @media (max-width:768px){
+  .top-nav{
+    position:relative;
+    top:0;
+    right:0;
+    padding:20px 0 10px 0;
+  }
+
+  .nav-inner{ justify-content:center; }
+
   body{ padding-bottom:80px; }
+
   .headline{
     font-size:clamp(32px,8vw,46px);
     line-height:1.15;
