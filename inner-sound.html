@@ -1,29 +1,30 @@
 <!doctype html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Inner Sound · CreSer</title>
-  <meta name="description" content="Escucha guiada basada en frecuencia y neurociencia. Una experiencia creativa íntima." />
+<title>Inner Sound · CreSer</title>
+<meta name="description" content="Escucha guiada basada en frecuencia y neurociencia. Una experiencia creativa íntima." />
 
-  <style>
-    /* ==================================================
-       INNER SOUND
-       Subpágina · Experiencia Editorial Seductora
-       ================================================== */
+<style>
+/* ==================================================
+   INNER SOUND
+   Subpágina · Versión refinada
+   ================================================== */
 
 :root{
   --blanco:#f6f6f2;
   --negro:#0b0b0c;
   --gris:#6f6f6f;
   --violeta:#7b5cff;
+  --violeta-suave:#b7a9ff;
   --linea:rgba(0,0,0,.08);
 }
 
-    *{ box-sizing:border-box; }
+*{ box-sizing:border-box; }
 
- body{
+body{
   margin:0;
   background:var(--blanco);
   color:var(--negro);
@@ -32,13 +33,13 @@
   -webkit-font-smoothing:antialiased;
 }
 
-    .wrap{
-      max-width:1100px;
-      margin:0 auto;
-      padding:0 32px;
-    }
+.wrap{
+  max-width:1100px;
+  margin:0 auto;
+  padding:0 32px;
+}
 
-   /* ================= HERO CLARO ================= */
+/* ================= HERO CLARO ================= */
 
 .hero-claro{
   padding:140px 0 110px;
@@ -83,96 +84,139 @@
   text-transform:uppercase;
   color:var(--violeta);
 }
-    /* ================= IMÁGENES ================= */
 
-    .imagenes{
-      padding:72px 0 96px;
-    }
+/* ================= IMÁGENES ================= */
 
-    .imagenes-grid{
-      display:grid;
-      grid-template-columns:repeat(2,1fr);
-      gap:28px;
-    }
+.imagenes{
+  padding:72px 0 96px;
+}
 
-    .imagen{
-      aspect-ratio:4/5;
-      border-radius:18px;
-      overflow:hidden;
-      background:#000;
-      border:1px solid var(--linea);
-    }
+.imagenes-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:28px;
+}
 
-    .imagen img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      filter:grayscale(100%);
-      opacity:.80;
-    }
+.imagen{
+  border-radius:18px;
+  overflow:hidden;
+  background:#000;
+  border:1px solid var(--linea);
+  position:relative;
+}
+
+/* Imagen humana (vertical) */
+.imagen:not(.violeta){
+  aspect-ratio:4/5;
+}
+
+/* Imagen violeta (horizontal) */
+.imagen.violeta{
+  aspect-ratio:16/9;
+}
+
+.imagen img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transition:.4s ease;
+}
+
+/* Tratamiento humano B/N */
+.imagen:not(.violeta) img{
+  filter:grayscale(100%);
+  opacity:.85;
+}
+
+/* Imagen violeta sin filtro */
 .imagen.violeta img{
   filter:none;
   opacity:1;
 }
-    /* ================= BLOQUE TEXTO ================= */
 
-    .bloque{
-      background:#000;
-      padding:96px 0;
-    }
+/* ✨ Glow sutil en hover SOLO para la violeta */
+.imagen.violeta:hover img{
+  transform:scale(1.02);
+  filter:brightness(1.08);
+}
 
-    .bloque p{
-      max-width:640px;
-      font-size:20px;
-      margin:0 0 28px;
-      color:rgba(255,255,255,.88);
-    }
+.imagen.violeta::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:radial-gradient(
+    circle at center,
+    rgba(123,92,255,.25),
+    transparent 70%
+  );
+  opacity:0;
+  transition:.4s ease;
+}
 
-    /* ================= CIERRE / CTA ================= */
+.imagen.violeta:hover::after{
+  opacity:1;
+}
 
-    .cierre{
-      padding:96px 0 120px;
-      border-top:1px solid var(--linea);
-      text-align:center;
-    }
+/* ================= BLOQUE NEGRO ================= */
 
-    .cierre p{
-      max-width:620px;
-      margin:0 auto 36px;
-      font-size:18px;
-      color:rgba(255,255,255,.78);
-    }
+.bloque{
+  background:#000;
+  padding:96px 0;
+}
 
-    .cierre a{
-      display:inline-block;
-      font-size:14px;
-      letter-spacing:.28em;
-      text-transform:uppercase;
-      color:var(--blanco);
-      text-decoration:none;
-      border-bottom:1px solid var(--blanco);
-      padding-bottom:4px;
-      transition:.3s ease;
-    }
+.bloque p{
+  max-width:640px;
+  font-size:20px;
+  margin:0 0 28px;
+  color:rgba(255,255,255,.88);
+}
 
-    .cierre a:hover{
-      color:var(--violeta-suave);
-      border-color:var(--violeta-suave);
-    }
+/* ================= CIERRE / CTA ================= */
 
-    /* ================= RESPONSIVE ================= */
+.cierre{
+  padding:96px 0 120px;
+  border-top:1px solid var(--linea);
+  text-align:center;
+}
 
-    @media (max-width:900px){
-      .imagenes-grid{ grid-template-columns:1fr; }
-    }
+.cierre p{
+  max-width:620px;
+  margin:0 auto 36px;
+  font-size:18px;
+  color:rgba(255,255,255,.78);
+}
 
-    @media (max-width:700px){
-      .hero{ padding:96px 0 56px; }
-      .imagenes{ padding:56px 0 72px; }
-      .bloque{ padding:72px 0; }
-      .cierre{ padding:72px 0 96px; }
-    }
-  </style>
+.cierre a{
+  display:inline-block;
+  font-size:14px;
+  letter-spacing:.28em;
+  text-transform:uppercase;
+  color:var(--negro);
+  text-decoration:none;
+  border-bottom:1px solid var(--negro);
+  padding-bottom:4px;
+  transition:.3s ease;
+}
+
+.cierre a:hover{
+  color:var(--violeta);
+  border-color:var(--violeta);
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width:900px){
+  .imagenes-grid{ grid-template-columns:1fr; }
+}
+
+@media (max-width:700px){
+  .hero-claro{ padding:96px 0 56px; }
+  .imagenes{ padding:56px 0 72px; }
+  .bloque{ padding:72px 0; }
+  .cierre{ padding:72px 0 96px; }
+}
+
+</style>
 </head>
 
 <body>
@@ -187,44 +231,50 @@
     </p>
   </div>
 </section>
-  <!-- AXIOMA -->
+
+<!-- AXIOMA -->
 <section class="axioma axioma-oscuro">
   <div class="wrap">
     <p>El sonido también piensa</p>
   </div>
 </section>
 
-  <!-- IMÁGENES -->
-  <section class="imagenes">
-    <div class="wrap imagenes-grid">
-      <div class="imagen">
-        <img src="/assets/inners.png" alt="Escucha guiada">
-      </div>
-      <div class="imagen violeta">
-        <img src="/assets/inner-sound-2.jpg" alt="Frecuencia y cuerpo">
-      </div>
-    </div>
-  </section>
+<!-- IMÁGENES -->
+<section class="imagenes">
+  <div class="wrap imagenes-grid">
 
-  <!-- BLOQUE NEGRO -->
-  <section class="bloque">
-    <div class="wrap">
-      <p>No es música de fondo. Es una experiencia diseñada para modificar el estado interno desde el sonido.</p>
-      <p>La frecuencia regula, el cuerpo responde y la creatividad aparece sin esfuerzo.</p>
+    <!-- Imagen humana -->
+    <div class="imagen">
+      <img src="/assets/inner-sound-2.jpg" alt="Escucha guiada">
     </div>
-  </section>
 
-  <!-- CIERRE -->
-  <section class="cierre">
-    <div class="wrap">
-      <p>
-        Inner Sound se vive en grupos pequeños,
-        en sesiones íntimas pensadas para quienes
-        desean experimentar antes que entender.
-      </p>
-      <a href="/contacto.html">Solicitar acceso a Inner Sound</a>
+    <!-- Imagen frecuencia -->
+    <div class="imagen violeta">
+      <img src="/assets/inners.png" alt="Frecuencia sonora">
     </div>
-  </section>
+
+  </div>
+</section>
+
+<!-- BLOQUE NEGRO -->
+<section class="bloque">
+  <div class="wrap">
+    <p>No es música de fondo. Es una experiencia diseñada para modificar el estado interno desde el sonido.</p>
+    <p>La frecuencia regula, el cuerpo responde y la creatividad aparece sin esfuerzo.</p>
+  </div>
+</section>
+
+<!-- CIERRE -->
+<section class="cierre">
+  <div class="wrap">
+    <p>
+      Inner Sound se vive en grupos pequeños,
+      en sesiones íntimas pensadas para quienes
+      desean experimentar antes que entender.
+    </p>
+    <a href="/contacto.html">Solicitar acceso a Inner Sound</a>
+  </div>
+</section>
 
 </body>
 </html>
