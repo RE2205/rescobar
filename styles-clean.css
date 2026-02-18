@@ -1,7 +1,6 @@
 :root{
   --bg:#0b0b0c;
   --fg:#f3f3f3;
-  --muted:rgba(243,243,243,.68);
 }
 
 /* =========================
@@ -16,7 +15,7 @@ body{
   font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
   background:var(--bg);
   color:var(--fg);
-  padding-bottom:72px; /* espacio para sticky */
+  padding-bottom:72px;
 }
 
 .wrap{
@@ -29,29 +28,76 @@ body{
   color:inherit;
   text-decoration:none;
 }
+
+/* =========================
+   NAV SUPERIOR
+========================= */
+
+.top-nav{
+  position:absolute;
+  top:28px;
+  right:48px;
+  z-index:100;
+}
+
+.nav-inner{
+  display:flex;
+  justify-content:flex-end;
+}
+
+.nav-list{
+  list-style:none;
+  display:flex;
+  gap:32px;
+  margin:0;
+  padding:0;
+}
+
+.nav-item{
+  position:relative;
+}
+
+.nav-item > a{
+  font-size:12px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  text-decoration:none;
+  color:rgba(255,255,255,.65);
+  transition:color .2s ease;
+}
+
+.nav-item > a:hover{
+  color:#fff;
+}
+
 /* =========================
    SUBMENU ESTABLE
 ========================= */
 
-.nav-item.has-submenu{
-  position:relative;
-}
-
 .nav-item.has-submenu > a{
   display:inline-block;
-  padding-bottom:14px; /* crea zona de transición */
+  padding-bottom:20px;
+}
+
+.nav-item.has-submenu::after{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  top:100%;
+  height:20px;
 }
 
 .submenu{
   position:absolute;
   top:100%;
   right:0;
-  margin-top:0;
   list-style:none;
   background:#0e0e0f;
   border:1px solid rgba(255,255,255,.08);
   padding:18px 22px;
   min-width:200px;
+
   opacity:0;
   pointer-events:none;
   transform:translateY(6px);
@@ -64,20 +110,14 @@ body{
   transform:translateY(0);
 }
 
-.submenu li{
-  margin-bottom:10px;
-}
-
-.submenu li:last-child{
-  margin-bottom:0;
-}
+.submenu li{ margin-bottom:10px; }
+.submenu li:last-child{ margin-bottom:0; }
 
 .submenu a{
   font-size:12px;
   letter-spacing:.12em;
   text-decoration:none;
   color:rgba(255,255,255,.75);
-  transition:color .2s ease;
 }
 
 .submenu a:hover{
@@ -92,8 +132,7 @@ body{
   min-height:56vh;
   display:grid;
   align-items:center;
-  padding-top:24px;
-  padding-bottom:12px;
+  padding:24px 0 12px;
 }
 
 .kicker{
@@ -106,13 +145,12 @@ body{
 
 .headline{
   line-height:1.08;
-  font-size: clamp(44px, 5.4vw, 82px);
+  font-size:clamp(44px,5.4vw,82px);
   font-weight:700;
 }
 
 /* =========================
-   FRANJA AXIOMA (CON COLOR)
-   (la que habíamos logrado)
+   FRANJA AXIOMA (COLOR ORIGINAL)
 ========================= */
 
 .band{
@@ -149,9 +187,7 @@ body{
 }
 
 @media (min-width:900px){
-  .two-col{
-    grid-template-columns:1fr 1fr;
-  }
+  .two-col{ grid-template-columns:1fr 1fr; }
 }
 
 .copy h2{
@@ -167,26 +203,14 @@ body{
   font-size:12px;
   letter-spacing:.10em;
   text-transform:uppercase;
-  background:rgba(255,255,255,.06);
-  border:1px solid rgba(255,255,255,.10);
-  color:rgba(243,243,243,.80);
-}
-
-.tag.dark{
-  background:rgba(0,0,0,.06);
-  border:1px solid rgba(0,0,0,.10);
-  color:#111;
 }
 
 .lead{
   margin:6px 0 0 0;
-  color:rgba(243,243,243,.78);
-  max-width:62ch;
-  line-height:1.6;
   font-size:18px;
+  line-height:1.6;
+  max-width:62ch;
 }
-
-.lead.dark{ color:#333; }
 
 /* =========================
    LOGOS PSYCHE (BLANCO)
@@ -220,39 +244,11 @@ body{
 }
 
 /* =========================
-   PODCAST HOME (NEGRO) — REPARADO
-   (evita imagen gigante + mantiene roll horizontal)
+   PODCAST (NEGRO)
 ========================= */
 
 #podcast-entry{
   background:#0b0b0c;
-  border-bottom:none;
-}
-
-.podcast-head{
-  display:flex;
-  justify-content:space-between;
-  align-items:baseline;
-  margin-bottom:28px;
-}
-
-.podcast-title{
-  margin:0;
-  font-size:32px;
-  font-weight:500;
-}
-
-.podcast-label{
-  font-size:13px;
-  letter-spacing:.18em;
-  text-transform:uppercase;
-  color:rgba(243,243,243,.55);
-}
-
-.podcast-divider{
-  height:1px;
-  background:rgba(255,255,255,.08);
-  margin:10px 0 16px 0;
 }
 
 .podcast-roll{
@@ -261,7 +257,6 @@ body{
   overflow-x:auto;
   padding:14px 0;
   scrollbar-width:none;
-  align-items:stretch;
 }
 
 .podcast-roll::-webkit-scrollbar{ display:none; }
@@ -271,18 +266,16 @@ body{
   width:240px;
   border-radius:14px;
   overflow:hidden;
-  background:#0b0b0c;
 }
 
-/* CLAVE: limitar altura para que jamás “se vaya” a viewport */
 .podcast-card img{
   width:100%;
-  height:150px;          /* fija altura editorial */
+  height:150px;
   object-fit:cover;
   display:block;
   filter:grayscale(60%);
   opacity:.9;
-  transition:all .3s ease;
+  transition:.3s ease;
 }
 
 .podcast-card:hover img{
@@ -296,70 +289,24 @@ body{
 }
 
 .podcast-center img{
-  height:170px;          /* un poquito más protagonista */
-}
-
-.podcast-cta{
-  display:flex;
-  justify-content:center;
-  margin-top:22px;
-}
-
-.podcast-cta a{
-  font-size:14px;
-  letter-spacing:.04em;
-  color:rgba(255,255,255,.7);
-  text-decoration:none;
-  border-bottom:1px solid rgba(255,255,255,.35);
-  padding-bottom:4px;
-}
-
-.podcast-cta a:hover{
-  color:#fff;
-  border-color:#fff;
+  height:170px;
 }
 
 /* =========================
-   FRANJA AMARILLA (UNA SOLA, SIN DUPLICAR)
+   FRANJA AMARILLA
 ========================= */
 
 .band-long{
-  position: relative;
-  padding: 72px 0;
-  overflow: hidden;
-  background:
-    radial-gradient(120% 100% at 50% 50%, rgba(255,255,255,.15), transparent 60%),
-    repeating-linear-gradient(
-      90deg,
-      rgba(255,255,255,.05) 0px,
-      rgba(255,255,255,.05) 2px,
-      transparent 2px,
-      transparent 28px
-    ),
-    linear-gradient(135deg, #FFD800 0%, #F2C400 100%);
-}
-
-.band-long::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background: radial-gradient(60% 80% at 70% 40%, rgba(0,0,0,.05), transparent 70%);
-  pointer-events:none;
-}
-
-.band-long .wrap{
-  max-width: 900px;
-  position: relative;
-  z-index: 2;
+  padding:72px 0;
+  background:#FFD800;
 }
 
 .band-quote{
-  margin:0;
-  font-family: Georgia, 'Times New Roman', serif;
-  font-size: clamp(24px, 2.4vw, 34px);
+  font-family:Georgia,'Times New Roman',serif;
+  font-size:clamp(24px,2.4vw,34px);
   line-height:1.45;
-  letter-spacing:.01em;
   color:#0a0a0a;
+  margin:0;
 }
 
 .band-author{
@@ -385,20 +332,13 @@ body{
 
 #proyectos .lead{ color:#333; }
 
-#proyectos .tag{
-  background:rgba(0,0,0,.06);
-  border:1px solid rgba(0,0,0,.10);
-  color:#111;
-}
-
 .doc-cover{
   height:380px;
   border-radius:22px;
   background-size:cover;
   background-position:center 25%;
   background-repeat:no-repeat;
-  filter:contrast(1.08) saturate(1.05) brightness(1.02);
-  opacity:1;
+  filter:contrast(1.05) saturate(1.05);
 }
 
 /* =========================
@@ -418,31 +358,23 @@ body{
   color:rgba(243,243,243,.78);
 }
 
-#creser .tag{
-  background:rgba(255,255,255,.06);
-  border:1px solid rgba(255,255,255,.10);
-  color:rgba(243,243,243,.8);
-}
-
 .creser-logo{
   height:320px;
   border-radius:22px;
   background-size:contain;
   background-position:center;
   background-repeat:no-repeat;
-  background-color:rgba(255,255,255,.03);
+  background-color:rgba(255,255,255,.05);
 }
 
 /* =========================
-   INVERSIÓN DESKTOP (FUNCIONA)
+   INVERSIÓN DESKTOP
 ========================= */
 
 @media (min-width:900px){
-  /* Documental: texto izquierda / imagen derecha */
   #proyectos .copy{ order:1; }
   #proyectos .media{ order:2; }
 
-  /* CreSer: imagen izquierda / texto derecha */
   #creser .media{ order:1; }
   #creser .copy{ order:2; }
 }
@@ -529,15 +461,6 @@ body{
 }
 
 @media (max-width:768px){
-  .top-nav{
-    position:relative;
-    top:0;
-    right:0;
-    padding:20px 0 10px 0;
-  }
-
-  .nav-inner{ justify-content:center; }
-
   body{ padding-bottom:80px; }
 
   .headline{
