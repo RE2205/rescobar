@@ -161,14 +161,36 @@ body{
 
 .bloque{
   background:#000;
-  padding:96px 0;
+  padding:120px 0;
+  position:relative;
+}
+
+.bloque::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  height:1px;
+  background:linear-gradient(
+    to right,
+    transparent,
+    rgba(123,92,255,.4),
+    transparent
+  );
 }
 
 .bloque p{
   max-width:640px;
-  font-size:20px;
-  margin:0 0 28px;
-  color:rgba(255,255,255,.88);
+  font-size:22px;
+  margin:0 0 36px;
+  color:rgba(255,255,255,.92);
+  line-height:1.55;
+}
+
+.bloque p:last-child{
+  font-size:24px;
+  color:#ffffff;
 }
 
 /* ================= CIERRE / CTA ================= */
@@ -259,8 +281,26 @@ body{
 <!-- BLOQUE NEGRO -->
 <section class="bloque">
   <div class="wrap">
-    <p>No es música de fondo. Es una experiencia diseñada para modificar el estado interno desde el sonido.</p>
-    <p>La frecuencia regula, el cuerpo responde y la creatividad aparece sin esfuerzo.</p>
+    <p>
+      No es música de fondo.
+    </p>
+
+    <p>
+      Es una arquitectura sonora
+      diseñada para alterar el ritmo interno
+      sin que tengas que forzarlo.
+    </p>
+
+    <p>
+      La frecuencia regula.
+      El cuerpo responde.
+      La mente deja de anticipar.
+    </p>
+
+    <p>
+      Y en ese espacio,
+      algo empieza a abrirse.
+    </p>
   </div>
 </section>
 
