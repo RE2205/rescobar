@@ -13,25 +13,24 @@
        Subpágina · Experiencia Editorial Seductora
        ================================================== */
 
-    :root{
-      --negro:#0b0b0c;
-      --blanco:#f6f6f2;
-      --gris:#a1a1a1;
-      --violeta:#7b5cff;
-      --violeta-suave:#b7a9ff;
-      --linea:rgba(255,255,255,.10);
-    }
+:root{
+  --blanco:#f6f6f2;
+  --negro:#0b0b0c;
+  --gris:#6f6f6f;
+  --violeta:#7b5cff;
+  --linea:rgba(0,0,0,.08);
+}
 
     *{ box-sizing:border-box; }
 
-    body{
-      margin:0;
-      background:var(--negro);
-      color:var(--blanco);
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
-      line-height:1.6;
-      -webkit-font-smoothing:antialiased;
-    }
+ body{
+  margin:0;
+  background:var(--blanco);
+  color:var(--negro);
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
 
     .wrap{
       max-width:1100px;
@@ -39,34 +38,33 @@
       padding:0 32px;
     }
 
-    /* ================= HERO ================= */
+   /* ================= HERO CLARO ================= */
 
-    .hero{
-      padding:120px 0 72px;
-    }
+.hero-claro{
+  padding:140px 0 110px;
+  border-bottom:1px solid var(--linea);
+}
 
-    .hero .kicker{
-      font-size:13px;
-      letter-spacing:.28em;
-      text-transform:uppercase;
-      color:rgba(255,255,255,.55);
-      margin:0 0 28px;
-    }
+.hero-claro .kicker{
+  font-size:12px;
+  letter-spacing:.32em;
+  text-transform:uppercase;
+  color:rgba(0,0,0,.45);
+  margin:0 0 36px;
+}
 
-    .hero h1{
-      max-width:760px;
-      font-size:clamp(40px,5vw,58px);
-      font-weight:500;
-      line-height:1.15;
-      margin:0 0 20px;
-    }
+.hero-claro h1{
+  font-size:clamp(44px,6vw,72px);
+  font-weight:500;
+  line-height:1.1;
+  margin:0 0 28px;
+}
 
-    .hero p{
-      max-width:560px;
-      font-size:18px;
-      color:rgba(255,255,255,.80);
-      margin:0;
-    }
+.hero-claro .subhero{
+  font-size:18px;
+  color:rgba(0,0,0,.65);
+  margin:0;
+}
 
     /* ================= AXIOMA ================= */
 
@@ -176,15 +174,16 @@
 
 <body>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="wrap">
-      <p class="kicker">Experiencia creativa</p>
-      <h1>Inner Sound</h1>
-      <p>Escucha guiada · Frecuencia · Neurociencia</p>
-    </div>
-  </section>
-
+<!-- HERO -->
+<section class="hero hero-claro">
+  <div class="wrap">
+    <p class="kicker">Experiencia creativa</p>
+    <h1>Inner Sound</h1>
+    <p class="subhero">
+      Escucha guiada · Frecuencia · Neurociencia
+    </p>
+  </div>
+</section>
   <!-- AXIOMA -->
   <section class="axioma">
     <div class="wrap">
