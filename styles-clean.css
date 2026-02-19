@@ -291,7 +291,14 @@ body{
 .podcast-center img{
   height:170px;
 }
+.podcast-cta a,
+.podcast-cta a:visited{
+  color:rgba(255,255,255,.7);
+}
 
+.podcast-cta a:hover{
+  color:#fff;
+}
 /* =========================
    FRANJA AMARILLA
 ========================= */
