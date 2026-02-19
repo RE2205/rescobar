@@ -10,8 +10,9 @@
 
 :root{
   --negro:#0b0b0c;
-  --blanco:#f6f6f2;
-  --gris:#9a9a96;
+  --negro-profundo:#050505;
+  --blanco:#ffffff;
+  --gris-suave:#5e5e5e;
   --azul:#6f8f9f;
   --linea:rgba(0,0,0,.08);
   --linea-oscura:rgba(255,255,255,.10);
@@ -24,7 +25,7 @@ body{
   font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
   line-height:1.6;
   background:var(--blanco);
-  color:var(--negro);
+  color:var(--negro-profundo);
 }
 
 .wrap{
@@ -33,11 +34,11 @@ body{
   padding:0 32px;
 }
 
-/* HERO */
+/* ================= HERO ================= */
 
 .hero{
   background:var(--blanco);
-  padding:96px 0 40px;
+  padding:96px 0 48px;
 }
 
 .kicker{
@@ -45,64 +46,92 @@ body{
   letter-spacing:.28em;
   text-transform:uppercase;
   color:rgba(0,0,0,.45);
-  margin-bottom:20px;
+  margin-bottom:22px;
 }
 
 h1{
-  font-size:clamp(36px,5vw,54px);
-  margin:0 0 16px;
-  font-weight:500;
+  font-size:clamp(38px,5vw,60px);
+  margin:0 0 18px;
+  font-weight:600;
+  color:var(--negro-profundo);
 }
 
 .hero p{
-  max-width:600px;
-  color:rgba(0,0,0,.65);
+  max-width:640px;
+  font-size:18px;
+  color:var(--gris-suave);
+  margin:0 0 28px;
 }
 
-/* AXIOMA */
+/* BOTÓN REGRESAR */
+
+.back-link{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  font-size:13px;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:var(--negro-profundo);
+  text-decoration:none;
+  border-bottom:1px solid var(--negro-profundo);
+  padding-bottom:4px;
+  transition:.25s ease;
+}
+
+.back-link::before{
+  content:"←";
+  font-size:14px;
+  opacity:.6;
+}
+
+.back-link:hover{
+  color:var(--azul);
+  border-color:var(--azul);
+}
+
+/* ================= AXIOMA ================= */
 
 .axioma{
-  background:var(--negro);
+  background:var(--negro-profundo);
   color:var(--blanco);
-  padding:40px 0;
+  padding:52px 0;
   text-align:center;
 }
 
 .axioma p{
   margin:0;
-  font-size:15px;
-  letter-spacing:.32em;
+  font-size:clamp(18px,2vw,22px);
+  letter-spacing:.36em;
   text-transform:uppercase;
-  color:var(--azul);
+  color:#8fb0c2;
   font-weight:500;
 }
 
-/* CLIPS */
+/* ================= CLIPS ================= */
 
 .clips{
   background:var(--blanco);
-  padding:90px 0 100px;   /* más aire arriba y abajo */
+  padding:90px 0 100px;
 }
 
 .clips-grid{
   display:flex;
   justify-content:center;
-  gap:40px;               /* más espacio entre ellos */
+  gap:40px;
   flex-wrap:wrap;
 }
 
 .clip{
   position:relative;
-  width:220px;            /* ↓ REDUCCIÓN */
+  width:220px;
   aspect-ratio:9/16;
-  border-radius:14px;     /* más fino */
+  border-radius:14px;
   overflow:hidden;
   background:#000;
   border:1px solid var(--linea);
   cursor:pointer;
 }
-
-/* Poster */
 
 .clip-poster{
   position:absolute;
@@ -113,8 +142,6 @@ h1{
   transition:.35s ease;
   z-index:1;
 }
-
-/* Video */
 
 .clip video{
   width:100%;
@@ -131,8 +158,6 @@ h1{
   opacity:0;
 }
 
-/* Play */
-
 .play-btn{
   position:absolute;
   inset:0;
@@ -143,10 +168,10 @@ h1{
 }
 
 .play-btn span{
-  width:48px;             /* ↓ más pequeño */
+  width:48px;
   height:48px;
   border-radius:50%;
-  background:rgba(0,0,0,.6);
+  background:rgba(0,0,0,.65);
   border:1px solid rgba(255,255,255,.4);
   display:flex;
   align-items:center;
@@ -157,7 +182,7 @@ h1{
   content:"";
   margin-left:3px;
   border-style:solid;
-  border-width:8px 0 8px 12px;  /* triángulo más pequeño */
+  border-width:8px 0 8px 12px;
   border-color:transparent transparent transparent #fff;
 }
 
@@ -165,10 +190,10 @@ h1{
   opacity:0;
 }
 
-/* BLOQUE */
+/* ================= BLOQUE ================= */
 
 .bloque{
-  background:var(--negro);
+  background:var(--negro-profundo);
   color:var(--blanco);
   padding:80px 0;
   border-top:1px solid var(--linea-oscura);
@@ -180,7 +205,7 @@ h1{
   color:rgba(255,255,255,.85);
 }
 
-/* RESPONSIVE */
+/* ================= RESPONSIVE ================= */
 
 @media (max-width:768px){
   .clip{ width:200px; }
@@ -204,6 +229,9 @@ h1{
     <div class="kicker">Podcast</div>
     <h1>Desapre(he)nder para CreSer</h1>
     <p>Conversaciones que cuestionan lo que creemos entender.</p>
+
+    <!-- BOTÓN -->
+    <a href="/" class="back-link">Volver al inicio</a>
   </div>
 </section>
 
