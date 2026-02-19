@@ -62,7 +62,31 @@ h1{
   color:var(--gris-suave);
   margin:0 0 28px;
 }
+/* Botón / link de regreso */
+.back-link{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  font-size:13px;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:var(--negro-profundo);
+  text-decoration:none;
+  border-bottom:1px solid var(--negro-profundo);
+  padding-bottom:4px;
+  transition:.25s ease;
+}
 
+.back-link::before{
+  content:"←";
+  font-size:14px;
+  opacity:.6;
+}
+
+.back-link:hover{
+  color:var(--azul);
+  border-color:var(--azul);
+}
 /* AXIOMA */
 
 .axioma{
