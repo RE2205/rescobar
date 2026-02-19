@@ -487,3 +487,22 @@ body{
     line-height:1.15;
   }
 }
+/* =========================
+   VELO PARA IMAGEN OSCURA PODCAST
+========================= */
+
+.podcast-center{
+  position:relative;
+}
+
+.podcast-center::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(
+    to bottom,
+    rgba(0,0,0,.35),
+    rgba(0,0,0,.55)
+  );
+  pointer-events:none;
+}
