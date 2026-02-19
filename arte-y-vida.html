@@ -18,9 +18,9 @@
   --rosa:#ff4ecd;
   --verde:#3dff9c;
   --azul:#4ddcff;
+  --amarillo:#ffd23f;
+  --violeta:rgba(120,80,255,.35);
 }
-
-/* RESET */
 
 *{ box-sizing:border-box; }
 
@@ -30,10 +30,10 @@ html,body{
 }
 
 body{
-  background:var(--negro);
-  color:var(--blanco);
   font-family: system-ui, -apple-system, "Inter", Arial, sans-serif;
   line-height:1.6;
+  background:var(--blanco);
+  color:var(--negro);
 }
 
 .wrap{
@@ -42,12 +42,13 @@ body{
   padding:0 24px;
 }
 
-/* ================= HERO (NEGRO) ================= */
+/* ================= HERO (AHORA BLANCO) ================= */
 
 header{
-  padding:120px 0 80px;
+  padding:120px 0 100px;
   text-align:center;
-  background:var(--negro);
+  background:var(--blanco);
+  color:var(--negro);
 }
 
 h1{
@@ -72,21 +73,20 @@ h1{
   height:2px;
   background:linear-gradient(
     90deg,
-    rgba(255,78,205,.5),
-    rgba(77,220,255,.5)
+    rgba(255,78,205,.6),
+    rgba(77,220,255,.6)
   );
-  opacity:.6;
+  opacity:.8;
   border-radius:2px;
   transform:rotate(-1deg);
 }
 
-/* ================= LA PILA (BLANCO) ================= */
+/* ================= LA PILA (NEGRO) ================= */
 
 .la-pila{
-  padding:80px 0;
-  background:#ffffff;
-  color:var(--negro);
-  border-top:2px solid #000000;
+  padding:96px 0;
+  background:var(--negro);
+  color:var(--blanco);
 }
 
 .la-pila img{
@@ -95,22 +95,22 @@ h1{
   display:block;
   margin:0 auto;
   border-radius:12px;
-  box-shadow:0 20px 60px rgba(0,0,0,.15);
+  box-shadow:0 20px 60px rgba(0,0,0,.5);
 }
 
-/* ================= MANIFIESTO (NEGRO) ================= */
+/* ================= MANIFIESTO (BLANCO) ================= */
 
 .manifiesto{
   padding:96px 0;
   text-align:center;
-  background:var(--negro);
-  color:var(--blanco);
+  background:var(--blanco);
+  color:var(--negro);
 }
 
 .manifiesto p{
   max-width:640px;
   font-size:18px;
-  color:var(--gris);
+  color:#444;
   margin:0 auto 8px;
 }
 
@@ -121,18 +121,23 @@ h1{
 .manifiesto p:first-of-type,
 .manifiesto p:nth-of-type(odd):not(.nota){
   font-weight:600;
-  color:var(--blanco);
+  color:var(--negro);
 }
 
-/* ================= FRANJA GESTO (BLANCO) ================= */
+/* ================= AXIOMA (NEGRO CON DEGRADADO ORIGINAL) ================= */
 
 .franja-gesto{
-  padding:72px 0;
+  padding:100px 0;
   text-align:center;
-  background:#ffffff;
-  color:var(--negro);
-  border-top:2px solid #000000;
-  border-bottom:2px solid #000000;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(0,0,0,0) 0%,
+      var(--violeta) 50%,
+      rgba(0,0,0,0) 100%
+    ),
+    var(--negro);
+  color:var(--blanco);
 }
 
 .franja-gesto p{
@@ -146,12 +151,12 @@ h1{
   color:var(--rosa);
 }
 
-/* ================= PERSONAS (NEGRO) ================= */
+/* ================= PERSONAS (BLANCO) ================= */
 
 .personas{
   padding:120px 0;
-  background:var(--negro);
-  color:var(--blanco);
+  background:var(--blanco);
+  color:var(--negro);
 }
 
 .personas-grid{
@@ -167,7 +172,7 @@ h1{
   max-width:340px;
   border-radius:12px;
   margin-bottom:24px;
-  box-shadow:0 12px 40px rgba(0,0,0,.4);
+  box-shadow:0 12px 40px rgba(0,0,0,.15);
 }
 
 .persona h3{
@@ -178,7 +183,7 @@ h1{
 }
 
 .persona p{
-  color:var(--gris);
+  color:#555;
   font-size:17px;
   max-width:360px;
 }
@@ -195,21 +200,20 @@ h1{
   }
 }
 
-/* ================= CONTACTO (BLANCO) ================= */
+/* ================= CONTACTO (NEGRO) ================= */
 
 .contacto{
-  padding:100px 0;
+  padding:120px 0;
   text-align:center;
-  background:#ffffff;
-  color:var(--negro);
-  border-top:2px solid #000000;
+  background:var(--negro);
+  color:var(--blanco);
 }
 
 .contacto a{
   font-size:20px;
-  color:var(--negro);
+  color:var(--blanco);
   text-decoration:none;
-  border-bottom:2px solid var(--negro);
+  border-bottom:2px solid var(--blanco);
   padding-bottom:6px;
 }
 
@@ -285,7 +289,7 @@ h1{
       <img src="assets/marre.jpg" alt="Alejandro Marré" />
       <h3>Alejandro Marré</h3>
       <p>
-        Artista, poeta y comunicador.<br><br>
+        Artista y poeta.<br><br>
         Explora el gesto creativo como territorio de verdad,
         ahí donde la palabra falla y la imagen todavía resiste.
       </p>
