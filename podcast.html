@@ -7,6 +7,11 @@
 
 <style>
 
+/* ==================================================
+   DESAPRE(HE)NDER PARA CRESER
+   Versión minimal final
+   ================================================== */
+
 :root{
   --negro:#0b0b0c;
   --negro-profundo:#050505;
@@ -15,7 +20,6 @@
   --azul:#6f8f9f;
   --linea:rgba(0,0,0,.08);
   --linea-oscura:rgba(255,255,255,.10);
-  --yt:#FF0000;
 }
 
 *{ box-sizing:border-box; }
@@ -185,39 +189,6 @@ h1{
   opacity:0;
 }
 
-/* ================= BOTÓN YOUTUBE ================= */
-
-.youtube-cta{
-  text-align:center;
-  padding:50px 0 90px;
-}
-
-.youtube-btn{
-  display:inline-flex;
-  align-items:center;
-  gap:12px;
-  padding:14px 22px;
-  border-radius:999px;
-  background:var(--yt);
-  color:#fff;
-  font-size:14px;
-  letter-spacing:.18em;
-  text-transform:uppercase;
-  text-decoration:none;
-  transition:.25s ease;
-}
-
-.youtube-btn svg{
-  width:18px;
-  height:18px;
-  fill:#fff;
-}
-
-.youtube-btn:hover{
-  background:#cc0000;
-  transform:translateY(-2px);
-}
-
 /* ================= BLOQUE FINAL ================= */
 
 .bloque{
@@ -235,6 +206,39 @@ h1{
   font-weight:500;
   letter-spacing:-0.01em;
   color:rgba(255,255,255,.92);
+}
+
+/* ================= ICONOS FINALES ================= */
+
+.plataformas{
+  background:var(--negro-profundo);
+  padding:40px 0 80px;
+  text-align:center;
+}
+
+.plataformas-icons{
+  display:flex;
+  justify-content:center;
+  gap:36px;
+}
+
+.plataformas-icons a{
+  display:inline-flex;
+  transition:.25s ease;
+}
+
+.plataformas-icons svg{
+  width:22px;
+  height:22px;
+  stroke:rgba(255,255,255,.75);
+  fill:none;
+  stroke-width:1.6;
+  transition:.25s ease;
+}
+
+.plataformas-icons a:hover svg{
+  stroke:var(--azul);
+  transform:translateY(-2px);
 }
 
 /* ================= RESPONSIVE ================= */
@@ -295,19 +299,54 @@ h1{
   </div>
 </section>
 
-<section class="youtube-cta">
-  <a href="https://youtube.com/@desaprenderparacreser?si=r9JIpxRR4Vvi7LTd" target="_blank" class="youtube-btn">
-    <svg viewBox="0 0 24 24">
-      <path d="M23.5 6.2a2.8 2.8 0 0 0-2-2C19.7 3.7 12 3.7 12 3.7s-7.7 0-9.5.5a2.8 2.8 0 0 0-2 2A29 29 0 0 0 0 12a29 29 0 0 0 .5 5.8 2.8 2.8 0 0 0 2 2c1.8.5 9.5.5 9.5.5s7.7 0 9.5-.5a2.8 2.8 0 0 0 2-2A29 29 0 0 0 24 12a29 29 0 0 0-.5-5.8ZM9.7 15.5V8.5l6.3 3.5-6.3 3.5Z"/>
-    </svg>
-    Ver en YouTube
-  </a>
-</section>
-
 <section class="bloque">
   <div class="wrap">
     <p>Aquí no se habla para tranquilizar.</p>
     <p>Pensar también es una forma de cuidado.</p>
+  </div>
+</section>
+
+<section class="plataformas">
+  <div class="wrap plataformas-icons">
+
+    <!-- YouTube -->
+    <a href="https://youtube.com/@desaprenderparacreser?si=r9JIpxRR4Vvi7LTd" target="_blank">
+      <svg viewBox="0 0 24 24">
+        <polygon points="10,8 16,12 10,16"/>
+      </svg>
+    </a>
+
+    <!-- Spotify -->
+    <a href="https://open.spotify.com/show/5NllZfPwaPRuVHUwCcgCbH?si=82a0e185c6204f8d" target="_blank">
+      <path d="M8 11c3-1 7-.5 9 1M8.5 14c2.5-.7 5-.4 7 .6M9 17c2-.5 4-.3 5.5.4"/>
+      </svg>
+    </a>
+
+    <!-- Apple -->
+    <a href="https://podcasts.apple.com/gt/podcast/desapre-he-nder-para-creser/id1714893342" target="_blank">
+      <svg viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="8"/>
+        <circle cx="12" cy="12" r="2"/>
+      </svg>
+    </a>
+
+    <!-- Instagram -->
+    <a href="TU_LINK_INSTAGRAM" target="_blank">
+      <svg viewBox="0 0 24 24">
+        <rect x="4" y="4" width="16" height="16" rx="4"/>
+        <circle cx="12" cy="12" r="3.5"/>
+        <circle cx="17" cy="7" r="1"/>
+      </svg>
+    </a>
+
+    <!-- TikTok -->
+    <a href="TU_LINK_TIKTOK" target="_blank">
+      <svg viewBox="0 0 24 24">
+        <path d="M14 4v8a4 4 0 1 1-4-4"/>
+        <path d="M14 4c1 2 2.5 3 4 3"/>
+      </svg>
+    </a>
+
   </div>
 </section>
 
