@@ -496,7 +496,7 @@ body{
 }
 
 .podcast-center img{
-  filter: brightness(1.22) contrast(1.12) saturate(1.08);
+  filter: brightness(1.45) contrast(1.12) saturate(1.08);
   transition: filter .3s ease;
 }
 
