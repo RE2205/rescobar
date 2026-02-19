@@ -77,15 +77,27 @@ h1{
   transition:.25s ease;
 }
 
+.back-link{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  font-size:11px;
+  letter-spacing:.28em;
+  text-transform:uppercase;
+  color:rgba(0,0,0,.55);
+  text-decoration:none;
+  margin-bottom:36px;   /* lo sube visualmente */
+  transition:.25s ease;
+}
+
 .back-link::before{
   content:"←";
-  font-size:14px;
+  font-size:12px;
   opacity:.6;
 }
 
 .back-link:hover{
   color:var(--azul);
-  border-color:var(--azul);
 }
 /* AXIOMA */
 
