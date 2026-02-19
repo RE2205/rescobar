@@ -488,7 +488,7 @@ body{
   }
 }
 /* =========================
-   REALCE LUMINOSO PODCAST CENTER
+   REALCE LUMINOSO PODCAST CENTER (FINO)
 ========================= */
 
 .podcast-center{
@@ -496,7 +496,7 @@ body{
 }
 
 .podcast-center img{
-  filter: brightness(1.15) contrast(1.1) saturate(1.05);
+  filter: brightness(1.22) contrast(1.12) saturate(1.08);
   transition: filter .3s ease;
 }
 
@@ -506,8 +506,9 @@ body{
   inset:0;
   background: radial-gradient(
     circle at center,
-    rgba(255,255,255,.15),
-    rgba(255,255,255,0) 60%
+    rgba(255,255,255,.22),
+    rgba(255,255,255,.05) 45%,
+    rgba(255,255,255,0) 70%
   );
   mix-blend-mode: screen;
   pointer-events:none;
