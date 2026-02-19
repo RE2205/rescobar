@@ -1,22 +1,522 @@
 <!doctype html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Documental</title>
-  <link rel="stylesheet" href="styles-clean.css?v=11001" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>GUBIDA · Archivo de una mirada</title>
+<meta name="description" content="Documental con mirada antropológica sobre un padecimiento cultural. Escucha, contexto y dignidad." />
+
+<style>
+:root{
+  --blanco-hueso:#f4f2ec;
+  --negro-profundo:#0e0e0f;
+  --gris-medio:#6f6f6a;
+  --gris-claro:#d9d6cf;
+  --acento:#9c7a4e; /* bronce sobrio */
+}
+
+*{box-sizing:border-box;}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  margin:0;
+  font-family: "Georgia", "Times New Roman", serif;
+  background:var(--blanco-hueso);
+  color:var(--negro-profundo);
+  line-height:1.7;
+}
+
+img{
+  max-width:100%;
+  display:block;
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
+a:focus,
+button:focus,
+input:focus,
+textarea:focus{
+  outline:2px solid var(--acento);
+  outline-offset:3px;
+}
+
+.wrap{
+  max-width:1100px;
+  margin:0 auto;
+  padding:0 24px;
+}
+
+section{
+  padding:100px 0;
+  border-top:1px solid var(--gris-claro);
+}
+
+h1,h2,h3{
+  font-weight:500;
+  letter-spacing:.2px;
+  margin:0 0 16px 0;
+}
+
+h1{
+  font-size:clamp(2.4rem, 4vw, 3.2rem);
+}
+
+h2{
+  font-size:clamp(1.8rem, 3vw, 2.2rem);
+}
+
+h3{
+  font-size:1.1rem;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+  color:var(--gris-medio);
+}
+
+p{
+  margin:0 0 18px 0;
+  font-size:1.05rem;
+}
+
+.small{
+  font-size:.85rem;
+  color:var(--gris-medio);
+}
+
+blockquote{
+  font-style:italic;
+  font-size:1.2rem;
+  margin:40px 0;
+  padding-left:24px;
+  border-left:2px solid var(--acento);
+  color:#2a2a28;
+}
+
+/* NAV */
+.nav{
+  position:sticky;
+  top:0;
+  background:rgba(244,242,236,.95);
+  backdrop-filter:blur(6px);
+  z-index:1000;
+  border-bottom:1px solid var(--gris-claro);
+}
+
+.nav-inner{
+  display:flex;
+  justify-content:flex-end;
+  gap:28px;
+  padding:18px 24px;
+  font-size:.9rem;
+}
+
+.nav-inner a{
+  position:relative;
+}
+
+.nav-inner a::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:-4px;
+  width:0;
+  height:1px;
+  background:var(--negro-profundo);
+  transition:width .3s ease;
+}
+
+.nav-inner a:hover::after{
+  width:100%;
+}
+
+/* HERO */
+.hero{
+  padding:140px 0 120px;
+  border-top:none;
+}
+
+.hero p{
+  max-width:700px;
+}
+
+.cta-group{
+  margin-top:36px;
+  display:flex;
+  gap:16px;
+  flex-wrap:wrap;
+}
+
+.btn{
+  padding:12px 22px;
+  border:1px solid var(--negro-profundo);
+  font-size:.9rem;
+  letter-spacing:.05em;
+  text-transform:uppercase;
+  transition:all .25s ease;
+}
+
+.btn.primary{
+  background:var(--negro-profundo);
+  color:var(--blanco-hueso);
+}
+
+.btn.primary:hover{
+  background:var(--acento);
+  border-color:var(--acento);
+}
+
+.btn.secondary:hover{
+  background:var(--gris-claro);
+}
+
+/* MIRADA */
+.grid-3{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:40px;
+  margin-top:50px;
+}
+
+.card{
+  padding-top:10px;
+  border-top:1px solid var(--gris-claro);
+  transition:transform .3s ease;
+}
+
+.card:hover{
+  transform:translateY(-4px);
+}
+
+/* TIRA */
+.strip-section{
+  padding:0;
+}
+
+.strip-wrapper{
+  overflow-x:auto;
+  scroll-snap-type:x mandatory;
+}
+
+.strip{
+  display:flex;
+  min-width:100%;
+}
+
+.strip img{
+  height:420px;
+  object-fit:cover;
+  flex:0 0 33.333%;
+  scroll-snap-align:start;
+}
+
+/* ARCHIVO */
+.archive-list{
+  margin-top:50px;
+}
+
+.archive-item{
+  padding:26px 0;
+  border-bottom:1px solid var(--gris-claro);
+  transition:background .3s ease;
+}
+
+.archive-item:hover{
+  background:rgba(0,0,0,.02);
+}
+
+/* PADECIMIENTO */
+.columns{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:60px;
+  margin-top:40px;
+}
+
+ul{
+  padding-left:18px;
+  margin:0;
+}
+
+li{
+  margin-bottom:10px;
+}
+
+/* EQUIPO */
+.team-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:40px;
+  margin-top:50px;
+}
+
+.team-card{
+  border-top:1px solid var(--gris-claro);
+  padding-top:16px;
+}
+
+/* CONTACTO */
+form{
+  margin-top:40px;
+  max-width:600px;
+}
+
+input, textarea{
+  width:100%;
+  padding:12px;
+  margin-bottom:16px;
+  border:1px solid var(--gris-claro);
+  background:#fff;
+  font-family:inherit;
+  font-size:1rem;
+}
+
+textarea{
+  min-height:120px;
+  resize:vertical;
+}
+
+footer{
+  padding:60px 0;
+  border-top:1px solid var(--gris-claro);
+  text-align:center;
+  font-size:.85rem;
+}
+
+.back-top{
+  display:inline-block;
+  margin-top:20px;
+  font-size:.85rem;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+  border-bottom:1px solid var(--negro-profundo);
+}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .grid-3,
+  .team-grid,
+  .columns{
+    grid-template-columns:1fr;
+  }
+
+  .strip img{
+    flex:0 0 80%;
+    height:300px;
+  }
+
+  .nav-inner{
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:18px;
+  }
+}
+</style>
 </head>
+
 <body>
-  <header class="hero" style="min-height:55vh;">
-    <div class="wrap">
-      <p class="kicker">DOCUMENTAL</p>
-      <h1 class="headline" style="font-size:clamp(34px,4.2vw,56px);">
-        Trauma, adicciones y cultura.
-      </h1>
-      <p style="margin-top:28px;">
-        <a class="silent-link" href="index.html">← Volver</a>
-      </p>
+
+<nav class="nav">
+  <div class="nav-inner wrap">
+    <a href="#inicio">Inicio</a>
+    <a href="#mirada">Mirada</a>
+    <a href="#archivo">Archivo</a>
+    <a href="#equipo">Equipo</a>
+    <a href="#apoyar">Apoyar</a>
+  </div>
+</nav>
+
+<section class="hero wrap" id="inicio">
+  <h1>Archivo de una escucha</h1>
+  <p>
+    Un documental con mirada antropológica sobre GUBIDA —o “por engasado”— como experiencia cultural vivida. 
+    Una aproximación desde el campo, la memoria y la ética del cuidado.
+  </p>
+
+  <blockquote>
+    “Qué hace una persona sensible en un mundo que no sabe escuchar.”
+  </blockquote>
+
+  <div class="cta-group">
+    <a href="#" class="btn primary">Ver teaser</a>
+    <a href="#archivo" class="btn secondary">Leer la nota de campo</a>
+  </div>
+</section>
+
+<section id="mirada">
+  <div class="wrap">
+    <h2>Mirada</h2>
+    <p>
+      Este proyecto no pretende explicar desde fuera. Se aproxima con respeto a un fenómeno cultural que se vive, se nombra y se transmite dentro de una comunidad.
+    </p>
+
+    <div class="grid-3">
+      <div class="card">
+        <h3>Escucha y contexto</h3>
+        <p>
+          Comprender implica situar. La cámara no invade; observa. La palabra no impone; dialoga.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Comunidad y memoria</h3>
+        <p>
+          Las experiencias individuales se entrelazan con historia, territorio y relatos compartidos.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Ética y cuidado</h3>
+        <p>
+          Algunos nombres y detalles se reservan por respeto. La dignidad antecede a la narrativa.
+        </p>
+      </div>
     </div>
-  </header>
+  </div>
+</section>
+
+<section class="strip-section">
+  <div class="strip-wrapper">
+    <div class="strip">
+      <img src="director-filmando.jpg" alt="Director filmando en campo">
+      <img src="ronald.jpg" alt="Investigador en el territorio">
+      <img src="pueblo.jpg" alt="Comunidad y paisaje">
+    </div>
+  </div>
+</section>
+
+<section id="archivo">
+  <div class="wrap">
+    <h2>Archivo · Notas de campo</h2>
+    <div class="archive-list">
+
+      <div class="archive-item">
+        <h3>Primer encuentro</h3>
+        <p>La palabra surge antes que la explicación. Una conversación bajo la sombra.</p>
+        <div class="small">Enero 2026</div>
+      </div>
+
+      <div class="archive-item">
+        <h3>Territorio y relato</h3>
+        <p>El paisaje como parte activa de la experiencia narrada.</p>
+        <div class="small">Febrero 2026</div>
+      </div>
+
+      <div class="archive-item">
+        <h3>Silencios compartidos</h3>
+        <p>Lo que no se dice también forma parte del archivo.</p>
+        <div class="small">Marzo 2026</div>
+      </div>
+
+      <div class="archive-item">
+        <h3>Memoria intergeneracional</h3>
+        <p>Historias que atraviesan generaciones sin perder su fuerza.</p>
+        <div class="small">Abril 2026</div>
+      </div>
+
+      <div class="archive-item">
+        <h3>Lenguaje y experiencia</h3>
+        <p>Nombrar no es reducir; es situar dentro de un mundo simbólico.</p>
+        <div class="small">Mayo 2026</div>
+      </div>
+
+      <div class="archive-item">
+        <h3>Ética del registro</h3>
+        <p>Decidir qué mostrar también es una forma de cuidado.</p>
+        <div class="small">Junio 2026</div>
+      </div>
+
+    </div>
+
+    <p class="small">
+      Algunos nombres y detalles han sido reservados por respeto y responsabilidad ética.
+    </p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>El padecimiento cultural</h2>
+    <p>
+      GUBIDA —también nombrado como “por engasado”— se vive dentro de un entramado cultural específico. 
+      Este documental no lo aborda como diagnóstico aislado, sino como experiencia situada.
+    </p>
+
+    <div class="columns">
+      <div>
+        <h3>Lo que NO es este documental</h3>
+        <ul>
+          <li>No es un espectáculo de lo diferente.</li>
+          <li>No es una explicación clínica reduccionista.</li>
+          <li>No es una simplificación mediática.</li>
+        </ul>
+      </div>
+
+      <div>
+        <h3>Lo que sí intenta</h3>
+        <ul>
+          <li>Escuchar con profundidad.</li>
+          <li>Contextualizar sin imponer.</li>
+          <li>Construir un archivo con dignidad.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="equipo">
+  <div class="wrap">
+    <h2>Equipo</h2>
+
+    <div class="team-grid">
+      <div class="team-card">
+        <h3>Dirección</h3>
+        <p>Investigación en campo y mirada narrativa.</p>
+      </div>
+
+      <div class="team-card">
+        <h3>Investigación / Guion</h3>
+        <p>Trabajo documental y construcción del archivo.</p>
+      </div>
+
+      <div class="team-card">
+        <h3>Producción</h3>
+        <p>Coordinación cultural y acompañamiento ético.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="apoyar">
+  <div class="wrap">
+    <h2>Alianzas culturales</h2>
+    <p>
+      Este proyecto busca diálogo con instituciones culturales, académicas y comunitarias interesadas en la memoria, la escucha y el archivo.
+    </p>
+
+    <form>
+      <input type="text" placeholder="Nombre" required>
+      <input type="email" placeholder="Correo electrónico" required>
+      <textarea placeholder="Mensaje"></textarea>
+      <button class="btn primary" type="submit">Enviar mensaje</button>
+    </form>
+
+    <p class="small">
+      La información enviada será utilizada únicamente para establecer contacto relacionado con el proyecto.
+    </p>
+  </div>
+</section>
+
+<footer>
+  © 2026 · Archivo documental
+  <br>
+  <a href="#inicio" class="back-top">Volver arriba</a>
+</footer>
+
 </body>
 </html>
