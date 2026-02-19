@@ -102,10 +102,11 @@ h1{
 .clips-grid{
   display:flex;
   justify-content:center;
+  align-items:flex-start;
   gap:40px;
-  flex-wrap:wrap;
+  flex-wrap:nowrap;   /* ← evita que se vayan en columna */
+  overflow-x:auto;    /* ← por si no caben, permite scroll suave */
 }
-
 .clip{
   width:220px;
 }
@@ -202,11 +203,17 @@ h1{
   preload="metadata">
 </video>
     <div class="clip">
-      <video src="/assets/clip2.mp4" poster="/assets/poster2.jpg" playsinline preload="metadata"></video>
+      <video src="/assets/clip2.mp4" 
+        poster="/assets/poster2.jpg" 
+        playsinline 
+        preload="metadata"></video>
     </div>
 
     <div class="clip">
-      <video src="/assets/clip3.mp4" poster="/assets/poster3.jpg" playsinline preload="metadata"></video>
+      <video src="/assets/clip3.mp4" 
+        poster="/assets/poster3.jpg" 
+        playsinline 
+        preload="metadata"></video>
     </div>
 
   </div>
