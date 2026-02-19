@@ -1,73 +1,63 @@
 <!doctype html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>ReConectar</title>
-  <meta name="description" content="ReConectar con lo que importa cuando la vida se aprieta y la forma todavía no aparece." />
-  <meta name="robots" content="noindex, nofollow" />
+<title>ReConectar</title>
+<meta name="description" content="ReConectar con lo que importa cuando la vida se aprieta y la forma todavía no aparece." />
+<meta name="robots" content="noindex, nofollow" />
 
-  <style>
-    :root{
-      --negro:#0b0b0c;
-      --blanco:#f5f5f2;
-      --gris:#9a9a95;
+<style>
 
-      --rosa:#ff4ecd;
-      --verde:#3dff9c;
-      --azul:#4ddcff;
-      --amarillo:#ffd23f;
-      --violeta:rgba(120,80,255,.35);
-    }
+:root{
+  --negro:#0b0b0c;
+  --blanco:#f5f5f2;
+  --gris:#9a9a95;
 
-    *{ box-sizing:border-box; }
+  --rosa:#ff4ecd;
+  --verde:#3dff9c;
+  --azul:#4ddcff;
+  --amarillo:#ffd23f;
+  --violeta:rgba(120,80,255,.18);
+}
 
-    html,body{
-      margin:0;
-      padding:0;
-    }
+*{ box-sizing:border-box; }
 
-    body{
-      background:var(--negro);
-      color:var(--blanco);
-      font-family: system-ui, -apple-system, "Inter", Arial, sans-serif;
-      line-height:1.6;
-    }
+html,body{
+  margin:0;
+  padding:0;
+}
 
-    .wrap{
-      max-width:1100px;
-      margin:0 auto;
-      padding:0 24px;
-    }
+body{
+  background:var(--negro);
+  color:var(--blanco);
+  font-family: system-ui, -apple-system, "Inter", Arial, sans-serif;
+  line-height:1.6;
+}
 
-    /* ================= HERO ================= */
+.wrap{
+  max-width:1100px;
+  margin:0 auto;
+  padding:0 24px;
+}
 
-    header{
-      padding:120px 0 100px;
-      position:relative;
-      overflow:hidden;
-      text-align:center;
-    }
+/* ================= HERO ================= */
 
-    header::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:
-        radial-gradient(600px 300px at 20% 20%, rgba(255,78,205,.22), transparent 60%),
-        radial-gradient(600px 300px at 80% 30%, rgba(77,220,255,.22), transparent 60%),
-        radial-gradient(600px 300px at 50% 80%, rgba(61,255,156,.18), transparent 60%);
-      pointer-events:none;
-    }
+header{
+  padding:120px 0 100px;
+  text-align:center;
+  background:var(--negro);
+}
 
-    h1{
-      font-family: Georgia, "Times New Roman", serif;
-      font-size:clamp(42px,6vw,82px);
-      line-height:1.1;
-      font-weight:400;
-      margin:0;
-    }
+h1{
+  font-family: Georgia, serif;
+  font-size:clamp(42px,6vw,82px);
+  line-height:1.1;
+  font-weight:400;
+  margin:0;
+}
+
 .gesto{
   position:relative;
   display:inline-block;
@@ -79,241 +69,235 @@
   left:-2%;
   right:-2%;
   bottom:-6px;
-  height:3px;
+  height:2px;
   background:linear-gradient(
     90deg,
-    rgba(255,78,205,.6),
-    rgba(77,220,255,.6)
+    rgba(255,78,205,.5),
+    rgba(77,220,255,.5)
   );
   opacity:.6;
-  border-radius:3px;
+  border-radius:2px;
   transform:rotate(-1deg);
 }
-    /* ================= LA PILA ================= */
 
-    .la-pila{
-      padding:64px 0 8px;
-    }
+/* ================= LA PILA (BLANCO) ================= */
 
-    .la-pila img{
-      width:100%;
-      max-width:720px;
-      display:block;
-      margin:0 auto;
-      border-radius:12px;
-      transform:rotate(-0.6deg);
-      filter:contrast(1.05) saturate(1.15);
-      box-shadow:
-        0 20px 60px rgba(0,0,0,.45),
-        0 0 0 1px rgba(255,255,255,.06);
-    }
+.la-pila{
+  padding:96px 0;
+  background:var(--blanco);
+  color:var(--negro);
+}
 
-    /* ================= MANIFIESTO ================= */
+.la-pila img{
+  width:100%;
+  max-width:720px;
+  display:block;
+  margin:0 auto;
+  border-radius:12px;
+  box-shadow:0 20px 60px rgba(0,0,0,.15);
+}
 
-    .manifiesto{
-      padding:24px 0 56px;
-      text-align:center;
-    }
+/* ================= MANIFIESTO (NEGRO) ================= */
 
-    .manifiesto p{
-      max-width:640px;
-      font-size:18px;
-      color:var(--gris);
-      margin:0 auto 8px;
-    }
+.manifiesto{
+  padding:96px 0;
+  text-align:center;
+  background:var(--negro);
+  color:var(--blanco);
+}
 
-    .manifiesto .nota{
-      margin:24px auto;
-    }
+.manifiesto p{
+  max-width:640px;
+  font-size:18px;
+  color:var(--gris);
+  margin:0 auto 8px;
+}
 
-    .manifiesto p:first-of-type,
-    .manifiesto p:nth-of-type(odd):not(.nota){
-      font-weight:600;
-      color:var(--blanco);
-    }
+.manifiesto .nota{
+  margin:24px auto;
+}
 
-    /* ================= FRANJA GESTO ================= */
+.manifiesto p:first-of-type,
+.manifiesto p:nth-of-type(odd):not(.nota){
+  font-weight:600;
+  color:var(--blanco);
+}
 
-    .franja-gesto{
-      padding:56px 0;
-      text-align:center;
-      background:
-        linear-gradient(
-          180deg,
-          rgba(0,0,0,0) 0%,
-          var(--violeta) 50%,
-          rgba(0,0,0,0) 100%
-        );
-      border-top:1px solid rgba(255,255,255,.06);
-      border-bottom:1px solid rgba(255,255,255,.06);
-    }
+/* ================= FRANJA GESTO (BLANCO) ================= */
 
-    .franja-gesto p{
-      font-family: Georgia, "Times New Roman", serif;
-      font-size:clamp(28px,4vw,46px);
-      line-height:1.25;
-      margin:0;
-      color:var(--blanco);
-    }
+.franja-gesto{
+  padding:80px 0;
+  text-align:center;
+  background:var(--blanco);
+  color:var(--negro);
+  border-top:1px solid rgba(0,0,0,.06);
+  border-bottom:1px solid rgba(0,0,0,.06);
+}
 
-    .franja-gesto .verdad{
-      color:var(--rosa);
-    }
+.franja-gesto p{
+  font-family: Georgia, serif;
+  font-size:clamp(28px,4vw,46px);
+  line-height:1.25;
+  margin:0;
+}
 
-    /* ================= PERSONAS ================= */
+.franja-gesto .verdad{
+  color:var(--rosa);
+}
 
-    .personas{
-      padding:96px 0;
-    }
+/* ================= PERSONAS (NEGRO) ================= */
 
-    .personas-grid{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:96px;
-      max-width:900px;
-      margin:0 auto;
-    }
+.personas{
+  padding:120px 0;
+  background:var(--negro);
+  color:var(--blanco);
+}
 
-    .persona img{
-      width:100%;
-      max-width:320px;
-      border-radius:12px;
-      margin-bottom:24px;
-      filter:grayscale(1) contrast(1.05);
-      box-shadow:0 12px 40px rgba(0,0,0,.4);
-    }
+.personas-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:96px;
+  max-width:900px;
+  margin:0 auto;
+}
 
-    .persona h3{
-      font-family: Georgia, serif;
-      font-size:26px;
-      font-weight:400;
-      margin:0 0 12px;
-    }
+.persona img{
+  width:100%;
+  max-width:340px;
+  border-radius:12px;
+  margin-bottom:24px;
+  filter:contrast(1.05);
+  box-shadow:0 12px 40px rgba(0,0,0,.4);
+}
 
-    .persona p{
-      color:var(--gris);
-      font-size:17px;
-      max-width:360px;
-    }
+.persona h3{
+  font-family: Georgia, serif;
+  font-size:26px;
+  font-weight:400;
+  margin:0 0 12px;
+}
 
-    @media (max-width:900px){
-      .personas-grid{
-        grid-template-columns:1fr;
-        gap:72px;
-        text-align:center;
-      }
+.persona p{
+  color:var(--gris);
+  font-size:17px;
+  max-width:360px;
+}
 
-      .persona p{
-        margin:0 auto;
-      }
-    }
+/* ================= CONTACTO (BLANCO) ================= */
 
-    /* ================= CONTACTO ================= */
+.contacto{
+  padding:120px 0;
+  text-align:center;
+  background:var(--blanco);
+  color:var(--negro);
+}
 
-    .contacto{
-      padding:104px 0;
-      text-align:center;
-    }
+.contacto a{
+  font-size:20px;
+  color:var(--negro);
+  text-decoration:none;
+  border-bottom:2px solid var(--negro);
+  padding-bottom:6px;
+}
 
-    .contacto a{
-      font-size:20px;
-      color:var(--blanco);
-      text-decoration:none;
-      border-bottom:2px solid var(--verde);
-      padding-bottom:6px;
-    }
+.contacto a:hover{
+  opacity:.7;
+}
 
-    .contacto a:hover{
-      color:var(--verde);
-    }
-  </style>
+@media (max-width:900px){
+  .personas-grid{
+    grid-template-columns:1fr;
+    gap:72px;
+    text-align:center;
+  }
+
+  .persona p{
+    margin:0 auto;
+  }
+}
+
+</style>
 </head>
 
 <body>
 
-  <!-- HERO -->
-  <header>
-    <div class="wrap">
-      <h1>
-  El arte es el <span class="gesto">inconsciente</span><br>
-  hallando un lenguaje.
-</h1>
-    </div>
-  </header>
+<header>
+  <div class="wrap">
+    <h1>
+      El arte es el <span class="gesto">inconsciente</span><br>
+      hallando un lenguaje.
+    </h1>
+  </div>
+</header>
 
-  <!-- LA PILA -->
-  <section class="la-pila">
-    <div class="wrap">
-      <img src="assets/la-pila.jpg" alt="La pila de libros" />
-    </div>
-  </section>
+<section class="la-pila">
+  <div class="wrap">
+    <img src="assets/la-pila.jpg" alt="La pila de libros" />
+  </div>
+</section>
 
-  <!-- MANIFIESTO -->
-  <section class="manifiesto">
-    <div class="wrap">
-      <p>Esto no es productividad.</p>
-      <p>No es bienestar.</p>
-      <p>No es una técnica para crear más.</p>
+<section class="manifiesto">
+  <div class="wrap">
+    <p>Esto no es productividad.</p>
+    <p>No es bienestar.</p>
+    <p>No es una técnica para crear más.</p>
 
-      <p class="nota">
-        Es un espacio para mirar<br>
-        lo que evitas<br>
-        cuando sientes que estás bloqueado.
-      </p>
+    <p class="nota">
+      Es un espacio para mirar<br>
+      lo que evitas<br>
+      cuando sientes que estás bloqueado.
+    </p>
 
-      <p>Crear no es hacer.</p>
-      <p>Crear es exponerse.</p>
+    <p>Crear no es hacer.</p>
+    <p>Crear es exponerse.</p>
 
-      <p class="nota">
-        Y casi nadie quiere hacer eso<br>
-        sin anestesia.
-      </p>
-    </div>
-  </section>
+    <p class="nota">
+      Y casi nadie quiere hacer eso<br>
+      sin anestesia.
+    </p>
+  </div>
+</section>
 
-  <!-- FRANJA GESTO -->
-  <section class="franja-gesto">
-    <div class="wrap">
+<section class="franja-gesto">
+  <div class="wrap">
+    <p>
+      Crear es <span class="verdad">decir la verdad</span><br>
+      sin saber todavía cómo.
+    </p>
+  </div>
+</section>
+
+<section class="personas">
+  <div class="wrap personas-grid">
+
+    <div class="persona">
+      <img src="assets/ronald-bn.jpg" alt="Ronald Escobar" />
+      <h3>Ronald Escobar</h3>
       <p>
-        Crear es <span class="verdad">decir la verdad</span><br>
-        sin saber todavía cómo.
+        Psiquiatría, arte y vínculo.<br><br>
+        Acompaña procesos cuando la vida aprieta
+        y la palabra todavía no alcanza.
       </p>
     </div>
-  </section>
 
-  <!-- PERSONAS -->
-  <section class="personas">
-    <div class="wrap personas-grid">
-
-      <div class="persona">
-        <img src="assets/ronald.jpg" alt="Ronald Escobar" />
-        <h3>Ronald Escobar</h3>
-        <p>
-          Psiquiatría, arte y vínculo.<br><br>
-          Acompaña procesos cuando la vida aprieta
-          y la palabra todavía no alcanza.
-        </p>
-      </div>
-
-      <div class="persona">
-        <img src="assets/marre.jpg" alt="Alejandro Marré" />
-        <h3>Alejandro Marré</h3>
-        <p>
-          Artista y poeta.<br><br>
-          Explora el gesto creativo como territorio de verdad,
-          ahí donde la palabra falla y la imagen todavía resiste.
-        </p>
-      </div>
-
+    <div class="persona">
+      <img src="assets/marre-bn.jpg" alt="Alejandro Marré" />
+      <h3>Alejandro Marré</h3>
+      <p>
+        Artista y poeta.<br><br>
+        Explora el gesto creativo como territorio de verdad,
+        ahí donde la palabra falla y la imagen todavía resiste.
+      </p>
     </div>
-  </section>
 
-  <!-- CONTACTO -->
-  <section class="contacto">
-    <a href="https://wa.me/50230607168" target="_blank" rel="noopener">
-      Hablemos →
-    </a>
-  </section>
+  </div>
+</section>
+
+<section class="contacto">
+  <a href="https://wa.me/50230607168" target="_blank" rel="noopener">
+    Hablemos →
+  </a>
+</section>
 
 </body>
 </html>
