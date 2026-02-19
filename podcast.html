@@ -16,6 +16,7 @@
   --azul:#6f8f9f;
   --linea:rgba(0,0,0,.08);
   --linea-oscura:rgba(255,255,255,.10);
+  --yt:#FF0000;
 }
 
 *{ box-sizing:border-box; }
@@ -34,7 +35,7 @@ body{
   padding:0 32px;
 }
 
-/* ================= HERO ================= */
+/* HERO */
 
 .hero{
   background:var(--blanco);
@@ -53,7 +54,6 @@ h1{
   font-size:clamp(38px,5vw,60px);
   margin:0 0 18px;
   font-weight:600;
-  color:var(--negro-profundo);
 }
 
 .hero p{
@@ -63,34 +63,7 @@ h1{
   margin:0 0 28px;
 }
 
-/* BOTÓN REGRESAR */
-
-.back-link{
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
-  font-size:13px;
-  letter-spacing:.22em;
-  text-transform:uppercase;
-  color:var(--negro-profundo);
-  text-decoration:none;
-  border-bottom:1px solid var(--negro-profundo);
-  padding-bottom:4px;
-  transition:.25s ease;
-}
-
-.back-link::before{
-  content:"←";
-  font-size:14px;
-  opacity:.6;
-}
-
-.back-link:hover{
-  color:var(--azul);
-  border-color:var(--azul);
-}
-
-/* ================= AXIOMA ================= */
+/* AXIOMA */
 
 .axioma{
   background:var(--negro-profundo);
@@ -108,11 +81,11 @@ h1{
   font-weight:500;
 }
 
-/* ================= CLIPS ================= */
+/* CLIPS */
 
 .clips{
   background:var(--blanco);
-  padding:90px 0 100px;
+  padding:90px 0 60px;
 }
 
 .clips-grid{
@@ -190,7 +163,40 @@ h1{
   opacity:0;
 }
 
-/* ================= BLOQUE ================= */
+/* BOTÓN YOUTUBE */
+
+.youtube-cta{
+  text-align:center;
+  padding:50px 0 90px;
+}
+
+.youtube-btn{
+  display:inline-flex;
+  align-items:center;
+  gap:12px;
+  padding:14px 22px;
+  border-radius:999px;
+  background:var(--yt);
+  color:#fff;
+  font-size:14px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  text-decoration:none;
+  transition:.25s ease;
+}
+
+.youtube-btn svg{
+  width:18px;
+  height:18px;
+  fill:#fff;
+}
+
+.youtube-btn:hover{
+  background:#cc0000;
+  transform:translateY(-2px);
+}
+
+/* BLOQUE */
 
 .bloque{
   background:var(--negro-profundo);
@@ -205,7 +211,7 @@ h1{
   color:rgba(255,255,255,.85);
 }
 
-/* ================= RESPONSIVE ================= */
+/* RESPONSIVE */
 
 @media (max-width:768px){
   .clip{ width:200px; }
@@ -229,9 +235,6 @@ h1{
     <div class="kicker">Podcast</div>
     <h1>Desapre(he)nder para CreSer</h1>
     <p>Conversaciones que cuestionan lo que creemos entender.</p>
-
-    <!-- BOTÓN -->
-    <a href="/" class="back-link">Volver al inicio</a>
   </div>
 </section>
 
@@ -265,6 +268,16 @@ h1{
   </div>
 </section>
 
+<section class="youtube-cta">
+  <a href="https://youtube.com/@desaprenderparacreser?si=r9JIpxRR4Vvi7LTd" target="_blank" class="youtube-btn">
+    <!-- Icono oficial YouTube -->
+    <svg viewBox="0 0 24 24">
+      <path d="M23.5 6.2a2.8 2.8 0 0 0-2-2C19.7 3.7 12 3.7 12 3.7s-7.7 0-9.5.5a2.8 2.8 0 0 0-2 2A29 29 0 0 0 0 12a29 29 0 0 0 .5 5.8 2.8 2.8 0 0 0 2 2c1.8.5 9.5.5 9.5.5s7.7 0 9.5-.5a2.8 2.8 0 0 0 2-2A29 29 0 0 0 24 12a29 29 0 0 0-.5-5.8ZM9.7 15.5V8.5l6.3 3.5-6.3 3.5Z"/>
+    </svg>
+    Ver en YouTube
+  </a>
+</section>
+
 <section class="bloque">
   <div class="wrap">
     <p>Aquí no se habla para tranquilizar.</p>
@@ -287,20 +300,4 @@ document.querySelectorAll('.clip').forEach(clip => {
     }
 
     document.querySelectorAll('.clip').forEach(other => {
-      const otherVideo = other.querySelector('video');
-      other.classList.remove('playing');
-      otherVideo.pause();
-      otherVideo.currentTime = 0;
-    });
-
-    if (!video.src) video.src = src;
-
-    video.muted = false;
-    video.play();
-    clip.classList.add('playing');
-  });
-});
-</script>
-
-</body>
-</html>
+      const otherVideo = other.q
