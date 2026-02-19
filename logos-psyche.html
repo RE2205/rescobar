@@ -8,16 +8,12 @@
   <meta name="description" content="Psiquiatría y psicoterapia. Escucha, encuadre y responsabilidad clínica." />
 
   <style>
-    /* =========================================
-       LOGOS PSYCHE
-       Libro clínico · Blanco / Negro
-       ========================================= */
 
     :root{
       --negro:#000000;
       --blanco:#f6f6f2;
       --gris:#8e8e8a;
-      --acento:#b89a5b; /* bronce sobrio */
+      --acento:#b89a5b;
     }
 
     *{ box-sizing:border-box; }
@@ -40,10 +36,30 @@
       padding:0 24px;
     }
 
+    /* ================= VOLVER ================= */
+
+    .volver-wrap{
+      max-width:880px;
+      margin:40px auto 0;
+      padding:0 24px;
+    }
+
+    .volver{
+      font-size:13px;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      color:var(--gris);
+      text-decoration:none;
+    }
+
+    .volver:hover{
+      color:var(--negro);
+    }
+
     /* ================= APERTURA ================= */
 
     .apertura{
-      padding:180px 0 150px;
+      padding:140px 0 150px;
     }
 
     .apertura h1{
@@ -80,7 +96,7 @@
       text-align:center;
       color:#f4f4f1;
       font-size:15px;
-      letter-spacing:0.24em;
+      letter-spacing:.24em;
       text-transform:uppercase;
       line-height:1.9;
     }
@@ -121,19 +137,18 @@
       margin-bottom:0;
     }
 
-    /* ================= ARTE Y VIDA · NOTA AL MARGEN ================= */
+    /* ================= ARTE Y VIDA · NOTA ================= */
 
     .arte-margen{
       background:var(--blanco);
-      padding:32px 0 48px; /* ⬅️ MUCHO MÁS CONTENIDO */
-   }
+      padding:32px 0 48px;
+    }
 
     .arte-margen p{
       max-width:420px;
       font-size:16px;
       line-height:1.6;
       margin:0;
-      color:var(--negro);
     }
 
     .arte-margen a{
@@ -153,7 +168,7 @@
     .bloque-negro{
       background:var(--negro);
       color:var(--blanco);
-      padding:140px 0;
+      padding:120px 0 140px;
     }
 
     .bloque-negro p{
@@ -168,23 +183,21 @@
 
     /* ================= CONTACTO ================= */
 
-  .contacto{
-  padding:140px 0 180px;
-}
+    .contacto{
+      padding:140px 0 180px;
+    }
 
-.contacto p{
-  max-width:420px;
-  font-size:20px;
-  margin:0 0 48px auto; /* ⬅️ empuja a la derecha */
-  text-align:left;     /* ⬅️ importante: NO justificar a la derecha */
-}
-.contacto a{
-  margin-left:0;
-}
+    .contacto p{
+      max-width:420px;
+      font-size:20px;
+      margin:0 0 48px auto;
+      text-align:left;
+    }
 
-.contacto .wrap{
-  text-align:right;
-}
+    .contacto .wrap{
+      text-align:right;
+    }
+
     .contacto a{
       display:inline-block;
       margin-right:28px;
@@ -227,7 +240,7 @@
       border-color:var(--acento);
     }
 
-    /* ================= RESPONSIVE ================= */
+    /* ================= MOBILE ================= */
 
     @media (max-width:900px){
       .encuadre-grid{
@@ -241,44 +254,58 @@
       }
     }
 
-   @media (max-width:700px){
+    @media (max-width:700px){
 
-  .apertura{
-    padding:100px 0 80px;   /* ⬅️ menos vacío arriba */
-  }
+      .volver-wrap{
+        margin:24px auto 0;
+      }
 
-  .apertura h1{
-    max-width:100%;
-  }
+      .apertura{
+        padding:100px 0 80px;
+      }
 
-  .axioma{
-    padding:48px 0;         /* ⬅️ axioma más compacto */
-  }
+      .apertura h1{
+        max-width:100%;
+      }
 
-  .encuadre{
-    padding:80px 0 64px;    /* ⬅️ imagen + texto más juntos */
-  }
+      .axioma{
+        padding:48px 0;
+      }
 
-  .arte-margen{
-    padding:48px 0 64px;    /* ⬅️ nota al margen respira sin perderse */
-  }
+      .encuadre{
+        padding:80px 0 64px;
+      }
 
-  .bloque-negro{
-    padding:96px 0;         /* ⬅️ sigue siendo fuerte, no largo */
-  }
+      .bloque-negro{
+        padding:96px 0;
+      }
 
-  .contacto{
-    padding:96px 0 120px;
-  }
+      .contacto{
+        padding:96px 0 120px;
+      }
 
-  .dedicatoria{
-    padding:110px 0;
-  }
-}
+      .contacto .wrap{
+        text-align:left;
+      }
+
+      .contacto p{
+        margin:0 0 48px 0;
+      }
+
+      .dedicatoria{
+        padding:110px 0;
+      }
+    }
+
   </style>
 </head>
 
 <body>
+
+  <!-- VOLVER -->
+  <div class="volver-wrap">
+    <a href="index.html" class="volver">← Volver al inicio</a>
+  </div>
 
   <!-- APERTURA -->
   <section class="apertura">
@@ -327,7 +354,7 @@
     </div>
   </section>
 
-  <!-- ARTE Y VIDA · NOTA AL MARGEN -->
+  <!-- ARTE Y VIDA -->
   <section class="arte-margen">
     <div class="wrap">
       <p>
@@ -362,7 +389,7 @@
     <div class="wrap">
       <p>
         Para quienes descubren que no todo puede decirse en voz alta.<br><br>
-        <a href="arte-y-vida.html">ReConectar→</a>
+        <a href="arte-y-vida.html">ReConectar →</a>
       </p>
     </div>
   </section>
