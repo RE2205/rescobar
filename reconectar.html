@@ -269,12 +269,24 @@ h1{
   width:40%;
   margin:0 auto;
 }
+/* =========================
+   FULL BLEED SOLO RECONectar
+========================= */
 
-</style>
+body.reconectar .wrap{
+  max-width:none;
+  margin:0;
+  padding:0 48px; /* aire lateral elegante */
+}
+
+@media (max-width:900px){
+  body.reconectar .wrap{
+    padding:0 24px;
+  }
+}</style>
 </head>
 
-<body>
-
+<body class="reconectar">
 <nav>
   <div class="nav-inner">
     <a href="/">Inicio</a>
