@@ -9,29 +9,28 @@
 
 <style>
 
-:root{
-  --negro:#050505;
-  --negro-secundario:#0b0b0c;
-  --blanco:#ffffff;
-  --gris:#8e8e8e;
+/* ================= BASE GLOBAL ================= */
 
-  --rosa:#ff4ecd;
-  --azul:#4ddcff;
-}
-
-/* ================= BASE ================= */
-
-html{
+html,
+body{
+  margin:0;
+  padding:0;
   background:#050505;
+  min-height:100%;
 }
 
 body{
-  margin:0;
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
   font-family:system-ui,-apple-system,"Inter",Arial,sans-serif;
-  background:#050505;
   color:#ffffff;
   line-height:1.6;
   -webkit-font-smoothing:antialiased;
+}
+
+main{
+  flex:1;
 }
 
 .wrap{
@@ -137,11 +136,9 @@ h1{
   display:block;
   margin:0 auto;
   border-radius:6px;
-
   box-shadow:
     0 80px 140px rgba(0,0,0,.22),
     0 30px 50px rgba(0,0,0,.15);
-
   filter:contrast(1.05) saturate(.95);
 }
 
@@ -286,6 +283,8 @@ h1{
   </div>
 </nav>
 
+<main>
+
 <header>
   <div class="wrap">
     <h1>
@@ -363,6 +362,8 @@ h1{
     Hablemos
   </a>
 </section>
+
+</main>
 
 </body>
 </html>
