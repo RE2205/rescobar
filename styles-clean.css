@@ -1,5 +1,5 @@
 :root{
-  --bg:#000000; /* negro real */
+  --bg:#0b0b0c;
   --fg:#f3f3f3;
 }
 
@@ -10,14 +10,10 @@
 *{ box-sizing:border-box; }
 html,body{ height:100%; }
 
-html{
-  background:#000000;
-}
-
 body{
   margin:0;
   font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
-  background:#000000; /* negro puro */
+  background:var(--bg);
   color:var(--fg);
   padding-bottom:72px;
 }
@@ -97,7 +93,7 @@ body{
   top:100%;
   right:0;
   list-style:none;
-  background:#000000;
+  background:#0e0e0f;
   border:1px solid rgba(255,255,255,.08);
   padding:18px 22px;
   min-width:200px;
@@ -154,7 +150,7 @@ body{
 }
 
 /* =========================
-   FRANJA AXIOMA
+   FRANJA AXIOMA (COLOR ORIGINAL)
 ========================= */
 
 .band{
@@ -217,11 +213,11 @@ body{
 }
 
 /* =========================
-   LOGOS PSYCHE (BLANCO REAL)
+   LOGOS PSYCHE (BLANCO)
 ========================= */
 
 .logos-light{
-  background:#ffffff;
+  background:#f6f6f4;
 }
 
 .logos-light .copy h2,
@@ -234,7 +230,7 @@ body{
   padding:22px;
   border-radius:22px;
   border:1px solid rgba(0,0,0,.10);
-  background:#ffffff;
+  background:#f6f6f4;
   display:flex;
   align-items:center;
   justify-content:center;
@@ -248,19 +244,104 @@ body{
 }
 
 /* =========================
-   PODCAST (NEGRO REAL)
+   PODCAST (NEGRO)
 ========================= */
 
 #podcast-entry{
-  background:#000000;
+  background:#0b0b0c;
+}
+
+.podcast-roll{
+  display:flex;
+  gap:20px;
+  overflow-x:auto;
+  padding:14px 0;
+  scrollbar-width:none;
+}
+
+.podcast-roll::-webkit-scrollbar{ display:none; }
+
+.podcast-card{
+  flex:0 0 auto;
+  width:240px;
+  border-radius:14px;
+  overflow:hidden;
+}
+
+.podcast-card img{
+  width:100%;
+  height:150px;
+  object-fit:cover;
+  display:block;
+  filter:grayscale(60%);
+  opacity:.9;
+  transition:.3s ease;
+}
+
+.podcast-card:hover img{
+  filter:none;
+  opacity:1;
+}
+
+.podcast-center{
+  width:280px;
+  transform:translateY(-6px);
+}
+
+.podcast-center img{
+  height:170px;
+}
+.podcast-cta{
+  text-align:center;
+  margin-top:28px;
+}
+
+.podcast-cta a,
+.podcast-cta a:visited{
+  display:inline-block;
+  font-size:14px;
+  letter-spacing:.04em;
+  color:rgba(255,255,255,.7);
+  text-decoration:none;
+  border-bottom:1px solid rgba(255,255,255,.35);
+  padding-bottom:4px;
+}
+
+.podcast-cta a:hover{
+  color:#fff;
+  border-color:#fff;
+}
+/* =========================
+   FRANJA AMARILLA
+========================= */
+
+.band-long{
+  padding:72px 0;
+  background:#FFD800;
+}
+
+.band-quote{
+  font-family:Georgia,'Times New Roman',serif;
+  font-size:clamp(24px,2.4vw,34px);
+  line-height:1.45;
+  color:#0a0a0a;
+  margin:0;
+}
+
+.band-author{
+  margin-top:28px;
+  font-size:12px;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:rgba(0,0,0,.85);
 }
 
 /* =========================
-   DOCUMENTAL (BLANCO REAL)
+   DOCUMENTAL (BLANCO)
 ========================= */
 
 #proyectos{
-  background:#ffffff;
+  background:#f6f6f4;
 }
 
 #proyectos .copy h2,
@@ -270,20 +351,59 @@ body{
 
 #proyectos .lead{ color:#333; }
 
-/* =========================
-   CRESER
-========================= */
-
-#creser{
-  background:#000000;
+.doc-cover{
+  height:380px;
+  border-radius:22px;
+  background-size:cover;
+  background-position:center 25%;
+  background-repeat:no-repeat;
+  filter:contrast(1.05) saturate(1.05);
 }
 
 /* =========================
-   ESCRITURA (BLANCO REAL)
+   CRESER (NEGRO)
+========================= */
+
+#creser{
+  background:#0b0b0c;
+}
+
+#creser .copy h2,
+#creser .copy p{
+  color:#f3f3f3;
+}
+
+#creser .lead{
+  color:rgba(243,243,243,.78);
+}
+
+.creser-logo{
+  height:320px;
+  border-radius:22px;
+  background-size:contain;
+  background-position:center;
+  background-repeat:no-repeat;
+  background-color:rgba(255,255,255,.05);
+}
+
+/* =========================
+   INVERSIÓN DESKTOP
+========================= */
+
+@media (min-width:900px){
+  #proyectos .copy{ order:1; }
+  #proyectos .media{ order:2; }
+
+  #creser .media{ order:1; }
+  #creser .copy{ order:2; }
+}
+
+/* =========================
+   ESCRITURA (BLANCO)
 ========================= */
 
 #escritura{
-  background:#ffffff;
+  background:#f6f6f4;
   padding-bottom:120px;
 }
 
@@ -305,9 +425,59 @@ body{
   color:#333;
 }
 
+#escritura .strip-3{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:14px;
+  margin-top:24px;
+}
+
+#escritura .strip-item{
+  height:240px;
+  border-radius:18px;
+  overflow:hidden;
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+  transition:opacity 2600ms ease-in-out;
+}
+
+/* =========================
+   STICKY PLAYER
+========================= */
+
+#podcast-player{
+  position:fixed;
+  left:0;
+  bottom:0;
+  width:100%;
+  height:68px;
+  background:rgba(10,10,10,.92);
+  display:grid;
+  grid-template-columns:auto 1fr auto;
+  align-items:center;
+  gap:20px;
+  padding:0 18px;
+  border-top:1px solid rgba(255,255,255,.08);
+  z-index:9999;
+}
+
+.player-left img{
+  width:42px;
+  height:42px;
+  border-radius:6px;
+  object-fit:cover;
+}
+
 /* =========================
    MOBILE
 ========================= */
+
+@media (max-width:900px){
+  .two-col{ grid-template-columns:1fr; }
+  #escritura .strip-3{ grid-template-columns:1fr; }
+  #escritura .strip-item{ height:220px; }
+}
 
 @media (max-width:768px){
   body{ padding-bottom:80px; }
@@ -316,4 +486,30 @@ body{
     font-size:clamp(32px,8vw,46px);
     line-height:1.15;
   }
+}
+/* =========================
+   REALCE LUMINOSO PODCAST CENTER (FINO)
+========================= */
+
+.podcast-center{
+  position:relative;
+}
+
+.podcast-center img{
+  filter: brightness(1.45) contrast(1.12) saturate(1.08);
+  transition: filter .3s ease;
+}
+
+.podcast-center::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background: radial-gradient(
+    circle at center,
+    rgba(255,255,255,.22),
+    rgba(255,255,255,.05) 45%,
+    rgba(255,255,255,0) 70%
+  );
+  mix-blend-mode: screen;
+  pointer-events:none;
 }
