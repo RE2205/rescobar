@@ -4,8 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Antes de nombrar · Archivo documental</title>
-<meta name="description" content="Algunas historias se transforman cuando son contadas.
-Otras ya estaban allí, esperando escucha.">
+<meta name="description" content="Algunas historias se transforman cuando son contadas. Otras ya estaban allí, esperando escucha.">
 
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Source+Serif+4:wght@400;500&display=swap" rel="stylesheet">
 
@@ -31,17 +30,9 @@ body{
   -webkit-font-smoothing:antialiased;
 }
 
-img{
-  max-width:100%;
-  display:block;
-  filter:saturate(85%) contrast(95%);
-}
-
-a{color:inherit;text-decoration:none;}
-a:focus,button:focus,input:focus,textarea:focus{
-  outline:2px solid var(--bronce);
-  outline-offset:3px;
-}
+/* --------------------
+   BASE
+-------------------- */
 
 .wrap{
   max-width:1100px;
@@ -49,25 +40,26 @@ a:focus,button:focus,input:focus,textarea:focus{
   padding:0 32px;
 }
 
-section{padding:110px 0;}
+section{
+  padding:110px 0;
+}
 
 h1,h2,h3{
   font-family:'Cormorant Garamond', serif;
   font-weight:500;
-  margin:0 0 16px 0;
+  margin:0 0 18px 0;
 }
 
 h1{
-  font-size:clamp(2.6rem, 4.2vw, 3.6rem);
-  letter-spacing:.2px;
+  font-size:clamp(2.6rem,4vw,3.6rem);
 }
 
 h2{
-  font-size:clamp(2rem, 2.8vw, 2.5rem);
+  font-size:clamp(2rem,3vw,2.5rem);
 }
 
 h3{
-  font-size:.95rem;
+  font-size:.9rem;
   letter-spacing:.12em;
   text-transform:uppercase;
   color:var(--gris-texto);
@@ -79,28 +71,38 @@ p{
   font-size:1.05rem;
 }
 
-.small{font-size:.85rem;color:var(--gris-texto);}
+.small{
+  font-size:.85rem;
+  color:var(--gris-texto);
+}
 
 blockquote{
   margin:36px 0 0 0;
   font-style:italic;
-  font-size:clamp(1.05rem, 1.6vw, 1.25rem);
-  padding-left:24px;
+  font-size:clamp(1.05rem,1.5vw,1.25rem);
+  padding-left:22px;
   border-left:2px solid var(--bronce);
   max-width:760px;
 }
 
-/* =========================
+a{text-decoration:none;color:inherit;}
+a:focus,button:focus,input:focus,textarea:focus{
+  outline:2px solid var(--bronce);
+  outline-offset:3px;
+}
+
+/* --------------------
    NAV
-========================= */
+-------------------- */
+
 .nav{
   position:sticky;
   top:0;
-  z-index:1000;
   height:var(--nav-h);
-  background:rgba(12,12,14,.92);
+  background:rgba(12,12,14,.95);
   backdrop-filter:blur(8px);
   border-bottom:1px solid rgba(255,255,255,.06);
+  z-index:1000;
 }
 
 .nav .wrap{
@@ -113,19 +115,19 @@ blockquote{
 .nav-inner{
   display:flex;
   gap:28px;
-  font-size:.82rem;
+  font-size:.8rem;
   letter-spacing:.12em;
   text-transform:uppercase;
   color:var(--blanco);
 }
 
 .nav-inner a{
-  opacity:.78;
+  opacity:.75;
   position:relative;
-  padding:6px 0;
 }
 
 .nav-inner a:hover{opacity:1;}
+
 .nav-inner a::after{
   content:"";
   position:absolute;
@@ -134,42 +136,33 @@ blockquote{
   width:0;
   height:1px;
   background:var(--bronce);
-  transition:width .28s ease;
+  transition:width .25s ease;
 }
+
 .nav-inner a:hover::after{width:100%;}
 
-/* =========================
-   HERO (FULL BLEED)
-========================= */
+/* --------------------
+   HERO
+-------------------- */
+
 .hero{
-  padding:0;
   background:var(--negro);
   color:var(--blanco);
-  border-bottom:1px solid rgba(255,255,255,.06);
 }
 
 .hero-inner{
-  min-height:calc(88vh - var(--nav-h));
+  min-height:calc(85vh - var(--nav-h));
   display:flex;
   align-items:center;
-  padding:120px 0 110px;
+  padding:120px 0;
 }
 
 .hero p{
-  color:rgba(241,239,234,.82);
-  max-width:760px;
-}
-
-.kicker{
-  color:rgba(241,239,234,.70);
-  letter-spacing:.18em;
-  text-transform:uppercase;
-  font-size:.75rem;
-  margin-bottom:18px;
+  color:rgba(241,239,234,.85);
 }
 
 .cta-group{
-  margin-top:34px;
+  margin-top:32px;
   display:flex;
   gap:14px;
   flex-wrap:wrap;
@@ -177,19 +170,18 @@ blockquote{
 
 .btn{
   padding:12px 22px;
-  border:1px solid rgba(241,239,234,.75);
-  background:transparent;
-  color:var(--blanco);
-  font-size:.78rem;
+  font-size:.8rem;
   letter-spacing:.14em;
   text-transform:uppercase;
-  transition:all .22s ease;
+  border:1px solid var(--blanco);
+  background:transparent;
+  color:var(--blanco);
+  transition:all .25s ease;
 }
 
 .btn.primary{
   background:var(--blanco);
   color:var(--negro);
-  border-color:var(--blanco);
 }
 
 .btn.primary:hover{
@@ -202,12 +194,12 @@ blockquote{
   background:rgba(255,255,255,.08);
 }
 
-/* =========================
-   SECCIONES CLARAS / OSCURAS
-========================= */
+/* --------------------
+   SECCIONES
+-------------------- */
+
 .light{
   background:var(--blanco);
-  color:var(--negro);
   border-top:1px solid var(--gris-linea);
   background-image:linear-gradient(to bottom, rgba(0,0,0,.02), rgba(0,0,0,0));
 }
@@ -218,37 +210,32 @@ blockquote{
   border-top:1px solid rgba(255,255,255,.06);
 }
 
-.dark p{color:rgba(241,239,234,.82);}
-.dark h3{color:rgba(241,239,234,.62);}
+.dark p{color:rgba(241,239,234,.85);}
 
-/* =========================
+/* --------------------
    MIRADA GRID
-========================= */
+-------------------- */
+
 .grid-3{
   display:grid;
   grid-template-columns:repeat(3,1fr);
   gap:56px;
-  margin-top:52px;
+  margin-top:48px;
 }
 
 .card{
   border-top:1px solid var(--gris-linea);
   padding-top:18px;
-  transition:transform .25s ease, opacity .25s ease;
-  opacity:.96;
+  transition:transform .2s ease;
 }
 
 .card:hover{
   transform:translateY(-3px);
-  opacity:1;
 }
 
-/* =========================
-   STRIP (FULL BLEED)
-========================= */
-.strip{
-  padding:0;
-}
+/* --------------------
+   STRIP
+-------------------- */
 
 .strip-wrapper{
   overflow-x:auto;
@@ -257,34 +244,34 @@ blockquote{
 
 .strip-row{
   display:flex;
-  min-width:100%;
 }
 
 .strip-row img{
+  flex:0 0 33.333%;
   height:460px;
   object-fit:cover;
-  flex:0 0 33.333%;
   scroll-snap-align:start;
+  filter:saturate(85%) contrast(95%);
 }
 
-/* =========================
+/* --------------------
    ARCHIVO
-========================= */
+-------------------- */
+
 .archive-item{
   padding:28px 0;
   border-bottom:1px solid var(--gris-linea);
 }
 
-.archive-item:last-child{border-bottom:none;}
-
-/* =========================
+/* --------------------
    CRÉDITOS
-========================= */
+-------------------- */
+
 .team-grid{
   display:grid;
   grid-template-columns:repeat(3,1fr);
   gap:56px;
-  margin-top:52px;
+  margin-top:48px;
 }
 
 .team-card{
@@ -292,30 +279,65 @@ blockquote{
   padding-top:18px;
 }
 
-/* =========================
-   FORM
-========================= */
-form{
-  margin-top:42px;
-  max-width:640px;
+/* --------------------
+   COLABORACIONES OSCURA
+-------------------- */
+
+.dark-footer{
+  background:var(--negro);
+  color:rgba(241,239,234,.85);
+  border-top:1px solid rgba(255,255,255,.06);
 }
 
-input,textarea{
+.dark-footer h2{
+  color:var(--blanco);
+}
+
+.dark-footer p{
+  color:rgba(241,239,234,.75);
+}
+
+.dark-footer input,
+.dark-footer textarea{
   width:100%;
-  padding:14px 14px;
+  padding:14px;
   margin-bottom:18px;
-  border:1px solid var(--gris-linea);
-  background:#fff;
+  background:transparent;
+  border:1px solid rgba(255,255,255,.15);
+  color:var(--blanco);
   font-family:inherit;
   font-size:1rem;
 }
 
-textarea{min-height:130px;resize:vertical;}
+.dark-footer input::placeholder,
+.dark-footer textarea::placeholder{
+  color:rgba(241,239,234,.45);
+}
+
+.btn-outline{
+  padding:12px 22px;
+  border:1px solid rgba(241,239,234,.6);
+  background:transparent;
+  color:var(--blanco);
+  font-size:.8rem;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  transition:all .25s ease;
+}
+
+.btn-outline:hover{
+  border-color:var(--bronce);
+  color:var(--bronce);
+}
+
+/* --------------------
+   FOOTER
+-------------------- */
 
 footer{
   background:var(--negro);
-  color:rgba(241,239,234,.66);
-  padding:70px 0;
+  color:rgba(241,239,234,.6);
+  padding:60px 0;
   text-align:center;
   font-size:.85rem;
   border-top:1px solid rgba(255,255,255,.06);
@@ -323,30 +345,22 @@ footer{
 
 .back-top{
   display:inline-block;
-  margin-top:18px;
-  font-size:.78rem;
-  letter-spacing:.14em;
-  text-transform:uppercase;
+  margin-top:16px;
   border-bottom:1px solid var(--bronce);
-  color:rgba(241,239,234,.86);
+  text-transform:uppercase;
+  letter-spacing:.12em;
+  font-size:.75rem;
 }
 
-/* =========================
+/* --------------------
    RESPONSIVE
-========================= */
-@media (max-width: 980px){
-  section{padding:92px 0;}
-  .grid-3,.team-grid{grid-template-columns:1fr;gap:34px;}
-  .nav-inner{gap:18px;flex-wrap:wrap;justify-content:center;}
-  .hero-inner{min-height:unset;padding:92px 0 88px;}
-  .strip-row img{flex:0 0 82%;height:320px;}
-}
+-------------------- */
 
-@media (max-width: 520px){
-  .wrap{padding:0 18px;}
-  .nav{height:auto;}
-  .nav .wrap{padding:14px 18px;}
-  .nav-inner{font-size:.76rem;}
+@media (max-width:980px){
+  .grid-3,.team-grid{grid-template-columns:1fr;}
+  .strip-row img{flex:0 0 80%;height:320px;}
+  .nav-inner{flex-wrap:wrap;gap:18px;justify-content:center;}
+  section{padding:90px 0;}
 }
 </style>
 </head>
@@ -355,7 +369,7 @@ footer{
 
 <nav class="nav">
   <div class="wrap">
-    <div class="nav-inner" aria-label="Navegación principal">
+    <div class="nav-inner">
       <a href="#inicio">Inicio</a>
       <a href="#mirada">Mirada</a>
       <a href="#archivo">Archivo</a>
@@ -368,14 +382,9 @@ footer{
 <header class="hero" id="inicio">
   <div class="wrap hero-inner">
     <div>
-      <div class="kicker">Archivo documental</div>
       <h1>Antes de nombrar</h1>
-      <p>Algunas historias se transforman cuando son contadas.
-         Otras ya estaban allí, esperando escucha.</p>
-
-      <blockquote>
-        “Qué hace una persona sensible en un mundo que no sabe escuchar.”
-      </blockquote>
+      <p>Algunas historias se transforman cuando son contadas. Otras ya estaban allí, esperando escucha.</p>
+      <blockquote>“Qué hace una persona sensible en un mundo que no sabe escuchar.”</blockquote>
 
       <div class="cta-group">
         <a href="#" class="btn primary">Ver teaser</a>
@@ -388,9 +397,7 @@ footer{
 <section id="mirada" class="light">
   <div class="wrap">
     <h2>Mirada</h2>
-    <p>
-      Este trabajo se aproxima sin prisa. No busca traducir de inmediato,
-      sino sostener el tiempo necesario para que la experiencia pueda desplegarse en su propio lenguaje.</p>
+    <p>Este trabajo se aproxima sin prisa. No busca traducir de inmediato, sino sostener el tiempo necesario para que la experiencia pueda desplegarse en su propio lenguaje.</p>
 
     <div class="grid-3">
       <div class="card">
@@ -409,61 +416,32 @@ footer{
   </div>
 </section>
 
-<section class="dark strip" aria-label="Secuencia visual">
+<section class="dark">
   <div class="strip-wrapper">
     <div class="strip-row">
-      <img src="director-filmando.jpg" alt="Director filmando en campo">
-      <img src="ronald.jpg" alt="Investigador en el territorio">
-      <img src="pueblo.jpg" alt="Comunidad y paisaje">
+      <img src="director-filmando.jpg" alt="">
+      <img src="ronald.jpg" alt="">
+      <img src="pueblo.jpg" alt="">
     </div>
   </div>
 </section>
 
 <section id="archivo" class="light">
   <div class="wrap">
-    <h2>Archivo · Notas de campo</h2>
-
-    <div class="archive-item">
-      <h3>Primer encuentro</h3>
-      <p>La palabra surge antes que la explicación.</p>
-      <div class="small">Enero 2026</div>
-    </div>
-
-    <div class="archive-item">
-      <h3>Territorio y relato</h3>
-      <p>El paisaje sostiene aquello que se narra.</p>
-      <div class="small">Febrero 2026</div>
-    </div>
-
-    <div class="archive-item">
-      <h3>Silencios compartidos</h3>
-      <p>Lo no dicho también forma parte del archivo.</p>
-      <div class="small">Marzo 2026</div>
-    </div>
-
-    <p class="small" style="margin-top:22px;">
-      Algunos nombres y detalles han sido reservados por respeto y responsabilidad ética.
-    </p>
+    <h2>Archivo</h2>
+    <div class="archive-item"><h3>Primer encuentro</h3><p>La palabra surge antes que la explicación.</p></div>
+    <div class="archive-item"><h3>Territorio y relato</h3><p>El paisaje sostiene aquello que se narra.</p></div>
+    <div class="archive-item"><h3>Silencios compartidos</h3><p>Lo no dicho también forma parte del archivo.</p></div>
   </div>
 </section>
 
 <section id="equipo" class="light">
   <div class="wrap">
     <h2>Créditos</h2>
-
     <div class="team-grid">
-      <div class="team-card">
-        <h3>Dirección</h3>
-        <p>Trabajo en campo y construcción de mirada.</p>
-      </div>
-      <div class="team-card">
-        <h3>Investigación / Guion</h3>
-        <p>Archivo, acompañamiento y narrativa.</p>
-      </div>
-      <div class="team-card">
-        <h3>Producción</h3>
-        <p>Coordinación cultural y cuidado ético.</p>
-      </div>
+      <div class="team-card"><h3>Dirección</h3><p>Trabajo en campo y construcción de mirada.</p></div>
+      <div class="team-card"><h3>Investigación / Guion</h3><p>Archivo, acompañamiento y narrativa.</p></div>
+      <div class="team-card"><h3>Producción</h3><p>Coordinación cultural y cuidado ético.</p></div>
     </div>
   </div>
 </section>
@@ -471,11 +449,7 @@ footer{
 <section id="apoyar" class="dark-footer">
   <div class="wrap">
     <h2>Colaboraciones</h2>
-
-    <p>
-      Este trabajo permanece abierto a encuentros y colaboraciones
-      que compartan su ética de escucha.
-    </p>
+    <p>Este trabajo permanece abierto a encuentros y colaboraciones que compartan su ética de escucha.</p>
 
     <form>
       <input type="text" placeholder="Nombre" required>
@@ -483,14 +457,10 @@ footer{
       <textarea placeholder="Mensaje"></textarea>
       <button type="submit" class="btn-outline">Enviar</button>
     </form>
-
-    <p class="small">
-      La información enviada será utilizada únicamente para establecer contacto relacionado con el proyecto.
-    </p>
   </div>
 </section>
-  
-  <footer>
+
+<footer>
   © 2026 · Archivo documental
   <br>
   <a href="#inicio" class="back-top">Volver arriba</a>
