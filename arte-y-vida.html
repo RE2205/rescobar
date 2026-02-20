@@ -3,10 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
 <title>ReConectar</title>
-<meta name="description" content="ReConectar con lo que importa cuando la vida se aprieta y la forma todavía no aparece." />
-<meta name="robots" content="noindex, nofollow" />
 
 <style>
 
@@ -38,12 +35,58 @@ body{
   padding:0 28px;
 }
 
-/* ================= HERO (NEGRO) ================= */
+/* ================= NAV ================= */
+
+nav{
+  position:absolute;
+  top:32px;
+  left:0;
+  right:0;
+  text-align:center;
+  z-index:10;
+}
+
+.nav-inner{
+  display:flex;
+  justify-content:center;
+  gap:48px;
+}
+
+nav a{
+  font-size:12px;
+  letter-spacing:.28em;
+  text-transform:uppercase;
+  text-decoration:none;
+  color:rgba(255,255,255,.75);
+  position:relative;
+  transition:.25s ease;
+}
+
+nav a::after{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:-6px;
+  height:1px;
+  background:var(--blanco);
+  opacity:0;
+  transition:.25s ease;
+}
+
+nav a:hover{
+  color:var(--blanco);
+}
+
+nav a:hover::after{
+  opacity:.6;
+}
+
+/* ================= HERO ================= */
 
 header{
-  padding:160px 0 130px;
+  padding:200px 0 150px;
   text-align:center;
-  background:var(--negro-profundo);
 }
 
 h1{
@@ -75,11 +118,18 @@ h1{
   transform:rotate(-1.2deg);
 }
 
-/* ================= LA PILA (AHORA BLANCO) ================= */
+/* ================= LA PILA · ESCULTÓRICO ================= */
 
 .la-pila{
-  padding:120px 0;
-  background:var(--blanco);
+  padding:160px 0;
+  background:
+    radial-gradient(
+      ellipse at center,
+      rgba(255,255,255,0.08) 0%,
+      rgba(255,255,255,0.02) 40%,
+      rgba(0,0,0,0) 70%
+    ),
+    var(--blanco);
 }
 
 .la-pila img{
@@ -87,11 +137,14 @@ h1{
   max-width:760px;
   display:block;
   margin:0 auto;
-  border-radius:10px;
-  box-shadow:0 20px 60px rgba(0,0,0,.15);
+  border-radius:6px;
+  box-shadow:
+    0 60px 120px rgba(0,0,0,.18),
+    0 20px 40px rgba(0,0,0,.12);
+  filter:contrast(1.05) saturate(.95);
 }
 
-/* ================= MANIFIESTO (NEGRO) ================= */
+/* ================= MANIFIESTO ================= */
 
 .manifiesto{
   padding:130px 0;
@@ -115,7 +168,7 @@ h1{
   margin:40px auto;
 }
 
-/* ================= AXIOMA (AHORA BLANCO) ================= */
+/* ================= AXIOMA ================= */
 
 .franja-gesto{
   padding:140px 0;
@@ -135,7 +188,7 @@ h1{
   color:var(--rosa);
 }
 
-/* ================= PERSONAS (NEGRO) ================= */
+/* ================= PERSONAS ================= */
 
 .personas{
   padding:150px 0;
@@ -153,7 +206,7 @@ h1{
 .persona img{
   width:100%;
   max-width:320px;
-  border-radius:10px;
+  border-radius:6px;
   margin-bottom:28px;
 }
 
@@ -180,9 +233,14 @@ h1{
   .persona p{
     margin:0 auto;
   }
+
+  .nav-inner{
+    gap:28px;
+    flex-wrap:wrap;
+  }
 }
 
-/* ================= CONTACTO (BLANCO) ================= */
+/* ================= CONTACTO ================= */
 
 .contacto{
   padding:160px 0;
@@ -218,6 +276,14 @@ h1{
 </head>
 
 <body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="/">Inicio</a>
+    <a href="/innersound">Inner Sound</a>
+    <a href="/logospsyche">Logos Psyche</a>
+  </div>
+</nav>
 
 <header>
   <div class="wrap">
