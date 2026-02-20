@@ -340,82 +340,26 @@ body{
    DOCUMENTAL (BLANCO)
 ========================= */
 
-/* =========================
-   HOME · DOCUMENTAL BLOQUE
-========================= */
-
-.home-documental{
-  padding:140px 0;
-  background:var(--blanco);
+#proyectos{
+  background:#f6f6f4;
 }
 
-.home-doc-grid{
-  display:grid;
-  grid-template-columns: 55% 45%;
-  align-items:center;
-  gap:60px;
+#proyectos .copy h2,
+#proyectos .copy p{
+  color:#111;
 }
 
-.home-doc-text{
-  max-width:520px;
+#proyectos .lead{ color:#333; }
+
+.doc-cover{
+  height:380px;
+  border-radius:22px;
+  background-size:cover;
+  background-position:center 25%;
+  background-repeat:no-repeat;
+  filter:contrast(1.05) saturate(1.05);
 }
 
-.home-doc-kicker{
-  font-size:.75rem;
-  letter-spacing:.18em;
-  text-transform:uppercase;
-  color:var(--gris-texto);
-  margin-bottom:18px;
-}
-
-.home-doc-text h2{
-  font-family:'Cormorant Garamond', serif;
-  font-size:clamp(2.4rem,3vw,3rem);
-  margin-bottom:18px;
-}
-
-.home-doc-text p{
-  font-size:1.05rem;
-  line-height:1.7;
-  margin-bottom:28px;
-}
-
-.home-doc-link{
-  font-size:.85rem;
-  letter-spacing:.14em;
-  text-transform:uppercase;
-  border-bottom:1px solid var(--negro);
-  padding-bottom:4px;
-  transition:color .25s ease, border-color .25s ease;
-}
-
-.home-doc-link:hover{
-  color:var(--bronce);
-  border-color:var(--bronce);
-}
-
-.home-doc-image img{
-  width:100%;
-  border-radius:12px;
-  filter:saturate(90%) contrast(98%) brightness(98%);
-}
-
-/* Responsive */
-
-@media (max-width: 980px){
-  .home-doc-grid{
-    grid-template-columns:1fr;
-    gap:40px;
-  }
-
-  .home-doc-text{
-    max-width:100%;
-  }
-
-  .home-doc-image{
-    order:-1;
-  }
-}
 /* =========================
    CRESER (NEGRO)
 ========================= */
