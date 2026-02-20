@@ -118,39 +118,19 @@ h1{
   transform:rotate(-1.2deg);
 }
 
-/* ================= LA PILA · ESCULTÓRICO ================= */
-
-/* ================= LA PILA · ESCULTÓRICO LIMPIO ================= */
+/* ================= LA PILA · FONDO BLANCO REAL ================= */
 
 .la-pila{
   padding:160px 0;
   background:#ffffff;
-  position:relative;
-  overflow:hidden;
+  width:100%;
 }
 
-.la-pila::before{
-  content:"";
-  position:absolute;
-  width:900px;
-  height:900px;
-  top:50%;
-  left:50%;
-  transform:translate(-50%,-50%);
-  pointer-events:none;
-
-  background:radial-gradient(
-    circle at center,
-    rgba(255,255,255,0.9) 0%,
-    rgba(255,255,255,0.5) 40%,
-    rgba(255,255,255,0) 70%
-  );
+.la-pila .wrap{
+  background:#ffffff;
 }
 
 .la-pila img{
-  position:relative;
-  z-index:1;
-
   width:100%;
   max-width:760px;
   display:block;
@@ -158,35 +138,11 @@ h1{
   border-radius:6px;
 
   box-shadow:
-    0 80px 140px rgba(0,0,0,.18),
-    0 30px 50px rgba(0,0,0,.12);
+    0 80px 140px rgba(0,0,0,.22),
+    0 30px 50px rgba(0,0,0,.15);
 
   filter:contrast(1.05) saturate(.95);
-}/* ================= MANIFIESTO ================= */
-
-.manifiesto{
-  padding:130px 0;
-  text-align:center;
-  background:var(--negro);
-}
-
-.manifiesto p{
-  max-width:660px;
-  margin:0 auto 16px;
-  font-size:19px;
-  color:var(--gris);
-}
-
-.manifiesto .fuerte{
-  font-weight:600;
-  color:var(--blanco);
-}
-
-.manifiesto .nota{
-  margin:40px auto;
-}
-
-/* ================= AXIOMA ================= */
+}/* ================= AXIOMA ================= */
 
 .franja-gesto{
   padding:140px 0;
