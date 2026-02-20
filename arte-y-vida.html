@@ -4,27 +4,32 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>ReConectar</title>
+<meta name="description" content="ReConectar con lo que importa cuando la vida se aprieta y la forma todavía no aparece." />
+<meta name="robots" content="noindex, nofollow" />
 
 <style>
 
 :root{
-  --negro:#0b0b0c;
-  --negro-profundo:#050505;
+  --negro:#050505;
+  --negro-secundario:#0b0b0c;
   --blanco:#ffffff;
   --gris:#8e8e8e;
 
   --rosa:#ff4ecd;
   --azul:#4ddcff;
-  --violeta:rgba(120,80,255,.18);
 }
 
-*{ box-sizing:border-box; }
+/* ================= BASE ================= */
+
+html{
+  background:#050505;
+}
 
 body{
   margin:0;
   font-family:system-ui,-apple-system,"Inter",Arial,sans-serif;
-  background:var(--negro-profundo);
-  color:var(--blanco);
+  background:#050505;
+  color:#ffffff;
   line-height:1.6;
   -webkit-font-smoothing:antialiased;
 }
@@ -69,13 +74,13 @@ nav a::after{
   right:0;
   bottom:-6px;
   height:1px;
-  background:var(--blanco);
+  background:#ffffff;
   opacity:0;
   transition:.25s ease;
 }
 
 nav a:hover{
-  color:var(--blanco);
+  color:#ffffff;
 }
 
 nav a:hover::after{
@@ -87,6 +92,7 @@ nav a:hover::after{
 header{
   padding:200px 0 150px;
   text-align:center;
+  background:#050505;
 }
 
 h1{
@@ -118,15 +124,10 @@ h1{
   transform:rotate(-1.2deg);
 }
 
-/* ================= LA PILA · FONDO BLANCO REAL ================= */
+/* ================= LA PILA (BLANCO PURO) ================= */
 
 .la-pila{
   padding:160px 0;
-  background:#ffffff;
-  width:100%;
-}
-
-.la-pila .wrap{
   background:#ffffff;
 }
 
@@ -142,13 +143,39 @@ h1{
     0 30px 50px rgba(0,0,0,.15);
 
   filter:contrast(1.05) saturate(.95);
-}/* ================= AXIOMA ================= */
+}
+
+/* ================= MANIFIESTO ================= */
+
+.manifiesto{
+  padding:130px 0;
+  text-align:center;
+  background:#0b0b0c;
+}
+
+.manifiesto p{
+  max-width:660px;
+  margin:0 auto 16px;
+  font-size:19px;
+  color:#8e8e8e;
+}
+
+.manifiesto .fuerte{
+  font-weight:600;
+  color:#ffffff;
+}
+
+.manifiesto .nota{
+  margin:40px auto;
+}
+
+/* ================= AXIOMA (BLANCO) ================= */
 
 .franja-gesto{
   padding:140px 0;
   text-align:center;
-  background:var(--blanco);
-  color:var(--negro);
+  background:#ffffff;
+  color:#050505;
 }
 
 .franja-gesto p{
@@ -159,14 +186,14 @@ h1{
 }
 
 .franja-gesto .verdad{
-  color:var(--rosa);
+  color:#ff4ecd;
 }
 
 /* ================= PERSONAS ================= */
 
 .personas{
   padding:150px 0;
-  background:var(--negro-profundo);
+  background:#050505;
 }
 
 .personas-grid{
@@ -192,7 +219,7 @@ h1{
 }
 
 .persona p{
-  color:var(--gris);
+  color:#8e8e8e;
   font-size:18px;
   max-width:360px;
 }
@@ -214,17 +241,17 @@ h1{
   }
 }
 
-/* ================= CONTACTO ================= */
+/* ================= CONTACTO (BLANCO) ================= */
 
 .contacto{
   padding:160px 0;
   text-align:center;
-  background:var(--blanco);
+  background:#ffffff;
 }
 
 .contacto a{
   font-size:24px;
-  color:var(--negro);
+  color:#050505;
   text-decoration:none;
   position:relative;
   letter-spacing:.08em;
@@ -237,7 +264,7 @@ h1{
   right:0;
   bottom:-8px;
   height:2px;
-  background:var(--negro);
+  background:#050505;
   transition:.3s ease;
 }
 
