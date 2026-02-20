@@ -1,202 +1,184 @@
 <!doctype html>
 <html lang="es">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Desapre(he)nder para CreSer · Podcast</title>
-<meta name="description" content="Conversaciones para detener el ruido y pensar lo humano sin prisa ni fórmulas." />
 
 <style>
 
-/* ==================================================
-   BASE
-   ================================================== */
-
 :root{
   --negro:#0b0b0c;
-  --blanco:#f6f6f2;
-  --gris:#9a9a96;
-  --linea:rgba(255,255,255,.12);
+  --negro-profundo:#050505;
+  --blanco:#ffffff;
+  --gris-suave:#5e5e5e;
+  --azul:#6f8f9f;
+  --linea:rgba(0,0,0,.08);
+  --yt:#FF0000;
 }
 
-*{ box-sizing:border-box; }
+*{
+  box-sizing:border-box;
+}
 
 body{
   margin:0;
-  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
   background:var(--blanco);
-  color:var(--negro);
-  line-height:1.6;
-  -webkit-font-smoothing:antialiased;
+  color:var(--negro-profundo);
 }
 
-/* ==================================================
-   HERO
-   ================================================== */
+.wrap{
+  max-width:1100px;
+  margin:0 auto;
+  padding:0 32px;
+}
+
+/* HERO */
 
 .hero{
-  padding:100px 24px 80px;
-  max-width:900px;
-  margin:auto;
+  padding:96px 0 48px;
 }
 
-.volver{
-  font-size:13px;
-  text-decoration:none;
-  color:var(--gris);
+.back-link{
   display:inline-block;
-  margin-bottom:60px;
-  letter-spacing:.5px;
+  font-size:11px;
+  letter-spacing:.28em;
+  text-transform:uppercase;
+  color:rgba(0,0,0,.55);
+  text-decoration:none;
+  margin-bottom:36px;
 }
 
-.hero h1{
-  font-size:clamp(34px,4vw,52px);
-  font-weight:500;
-  margin:0 0 24px 0;
+.back-link::before{
+  content:"← ";
+}
+
+.back-link:hover{
+  color:var(--azul);
+}
+
+.kicker{
+  font-size:12px;
+  letter-spacing:.28em;
+  text-transform:uppercase;
+  color:rgba(0,0,0,.45);
+  margin-bottom:22px;
+}
+
+h1{
+  font-size:clamp(38px,5vw,60px);
+  margin:0 0 18px;
+  font-weight:600;
 }
 
 .hero p{
-  max-width:600px;
+  max-width:640px;
   font-size:18px;
-  color:var(--gris);
+  color:var(--gris-suave);
 }
 
-/* ==================================================
-   AXIOMA
-   ================================================== */
+/* AXIOMA */
 
 .axioma{
-  background:var(--negro);
-  color:var(--blanco);
-  padding:120px 24px;
-  text-align:left;
-}
-
-.axioma-inner{
-  max-width:900px;
-  margin:auto;
+  background:var(--negro-profundo);
+  padding:52px 0;
+  text-align:center;
 }
 
 .axioma p{
-  font-size:clamp(22px,2.2vw,30px);
-  font-weight:400;
   margin:0;
+  font-size:clamp(18px,2vw,22px);
+  letter-spacing:.36em;
+  text-transform:uppercase;
+  color:#8fb0c2;
 }
 
-/* ==================================================
-   CLIPS
-   ================================================== */
+/* CLIPS */
 
 .clips{
-  padding:120px 24px 80px;
-  max-width:1200px;
-  margin:auto;
+  padding:90px 0 60px;
 }
 
 .clips-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-  gap:40px;
-}
-
-video{
-  width:100%;
-  border-radius:4px;
-  background:#000;
-}
-
-/* ==================================================
-   BLOQUE CONCEPTUAL NEGRO
-   ================================================== */
-
-.manifiesto{
-  background:var(--negro);
-  color:var(--blanco);
-  padding:140px 24px 120px;
-}
-
-.manifiesto-inner{
-  max-width:900px;
-  margin:auto;
-}
-
-.manifiesto h2{
-  font-size:clamp(28px,3vw,40px);
-  font-weight:400;
-  margin:0 0 40px 0;
-}
-
-.manifiesto p{
-  max-width:680px;
-  font-size:18px;
-  color:rgba(255,255,255,.75);
-  margin:0;
-}
-
-/* ==================================================
-   PLATAFORMAS
-   ================================================== */
-
-.plataformas{
-  margin-top:90px;
   display:flex;
   justify-content:center;
-  gap:28px;
+  gap:40px;
   flex-wrap:wrap;
 }
 
-.plataformas a{
-  width:52px;
-  height:52px;
-  border-radius:50%;
-  border:1px solid var(--linea);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-decoration:none;
-  transition:.3s ease;
+.clip{
+  width:220px;
 }
 
-.plataformas a:hover{
-  border-color:rgba(255,255,255,.35);
+.clip video{
+  width:100%;
+  border-radius:14px;
+  display:block;
+}
+
+/* YOUTUBE BUTTON */
+
+.youtube-cta{
+  text-align:center;
+  padding:60px 0 90px;
+}
+
+.youtube-btn{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:10px 18px;
+  border-radius:999px;
+  background:var(--yt);
+  color:#fff;
+  font-size:12px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  text-decoration:none;
+  transition:.25s ease;
+}
+
+.youtube-btn svg{
+  width:14px;
+  height:14px;
+  fill:#fff;
+}
+
+.youtube-btn:hover{
+  background:#cc0000;
   transform:translateY(-2px);
 }
 
-.plataformas svg{
-  width:20px;
-  height:20px;
-  fill:var(--blanco);
-  opacity:.85;
-  transition:.3s ease;
+/* BLOQUE FINAL */
+
+.bloque{
+  background:var(--negro-profundo);
+  color:#ffffff;
+  padding:80px 0;
 }
 
-.plataformas a:hover svg{
-  opacity:1;
+.bloque p{
+  max-width:720px;
+  margin:0 0 28px;
+  font-size:clamp(22px,2.4vw,28px);
+  line-height:1.45;
 }
 
-/* ==================================================
-   RESPONSIVE
-   ================================================== */
+/* RESPONSIVE */
 
-@media(max-width:768px){
-
-  .hero{
-    padding:80px 20px 60px;
+@media (max-width:768px){
+  .clip{
+    width:200px;
   }
+}
 
-  .axioma{
-    padding:100px 20px;
+@media (max-width:500px){
+  .clips-grid{
+    flex-direction:column;
+    align-items:center;
+    gap:32px;
   }
-
-  .clips{
-    padding:100px 20px 60px;
-  }
-
-  .manifiesto{
-    padding:120px 20px 100px;
-  }
-
 }
 
 </style>
@@ -205,78 +187,66 @@ video{
 <body>
 
 <section class="hero">
-  <a href="/" class="volver">Volver al inicio</a>
-  <h1>Desapre(he)nder para CreSer</h1>
-  <p>Conversaciones para detener el ruido y pensar lo humano sin prisa ni fórmulas.</p>
+  <div class="wrap">
+    <a href="/" class="back-link">Volver al inicio</a>
+    <div class="kicker">Podcast</div>
+    <h1>Desapre(he)nder para CreSer</h1>
+    <p>Conversaciones que cuestionan lo que creemos entender.</p>
+  </div>
 </section>
 
 <section class="axioma">
-  <div class="axioma-inner">
-    <p>No se habla para tranquilizar. Hablar también es una forma de cuidado.</p>
+  <div class="wrap">
+    <p>No todo lo que duele es patología</p>
   </div>
 </section>
 
 <section class="clips">
-  <div class="clips-grid">
-    <video controls poster="poster1.jpg">
-      <source src="clip1.mp4" type="video/mp4">
-    </video>
-    <video controls poster="poster2.jpg">
-      <source src="clip2.mp4" type="video/mp4">
-    </video>
-    <video controls poster="poster3.jpg">
-      <source src="clip3.mp4" type="video/mp4">
-    </video>
+  <div class="wrap clips-grid">
+
+    <div class="clip">
+      <video src="/assets/clip1.mp4"
+             poster="/assets/poster1.jpg"
+             controls
+             playsinline
+             preload="metadata">
+      </video>
+    </div>
+
+    <div class="clip">
+      <video src="/assets/clip2.mp4"
+             poster="/assets/poster2.jpg"
+             controls
+             playsinline
+             preload="metadata">
+      </video>
+    </div>
+
+    <div class="clip">
+      <video src="/assets/clip3.mp4"
+             poster="/assets/poster3.jpg"
+             controls
+             playsinline
+             preload="metadata">
+      </video>
+    </div>
+
   </div>
 </section>
 
-<section class="manifiesto">
-  <div class="manifiesto-inner">
-    <h2>Esto no es contenido.</h2>
-    <p>
-      Es una conversación abierta con lo incómodo.
-      Un espacio donde pensar no es un lujo,
-      sino una forma de resistencia íntima.
-    </p>
+<section class="youtube-cta">
+  <a href="https://youtube.com/@desaprenderparacreser?si=r9JIpxRR4Vvi7LTd" target="_blank" class="youtube-btn">
+    <svg viewBox="0 0 24 24">
+      <path d="M23.5 6.2c-.3-1.3-1.3-2.3-2.6-2.6C18.7 3 12 3 12 3s-6.7 0-8.9.6C1.8 3.9.8 4.9.5 6.2.1 8.4.1 12 .1 12s0 3.6.4 5.8c.3 1.3 1.3 2.3 2.6 2.6 2.2.6 8.9.6 8.9.6s6.7 0 8.9-.6c1.3-.3 2.3-1.3 2.6-2.6.4-2.2.4-5.8.4-5.8s0-3.6-.4-5.8zM9.5 15.5v-7l6 3.5-6 3.5z"/>
+    </svg>
+    Ver en YouTube
+  </a>
+</section>
 
-    <div class="plataformas">
-
-      <!-- YouTube -->
-      <a href="https://youtube.com/" target="_blank">
-        <svg viewBox="0 0 24 24">
-          <path d="M23 12s0-3.5-.5-5c-.3-1.1-1.2-2-2.3-2.3C18.5 4 12 4 12 4s-6.5 0-8.2.7C2.7 5 1.8 5.9 1.5 7 .9 8.5 1 12 1 12s0 3.5.5 5c.3 1.1 1.2 2 2.3 2.3C5.5 20 12 20 12 20s6.5 0 8.2-.7c1.1-.3 2-1.2 2.3-2.3.5-1.5.5-5 .5-5zM10 15.5v-7l6 3.5-6 3.5z"/>
-        </svg>
-      </a>
-
-      <!-- Instagram -->
-      <a href="https://instagram.com/" target="_blank">
-        <svg viewBox="0 0 24 24">
-          <path d="M7 2C4.2 2 2 4.2 2 7v10c0 2.8 2.2 5 5 5h10c2.8 0 5-2.2 5-5V7c0-2.8-2.2-5-5-5H7zm5 15a5 5 0 110-10 5 5 0 010 10zm6.5-10.8a1.2 1.2 0 110-2.4 1.2 1.2 0 010 2.4z"/>
-        </svg>
-      </a>
-
-      <!-- Apple Podcasts -->
-      <a href="https://podcasts.apple.com/" target="_blank">
-        <svg viewBox="0 0 24 24">
-          <path d="M12 3a5 5 0 015 5 5 5 0 01-3.6 4.8v5.2a1.4 1.4 0 11-2.8 0v-5.2A5 5 0 017 8a5 5 0 015-5z"/>
-        </svg>
-      </a>
-
-      <!-- TikTok -->
-      <a href="https://tiktok.com/" target="_blank">
-        <svg viewBox="0 0 24 24">
-          <path d="M12 2h3a5 5 0 005 5v3a8 8 0 01-5-1.7V15a5 5 0 11-5-5h1v3h-1a2 2 0 102 2V2z"/>
-        </svg>
-      </a>
-
-      <!-- Spotify -->
-      <a href="https://spotify.com/" target="_blank">
-        <svg viewBox="0 0 24 24">
-          <path d="M12 2a10 10 0 100 20 10 10 0 000-20zm4.6 14.5a.8.8 0 01-1.1.3 9.5 9.5 0 00-7.9-.6.8.8 0 11-.5-1.5 11 11 0 019.1.7.8.8 0 01.4 1.1zm1-3a1 1 0 01-1.3.4 12 12 0 00-9.7-.8 1 1 0 11-.6-1.9 14 14 0 0111.4.9 1 1 0 01.2 1.4zm.2-3.1a1.2 1.2 0 01-1.5.5 14.5 14.5 0 00-11.5-1 1.2 1.2 0 01-.8-2.3 16.8 16.8 0 0113.3 1.1 1.2 1.2 0 01.5 1.7z"/>
-        </svg>
-      </a>
-
-    </div>
+<section class="bloque">
+  <div class="wrap">
+    <p>Aquí no se habla para tranquilizar.</p>
+    <p>Pensar también es una forma de cuidado.</p>
   </div>
 </section>
 
