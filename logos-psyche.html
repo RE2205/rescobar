@@ -1,398 +1,305 @@
 <!doctype html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Logos Psyche</title>
-  <meta name="description" content="Psiquiatría y psicoterapia. Escucha, encuadre y responsabilidad clínica." />
+<title>Logos Psyche</title>
+<meta name="description" content="Psiquiatría y psicoterapia. Escucha, encuadre y responsabilidad clínica." />
 
-  <style>
+<style>
 
-    :root{
-      --negro:#000000;
-      --blanco:#f6f6f2;
-      --gris:#8e8e8a;
-      --acento:#b89a5b;
-    }
+:root{
+  --negro:#0b0b0c;
+  --blanco:#f6f6f2;
+  --gris:#8e8e8a;
+  --acento:#9c8450;
+  --linea:rgba(0,0,0,.08);
+}
 
-    *{ box-sizing:border-box; }
+*{ box-sizing:border-box; }
 
-    html,body{
-      margin:0;
-      padding:0;
-    }
+html,body{
+  margin:0;
+  padding:0;
+}
 
-    body{
-      background:var(--blanco);
-      color:var(--negro);
-      font-family: Georgia, "Times New Roman", serif;
-      line-height:1.7;
-    }
+body{
+  background:var(--blanco);
+  color:var(--negro);
+  font-family: Georgia, "Times New Roman", serif;
+  line-height:1.7;
+}
 
-    .wrap{
-      max-width:880px;
-      margin:0 auto;
-      padding:0 24px;
-    }
+/* ================= NAV ================= */
 
-    /* ================= VOLVER ================= */
+.top-nav{
+  position:absolute;
+  top:32px;
+  right:48px;
+}
 
-    .volver-wrap{
-      max-width:880px;
-      margin:40px auto 0;
-      padding:0 24px;
-    }
+.nav-list{
+  list-style:none;
+  display:flex;
+  gap:32px;
+  margin:0;
+  padding:0;
+}
 
-    .volver{
-      font-size:13px;
-      letter-spacing:.18em;
-      text-transform:uppercase;
-      color:var(--gris);
-      text-decoration:none;
-    }
+.nav-list a{
+  font-size:12px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  text-decoration:none;
+  color:var(--gris);
+}
 
-    .volver:hover{
-      color:var(--negro);
-    }
+.nav-list a:hover{
+  color:var(--negro);
+}
 
-    /* ================= APERTURA ================= */
+.wrap{
+  max-width:880px;
+  margin:0 auto;
+  padding:0 24px;
+}
 
-    .apertura{
-      padding:140px 0 150px;
-    }
+/* ================= APERTURA ================= */
 
-    .apertura h1{
-      max-width:560px;
-      font-size:clamp(30px,3.6vw,44px);
-      font-weight:400;
-      line-height:1.28;
-      margin:0;
-    }
+.apertura{
+  padding:160px 0 140px;
+}
 
-    /* ================= AXIOMA ================= */
+.apertura h1{
+  max-width:560px;
+  font-size:clamp(30px,3.6vw,44px);
+  font-weight:400;
+  line-height:1.28;
+  margin:0;
+}
 
-    .axioma{
-      background:var(--negro);
-      padding:72px 0;
-      position:relative;
-    }
+/* ================= AXIOMA ================= */
 
-    .axioma::before,
-    .axioma::after{
-      content:"";
-      position:absolute;
-      left:0;
-      right:0;
-      height:4px;
-      background:var(--acento);
-    }
+.axioma{
+  background:var(--negro);
+  padding:64px 0;
+  position:relative;
+}
 
-    .axioma::before{ top:0; }
-    .axioma::after{ bottom:0; }
+.axioma::before{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  top:0;
+  height:2px;
+  background:var(--acento);
+}
 
-    .axioma p{
-      margin:0;
-      text-align:center;
-      color:#f4f4f1;
-      font-size:15px;
-      letter-spacing:.24em;
-      text-transform:uppercase;
-      line-height:1.9;
-    }
+.axioma p{
+  margin:0;
+  text-align:center;
+  color:#f4f4f1;
+  font-size:14px;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  line-height:1.8;
+}
 
-    /* ================= ENCUADRE ================= */
+/* ================= ENCUADRE ================= */
 
-    .encuadre{
-      background:var(--blanco);
-      padding:140px 0 120px;
-    }
+.encuadre{
+  padding:140px 0 120px;
+}
 
-    .encuadre-grid{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:96px;
-      align-items:start;
-    }
+.encuadre-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:96px;
+  align-items:start;
+}
 
-    .encuadre-img img{
-      width:100%;
-      max-width:720px;
-      display:block;
-      filter:grayscale(1) contrast(1.05);
-    }
+.encuadre-img img{
+  width:100%;
+  display:block;
+  filter:grayscale(1) contrast(1.05);
+}
 
-    .encuadre-texto{
-      align-self:start;
-    }
+.encuadre-texto p{
+  font-size:20px;
+  max-width:420px;
+  line-height:1.75;
+  margin:0 0 32px;
+}
 
-    .encuadre-texto p{
-      font-size:20px;
-      max-width:420px;
-      line-height:1.75;
-      margin:0 0 32px;
-    }
+.encuadre-texto p:last-child{
+  margin-bottom:0;
+}
 
-    .encuadre-texto p:last-child{
-      margin-bottom:0;
-    }
+/* ================= PRINCIPIO ================= */
 
-    /* ================= ARTE Y VIDA · NOTA ================= */
+.principio{
+  background:var(--negro);
+  color:var(--blanco);
+  padding:110px 0 130px;
+}
 
-    .arte-margen{
-      background:var(--blanco);
-      padding:32px 0 48px;
-    }
+.principio p{
+  max-width:640px;
+  font-size:20px;
+  margin:0;
+}
 
-    .arte-margen p{
-      max-width:420px;
-      font-size:16px;
-      line-height:1.6;
-      margin:0;
-    }
+/* ================= CONTACTO ================= */
 
-    .arte-margen a{
-      color:var(--negro);
-      text-decoration:none;
-      border-bottom:1px solid var(--negro);
-      padding-bottom:2px;
-    }
+.contacto{
+  padding:120px 0 160px;
+  border-top:1px solid var(--linea);
+}
 
-    .arte-margen a:hover{
-      color:var(--acento);
-      border-color:var(--acento);
-    }
+.contacto .wrap{
+  text-align:right;
+}
 
-    /* ================= BLOQUE NEGRO ================= */
+.contacto p{
+  max-width:420px;
+  font-size:20px;
+  margin:0 0 48px auto;
+}
 
-    .bloque-negro{
-      background:var(--negro);
-      color:var(--blanco);
-      padding:120px 0 140px;
-    }
+.contacto a{
+  display:inline-block;
+  margin-left:28px;
+  font-size:18px;
+  color:var(--negro);
+  text-decoration:none;
+  border-bottom:1px solid var(--negro);
+  padding-bottom:4px;
+}
 
-    .bloque-negro p{
-      max-width:640px;
-      font-size:20px;
-      margin:0 0 36px;
-    }
+.contacto a:hover{
+  color:var(--acento);
+  border-color:var(--acento);
+}
 
-    .bloque-negro p:last-child{
-      margin-bottom:0;
-    }
+/* ================= MOBILE ================= */
 
-    /* ================= CONTACTO ================= */
+@media (max-width:900px){
+  .encuadre-grid{
+    grid-template-columns:1fr;
+    gap:64px;
+  }
 
-    .contacto{
-      padding:140px 0 180px;
-    }
+  .encuadre-texto p{
+    max-width:100%;
+  }
+}
 
-    .contacto p{
-      max-width:420px;
-      font-size:20px;
-      margin:0 0 48px auto;
-      text-align:left;
-    }
+@media (max-width:700px){
 
-    .contacto .wrap{
-      text-align:right;
-    }
+  .top-nav{
+    position:static;
+    padding:24px 24px 0;
+  }
 
-    .contacto a{
-      display:inline-block;
-      margin-right:28px;
-      font-size:18px;
-      color:var(--negro);
-      text-decoration:none;
-      border-bottom:1px solid var(--negro);
-      padding-bottom:4px;
-    }
+  .apertura{
+    padding:100px 0 80px;
+  }
 
-    .contacto a:hover{
-      color:var(--acento);
-      border-color:var(--acento);
-    }
+  .encuadre{
+    padding:80px 0 64px;
+  }
 
-    /* ================= DEDICATORIA ================= */
+  .principio{
+    padding:90px 0;
+  }
 
-    .dedicatoria{
-      background:var(--negro);
-      color:var(--blanco);
-      padding:160px 0;
-    }
+  .contacto{
+    padding:90px 0 120px;
+  }
 
-    .dedicatoria p{
-      max-width:640px;
-      font-size:18px;
-      font-style:italic;
-      margin:0;
-    }
+  .contacto .wrap{
+    text-align:left;
+  }
 
-    .dedicatoria a{
-      color:var(--blanco);
-      text-decoration:none;
-      border-bottom:1px solid var(--blanco);
-      padding-bottom:2px;
-    }
+  .contacto p{
+    margin:0 0 48px 0;
+  }
+}
 
-    .dedicatoria a:hover{
-      color:var(--acento);
-      border-color:var(--acento);
-    }
-
-    /* ================= MOBILE ================= */
-
-    @media (max-width:900px){
-      .encuadre-grid{
-        grid-template-columns:1fr;
-        gap:64px;
-      }
-
-      .encuadre-texto p,
-      .arte-margen p{
-        max-width:100%;
-      }
-    }
-
-    @media (max-width:700px){
-
-      .volver-wrap{
-        margin:24px auto 0;
-      }
-
-      .apertura{
-        padding:100px 0 80px;
-      }
-
-      .apertura h1{
-        max-width:100%;
-      }
-
-      .axioma{
-        padding:48px 0;
-      }
-
-      .encuadre{
-        padding:80px 0 64px;
-      }
-
-      .bloque-negro{
-        padding:96px 0;
-      }
-
-      .contacto{
-        padding:96px 0 120px;
-      }
-
-      .contacto .wrap{
-        text-align:left;
-      }
-
-      .contacto p{
-        margin:0 0 48px 0;
-      }
-
-      .dedicatoria{
-        padding:110px 0;
-      }
-    }
-
-  </style>
+</style>
 </head>
 
 <body>
 
-  <!-- VOLVER -->
-  <div class="volver-wrap">
-    <a href="index.html" class="volver">← Volver al inicio</a>
+<nav class="top-nav">
+  <ul class="nav-list">
+    <li><a href="index.html">Inicio</a></li>
+    <li><a href="arte-y-vida.html">ReConectar</a></li>
+    <li><a href="inner-sound.html">Inner Sound</a></li>
+  </ul>
+</nav>
+
+<section class="apertura">
+  <div class="wrap">
+    <h1>
+      Escuchar no es asentir.<br>
+      Es sostener lo que incomoda.
+    </h1>
   </div>
+</section>
 
-  <!-- APERTURA -->
-  <section class="apertura">
-    <div class="wrap">
-      <h1>
-        Escuchar no es asentir.<br>
-        Es quedarse cuando lo que aparece incomoda.
-      </h1>
+<section class="axioma">
+  <div class="wrap">
+    <p>
+      La psiquiatría es ciencia en su base<br>
+      y arte en su ejercicio
+    </p>
+  </div>
+</section>
+
+<section class="encuadre">
+  <div class="wrap encuadre-grid">
+    <div class="encuadre-img">
+      <img src="assets/clinica.png" alt="Espacio clínico Logos Psyche">
     </div>
-  </section>
-
-  <!-- AXIOMA -->
-  <section class="axioma">
-    <div class="wrap">
+    <div class="encuadre-texto">
       <p>
-        La psiquiatría es ciencia en su base<br>
-        y arte en su ejercicio
+        Trabajo con límites claros.<br>
+        Sin ellos no hay profundidad.
+      </p>
+      <p>
+        El tiempo y el encuadre no están
+        para apurar procesos,
+        sino para hacerlos posibles.
+      </p>
+      <p>
+        No acompaño para tranquilizar,
+        sino para pensar lo que duele.
       </p>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ENCUADRE -->
-  <section class="encuadre">
-    <div class="wrap encuadre-grid">
+<section class="principio">
+  <div class="wrap">
+    <p>
+      Escucho sin prisa, pero no sin dirección.
+    </p>
+  </div>
+</section>
 
-      <div class="encuadre-img">
-        <img src="assets/clinica.png" alt="Espacio clínico Logos Psyche">
-      </div>
-
-      <div class="encuadre-texto">
-        <p>
-          Trabajo con límites claros, porque sin ellos
-          no hay profundidad.
-        </p>
-        <p>
-          El tiempo, el ritmo y los límites no están
-          para apurar procesos, sino para que puedan
-          desplegarse con seguridad.
-        </p>
-        <p>
-          No acompaño para tranquilizar,
-          sino para pensar lo que duele.
-        </p>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ARTE Y VIDA -->
-  <section class="arte-margen">
-    <div class="wrap">
-      <p>
-        Algunas cosas no se trabajan solo desde la clínica.<br>
-        <a href="arte-y-vida.html">ReConectar →</a>
-      </p>
-    </div>
-  </section>
-
-  <!-- BLOQUE NEGRO -->
-  <section class="bloque-negro">
-    <div class="wrap">
-      <p>Escucho sin prisa, pero no sin dirección.</p>
-      <p>El trabajo empieza cuando dejamos de evitar lo que insiste.</p>
-    </div>
-  </section>
-
-  <!-- CONTACTO -->
-  <section class="contacto">
-    <div class="wrap">
-      <p>
-        Una primera conversación sirve para saber
-        si este puede ser el espacio adecuado.
-      </p>
-      <a href="https://wa.me/50230607168">WhatsApp</a>
-      <a href="mailto:correo@logospsyche.com">Correo</a>
-    </div>
-  </section>
-
-  <!-- DEDICATORIA -->
-  <section class="dedicatoria">
-    <div class="wrap">
-      <p>
-        Para quienes descubren que no todo puede decirse en voz alta.<br><br>
-        <a href="arte-y-vida.html">ReConectar →</a>
-      </p>
-    </div>
-  </section>
+<section class="contacto">
+  <div class="wrap">
+    <p>
+      Una primera conversación permite evaluar
+      si este es el encuadre adecuado.
+    </p>
+    <a href="https://wa.me/50230607168">WhatsApp</a>
+    <a href="mailto:correo@logospsyche.com">Correo</a>
+  </div>
+</section>
 
 </body>
 </html>
