@@ -4,21 +4,32 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Clínica · Ronald Escobar</title>
-<meta name="description" content="Psiquiatría, acompañamiento y experiencia sensorial como ecosistema clínico." />
+<meta name="description" content="Ecosistema clínico." />
 
 <style>
 
 /* =========================
-   BASE
+   VARIABLES
 ========================= */
+
+:root{
+  --negro:#0b0b0c;
+  --blanco:#ffffff;
+  --hueso:#f6f6f4;
+  --gris:#6f6f6f;
+  --grisClaro:rgba(255,255,255,.65);
+  --linea:rgba(0,0,0,.08);
+  --lineaOscura:rgba(255,255,255,.08);
+}
 
 *{ box-sizing:border-box; }
 
 body{
   margin:0;
   font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
-  background:#0b0b0c;
-  color:#f3f3f3;
+  -webkit-font-smoothing:antialiased;
+  background:var(--blanco);
+  color:var(--negro);
 }
 
 .wrap{
@@ -31,122 +42,145 @@ body{
    NAV
 ========================= */
 
-.top-nav{
-  position:absolute;
-  top:28px;
-  right:48px;
+nav{
+  border-bottom:1px solid var(--linea);
+  background:var(--blanco);
 }
 
-.nav-list{
-  list-style:none;
+.nav-inner{
+  max-width:1040px;
+  margin:0 auto;
+  padding:24px;
   display:flex;
-  gap:32px;
-  margin:0;
-  padding:0;
+  justify-content:flex-end;
 }
 
-.nav-item{
-  position:relative;
-}
-
-.nav-item > a{
+.nav-inner a{
   font-size:12px;
-  letter-spacing:.14em;
+  letter-spacing:.18em;
   text-transform:uppercase;
   text-decoration:none;
-  color:rgba(255,255,255,.65);
+  color:var(--gris);
+  margin-left:32px;
 }
 
-.nav-item > a:hover{
-  color:#fff;
+.nav-inner a:hover{
+  color:var(--negro);
 }
 
 /* =========================
-   HERO
+   HERO BLANCO
 ========================= */
 
 .hero{
-  min-height:52vh;
-  display:grid;
-  align-items:center;
-  padding:120px 0 60px 0;
+  background:var(--blanco);
+  padding:140px 0 100px;
+  border-bottom:1px solid var(--linea);
 }
 
 .kicker{
   font-size:12px;
   letter-spacing:.24em;
   text-transform:uppercase;
-  opacity:.6;
+  color:var(--gris);
   margin-bottom:18px;
 }
 
 .headline{
-  font-size:clamp(40px,4.8vw,70px);
+  font-size:clamp(42px,5vw,72px);
+  font-weight:500;
   line-height:1.05;
-  font-weight:600;
   letter-spacing:-.02em;
-  max-width:14ch;
+  max-width:16ch;
 }
 
 .subhead{
-  margin-top:28px;
-  font-size:20px;
-  line-height:1.7;
-  max-width:60ch;
-  color:rgba(243,243,243,.75);
-}
-
-/* =========================
-   BLOQUE INTRO
-========================= */
-
-.intro{
-  background:#f6f6f4;
-  color:#111;
-  padding:80px 0;
-}
-
-.intro p{
-  font-size:20px;
-  line-height:1.75;
-  max-width:65ch;
-}
-
-/* =========================
-   ECOSISTEMA
-========================= */
-
-.section{
-  padding:80px 0;
-  border-bottom:1px solid rgba(255,255,255,.06);
-}
-
-.section h2{
-  font-size:36px;
-  margin-bottom:18px;
-  font-weight:500;
-}
-
-.section p{
+  margin-top:32px;
   font-size:18px;
   line-height:1.7;
   max-width:55ch;
-  color:rgba(243,243,243,.75);
+  color:var(--gris);
+}
+
+/* =========================
+   SECCIONES BASE
+========================= */
+
+.section{
+  padding:100px 0;
+}
+
+.section-inner{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:40px;
+}
+
+.section h2{
+  font-size:30px;
+  font-weight:500;
+  margin:0 0 14px 0;
+}
+
+.section p{
+  font-size:17px;
+  line-height:1.6;
+  max-width:42ch;
 }
 
 .section a{
-  display:inline-block;
-  margin-top:16px;
-  font-size:14px;
-  letter-spacing:.04em;
-  color:#f3f3f3;
+  font-size:13px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
   text-decoration:none;
-  border-bottom:1px solid rgba(255,255,255,.35);
   padding-bottom:4px;
 }
 
-.section a:hover{
-  border-color:#fff;
+/* =========================
+   BLOQUE NEGRO
+========================= */
+
+.section.dark{
+  background:var(--negro);
+  color:var(--blanco);
+  border-top:1px solid var(--linea);
+  border-bottom:1px solid var(--linea);
+}
+
+.section.dark p{
+  color:var(--grisClaro);
+}
+
+.section.dark a{
+  color:var(--blanco);
+  border-bottom:1px solid rgba(255,255,255,.35);
+}
+
+.section.dark a:hover{
+  border-color:var(--blanco);
+}
+
+/* =========================
+   BLOQUE BLANCO
+========================= */
+
+.section.light{
+  background:var(--blanco);
+  border-bottom:1px solid var(--linea);
+}
+
+.section.light p{
+  color:var(--gris);
+}
+
+.section.light a{
+  color:var(--negro);
+  border-bottom:1px solid rgba(0,0,0,.35);
+}
+
+.section.light a:hover{
+  border-color:var(--negro);
 }
 
 /* =========================
@@ -155,13 +189,18 @@ body{
 
 @media (max-width:768px){
 
+  .hero{
+    padding:100px 0 70px;
+  }
+
   .headline{
     font-size:clamp(32px,8vw,48px);
     max-width:100%;
   }
 
-  .hero{
-    padding:100px 0 40px 0;
+  .section-inner{
+    flex-direction:column;
+    gap:24px;
   }
 
 }
@@ -171,77 +210,64 @@ body{
 
 <body>
 
-<!-- NAV -->
-<nav class="top-nav">
-  <ul class="nav-list">
-    <li class="nav-item"><a href="index.html">Inicio</a></li>
-    <li class="nav-item"><a href="logos-psyche.html">Logos Psyche</a></li>
-    <li class="nav-item"><a href="arte-y-vida.html">ReConectar</a></li>
-    <li class="nav-item"><a href="inner-sound.html">Inner Sound</a></li>
-  </ul>
+<nav>
+  <div class="nav-inner">
+    <a href="index.html">Inicio</a>
+    <a href="logos-psyche.html">Logos Psyche</a>
+    <a href="arte-y-vida.html">ReConectar</a>
+    <a href="inner-sound.html">Inner Sound</a>
+  </div>
 </nav>
 
-<!-- HERO -->
 <header class="hero">
   <div class="wrap">
     <p class="kicker">Clínica</p>
     <h1 class="headline">
-      Rigor científico.<br>
-      Profundidad humana.
+      Ecosistema clínico.
     </h1>
     <p class="subhead">
-      La clínica es el núcleo de este proyecto.
-      Un espacio donde la salud mental se aborda con base médica,
-      sin perder pensamiento crítico ni dimensión filosófica.
+      Psiquiatría, acompañamiento y experiencia sensorial
+      como dimensiones interconectadas del cuidado.
     </p>
   </div>
 </header>
 
-<!-- INTRO -->
-<section class="intro">
-  <div class="wrap">
-    <p>
-      Aquí convergen tres dimensiones complementarias del cuidado:
-      la psiquiatría como fundamento médico,
-      el acompañamiento en procesos emocionales y creativos,
-      y la experiencia sensorial como vía de integración.
-    </p>
+<!-- Logos Psyche NEGRO -->
+<section class="section dark">
+  <div class="wrap section-inner">
+    <div>
+      <h2>Logos Psyche</h2>
+      <p>
+        Evaluación y tratamiento psiquiátrico basado en evidencia.
+      </p>
+    </div>
+    <a href="logos-psyche.html">Explorar</a>
   </div>
 </section>
 
-<!-- LOGOS PSYCHE -->
-<section class="section">
-  <div class="wrap">
-    <h2>Logos Psyche</h2>
-    <p>
-      Evaluación y tratamiento psiquiátrico basado en evidencia.
-      Diagnóstico claro, seguimiento estructurado y escucha profunda.
-    </p>
-    <a href="logos-psyche.html">Explorar →</a>
+<!-- ReConectar BLANCO -->
+<section class="section light">
+  <div class="wrap section-inner">
+    <div>
+      <h2>ReConectar</h2>
+      <p>
+        Integración emocional y proceso creativo.
+      </p>
+    </div>
+    <a href="arte-y-vida.html">Explorar</a>
   </div>
 </section>
 
-<!-- RECONCTAR -->
-<section class="section">
-  <div class="wrap">
-    <h2>ReConectar</h2>
-    <p>
-      Espacio para artistas y personas en crisis creativa.
-      Integración emocional desde la experiencia vital.
-    </p>
-    <a href="arte-y-vida.html">Explorar →</a>
-  </div>
-</section>
-
-<!-- INNER SOUND -->
-<section class="section">
-  <div class="wrap">
-    <h2>Inner Sound</h2>
-    <p>
-      Experiencias sensoriales diseñadas para integrar cuerpo,
-      emoción y pensamiento.
-    </p>
-    <a href="inner-sound.html">Explorar →</a>
+<!-- Inner Sound NEGRO -->
+<section class="section dark">
+  <div class="wrap section-inner">
+    <div>
+      <h2>Inner Sound</h2>
+      <p>
+        Experiencias sensoriales estructuradas.
+      </p>
+    </div>
+    <a href="inner-sound.html">Explorar</a>
   </div>
 </section>
 
