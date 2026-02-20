@@ -17,7 +17,9 @@
   --yt:#FF0000;
 }
 
-*{ box-sizing:border-box; }
+*{
+  box-sizing:border-box;
+}
 
 body{
   margin:0;
@@ -96,31 +98,32 @@ h1{
 /* CLIPS */
 
 .clips{
-  padding:90px 0 60px;
+  padding:100px 0 70px;
 }
 
 .clips-grid{
   display:flex;
   justify-content:center;
-  gap:40px;
+  gap:48px;
   flex-wrap:wrap;
 }
 
 .clip{
-  width:220px;
+  width:200px;
 }
 
 .clip video{
   width:100%;
-  border-radius:14px;
+  border-radius:12px;
   display:block;
+  background:#000;
 }
 
 /* YOUTUBE BUTTON */
 
 .youtube-cta{
   text-align:center;
-  padding:60px 0 90px;
+  padding:70px 0 110px;
 }
 
 .youtube-btn{
@@ -187,7 +190,7 @@ h1{
 
 @media (max-width:768px){
   .clip{
-    width:200px;
+    width:180px;
   }
 }
 
@@ -195,7 +198,7 @@ h1{
   .clips-grid{
     flex-direction:column;
     align-items:center;
-    gap:32px;
+    gap:36px;
   }
 }
 
@@ -223,29 +226,23 @@ h1{
   <div class="wrap clips-grid">
 
     <div class="clip">
-      <video src="/assets/clip1.mp4"
-             poster="/assets/poster1.jpg"
-             controls
-             playsinline
-             preload="metadata">
+      <video controls playsinline preload="metadata" poster="/assets/poster1.jpg">
+        <source src="/assets/clip1.mp4" type="video/mp4">
+        Tu navegador no soporta el video.
       </video>
     </div>
 
     <div class="clip">
-      <video src="/assets/clip2.mp4"
-             poster="/assets/poster2.jpg"
-             controls
-             playsinline
-             preload="metadata">
+      <video controls playsinline preload="metadata" poster="/assets/poster2.jpg">
+        <source src="/assets/clip2.mp4" type="video/mp4">
+        Tu navegador no soporta el video.
       </video>
     </div>
 
     <div class="clip">
-      <video src="/assets/clip3.mp4"
-             poster="/assets/poster3.jpg"
-             controls
-             playsinline
-             preload="metadata">
+      <video controls playsinline preload="metadata" poster="/assets/poster3.jpg">
+        <source src="/assets/clip3.mp4" type="video/mp4">
+        Tu navegador no soporta el video.
       </video>
     </div>
 
@@ -254,6 +251,9 @@ h1{
 
 <section class="youtube-cta">
   <a href="https://youtube.com/@desaprenderparacreser?si=r9JIpxRR4Vvi7LTd" target="_blank" class="youtube-btn">
+    <svg viewBox="0 0 24 24">
+      <path d="M23.5 6.2c-.3-1.3-1.3-2.3-2.6-2.6C18.7 3 12 3 12 3s-6.7 0-8.9.6C1.8 3.9.8 4.9.5 6.2.1 8.4.1 12 .1 12s0 3.6.4 5.8c.3 1.3 1.3 2.3 2.6 2.6 2.2.6 8.9.6 8.9.6s6.7 0 8.9-.6c1.3-.3 2.3-1.3 2.6-2.6.4-2.2.4-5.8.4-5.8s0-3.6-.4-5.8zM9.5 15.5v-7l6 3.5-6 3.5z"/>
+    </svg>
     Ver en YouTube
   </a>
 </section>
