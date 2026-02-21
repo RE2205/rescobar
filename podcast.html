@@ -142,45 +142,78 @@ a{ color:inherit; }
 }
 
 /* ---------- CLIPS ---------- */
+/* ---------- CLIPS (VERSIÓN NUEVA) ---------- */
+
 .clips{
-  padding:56px 0 44px;
-  background:var(--blanco);
-}
-.grid{
-  display:grid;
-  grid-template-columns:repeat(3, 1fr);
-  gap:18px;
-  align-items:start;
-}
-.clip{
-  border:1px solid var(--linea);
-  border-radius:var(--r);
-  overflow:hidden;
-  background:#fff;
-}
-.clip video{
-  width:100%;
-  aspect-ratio:16/9;
-  background:#0f1012;
-}
-.clip .cap{
-  padding:14px 14px 16px;
-  border-top:1px solid var(--linea);
-}
-.clip .cap .t{
-  margin:0 0 6px;
-  font-size:12px;
-  letter-spacing:.22em;
-  text-transform:uppercase;
-  color:rgba(11,11,12,.70);
-}
-.clip .cap .d{
-  margin:0;
-  font-size:13px;
-  color:rgba(11,11,12,.62);
+  padding:100px 0 70px;
 }
 
-/* ---------- CTA YOUTUBE ---------- */
+.clips-grid{
+  display:flex;
+  justify-content:center;
+  gap:48px;
+  flex-wrap:wrap;
+}
+
+.clip{
+  width:200px;
+}
+
+.clip video{
+  width:100%;
+  border-radius:12px;
+  display:block;
+  background:#000;
+}
+
+/* ---------- YOUTUBE BUTTON (VERSIÓN NUEVA) ---------- */
+
+.youtube-cta{
+  text-align:center;
+  padding:70px 0 110px;
+}
+
+.youtube-btn{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:10px 18px;
+  border-radius:999px;
+  background:#FF0000;
+  color:#fff;
+  font-size:12px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  text-decoration:none;
+  transition:.25s ease;
+}
+
+.youtube-btn svg{
+  width:14px;
+  height:14px;
+  fill:#fff;
+}
+
+.youtube-btn:hover{
+  background:#cc0000;
+  transform:translateY(-2px);
+}
+
+/* ---------- RESPONSIVE AJUSTE ---------- */
+
+@media (max-width:768px){
+  .clip{
+    width:180px;
+  }
+}
+
+@media (max-width:500px){
+  .clips-grid{
+    flex-direction:column;
+    align-items:center;
+    gap:36px;
+  }
+}/* ---------- CTA YOUTUBE ---------- */
 .yt-row{
   display:flex;
   justify-content:center;
