@@ -4,13 +4,13 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<title>Inner Sound · CreSer</title>
+<title>Inner Sound · Clínica</title>
 <meta name="description" content="Escucha guiada basada en frecuencia y neurociencia. Una experiencia creativa íntima." />
 
 <style>
 /* ==================================================
-   INNER SOUND
-   Subpágina · Versión refinada
+   INNER SOUND · Clínica
+   Editorial minimalista refinado
    ================================================== */
 
 :root{
@@ -18,7 +18,6 @@
   --negro:#0b0b0c;
   --gris:#6f6f6f;
   --violeta:#7b5cff;
-  --violeta-suave:#b7a9ff;
   --linea:rgba(0,0,0,.08);
 }
 
@@ -39,48 +38,98 @@ body{
   padding:0 32px;
 }
 
-/* ================= HERO CLARO ================= */
+/* ================= NAV ================= */
 
-.hero-claro{
+.nav{
+  height:64px;
+  border-bottom:1px solid var(--linea);
+  display:flex;
+  align-items:center;
+}
+
+.nav-inner{
+  width:100%;
+  display:flex;
+  justify-content:flex-end;
+  gap:48px;
+}
+
+.nav a{
+  font-size:12px;
+  letter-spacing:.28em;
+  text-transform:uppercase;
+  text-decoration:none;
+  color:rgba(0,0,0,.55);
+  transition:.2s ease;
+  position:relative;
+}
+
+.nav a::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:-4px;
+  width:0;
+  height:1px;
+  background:var(--gris);
+  transition:.3s ease;
+}
+
+.nav a:hover{
+  color:var(--gris);
+}
+
+.nav a:hover::after{
+  width:100%;
+}
+
+/* ================= HERO ================= */
+
+.hero{
   padding:140px 0 110px;
   border-bottom:1px solid var(--linea);
 }
 
-.hero-claro .kicker{
+.hero .kicker{
   font-size:12px;
-  letter-spacing:.32em;
+  letter-spacing:.36em;
   text-transform:uppercase;
   color:rgba(0,0,0,.45);
-  margin:0 0 36px;
-}
-
-.hero-claro h1{
-  font-size:clamp(44px,6vw,72px);
-  font-weight:500;
-  line-height:1.1;
   margin:0 0 28px;
 }
 
-.hero-claro .subhero{
-  font-size:18px;
-  color:rgba(0,0,0,.65);
-  margin:0;
+.hero h1{
+  font-size:clamp(48px,6vw,78px);
+  font-weight:500;
+  line-height:1.1;
+  margin:0 0 24px;
 }
 
-/* ================= AXIOMA OSCURO ================= */
+.hero .subhero{
+  font-size:20px;
+  color:rgba(0,0,0,.65);
+  margin:0 0 32px;
+}
 
-.axioma-oscuro{
+.hero .descripcion{
+  max-width:640px;
+  font-size:20px;
+  line-height:1.6;
+  color:rgba(0,0,0,.80);
+}
+
+/* ================= AXIOMA ================= */
+
+.axioma{
   background:var(--negro);
-  padding:48px 0;
-  border-top:1px solid rgba(255,255,255,.06);
-  border-bottom:1px solid rgba(255,255,255,.06);
+  padding:56px 0;
   text-align:center;
 }
 
-.axioma-oscuro p{
+.axioma p{
   margin:0;
   font-size:14px;
-  letter-spacing:.32em;
+  letter-spacing:.36em;
   text-transform:uppercase;
   color:var(--violeta);
 }
@@ -93,26 +142,16 @@ body{
 
 .imagenes-grid{
   display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:28px;
+  grid-template-columns:1fr 1fr;
+  gap:32px;
 }
 
 .imagen{
+  aspect-ratio:4/5; /* MISMA PROPORCIÓN PARA AMBAS */
   border-radius:18px;
   overflow:hidden;
   background:#000;
   border:1px solid var(--linea);
-  position:relative;
-}
-
-/* Imagen humana (vertical) */
-.imagen:not(.violeta){
-  aspect-ratio:4/5;
-}
-
-/* Imagen violeta (horizontal) */
-.imagen.violeta{
-  aspect-ratio:16/9;
 }
 
 .imagen img{
@@ -122,38 +161,15 @@ body{
   transition:.4s ease;
 }
 
-/* Tratamiento humano B/N */
-.imagen:not(.violeta) img{
+/* Imagen humana B/N */
+.imagen.humana img{
   filter:grayscale(100%);
   opacity:.85;
 }
 
-/* Imagen violeta sin filtro */
-.imagen.violeta img{
+/* Imagen frecuencia sin filtro */
+.imagen.frecuencia img{
   filter:none;
-  opacity:1;
-}
-
-/* ✨ Glow sutil en hover SOLO para la violeta */
-.imagen.violeta:hover img{
-  transform:scale(1.02);
-  filter:brightness(1.08);
-}
-
-.imagen.violeta::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:radial-gradient(
-    circle at center,
-    rgba(123,92,255,.25),
-    transparent 70%
-  );
-  opacity:0;
-  transition:.4s ease;
-}
-
-.imagen.violeta:hover::after{
   opacity:1;
 }
 
@@ -193,13 +209,12 @@ body{
   color:#ffffff;
 }
 
-/* ================= CIERRE CLARO ================= */
+/* ================= CIERRE ================= */
 
-.cierre-claro{
+.cierre{
   padding:140px 0 140px;
-  background:var(--blanco);
-  text-align:center;
   border-top:1px solid var(--linea);
+  text-align:center;
 }
 
 .cierre-texto{
@@ -244,14 +259,27 @@ body{
 /* ================= RESPONSIVE ================= */
 
 @media (max-width:900px){
-  .imagenes-grid{ grid-template-columns:1fr; }
+  .imagenes-grid{
+    grid-template-columns:1fr;
+  }
 }
 
 @media (max-width:700px){
-  .hero-claro{ padding:96px 0 56px; }
-  .imagenes{ padding:56px 0 72px; }
-  .bloque{ padding:72px 0; }
-  .cierre{ padding:72px 0 96px; }
+  .hero{
+    padding:96px 0 72px;
+  }
+  .hero h1{
+    font-size:clamp(36px,8vw,56px);
+  }
+  .imagenes{
+    padding:56px 0 72px;
+  }
+  .bloque{
+    padding:72px 0;
+  }
+  .cierre{
+    padding:96px 0;
+  }
 }
 
 </style>
@@ -259,23 +287,30 @@ body{
 
 <body>
 
+<!-- NAV -->
+<nav class="nav">
+  <div class="wrap nav-inner">
+    <a href="/">Inicio</a>
+    <a href="/clinica.html">Clínica</a>
+  </div>
+</nav>
+
 <!-- HERO -->
-<section class="hero hero-claro">
+<section class="hero">
   <div class="wrap">
-    <p class="kicker">Experiencia creativa</p>
+    <p class="kicker">Clínica · Experiencia creativa</p>
     <h1>Inner <span style="color:var(--violeta)">Sound</span></h1>
-    <p class="subhero">
-      Escucha guiada · Frecuencia · Neurociencia</p>
-      <p class="descripcion">
+    <p class="subhero">Escucha guiada · Frecuencia · Neurociencia</p>
+    <p class="descripcion">
       Diseñada para grupos creativos que buscan alinear ideas,
       ordenar el ritmo interno y preparar el terreno
       antes de una conversación estratégica o una lluvia de ideas.
-      </p>  
+    </p>
   </div>
 </section>
 
 <!-- AXIOMA -->
-<section class="axioma axioma-oscuro">
+<section class="axioma">
   <div class="wrap">
     <p>La claridad también tiene sonido</p>
   </div>
@@ -285,13 +320,11 @@ body{
 <section class="imagenes">
   <div class="wrap imagenes-grid">
 
-    <!-- Imagen humana -->
-    <div class="imagen">
+    <div class="imagen humana">
       <img src="/assets/inner-sound-2.jpg" alt="Escucha guiada">
     </div>
 
-    <!-- Imagen frecuencia -->
-    <div class="imagen violeta">
+    <div class="imagen frecuencia">
       <img src="/assets/inners.png" alt="Frecuencia sonora">
     </div>
 
@@ -301,48 +334,25 @@ body{
 <!-- BLOQUE NEGRO -->
 <section class="bloque">
   <div class="wrap">
-    <p>
-      No es música de fondo.
-    </p>
-
-    <p>
-      Es una secuencia diseñada para modificar
-      progresivamente el estado interno.
-    </p>
-
-    <p>
-      El ritmo cambia.
-      La frecuencia se ajusta.
-      La energía se desplaza.
-    </p>
-
-    <p>
-      El cerebro responde.
-      El cuerpo acompaña.
-      Y el viaje ocurre.
-    </p>
-     
-<p>
-  Basado en principios de neurociencia auditiva,
-  el recorrido no es casual.
-</p>
+    <p>No es música de fondo.</p>
+    <p>Es una secuencia diseñada para modificar progresivamente el estado interno.</p>
+    <p>El ritmo cambia. La frecuencia se ajusta. La energía se desplaza.</p>
+    <p>El cerebro responde. El cuerpo acompaña. Y el viaje ocurre.</p>
+    <p>Basado en principios de neurociencia auditiva, el recorrido no es casual.</p>
   </div>
 </section>
-<!-- CIERRE -->
-<section class="cierre cierre-claro">
-  <div class="wrap">
 
+<!-- CIERRE -->
+<section class="cierre">
+  <div class="wrap">
     <p class="cierre-texto">
       Inner Sound se vive en grupos pequeños,
       en sesiones íntimas diseñadas
-      para quienes desean experimentar
-      antes que entender.
+      para quienes desean experimentar antes que entender.
     </p>
-
     <a href="/contacto.html" class="cta-final">
       Solicitar acceso a Inner Sound
     </a>
-
   </div>
 </section>
 
