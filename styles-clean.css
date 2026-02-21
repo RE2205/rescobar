@@ -409,8 +409,32 @@ body{
   background-repeat:no-repeat;
   background-color:rgba(255,255,255,.05);
 }
-
 /* =========================
+   CTA CRESER (FONDO OSCURO)
+========================= */
+
+.cta-creser{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  margin-top:38px;
+  padding:12px 26px;
+  border:1px solid rgba(255,255,255,.35);
+  border-radius:999px;
+  font-size:12px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  text-decoration:none;
+  color:#fff;
+  background:transparent;
+  transition:all .25s ease;
+}
+
+.cta-creser:hover{
+  background:#fff;
+  color:#000;
+  border-color:#fff;
+}/* =========================
    INVERSIÓN DESKTOP
 ========================= */
 
