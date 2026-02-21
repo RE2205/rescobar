@@ -5,222 +5,387 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Desapre(he)nder para CreSer · Podcast</title>
 <meta name="description" content="Un podcast para desaprender lo automático y volver a escuchar lo humano. Concepto, conversación, presencia." />
-  <style>
 
+<style>
+/* =========================================================
+   PODCAST · DESAPRE(HE)NDER PARA CRESER
+   Editorial minimalista · HTML+CSS sin frameworks
+   ========================================================= */
+
+/* ---------- PALETA ---------- */
 :root{
   --negro:#0b0b0c;
-  --negro-profundo:#050505;
   --blanco:#ffffff;
-  --gris-suave:#5e5e5e;
+  --gris:#8a8f96;
+  --gris-suave:#d7dbe0;
   --azul:#6f8f9f;
-  --linea:rgba(0,0,0,.08);
-  --yt:#FF0000;
+  --linea:rgba(11,11,12,.12);
+  --linea-inv:rgba(255,255,255,.14);
+
+  --wrap:1100px;
+  --pad:28px;
+
+  --nav-h:64px;
+  --r:18px;
 }
 
-*{
-  box-sizing:border-box;
-}
-
+/* ---------- RESET ---------- */
+*{ box-sizing:border-box; }
+html{ scroll-behavior:smooth; }
 body{
   margin:0;
-  font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
+  font-family:system-ui,-apple-system,"Inter",Arial,sans-serif;
+  line-height:1.55;
+  color:var(--negro);
   background:var(--blanco);
-  color:var(--negro-profundo);
-  -webkit-font-smoothing:antialiased;
 }
+img,video{ max-width:100%; display:block; }
+a{ color:inherit; }
 
+/* ---------- WRAP ---------- */
 .wrap{
-  max-width:1100px;
+  max-width:var(--wrap);
   margin:0 auto;
-  padding:0 32px;
+  padding:0 var(--pad);
 }
 
-/* HERO */
-
-.hero{
-  padding:96px 0 48px;
+/* ---------- NAV SUPERIOR (VOLVER) ---------- */
+.topbar{
+  position:sticky;
+  top:0;
+  z-index:20;
+  background:rgba(255,255,255,.92);
+  backdrop-filter:saturate(140%) blur(10px);
+  border-bottom:1px solid var(--linea);
 }
-
-.back-link{
-  display:inline-block;
-  font-size:11px;
-  letter-spacing:.28em;
-  text-transform:uppercase;
-  color:rgba(0,0,0,.55);
-  text-decoration:none;
-  margin-bottom:36px;
-}
-
-.back-link::before{
-  content:"← ";
-}
-
-.back-link:hover{
-  color:var(--azul);
-}
-
-.kicker{
-  font-size:12px;
-  letter-spacing:.28em;
-  text-transform:uppercase;
-  color:rgba(0,0,0,.45);
-  margin-bottom:22px;
-}
-
-h1{
-  font-size:clamp(38px,5vw,60px);
-  margin:0 0 18px;
-  font-weight:600;
-}
-
-.hero p{
-  max-width:640px;
-  font-size:18px;
-  color:var(--gris-suave);
-}
-
-/* AXIOMA */
-
-.axioma{
-  background:var(--negro-profundo);
-  padding:52px 0;
-  text-align:center;
-}
-
-.axioma p{
-  margin:0;
-  font-size:clamp(18px,2vw,22px);
-  letter-spacing:.36em;
-  text-transform:uppercase;
-  color:#8fb0c2;
-}
-
-/* CLIPS */
-
-.clips{
-  padding:100px 0 70px;
-}
-
-.clips-grid{
+.topbar .wrap{
+  height:var(--nav-h);
   display:flex;
-  justify-content:center;
-  gap:48px;
-  flex-wrap:wrap;
+  align-items:center;
+  justify-content:flex-start;
 }
-
-.clip{
-  width:200px;
-}
-
-.clip video{
-  width:100%;
-  border-radius:12px;
-  display:block;
-  background:#000;
-}
-
-/* YOUTUBE BUTTON */
-
-.youtube-cta{
-  text-align:center;
-  padding:70px 0 110px;
-}
-
-.youtube-btn{
+.back{
   display:inline-flex;
   align-items:center;
-  gap:8px;
-  padding:10px 18px;
+  gap:10px;
+  text-decoration:none;
+  font-size:11px;
+  letter-spacing:.26em;
+  text-transform:uppercase;
+  color:rgba(11,11,12,.72);
+  padding:10px 12px;
   border-radius:999px;
-  background:var(--yt);
-  color:#fff;
+  border:1px solid rgba(11,11,12,.16);
+  transition:transform .18s ease, background .18s ease, color .18s ease, border-color .18s ease;
+}
+.back:hover{
+  transform:translateY(-1px);
+  background:rgba(11,11,12,.04);
+  border-color:rgba(11,11,12,.22);
+  color:rgba(11,11,12,.88);
+}
+.back .dot{
+  width:6px;height:6px;border-radius:50%;
+  background:var(--azul);
+  box-shadow:0 0 0 3px rgba(111,143,159,.18);
+}
+
+/* ---------- HERO BLANCO ---------- */
+.hero{
+  padding:64px 0 54px;
+}
+.kicker{
+  font-size:11px;
+  letter-spacing:.30em;
+  text-transform:uppercase;
+  color:rgba(11,11,12,.58);
+  margin:0 0 12px;
+}
+.h1{
+  font-family:ui-serif, "Cormorant Garamond", "Times New Roman", serif;
+  font-weight:600;
+  letter-spacing:-.02em;
+  font-size:44px;
+  line-height:1.08;
+  margin:0 0 14px;
+}
+.sub{
+  max-width:72ch;
+  font-size:15px;
+  color:rgba(11,11,12,.70);
+  margin:0;
+}
+.hero-meta{
+  margin-top:26px;
+  display:flex;
+  gap:14px;
+  flex-wrap:wrap;
+  align-items:center;
+}
+.pill{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:10px 14px;
+  border:1px solid var(--linea);
+  border-radius:999px;
+  font-size:12px;
+  letter-spacing:.10em;
+  text-transform:uppercase;
+  color:rgba(11,11,12,.68);
+}
+.pill b{
+  letter-spacing:.16em;
+  font-weight:600;
+  color:rgba(11,11,12,.80);
+}
+.pill .mark{
+  width:7px;height:7px;border-radius:50%;
+  background:var(--azul);
+  box-shadow:0 0 0 4px rgba(111,143,159,.14);
+}
+
+/* ---------- SEPARADOR FINO ---------- */
+.hr{
+  border:0;
+  border-top:1px solid var(--linea);
+  margin:0;
+}
+
+/* ---------- AXIOMA NEGRO ---------- */
+.axioma{
+  background:var(--negro);
+  color:var(--blanco);
+  padding:62px 0;
+}
+.axioma .quote{
+  margin:0;
+  text-align:center;
+  font-family:ui-serif, "Cormorant Garamond", "Times New Roman", serif;
+  font-size:26px;
+  line-height:1.25;
+  letter-spacing:.04em;
+}
+.axioma .quote span{
+  color:rgba(255,255,255,.70);
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  font-size:11px;
+  display:block;
+  margin-top:18px;
+}
+.axioma .accent{
+  color:var(--azul);
+  letter-spacing:.10em;
+}
+
+/* ---------- CLIPS ---------- */
+.clips{
+  padding:56px 0 44px;
+  background:var(--blanco);
+}
+.grid{
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap:18px;
+  align-items:start;
+}
+.clip{
+  border:1px solid var(--linea);
+  border-radius:var(--r);
+  overflow:hidden;
+  background:#fff;
+}
+.clip video{
+  width:100%;
+  aspect-ratio:16/9;
+  background:#0f1012;
+}
+.clip .cap{
+  padding:14px 14px 16px;
+  border-top:1px solid var(--linea);
+}
+.clip .cap .t{
+  margin:0 0 6px;
+  font-size:12px;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:rgba(11,11,12,.70);
+}
+.clip .cap .d{
+  margin:0;
+  font-size:13px;
+  color:rgba(11,11,12,.62);
+}
+
+/* ---------- CTA YOUTUBE ---------- */
+.yt-row{
+  display:flex;
+  justify-content:center;
+  padding:12px 0 0;
+}
+.yt{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  text-decoration:none;
+  padding:10px 14px;
+  border-radius:999px;
   font-size:12px;
   letter-spacing:.16em;
   text-transform:uppercase;
-  text-decoration:none;
-  transition:.25s ease;
+  color:#fff;
+  background:#ff0000; /* rojo oficial */
+  border:1px solid rgba(0,0,0,.08);
+  transition:transform .18s ease, filter .18s ease;
+}
+.yt:hover{
+  transform:translateY(-1px);
+  filter:brightness(.95);
+}
+.yt .play{
+  width:0;height:0;
+  border-left:8px solid #fff;
+  border-top:5px solid transparent;
+  border-bottom:5px solid transparent;
 }
 
-.youtube-btn svg{
-  width:14px;
-  height:14px;
-  fill:#fff;
-}
-
-.youtube-btn:hover{
-  background:#cc0000;
-  transform:translateY(-2px);
-}
-
-/* BLOQUE MANIFIESTO */
-
-.bloque{
-  background:var(--negro-profundo);
-  color:#ffffff;
-  padding:120px 0;
-}
-
+/* ---------- MANIFIESTO NEGRO FINAL ---------- */
 .manifiesto{
-  max-width:760px;
+  background:var(--negro);
+  color:var(--blanco);
+  padding:72px 0;
+  border-top:1px solid var(--linea-inv);
+}
+.manifiesto .lead{
+  margin:0 auto;
+  max-width:78ch;
+  text-align:center;
+  font-family:ui-serif, "Cormorant Garamond", "Times New Roman", serif;
+  font-size:28px;
+  line-height:1.25;
+  letter-spacing:.02em;
+}
+.manifiesto .lead em{
+  font-style:normal;
+  color:rgba(255,255,255,.70);
+}
+.manifiesto .fine{
+  margin:22px auto 0;
+  max-width:84ch;
+  text-align:center;
+  font-size:13px;
+  color:rgba(255,255,255,.70);
+  letter-spacing:.06em;
+}
+.manifiesto .fine b{
+  color:var(--azul);
+  font-weight:600;
+  letter-spacing:.12em;
 }
 
-.manifiesto .titulo{
-  font-size:clamp(28px,3vw,40px);
-  font-weight:500;
-  margin:0 0 36px;
+/* ---------- FOOTER ICONOS SOCIALES ---------- */
+.footer{
+  background:var(--negro);
+  color:var(--blanco);
+  padding:34px 0 54px;
+  border-top:1px solid var(--linea-inv);
+}
+.social{
+  display:flex;
+  justify-content:center;
+  gap:14px;
+  flex-wrap:wrap;
+}
+.icon{
+  width:44px;height:44px;
+  border-radius:999px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  border:1px solid rgba(255,255,255,.18);
+  color:#fff;
+  text-decoration:none;
+  transition:transform .18s ease, background .18s ease, border-color .18s ease;
+}
+.icon:hover{
+  transform:translateY(-2px);
+  background:rgba(255,255,255,.06);
+  border-color:rgba(255,255,255,.26);
+}
+.icon svg{
+  width:18px;height:18px;
+  fill:none;
+  stroke:rgba(255,255,255,.86);
+  stroke-width:1.7;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+.footer-note{
+  margin:18px 0 0;
+  text-align:center;
+  font-size:11px;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:rgba(255,255,255,.58);
 }
 
-.manifiesto p{
-  font-size:clamp(18px,2vw,22px);
-  line-height:1.6;
-  margin:0 0 20px;
-  opacity:.85;
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 980px){
+  .h1{ font-size:40px; }
+  .grid{ grid-template-columns:1fr; }
+  .clip{ border-radius:16px; }
 }
-
-.manifiesto p.fuerte{
-  opacity:1;
+@media (max-width: 520px){
+  :root{ --pad:18px; }
+  .hero{ padding:52px 0 44px; }
+  .h1{ font-size:34px; }
+  .axioma{ padding:52px 0; }
+  .axioma .quote{ font-size:22px; }
+  .manifiesto{ padding:58px 0; }
+  .manifiesto .lead{ font-size:24px; }
 }
-
-.manifiesto p.cierre{
-  margin-top:40px;
-  opacity:.75;
-}
-
-/* RESPONSIVE */
-
-@media (max-width:768px){
-  .clip{
-    width:180px;
-  }
-}
-
-@media (max-width:500px){
-  .clips-grid{
-    flex-direction:column;
-    align-items:center;
-    gap:36px;
-  }
-}
-
 </style>
 </head>
 
 <body>
 
-<section class="hero">
+<header class="topbar" aria-label="Navegación superior">
   <div class="wrap">
-    <a href="/" class="back-link">Volver al inicio</a>
-    <div class="kicker">Podcast · Archivo vivo/div>
-    <h1>Desapre(he)nder para CreSer</h1>
-    <p class="sub">
+    <a class="back" href="/" aria-label="Volver al inicio">
+      <span class="dot" aria-hidden="true"></span>
+      Volver al inicio
+    </a>
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO BLANCO -->
+  <section class="hero">
+    <div class="wrap">
+      <p class="kicker">Podcast · Archivo vivo</p>
+
+      <h1 class="h1">Desapre(he)nder<br/>para CreSer</h1>
+
+      <p class="sub">
         Conversaciones para desmontar lo automático: ideas heredadas, guiones emocionales, violencia aprendida,
         y ese ruido que no nos deja pensar. <span style="color:var(--azul); letter-spacing:.06em;">Sin prisa.</span> Sin performance.
         Con intención.
       </p>
-  </div>
-</section>
 
-<section class="axioma">
+      <div class="hero-meta" aria-label="Datos del podcast">
+        <span class="pill"><span class="mark" aria-hidden="true"></span><b>Concepto</b> antes que plataforma</span>
+        <span class="pill"><span class="mark" aria-hidden="true"></span><b>60/40</b> idea / presencia</span>
+        <span class="pill"><span class="mark" aria-hidden="true"></span><b>Tono</b> editorial · sobrio</span>
+      </div>
+    </div>
+  </section>
+
+  <hr class="hr" />
+
+  <!-- AXIOMA NEGRO -->
+  <section class="axioma">
     <div class="wrap">
       <p class="quote">
         No grabamos para convencer. Grabamos para <span class="accent">volver a escuchar</span>.
@@ -228,43 +393,60 @@ h1{
       </p>
     </div>
   </section>
-<section class="clips">
-  <div class="wrap clips-grid">
 
-    <div class="clip">
-      <video controls playsinline preload="metadata" poster="/assets/poster1.jpg">
-        <source src="/assets/clip1.mp4" type="video/mp4">
-        Tu navegador no soporta el video.
-      </video>
+  <!-- 3 CLIPS -->
+  <section class="clips" aria-label="Clips seleccionados">
+    <div class="wrap">
+
+      <div class="grid">
+
+        <article class="clip">
+          <video controls preload="metadata" poster="poster-01.jpg">
+            <source src="clip-01.mp4" type="video/mp4" />
+            Tu navegador no soporta video HTML5.
+          </video>
+          <div class="cap">
+            <p class="t">Clip 01</p>
+            <p class="d">Una frase que te sostiene cuando no hay forma. (Reemplaza por tu copy real.)</p>
+          </div>
+        </article>
+
+        <article class="clip">
+          <video controls preload="metadata" poster="poster-02.jpg">
+            <source src="clip-02.mp4" type="video/mp4" />
+            Tu navegador no soporta video HTML5.
+          </video>
+          <div class="cap">
+            <p class="t">Clip 02</p>
+            <p class="d">El problema no es sentir. El problema es no saber qué hacer con eso. (Placeholder.)</p>
+          </div>
+        </article>
+
+        <article class="clip">
+          <video controls preload="metadata" poster="poster-03.jpg">
+            <source src="clip-03.mp4" type="video/mp4" />
+            Tu navegador no soporta video HTML5.
+          </video>
+          <div class="cap">
+            <p class="t">Clip 03</p>
+            <p class="d">No todo se arregla con fuerza. A veces se ordena con verdad. (Placeholder.)</p>
+          </div>
+        </article>
+
+      </div>
+
+      <div class="yt-row" aria-label="Acción YouTube">
+        <a class="yt" href="https://www.youtube.com/" target="_blank" rel="noopener">
+          <span class="play" aria-hidden="true"></span>
+          YouTube
+        </a>
+      </div>
+
     </div>
+  </section>
 
-    <div class="clip">
-      <video controls playsinline preload="metadata" poster="/assets/poster2.jpg">
-        <source src="/assets/clip2.mp4" type="video/mp4">
-        Tu navegador no soporta el video.
-      </video>
-    </div>
-
-    <div class="clip">
-      <video controls playsinline preload="metadata" poster="/assets/poster3.jpg">
-        <source src="/assets/clip3.mp4" type="video/mp4">
-        Tu navegador no soporta el video.
-      </video>
-    </div>
-
-  </div>
-</section>
-
-<section class="youtube-cta">
-  <a href="https://youtube.com/@desaprenderparacreser?si=r9JIpxRR4Vvi7LTd" target="_blank" class="youtube-btn">
-    <svg viewBox="0 0 24 24">
-      <path d="M23.5 6.2c-.3-1.3-1.3-2.3-2.6-2.6C18.7 3 12 3 12 3s-6.7 0-8.9.6C1.8 3.9.8 4.9.5 6.2.1 8.4.1 12 .1 12s0 3.6.4 5.8c.3 1.3 1.3 2.3 2.6 2.6 2.2.6 8.9.6 8.9.6s6.7 0 8.9-.6c1.3-.3 2.3-1.3 2.6-2.6.4-2.2.4-5.8.4-5.8s0-3.6-.4-5.8zM9.5 15.5v-7l6 3.5-6 3.5z"/>
-    </svg>
-    Ver en YouTube
-  </a>
-</section>
-
-<section class="manifiesto" aria-label="Texto conceptual final">
+  <!-- BLOQUE NEGRO FINAL (MANIFIESTO CONTENIDO) -->
+  <section class="manifiesto" aria-label="Texto conceptual final">
     <div class="wrap">
       <p class="lead">
         Esto no es contenido.<br/>
@@ -276,25 +458,66 @@ h1{
         <b>Ahí empieza</b>.
       </p>
     </div>
-<section class="iconos">
-  <div class="wrap iconos-grid">
-    <a href="https://youtube.com/@desaprenderparacreser" target="_blank">
-      <img src="/assets/icons/youtube.svg" alt="YouTube">
-    </a>
-    <a href="https://instagram.com/" target="_blank">
-      <img src="/assets/icons/instagram.svg" alt="Instagram">
-    </a>
-    <a href="https://podcasts.apple.com/" target="_blank">
-      <img src="/assets/icons/apple.svg" alt="Apple Podcasts">
-    </a>
-    <a href="https://tiktok.com/" target="_blank">
-      <img src="/assets/icons/tiktok.svg" alt="TikTok">
-    </a>
-    <a href="https://open.spotify.com/" target="_blank">
-      <img src="/assets/icons/spotify.svg" alt="Spotify">
-    </a>
-  </div>
-</section>
+  </section>
+
+  <!-- ICONOS SOCIALES -->
+  <footer class="footer" aria-label="Plataformas del podcast">
+    <div class="wrap">
+
+      <div class="social">
+
+        <!-- YouTube -->
+        <a class="icon" href="https://www.youtube.com/" target="_blank" rel="noopener" aria-label="YouTube">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M10 15.2V8.8l6 3.2-6 3.2Z"></path>
+            <path d="M21 12s0-3.6-.5-5c-.3-.9-1-1.6-1.9-1.9C16.9 4.6 12 4.6 12 4.6s-4.9 0-6.6.5c-.9.3-1.6 1-1.9 1.9C3 8.4 3 12 3 12s0 3.6.5 5c.3.9 1 1.6 1.9 1.9 1.7.5 6.6.5 6.6.5s4.9 0 6.6-.5c.9-.3 1.6-1 1.9-1.9.5-1.4.5-5 .5-5Z"></path>
+          </svg>
+        </a>
+
+        <!-- Instagram -->
+        <a class="icon" href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M7 3h10a4 4 0 0 1 4 4v10a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V7a4 4 0 0 1 4-4Z"></path>
+            <path d="M12 16.3a4.3 4.3 0 1 0 0-8.6 4.3 4.3 0 0 0 0 8.6Z"></path>
+            <path d="M17.6 6.4h0"></path>
+          </svg>
+        </a>
+
+        <!-- Apple Podcasts -->
+        <a class="icon" href="https://podcasts.apple.com/" target="_blank" rel="noopener" aria-label="Apple Podcasts">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 10.5a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"></path>
+            <path d="M10.7 21c.2-2.5.5-4.4-1.2-6.1A6 6 0 1 1 14.5 15c-1.7 1.7-1.4 3.6-1.2 6.1"></path>
+            <path d="M12 13.2c1.1 0 2 .9 2 2"></path>
+          </svg>
+        </a>
+
+        <!-- TikTok -->
+        <a class="icon" href="https://www.tiktok.com/" target="_blank" rel="noopener" aria-label="TikTok">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M14 3v9.2a4.2 4.2 0 1 1-3-4V5.5c1.1 1.1 2.4 1.9 4 2.2"></path>
+            <path d="M14 7.7c1 .6 2.1 1 3.3 1.1"></path>
+          </svg>
+        </a>
+
+        <!-- Spotify -->
+        <a class="icon" href="https://open.spotify.com/" target="_blank" rel="noopener" aria-label="Spotify">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Z"></path>
+            <path d="M7.6 10.2c2.8-1 6.3-.8 8.8.6"></path>
+            <path d="M8.3 13c2.3-.7 5-.5 7 .5"></path>
+            <path d="M9 15.6c1.8-.4 3.6-.3 5.1.4"></path>
+          </svg>
+        </a>
+
+      </div>
+
+      <p class="footer-note">Presencia mínima · enlaces directos</p>
+
+    </div>
+  </footer>
+
+</main>
 
 </body>
 </html>
