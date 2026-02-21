@@ -64,32 +64,23 @@ a{ color:inherit; }
   align-items:center;
   justify-content:flex-start;
 }
-.back{
-  display:inline-flex;
-  align-items:center;
-  gap:10px;
+.back-link{
+  display:inline-block;
   text-decoration:none;
   font-size:11px;
-  letter-spacing:.26em;
+  letter-spacing:.28em;
   text-transform:uppercase;
-  color:rgba(11,11,12,.72);
-  padding:10px 12px;
-  border-radius:999px;
-  border:1px solid rgba(11,11,12,.16);
-  transition:transform .18s ease, background .18s ease, color .18s ease, border-color .18s ease;
-}
-.back:hover{
-  transform:translateY(-1px);
-  background:rgba(11,11,12,.04);
-  border-color:rgba(11,11,12,.22);
-  color:rgba(11,11,12,.88);
-}
-.back .dot{
-  width:6px;height:6px;border-radius:50%;
-  background:var(--azul);
-  box-shadow:0 0 0 3px rgba(111,143,159,.18);
+  color:rgba(11,11,12,.55);
+  margin-bottom:36px;
 }
 
+.back-link::before{
+  content:"← ";
+}
+
+.back-link:hover{
+  color:var(--azul);
+}
 /* ---------- HERO BLANCO ---------- */
 .hero{
   padding:64px 0 54px;
@@ -414,7 +405,7 @@ a{ color:inherit; }
       <p class="lead">
         Esto no es contenido.<br/>
         Es una práctica: <em>desaprender para volver a elegir</em>.<br/>
-        Elegir cómo hablamos. Cómo amamos. Cómo criamos. Cómo lideramos. Cómo habitamos Guatemala.
+        Elegir como hablamos. Como amamos. Como criamos. Como lideramos. Como habitamos Guatemala.
       </p>
       <p class="fine">
         Si te sirve, comparte. Si te incomoda, quédate un momento más.
