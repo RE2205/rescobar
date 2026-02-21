@@ -280,52 +280,25 @@ a{ color:inherit; }
 }
 
 /* ---------- FOOTER ICONOS SOCIALES ---------- */
-.footer{
-  background:var(--negro);
-  color:var(--blanco);
-  padding:34px 0 54px;
-  border-top:1px solid var(--linea-inv);
-}
-.social{
+.social-images{
   display:flex;
   justify-content:center;
-  gap:14px;
+  gap:28px;
+  padding:60px 0 90px;
   flex-wrap:wrap;
 }
-.icon{
-  width:44px;height:44px;
-  border-radius:999px;
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  border:1px solid rgba(255,255,255,.18);
-  color:#fff;
-  text-decoration:none;
-  transition:transform .18s ease, background .18s ease, border-color .18s ease;
-}
-.icon:hover{
-  transform:translateY(-2px);
-  background:rgba(255,255,255,.06);
-  border-color:rgba(255,255,255,.26);
-}
-.icon svg{
-  width:18px;height:18px;
-  fill:none;
-  stroke:rgba(255,255,255,.86);
-  stroke-width:1.7;
-  stroke-linecap:round;
-  stroke-linejoin:round;
-}
-.footer-note{
-  margin:18px 0 0;
-  text-align:center;
-  font-size:11px;
-  letter-spacing:.22em;
-  text-transform:uppercase;
-  color:rgba(255,255,255,.58);
+
+.social-images img{
+  width:26px;
+  height:26px;
+  opacity:.75;
+  transition:.25s ease;
 }
 
-/* ---------- RESPONSIVE ---------- */
+.social-images img:hover{
+  opacity:1;
+  transform:translateY(-3px);
+}/* ---------- RESPONSIVE ---------- */
 @media (max-width: 980px){
   .h1{ font-size:40px; }
   .grid{ grid-template-columns:1fr; }
@@ -433,61 +406,33 @@ a{ color:inherit; }
   </section>
 
   <!-- ICONOS SOCIALES -->
-  <footer class="footer" aria-label="Plataformas del podcast">
-    <div class="wrap">
+<footer class="footer">
+  <div class="wrap">
+    <div class="social-images">
 
-      <div class="social">
+      <a href="https://youtube.com/@desaprenderparacreser" target="_blank">
+        <img src="/assets/icons/youtube.png" alt="YouTube">
+      </a>
 
-        <!-- YouTube -->
-        <a class="icon" href="https://www.youtube.com/" target="_blank" rel="noopener" aria-label="YouTube">
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M10 15.2V8.8l6 3.2-6 3.2Z"></path>
-            <path d="M21 12s0-3.6-.5-5c-.3-.9-1-1.6-1.9-1.9C16.9 4.6 12 4.6 12 4.6s-4.9 0-6.6.5c-.9.3-1.6 1-1.9 1.9C3 8.4 3 12 3 12s0 3.6.5 5c.3.9 1 1.6 1.9 1.9 1.7.5 6.6.5 6.6.5s4.9 0 6.6-.5c.9-.3 1.6-1 1.9-1.9.5-1.4.5-5 .5-5Z"></path>
-          </svg>
-        </a>
+      <a href="https://instagram.com/" target="_blank">
+        <img src="/assets/icons/instagram.png" alt="Instagram">
+      </a>
 
-        <!-- Instagram -->
-        <a class="icon" href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram">
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M7 3h10a4 4 0 0 1 4 4v10a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V7a4 4 0 0 1 4-4Z"></path>
-            <path d="M12 16.3a4.3 4.3 0 1 0 0-8.6 4.3 4.3 0 0 0 0 8.6Z"></path>
-            <path d="M17.6 6.4h0"></path>
-          </svg>
-        </a>
+      <a href="https://podcasts.apple.com/" target="_blank">
+        <img src="/assets/icons/apple.png" alt="Apple Podcasts">
+      </a>
 
-        <!-- Apple Podcasts -->
-        <a class="icon" href="https://podcasts.apple.com/" target="_blank" rel="noopener" aria-label="Apple Podcasts">
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M12 10.5a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"></path>
-            <path d="M10.7 21c.2-2.5.5-4.4-1.2-6.1A6 6 0 1 1 14.5 15c-1.7 1.7-1.4 3.6-1.2 6.1"></path>
-            <path d="M12 13.2c1.1 0 2 .9 2 2"></path>
-          </svg>
-        </a>
+      <a href="https://tiktok.com/" target="_blank">
+        <img src="/assets/icons/tiktok.png" alt="TikTok">
+      </a>
 
-        <!-- TikTok -->
-        <a class="icon" href="https://www.tiktok.com/" target="_blank" rel="noopener" aria-label="TikTok">
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M14 3v9.2a4.2 4.2 0 1 1-3-4V5.5c1.1 1.1 2.4 1.9 4 2.2"></path>
-            <path d="M14 7.7c1 .6 2.1 1 3.3 1.1"></path>
-          </svg>
-        </a>
-
-        <!-- Spotify -->
-        <a class="icon" href="https://open.spotify.com/" target="_blank" rel="noopener" aria-label="Spotify">
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Z"></path>
-            <path d="M7.6 10.2c2.8-1 6.3-.8 8.8.6"></path>
-            <path d="M8.3 13c2.3-.7 5-.5 7 .5"></path>
-            <path d="M9 15.6c1.8-.4 3.6-.3 5.1.4"></path>
-          </svg>
-        </a>
-
-      </div>
-
-      <p class="footer-note">Presencia mínima · enlaces directos</p>
+      <a href="https://open.spotify.com/" target="_blank">
+        <img src="/assets/icons/spotify.png" alt="Spotify">
+      </a>
 
     </div>
-  </footer>
+  </div>
+</footer>
 
 </main>
 
