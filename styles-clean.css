@@ -242,8 +242,32 @@ body{
   height:100%;
   object-fit:contain;
 }
-
 /* =========================
+   CTA CLÍNICO QUIRÚRGICO
+========================= */
+
+.cta-clinic{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  margin-top:38px;
+  padding:12px 26px;
+  border:1px solid rgba(0,0,0,.32);
+  border-radius:999px;
+  font-size:12px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  text-decoration:none;
+  color:#111;
+  background:transparent;
+  transition:all .25s ease;
+}
+
+.cta-clinic:hover{
+  background:#111;
+  color:#fff;
+  border-color:#111;
+}/* =========================
    PODCAST (NEGRO)
 ========================= */
 
