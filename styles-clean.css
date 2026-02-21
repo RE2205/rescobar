@@ -561,3 +561,36 @@ body{
   mix-blend-mode: screen;
   pointer-events:none;
 }
+/* =========================
+   MOBILE NAV FIX
+========================= */
+
+@media (max-width: 768px){
+
+  .top-nav{
+    position:absolute;
+    top:18px;
+    left:0;
+    right:0;
+    padding:0 20px;
+  }
+
+  .nav-inner{
+    justify-content:center;
+  }
+
+  .nav-list{
+    gap:18px;
+  }
+
+  .submenu{
+    right:auto;
+    left:50%;
+    transform:translateX(-50%) translateY(6px);
+  }
+
+  .nav-item.has-submenu:hover .submenu{
+    transform:translateX(-50%) translateY(0);
+  }
+
+}
