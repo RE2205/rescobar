@@ -349,56 +349,41 @@ a{ color:inherit; }
   </section>
 
   <!-- 3 CLIPS -->
-  <section class="clips" aria-label="Clips seleccionados">
-    <div class="wrap">
+  <section class="clips">
+  <div class="wrap clips-grid">
 
-      <div class="grid">
-
-        <article class="clip">
-          <video controls preload="metadata" poster="poster-01.jpg">
-            <source src="clip-01.mp4" type="video/mp4" />
-            Tu navegador no soporta video HTML5.
-          </video>
-          <div class="cap">
-            <p class="t">Clip 01</p>
-            <p class="d">Una frase que te sostiene cuando no hay forma. (Reemplaza por tu copy real.)</p>
-          </div>
-        </article>
-
-        <article class="clip">
-          <video controls preload="metadata" poster="poster-02.jpg">
-            <source src="clip-02.mp4" type="video/mp4" />
-            Tu navegador no soporta video HTML5.
-          </video>
-          <div class="cap">
-            <p class="t">Clip 02</p>
-            <p class="d">El problema no es sentir. El problema es no saber qué hacer con eso. (Placeholder.)</p>
-          </div>
-        </article>
-
-        <article class="clip">
-          <video controls preload="metadata" poster="poster-03.jpg">
-            <source src="clip-03.mp4" type="video/mp4" />
-            Tu navegador no soporta video HTML5.
-          </video>
-          <div class="cap">
-            <p class="t">Clip 03</p>
-            <p class="d">No todo se arregla con fuerza. A veces se ordena con verdad. (Placeholder.)</p>
-          </div>
-        </article>
-
-      </div>
-
-      <div class="yt-row" aria-label="Acción YouTube">
-        <a class="yt" href="https://www.youtube.com/" target="_blank" rel="noopener">
-          <span class="play" aria-hidden="true"></span>
-          YouTube
-        </a>
-      </div>
-
+    <div class="clip">
+      <video controls playsinline preload="metadata" poster="/assets/poster1.jpg">
+        <source src="/assets/clip1.mp4" type="video/mp4">
+        Tu navegador no soporta el video.
+      </video>
     </div>
-  </section>
 
+    <div class="clip">
+      <video controls playsinline preload="metadata" poster="/assets/poster2.jpg">
+        <source src="/assets/clip2.mp4" type="video/mp4">
+        Tu navegador no soporta el video.
+      </video>
+    </div>
+
+    <div class="clip">
+      <video controls playsinline preload="metadata" poster="/assets/poster3.jpg">
+        <source src="/assets/clip3.mp4" type="video/mp4">
+        Tu navegador no soporta el video.
+      </video>
+    </div>
+
+  </div>
+</section>
+
+<section class="youtube-cta">
+  <a href="https://youtube.com/@desaprenderparacreser?si=r9JIpxRR4Vvi7LTd" target="_blank" class="youtube-btn">
+    <svg viewBox="0 0 24 24">
+      <path d="M23.5 6.2c-.3-1.3-1.3-2.3-2.6-2.6C18.7 3 12 3 12 3s-6.7 0-8.9.6C1.8 3.9.8 4.9.5 6.2.1 8.4.1 12 .1 12s0 3.6.4 5.8c.3 1.3 1.3 2.3 2.6 2.6 2.2.6 8.9.6 8.9.6s6.7 0 8.9-.6c1.3-.3 2.3-1.3 2.6-2.6.4-2.2.4-5.8.4-5.8s0-3.6-.4-5.8zM9.5 15.5v-7l6 3.5-6 3.5z"/>
+    </svg>
+    Ver en YouTube
+  </a>
+</section>
   <!-- BLOQUE NEGRO FINAL (MANIFIESTO CONTENIDO) -->
   <section class="manifiesto" aria-label="Texto conceptual final">
     <div class="wrap">
