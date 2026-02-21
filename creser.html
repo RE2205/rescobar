@@ -59,6 +59,27 @@ body{
 }
 
 /* ==============================
+   BOTÓN VOLVER
+============================== */
+
+.volver{
+  position:fixed;
+  top:40px;
+  right:60px;
+  font-size:15px;
+  text-decoration:none;
+  color:var(--gris);
+  letter-spacing:0.5px;
+  transition:all .3s ease;
+}
+
+.volver:hover{
+  color:var(--naranja);
+  border-bottom:1px solid var(--naranja);
+  padding-bottom:2px;
+}
+
+/* ==============================
    CONTENEDOR
 ============================== */
 
@@ -197,6 +218,11 @@ body{
     font-size:18px;
   }
 
+  .volver{
+    right:30px;
+    top:30px;
+  }
+
 }
 
 </style>
@@ -206,9 +232,9 @@ body{
 
 <div class="lateral"></div>
 
-<div class="wrap">
+<a href="index.html" class="volver">Volver al inicio</a>
 
-  <!-- HERO -->
+<div class="wrap">
 
   <section class="hero">
     <h1>Pensar juntos es construir cultura.</h1>
@@ -224,58 +250,25 @@ body{
 
   <div class="divisor"></div>
 
-  <!-- CONTEXTO -->
-
-  <section class="section">
-    <h2>Contexto</h2>
-    <p>
-      Las culturas que reaccionan constantemente pierden capacidad de diseño.
-      Cuando la opinión sustituye al pensamiento estructurado,
-      la construcción colectiva se debilita.
-    </p>
-    <p>
-      CreSer propone recuperar la capacidad de pensar en común
-      como acto cultural responsable.
-    </p>
-  </section>
-
-  <div class="divisor"></div>
-
-  <!-- IMPLEMENTACIÓN -->
-
   <section class="section">
     <h2>Implementación</h2>
     <p>
-      CreSer funciona como un marco replicable adaptable a distintas ciudades,
-      instituciones y comunidades.
+      Modelo replicable de tres meses orientado a diagnóstico cultural,
+      formación estructural y consolidación de núcleos autónomos.
     </p>
-    <ul class="lista">
-      <li>Encuentros y charlas formativas.</li>
-      <li>Espacios de diálogo estructurado.</li>
-      <li>Programas educativos modulares.</li>
-      <li>Formación de facilitadores locales.</li>
-    </ul>
   </section>
 
   <div class="divisor"></div>
-
-  <!-- RED LATINOAMERICANA -->
 
   <section class="section red">
     <h2>Red Latinoamericana</h2>
     <p>
-      CreSer no pertenece a una ciudad ni a una figura central.
-      Es una red abierta de comunidades que deciden pensar juntas.
-    </p>
-    <p>
-      Su expansión ocurre cuando grupos locales adoptan el marco,
-      lo implementan y sostienen procesos de formación continua.
+      CreSer se expande cuando comunidades adoptan el marco,
+      lo implementan y sostienen procesos de pensamiento colectivo.
     </p>
   </section>
 
   <div class="divisor"></div>
-
-  <!-- CIERRE -->
 
   <section class="cierre">
     <p>
