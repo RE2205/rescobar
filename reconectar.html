@@ -151,7 +151,7 @@ h1{
 .manifiesto .nota{
   margin:18px auto;
 }
-/* ================= PERSONAS CORREGIDO ================= */
+/* ================= PERSONAS · MISMA ALTURA REAL ================= */
 
 .serie-editorial{
   background:#050505;
@@ -162,26 +162,28 @@ h1{
   display:flex;
   justify-content:center;
   gap:90px;
-  max-width:900px; /* más pequeñas */
+  max-width:900px;
   margin:0 auto;
 }
 
 .persona{
-  width:420px; /* ancho fijo para que sean iguales */
+  width:420px;
 }
 
 .foto{
   border-radius:6px;
   overflow:hidden;
   margin-bottom:28px;
+  aspect-ratio:4 / 5;   /* MISMA PROPORCIÓN VISUAL */
 }
 
 .foto img{
   width:100%;
-  height:auto; /* ← CLAVE: elimina recorte */
+  height:100%;
+  object-fit:cover;
+  object-position:center top; /* evita cortar cabezas */
   display:block;
-}
-/* ================= CIERRE ================= */
+}/* ================= CIERRE ================= */
 
 .cierre{
   padding:140px 0;
