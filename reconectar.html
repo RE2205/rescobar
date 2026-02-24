@@ -75,7 +75,7 @@ h1{
   color:#ffffff;
 }
 
-/* ================= FRANJA CONTENIDA ================= */
+/* ================= FRANJA ================= */
 
 .franja-gesto{
   padding:55px 0 50px;
@@ -126,7 +126,7 @@ h1{
     0 20px 40px rgba(0,0,0,.35);
 }
 
-/* ================= MANIFIESTO COMPACTO ================= */
+/* ================= MANIFIESTO ================= */
 
 .manifiesto{
   padding:60px 0 80px;
@@ -138,7 +138,7 @@ h1{
 .manifiesto p{
   max-width:560px;
   margin:0 auto 10px;
-  font-size:18px;
+  font-size:16px;
   line-height:1.5;
   color:#444;
 }
@@ -152,7 +152,7 @@ h1{
   margin:18px auto;
 }
 
-/* ================= GALERÍA DUAL · MISMO TAMAÑO ================= */
+/* ================= PERSONAS ================= */
 
 .serie-editorial{
   background:#050505;
@@ -162,26 +162,51 @@ h1{
 .galeria-dual{
   display:flex;
   justify-content:center;
-  align-items:stretch;
-  gap:60px;
-  max-width:900px; /* MÁS PEQUEÑAS */
+  gap:90px;
+  max-width:1000px;
   margin:0 auto;
 }
 
+.persona{
+  max-width:420px;
+  text-align:left;
+}
+
 .foto{
-  flex:1;
-  max-width:420px; /* control real del tamaño */
   overflow:hidden;
-  border-radius:4px;
+  border-radius:6px;
+  margin-bottom:28px;
 }
 
 .foto img{
   width:100%;
-  height:600px; /* MISMA ALTURA EXACTA */
+  height:560px;
   object-fit:cover;
   display:block;
 }
-  /* ================= CIERRE ================= */
+
+.info h3{
+  font-family:Georgia,serif;
+  font-size:28px;
+  font-weight:400;
+  margin:0 0 12px;
+  color:#ffffff;
+}
+
+.info .sub{
+  font-size:16px;
+  color:rgba(255,255,255,.7);
+  margin:0 0 18px;
+}
+
+.info p{
+  font-size:16px;
+  line-height:1.6;
+  color:rgba(255,255,255,.6);
+  margin:0;
+}
+
+/* ================= CIERRE ================= */
 
 .cierre{
   padding:140px 0;
@@ -240,12 +265,18 @@ h1{
   }
 
   .galeria-dual{
-    grid-template-columns:1fr;
-    gap:40px;
+    flex-direction:column;
+    align-items:center;
+    gap:70px;
+  }
+
+  .persona{
+    max-width:500px;
+    text-align:center;
   }
 
   .foto img{
-    max-height:none;
+    height:auto;
   }
 
 }
@@ -312,12 +343,38 @@ h1{
 <section class="serie-editorial">
   <div class="wrap">
     <div class="galeria-dual">
-      <div class="foto">
-        <img src="assets/marre.jpg" alt="Alejandro Marré facilitando">
+
+      <!-- MARRE IZQUIERDA -->
+      <div class="persona">
+        <div class="foto">
+          <img src="assets/marre.jpg" alt="Alejandro Marré facilitando">
+        </div>
+        <div class="info">
+          <h3>Alejandro Marré</h3>
+          <p class="sub">Artista, poeta y comunicador.</p>
+          <p>
+            Explora el gesto creativo como territorio de
+            verdad, ahí donde la palabra falla y la imagen
+            todavía resiste.
+          </p>
+        </div>
       </div>
-      <div class="foto">
-        <img src="assets/ronald3.jpg" alt="Ronald facilitando conversación">
+
+      <!-- RONALD DERECHA -->
+      <div class="persona">
+        <div class="foto">
+          <img src="assets/ronal3.jpg" alt="Ronald Escobar facilitando conversación">
+        </div>
+        <div class="info">
+          <h3>Ronald Escobar</h3>
+          <p class="sub">Psiquiatría, arte y vínculo.</p>
+          <p>
+            Acompaña procesos cuando la vida aprieta y
+            la palabra todavía no alcanza.
+          </p>
+        </div>
       </div>
+
     </div>
   </div>
 </section>
