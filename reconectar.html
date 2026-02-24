@@ -151,28 +151,37 @@ h1{
 .manifiesto .nota{
   margin:18px auto;
 }
-/* ================= TEXTO PERSONAS ================= */
+/* ================= PERSONAS · PRECISIÓN REAL ================= */
 
-.info h3{
-  font-family:Georgia,serif;
-  font-size:28px;
-  font-weight:400;
-  margin:0 0 12px;
-  color:#ffffff;
+.serie-editorial{
+  background:#050505;
+  padding:100px 0 120px;
 }
 
-.info .sub{
-  font-size:16px;
-  color:rgba(255,255,255,.75);
-  margin:0 0 18px;
+.galeria-dual{
+  display:flex;
+  justify-content:center;
+  align-items:flex-start; /* CLAVE */
+  gap:80px;
+  max-width:900px;
+  margin:0 auto;
 }
 
-.info p{
-  font-size:16px;
-  line-height:1.6;
-  color:rgba(255,255,255,.65);
-  margin:0;
+.persona{
+  width:400px; /* mismo ancho exacto */
 }
+
+.foto{
+  border-radius:6px;
+  overflow:hidden;
+  margin-bottom:28px;
+}
+
+.foto img{
+  width:100%;
+  height:auto; /* SIN ALTURA FORZADA */
+  display:block;
+}  
   /* ================= CIERRE ================= */
 
 .cierre{
