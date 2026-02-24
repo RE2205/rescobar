@@ -229,27 +229,20 @@ header{
   margin-bottom:0;
 }
 
-/* ================= HABLEMOS · CONTENIDO ================= */
+/* ================= HABLEMOS · INVITACIÓN ================= */
 
 .hablemos{
-  padding:70px 0 80px;   /* mucho más compacto */
+  padding:60px 0 70px;  /* mucho más contenido */
   text-align:center;
   background:#050505;
   color:#ffffff;
 }
 
-.hablemos h2{
-  font-family:Georgia,serif;
-  font-size:30px;
-  font-weight:400;
-  margin:0 0 28px;
-}
-
 .hablemos .frase{
   font-family:Georgia,serif;
   font-size:22px;
-  line-height:1.4;
-  margin:0 0 28px;
+  line-height:1.5;
+  margin:0 0 24px;
   opacity:.9;
 }
 
@@ -257,8 +250,15 @@ header{
   font-size:12px;
   letter-spacing:.25em;
   text-transform:uppercase;
+  text-decoration:none;
   color:rgba(255,255,255,.55);
-}/* ================= RESPONSIVE ================= */
+  transition:color .3s ease;
+}
+
+.hablemos .correo:hover{
+  color:#ffffff;
+}
+  /* ================= RESPONSIVE ================= */
 
 @media (max-width:900px){
 
