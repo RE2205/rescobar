@@ -57,7 +57,7 @@ nav a:hover{
 /* ================= HERO ================= */
 
 header{
-  padding:200px 0 120px;
+  padding:200px 0 110px;
   background:#050505;
 }
 
@@ -75,13 +75,11 @@ h1{
   color:#ffffff;
 }
 
-/* ================= AXIOMA CONTENIDO ================= */
+/* ================= FRANJA CONTENIDA ================= */
 
 .franja-gesto{
-  padding:60px 0 55px;
+  padding:55px 0 50px;
   text-align:center;
-  position:relative;
-
   background:
     linear-gradient(
       90deg,
@@ -93,7 +91,7 @@ h1{
 
 .franja-gesto p{
   font-family:Georgia,serif;
-  font-size:clamp(22px,2.8vw,34px);
+  font-size:clamp(22px,2.6vw,34px);
   line-height:1.3;
   margin:0;
   color:#ffffff;
@@ -109,13 +107,13 @@ h1{
   -webkit-text-fill-color:transparent;
 }
 
-/* ================= LA PILA ================= */
+/* ================= PILA ================= */
 
 .la-pila{
-  padding:120px 0 90px;
+  padding:120px 0 80px;
   background:#050505;
   text-align:center;
-  margin-top:-40px; /* ligera invasión */
+  margin-top:-35px;
 }
 
 .la-pila img{
@@ -124,14 +122,14 @@ h1{
   display:block;
   margin:0 auto;
   box-shadow:
-    0 60px 120px rgba(0,0,0,.55),
+    0 50px 100px rgba(0,0,0,.5),
     0 20px 40px rgba(0,0,0,.35);
 }
 
-/* ================= MANIFIESTO · COMPACTO ================= */
+/* ================= MANIFIESTO COMPACTO ================= */
 
 .manifiesto{
-  padding:60px 0 70px;
+  padding:60px 0 80px;
   text-align:center;
   background:#ffffff;
   color:#111111;
@@ -140,7 +138,7 @@ h1{
 .manifiesto p{
   max-width:560px;
   margin:0 auto 10px;
-  font-size:18px;
+  font-size:16px;
   line-height:1.5;
   color:#444;
 }
@@ -152,7 +150,9 @@ h1{
 
 .manifiesto .nota{
   margin:18px auto;
-/* ================= GALERÍA DUAL · RECONNECTAR ================= */
+}
+
+/* ================= GALERÍA DUAL ================= */
 
 .serie-editorial{
   background:#050505;
@@ -161,19 +161,22 @@ h1{
 
 .galeria-dual{
   display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:70px;
-  align-items:start;
+  grid-template-columns:repeat(2, minmax(0,1fr));
+  gap:60px;
+  max-width:1000px;
+  margin:0 auto;
 }
 
 .foto{
-  display:block;
+  overflow:hidden;
+  border-radius:4px;
 }
 
 .foto img{
   width:100%;
+  height:auto;
   display:block;
-  aspect-ratio:4/5;
+  max-height:700px;
   object-fit:cover;
   transition:transform .6s ease;
 }
@@ -182,29 +185,22 @@ h1{
   transform:scale(1.01);
 }
 
-/* ================= RESPONSIVE ================= */
-
-@media (max-width:900px){
-  .galeria-dual{
-    grid-template-columns:1fr;
-    gap:40px;
-  }
-}}}/* ================= CIERRE ================= */
+/* ================= CIERRE ================= */
 
 .cierre{
-  padding:160px 0;
+  padding:140px 0;
   text-align:center;
   background:#050505;
   color:#ffffff;
   font-family:Georgia,serif;
-  font-size:clamp(26px,3vw,40px);
+  font-size:clamp(26px,3vw,38px);
   line-height:1.4;
 }
 
-/* ================= HABLEMOS RADICAL ================= */
+/* ================= HABLEMOS ================= */
 
 .hablemos{
-  padding:200px 0;
+  padding:180px 0;
   text-align:center;
   background:#050505;
   color:#ffffff;
@@ -212,16 +208,16 @@ h1{
 
 .hablemos h2{
   font-family:Georgia,serif;
-  font-size:clamp(38px,5vw,54px);
+  font-size:clamp(36px,5vw,52px);
   font-weight:400;
-  margin:0 0 60px;
+  margin:0 0 50px;
 }
 
 .hablemos .frase{
   font-family:Georgia,serif;
-  font-size:clamp(24px,3vw,34px);
+  font-size:clamp(22px,3vw,32px);
   line-height:1.4;
-  margin:0 0 60px;
+  margin:0 0 50px;
   opacity:.9;
 }
 
@@ -232,12 +228,11 @@ h1{
   text-transform:uppercase;
   text-decoration:none;
   color:rgba(255,255,255,.6);
-  transition:color .4s ease, opacity .4s ease;
+  transition:color .4s ease;
 }
 
 .hablemos .correo:hover{
   color:#ffffff;
-  opacity:1;
 }
 
 /* ================= RESPONSIVE ================= */
@@ -248,17 +243,13 @@ h1{
     font-size:clamp(40px,8vw,56px);
   }
 
-  .editorial-grid{
+  .galeria-dual{
     grid-template-columns:1fr;
-    gap:60px;
+    gap:40px;
   }
 
-  .foto-grande{
-    grid-row:auto;
-  }
-
-  .desplazada{
-    margin-top:0;
+  .foto img{
+    max-height:none;
   }
 
 }
@@ -323,22 +314,19 @@ h1{
 </section>
 
 <section class="serie-editorial">
-  <div class="wrap editorial-grid">
-
-    <section class="serie-editorial">
-  <div class="wrap galeria-dual">
-
-    <div class="foto">
-      <img src="assets/marre.jpg" alt="Alejandro Marré facilitando">
+  <div class="wrap">
+    <div class="galeria-dual">
+      <div class="foto">
+        <img src="assets/marre.jpg" alt="Alejandro Marré facilitando">
+      </div>
+      <div class="foto">
+        <img src="assets/ronal3.jpg" alt="Ronald facilitando conversación">
+      </div>
     </div>
-
-    <div class="foto">
-      <img src="assets/ronal3.jpg" alt="Ronald facilitando conversación">
-    </div>
-
   </div>
 </section>
-    <section class="cierre">
+
+<section class="cierre">
   <div class="wrap">
     <p>ReConectar no es aprender.</p>
     <p>Es recordar.</p>
