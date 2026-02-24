@@ -5,32 +5,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>ReConectar</title>
 <meta name="description" content="ReConectar con lo que importa cuando la vida se aprieta y la forma todavía no aparece." />
-<meta name="robots" content="noindex, nofollow" />
 
 <style>
 
-/* ================= BASE GLOBAL ================= */
+/* ================= BASE ================= */
 
-html,
-body{
+html, body{
   margin:0;
   padding:0;
   background:#050505;
-  min-height:100%;
-}
-
-body{
-  min-height:100vh;
-  display:flex;
-  flex-direction:column;
   font-family:system-ui,-apple-system,"Inter",Arial,sans-serif;
-  color:#ffffff;
   line-height:1.6;
-  -webkit-font-smoothing:antialiased;
-}
-
-main{
-  flex:1;
 }
 
 .wrap{
@@ -62,44 +47,32 @@ nav a{
   text-transform:uppercase;
   text-decoration:none;
   color:rgba(255,255,255,.75);
-  position:relative;
-  transition:.25s ease;
-}
-
-nav a::after{
-  content:"";
-  position:absolute;
-  left:0;
-  right:0;
-  bottom:-6px;
-  height:1px;
-  background:#ffffff;
-  opacity:0;
-  transition:.25s ease;
+  transition:color .3s ease;
 }
 
 nav a:hover{
   color:#ffffff;
 }
 
-nav a:hover::after{
-  opacity:.6;
-}
-
 /* ================= HERO ================= */
 
 header{
-  padding:200px 0 150px;
-  text-align:center;
+  padding:240px 0 180px;
   background:#050505;
+}
+
+header .wrap{
+  max-width:900px;
 }
 
 h1{
   font-family:Georgia,serif;
-  font-size:clamp(48px,7vw,92px);
-  line-height:1.05;
+  font-size:clamp(56px,7vw,96px);
+  line-height:1.02;
   font-weight:400;
+  letter-spacing:-.01em;
   margin:0;
+  color:#ffffff;
 }
 
 .gesto{
@@ -116,186 +89,259 @@ h1{
   height:3px;
   background:linear-gradient(
     90deg,
-    rgba(255,78,205,.9),
-    rgba(77,220,255,.9)
+    rgba(232,63,174,.9),
+    rgba(76,194,230,.9)
   );
   border-radius:2px;
   transform:rotate(-1.2deg);
 }
 
-/* ================= LA PILA (BLANCO PURO) ================= */
+/* ================= LA PILA ================= */
 
 .la-pila{
-  padding:160px 0;
-  background:#ffffff;
+  padding:240px 0 220px;
+  background:#050505;
+  position:relative;
+  text-align:center;
+  overflow:hidden;
+}
+
+.la-pila::before{
+  content:"";
+  position:absolute;
+  width:1100px;
+  height:700px;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  background:radial-gradient(
+    ellipse at center,
+    rgba(255,255,255,.05),
+    rgba(0,0,0,0) 65%
+  );
+  pointer-events:none;
+}
+
+.la-pila::after{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:0;
+  height:280px;
+  background:linear-gradient(
+    to bottom,
+    rgba(5,5,5,0),
+    rgba(255,255,255,.92) 60%,
+    rgba(255,255,255,1)
+  );
+  pointer-events:none;
 }
 
 .la-pila img{
+  position:relative;
+  z-index:1;
+  max-width:720px;
   width:100%;
-  max-width:760px;
   display:block;
   margin:0 auto;
-  border-radius:6px;
+  transform:translateY(-18px);
   box-shadow:
-    0 80px 140px rgba(0,0,0,.22),
-    0 30px 50px rgba(0,0,0,.15);
-  filter:contrast(1.05) saturate(.95);
+    0 120px 220px rgba(0,0,0,.65),
+    0 40px 80px rgba(0,0,0,.45);
+  filter:contrast(1.04) saturate(.95);
 }
 
 /* ================= MANIFIESTO ================= */
 
 .manifiesto{
-  padding:130px 0;
+  padding:160px 0;
   text-align:center;
-  background:#0b0b0c;
+  background:#ffffff;
+  color:#111111;
 }
 
 .manifiesto p{
   max-width:660px;
   margin:0 auto 16px;
   font-size:19px;
-  color:#8e8e8e;
+  color:#444;
 }
 
 .manifiesto .fuerte{
   font-weight:600;
-  color:#ffffff;
+  color:#111111;
 }
 
 .manifiesto .nota{
   margin:40px auto;
 }
 
-/* ================= AXIOMA (BLANCO) ================= */
+/* ================= AXIOMA ================= */
 
 .franja-gesto{
-  padding:140px 0;
+  padding:180px 0;
   text-align:center;
-  background:#ffffff;
-  color:#050505;
+  position:relative;
+  overflow:hidden;
+  background:
+    radial-gradient(
+      120% 140% at 85% 40%,
+      rgba(130,110,220,.38),
+      rgba(0,0,0,0) 60%
+    ),
+    linear-gradient(
+      120deg,
+      #1a1628,
+      #0c0a16 50%,
+      #080610
+    );
 }
 
 .franja-gesto p{
+  position:relative;
+  z-index:1;
   font-family:Georgia,serif;
   font-size:clamp(32px,4vw,56px);
-  line-height:1.25;
+  line-height:1.2;
   margin:0;
+  color:#ffffff;
 }
 
 .franja-gesto .verdad{
-  color:#ff4ecd;
+  background:linear-gradient(
+    90deg,
+    #e83fae,
+    #4cc2e6
+  );
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
 }
 
-/* ================= PERSONAS ================= */
+/* ================= SERIE EDITORIAL ================= */
 
-.personas{
-  padding:150px 0;
+.serie-editorial{
   background:#050505;
+  padding:260px 0;
 }
 
-.personas-grid{
+.editorial-grid{
   display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:120px;
-  max-width:900px;
-  margin:0 auto;
+  grid-template-columns:1.3fr .8fr;
+  grid-template-rows:auto auto;
+  gap:80px;
+  align-items:start;
 }
 
-.persona img{
+.foto img{
   width:100%;
-  max-width:320px;
-  border-radius:6px;
-  margin-bottom:28px;
+  display:block;
+  transition:transform .6s ease, filter .6s ease;
 }
 
-.persona h3{
+.foto img:hover{
+  transform:scale(1.015);
+  filter:contrast(1.08);
+}
+
+.foto-grande{
+  grid-row:1 / span 2;
+}
+
+.foto-pequena{
+  max-width:420px;
+}
+
+.desplazada{
+  margin-top:120px;
+}
+
+/* ================= CIERRE ================= */
+
+.cierre{
+  padding:180px 0;
+  text-align:center;
+  background:#050505;
+  color:#ffffff;
   font-family:Georgia,serif;
-  font-size:28px;
-  font-weight:400;
-  margin:0 0 16px;
+  font-size:clamp(26px,3vw,40px);
+  line-height:1.4;
 }
 
-.persona p{
-  color:#8e8e8e;
-  font-size:18px;
-  max-width:360px;
-}
+/* ================= HABLEMOS ================= */
 
-@media (max-width:900px){
-  .personas-grid{
-    grid-template-columns:1fr;
-    gap:90px;
-    text-align:center;
-  }
-
-  .persona p{
-    margin:0 auto;
-  }
-
-  .nav-inner{
-    gap:28px;
-    flex-wrap:wrap;
-  }
-}
-
-/* ================= CONTACTO (BLANCO) ================= */
-
-.contacto{
-  padding:160px 0;
+.hablemos{
+  padding:200px 0;
   text-align:center;
   background:#ffffff;
+  color:#111111;
 }
 
-.contacto a{
-  font-size:24px;
-  color:#050505;
+.hablemos h2{
+  font-family:Georgia,serif;
+  font-size:clamp(40px,5vw,60px);
+  font-weight:400;
+  margin:0 0 40px;
+}
+
+.hablemos p{
+  max-width:600px;
+  margin:0 auto 40px;
+  font-size:18px;
+  color:#444;
+}
+
+.hablemos a{
+  display:inline-block;
   text-decoration:none;
-  position:relative;
-  letter-spacing:.08em;
+  font-size:13px;
+  letter-spacing:.25em;
+  text-transform:uppercase;
+  color:#111;
+  border-bottom:1px solid #111;
+  padding-bottom:6px;
+  transition:opacity .3s ease;
 }
 
-.contacto a::after{
-  content:"";
-  position:absolute;
-  left:0;
-  right:0;
-  bottom:-8px;
-  height:2px;
-  background:#050505;
-  transition:.3s ease;
+.hablemos a:hover{
+  opacity:.6;
 }
 
-.contacto a:hover::after{
-  width:40%;
-  margin:0 auto;
-}
-/* =========================
-   FULL BLEED SOLO RECONectar
-========================= */
-
-body.reconectar .wrap{
-  max-width:none;
-  margin:0;
-  padding:0 48px; /* aire lateral elegante */
-}
+/* ================= RESPONSIVE ================= */
 
 @media (max-width:900px){
-  body.reconectar .wrap{
-    padding:0 24px;
+
+  h1{
+    font-size:clamp(40px,8vw,56px);
   }
-}</style>
+
+  .editorial-grid{
+    grid-template-columns:1fr;
+    gap:60px;
+  }
+
+  .foto-grande{
+    grid-row:auto;
+  }
+
+  .desplazada{
+    margin-top:0;
+  }
+
+}
+
+</style>
 </head>
 
-<body class="reconectar">
+<body>
+
 <nav>
   <div class="nav-inner">
     <a href="index.html">Inicio</a>
-    <a href="/inner-sound.html">Inner Sound</a>
-    <a href="/logos-psyche.html">Logos Psyche</a>
+    <a href="inner-sound.html">Inner Sound</a>
+    <a href="logos-psyche.html">Logos Psyche</a>
   </div>
 </nav>
-
-<main>
 
 <header>
   <div class="wrap">
@@ -343,41 +389,42 @@ body.reconectar .wrap{
   </div>
 </section>
 
-<section class="personas">
-  <div class="wrap personas-grid">
+<section class="serie-editorial">
+  <div class="wrap editorial-grid">
 
-    <div class="persona">
-      <img src="assets/ronald-bn.jpg" alt="Ronald Escobar" />
-      <h3>Ronald Escobar</h3>
-      <p>
-        Psiquiatría, arte y vínculo.<br><br>
-        Acompaña procesos cuando la vida aprieta
-        y la palabra todavía no alcanza.
-      </p>
+    <div class="foto foto-grande">
+      <img src="assets/foto1.jpg" alt="Proceso creativo 1">
     </div>
 
-    <div class="persona">
-      <img src="assets/marre.jpg" alt="Alejandro Marré" />
-      <h3>Alejandro Marré</h3>
-      <p>
-        Artista, poeta y comunicador.<br><br>
-        Explora el gesto creativo como territorio de verdad,
-        ahí donde la palabra falla y la imagen todavía resiste.
-      </p>
+    <div class="foto foto-pequena">
+      <img src="assets/foto2.jpg" alt="Proceso creativo 2">
+    </div>
+
+    <div class="foto foto-pequena desplazada">
+      <img src="assets/foto3.jpg" alt="Proceso creativo 3">
     </div>
 
   </div>
 </section>
 
-   <section class="hablemos">
+<section class="cierre">
+  <div class="wrap">
+    <p>ReConectar no es aprender.</p>
+    <p>Es recordar.</p>
+  </div>
+</section>
+
+<section class="hablemos">
   <div class="wrap">
     <h2>Hablemos</h2>
-    <p class="frase">
-      Si esto te habló,<br>
-      responde.
+    <p>
+      Si algo de esto te incomodó,<br>
+      te movió<br>
+      o te dejó pensando…
     </p>
-    <a class="correo" href="mailto:clinicalogos@ronaldescobar.com">
-      clinicalogos@ronaldescobar.com
-    </a>
+    <a href="mailto:contacto@ronaldescobar.com">Escríbeme</a>
   </div>
 </section>
+
+</body>
+</html>
