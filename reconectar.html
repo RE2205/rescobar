@@ -53,6 +53,7 @@ nav a{
 nav a:hover{
   color:#ffffff;
 }
+
 /* ================= HERO CORREGIDO ================= */
 
 header{
@@ -75,7 +76,8 @@ header{
   margin:0;
   color:#ffffff; /* ← CLAVE */
 }
-  /* ================= FRANJA ================= */
+
+/* ================= FRANJA ================= */
 
 .franja-gesto{
   padding:55px 0 50px;
@@ -151,6 +153,7 @@ header{
 .manifiesto .nota{
   margin:18px auto;
 }
+
 /* ================= PERSONAS ================= */
 
 .serie-editorial{
@@ -206,23 +209,7 @@ header{
   margin:0;
 }
 
-/* ===== RESPONSIVE ===== */
-
-@media (max-width:900px){
-
-  .galeria-dual{
-    flex-direction:column;
-    align-items:center;
-    gap:70px;
-  }
-
-  .persona{
-    width:420px;
-    text-align:center;
-  }
-
-} 
- /* ================= CIERRE COMPACTO ================= */
+/* ================= CIERRE COMPACTO ================= */
 
 .cierre{
   padding:80px 0 90px;   /* mucho menos aire */
@@ -241,6 +228,7 @@ header{
 .cierre p:last-child{
   margin-bottom:0;
 }
+
 /* ================= HABLEMOS COMPACTO ================= */
 
 .hablemos{
@@ -273,7 +261,8 @@ header{
   text-decoration:none;
   color:rgba(255,255,255,.6);
 }
-  /* ================= RESPONSIVE ================= */
+
+/* ================= RESPONSIVE ================= */
 
 @media (max-width:900px){
 
@@ -312,11 +301,12 @@ header{
 </nav>
 
 <header>
-  <div class="wrap">
+  <!-- CAMBIO 1: agregar hero-wrap aquí -->
+  <div class="wrap hero-wrap">
     <h1>
       El arte es el inconsciente<br>
       <span class="segunda-linea">hallando un lenguaje.</span>
-    </h1>  
+    </h1>
   </div>
 </header>
 
