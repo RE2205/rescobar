@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Antes de nombrar · Archivo documental</title>
+<title>Antes de nombrar · Documental</title>
 <meta name="description" content="Algunas historias se transforman cuando son contadas. Otras ya estaban allí, esperando escucha.">
 
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Source+Serif+4:wght@400;500&display=swap" rel="stylesheet">
@@ -30,6 +30,8 @@ body{
   -webkit-font-smoothing:antialiased;
 }
 
+/* ---------- BASE ---------- */
+
 .wrap{
   max-width:1100px;
   margin:0 auto;
@@ -48,6 +50,7 @@ h1,h2,h3{
 
 h1{font-size:clamp(2.8rem,4vw,3.8rem);}
 h2{font-size:clamp(2rem,3vw,2.6rem);}
+
 h3{
   font-size:.85rem;
   letter-spacing:.14em;
@@ -70,7 +73,7 @@ blockquote{
   max-width:760px;
 }
 
-/* NAV */
+/* ---------- NAV ---------- */
 
 .nav{
   position:sticky;
@@ -101,6 +104,8 @@ blockquote{
 .nav-inner a{
   opacity:.75;
   position:relative;
+  text-decoration:none;
+  color:inherit;
 }
 
 .nav-inner a:hover{opacity:1;}
@@ -118,7 +123,7 @@ blockquote{
 
 .nav-inner a:hover::after{width:100%;}
 
-/* HERO */
+/* ---------- HERO ---------- */
 
 .hero{
   background:var(--negro);
@@ -136,7 +141,7 @@ blockquote{
   color:rgba(241,239,234,.85);
 }
 
-/* TRÍPTICO */
+/* ---------- TRÍPTICO ---------- */
 
 .triptych{
   background:var(--negro);
@@ -147,17 +152,17 @@ blockquote{
 
 .triptych-row{
   display:grid;
-  grid-template-columns:1fr 1fr 1fr;
+  grid-template-columns:1fr 1.5fr 1fr; /* centro ligeramente dominante */
 }
 
 .triptych-row img{
   width:100%;
-  height:520px;
-  object-fit:cover;
-  filter:saturate(85%) contrast(95%);
+  height:auto; /* sin recorte forzado */
+  display:block;
+  filter:saturate(88%) contrast(97%);
 }
 
-/* ARCHIVO CURADO */
+/* ---------- ARCHIVO CURADO ---------- */
 
 .archivo-curado{
   background:var(--blanco);
@@ -193,14 +198,14 @@ blockquote{
   color:var(--gris-texto);
 }
 
-/* MIRADA */
+/* ---------- MIRADA ---------- */
 
 .light{
   background:var(--blanco);
   border-top:1px solid var(--gris-linea);
 }
 
-/* CREDITOS */
+/* ---------- CRÉDITOS ---------- */
 
 .team-grid{
   display:grid;
@@ -214,7 +219,7 @@ blockquote{
   padding-top:18px;
 }
 
-/* COLABORACIONES */
+/* ---------- COLABORACIONES ---------- */
 
 .dark-footer{
   background:var(--negro);
@@ -233,15 +238,7 @@ blockquote{
   font-family:inherit;
 }
 
-.btn-outline{
-  padding:12px 22px;
-  border:1px solid rgba(241,239,234,.6);
-  background:transparent;
-  color:var(--blanco);
-  font-size:.8rem;
-  letter-spacing:.14em;
-  text-transform:uppercase;
-}
+/* ---------- FOOTER ---------- */
 
 footer{
   background:var(--negro);
@@ -251,10 +248,18 @@ footer{
   font-size:.85rem;
 }
 
+/* ---------- RESPONSIVE ---------- */
+
 @media (max-width:980px){
-  .triptych-row{grid-template-columns:1fr;}
-  .triptych-row img{height:360px;}
-  .team-grid{grid-template-columns:1fr;}
+  .triptych-row{
+    grid-template-columns:1fr;
+  }
+  .team-grid{
+    grid-template-columns:1fr;
+  }
+  section{
+    padding:90px 0;
+  }
 }
 </style>
 </head>
@@ -277,13 +282,17 @@ footer{
   <div class="wrap hero-inner">
     <div>
       <h1>Antes de nombrar</h1>
-      <p>Algunas historias se transforman cuando son contadas. Otras ya estaban allí, esperando escucha.</p>
-      <blockquote>“Qué hace una persona sensible en un mundo que no sabe escuchar.”</blockquote>
+      <p>
+        Algunas historias se transforman cuando son contadas.
+        Otras ya estaban allí, esperando escucha.
+      </p>
+      <blockquote>
+        “Qué hace una persona sensible en un mundo que no sabe escuchar.”
+      </blockquote>
     </div>
   </div>
 </header>
 
-<!-- TRÍPTICO -->
 <section class="triptych">
   <div class="triptych-row">
     <img src="assets/pablo.jpg" alt="">
@@ -292,22 +301,16 @@ footer{
   </div>
 </section>
 
-<!-- ARCHIVO CURADO -->
 <section id="archivo" class="archivo-curado">
   <div class="wrap">
-
     <h2>Archivo · Fragmentos seleccionados</h2>
-
     <div id="curated-container"></div>
-
     <div class="curated-note">
       Esta selección cambia con el tiempo.
     </div>
-
   </div>
 </section>
 
-<!-- MIRADA -->
 <section id="mirada" class="light">
   <div class="wrap">
     <h2>Mirada</h2>
@@ -324,9 +327,18 @@ footer{
   <div class="wrap">
     <h2>Créditos</h2>
     <div class="team-grid">
-      <div class="team-card"><h3>Dirección</h3><p>Ronald Escobar</p></div>
-      <div class="team-card"><h3>Registro en campo</h3><p>Pablo</p></div>
-      <div class="team-card"><h3>Producción</h3><p>En desarrollo</p></div>
+      <div class="team-card">
+        <h3>Dirección</h3>
+        <p>Ronald Escobar</p>
+      </div>
+      <div class="team-card">
+        <h3>Registro en campo</h3>
+        <p>Pablo</p>
+      </div>
+      <div class="team-card">
+        <h3>Producción</h3>
+        <p>En desarrollo</p>
+      </div>
     </div>
   </div>
 </section>
@@ -334,7 +346,10 @@ footer{
 <section id="apoyar" class="dark-footer">
   <div class="wrap">
     <h2>Colaboraciones</h2>
-    <p>Este trabajo permanece abierto a encuentros y colaboraciones que compartan su ética de escucha.</p>
+    <p>
+      Este trabajo permanece abierto a encuentros y colaboraciones
+      que compartan su ética de escucha.
+    </p>
   </div>
 </section>
 
@@ -344,10 +359,26 @@ footer{
 
 <script>
 const fragments = [
-  {meta:"Enero 2026 · Primer encuentro",quote:"No fue una explicación lo que apareció, sino un nombre compartido.",text:"La conversación no buscaba diagnóstico. Buscaba reconocimiento."},
-  {meta:"Febrero 2026 · Territorio",quote:"El paisaje también recuerda.",text:"La memoria no estaba solo en las palabras, sino en el lugar que las sostenía."},
-  {meta:"Marzo 2026 · Silencio",quote:"A veces lo que no se dice también nombra.",text:"El silencio no era ausencia, sino forma de cuidado."},
-  {meta:"Abril 2026 · Comunidad",quote:"Nombrar es compartir carga.",text:"El fenómeno no pertenece a un individuo aislado."}
+  {
+    meta:"Enero 2026 · Primer encuentro",
+    quote:"No fue una explicación lo que apareció, sino un nombre compartido.",
+    text:"La conversación no buscaba diagnóstico. Buscaba reconocimiento."
+  },
+  {
+    meta:"Febrero 2026 · Territorio",
+    quote:"El paisaje también recuerda.",
+    text:"La memoria no estaba solo en las palabras, sino en el lugar que las sostenía."
+  },
+  {
+    meta:"Marzo 2026 · Silencio",
+    quote:"A veces lo que no se dice también nombra.",
+    text:"El silencio no era ausencia, sino forma de cuidado."
+  },
+  {
+    meta:"Abril 2026 · Comunidad",
+    quote:"Nombrar es compartir carga.",
+    text:"El fenómeno no pertenece a un individuo aislado."
+  }
 ];
 
 function shuffle(array){return array.sort(()=>0.5-Math.random());}
