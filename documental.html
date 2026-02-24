@@ -141,28 +141,29 @@ blockquote{
   color:rgba(241,239,234,.85);
 }
 
-/* ---------- TRÍPTICO ---------- */
+/* ---------- TRÍPTICO DEFINITIVO ---------- */
 
 .triptych{
   background:var(--negro);
-  border-top:1px solid rgba(255,255,255,.06);
-  border-bottom:1px solid rgba(255,255,255,.06);
   padding:0;
+  border-top:1px solid rgba(255,255,255,.05);
+  border-bottom:1px solid rgba(255,255,255,.05);
 }
 
 .triptych-row{
   display:grid;
-  grid-template-columns:1fr 1.5fr 1fr; /* centro ligeramente dominante */
+  grid-template-columns: 1fr 1.55fr 1fr; /* centro dominante suave */
+  align-items:stretch;
 }
 
 .triptych-row img{
   width:100%;
-  height:auto; /* sin recorte forzado */
+  height:100%;
+  object-fit:cover;
   display:block;
-  filter:saturate(88%) contrast(97%);
+  filter:saturate(90%) contrast(98%) brightness(98%);
 }
-
-/* ---------- ARCHIVO CURADO ---------- */
+  /* ---------- ARCHIVO CURADO ---------- */
 
 .archivo-curado{
   background:var(--blanco);
