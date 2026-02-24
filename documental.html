@@ -30,10 +30,6 @@ body{
   -webkit-font-smoothing:antialiased;
 }
 
-/* --------------------
-   BASE
--------------------- */
-
 .wrap{
   max-width:1100px;
   margin:0 auto;
@@ -41,7 +37,7 @@ body{
 }
 
 section{
-  padding:110px 0;
+  padding:120px 0;
 }
 
 h1,h2,h3{
@@ -50,50 +46,31 @@ h1,h2,h3{
   margin:0 0 18px 0;
 }
 
-h1{
-  font-size:clamp(2.6rem,4vw,3.6rem);
-}
-
-h2{
-  font-size:clamp(2rem,3vw,2.5rem);
-}
-
+h1{font-size:clamp(2.8rem,4vw,3.8rem);}
+h2{font-size:clamp(2rem,3vw,2.6rem);}
 h3{
-  font-size:.9rem;
-  letter-spacing:.12em;
+  font-size:.85rem;
+  letter-spacing:.14em;
   text-transform:uppercase;
   color:var(--gris-texto);
 }
 
 p{
-  margin:0 0 18px 0;
+  margin:0 0 20px 0;
   max-width:760px;
-  font-size:1.05rem;
-}
-
-.small{
-  font-size:.85rem;
-  color:var(--gris-texto);
+  font-size:1.08rem;
 }
 
 blockquote{
-  margin:36px 0 0 0;
+  margin:40px 0 0 0;
   font-style:italic;
-  font-size:clamp(1.05rem,1.5vw,1.25rem);
+  font-size:clamp(1.05rem,1.6vw,1.3rem);
   padding-left:22px;
   border-left:2px solid var(--bronce);
   max-width:760px;
 }
 
-a{text-decoration:none;color:inherit;}
-a:focus,button:focus,input:focus,textarea:focus{
-  outline:2px solid var(--bronce);
-  outline-offset:3px;
-}
-
-/* --------------------
-   NAV
--------------------- */
+/* NAV */
 
 .nav{
   position:sticky;
@@ -115,7 +92,7 @@ a:focus,button:focus,input:focus,textarea:focus{
 .nav-inner{
   display:flex;
   gap:28px;
-  font-size:.8rem;
+  font-size:.78rem;
   letter-spacing:.12em;
   text-transform:uppercase;
   color:var(--blanco);
@@ -141,9 +118,7 @@ a:focus,button:focus,input:focus,textarea:focus{
 
 .nav-inner a:hover::after{width:100%;}
 
-/* --------------------
-   HERO
--------------------- */
+/* HERO */
 
 .hero{
   background:var(--negro);
@@ -154,124 +129,84 @@ a:focus,button:focus,input:focus,textarea:focus{
   min-height:calc(85vh - var(--nav-h));
   display:flex;
   align-items:center;
-  padding:120px 0;
+  padding:140px 0;
 }
 
 .hero p{
   color:rgba(241,239,234,.85);
 }
 
-.cta-group{
-  margin-top:32px;
-  display:flex;
-  gap:14px;
-  flex-wrap:wrap;
+/* TRÍPTICO */
+
+.triptych{
+  background:var(--negro);
+  border-top:1px solid rgba(255,255,255,.06);
+  border-bottom:1px solid rgba(255,255,255,.06);
+  padding:0;
 }
 
-.btn{
-  padding:12px 22px;
+.triptych-row{
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+}
+
+.triptych-row img{
+  width:100%;
+  height:520px;
+  object-fit:cover;
+  filter:saturate(85%) contrast(95%);
+}
+
+/* ARCHIVO CURADO */
+
+.archivo-curado{
+  background:var(--blanco);
+  border-top:1px solid var(--gris-linea);
+}
+
+.curated-item{
+  padding:60px 0;
+  border-bottom:1px solid var(--gris-linea);
+}
+
+.curated-item:last-child{
+  border-bottom:none;
+}
+
+.curated-meta{
   font-size:.8rem;
   letter-spacing:.14em;
   text-transform:uppercase;
-  border:1px solid var(--blanco);
-  background:transparent;
-  color:var(--blanco);
-  transition:all .25s ease;
+  color:var(--gris-texto);
+  margin-bottom:22px;
 }
 
-.btn.primary{
-  background:var(--blanco);
-  color:var(--negro);
+.curated-item blockquote{
+  font-size:1.2rem;
+  font-style:italic;
+  margin-bottom:18px;
 }
 
-.btn.primary:hover{
-  background:var(--bronce);
-  border-color:var(--bronce);
-  color:#fff;
+.curated-note{
+  margin-top:60px;
+  font-size:.9rem;
+  color:var(--gris-texto);
 }
 
-.btn.secondary:hover{
-  background:rgba(255,255,255,.08);
-}
-
-/* --------------------
-   SECCIONES
--------------------- */
+/* MIRADA */
 
 .light{
   background:var(--blanco);
   border-top:1px solid var(--gris-linea);
-  background-image:linear-gradient(to bottom, rgba(0,0,0,.02), rgba(0,0,0,0));
 }
 
-.dark{
-  background:var(--negro);
-  color:var(--blanco);
-  border-top:1px solid rgba(255,255,255,.06);
-}
-
-.dark p{color:rgba(241,239,234,.85);}
-
-/* --------------------
-   MIRADA GRID
--------------------- */
-
-.grid-3{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:56px;
-  margin-top:48px;
-}
-
-.card{
-  border-top:1px solid var(--gris-linea);
-  padding-top:18px;
-  transition:transform .2s ease;
-}
-
-.card:hover{
-  transform:translateY(-3px);
-}
-
-/* --------------------
-   STRIP
--------------------- */
-
-.strip-wrapper{
-  overflow-x:auto;
-  scroll-snap-type:x mandatory;
-}
-
-.strip-row{
-  display:flex;
-}
-
-.strip-row img{
-  flex:0 0 33.333%;
-  height:460px;
-  object-fit:cover;
-  scroll-snap-align:start;
-  filter:saturate(85%) contrast(95%);
-}
-
-/* --------------------
-   ARCHIVO
--------------------- */
-
-.archive-item{
-  padding:28px 0;
-  border-bottom:1px solid var(--gris-linea);
-}
-
-/* --------------------
-   CRÉDITOS
--------------------- */
+/* CREDITOS */
 
 .team-grid{
   display:grid;
   grid-template-columns:repeat(3,1fr);
   gap:56px;
-  margin-top:48px;
+  margin-top:50px;
 }
 
 .team-card{
@@ -279,22 +214,12 @@ a:focus,button:focus,input:focus,textarea:focus{
   padding-top:18px;
 }
 
-/* --------------------
-   COLABORACIONES OSCURA
--------------------- */
+/* COLABORACIONES */
 
 .dark-footer{
   background:var(--negro);
   color:rgba(241,239,234,.85);
   border-top:1px solid rgba(255,255,255,.06);
-}
-
-.dark-footer h2{
-  color:var(--blanco);
-}
-
-.dark-footer p{
-  color:rgba(241,239,234,.75);
 }
 
 .dark-footer input,
@@ -306,12 +231,6 @@ a:focus,button:focus,input:focus,textarea:focus{
   border:1px solid rgba(255,255,255,.15);
   color:var(--blanco);
   font-family:inherit;
-  font-size:1rem;
-}
-
-.dark-footer input::placeholder,
-.dark-footer textarea::placeholder{
-  color:rgba(241,239,234,.45);
 }
 
 .btn-outline{
@@ -322,17 +241,7 @@ a:focus,button:focus,input:focus,textarea:focus{
   font-size:.8rem;
   letter-spacing:.14em;
   text-transform:uppercase;
-  transition:all .25s ease;
 }
-
-.btn-outline:hover{
-  border-color:var(--bronce);
-  color:var(--bronce);
-}
-
-/* --------------------
-   FOOTER
--------------------- */
 
 footer{
   background:var(--negro);
@@ -340,27 +249,12 @@ footer{
   padding:60px 0;
   text-align:center;
   font-size:.85rem;
-  border-top:1px solid rgba(255,255,255,.06);
 }
-
-.back-top{
-  display:inline-block;
-  margin-top:16px;
-  border-bottom:1px solid var(--bronce);
-  text-transform:uppercase;
-  letter-spacing:.12em;
-  font-size:.75rem;
-}
-
-/* --------------------
-   RESPONSIVE
--------------------- */
 
 @media (max-width:980px){
-  .grid-3,.team-grid{grid-template-columns:1fr;}
-  .strip-row img{flex:0 0 80%;height:320px;}
-  .nav-inner{flex-wrap:wrap;gap:18px;justify-content:center;}
-  section{padding:90px 0;}
+  .triptych-row{grid-template-columns:1fr;}
+  .triptych-row img{height:360px;}
+  .team-grid{grid-template-columns:1fr;}
 }
 </style>
 </head>
@@ -371,67 +265,58 @@ footer{
   <div class="wrap">
     <div class="nav-inner">
       <a href="index.html">Inicio</a>
-      <a href="#mirada">Mirada</a>
       <a href="#archivo">Archivo</a>
+      <a href="#mirada">Mirada</a>
       <a href="#equipo">Créditos</a>
       <a href="#apoyar">Colaboraciones</a>
     </div>
   </div>
 </nav>
 
-<header class="hero" id="inicio">
+<header class="hero">
   <div class="wrap hero-inner">
     <div>
       <h1>Antes de nombrar</h1>
       <p>Algunas historias se transforman cuando son contadas. Otras ya estaban allí, esperando escucha.</p>
       <blockquote>“Qué hace una persona sensible en un mundo que no sabe escuchar.”</blockquote>
-
-      <div class="cta-group">
-        <a href="#" class="btn primary">Ver teaser</a>
-        <a href="#archivo" class="btn secondary">Entrar al archivo</a>
-      </div>
     </div>
   </div>
 </header>
 
+<!-- TRÍPTICO -->
+<section class="triptych">
+  <div class="triptych-row">
+    <img src="assets/pablo.jpg" alt="">
+    <img src="assets/ronald2.jpg" alt="">
+    <img src="assets/pueblo.jpg" alt="">
+  </div>
+</section>
+
+<!-- ARCHIVO CURADO -->
+<section id="archivo" class="archivo-curado">
+  <div class="wrap">
+
+    <h2>Archivo · Fragmentos seleccionados</h2>
+
+    <div id="curated-container"></div>
+
+    <div class="curated-note">
+      Esta selección cambia con el tiempo.
+    </div>
+
+  </div>
+</section>
+
+<!-- MIRADA -->
 <section id="mirada" class="light">
   <div class="wrap">
     <h2>Mirada</h2>
-    <p>Este trabajo se aproxima sin prisa. No busca traducir de inmediato, sino sostener el tiempo necesario para que la experiencia pueda desplegarse en su propio lenguaje.</p>
-
-    <div class="grid-3">
-      <div class="card">
-        <h3>Escucha y contexto</h3>
-        <p>Situar antes de interpretar. Permanecer antes de concluir.</p>
-      </div>
-      <div class="card">
-        <h3>Comunidad y memoria</h3>
-        <p>El territorio no es fondo: es parte activa del relato.</p>
-      </div>
-      <div class="card">
-        <h3>Ética y cuidado</h3>
-        <p>Algunos nombres se reservan. La dignidad antecede a la narrativa.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="dark">
-  <div class="strip-wrapper">
-    <div class="strip-row">
-      <img src="assets/pablo.jpg" alt="">
-      <img src="assets/ronald2.jpg" alt="">
-      <img src="assets/pueblo.jpg" alt="">
-    </div>
-  </div>
-</section>
-
-<section id="archivo" class="light">
-  <div class="wrap">
-    <h2>Archivo</h2>
-    <div class="archive-item"><h3>Primer encuentro</h3><p>La palabra surge antes que la explicación.</p></div>
-    <div class="archive-item"><h3>Territorio y relato</h3><p>El paisaje sostiene aquello que se narra.</p></div>
-    <div class="archive-item"><h3>Silencios compartidos</h3><p>Lo no dicho también forma parte del archivo.</p></div>
+    <p>
+      Este trabajo se aproxima sin prisa.
+      No busca traducir de inmediato,
+      sino sostener el tiempo necesario
+      para que la experiencia pueda desplegarse en su propio lenguaje.
+    </p>
   </div>
 </section>
 
@@ -439,9 +324,9 @@ footer{
   <div class="wrap">
     <h2>Créditos</h2>
     <div class="team-grid">
-      <div class="team-card"><h3>Dirección</h3><p>Trabajo en campo y construcción de mirada.</p></div>
-      <div class="team-card"><h3>Investigación / Guion</h3><p>Archivo, acompañamiento y narrativa.</p></div>
-      <div class="team-card"><h3>Producción</h3><p>Coordinación cultural y cuidado ético.</p></div>
+      <div class="team-card"><h3>Dirección</h3><p>Ronald Escobar</p></div>
+      <div class="team-card"><h3>Registro en campo</h3><p>Pablo</p></div>
+      <div class="team-card"><h3>Producción</h3><p>En desarrollo</p></div>
     </div>
   </div>
 </section>
@@ -450,21 +335,36 @@ footer{
   <div class="wrap">
     <h2>Colaboraciones</h2>
     <p>Este trabajo permanece abierto a encuentros y colaboraciones que compartan su ética de escucha.</p>
-
-    <form>
-      <input type="text" placeholder="Nombre" required>
-      <input type="email" placeholder="Correo electrónico" required>
-      <textarea placeholder="Mensaje"></textarea>
-      <button type="submit" class="btn-outline">Enviar</button>
-    </form>
   </div>
 </section>
 
 <footer>
   © 2026 · Archivo documental
-  <br>
-  <a href="#inicio" class="back-top">Volver arriba</a>
 </footer>
+
+<script>
+const fragments = [
+  {meta:"Enero 2026 · Primer encuentro",quote:"No fue una explicación lo que apareció, sino un nombre compartido.",text:"La conversación no buscaba diagnóstico. Buscaba reconocimiento."},
+  {meta:"Febrero 2026 · Territorio",quote:"El paisaje también recuerda.",text:"La memoria no estaba solo en las palabras, sino en el lugar que las sostenía."},
+  {meta:"Marzo 2026 · Silencio",quote:"A veces lo que no se dice también nombra.",text:"El silencio no era ausencia, sino forma de cuidado."},
+  {meta:"Abril 2026 · Comunidad",quote:"Nombrar es compartir carga.",text:"El fenómeno no pertenece a un individuo aislado."}
+];
+
+function shuffle(array){return array.sort(()=>0.5-Math.random());}
+const selected=shuffle(fragments).slice(0,3);
+const container=document.getElementById("curated-container");
+
+selected.forEach(item=>{
+  const article=document.createElement("article");
+  article.className="curated-item";
+  article.innerHTML=`
+    <div class="curated-meta">${item.meta}</div>
+    <blockquote>${item.quote}</blockquote>
+    <p>${item.text}</p>
+  `;
+  container.appendChild(article);
+});
+</script>
 
 </body>
 </html>
