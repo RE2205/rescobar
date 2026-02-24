@@ -177,7 +177,12 @@ h1{
 .foto img:hover{
   transform:scale(1.015);
   filter:contrast(1.08);
-}/* ================= CIERRE ================= */
+  @media (max-width:900px){
+  .galeria-dual{
+    grid-template-columns:1fr;
+    gap:40px;
+  }
+}}/* ================= CIERRE ================= */
 
 .cierre{
   padding:160px 0;
