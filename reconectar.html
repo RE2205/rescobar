@@ -152,45 +152,32 @@ h1{
 
 .manifiesto .nota{
   margin:18px auto;
-}/* ================= SERIE EDITORIAL ================= */
+/* ================= GALERÍA DUAL ================= */
 
 .serie-editorial{
   background:#050505;
-  padding:240px 0;
+  padding:140px 0 160px;
 }
 
-.editorial-grid{
+.galeria-dual{
   display:grid;
-  grid-template-columns:1.3fr .8fr;
-  grid-template-rows:auto auto;
-  gap:80px;
+  grid-template-columns:1fr 1fr;
+  gap:60px;
   align-items:start;
 }
 
 .foto img{
   width:100%;
   display:block;
+  aspect-ratio:4/5; /* asegura misma proporción */
+  object-fit:cover;
   transition:transform .6s ease, filter .6s ease;
 }
 
 .foto img:hover{
   transform:scale(1.015);
   filter:contrast(1.08);
-}
-
-.foto-grande{
-  grid-row:1 / span 2;
-}
-
-.foto-pequena{
-  max-width:420px;
-}
-
-.desplazada{
-  margin-top:120px;
-}
-
-/* ================= CIERRE ================= */
+}/* ================= CIERRE ================= */
 
 .cierre{
   padding:160px 0;
