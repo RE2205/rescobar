@@ -130,13 +130,13 @@ blockquote{
   color:var(--blanco);
 }
 
-@media (max-width:768px){
- .hero-inner{
-  min-height:auto;
+.hero-inner{
+  min-height:calc(85vh - var(--nav-h));
   display:flex;
-  align-items:flex-start;
-  padding:100px 0 80px 0;
+  align-items:center;
+  padding:140px 0;
 }
+
 .hero p{
   color:rgba(241,239,234,.85);
 }
@@ -163,7 +163,9 @@ blockquote{
   display:block;
   filter:saturate(90%) contrast(97%) brightness(98%);
 }
-
+  .triptych{
+  border-bottom:1px solid rgba(255,255,255,.05);
+} 
 /* ---------- ARCHIVO CURADO ---------- */
 
 .archivo-curado{
@@ -256,17 +258,6 @@ footer{
   .triptych-row{
     grid-template-columns:1fr;
   }
-  @media (max-width:768px){
-  .hero-inner{
-    align-items:flex-start;
-    padding-top:110px;
-    padding-bottom:80px;
-  }
-
-  h1{
-    font-size:clamp(2.2rem,6vw,2.8rem);
-  }
-}
   .team-grid{
     grid-template-columns:1fr;
   }
@@ -274,7 +265,6 @@ footer{
     padding:90px 0;
   }
 }
-  
 </style>
 </head>
 
