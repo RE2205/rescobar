@@ -130,14 +130,14 @@ blockquote{
   color:var(--blanco);
 }
 
-.hero-inner{
-  min-height:85svh;
-  min-height:85vh; /* fallback */
-  display:flex;
-  align-items:center;
-  padding:140px 0;
-}
-.hero p{
+@media (max-width:768px){
+  .hero-inner{
+    min-height:100svh;
+    padding-top:90px;
+    padding-bottom:60px;
+    align-items:flex-start;
+  }
+}.hero p{
   color:rgba(241,239,234,.85);
 }
 
