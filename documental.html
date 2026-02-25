@@ -78,18 +78,20 @@ blockquote{
 .nav{
   position:sticky;
   top:0;
-  height:var(--nav-h);
   background:rgba(12,12,14,.95);
   backdrop-filter:blur(8px);
   border-bottom:1px solid rgba(255,255,255,.06);
   z-index:1000;
+
+  /* soporte notch iPhone */
+  padding-top:env(safe-area-inset-top);
 }
 
 .nav .wrap{
-  height:100%;
   display:flex;
   align-items:center;
   justify-content:flex-end;
+  padding:18px 32px; /* altura real controlada */
 }
 
 .nav-inner{
@@ -106,9 +108,12 @@ blockquote{
   position:relative;
   text-decoration:none;
   color:inherit;
+  transition:opacity .2s ease;
 }
 
-.nav-inner a:hover{opacity:1;}
+.nav-inner a:hover{
+  opacity:1;
+}
 
 .nav-inner a::after{
   content:"";
@@ -121,9 +126,28 @@ blockquote{
   transition:width .25s ease;
 }
 
-.nav-inner a:hover::after{width:100%;}
+.nav-inner a:hover::after{
+  width:100%;
+}
 
-/* ---------- HERO ---------- */
+
+/* ---------- NAV MOBILE ---------- */
+
+@media (max-width:768px){
+
+  .nav .wrap{
+    padding:14px 18px;
+    justify-content:center;
+  }
+
+  .nav-inner{
+    gap:18px;
+    flex-wrap:wrap;
+    justify-content:center;
+    font-size:.72rem;
+  }
+
+}/* ---------- HERO ---------- */
 
 .hero{
   background:var(--negro);
