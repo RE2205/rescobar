@@ -30,7 +30,7 @@ body{
   -webkit-font-smoothing:antialiased;
 }
 
-/* ---------- BASE ---------- */
+/* BASE */
 
 .wrap{
   max-width:1100px;
@@ -50,7 +50,6 @@ h1,h2,h3{
 
 h1{font-size:clamp(2.8rem,4vw,3.8rem);}
 h2{font-size:clamp(2rem,3vw,2.6rem);}
-
 h3{
   font-size:.85rem;
   letter-spacing:.14em;
@@ -73,7 +72,7 @@ blockquote{
   max-width:760px;
 }
 
-/* ---------- NAV ---------- */
+/* NAV */
 
 .nav{
   position:sticky;
@@ -123,7 +122,7 @@ blockquote{
 
 .nav-inner a:hover::after{width:100%;}
 
-/* ---------- HERO ---------- */
+/* HERO */
 
 .hero{
   background:var(--negro);
@@ -131,7 +130,8 @@ blockquote{
 }
 
 .hero-inner{
-  min-height:calc(85vh - var(--nav-h));
+  min-height:85svh;
+  min-height:85vh;
   display:flex;
   align-items:center;
   padding:140px 0;
@@ -141,40 +141,79 @@ blockquote{
   color:rgba(241,239,234,.85);
 }
 
-/* ---------- TRÍPTICO DEFINITIVO ---------- */
+/* HERO MOBILE FIX */
+
+@media (max-width:768px){
+  .hero-inner{
+    align-items:flex-start;
+    padding-top:110px;
+    padding-bottom:80px;
+  }
+
+  h1{
+    font-size:clamp(2.2rem,6vw,2.8rem);
+  }
+}
+
+/* TRÍPTICO */
 
 .triptych{
   background:var(--negro);
-  padding:0;
-  border-top:1px solid rgba(255,255,255,.05);
   border-bottom:1px solid rgba(255,255,255,.05);
+  padding:0;
 }
 
 .triptych-row{
   display:grid;
-  grid-template-columns: 1fr 1.55fr 1fr; /* centro dominante suave */
-  align-items:stretch;
+  grid-template-columns:1fr 1.5fr 1fr;
 }
 
 .triptych-row img{
   width:100%;
-  height:100%;
-  object-fit:cover;
+  height:auto;
   display:block;
-  filter:saturate(90%) contrast(97%) brightness(98%);
 }
-  .triptych{
-  border-bottom:1px solid rgba(255,255,255,.05);
-} 
-/* ---------- ARCHIVO CURADO ---------- */
+
+.triptych-row img:nth-child(1){
+  filter:saturate(90%) contrast(98%);
+}
+
+.triptych-row img:nth-child(2){
+  filter:saturate(88%) contrast(95%) brightness(101%);
+}
+
+.triptych-row img:nth-child(3){
+  filter:saturate(90%) contrast(100%) brightness(98%);
+}
+
+@media (max-width:980px){
+  .triptych-row{
+    grid-template-columns:1fr;
+  }
+}
+
+/* ARCHIVO – APERTURA REFLEXIVA */
 
 .archivo-curado{
-  background:var(--blanco);
-  border-top:1px solid var(--gris-linea);
+  padding:90px 0 130px;
+  background:linear-gradient(
+    to bottom,
+    rgba(12,12,14,.10) 0%,
+    rgba(12,12,14,.04) 18%,
+    var(--blanco) 45%
+  );
+  border-top:none;
+}
+
+.archivo-intro{
+  font-size:.92rem;
+  color:var(--gris-texto);
+  margin:0 0 46px 0;
+  max-width:720px;
 }
 
 .curated-item{
-  padding:60px 0;
+  padding:56px 0;
   border-bottom:1px solid var(--gris-linea);
 }
 
@@ -183,33 +222,33 @@ blockquote{
 }
 
 .curated-meta{
-  font-size:.9rem;
+  font-size:.8rem;
   letter-spacing:.14em;
   text-transform:uppercase;
   color:var(--gris-texto);
-  margin-bottom:40px;
-}
-
-.curated-item blockquote{
-  font-size:1.2rem;
-  font-style:italic;
   margin-bottom:18px;
 }
 
+.curated-item blockquote{
+  font-size:1.18rem;
+  margin:0 0 16px 0;
+  opacity:.92;
+}
+
 .curated-note{
-  margin-top:20px;
+  margin-top:60px;
   font-size:.9rem;
   color:var(--gris-texto);
 }
 
-/* ---------- MIRADA ---------- */
+/* MIRADA */
 
 .light{
   background:var(--blanco);
   border-top:1px solid var(--gris-linea);
 }
 
-/* ---------- CRÉDITOS ---------- */
+/* CRÉDITOS */
 
 .team-grid{
   display:grid;
@@ -223,7 +262,11 @@ blockquote{
   padding-top:18px;
 }
 
-/* ---------- COLABORACIONES ---------- */
+@media (max-width:980px){
+  .team-grid{grid-template-columns:1fr;}
+}
+
+/* COLABORACIONES */
 
 .dark-footer{
   background:var(--negro);
@@ -231,39 +274,12 @@ blockquote{
   border-top:1px solid rgba(255,255,255,.06);
 }
 
-.dark-footer input,
-.dark-footer textarea{
-  width:100%;
-  padding:14px;
-  margin-bottom:18px;
-  background:transparent;
-  border:1px solid rgba(255,255,255,.15);
-  color:var(--blanco);
-  font-family:inherit;
-}
-
-/* ---------- FOOTER ---------- */
-
 footer{
   background:var(--negro);
   color:rgba(241,239,234,.6);
   padding:60px 0;
   text-align:center;
   font-size:.85rem;
-}
-
-/* ---------- RESPONSIVE ---------- */
-
-@media (max-width:980px){
-  .triptych-row{
-    grid-template-columns:1fr;
-  }
-  .team-grid{
-    grid-template-columns:1fr;
-  }
-  section{
-    padding:90px 0;
-  }
 }
 </style>
 </head>
@@ -301,7 +317,7 @@ footer{
   <div class="triptych-row">
     <img src="assets/pablo.jpg" alt="">
     <img src="assets/ronald2.jpg" alt="">
-    <img src="assets/livingston.jpg" alt="">
+    <img src="assets/pueblo.jpg" alt="">
   </div>
 </section>
 
@@ -309,8 +325,8 @@ footer{
   <div class="wrap">
     <h2>Archivo · Fragmentos seleccionados</h2>
     <p class="archivo-intro">
-    Fragmentos del proceso, no exhaustivos.
-    </p>    
+      No es un registro exhaustivo. Es una selección que cambia con el tiempo.
+    </p>
     <div id="curated-container"></div>
     <div class="curated-note">
       Esta selección cambia con el tiempo.
@@ -334,18 +350,9 @@ footer{
   <div class="wrap">
     <h2>Créditos</h2>
     <div class="team-grid">
-      <div class="team-card">
-        <h3>Dirección</h3>
-        <p>Ronald Escobar</p>
-      </div>
-      <div class="team-card">
-        <h3>Registro en campo</h3>
-        <p>Pablo</p>
-      </div>
-      <div class="team-card">
-        <h3>Producción</h3>
-        <p>En desarrollo</p>
-      </div>
+      <div class="team-card"><h3>Dirección</h3><p>Ronald Escobar</p></div>
+      <div class="team-card"><h3>Registro en campo</h3><p>Pablo</p></div>
+      <div class="team-card"><h3>Producción</h3><p>En desarrollo</p></div>
     </div>
   </div>
 </section>
@@ -365,30 +372,14 @@ footer{
 </footer>
 
 <script>
-const fragments = [
-  {
-    meta:"Enero 2026 · Primer encuentro",
-    quote:"No fue una explicación lo que apareció, sino un nombre compartido.",
-    text:"La conversación no buscaba diagnóstico. Buscaba reconocimiento."
-  },
-  {
-    meta:"Febrero 2026 · Territorio",
-    quote:"El paisaje también recuerda.",
-    text:"La memoria no estaba solo en las palabras, sino en el lugar que las sostenía."
-  },
-  {
-    meta:"Marzo 2026 · Silencio",
-    quote:"A veces lo que no se dice también nombra.",
-    text:"El silencio no era ausencia, sino forma de cuidado."
-  },
-  {
-    meta:"Abril 2026 · Comunidad",
-    quote:"Nombrar es compartir carga.",
-    text:"El fenómeno no pertenece a un individuo aislado."
-  }
+const fragments=[
+{meta:"Enero 2026 · Primer encuentro",quote:"No fue una explicación lo que apareció, sino un nombre compartido.",text:"La conversación no buscaba diagnóstico. Buscaba reconocimiento."},
+{meta:"Febrero 2026 · Territorio",quote:"El paisaje también recuerda.",text:"La memoria no estaba solo en las palabras, sino en el lugar que las sostenía."},
+{meta:"Marzo 2026 · Silencio",quote:"A veces lo que no se dice también nombra.",text:"El silencio no era ausencia, sino forma de cuidado."},
+{meta:"Abril 2026 · Comunidad",quote:"Nombrar es compartir carga.",text:"El fenómeno no pertenece a un individuo aislado."}
 ];
 
-function shuffle(array){return array.sort(()=>0.5-Math.random());}
+function shuffle(a){return a.sort(()=>0.5-Math.random());}
 const selected=shuffle(fragments).slice(0,3);
 const container=document.getElementById("curated-container");
 
