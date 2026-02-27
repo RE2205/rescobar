@@ -5,12 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 <title>Inner Sound · Clínica</title>
-<meta name="description" content="Escucha guiada basada en frecuencia y neurociencia. Una experiencia creativa íntima." />
+<meta name="description" content="Una experiencia estructurada para equipos creativos que buscan claridad colectiva antes de idear o decidir." />
 
 <style>
 /* ==================================================
    INNER SOUND · Clínica
-   Editorial minimalista refinado
+   Editorial minimalista profundo
    ================================================== */
 
 :root{
@@ -86,7 +86,7 @@ body{
 /* ================= HERO ================= */
 
 .hero{
-  padding:140px 0 110px;
+  padding:140px 0 120px;
   border-bottom:1px solid var(--linea);
 }
 
@@ -95,134 +95,101 @@ body{
   letter-spacing:.36em;
   text-transform:uppercase;
   color:rgba(0,0,0,.45);
-  margin:0 0 28px;
+  margin:0 0 32px;
 }
 
 .hero h1{
   font-size:clamp(48px,6vw,78px);
   font-weight:500;
   line-height:1.1;
-  margin:0 0 24px;
+  margin:0 0 28px;
 }
 
 .hero .subhero{
   font-size:20px;
   color:rgba(0,0,0,.65);
-  margin:0 0 32px;
+  margin:0 0 40px;
 }
 
 .hero .descripcion{
-  max-width:640px;
-  font-size:20px;
-  line-height:1.6;
-  color:rgba(0,0,0,.80);
+  max-width:720px;
+  font-size:22px;
+  line-height:1.7;
+  color:rgba(0,0,0,.85);
 }
 
 /* ================= AXIOMA ================= */
 
 .axioma{
   background:var(--negro);
-  padding:56px 0;
+  padding:64px 0;
   text-align:center;
 }
 
 .axioma p{
   margin:0;
   font-size:18px;
-  letter-spacing:.36em;
+  letter-spacing:.32em;
   text-transform:uppercase;
   color:var(--violeta);
 }
 
-/* ================= IMÁGENES ================= */
+/* ================= IMAGEN ÚNICA ================= */
 
 .imagenes{
-  padding:72px 0 96px;
+  padding:120px 0 120px;
 }
 
-.imagenes-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:32px;
-}
-
-.imagen{
-  aspect-ratio:4/5; /* MISMA PROPORCIÓN PARA AMBAS */
-  border-radius:18px;
+.imagen-unica{
+  max-width:900px;
+  margin:0 auto;
+  border-radius:22px;
   overflow:hidden;
   background:#000;
   border:1px solid var(--linea);
 }
 
-.imagen img{
+.imagen-unica img{
   width:100%;
-  height:100%;
-  object-fit:cover;
-  transition:.4s ease;
-}
-
-/* Imagen humana B/N */
-.imagen.humana img{
-  filter:grayscale(100%);
-  opacity:.85;
-}
-
-/* Imagen frecuencia sin filtro */
-.imagen.frecuencia img{
-  filter:none;
-  opacity:1;
+  height:auto;
+  display:block;
 }
 
 /* ================= BLOQUE NEGRO ================= */
 
 .bloque{
   background:#000;
-  padding:120px 0;
-  position:relative;
-}
-
-.bloque::before{
-  content:"";
-  position:absolute;
-  top:0;
-  left:0;
-  right:0;
-  height:1px;
-  background:linear-gradient(
-    to right,
-    transparent,
-    rgba(123,92,255,.4),
-    transparent
-  );
+  padding:140px 0;
 }
 
 .bloque p{
-  max-width:640px;
-  font-size:22px;
-  margin:0 0 36px;
+  max-width:760px;
+  font-size:24px;
+  margin:0 0 42px;
   color:rgba(255,255,255,.92);
-  line-height:1.55;
+  line-height:1.65;
 }
 
 .bloque p:last-child{
-  font-size:24px;
+  margin-bottom:0;
+  font-size:26px;
   color:#ffffff;
 }
 
 /* ================= CIERRE ================= */
 
 .cierre{
-  padding:140px 0 140px;
+  padding:160px 0 160px;
   border-top:1px solid var(--linea);
   text-align:center;
 }
 
 .cierre-texto{
-  max-width:620px;
-  margin:0 auto 56px;
-  font-size:20px;
-  line-height:1.6;
-  color:rgba(0,0,0,.75);
+  max-width:720px;
+  margin:0 auto 64px;
+  font-size:22px;
+  line-height:1.7;
+  color:rgba(0,0,0,.80);
 }
 
 .cta-final{
@@ -259,27 +226,11 @@ body{
 /* ================= RESPONSIVE ================= */
 
 @media (max-width:900px){
-  .imagenes-grid{
-    grid-template-columns:1fr;
-  }
-}
-
-@media (max-width:700px){
-  .hero{
-    padding:96px 0 72px;
-  }
-  .hero h1{
-    font-size:clamp(36px,8vw,56px);
-  }
-  .imagenes{
-    padding:56px 0 72px;
-  }
-  .bloque{
-    padding:72px 0;
-  }
-  .cierre{
-    padding:96px 0;
-  }
+  .hero{ padding:96px 0 80px; }
+  .imagenes{ padding:80px 0; }
+  .bloque{ padding:96px 0; }
+  .cierre{ padding:96px 0; }
+  .hero h1{ font-size:clamp(36px,8vw,56px); }
 }
 
 </style>
@@ -302,9 +253,11 @@ body{
     <h1>Inner <span style="color:var(--violeta)">Sound</span></h1>
     <p class="subhero">Escucha guiada · Frecuencia · Neurociencia</p>
     <p class="descripcion">
-      Diseñada para grupos creativos que buscan alinear ideas,
-      ordenar el ritmo interno y preparar el terreno
-      antes de una conversación estratégica o una lluvia de ideas.
+      Inner Sound es una experiencia estructurada para equipos creativos
+      que necesitan claridad colectiva antes de iniciar procesos de ideación,
+      conversaciones estratégicas o decisiones complejas.
+      No se trata de inspirar momentáneamente, sino de alinear el ritmo interno
+      para que el pensamiento compartido encuentre coherencia.
     </p>
   </div>
 </section>
@@ -316,29 +269,34 @@ body{
   </div>
 </section>
 
-<!-- IMÁGENES -->
+<!-- IMAGEN ÚNICA -->
 <section class="imagenes">
-  <div class="wrap imagenes-grid">
-
-    <div class="imagen humana">
-      <img src="/assets/inner-sound-2.jpg" alt="Escucha guiada">
-    </div>
-
-    <div class="imagen frecuencia">
+  <div class="wrap">
+    <div class="imagen-unica">
       <img src="/assets/inners.png" alt="Frecuencia sonora">
     </div>
-
   </div>
 </section>
 
 <!-- BLOQUE NEGRO -->
 <section class="bloque">
   <div class="wrap">
-    <p>No es música de fondo.</p>
-    <p>Es una secuencia diseñada para modificar progresivamente el estado interno.</p>
-    <p>El ritmo cambia. La frecuencia se ajusta. La energía se desplaza.</p>
-    <p>El cerebro responde. El cuerpo acompaña. Y el viaje ocurre.</p>
-    <p>Basado en principios de neurociencia auditiva, el recorrido no es casual.</p>
+    <p>
+      No es música de fondo. Es un recorrido diseñado para desplazar progresivamente
+      el estado interno del grupo.
+    </p>
+    <p>
+      El ritmo cambia. La frecuencia se ajusta.
+      El sistema nervioso responde antes de que aparezca la idea.
+    </p>
+    <p>
+      Cuando el ruido individual se ordena,
+      emerge una forma más clara de pensar juntos.
+    </p>
+    <p>
+      Basado en principios de neurociencia auditiva,
+      el recorrido no es casual.
+    </p>
   </div>
 </section>
 
@@ -346,9 +304,9 @@ body{
 <section class="cierre">
   <div class="wrap">
     <p class="cierre-texto">
-      Inner Sound se vive en grupos pequeños,
-      en sesiones íntimas diseñadas
-      para quienes desean experimentar antes que entender.
+      Inner Sound se realiza en grupos reducidos.
+      No como espectáculo, sino como preparación.
+      Un dispositivo para pensar en conjunto con mayor precisión.
     </p>
     <a href="mailto:clinicalogos@ronaldescobar.com" class="cta-final">
       Solicitar acceso a Inner Sound
