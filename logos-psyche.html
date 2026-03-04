@@ -4,24 +4,17 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
 <title>Logos Psyche | Ronald Escobar | Psiquiatría en Guatemala</title>
 
-<meta name="description" content="Logos Psyche es la práctica clínica de Ronald Escobar, psiquiatra en Guatemala. Psiquiatría basada en evidencia, encuadre clínico y responsabilidad profesional." />
-
+<meta name="description" content="Logos Psyche es la práctica clínica de Ronald Escobar. Psiquiatría basada en evidencia, encuadre clínico y responsabilidad profesional en Guatemala." />
 <meta name="robots" content="index, follow" />
 <meta name="author" content="Ronald Escobar" />
 
-<!-- Open Graph -->
 <meta property="og:title" content="Logos Psyche | Ronald Escobar" />
 <meta property="og:description" content="Psiquiatría basada en evidencia, encuadre clínico y responsabilidad profesional." />
 <meta property="og:url" content="https://ronaldescobar.com/logos-psyche.html" />
 <meta property="og:type" content="website" />
 
-<!-- Schema Médico -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -40,7 +33,8 @@
   }
 }
 </script>
-  <style>
+
+<style>
 
 :root{
   --negro:#0b0b0c;
@@ -48,20 +42,23 @@
   --gris:#8e8e8a;
   --acento:#9c8450;
   --linea:rgba(0,0,0,.08);
+  --fuente-serifa: Georgia, "Times New Roman", serif;
 }
 
-*{ box-sizing:border-box; }
+*{box-sizing:border-box;}
 
 html,body{
   margin:0;
   padding:0;
+  scroll-behavior:smooth;
 }
 
 body{
   background:var(--blanco);
   color:var(--negro);
-  font-family: Georgia, "Times New Roman", serif;
+  font-family:var(--fuente-serifa);
   line-height:1.7;
+  -webkit-font-smoothing:antialiased;
 }
 
 /* ================= NAV ================= */
@@ -70,6 +67,7 @@ body{
   position:absolute;
   top:32px;
   right:48px;
+  z-index:100;
 }
 
 .nav-list{
@@ -81,11 +79,12 @@ body{
 }
 
 .nav-list a{
-  font-size:12px;
-  letter-spacing:.18em;
+  font-size:11px;
+  letter-spacing:.2em;
   text-transform:uppercase;
   text-decoration:none;
   color:var(--gris);
+  transition:color .3s ease;
 }
 
 .nav-list a:hover{
@@ -93,30 +92,31 @@ body{
 }
 
 .wrap{
-  max-width:880px;
+  max-width:960px;
   margin:0 auto;
-  padding:0 24px;
+  padding:0 32px;
 }
 
 /* ================= APERTURA ================= */
 
 .apertura{
-  padding:160px 0 140px;
+  padding:200px 0 140px;
 }
 
 .apertura h1{
-  max-width:560px;
-  font-size:clamp(30px,3.6vw,44px);
+  max-width:620px;
+  font-size:clamp(32px,4vw,48px);
   font-weight:400;
-  line-height:1.28;
+  line-height:1.2;
   margin:0;
+  letter-spacing:-0.01em;
 }
 
 /* ================= AXIOMA ================= */
 
 .axioma{
   background:var(--negro);
-  padding:64px 0;
+  padding:80px 0;
   position:relative;
 }
 
@@ -126,48 +126,59 @@ body{
   left:0;
   right:0;
   top:0;
-  height:2px;
+  height:1px;
   background:var(--acento);
 }
 
-.axioma p{
+.axioma h2{
   margin:0;
   text-align:center;
   color:#f4f4f1;
-  font-size:16px;
-  letter-spacing:.22em;
+  font-size:14px;
+  font-weight:400;
+  letter-spacing:.25em;
   text-transform:uppercase;
-  line-height:1.8;
+  line-height:2;
 }
 
 /* ================= ENCUADRE ================= */
 
 .encuadre{
-  padding:140px 0 120px;
+  padding:140px 0;
 }
 
 .encuadre-grid{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:96px;
-  align-items:start;
+  gap:100px;
+  align-items:center;
 }
 
 .encuadre-img img{
   width:100%;
   display:block;
-  filter:grayscale(1) contrast(1.05);
+  filter:grayscale(1) contrast(1.1) brightness(.9);
+  transition:filter .5s ease;
+}
+
+.encuadre-img img:hover{
+  filter:grayscale(.5) contrast(1.05);
+}
+
+.encuadre-texto h3{
+  font-size:12px;
+  text-transform:uppercase;
+  letter-spacing:.1em;
+  color:var(--acento);
+  margin-bottom:24px;
 }
 
 .encuadre-texto p{
-  font-size:20px;
-  max-width:420px;
-  line-height:1.75;
-  margin:0 0 32px;
-}
-
-.encuadre-texto p:last-child{
-  margin-bottom:0;
+  font-size:21px;
+  max-width:440px;
+  line-height:1.6;
+  margin:0 0 40px;
+  color:#333;
 }
 
 /* ================= PRINCIPIO ================= */
@@ -175,19 +186,22 @@ body{
 .principio{
   background:var(--negro);
   color:var(--blanco);
-  padding:110px 0 130px;
+  padding:120px 0;
 }
 
-.principio p{
-  max-width:640px;
-  font-size:20px;
+.principio blockquote{
+  max-width:700px;
+  font-size:24px;
   margin:0;
+  border-left:2px solid var(--acento);
+  padding-left:40px;
+  font-style:italic;
 }
 
 /* ================= CONTACTO ================= */
 
 .contacto{
-  padding:120px 0 160px;
+  padding:140px 0 180px;
   border-top:1px solid var(--linea);
 }
 
@@ -196,60 +210,43 @@ body{
 }
 
 .contacto p{
-  max-width:420px;
-  font-size:20px;
-  margin:0 0 48px auto;
+  max-width:480px;
+  font-size:22px;
+  margin:0 0 60px auto;
 }
 
-.contacto a{
+.contacto-links a{
   display:inline-block;
-  margin-left:28px;
-  font-size:18px;
+  margin-left:40px;
+  font-size:16px;
   color:var(--negro);
   text-decoration:none;
   border-bottom:1px solid var(--negro);
-  padding-bottom:4px;
+  padding-bottom:6px;
+  transition:all .3s ease;
 }
 
-.contacto a:hover{
+.contacto-links a:hover{
   color:var(--acento);
   border-color:var(--acento);
 }
 
-/* ================= MOBILE ================= */
+/* ================= RESPONSIVE ================= */
 
 @media (max-width:900px){
+
   .encuadre-grid{
     grid-template-columns:1fr;
-    gap:64px;
+    gap:60px;
   }
-
-  .encuadre-texto p{
-    max-width:100%;
-  }
-}
-
-@media (max-width:700px){
 
   .top-nav{
     position:static;
-    padding:24px 24px 0;
+    padding:40px 32px 0;
   }
 
   .apertura{
-    padding:100px 0 80px;
-  }
-
-  .encuadre{
-    padding:80px 0 64px;
-  }
-
-  .principio{
-    padding:90px 0;
-  }
-
-  .contacto{
-    padding:90px 0 120px;
+    padding:80px 0;
   }
 
   .contacto .wrap{
@@ -257,8 +254,13 @@ body{
   }
 
   .contacto p{
-    margin:0 0 48px 0;
+    margin:0 0 40px 0;
   }
+
+  .contacto-links a{
+    margin:0 32px 0 0;
+  }
+
 }
 
 </style>
@@ -267,72 +269,100 @@ body{
 <body>
 
 <nav class="top-nav">
-  <ul class="nav-list">
-    <li><a href="index.html">Inicio</a></li>
-    <li><a href="reconectar.html">ReConectar</a></li>
-    <li><a href="inner-sound.html">Inner Sound</a></li>
-  </ul>
+<ul class="nav-list">
+<li><a href="index.html">Inicio</a></li>
+<li><a href="reconectar.html">ReConectar</a></li>
+<li><a href="inner-sound.html">Inner Sound</a></li>
+<li><a href="documental.html">Documental</a></li>
+</ul>
 </nav>
 
-<section class="apertura">
-  <div class="wrap">
-    <h1>
-      Escuchar no es asentir.<br>
-      Es sostener lo que incomoda.
-    </h1>
-  </div>
-</section>
+<header class="apertura">
+<div class="wrap">
+<h1>
+Escuchar no es asentir.<br>
+Es sostener lo que incomoda.
+</h1>
+</div>
+</header>
 
 <section class="axioma">
-  <div class="wrap">
-    <p>
-      La psiquiatría es ciencia en su base<br>
-      y arte en su ejercicio
-    </p>
-  </div>
+<div class="wrap">
+<h2>
+La psiquiatría es ciencia en su base<br>
+y arte en su ejercicio
+</h2>
+</div>
 </section>
 
-<section class="encuadre">
-  <div class="wrap encuadre-grid">
-    <div class="encuadre-img">
-      <img src="assets/clinica.png" alt="Espacio clínico Logos Psyche">
-    </div>
-    <div class="encuadre-texto">
-      <p>
-        Trabajo con límites claros.<br>
-        Sin ellos no hay profundidad.
-      </p>
-      <p>
-        El tiempo y el encuadre no están
-        para apurar procesos,
-        sino para hacerlos posibles.
-      </p>
-      <p>
-        No acompaño para tranquilizar,
-        sino para pensar lo que duele.
-      </p>
-    </div>
-  </div>
-</section>
+<main class="encuadre">
+<div class="wrap encuadre-grid">
+
+<div class="encuadre-img">
+<img src="assets/clinica.png" alt="Espacio de consulta clínica Logos Psyche en Guatemala">
+</div>
+
+<article class="encuadre-texto">
+
+<h3>El Método</h3>
+
+<p>
+Trabajo con límites claros.<br>
+Sin ellos no hay profundidad.
+</p>
+
+<p>
+El tiempo y el encuadre no están para apurar procesos,
+sino para hacerlos posibles.
+</p>
+
+<p>
+No acompaño para tranquilizar,
+sino para pensar lo que duele.
+</p>
+
+</article>
+
+</div>
+</main>
 
 <section class="principio">
-  <div class="wrap">
-    <p>
-      Escucho sin prisa, pero no sin dirección.
-    </p>
-  </div>
+<div class="wrap">
+
+<blockquote>
+Escucho sin prisa,
+pero no sin dirección.
+</blockquote>
+
+</div>
 </section>
 
-<section class="contacto">
-  <div class="wrap">
-    <p>
-      Una primera conversación permite evaluar
-      si este es el encuadre adecuado.
-    </p>
-    <a href="https://wa.me/50230607168">WhatsApp</a>
-    <a href="mailto:clinicalogos@ronaldescobar.com">Correo</a>
-  </div>
-</section>
+<footer class="contacto">
+<div class="wrap">
+
+<p>
+Una primera conversación permite evaluar<br>
+si este es el encuadre adecuado.
+</p>
+
+<div class="contacto-links">
+
+<a href="https://wa.me/50230607168" target="_blank" rel="noopener">
+WhatsApp
+</a>
+
+<a href="mailto:clinicalogos@ronaldescobar.com">
+Correo Electrónico
+</a>
+
+<a href="https://ronaldescobar.substack.com" target="_blank" rel="noopener">
+Substack
+</a>
+
+</div>
+
+</div>
+</footer>
 
 </body>
 </html>
