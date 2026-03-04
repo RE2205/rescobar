@@ -7,344 +7,242 @@
 <meta name="description" content="Un podcast para desaprender lo automático y volver a escuchar lo humano. Concepto, conversación, presencia." />
 
 <style>
-/* =========================================================
-   PODCAST · DESAPRE(HE)NDER PARA CRESER
-   Editorial minimalista · HTML+CSS sin frameworks
-   ========================================================= */
-
-/* ---------- PALETA ---------- */
-:root{
-  --negro:#0b0b0c;
-  --blanco:#ffffff;
-  --gris:#8a8f96;
-  --gris-suave:#d7dbe0;
-  --azul:#6f8f9f;
-  --linea:rgba(11,11,12,.12);
-  --linea-inv:rgba(255,255,255,.14);
-
-  --wrap:1100px;
-  --pad:28px;
-
-  --nav-h:64px;
-  --r:18px;
+/* ---------- VARIABLES Y BASES ---------- */
+:root {
+  --negro: #0b0b0c;
+  --blanco: #ffffff;
+  --gris: #8a8f96;
+  --azul: #6f8f9f;
+  --rojo-yt: #FF0000;
+  --linea: rgba(11,11,12,.12);
+  --linea-inv: rgba(255,255,255,.14);
+  --wrap: 1100px;
+  --pad: 28px;
 }
 
-/* ---------- RESET ---------- */
-*{ box-sizing:border-box; }
-html{ scroll-behavior:smooth; }
-body{
-  margin:0;
-  font-family:system-ui,-apple-system,"Inter",Arial,sans-serif;
-  line-height:1.55;
-  color:var(--negro);
-  background:var(--blanco);
-}
-img,video{ max-width:100%; display:block; }
-a{ color:inherit; }
-
-/* ---------- WRAP ---------- */
-.wrap{
-  max-width:var(--wrap);
-  margin:0 auto;
-  padding:0 var(--pad);
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Inter", sans-serif;
+  line-height: 1.6;
+  color: var(--negro);
+  background: var(--blanco);
+  -webkit-font-smoothing: antialiased;
 }
 
-/* ---------- NAV SUPERIOR (VOLVER) ---------- */
-.topbar{
-  position:sticky;
-  top:0;
-  z-index:20;
-  background:rgba(255,255,255,.92);
-  backdrop-filter:saturate(140%) blur(10px);
-  border-bottom:1px solid var(--linea);
-}
-.topbar .wrap{
-  height:var(--nav-h);
-  display:flex;
-  align-items:center;
-  justify-content:flex-start;
-}
-.back-link{
-  display:inline-block;
-  text-decoration:none;
-  font-size:11px;
-  letter-spacing:.28em;
-  text-transform:uppercase;
-  color:rgba(11,11,12,.55);
-  margin-bottom:36px;
+/* ---------- ESTRUCTURA ---------- */
+.wrap {
+  max-width: var(--wrap);
+  margin: 0 auto;
+  padding: 0 var(--pad);
 }
 
-.back-link::before{
-  content:"← ";
+/* ---------- NAVEGACIÓN ---------- */
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255,255,255,.9);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--linea);
+}
+.topbar .wrap {
+  height: 64px;
+  display: flex;
+  align-items: center;
+}
+.back-link {
+  text-decoration: none;
+  font-size: 11px;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: rgba(0,0,0,.5);
+  transition: color .3s;
+}
+.back-link:hover { color: var(--azul); }
+
+/* ---------- HERO IMPACTO (CON TU IMAGEN) ---------- */
+.hero {
+  position: relative;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  color: var(--blanco);
+  background: var(--negro);
+  /* Reemplaza 'tu-imagen.jpg' por la ruta de la imagen que me pasaste */
+  background-image: linear-gradient(to right, rgba(0,0,0,0.8) 20%, transparent 80%), 
+                    url('assets/hero-ronald.jpg'); 
+  background-size: cover;
+  background-position: center right;
+  overflow: hidden;
 }
 
-.back-link:hover{
-  color:var(--azul);
-}
-/* ---------- HERO BLANCO ---------- */
-.hero{
-  padding:64px 0 54px;
-}
-.kicker{
-  font-size:11px;
-  letter-spacing:.30em;
-  text-transform:uppercase;
-  color:rgba(11,11,12,.58);
-  margin:0 0 12px;
-}
-.h1{
-  font-family:ui-serif, "Cormorant Garamond", "Times New Roman", serif;
-  font-weight:600;
-  letter-spacing:-.02em;
-  font-size:44px;
-  line-height:1.08;
-  margin:0 0 14px;
-}
-.sub{
-  max-width:72ch;
-  font-size:15px;
-  color:rgba(11,11,12,.70);
-  margin:0;
+.hero-content {
+  max-width: 600px;
+  padding: 60px 0;
 }
 
-/* ---------- SEPARADOR FINO ---------- */
-.hr{
-  border:0;
-  border-top:1px solid var(--linea);
-  margin:0;
+.kicker {
+  font-size: 12px;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  opacity: 0.8;
+  margin-bottom: 16px;
+  display: block;
+}
+
+.h1 {
+  font-family: ui-serif, "Cormorant Garamond", serif;
+  font-size: clamp(40px, 8vw, 64px);
+  line-height: 1.05;
+  font-weight: 500;
+  margin: 0 0 24px;
+  text-wrap: balance;
+}
+
+.sub {
+  font-size: 18px;
+  max-width: 45ch;
+  opacity: 0.9;
+  text-wrap: balance;
 }
 
 /* ---------- AXIOMA NEGRO ---------- */
-.axioma{
-  background:var(--negro);
-  color:var(--blanco);
-  padding:62px 0;
+.axioma {
+  background: var(--negro);
+  color: var(--blanco);
+  padding: 100px 0;
+  text-align: center;
 }
-.axioma .quote{
-  margin:0;
-  text-align:center;
-  font-family:ui-serif, "Cormorant Garamond", "Times New Roman", serif;
-  font-size:26px;
-  line-height:1.25;
-  letter-spacing:.04em;
+.quote {
+  font-family: ui-serif, serif;
+  font-size: clamp(24px, 4vw, 32px);
+  max-width: 30ch;
+  margin: 0 auto;
+  line-height: 1.3;
 }
-.axioma .quote span{
-  color:rgba(255,255,255,.70);
-  letter-spacing:.22em;
-  text-transform:uppercase;
-  font-size:11px;
-  display:block;
-  margin-top:18px;
+.quote span {
+  display: block;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: .3em;
+  margin-top: 30px;
+  color: var(--gris);
 }
-.axioma .accent{
-  color:var(--azul);
-  letter-spacing:.10em;
-}
+.accent { color: var(--azul); }
 
-/* ---------- CLIPS ---------- */
-/* ---------- CLIPS (VERSIÓN NUEVA) ---------- */
-
-.clips{
-  padding:100px 0 70px;
+/* ---------- SECCIÓN CLIPS ---------- */
+.clips { padding: 100px 0; background: #f9f9f9; }
+.clips-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 40px;
 }
-
-.clips-grid{
-  display:flex;
-  justify-content:center;
-  gap:48px;
-  flex-wrap:wrap;
+.clip video {
+  width: 100%;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  background: #000;
 }
-
-.clip{
-  width:200px;
+.clip video:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
 }
 
-.clip video{
-  width:100%;
-  border-radius:12px;
-  display:block;
-  background:#000;
+/* ---------- BOTÓN YOUTUBE ---------- */
+.youtube-section { text-align: center; padding-bottom: 100px; background: #f9f9f9; }
+.youtube-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--rojo-yt);
+  color: #fff;
+  padding: 14px 28px;
+  border-radius: 100px;
+  text-decoration: none;
+  font-size: 13px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  font-weight: 600;
+  transition: transform .2s, filter .2s;
 }
+.youtube-btn:hover { transform: scale(1.05); filter: brightness(1.1); }
+.youtube-btn svg { width: 20px; fill: currentColor; }
 
-/* ---------- YOUTUBE BUTTON (VERSIÓN NUEVA) ---------- */
-
-.youtube-cta{
-  text-align:center;
-  padding:70px 0 110px;
+/* ---------- MANIFIESTO FINAL ---------- */
+.manifiesto {
+  background: var(--negro);
+  color: var(--blanco);
+  padding: 120px 0;
+  border-top: 1px solid var(--linea-inv);
+  text-align: center;
 }
-
-.youtube-btn{
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
-  padding:10px 18px;
-  border-radius:999px;
-  background:#FF0000;
-  color:#fff;
-  font-size:12px;
-  letter-spacing:.16em;
-  text-transform:uppercase;
-  text-decoration:none;
-  transition:.25s ease;
+.lead {
+  font-family: ui-serif, serif;
+  font-size: clamp(24px, 5vw, 36px);
+  line-height: 1.3;
+  max-width: 35ch;
+  margin: 0 auto 40px;
+  text-wrap: balance;
 }
+.lead em { font-style: normal; opacity: 0.6; }
+.fine { font-size: 14px; opacity: 0.7; letter-spacing: 0.05em; }
+.fine b { color: var(--azul); text-transform: uppercase; font-size: 12px; }
 
-.youtube-btn svg{
-  width:14px;
-  height:14px;
-  fill:#fff;
+/* ---------- FOOTER SOCIAL ---------- */
+.footer { padding: 60px 0 100px; background: var(--negro); }
+.social-images {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  flex-wrap: wrap;
 }
-
-.youtube-btn:hover{
-  background:#cc0000;
-  transform:translateY(-2px);
+.social-images img {
+  width: 24px;
+  height: 24px;
+  filter: invert(1); /* Para que iconos negros se vean blancos sobre fondo negro */
+  opacity: 0.6;
+  transition: opacity .3s, transform .3s;
 }
+.social-images a:hover img { opacity: 1; transform: translateY(-3px); }
 
-/* ---------- RESPONSIVE AJUSTE ---------- */
-
-@media (max-width:768px){
-  .clip{
-    width:180px;
+/* ---------- RESPONSIVO ---------- */
+@media (max-width: 768px) {
+  .hero { 
+    background-image: linear-gradient(to top, rgba(0,0,0,0.9) 30%, transparent 90%), 
+                      url('assets/hero-ronald.jpg');
+    align-items: flex-end;
+    text-align: center;
   }
-}
-
-@media (max-width:500px){
-  .clips-grid{
-    flex-direction:column;
-    align-items:center;
-    gap:36px;
-  }
-}/* ---------- CTA YOUTUBE ---------- */
-.yt-row{
-  display:flex;
-  justify-content:center;
-  padding:12px 0 0;
-}
-.yt{
-  display:inline-flex;
-  align-items:center;
-  gap:10px;
-  text-decoration:none;
-  padding:10px 14px;
-  border-radius:999px;
-  font-size:12px;
-  letter-spacing:.16em;
-  text-transform:uppercase;
-  color:#fff;
-  background:#ff0000; /* rojo oficial */
-  border:1px solid rgba(0,0,0,.08);
-  transition:transform .18s ease, filter .18s ease;
-}
-.yt:hover{
-  transform:translateY(-1px);
-  filter:brightness(.95);
-}
-.yt .play{
-  width:0;height:0;
-  border-left:8px solid #fff;
-  border-top:5px solid transparent;
-  border-bottom:5px solid transparent;
-}
-
-/* ---------- MANIFIESTO NEGRO FINAL ---------- */
-.manifiesto{
-  background:var(--negro);
-  color:var(--blanco);
-  padding:72px 0;
-  border-top:1px solid var(--linea-inv);
-}
-.manifiesto .lead{
-  margin:0 auto;
-  max-width:78ch;
-  text-align:center;
-  font-family:ui-serif, "Cormorant Garamond", "Times New Roman", serif;
-  font-size:28px;
-  line-height:1.25;
-  letter-spacing:.02em;
-}
-.manifiesto .lead em{
-  font-style:normal;
-  color:rgba(255,255,255,.70);
-}
-.manifiesto .fine{
-  margin:22px auto 0;
-  max-width:84ch;
-  text-align:center;
-  font-size:13px;
-  color:rgba(255,255,255,.70);
-  letter-spacing:.06em;
-}
-.manifiesto .fine b{
-  color:var(--azul);
-  font-weight:600;
-  letter-spacing:.12em;
-}
-
-/* ---------- FOOTER ICONOS SOCIALES ---------- */
-.social-images{
-  display:flex;
-  justify-content:center;
-  gap:28px;
-  padding:60px 0 90px;
-  flex-wrap:wrap;
-}
-
-.social-images img{
-  width:26px;
-  height:26px;
-  opacity:.75;
-  transition:.25s ease;
-}
-
-.social-images img:hover{
-  opacity:1;
-  transform:translateY(-3px);
-}/* ---------- RESPONSIVE ---------- */
-@media (max-width: 980px){
-  .h1{ font-size:40px; }
-  .grid{ grid-template-columns:1fr; }
-  .clip{ border-radius:16px; }
-}
-@media (max-width: 520px){
-  :root{ --pad:18px; }
-  .hero{ padding:52px 0 44px; }
-  .h1{ font-size:34px; }
-  .axioma{ padding:52px 0; }
-  .axioma .quote{ font-size:22px; }
-  .manifiesto{ padding:58px 0; }
-  .manifiesto .lead{ font-size:24px; }
+  .hero-content { margin: 0 auto; padding-bottom: 80px; }
 }
 </style>
 </head>
 
 <body>
 
-<header class="topbar" aria-label="Navegación superior">
+<header class="topbar">
   <div class="wrap">
-    <a class="back-link" href="/">Volver al inicio</a>  
+    <a class="back-link" href="/">← Volver al inicio</a>
   </div>
 </header>
 
 <main>
 
-  <!-- HERO BLANCO -->
   <section class="hero">
     <div class="wrap">
-      <p class="kicker">Podcast · Archivo vivo</p>
-
-      <h1 class="h1">Desapre(he)nder<br/>para CreSer</h1>
-
-      <p class="sub">
-        Conversaciones para desmontar lo automático: ideas heredadas, guiones emocionales, violencia aprendida,
-        y ese ruido que no nos deja pensar. <span style="color:var(--azul); letter-spacing:.06em;">Sin prisa.</span> Sin performance.
-        Con intención.
-      </p>
-
+      <div class="hero-content">
+        <span class="kicker">Podcast · Archivo vivo</span>
+        <h1 class="h1">Desapre(he)nder<br/>para CreSer</h1>
+        <p class="sub">
+          Conversaciones para desmontar lo automático: ideas heredadas, guiones emocionales y ese ruido que no nos deja pensar.
+        </p>
+      </div>
     </div>
   </section>
 
-  <hr class="hr" />
-
-  <!-- AXIOMA NEGRO -->
   <section class="axioma">
     <div class="wrap">
       <p class="quote">
@@ -354,87 +252,61 @@ a{ color:inherit; }
     </div>
   </section>
 
-  <!-- 3 CLIPS -->
-  <section class="clips">
-  <div class="wrap clips-grid">
-
-    <div class="clip">
-      <video controls playsinline preload="metadata" poster="/assets/poster1.jpg">
-        <source src="/assets/clip1.mp4" type="video/mp4">
-        Tu navegador no soporta el video.
-      </video>
+  <section class="clips" aria-label="Fragmentos destacados">
+    <div class="wrap">
+      <div class="clips-grid">
+        <div class="clip">
+          <video controls playsinline preload="metadata" poster="assets/poster1.jpg">
+            <source src="assets/clip1.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="clip">
+          <video controls playsinline preload="metadata" poster="assets/poster2.jpg">
+            <source src="assets/clip2.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="clip">
+          <video controls playsinline preload="metadata" poster="assets/poster3.jpg">
+            <source src="assets/clip3.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
     </div>
+  </section>
 
-    <div class="clip">
-      <video controls playsinline preload="metadata" poster="/assets/poster2.jpg">
-        <source src="/assets/clip2.mp4" type="video/mp4">
-        Tu navegador no soporta el video.
-      </video>
-    </div>
+  <section class="youtube-section">
+    <a href="https://youtube.com/@desaprenderparacreser" target="_blank" class="youtube-btn">
+      <svg viewBox="0 0 24 24"><path d="M23.5 6.2c-.3-1.3-1.3-2.3-2.6-2.6C18.7 3 12 3 12 3s-6.7 0-8.9.6C1.8 3.9.8 4.9.5 6.2.1 8.4.1 12 .1 12s0 3.6.4 5.8c.3 1.3 1.3 2.3 2.6 2.6 2.2.6 8.9.6 8.9.6s6.7 0 8.9-.6c1.3-.3 2.3-1.3 2.6-2.6.4-2.2.4-5.8.4-5.8s0-3.6-.4-5.8zM9.5 15.5v-7l6 3.5-6 3.5z"/></svg>
+      Explorar canal de YouTube
+    </a>
+  </section>
 
-    <div class="clip">
-      <video controls playsinline preload="metadata" poster="/assets/poster3.jpg">
-        <source src="/assets/clip3.mp4" type="video/mp4">
-        Tu navegador no soporta el video.
-      </video>
-    </div>
-
-  </div>
-</section>
-
-<section class="youtube-cta">
-  <a href="https://youtube.com/@desaprenderparacreser?si=r9JIpxRR4Vvi7LTd" target="_blank" class="youtube-btn">
-    <svg viewBox="0 0 24 24">
-      <path d="M23.5 6.2c-.3-1.3-1.3-2.3-2.6-2.6C18.7 3 12 3 12 3s-6.7 0-8.9.6C1.8 3.9.8 4.9.5 6.2.1 8.4.1 12 .1 12s0 3.6.4 5.8c.3 1.3 1.3 2.3 2.6 2.6 2.2.6 8.9.6 8.9.6s6.7 0 8.9-.6c1.3-.3 2.3-1.3 2.6-2.6.4-2.2.4-5.8.4-5.8s0-3.6-.4-5.8zM9.5 15.5v-7l6 3.5-6 3.5z"/>
-    </svg>
-    Ver en YouTube
-  </a>
-</section>
-  <!-- BLOQUE NEGRO FINAL (MANIFIESTO CONTENIDO) -->
-  <section class="manifiesto" aria-label="Texto conceptual final">
+  <section class="manifiesto">
     <div class="wrap">
       <p class="lead">
         Esto no es contenido.<br/>
-        Es una práctica: <em>desaprender para volver a elegir</em>.<br/>
-        Elegir como hablamos. Como amamos. Como criamos. Como lideramos. Como habitamos Guatemala.
+        Es una práctica: <em>desaprender para volver a elegir</em>.
       </p>
       <p class="fine">
-        Si te sirve, comparte. Si te incomoda, quédate un momento más.
+        Si te sirve, comparte. Si te incomoda, quédate un momento más.<br/>
         <b>Ahí empieza</b>.
       </p>
     </div>
   </section>
 
-  <!-- ICONOS SOCIALES -->
+</main>
+
 <footer class="footer">
   <div class="wrap">
     <div class="social-images">
-
-      <a href="https://youtube.com/@desaprenderparacreser" target="_blank">
-        <img src="assets/youtube.png" alt="YouTube">
-      </a>
-
-      <a href="https://www.instagram.com/desaprehender_para_creser?igsh=MThvaTIzNTQ4aGkyZQ== target="_blank">
-        <img src="assets/instagram.png" alt="Instagram">
-      </a>
-
-      <a href="https://podcasts.apple.com/gt/podcast/desapre-he-nder-para-creser/id1714893342" target="_blank">
-        <img src="assets/apple.png" alt="Apple Podcasts">
-      </a>
-
-      <a href="https://www.tiktok.com/@desaprendercreser?_r=1&_t=ZS-94AQGd9rh1Z" target="_blank">
-        <img src="assets/tiktok.png" alt="TikTok">
-      </a>
-
-      <a href="https://open.spotify.com/show/5NllZfPwaPRuVHUwCcgCbH?si=SV-QoZcJQpOc_UkGoOecpQ" target="_blank">
-        <img src="assets/spotify.png" alt="Spotify">
-      </a>
-
+      <a href="https://youtube.com/@desaprenderparacreser" target="_blank"><img src="assets/youtube.png" alt="YouTube"></a>
+      <a href="https://www.instagram.com/desaprehender_para_creser" target="_blank"><img src="assets/instagram.png" alt="Instagram"></a>
+      <a href="https://podcasts.apple.com/gt/podcast/desapre-he-nder-para-creser/id1714893342" target="_blank"><img src="assets/apple.png" alt="Apple"></a>
+      <a href="https://www.tiktok.com/@desaprendercreser" target="_blank"><img src="assets/tiktok.png" alt="TikTok"></a>
+      <a href="https://open.spotify.com/show/TU_ID_AQUÍ" target="_blank"><img src="assets/spotify.png" alt="Spotify"></a>
     </div>
   </div>
 </footer>
-
-</main>
 
 </body>
 </html>
