@@ -8,16 +8,17 @@
 <meta name="description" content="Una experiencia estructurada para equipos creativos que buscan claridad colectiva antes de idear o decidir." />
 
 <style>
+
 /* ==================================================
    INNER SOUND · Clínica
-   Editorial minimalista profundo
+   Editorial minimalista
    ================================================== */
 
 :root{
   --blanco:#f6f6f2;
   --negro:#0b0b0c;
   --gris:#6f6f6f;
-  --violeta:#7b5cff;
+  --azul:#6f8f9f;
   --linea:rgba(0,0,0,.08);
 }
 
@@ -27,7 +28,7 @@ body{
   margin:0;
   background:var(--blanco);
   color:var(--negro);
-  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
   line-height:1.6;
   -webkit-font-smoothing:antialiased;
 }
@@ -61,32 +62,16 @@ body{
   text-decoration:none;
   color:rgba(0,0,0,.55);
   transition:.2s ease;
-  position:relative;
-}
-
-.nav a::after{
-  content:"";
-  position:absolute;
-  left:0;
-  bottom:-4px;
-  width:0;
-  height:1px;
-  background:var(--gris);
-  transition:.3s ease;
 }
 
 .nav a:hover{
-  color:var(--gris);
-}
-
-.nav a:hover::after{
-  width:100%;
+  color:var(--azul);
 }
 
 /* ================= HERO ================= */
 
 .hero{
-  padding:140px 0 120px;
+  padding:120px 0 100px;
   border-bottom:1px solid var(--linea);
 }
 
@@ -95,34 +80,27 @@ body{
   letter-spacing:.36em;
   text-transform:uppercase;
   color:rgba(0,0,0,.45);
-  margin:0 0 32px;
+  margin:0 0 28px;
 }
 
 .hero h1{
-  font-size:clamp(48px,6vw,78px);
+  font-size:clamp(46px,6vw,72px);
   font-weight:500;
   line-height:1.1;
-  margin:0 0 28px;
+  margin:0 0 24px;
 }
 
 .hero .subhero{
   font-size:20px;
   color:rgba(0,0,0,.65);
-  margin:0 0 40px;
-}
-
-.hero .descripcion{
-  max-width:720px;
-  font-size:22px;
-  line-height:1.7;
-  color:rgba(0,0,0,.85);
+  margin:0 0 32px;
 }
 
 /* ================= AXIOMA ================= */
 
 .axioma{
   background:var(--negro);
-  padding:64px 0;
+  padding:56px 0;
   text-align:center;
 }
 
@@ -131,55 +109,43 @@ body{
   font-size:18px;
   letter-spacing:.32em;
   text-transform:uppercase;
-  color:var(--violeta);
+  color:var(--azul);
 }
 
-/* ================= IMAGEN ÚNICA ================= */
+/* ================= BLOQUE IMAGEN + TEXTO ================= */
 
-.imagenes{
-  padding:120px 0 120px;
+.experiencia{
+  padding:120px 0;
 }
 
-.imagen-unica{
-  max-width:900px;
-  margin:0 auto;
-  border-radius:22px;
+.experiencia-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:80px;
+  align-items:center;
+}
+
+.experiencia-img{
+  border-radius:20px;
   overflow:hidden;
-  background:#000;
   border:1px solid var(--linea);
 }
 
-.imagen-unica img{
+.experiencia-img img{
   width:100%;
-  height:auto;
   display:block;
 }
 
-/* ================= BLOQUE NEGRO ================= */
-
-.bloque{
-  background:#000;
-  padding:140px 0;
-}
-
-.bloque p{
-  max-width:760px;
+.experiencia-texto{
   font-size:24px;
-  margin:0 0 42px;
-  color:rgba(255,255,255,.92);
-  line-height:1.65;
-}
-
-.bloque p:last-child{
-  margin-bottom:0;
-  font-size:26px;
-  color:#ffffff;
+  line-height:1.7;
+  color:rgba(0,0,0,.85);
 }
 
 /* ================= CIERRE ================= */
 
 .cierre{
-  padding:160px 0 160px;
+  padding:140px 0;
   border-top:1px solid var(--linea);
   text-align:center;
 }
@@ -189,48 +155,47 @@ body{
   margin:0 auto 64px;
   font-size:22px;
   line-height:1.7;
-  color:rgba(0,0,0,.80);
+  color:rgba(0,0,0,.8);
 }
 
-.cta-final{
+.cta{
   display:inline-block;
   font-size:14px;
   letter-spacing:.32em;
   text-transform:uppercase;
   color:var(--negro);
   text-decoration:none;
-  position:relative;
+  border-bottom:1px solid var(--negro);
   padding-bottom:6px;
   transition:.3s ease;
 }
 
-.cta-final::after{
-  content:"";
-  position:absolute;
-  left:0;
-  bottom:0;
-  width:100%;
-  height:1px;
-  background:var(--negro);
-  transition:.3s ease;
-}
-
-.cta-final:hover{
-  color:var(--violeta);
-}
-
-.cta-final:hover::after{
-  background:var(--violeta);
+.cta:hover{
+  color:var(--azul);
+  border-color:var(--azul);
 }
 
 /* ================= RESPONSIVE ================= */
 
 @media (max-width:900px){
-  .hero{ padding:96px 0 80px; }
-  .imagenes{ padding:80px 0; }
-  .bloque{ padding:96px 0; }
-  .cierre{ padding:96px 0; }
-  .hero h1{ font-size:clamp(36px,8vw,56px); }
+
+  .experiencia-grid{
+    grid-template-columns:1fr;
+    gap:48px;
+  }
+
+}
+
+@media (max-width:700px){
+
+  .hero{
+    padding:96px 0 72px;
+  }
+
+  .hero h1{
+    font-size:clamp(36px,8vw,56px);
+  }
+
 }
 
 </style>
@@ -250,15 +215,8 @@ body{
 <section class="hero">
   <div class="wrap">
     <p class="kicker">Clínica · Experiencia creativa</p>
-    <h1>Inner <span style="color:var(--violeta)">Sound</span></h1>
+    <h1>Inner Sound</h1>
     <p class="subhero">Escucha guiada · Frecuencia · Neurociencia</p>
-    <p class="descripcion">
-      Inner Sound es una experiencia estructurada para equipos creativos
-      que necesitan claridad colectiva antes de iniciar procesos de ideación,
-      conversaciones estratégicas o decisiones complejas.
-      No se trata de inspirar momentáneamente, sino de alinear el ritmo interno
-      para que el pensamiento compartido encuentre coherencia.
-    </p>
   </div>
 </section>
 
@@ -269,34 +227,24 @@ body{
   </div>
 </section>
 
-<!-- IMAGEN ÚNICA -->
-<section class="imagenes">
-  <div class="wrap">
-    <div class="imagen-unica">
+<!-- BLOQUE IMAGEN + TEXTO -->
+<section class="experiencia">
+  <div class="wrap experiencia-grid">
+
+    <div class="experiencia-img">
       <img src="/assets/inners.png" alt="Frecuencia sonora">
     </div>
-  </div>
-</section>
 
-<!-- BLOQUE NEGRO -->
-<section class="bloque">
-  <div class="wrap">
-    <p>
-      No es música de fondo. Es un recorrido diseñado para desplazar progresivamente
-      el estado interno del grupo.
-    </p>
-    <p>
-      El ritmo cambia. La frecuencia se ajusta.
-      El sistema nervioso responde antes de que aparezca la idea.
-    </p>
-    <p>
-      Cuando el ruido individual se ordena,
-      emerge una forma más clara de pensar juntos.
-    </p>
-    <p>
-      Basado en principios de neurociencia auditiva,
-      el recorrido no es casual.
-    </p>
+    <div class="experiencia-texto">
+      Inner Sound no es una escucha pasiva; es una cirugía sónica.
+      Usamos tecnología de cancelación de ruido y frecuencias bio-armónicas
+      para silenciar el caos externo y reprogramar el flujo de dopamina
+      y serotonina.
+      <br><br>
+      Es el lugar donde la música se convierte en medicina de precisión.
+       Es una intervención de modulación sensorial profunda    
+    </div>
+
   </div>
 </section>
 
@@ -304,12 +252,12 @@ body{
 <section class="cierre">
   <div class="wrap">
     <p class="cierre-texto">
-      Inner Sound se realiza en grupos reducidos.
-      No como espectáculo, sino como preparación.
-      Un dispositivo para pensar en conjunto con mayor precisión.
+      Diseñado para equipos creativos que necesitan claridad colectiva
+      antes de iniciar procesos de ideación o tomar decisiones complejas.
     </p>
-    <a href="mailto:clinicalogos@ronaldescobar.com" class="cta-final">
-      Solicitar acceso a Inner Sound
+
+    <a href="mailto:clinicalogos@ronaldescobar.com" class="cta">
+      Solicitar acceso
     </a>
   </div>
 </section>
