@@ -142,11 +142,40 @@ body{
   color:rgba(0,0,0,.85);
 }
 
-/* ================= BLOQUE NEGRO FINAL ================= */
+/* ================= PROTOCOLO ================= */
+
+.protocolo{
+  background:var(--negro);
+  padding:120px 0;
+}
+
+.grid-capsulas{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:64px;
+}
+
+.capsula h3{
+  font-size:14px;
+  letter-spacing:.28em;
+  text-transform:uppercase;
+  margin:0 0 16px;
+  color:var(--violeta);
+}
+
+.capsula p{
+  margin:0;
+  font-size:18px;
+  line-height:1.6;
+  color:rgba(255,255,255,.85);
+}
+
+/* ================= CIERRE ================= */
 
 .cierre{
   padding:140px 0;
-  background:var(--negro);
+  background:var(--blanco);
+  border-top:1px solid var(--linea);
   text-align:center;
 }
 
@@ -155,7 +184,7 @@ body{
   margin:0 auto 64px;
   font-size:22px;
   line-height:1.7;
-  color:rgba(255,255,255,.88);
+  color:rgba(0,0,0,.80);
 }
 
 .cta{
@@ -163,9 +192,9 @@ body{
   font-size:14px;
   letter-spacing:.32em;
   text-transform:uppercase;
-  color:#ffffff;
+  color:var(--negro);
   text-decoration:none;
-  border-bottom:1px solid rgba(255,255,255,.8);
+  border-bottom:1px solid var(--negro);
   padding-bottom:6px;
   transition:.3s ease;
 }
@@ -180,6 +209,11 @@ body{
 @media (max-width:900px){
 
   .experiencia-grid{
+    grid-template-columns:1fr;
+    gap:48px;
+  }
+
+  .grid-capsulas{
     grid-template-columns:1fr;
     gap:48px;
   }
@@ -238,8 +272,7 @@ body{
     <div class="experiencia-texto">
       Inner Sound no es una escucha pasiva; es una cirugía sónica.
       Usamos tecnología de cancelación de ruido y frecuencias bio-armónicas
-      para silenciar el caos externo y reprogramar el flujo de dopamina
-      y serotonina.
+      para silenciar el caos externo y reorganizar el sistema neuroquímico.
       <br><br>
       Es el lugar donde la música se convierte en medicina de precisión.
     </div>
@@ -247,12 +280,35 @@ body{
   </div>
 </section>
 
-<!-- BLOQUE NEGRO FINAL -->
+<!-- PROTOCOLO -->
+<section class="protocolo">
+    <div class="wrap">
+        <div class="grid-capsulas">
+
+            <div class="capsula">
+                <h3>01. Aislamiento</h3>
+                <p>Deprivación sensorial selectiva mediante cancelación activa. El cerebro deja de filtrar amenazas externas para enfocarse en la reconstrucción interna.</p>
+            </div>
+
+            <div class="capsula">
+                <h3>02. Resonancia</h3>
+                <p>Uso de frecuencias para el arrastre cerebral (entrainment), movilizando el sistema nervioso desde el estrés hacia estados de flujo y asociación creativa.</p>
+            </div>
+
+            <div class="capsula">
+                <h3>03. Integración</h3>
+                <p>Fijación emocional de la experiencia mediante la descripción de texturas sónicas, consolidando una claridad mental duradera.</p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- CIERRE -->
 <section class="cierre">
   <div class="wrap">
     <p class="cierre-texto">
-      Diseñado para equipos creativos que necesitan claridad colectiva
-      antes de iniciar procesos de ideación o tomar decisiones complejas.
+      Diseñado para equipos creativos que necesitan claridad colectiva antes de iniciar procesos de ideación o tomar decisiones complejas.
     </p>
 
     <a href="mailto:clinicalogos@ronaldescobar.com" class="cta">
