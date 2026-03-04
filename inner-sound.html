@@ -11,14 +11,14 @@
 
 /* ==================================================
    INNER SOUND · Clínica
-   Editorial minimalista
+   Editorial minimalista refinado
    ================================================== */
 
 :root{
   --blanco:#f6f6f2;
   --negro:#0b0b0c;
   --gris:#6f6f6f;
-  --azul:#6f8f9f;
+  --violeta:#7b5cff;
   --linea:rgba(0,0,0,.08);
 }
 
@@ -65,7 +65,7 @@ body{
 }
 
 .nav a:hover{
-  color:var(--azul);
+  color:var(--gris);
 }
 
 /* ================= HERO ================= */
@@ -109,7 +109,7 @@ body{
   font-size:18px;
   letter-spacing:.32em;
   text-transform:uppercase;
-  color:var(--azul);
+  color:var(--violeta);
 }
 
 /* ================= BLOQUE IMAGEN + TEXTO ================= */
@@ -142,11 +142,11 @@ body{
   color:rgba(0,0,0,.85);
 }
 
-/* ================= CIERRE ================= */
+/* ================= BLOQUE NEGRO FINAL ================= */
 
 .cierre{
   padding:140px 0;
-  border-top:1px solid var(--linea);
+  background:var(--negro);
   text-align:center;
 }
 
@@ -155,7 +155,7 @@ body{
   margin:0 auto 64px;
   font-size:22px;
   line-height:1.7;
-  color:rgba(0,0,0,.8);
+  color:rgba(255,255,255,.88);
 }
 
 .cta{
@@ -163,16 +163,16 @@ body{
   font-size:14px;
   letter-spacing:.32em;
   text-transform:uppercase;
-  color:var(--negro);
+  color:#ffffff;
   text-decoration:none;
-  border-bottom:1px solid var(--negro);
+  border-bottom:1px solid rgba(255,255,255,.8);
   padding-bottom:6px;
   transition:.3s ease;
 }
 
 .cta:hover{
-  color:var(--azul);
-  border-color:var(--azul);
+  color:var(--violeta);
+  border-color:var(--violeta);
 }
 
 /* ================= RESPONSIVE ================= */
@@ -215,7 +215,7 @@ body{
 <section class="hero">
   <div class="wrap">
     <p class="kicker">Clínica · Experiencia creativa</p>
-    <h1>Inner Sound</h1>
+    <h1>Inner <span style="color:var(--violeta)">Sound</span></h1>
     <p class="subhero">Escucha guiada · Frecuencia · Neurociencia</p>
   </div>
 </section>
@@ -242,13 +242,12 @@ body{
       y serotonina.
       <br><br>
       Es el lugar donde la música se convierte en medicina de precisión.
-       Es una intervención de modulación sensorial profunda    
     </div>
 
   </div>
 </section>
 
-<!-- CIERRE -->
+<!-- BLOQUE NEGRO FINAL -->
 <section class="cierre">
   <div class="wrap">
     <p class="cierre-texto">
