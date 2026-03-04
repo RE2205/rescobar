@@ -4,15 +4,15 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<title>Inner Sound · Clínica</title>
-<meta name="description" content="Una experiencia estructurada para equipos creativos que buscan claridad colectiva antes de idear o decidir." />
+<title>Inner Sound · Medicina de Precisión Sónica</title>
+<meta name="description" content="Intervención neuroacústica guiada mediante frecuencias bio-armónicas y cancelación de ruido para recuperar claridad mental." />
 
 <style>
 
 /* ==================================================
-   INNER SOUND · Clínica
-   Editorial minimalista refinado
-   ================================================== */
+   INNER SOUND · Rediseño Híbrido 2026
+   Elegancia clínica + experiencia sensorial
+================================================== */
 
 :root{
   --blanco:#f6f6f2;
@@ -65,7 +65,7 @@ body{
 }
 
 .nav a:hover{
-  color:var(--gris);
+  color:var(--violeta);
 }
 
 /* ================= HERO ================= */
@@ -73,14 +73,16 @@ body{
 .hero{
   padding:120px 0 100px;
   border-bottom:1px solid var(--linea);
+  background: linear-gradient(to bottom,#ffffff,var(--blanco));
 }
 
 .hero .kicker{
-  font-size:12px;
-  letter-spacing:.36em;
+  font-size:11px;
+  letter-spacing:.40em;
   text-transform:uppercase;
-  color:rgba(0,0,0,.45);
-  margin:0 0 28px;
+  color:var(--violeta);
+  font-weight:600;
+  margin:0 0 18px;
 }
 
 .hero h1{
@@ -88,31 +90,33 @@ body{
   font-weight:500;
   line-height:1.1;
   margin:0 0 24px;
+  letter-spacing:-0.02em;
 }
 
 .hero .subhero{
-  font-size:20px;
-  color:rgba(0,0,0,.65);
-  margin:0 0 32px;
+  font-size:22px;
+  color:rgba(0,0,0,.55);
+  max-width:720px;
 }
 
 /* ================= AXIOMA ================= */
 
 .axioma{
   background:var(--negro);
-  padding:56px 0;
+  padding:64px 0;
   text-align:center;
 }
 
 .axioma p{
   margin:0;
-  font-size:18px;
-  letter-spacing:.32em;
+  font-size:16px;
+  letter-spacing:.40em;
   text-transform:uppercase;
-  color:var(--violeta);
+  color:#fff;
+  opacity:.9;
 }
 
-/* ================= BLOQUE IMAGEN + TEXTO ================= */
+/* ================= BLOQUE MANIFIESTO ================= */
 
 .experiencia{
   padding:120px 0;
@@ -126,9 +130,8 @@ body{
 }
 
 .experiencia-img{
-  border-radius:20px;
+  border-radius:4px;
   overflow:hidden;
-  border:1px solid var(--linea);
 }
 
 .experiencia-img img{
@@ -137,16 +140,40 @@ body{
 }
 
 .experiencia-texto{
-  font-size:24px;
-  line-height:1.7;
-  color:rgba(0,0,0,.85);
+  font-size:26px;
+  line-height:1.5;
+  color:var(--negro);
+}
+
+.experiencia-texto span{
+  display:block;
+  font-size:16px;
+  color:var(--gris);
+  margin-top:24px;
+  line-height:1.8;
+}
+
+/* ================= ONDA SONORA ================= */
+
+.onda-contenedor{
+  width:100%;
+  background:var(--negro);
+  padding:70px 0;
+  display:flex;
+  justify-content:center;
+  border-top:1px solid rgba(255,255,255,.05);
+}
+
+.onda-visual{
+  width:320px;
+  height:70px;
 }
 
 /* ================= PROTOCOLO ================= */
 
 .protocolo{
   background:var(--negro);
-  padding:120px 0;
+  padding:100px 0 140px;
 }
 
 .grid-capsulas{
@@ -165,8 +192,8 @@ body{
 
 .capsula p{
   margin:0;
-  font-size:18px;
-  line-height:1.6;
+  font-size:17px;
+  line-height:1.7;
   color:rgba(255,255,255,.85);
 }
 
@@ -174,7 +201,7 @@ body{
 
 .cierre{
   padding:140px 0;
-  background:var(--blanco);
+  background:#fff;
   border-top:1px solid var(--linea);
   text-align:center;
 }
@@ -182,37 +209,34 @@ body{
 .cierre-texto{
   max-width:720px;
   margin:0 auto 64px;
-  font-size:22px;
-  line-height:1.7;
-  color:rgba(0,0,0,.80);
+  font-size:24px;
+  line-height:1.6;
+  color:rgba(0,0,0,.85);
 }
 
 .cta{
   display:inline-block;
-  font-size:14px;
+  font-size:13px;
   letter-spacing:.32em;
   text-transform:uppercase;
   color:var(--negro);
   text-decoration:none;
-  border-bottom:1px solid var(--negro);
-  padding-bottom:6px;
+  border:1px solid rgba(0,0,0,.15);
+  padding:18px 40px;
   transition:.3s ease;
 }
 
 .cta:hover{
-  color:var(--violeta);
-  border-color:var(--violeta);
+  background:var(--negro);
+  color:#fff;
+  border-color:var(--negro);
 }
 
 /* ================= RESPONSIVE ================= */
 
 @media (max-width:900px){
 
-  .experiencia-grid{
-    grid-template-columns:1fr;
-    gap:48px;
-  }
-
+  .experiencia-grid,
   .grid-capsulas{
     grid-template-columns:1fr;
     gap:48px;
@@ -237,84 +261,116 @@ body{
 
 <body>
 
-<!-- NAV -->
 <nav class="nav">
   <div class="wrap nav-inner">
     <a href="/">Inicio</a>
-    <a href="/clinica.html">Clínica</a>
+    <a href="/clinica.html">El Parque</a>
   </div>
 </nav>
 
-<!-- HERO -->
 <section class="hero">
   <div class="wrap">
-    <p class="kicker">Clínica · Experiencia creativa</p>
+    <p class="kicker">Protocolo Neuroacústico Guiado</p>
+
     <h1>Inner <span style="color:var(--violeta)">Sound</span></h1>
-    <p class="subhero">Escucha guiada · Frecuencia · Neurociencia</p>
+
+    <p class="subhero">
+      Una intervención diseñada para silenciar el ruido sistémico y recuperar la soberanía de la atención.
+    </p>
   </div>
 </section>
 
-<!-- AXIOMA -->
 <section class="axioma">
   <div class="wrap">
     <p>La música es medicina de precisión</p>
   </div>
 </section>
 
-<!-- BLOQUE IMAGEN + TEXTO -->
 <section class="experiencia">
   <div class="wrap experiencia-grid">
 
     <div class="experiencia-img">
-      <img src="/assets/inners.png" alt="Frecuencia sonora">
+      <img src="/assets/tu-retrato-autor.png" alt="Dr Ronald Escobar">
     </div>
 
     <div class="experiencia-texto">
-      Inner Sound no es una escucha pasiva; es una cirugía sónica.
+      “Inner Sound no es una escucha pasiva; es una <strong>cirugía sónica</strong>.”
+
+      <span>
       Usamos tecnología de cancelación de ruido y frecuencias bio-armónicas
-      para silenciar el caos externo y reorganizar el sistema neuroquímico.
-      <br><br>
-      Es el lugar donde la música se convierte en medicina de precisión.
+      para reorganizar el flujo neuroquímico y abrir un espacio de claridad
+      donde la mente vuelve a escuchar.
+      </span>
     </div>
 
   </div>
 </section>
 
-<!-- PROTOCOLO -->
+<div class="onda-contenedor">
+  <svg class="onda-visual" viewBox="0 0 500 100" preserveAspectRatio="none">
+
+    <path d="M0,50 C150,150 350,-50 500,50 L500,100 L0,100 Z"
+    style="fill:rgba(255,255,255,0.03);"></path>
+
+    <path d="M0,50 C150,150 350,-50 500,50"
+    style="stroke:rgba(255,255,255,0.35);stroke-width:1.5;fill:none;"></path>
+
+  </svg>
+</div>
+
 <section class="protocolo">
-    <div class="wrap">
-        <div class="grid-capsulas">
+  <div class="wrap">
 
-            <div class="capsula">
-                <h3>01. Aislamiento</h3>
-                <p>Deprivación sensorial selectiva mediante cancelación activa. El cerebro deja de filtrar amenazas externas para enfocarse en la reconstrucción interna.</p>
-            </div>
+    <div class="grid-capsulas">
 
-            <div class="capsula">
-                <h3>02. Resonancia</h3>
-                <p>Uso de frecuencias para el arrastre cerebral (entrainment), movilizando el sistema nervioso desde el estrés hacia estados de flujo y asociación creativa.</p>
-            </div>
+      <div class="capsula">
+        <h3>01. Aislamiento</h3>
+        <p>
+        Deprivación sensorial selectiva mediante cancelación activa.
+        El cerebro deja de filtrar amenazas externas
+        para enfocarse en la reconstrucción interna.
+        </p>
+      </div>
 
-            <div class="capsula">
-                <h3>03. Integración</h3>
-                <p>Fijación emocional de la experiencia mediante la descripción de texturas sónicas, consolidando una claridad mental duradera.</p>
-            </div>
+      <div class="capsula">
+        <h3>02. Resonancia</h3>
+        <p>
+        Uso de frecuencias para el arrastre cerebral (entrainment),
+        movilizando el sistema nervioso desde el estrés
+        hacia estados de flujo y asociación creativa.
+        </p>
+      </div>
 
-        </div>
+      <div class="capsula">
+        <h3>03. Integración</h3>
+        <p>
+        Fijación emocional de la experiencia mediante
+        texturas sonoras que consolidan
+        claridad mental duradera.
+        </p>
+      </div>
+
     </div>
+
+  </div>
 </section>
 
-<!-- CIERRE -->
 <section class="cierre">
+
   <div class="wrap">
+
     <p class="cierre-texto">
-      Diseñado para equipos creativos que necesitan claridad colectiva antes de iniciar procesos de ideación o tomar decisiones complejas.
+      Un espacio reservado para personas y equipos
+      que buscan claridad colectiva en entornos
+      de alta complejidad.
     </p>
 
     <a href="mailto:clinicalogos@ronaldescobar.com" class="cta">
-      Solicitar acceso
+      Iniciar Cirugía Sónica
     </a>
+
   </div>
+
 </section>
 
 </body>
