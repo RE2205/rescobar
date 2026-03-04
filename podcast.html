@@ -6,25 +6,52 @@
 <title>Desapre(he)nder para CreSer · Podcast</title>
 
 <style>
+/* ---------- VARIABLES ---------- */
 :root {
   --negro: #0b0b0c;
   --blanco: #ffffff;
   --gris-texto: #4a4a4a;
   --azul: #6f8f9f;
   --rojo-yt: #FF0000;
+  --linea: rgba(0,0,0,.08);
+  --linea-inv: rgba(255,255,255,.12);
   --wrap: 1100px;
 }
 
 * { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
 body {
   margin: 0;
   font-family: system-ui, -apple-system, sans-serif;
-  background: var(--blanco);
+  line-height: 1.6;
   color: var(--negro);
+  background: var(--blanco);
   -webkit-font-smoothing: antialiased;
 }
 
-/* ---------- HERO OPTIMIZADO PARA MOVIL ---------- */
+.wrap {
+  max-width: var(--wrap);
+  margin: 0 auto;
+  padding: 0 28px;
+}
+
+/* ---------- NAV ---------- */
+.topbar {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+}
+.topbar .wrap { height: 80px; display: flex; align-items: center; }
+.back-link {
+  font-size: 11px;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.6);
+  text-decoration: none;
+}
+
+/* ---------- HERO (PORTADA) ---------- */
 .hero {
   position: relative;
   width: 100%;
@@ -33,14 +60,13 @@ body {
   background-image: url('assets/miportada.jpeg'); 
   background-repeat: no-repeat;
   background-position: center;
-  background-size: cover; /* Desktop: llena la pantalla */
+  background-size: cover;
 }
 
 @media (max-width: 768px) {
   .hero {
-    /* Móvil: muestra la imagen completa sin recortes */
-    background-size: contain; 
-    height: 60vh; /* Ajustamos la altura para que no sobre tanto espacio negro */
+    background-size: contain; /* Para que la imagen horizontal no se corte en móvil */
+    height: 60vh; 
   }
 }
 
@@ -54,114 +80,172 @@ body {
 
 /* ---------- AXIOMA (BLANCO) ---------- */
 .axioma {
-  padding: 100px 20px;
-  text-align: center;
+  padding: 100px 0;
   background: var(--blanco);
+  text-align: center;
 }
 .quote {
   font-family: ui-serif, serif;
-  font-size: clamp(20px, 5vw, 30px);
+  font-size: clamp(22px, 5vw, 32px);
   max-width: 32ch;
   margin: 0 auto;
+  line-height: 1.3;
+}
+.quote span {
+  display: block;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: .3em;
+  margin-top: 30px;
+  color: var(--azul);
 }
 
-/* ---------- CLIPS (FONDO NEGRO) ---------- */
+/* ---------- CLIPS (NEGRO) ---------- */
 .clips { 
-  padding: 80px 20px; 
+  padding: 100px 0; 
   background: var(--negro); 
+  color: var(--blanco);
 }
 .clips-grid {
-  max-width: var(--wrap);
-  margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 30px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 40px;
 }
 .clip video {
   width: 100%;
   border-radius: 12px;
   background: #000;
+  border: 1px solid var(--linea-inv);
 }
 
-/* ---------- YOUTUBE (FONDO NEGRO) ---------- */
+/* ---------- YOUTUBE CTA (NEGRO) ---------- */
 .youtube-section { 
   text-align: center; 
-  padding: 20px 0 80px; 
+  padding: 20px 0 100px; 
   background: var(--negro); 
 }
 .youtube-btn {
   display: inline-flex;
   align-items: center;
+  gap: 10px;
   background: var(--rojo-yt);
   color: #fff;
-  padding: 12px 24px;
+  padding: 14px 28px;
   border-radius: 100px;
-  text-decoration: none;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 600;
   text-transform: uppercase;
+  text-decoration: none;
+  transition: transform 0.3s;
 }
+.youtube-btn:hover { transform: scale(1.05); }
 
 /* ---------- MANIFIESTO (BLANCO) ---------- */
 .manifiesto {
   background: var(--blanco);
-  padding: 100px 20px;
+  padding: 120px 0;
   text-align: center;
+  border-top: 1px solid var(--linea);
 }
+.lead {
+  font-family: ui-serif, serif;
+  font-size: clamp(24px, 5vw, 34px);
+  max-width: 35ch;
+  margin: 0 auto 20px;
+}
+.fine { font-size: 14px; color: var(--gris-texto); }
 
-/* ---------- FOOTER (FONDO NEGRO) ---------- */
+/* ---------- FOOTER (NEGRO + ICONOS) ---------- */
 .footer { 
-  padding: 60px 0 100px; 
+  padding: 80px 0 120px; 
   background: var(--negro); 
+  border-top: 1px solid var(--linea-inv);
 }
 .social-images {
   display: flex;
   justify-content: center;
-  gap: 30px;
+  gap: 35px;
+  flex-wrap: wrap;
 }
 .social-images img {
-  width: 24px;
-  filter: invert(1);
+  width: 26px;
+  height: 26px;
+  filter: invert(1); /* Convierte iconos negros en blancos para el fondo oscuro */
   opacity: 0.7;
+  transition: 0.3s ease;
+}
+.social-images a:hover img { 
+  opacity: 1; 
+  transform: translateY(-5px); 
 }
 </style>
 </head>
 
 <body>
 
+<header class="topbar">
+  <div class="wrap">
+    <a class="back-link" href="/">← VOLVER AL INICIO</a>
+  </div>
+</header>
+
+<main>
   <section class="hero">
     <div class="hero-transition"></div>
   </section>
 
   <section class="axioma">
-    <p class="quote">
-      No grabamos para convencer.<br>Grabamos para <span style="color:var(--azul)">volver a escuchar</span>.
-    </p>
+    <div class="wrap">
+      <p class="quote">
+        No grabamos para convencer. Grabamos para <span style="color:var(--azul)">volver a escuchar</span>.
+        <span>Cuando lo humano aparece, lo demás se ordena.</span>
+      </p>
+    </div>
   </section>
 
   <section class="clips">
-    <div class="clips-grid">
-      <div class="clip"><video controls src="assets/clip1.mp4"></video></div>
-      <div class="clip"><video controls src="assets/clip2.mp4"></video></div>
-      <div class="clip"><video controls src="assets/clip3.mp4"></video></div>
+    <div class="wrap">
+      <div class="clips-grid">
+        <div class="clip"><video controls src="assets/clip1.mp4"></video></div>
+        <div class="clip"><video controls src="assets/clip2.mp4"></video></div>
+        <div class="clip"><video controls src="assets/clip3.mp4"></video></div>
+      </div>
     </div>
   </section>
 
   <section class="youtube-section">
-    <a href="#" class="youtube-btn">Ver en YouTube</a>
+    <a href="https://youtube.com/@desaprenderparacreser" target="_blank" class="youtube-btn">Ver en YouTube</a>
   </section>
 
   <section class="manifiesto">
-    <p style="font-family:serif; font-size: 24px;">Desaprender para volver a elegir.</p>
-  </section>
-
-  <footer class="footer">
-    <div class="social-images">
-      <a href="#"><img src="assets/instagram.png" alt="IG"></a>
-      <a href="#"><img src="assets/spotify.png" alt="SP"></a>
-      <a href="#"><img src="assets/youtube.png" alt="YT"></a>
+    <div class="wrap">
+      <p class="lead">Desaprender para volver a elegir.</p>
+      <p class="fine">Si te sirve, comparte. Si te incomoda, quédate un momento más. <b>Ahí empieza</b>.</p>
     </div>
-  </footer>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="social-images">
+      <a href="https://youtube.com/@desaprenderparacreser" target="_blank">
+        <img src="assets/youtube.png" alt="YouTube">
+      </a>
+      <a href="https://www.instagram.com/desaprehender_para_creser" target="_blank">
+        <img src="assets/instagram.png" alt="Instagram">
+      </a>
+      <a href="https://podcasts.apple.com/gt/podcast/desapre-he-nder-para-creser/id1714893342" target="_blank">
+        <img src="assets/apple.png" alt="Apple Podcasts">
+      </a>
+      <a href="https://www.tiktok.com/@desaprendercreser" target="_blank">
+        <img src="assets/tiktok.png" alt="TikTok">
+      </a>
+      <a href="https://open.spotify.com/show/5NllZfPwaPRuVHUwCcgCbH?si=SV-QoZcJQpOc_UkGoOecpQ" target="_blank">
+        <img src="assets/spotify.png" alt="Spotify">
+      </a>
+    </div>
+  </div>
+</footer>
 
 </body>
 </html>
