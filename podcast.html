@@ -6,69 +6,41 @@
 <title>Desapre(he)nder para CreSer · Podcast</title>
 
 <style>
-/* ---------- VARIABLES ---------- */
 :root {
   --negro: #0b0b0c;
   --blanco: #ffffff;
   --gris-texto: #4a4a4a;
   --azul: #6f8f9f;
   --rojo-yt: #FF0000;
-  --linea: rgba(0,0,0,.08);
-  --linea-inv: rgba(255,255,255,.12);
   --wrap: 1100px;
-  --pad: 28px;
 }
 
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
 body {
   margin: 0;
   font-family: system-ui, -apple-system, sans-serif;
-  line-height: 1.6;
-  color: var(--negro);
   background: var(--blanco);
+  color: var(--negro);
   -webkit-font-smoothing: antialiased;
 }
 
-.wrap {
-  max-width: var(--wrap);
-  margin: 0 auto;
-  padding: 0 var(--pad);
-}
-
-/* ---------- NAV ---------- */
-.topbar {
-  position: absolute;
-  top: 0;
-  width: 100%;
-  z-index: 100;
-}
-.topbar .wrap { height: 80px; display: flex; align-items: center; }
-.back-link {
-  font-size: 11px;
-  letter-spacing: .2em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.7);
-  text-decoration: none;
-}
-
-/* ---------- HERO OPTIMIZADO ---------- */
+/* ---------- HERO OPTIMIZADO PARA MOVIL ---------- */
 .hero {
   position: relative;
+  width: 100%;
   height: 100vh;
   background-color: var(--negro);
   background-image: url('assets/miportada.jpeg'); 
-  background-size: cover;
-  background-position: center; /* Centrado por defecto */
-  display: flex;
-  align-items: center;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover; /* Desktop: llena la pantalla */
 }
 
-/* Ajuste específico para móviles */
 @media (max-width: 768px) {
   .hero {
-    background-position: 75% center; /* Mueve la imagen para ver a Ronald y el título */
-    height: 80vh; /* Un poco más bajo en móvil para ver contenido rápido */
+    /* Móvil: muestra la imagen completa sin recortes */
+    background-size: contain; 
+    height: 60vh; /* Ajustamos la altura para que no sobre tanto espacio negro */
   }
 }
 
@@ -76,15 +48,15 @@ body {
   position: absolute;
   bottom: 0;
   width: 100%;
-  height: 15vh;
+  height: 10vh;
   background: linear-gradient(to top, var(--blanco), transparent);
 }
 
 /* ---------- AXIOMA (BLANCO) ---------- */
 .axioma {
-  padding: 80px 0;
-  background: var(--blanco);
+  padding: 100px 20px;
   text-align: center;
+  background: var(--blanco);
 }
 .quote {
   font-family: ui-serif, serif;
@@ -92,34 +64,26 @@ body {
   max-width: 32ch;
   margin: 0 auto;
 }
-.quote span {
-  display: block;
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: .3em;
-  margin-top: 25px;
-  color: var(--azul);
-}
 
 /* ---------- CLIPS (FONDO NEGRO) ---------- */
 .clips { 
-  padding: 80px 0; 
+  padding: 80px 20px; 
   background: var(--negro); 
-  color: var(--blanco);
 }
 .clips-grid {
+  max-width: var(--wrap);
+  margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 30px;
 }
 .clip video {
   width: 100%;
   border-radius: 12px;
   background: #000;
-  transition: transform 0.4s ease;
 }
 
-/* ---------- YOUTUBE CTA (FONDO NEGRO) ---------- */
+/* ---------- YOUTUBE (FONDO NEGRO) ---------- */
 .youtube-section { 
   text-align: center; 
   padding: 20px 0 80px; 
@@ -128,45 +92,35 @@ body {
 .youtube-btn {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
   background: var(--rojo-yt);
   color: #fff;
   padding: 12px 24px;
   border-radius: 100px;
+  text-decoration: none;
   font-size: 11px;
   font-weight: 600;
   text-transform: uppercase;
-  text-decoration: none;
 }
 
 /* ---------- MANIFIESTO (BLANCO) ---------- */
 .manifiesto {
   background: var(--blanco);
-  padding: 100px 0;
+  padding: 100px 20px;
   text-align: center;
-  border-top: 1px solid var(--linea);
 }
-.lead {
-  font-family: ui-serif, serif;
-  font-size: clamp(22px, 5vw, 32px);
-  max-width: 35ch;
-  margin: 0 auto 20px;
-}
-.fine { font-size: 13px; color: var(--gris-texto); padding: 0 20px; }
 
 /* ---------- FOOTER (FONDO NEGRO) ---------- */
 .footer { 
-  padding: 60px 0 80px; 
+  padding: 60px 0 100px; 
   background: var(--negro); 
 }
 .social-images {
   display: flex;
   justify-content: center;
-  gap: 25px;
+  gap: 30px;
 }
 .social-images img {
-  width: 22px;
-  height: 22px;
+  width: 24px;
   filter: invert(1);
   opacity: 0.7;
 }
@@ -175,59 +129,39 @@ body {
 
 <body>
 
-<header class="topbar">
-  <div class="wrap">
-    <a class="back-link" href="/">← VOLVER AL INICIO</a>
-  </div>
-</header>
-
-<main>
   <section class="hero">
     <div class="hero-transition"></div>
   </section>
 
   <section class="axioma">
-    <div class="wrap">
-      <p class="quote">
-        No grabamos para convencer. Grabamos para <span style="color:var(--azul)">volver a escuchar</span>.
-        <span>Cuando lo humano aparece, lo demás se ordena.</span>
-      </p>
-    </div>
+    <p class="quote">
+      No grabamos para convencer.<br>Grabamos para <span style="color:var(--azul)">volver a escuchar</span>.
+    </p>
   </section>
 
   <section class="clips">
-    <div class="wrap">
-      <div class="clips-grid">
-        <div class="clip"><video controls src="assets/clip1.mp4"></video></div>
-        <div class="clip"><video controls src="assets/clip2.mp4"></video></div>
-        <div class="clip"><video controls src="assets/clip3.mp4"></video></div>
-      </div>
+    <div class="clips-grid">
+      <div class="clip"><video controls src="assets/clip1.mp4"></video></div>
+      <div class="clip"><video controls src="assets/clip2.mp4"></video></div>
+      <div class="clip"><video controls src="assets/clip3.mp4"></video></div>
     </div>
   </section>
 
   <section class="youtube-section">
-    <a href="https://youtube.com/@desaprenderparacreser" target="_blank" class="youtube-btn">Ver en YouTube</a>
+    <a href="#" class="youtube-btn">Ver en YouTube</a>
   </section>
 
   <section class="manifiesto">
-    <div class="wrap">
-      <p class="lead">Desapre(he)nder para CreSer</p>
-      <p class="fine">Si te sirve, comparte. Si te incomoda, quédate un momento más. <b>Ahí empieza</b>.</p>
-    </div>
+    <p style="font-family:serif; font-size: 24px;">Desaprender para volver a elegir.</p>
   </section>
-</main>
 
-<footer class="footer">
-  <div class="wrap">
+  <footer class="footer">
     <div class="social-images">
-      <a href="#"><img src="assets/youtube.png" alt="YT"></a>
       <a href="#"><img src="assets/instagram.png" alt="IG"></a>
-      <a href="#"><img src="assets/apple.png" alt="AP"></a>
-      <a href="#"><img src="assets/tiktok.png" alt="TK"></a>
       <a href="#"><img src="assets/spotify.png" alt="SP"></a>
+      <a href="#"><img src="assets/youtube.png" alt="YT"></a>
     </div>
-  </div>
-</footer>
+  </footer>
 
 </body>
 </html>
