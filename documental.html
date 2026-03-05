@@ -30,8 +30,19 @@ body{
   -webkit-font-smoothing:antialiased;
 }
 
-/* ---------- BASE ---------- */
+/* ---------- ANIMACIONES ---------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 1.2s ease-out;
+}
 
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ---------- BASE ---------- */
 .wrap{
   max-width:1100px;
   margin:0 auto;
@@ -74,7 +85,6 @@ blockquote{
 }
 
 /* ---------- NAV ---------- */
-
 .nav{
   position:sticky;
   top:0;
@@ -82,8 +92,6 @@ blockquote{
   backdrop-filter:blur(8px);
   border-bottom:1px solid rgba(255,255,255,.06);
   z-index:1000;
-
-  /* soporte notch iPhone */
   padding-top:env(safe-area-inset-top);
 }
 
@@ -91,7 +99,7 @@ blockquote{
   display:flex;
   align-items:center;
   justify-content:flex-end;
-  padding:18px 32px; /* altura real controlada */
+  padding:18px 32px;
 }
 
 .nav-inner{
@@ -111,9 +119,7 @@ blockquote{
   transition:opacity .2s ease;
 }
 
-.nav-inner a:hover{
-  opacity:1;
-}
+.nav-inner a:hover{ opacity:1; }
 
 .nav-inner a::after{
   content:"";
@@ -126,29 +132,9 @@ blockquote{
   transition:width .25s ease;
 }
 
-.nav-inner a:hover::after{
-  width:100%;
-}
+.nav-inner a:hover::after{ width:100%; }
 
-
-/* ---------- NAV MOBILE ---------- */
-
-@media (max-width:768px){
-
-  .nav .wrap{
-    padding:14px 18px;
-    justify-content:center;
-  }
-
-  .nav-inner{
-    gap:18px;
-    flex-wrap:wrap;
-    justify-content:center;
-    font-size:.72rem;
-  }
-
-}/* ---------- HERO ---------- */
-
+/* ---------- HERO ---------- */
 .hero{
   background:var(--negro);
   color:var(--blanco);
@@ -161,12 +147,7 @@ blockquote{
   padding:140px 0;
 }
 
-.hero p{
-  color:rgba(241,239,234,.85);
-}
-
-/* ---------- TRÍPTICO DEFINITIVO ---------- */
-
+/* ---------- TRÍPTICO ---------- */
 .triptych{
   background:var(--negro);
   padding:0;
@@ -176,7 +157,7 @@ blockquote{
 
 .triptych-row{
   display:grid;
-  grid-template-columns: 1fr 1.55fr 1fr; /* centro dominante suave */
+  grid-template-columns: 1fr 1.55fr 1fr;
   align-items:stretch;
 }
 
@@ -187,11 +168,8 @@ blockquote{
   display:block;
   filter:saturate(90%) contrast(97%) brightness(98%);
 }
-  .triptych{
-  border-bottom:1px solid rgba(255,255,255,.05);
-} 
-/* ---------- ARCHIVO CURADO ---------- */
 
+/* ---------- ARCHIVO ---------- */
 .archivo-curado{
   background:var(--blanco);
   border-top:1px solid var(--gris-linea);
@@ -202,10 +180,6 @@ blockquote{
   border-bottom:1px solid var(--gris-linea);
 }
 
-.curated-item:last-child{
-  border-bottom:none;
-}
-
 .curated-meta{
   font-size:.9rem;
   letter-spacing:.14em;
@@ -214,27 +188,7 @@ blockquote{
   margin-bottom:40px;
 }
 
-.curated-item blockquote{
-  font-size:1.2rem;
-  font-style:italic;
-  margin-bottom:18px;
-}
-
-.curated-note{
-  margin-top:20px;
-  font-size:.9rem;
-  color:var(--gris-texto);
-}
-
-/* ---------- MIRADA ---------- */
-
-.light{
-  background:var(--blanco);
-  border-top:1px solid var(--gris-linea);
-}
-
 /* ---------- CRÉDITOS ---------- */
-
 .team-grid{
   display:grid;
   grid-template-columns:repeat(3,1fr);
@@ -247,62 +201,38 @@ blockquote{
   padding-top:18px;
 }
 
-/* ---------- COLABORACIONES ---------- */
-
+/* ---------- FOOTER / COLAB ---------- */
 .dark-footer{
   background:var(--negro);
   color:rgba(241,239,234,.85);
   border-top:1px solid rgba(255,255,255,.06);
 }
 
-.dark-footer input,
-.dark-footer textarea{
-  width:100%;
-  padding:14px;
-  margin-bottom:18px;
-  background:transparent;
-  border:1px solid rgba(255,255,255,.15);
-  color:var(--blanco);
-  font-family:inherit;
-}
 .colab-contact{
   margin-top:40px;
-  font-size:1rem;
-  letter-spacing:.06em;
+  font-size:1.1rem;
 }
 
 .colab-contact a{
-  color:rgba(241,239,234,.85);
+  color:var(--blanco);
   text-decoration:none;
-  border-bottom:1px solid rgba(241,239,234,.5);
+  border-bottom:1px solid var(--bronce);
   transition:all .25s ease;
 }
 
-.colab-contact a:hover{
-  border-color:var(--bronce);
-  color:var(--bronce);
-}  /* ---------- FOOTER ---------- */
+.colab-contact a:hover{ color:var(--bronce); }
 
 footer{
   background:var(--negro);
-  color:rgba(241,239,234,.6);
+  color:rgba(241,239,234,.4);
   padding:60px 0;
   text-align:center;
   font-size:.85rem;
 }
 
-/* ---------- RESPONSIVE ---------- */
-
 @media (max-width:980px){
-  .triptych-row{
-    grid-template-columns:1fr;
-  }
-  .team-grid{
-    grid-template-columns:1fr;
-  }
-  section{
-    padding:90px 0;
-  }
+  .triptych-row{ grid-template-columns:1fr; }
+  .team-grid{ grid-template-columns:1fr; }
 }
 </style>
 </head>
@@ -322,132 +252,97 @@ footer{
 </nav>
 
 <header class="hero">
-  <div class="wrap hero-inner">
+  <div class="wrap hero-inner reveal">
     <div>
       <h1>Antes de nombrar</h1>
-      <p>
-        Algunas historias se transforman cuando son contadas.
-        Otras ya estaban allí, esperando escucha.
-      </p>
-      <blockquote>
-        “Qué hace una persona sensible en un mundo que no sabe escuchar.”
-      </blockquote>
+      <p>Algunas historias se transforman cuando son contadas. Otras ya estaban allí, esperando escucha.</p>
+      <blockquote>“Qué hace una persona sensible en un mundo que no sabe escuchar.”</blockquote>
     </div>
   </div>
 </header>
 
-<section class="triptych">
+<section class="triptych reveal">
   <div class="triptych-row">
-    <img src="assets/pablo.jpg" alt="">
-    <img src="assets/ronald2.jpg" alt="">
-    <img src="assets/livingston.jpg" alt="">
+    <img src="assets/pablo.jpg" alt="Registro de campo">
+    <img src="assets/ronald2.jpg" alt="Encuentro familiar">
+    <img src="assets/livingston.jpg" alt="Livingston, territorio">
   </div>
 </section>
 
-<section id="archivo" class="archivo-curado">
+<section id="archivo" class="archivo-curado reveal">
   <div class="wrap">
     <h2>Archivo · Fragmentos seleccionados</h2>
-    <p class="archivo-intro">
-    Fragmentos del proceso, no exhaustivos.
-    </p>    
+    <p>Fragmentos del proceso, no exhaustivos.</p>    
     <div id="curated-container"></div>
-    <div class="curated-note">
-      Esta selección cambia con el tiempo.
-    </div>
   </div>
 </section>
 
-<section id="mirada" class="light">
+<section id="mirada" class="light reveal">
   <div class="wrap">
     <h2>Mirada</h2>
-    <p>
-      Este trabajo se aproxima sin prisa.
-      No busca traducir de inmediato,
-      sino sostener el tiempo necesario
-      para que la experiencia pueda desplegarse en su propio lenguaje.
-    </p>
+    <p>Este trabajo se aproxima sin prisa. No busca traducir de inmediato, sino sostener el tiempo necesario para que la experiencia pueda desplegarse en su propio lenguaje.</p>
   </div>
 </section>
 
-<section id="equipo" class="light">
+<section id="equipo" class="light reveal">
   <div class="wrap">
     <h2>Créditos</h2>
     <div class="team-grid">
-      <div class="team-card">
-        <h3>Dirección</h3>
-        <p>Pablo Rojas y Ronald Escobar</p>
-      </div>
-      <div class="team-card">
-        <h3>Registro en campo</h3>
-        <p>Ronald Escobar y Pablo Rojas</p>
-      </div>
-      <div class="team-card">
-        <h3>Producción</h3>
-        <p>En desarrollo</p>
-      </div>
+      <div class="team-card"><h3>Dirección</h3><p>Pablo Rojas y Ronald Escobar</p></div>
+      <div class="team-card"><h3>Registro en campo</h3><p>Ronald Escobar y Pablo Rojas</p></div>
+      <div class="team-card"><h3>Producción</h3><p>En desarrollo</p></div>
     </div>
   </div>
 </section>
 
-<section id="apoyar" class="dark-footer">
+<section id="apoyar" class="dark-footer reveal">
   <div class="wrap">
-
     <h2>Colaboraciones</h2>
-
-    <p>
-      Esta producción abierta a encuentros y colaboraciones
-      que compartan su ética de escucha.
-    </p>
-
-  <p class="colab-contact">
-  <a href="mailto:clinicalogos@ronaldescobar.com">
-    contacto@ronaldescobar.com
-  </a>
-</p>  
+    <p>Esta producción está abierta a encuentros y colaboraciones que compartan su ética de escucha.</p>
+    <p class="colab-contact">
+      <a href="mailto:contacto@ronaldescobar.com">contacto@ronaldescobar.com</a>
+    </p>  
   </div>
 </section>
-<footer>
-  © 2026 · Archivo documental
-</footer>
+
+<footer>© 2026 · Archivo documental</footer>
 
 <script>
+// Lógica de fragmentos aleatorios
 const fragments = [
-  {
-    meta:"2020 · Primer encuentro",
-    quote:"No fue una explicación lo que apareció, sino un nombre compartido.",
-    text:"La conversación no buscaba diagnóstico. Buscaba reconocimiento."
-  },
-  {
-    meta:"Noviembre 2020 · Territorio",
-    quote:"El paisaje también recuerda.",
-    text:"La memoria no estaba solo en las palabras, sino en el lugar que las sostenía."
-  },
-  {
-    meta:"Septiembre 2022 · Silencio",
-    quote:"A veces lo que no se dice también nombra.",
-    text:"El silencio no era ausencia, sino forma de cuidado."
-  },
-  {
-    meta:"Noviembre 2023 · Comunidad",
-    quote:"Nombrar es compartir carga.",
-    text:"El fenómeno no pertenece a un individuo aislado."
-  }
+  { meta:"2020 · Primer encuentro", quote:"No fue una explicación lo que apareció, sino un nombre compartido.", text:"La conversación no buscaba diagnóstico. Buscaba reconocimiento." },
+  { meta:"Noviembre 2020 · Territorio", quote:"El paisaje también recuerda.", text:"La memoria no estaba solo en las palabras, sino en el lugar que las sostenía." },
+  { meta:"Septiembre 2022 · Silencio", quote:"A veces lo que no se dice también nombra.", text:"El silencio no era ausencia, sino forma de cuidado." },
+  { meta:"Noviembre 2023 · Comunidad", quote:"Nombrar es compartir carga.", text:"El fenómeno no pertenece a un individuo aislado." }
 ];
 
-function shuffle(array){return array.sort(()=>0.5-Math.random());}
-const selected=shuffle(fragments).slice(0,3);
-const container=document.getElementById("curated-container");
+function shuffle(array){ return array.sort(()=>0.5-Math.random()); }
+const selected = shuffle(fragments).slice(0,3);
+const container = document.getElementById("curated-container");
 
-selected.forEach(item=>{
-  const article=document.createElement("article");
-  article.className="curated-item";
-  article.innerHTML=`
-    <div class="curated-meta">${item.meta}</div>
-    <blockquote>${item.quote}</blockquote>
-    <p>${item.text}</p>
-  `;
+selected.forEach(item => {
+  const article = document.createElement("article");
+  article.className = "curated-item";
+  article.innerHTML = `<div class="curated-meta">${item.meta}</div><blockquote>${item.quote}</blockquote><p>${item.text}</p>`;
   container.appendChild(article);
 });
+
+// Lógica de Revelación al hacer Scroll (Fade In)
+function reveal() {
+  var reveals = document.querySelectorAll(".reveal");
+  for (var i = 0; i < reveals.length; i++) {
+    var windowHeight = window.innerHeight;
+    var elementTop = reveals[i].getBoundingClientRect().top;
+    var elementVisible = 100;
+    if (elementTop < windowHeight - elementVisible) {
+      reveals[i].classList.add("active");
+    }
+  }
+}
+
+window.addEventListener("scroll", reveal);
+// Ejecutar una vez al cargar para mostrar el Hero
+reveal();
 </script>
 
 </body>
