@@ -100,7 +100,7 @@ body {
   color: var(--azul);
 }
 
-/* ---------- CLIPS (NEGRO) ---------- */
+/* ---------- CLIPS (FONDO NEGRO + PORTADAS RESTAURADAS) ---------- */
 .clips { 
   padding: 100px 0; 
   background: var(--negro); 
@@ -116,6 +116,7 @@ body {
   border-radius: 12px;
   background: #000;
   border: 1px solid var(--linea-inv);
+  display: block;
 }
 
 /* ---------- YOUTUBE CTA (NEGRO) ---------- */
@@ -170,7 +171,7 @@ body {
 .social-images img {
   width: 26px;
   height: 26px;
-  filter: invert(1); /* Convierte iconos negros en blancos para el fondo oscuro */
+  filter: invert(1); /* Hace que iconos negros se vean blancos sobre negro */
   opacity: 0.7;
   transition: 0.3s ease;
 }
@@ -203,12 +204,27 @@ body {
     </div>
   </section>
 
-  <section class="clips">
+  <section class="clips" aria-label="Fragmentos destacados">
     <div class="wrap">
       <div class="clips-grid">
-        <div class="clip"><video controls src="assets/clip1.mp4"></video></div>
-        <div class="clip"><video controls src="assets/clip2.mp4"></video></div>
-        <div class="clip"><video controls src="assets/clip3.mp4"></video></div>
+        <div class="clip">
+          <video controls playsinline preload="metadata" poster="assets/poster1.jpg">
+            <source src="assets/clip1.mp4" type="video/mp4">
+            Tu navegador no soporta el video.
+          </video>
+        </div>
+        <div class="clip">
+          <video controls playsinline preload="metadata" poster="assets/poster2.jpg">
+            <source src="assets/clip2.mp4" type="video/mp4">
+            Tu navegador no soporta el video.
+          </video>
+        </div>
+        <div class="clip">
+          <video controls playsinline preload="metadata" poster="assets/poster3.jpg">
+            <source src="assets/clip3.mp4" type="video/mp4">
+            Tu navegador no soporta el video.
+          </video>
+        </div>
       </div>
     </div>
   </section>
@@ -240,7 +256,7 @@ body {
       <a href="https://www.tiktok.com/@desaprendercreser" target="_blank">
         <img src="assets/tiktok.png" alt="TikTok">
       </a>
-      <a href="https://open.spotify.com/show/5NllZfPwaPRuVHUwCcgCbH?si=SV-QoZcJQpOc_UkGoOecpQ" target="_blank">
+      <a href="http://googleusercontent.com/spotify.com/3..." target="_blank">
         <img src="assets/spotify.png" alt="Spotify">
       </a>
     </div>
