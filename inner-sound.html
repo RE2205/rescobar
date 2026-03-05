@@ -4,279 +4,297 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<title>Inner Sound · Medicina de Precisión Sónica · Dr. Ronald Escobar</title>
-<meta name="description" content="Intervención neurobiológica de modulación sensorial profunda. Cirugía sónica para la reprogramación de dopamina y serotonina." />
+<title>Inner Sound · Medicina de Precisión Sónica</title>
+<meta name="description" content="Intervención neuroacústica guiada mediante frecuencias bio-armónicas y cancelación de ruido para recuperar claridad mental." />
 
 <style>
 /* ==================================================
-   INNER SOUND · Ecosistema Dr. Ronald Escobar
-   Estética Editorial Minimalista - Versión Final 2026
-   ================================================== */
+   INNER SOUND · Optimización de Experiencia 2026
+================================================== */
 
-:root {
-  --blanco: #f6f6f2;
-  --negro: #0b0b0c;
-  --gris: #6f6f6f;
-  --violeta: #7b5cff; 
-  --linea: rgba(0,0,0,.08);
-  --font-main: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+:root{
+  --blanco:#f6f6f2;
+  --negro:#0b0b0c;
+  --gris:#6f6f6f;
+  --violeta:#7b5cff;
+  --linea:rgba(0,0,0,.08);
+  --curva-onda: cubic-bezier(0.45, 0.05, 0.55, 0.95);
 }
 
-* { box-sizing: border-box; }
+*{ box-sizing:border-box; }
 
-body {
-  margin: 0;
-  background: var(--blanco);
-  color: var(--negro);
-  font-family: var(--font-main);
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
+body{
+  margin:0;
+  background:var(--blanco);
+  color:var(--negro);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  overflow-x: hidden;
 }
 
-.wrap {
-  max-width: 1150px;
-  margin: 0 auto;
-  padding: 0 40px;
+.wrap{
+  max-width:1100px;
+  margin:0 auto;
+  padding:0 32px;
 }
 
-/* ================= NAVEGACIÓN GLOBAL ================= */
+/* ================= NAV ================= */
 
-.nav {
-  height: 80px;
-  border-bottom: 1px solid var(--linea);
-  display: flex;
-  align-items: center;
-  background: #fff;
+.nav{
+  height:80px;
+  border-bottom:1px solid var(--linea);
+  display:flex;
+  align-items:center;
   position: sticky;
   top: 0;
-  z-index: 1000;
+  background: rgba(246, 246, 242, 0.9);
+  backdrop-filter: blur(10px);
+  z-index: 100;
 }
 
-.nav-inner {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
+.nav-inner{
+  width:100%;
+  display:flex;
+  justify-content:space-between;
   align-items: center;
 }
 
-.nav-brand a {
-  font-size: 13px;
-  letter-spacing: .4em;
-  text-transform: uppercase;
-  text-decoration: none;
-  color: var(--negro);
+.logo-text {
   font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-size: 14px;
 }
 
 .nav-links {
-  display: flex;
-  gap: 32px;
+  display:flex;
+  gap:40px;
 }
 
-.nav-links a {
-  font-size: 11px;
-  letter-spacing: .25em;
-  text-transform: uppercase;
-  text-decoration: none;
-  color: rgba(0,0,0,.5);
-  transition: .3s ease;
-  font-weight: 500;
+.nav a{
+  font-size:11px;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  text-decoration:none;
+  color:rgba(0,0,0,.5);
+  transition:.3s ease;
 }
 
-.nav-links a:hover {
-  color: var(--negro);
+.nav a:hover{
+  color:var(--violeta);
 }
 
-.nav-links a.active {
-  color: var(--violeta);
-  font-weight: 600;
+/* ================= HERO ================= */
+
+.hero{
+  padding:140px 0 100px;
+  background: radial-gradient(circle at top right, rgba(123, 92, 255, 0.05), transparent);
 }
 
-/* ================= HERO SECTION ================= */
-
-.hero {
-  padding: 120px 0 100px;
-  background: linear-gradient(to bottom, #ffffff, var(--blanco));
+.hero .kicker{
+  font-size:11px;
+  letter-spacing:.40em;
+  text-transform:uppercase;
+  color:var(--violeta);
+  font-weight:700;
+  margin:0 0 24px;
 }
 
-.hero .kicker {
-  font-size: 11px;
-  letter-spacing: .4em;
-  text-transform: uppercase;
-  color: var(--violeta);
-  font-weight: 600;
-  margin: 0 0 24px;
+.hero h1{
+  font-size:clamp(48px,8vw,82px);
+  font-weight:600;
+  line-height:1;
+  margin:0 0 32px;
+  letter-spacing:-0.03em;
 }
 
-.hero h1 {
-  font-size: clamp(48px, 7vw, 82px);
-  font-weight: 500;
-  line-height: 1.05;
-  margin: 0 0 32px;
-  letter-spacing: -0.03em;
-}
-
-.hero .subhero {
-  font-size: 22px;
-  color: rgba(0,0,0,.6);
-  max-width: 750px;
-  font-weight: 400;
-}
-
-/* ================= AXIOMA (Impacto Negro) ================= */
-
-.axioma {
-  background: var(--negro);
-  padding: 72px 0;
-  text-align: center;
-}
-
-.axioma p {
-  margin: 0;
-  font-size: 16px;
-  letter-spacing: .4em;
-  text-transform: uppercase;
-  color: #fff;
-  opacity: 0.9;
-}
-
-/* ================= SECCIÓN DE AUTOR (MANIFIESTO) ================= */
-
-.experiencia {
-  padding: 140px 0;
-}
-
-.experiencia-grid {
-  display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  gap: 100px;
-  align-items: center;
-}
-
-.experiencia-texto {
-  font-size: 28px;
-  line-height: 1.45;
-  color: var(--negro);
-}
-
-.experiencia-texto span {
-  display: block;
-  font-size: 17px;
-  color: var(--gris);
-  margin-top: 40px;
-  line-height: 1.8;
+.hero .subhero{
+  font-size:24px;
+  color:var(--gris);
+  max-width:680px;
   font-weight: 300;
 }
 
-.experiencia-img {
-  border-radius: 4px;
+/* ================= AXIOMA ================= */
+
+.axioma{
+  background:var(--negro);
+  padding:80px 0;
+  text-align:center;
+}
+
+.axioma p{
+  margin:0;
+  font-size:14px;
+  letter-spacing:.5em;
+  text-transform:uppercase;
+  color:#fff;
+  font-weight: 300;
+}
+
+/* ================= BLOQUE MANIFIESTO ================= */
+
+.experiencia{
+  padding:160px 0;
+}
+
+.experiencia-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:100px;
+  align-items:center;
+}
+
+.experiencia-img{
+  border-radius:2px;
+  overflow:hidden;
+  filter: grayscale(100%);
+  transition: 0.8s filter ease;
+}
+
+.experiencia-img:hover {
+  filter: grayscale(0%);
+}
+
+.experiencia-img img{
+  width:100%;
+  display:block;
+  transform: scale(1.05);
+}
+
+.experiencia-texto{
+  font-size:28px;
+  line-height:1.4;
+  color:var(--negro);
+  font-weight: 400;
+}
+
+.experiencia-texto span{
+  display:block;
+  font-size:17px;
+  color:var(--gris);
+  margin-top:32px;
+  line-height:1.8;
+}
+
+/* ================= ONDA SONORA ANIMADA ================= */
+
+.onda-contenedor{
+  width:100%;
+  background:var(--negro);
+  padding:100px 0;
+  display:flex;
+  justify-content:center;
   overflow: hidden;
-  box-shadow: 0 30px 60px rgba(0,0,0,0.1);
 }
 
-.experiencia-img img {
-  width: 100%;
-  display: block;
-  /* La foto ganadora de perfil con fondo negro se verá impecable aquí */
+.onda-visual{
+  width:600px;
+  height:120px;
 }
 
-/* ================= ONDA VISUAL (Separador) ================= */
-
-.onda-contenedor {
-  width: 100%;
-  background: var(--negro);
-  padding: 80px 0 20px;
-  display: flex;
-  justify-content: center;
+.path-animado {
+  stroke: var(--violeta);
+  stroke-width: 1;
+  fill: none;
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: escribir 4s infinite var(--curva-onda);
 }
 
-.onda-visual {
-  width: 400px;
-  height: 80px;
+@keyframes escribir {
+  0% { stroke-dashoffset: 1000; opacity: 0; }
+  50% { stroke-dashoffset: 0; opacity: 1; }
+  100% { stroke-dashoffset: -1000; opacity: 0; }
 }
 
-/* ================= PROTOCOLO NEUROCIENCIA ================= */
+/* ================= PROTOCOLO ================= */
 
-.protocolo {
-  background: var(--negro);
-  padding: 60px 0 140px;
+.protocolo{
+  background:var(--negro);
+  padding:120px 0 160px;
 }
 
-.grid-capsulas {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 64px;
+.grid-capsulas{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:64px;
 }
 
-.capsula h3 {
-  font-size: 13px;
-  letter-spacing: .3em;
-  text-transform: uppercase;
-  margin: 0 0 24px;
-  color: var(--violeta);
+.capsula{
+  padding: 40px;
+  border: 1px solid rgba(255,255,255,0.05);
+  transition: 0.4s ease;
 }
 
-.capsula p {
-  margin: 0;
-  font-size: 17px;
-  line-height: 1.7;
-  color: rgba(255,255,255,.8);
+.capsula:hover {
+  background: rgba(123, 92, 255, 0.03);
+  border-color: rgba(123, 92, 255, 0.2);
+}
+
+.capsula h3{
+  font-size:12px;
+  letter-spacing:.3em;
+  text-transform:uppercase;
+  margin:0 0 24px;
+  color:var(--violeta);
+}
+
+.capsula p{
+  margin:0;
+  font-size:16px;
+  line-height:1.8;
+  color:rgba(255,255,255,0.7);
   font-weight: 300;
 }
 
-/* ================= CIERRE Y ACCESO ================= */
+/* ================= CIERRE ================= */
 
-.cierre {
-  padding: 160px 0;
-  background: #fff;
-  border-top: 1px solid var(--linea);
-  text-align: center;
+.cierre{
+  padding:160px 0;
+  background:#fff;
+  text-align:center;
 }
 
-.cierre-texto {
-  max-width: 800px;
-  margin: 0 auto 72px;
-  font-size: 26px;
-  line-height: 1.6;
-  color: var(--negro);
+.cierre-texto{
+  max-width:600px;
+  margin:0 auto 64px;
+  font-size:26px;
   font-weight: 400;
+  color:var(--negro);
 }
 
-.cta {
-  display: inline-block;
-  font-size: 13px;
-  letter-spacing: .35em;
-  text-transform: uppercase;
-  color: var(--negro);
-  text-decoration: none;
-  border: 1px solid rgba(0,0,0,1);
-  padding: 22px 50px;
-  transition: .4s cubic-bezier(0.165, 0.84, 0.44, 1);
+.cta{
+  display:inline-block;
+  font-size:12px;
+  letter-spacing:.4em;
+  text-transform:uppercase;
+  color:var(--negro);
+  text-decoration:none;
+  border:1px solid var(--negro);
+  padding:24px 50px;
+  transition:.4s cubic-bezier(0.19, 1, 0.22, 1);
+  position: relative;
+  overflow: hidden;
 }
 
-.cta:hover {
-  background: var(--negro);
-  color: #fff;
+.cta:hover{
+  background:var(--negro);
+  color:#fff;
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
 }
 
 /* ================= RESPONSIVE ================= */
 
-@media (max-width: 960px) {
-  .experiencia-grid, .grid-capsulas {
-    grid-template-columns: 1fr;
-    gap: 60px;
+@media (max-width:900px){
+  .experiencia-grid, .grid-capsulas{
+    grid-template-columns:1fr;
+    gap:60px;
   }
-  .nav-links {
-    display: none; /* Podrías implementar un menú hamburguesa aquí */
-  }
+  .nav-links { display: none; }
 }
-
-@media (max-width: 600px) {
-  .hero { padding: 80px 0; }
-  .hero h1 { font-size: 42px; }
-  .wrap { padding: 0 25px; }
-}
-
 </style>
 </head>
 
@@ -284,22 +302,21 @@ body {
 
 <nav class="nav">
   <div class="wrap nav-inner">
-    <div class="nav-brand">
-      <a href="/">DR. RONALD ESCOBAR</a>
-    </div>
+    <div class="logo-text">Inner Sound</div>
     <div class="nav-links">
-      <a href="/logos-psyche.html">LOGOS-PSYCHE</a>
-      <a href="/reconectar.html">RECONECTAR</a>
-      <a href="/inner-sound.html" class="active">INNER SOUND</a>
+      <a href="/">Inicio</a>
+      <a href="/clinica.html">Clínica</a>
     </div>
   </div>
 </nav>
 
 <section class="hero">
   <div class="wrap">
-    <p class="kicker">Protocolo de Modulación Sensorial</p>
+    <p class="kicker">Protocolo Neuroacústico Guiado</p>
     <h1>Inner <span style="color:var(--violeta)">Sound</span></h1>
-    <p class="subhero">Una intervención neurobiológica de grupo diseñada para silenciar el ruido sistémico y recuperar la soberanía de la atención.</p>
+    <p class="subhero">
+      Una intervención diseñada para silenciar el ruido sistémico y recuperar la soberanía de la atención.
+    </p>
   </div>
 </section>
 
@@ -311,58 +328,55 @@ body {
 
 <section class="experiencia">
   <div class="wrap experiencia-grid">
-
+    <div class="experiencia-img">
+      <img src="/assets/inners.jpg" alt="Dr Ronald Escobar">
+    </div>
     <div class="experiencia-texto">
-      "Inner Sound no es una escucha pasiva; es una <strong>cirugía sónica</strong>."
+      “Inner Sound no es una escucha pasiva; es una <strong>cirugía sónica</strong>.”
       <span>
-        Utilizamos tecnología de cancelación activa de ruido y arquitecturas de frecuencia bio-armónicas para reorganizar el sistema neuroquímico. Una modulación donde la voz del médico guía el paisaje sonoro para reprogramar el flujo de dopamina y serotonina.
+        Usamos tecnología de cancelación de ruido y frecuencias bio-armónicas 
+        para reorganizar el flujo neuroquímico y abrir un espacio de claridad 
+        donde la mente vuelve a escuchar.
+
+         Una sesión guiada de modulación sensorial
+         utilizando cancelación de ruido y música
+         estructurada para reorganizar la atención.
+         Duración aproximada: 60 minutos.      
       </span>
     </div>
-
-    <div class="experiencia-img">
-      <img src="/assets/inners.png" alt="Dr. Ronald Escobar - Inner Sound">
-    </div>
-
   </div>
 </section>
 
 <div class="onda-contenedor">
-    <div class="wrap">
-        <svg class="onda-visual" viewBox="0 0 500 100" preserveAspectRatio="none">
-            <path d="M0,50 C150,150 350,-50 500,50" style="stroke: rgba(123, 92, 255, 0.5); stroke-width: 2; fill:none;"></path>
-        </svg>
-    </div>
+  <svg class="onda-visual" viewBox="0 0 500 100">
+    <path class="path-animado" d="M0,50 Q125,100 250,50 T500,50" />
+  </svg>
 </div>
 
 <section class="protocolo">
-    <div class="wrap">
-        <div class="grid-capsulas">
-
-            <div class="capsula">
-                <h3>01. Aislamiento</h3>
-                <p>Deprivación sensorial selectiva. El tálamo deja de filtrar amenazas externas para enfocarse en la reconstrucción y calma interna.</p>
-            </div>
-
-            <div class="capsula">
-                <h3>02. Resonancia</h3>
-                <p>Uso de frecuencias para el arrastre cerebral (entrainment), movilizando el sistema nervioso hacia estados de flujo y asociación creativa.</p>
-            </div>
-
-            <div class="capsula">
-                <h3>03. Integración</h3>
-                <p>Fijación emocional de la experiencia. La descripción de texturas sónicas consolida una claridad mental duradera para la toma de decisiones.</p>
-            </div>
-
-        </div>
+  <div class="wrap">
+    <div class="grid-capsulas">
+      <div class="capsula">
+        <h3>01. Aislamiento</h3>
+        <p>Deprivación sensorial selectiva mediante cancelación activa. El cerebro deja de filtrar amenazas externas para enfocarse en la reconstrucción interna.</p>
+      </div>
+      <div class="capsula">
+        <h3>02. Resonancia</h3>
+        <p>Uso de frecuencias para el arrastre cerebral (entrainment), movilizando el sistema nervioso desde el estrés hacia estados de flujo y asociación creativa.</p>
+      </div>
+      <div class="capsula">
+        <h3>03. Integración</h3>
+        <p>Fijación emocional de la experiencia mediante texturas sonoras que consolidan claridad mental duradera.</p>
+      </div>
     </div>
+  </div>
 </section>
 
 <section class="cierre">
   <div class="wrap">
     <p class="cierre-texto">
-      Un espacio reservado para equipos que buscan claridad colectiva en entornos de alta complejidad.
+      Un espacio reservado para personas y equipos que buscan claridad colectiva en entornos de alta complejidad.
     </p>
-
     <a href="mailto:clinicalogos@ronaldescobar.com" class="cta">
       Iniciar Cirugía Sónica
     </a>
