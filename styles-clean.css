@@ -1,630 +1,361 @@
-:root{
-  --bg:#0b0b0c;
-  --fg:#f3f3f3;
+:root {
+  --bg: #0b0b0c;
+  --fg: #f3f3f3;
+  --accent-light: rgba(255, 255, 255, 0.08);
+  --white: #ffffff;
+  --dark-text: #111111;
+  --cream: #f6f6f4;
 }
 
 /* =========================
    BASE
 ========================= */
 
-*{ box-sizing:border-box; }
-html,body{ height:100%; }
+* { box-sizing: border-box; }
+html, body { height: 100%; }
 
-body{
-  margin:0;
+body {
+  margin: 0;
   font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
-  background:var(--bg);
-  color:var(--fg);
-  padding-bottom:72px;
+  background: var(--bg);
+  color: var(--fg);
+  padding-bottom: 72px;
+  -webkit-font-smoothing: antialiased;
 }
 
-.wrap{
-  max-width:1120px;
-  margin:0 auto;
-  padding:0 24px;
+.wrap {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 24px;
 }
 
-.silent-link{
-  color:inherit;
-  text-decoration:none;
-}
-
-/* =========================
-   NAV SUPERIOR
-========================= */
-
-.top-nav{
-  position:absolute;
-  top:28px;
-  right:48px;
-  z-index:100;
-}
-
-.nav-inner{
-  display:flex;
-  justify-content:flex-end;
-}
-
-.nav-list{
-  list-style:none;
-  display:flex;
-  gap:32px;
-  margin:0;
-  padding:0;
-}
-
-.nav-item{
-  position:relative;
-}
-
-.nav-item > a{
-  font-size:12px;
-  letter-spacing:.14em;
-  text-transform:uppercase;
-  text-decoration:none;
-  color:rgba(255,255,255,.65);
-  transition:color .2s ease;
-}
-
-.nav-item > a:hover{
-  color:#fff;
+.silent-link {
+  color: inherit;
+  text-decoration: none;
 }
 
 /* =========================
-   SUBMENU ESTABLE
+   NAV SUPERIOR (Desaturada)
 ========================= */
 
-.nav-item.has-submenu > a{
-  display:inline-block;
-  padding-bottom:20px;
+.top-nav {
+  position: absolute;
+  top: 28px;
+  right: 48px;
+  z-index: 1000;
 }
 
-.nav-item.has-submenu::after{
-  content:"";
-  position:absolute;
-  left:0;
-  right:0;
-  top:100%;
-  height:20px;
+.nav-inner {
+  display: flex;
+  justify-content: flex-end;
 }
 
-.submenu{
-  position:absolute;
-  top:100%;
-  right:0;
-  list-style:none;
-  background:#0e0e0f;
-  border:1px solid rgba(255,255,255,.08);
-  padding:18px 22px;
-  min-width:200px;
-
-  opacity:0;
-  pointer-events:none;
-  transform:translateY(6px);
-  transition:opacity .2s ease, transform .2s ease;
+.nav-list {
+  list-style: none;
+  display: flex;
+  gap: 32px;
+  margin: 0;
+  padding: 0;
 }
 
-.nav-item.has-submenu:hover .submenu{
-  opacity:1;
-  pointer-events:auto;
-  transform:translateY(0);
+.nav-item {
+  position: relative;
 }
 
-.submenu li{ margin-bottom:10px; }
-.submenu li:last-child{ margin-bottom:0; }
-
-.submenu a{
-  font-size:12px;
-  letter-spacing:.12em;
-  text-decoration:none;
-  color:rgba(255,255,255,.75);
+.nav-item > a {
+  font-size: 11px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: rgba(255, 255, 255, .6);
+  transition: color .3s ease;
+  padding: 10px 0;
+  display: block;
 }
 
-.submenu a:hover{
-  color:#fff;
+.nav-item > a:hover {
+  color: var(--white);
+}
+
+/* =========================
+   SUBMENU MINIMALISTA
+========================= */
+
+.nav-item.has-submenu::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100%;
+  height: 20px;
+}
+
+.submenu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  list-style: none;
+  background: #0e0e0f;
+  border: 1px solid var(--accent-light);
+  padding: 20px;
+  min-width: 180px;
+  border-radius: 4px;
+  
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(8px);
+  transition: all .25s cubic-bezier(0.23, 1, 0.32, 1);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.nav-item.has-submenu:hover .submenu {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.submenu li { margin-bottom: 12px; }
+.submenu li:last-child { margin-bottom: 0; }
+
+.submenu a {
+  font-size: 11px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: rgba(255, 255, 255, .5);
+  transition: color .2s ease;
+  display: block;
+}
+
+.submenu a:hover {
+  color: var(--white);
 }
 
 /* =========================
    HERO
 ========================= */
 
-.hero{
-  min-height:56vh;
-  display:grid;
-  align-items:center;
-  padding:24px 0 12px;
+.hero {
+  min-height: 56vh;
+  display: grid;
+  align-items: center;
+  padding: 80px 0 20px;
 }
 
-.kicker{
-  margin-bottom:14px;
-  font-size:12px;
-  letter-spacing:.22em;
-  text-transform:uppercase;
-  opacity:.6;
+.kicker {
+  margin-bottom: 14px;
+  font-size: 12px;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  opacity: .6;
 }
 
-.headline{
-  line-height:1.08;
-  font-size:clamp(44px,5.4vw,82px);
-  font-weight:700;
+.headline {
+  line-height: 1.08;
+  font-size: clamp(44px, 5.4vw, 82px);
+  font-weight: 700;
+  margin: 0;
 }
 
-/* =========================
-   FRANJA AXIOMA (COLOR ORIGINAL)
-========================= */
-
-.band{
-  padding:16px 0;
-  background:
-    radial-gradient(120% 140% at 85% 50%, rgba(150,120,255,.45), rgba(0,0,0,0) 60%),
-    linear-gradient(90deg, rgba(26,22,40,1), rgba(12,10,22,1), rgba(8,6,16,1));
-  border-top:1px solid rgba(255,255,255,.08);
-  border-bottom:1px solid rgba(255,255,255,.08);
-}
-
-.band-text{
-  margin:0;
-  font-size:12px;
-  letter-spacing:.14em;
-  text-transform:uppercase;
-  color:rgba(255,255,255,.96);
+.hero-sub {
+  margin-top: 18px;
+  font-size: 16px;
+  letter-spacing: .05em;
+  opacity: .7;
 }
 
 /* =========================
-   BLOQUES GENERALES
+   FRANJA AXIOMA
 ========================= */
 
-.block{
-  padding:56px 0;
-  border-bottom:1px solid rgba(255,255,255,.06);
+.band {
+  padding: 16px 0;
+  background: radial-gradient(120% 140% at 85% 50%, rgba(150,120,255,.45), rgba(0,0,0,0) 60%),
+              linear-gradient(90deg, rgba(26,22,40,1), rgba(12,10,22,1), rgba(8,6,16,1));
+  border-top: 1px solid var(--accent-light);
+  border-bottom: 1px solid var(--accent-light);
 }
 
-.two-col{
-  display:grid;
-  grid-template-columns:1fr;
-  gap:48px;
-  align-items:center;
+.band-text {
+  margin: 0;
+  font-size: 12px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, .96);
 }
 
-@media (min-width:900px){
-  .two-col{ grid-template-columns:1fr 1fr; }
+/* =========================
+   BLOQUES GENERALES & GRID
+========================= */
+
+.block {
+  padding: 80px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, .06);
 }
 
-.copy h2{
-  margin:6px 0 10px 0;
-  font-size:42px;
-  letter-spacing:-.02em;
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 60px;
+  align-items: center;
 }
 
-.tag{
-  display:inline-block;
-  padding:8px 12px;
-  border-radius:999px;
-  font-size:12px;
-  letter-spacing:.10em;
-  text-transform:uppercase;
+.two-col-equal {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
 }
 
-.lead{
-  margin:6px 0 0 0;
-  font-size:18px;
-  line-height:1.6;
-  max-width:62ch;
+@media (min-width: 900px) {
+  .two-col { grid-template-columns: 1fr 1fr; }
+}
+
+.copy h2 {
+  margin: 6px 0 16px 0;
+  font-size: 42px;
+  letter-spacing: -.02em;
+  line-height: 1.1;
+}
+
+.tag {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 10px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  border: 1px solid rgba(255,255,255,0.1);
+  margin-bottom: 12px;
+}
+
+.tag.dark {
+  border-color: rgba(0,0,0,0.1);
+  color: #555;
+}
+
+.lead {
+  margin: 0 0 24px 0;
+  font-size: 19px;
+  line-height: 1.6;
+  max-width: 62ch;
 }
 
 /* =========================
    LOGOS PSYCHE (BLANCO)
 ========================= */
 
-.logos-light{
-  background:#f6f6f4;
+.logos-light { background: var(--cream); }
+.logos-light .copy h2, .logos-light .copy p { color: var(--dark-text); }
+
+.logo-holder {
+  height: 380px;
+  padding: 40px;
+  border-radius: 24px;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.03);
 }
 
-.logos-light .copy h2,
-.logos-light .copy p{
-  color:#111;
-}
+.logo-image { width: 100%; height: 100%; object-fit: contain; }
 
-.logo-holder{
-  height:320px;
-  padding:22px;
-  border-radius:22px;
-  border:1px solid rgba(0,0,0,.10);
-  background:#f6f6f4;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  overflow:hidden;
-}
-
-.logo-image{
-  width:100%;
-  height:100%;
-  object-fit:contain;
-}
 /* =========================
-   CTA CLÍNICO QUIRÚRGICO
+   BOTONES (CTAS)
 ========================= */
 
-.cta-clinic{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  margin-top:38px;
-  padding:12px 26px;
-  border:1px solid rgba(0,0,0,.32);
-  border-radius:999px;
-  font-size:12px;
-  letter-spacing:.14em;
-  text-transform:uppercase;
-  text-decoration:none;
-  color:#111;
-  background:transparent;
-  transition:all .25s ease;
+.cta-primary, .cta-creser {
+  display: inline-flex;
+  padding: 14px 32px;
+  border: 1px solid var(--dark-text);
+  border-radius: 999px;
+  font-size: 12px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--dark-text);
+  transition: all .3s ease;
 }
 
-.cta-clinic:hover{
-  background:#111;
-  color:#fff;
-  border-color:#111;
-}/* =========================
-   PODCAST (NEGRO)
+.cta-primary:hover { background: var(--dark-text); color: #fff; }
+
+.cta-creser { border-color: #fff; color: #fff; }
+.cta-creser:hover { background: #fff; color: #000; }
+
+.cta-secondary {
+  font-size: 12px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--fg);
+  border-bottom: 1px solid rgba(255,255,255,0.3);
+  padding-bottom: 4px;
+  transition: border .3s;
+}
+
+.cta-secondary:hover { border-color: var(--white); }
+
+/* =========================
+   PROJECT CARDS (ReConectar/Inner)
 ========================= */
 
-#podcast-entry{
-  background:#0b0b0c;
+.project-card {
+  background: rgba(255, 255, 255, 0.03);
+  padding: 48px;
+  border-radius: 24px;
+  border: 1px solid var(--accent-light);
+  transition: transform .3s ease;
 }
 
-.podcast-roll{
-  display:flex;
-  gap:20px;
-  overflow-x:auto;
-  padding:14px 0;
-  scrollbar-width:none;
-}
+.project-card:hover { transform: translateY(-5px); }
+.project-card h3 { font-size: 28px; margin: 12px 0; }
 
-.podcast-roll::-webkit-scrollbar{ display:none; }
+/* =========================
+   PODCAST
+========================= */
 
-.podcast-card{
-  flex:0 0 auto;
-  width:240px;
-  border-radius:14px;
-  overflow:hidden;
-}
+#podcast-entry { background: var(--bg); }
+.podcast-roll { display: flex; gap: 20px; overflow-x: auto; padding: 20px 0; scrollbar-width: none; }
+.podcast-roll::-webkit-scrollbar { display: none; }
+.podcast-card { flex: 0 0 auto; width: 240px; border-radius: 14px; overflow: hidden; }
+.podcast-card img { width: 100%; height: 150px; object-fit: cover; filter: grayscale(60%); transition: .4s ease; }
+.podcast-card:hover img { filter: none; }
 
-.podcast-card img{
-  width:100%;
-  height:150px;
-  object-fit:cover;
-  display:block;
-  filter:grayscale(60%);
-  opacity:.9;
-  transition:.3s ease;
-}
-
-.podcast-card:hover img{
-  filter:none;
-  opacity:1;
-}
-
-.podcast-center{
-  width:280px;
-  transform:translateY(-6px);
-}
-
-.podcast-center img{
-  height:170px;
-}
-.podcast-cta{
-  text-align:center;
-  margin-top:28px;
-}
-
-.podcast-cta a,
-.podcast-cta a:visited{
-  display:inline-block;
-  font-size:14px;
-  letter-spacing:.04em;
-  color:rgba(255,255,255,.7);
-  text-decoration:none;
-  border-bottom:1px solid rgba(255,255,255,.35);
-  padding-bottom:4px;
-}
-
-.podcast-cta a:hover{
-  color:#fff;
-  border-color:#fff;
-}
 /* =========================
    FRANJA AMARILLA
 ========================= */
 
-.band-long{
-  padding:72px 0;
-  background:#FFD800;
-}
-
-.band-quote{
-  font-family:Georgia,'Times New Roman',serif;
-  font-size:clamp(24px,2.4vw,34px);
-  line-height:1.45;
-  color:#0a0a0a;
-  margin:0;
-}
-
-.band-author{
-  margin-top:28px;
-  font-size:12px;
-  letter-spacing:.22em;
-  text-transform:uppercase;
-  color:rgba(0,0,0,.85);
-}
+.band-long { padding: 80px 0; background: #FFD800; }
+.band-quote { font-family: Georgia, serif; font-size: clamp(24px, 2.4vw, 34px); line-height: 1.45; color: #0a0a0a; margin: 0; }
 
 /* =========================
-   DOCUMENTAL (BLANCO)
+   ESCRITURA
 ========================= */
 
-#proyectos{
-  background:#f6f6f4;
-}
-
-#proyectos .copy h2,
-#proyectos .copy p{
-  color:#111;
-}
-
-#proyectos .lead{ color:#333; }
-
-.doc-cover{
-  height:380px;
-  border-radius:22px;
-  background-size:cover;
-  background-position:center 25%;
-  background-repeat:no-repeat;
-  filter:contrast(1.05) saturate(1.05);
-}
+#escritura { background: var(--cream); padding-bottom: 120px; }
+#escritura h2 { font-family: Georgia, serif; font-size: clamp(42px, 4.8vw, 72px); color: var(--dark-text); margin: 14px 0; }
+#escritura .strip-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 40px 0; }
+.strip-item { height: 320px; border-radius: 20px; background-size: cover; background-position: center; }
 
 /* =========================
-   CRESER (NEGRO)
+   FOOTER
 ========================= */
 
-#creser{
-  background:#0b0b0c;
-}
-
-#creser .copy h2,
-#creser .copy p{
-  color:#f3f3f3;
-}
-
-#creser .lead{
-  color:rgba(243,243,243,.78);
-}
-
-.creser-logo{
-  height:320px;
-  border-radius:22px;
-  background-size:contain;
-  background-position:center;
-  background-repeat:no-repeat;
-  background-color:rgba(255,255,255,.05);
-}
-/* =========================
-   CTA CRESER (FONDO OSCURO)
-========================= */
-
-.cta-creser{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  margin-top:38px;
-  padding:12px 26px;
-  border:1px solid rgba(255,255,255,.35);
-  border-radius:999px;
-  font-size:12px;
-  letter-spacing:.14em;
-  text-transform:uppercase;
-  text-decoration:none;
-  color:#fff;
-  background:transparent;
-  transition:all .25s ease;
-}
-
-.cta-creser:hover{
-  background:#fff;
-  color:#000;
-  border-color:#fff;
-}/* =========================
-   INVERSIÓN DESKTOP
-========================= */
-
-@media (min-width:900px){
-  #proyectos .copy{ order:1; }
-  #proyectos .media{ order:2; }
-
-  #creser .media{ order:1; }
-  #creser .copy{ order:2; }
-}
+.site-footer { background: var(--bg); padding: 80px 0; border-top: 1px solid var(--accent-light); text-align: center; }
+.site-footer p { font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: rgba(255,255,255,.5); }
+.site-footer a { color: var(--white); text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.2); transition: .3s; }
+.site-footer a:hover { border-color: var(--white); }
 
 /* =========================
-   ESCRITURA (BLANCO)
+   MOBILE RESPONSIVE
 ========================= */
 
-#escritura{
-  background:#f6f6f4;
-  padding-bottom:120px;
-}
-
-#escritura h2{
-  font-family:Georgia,'Times New Roman',serif;
-  font-weight:400;
-  font-size:clamp(42px,4.8vw,72px);
-  line-height:1.05;
-  letter-spacing:-.02em;
-  margin:14px 0 18px;
-  color:#111;
-}
-
-#escritura .lead{
-  font-family:Georgia,'Times New Roman',serif;
-  font-size:20px;
-  line-height:1.75;
-  max-width:60ch;
-  color:#333;
-}
-
-#escritura .strip-3{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:14px;
-  margin-top:24px;
-}
-
-#escritura .strip-item{
-  height:240px;
-  border-radius:18px;
-  overflow:hidden;
-  background-size:cover;
-  background-position:center;
-  background-repeat:no-repeat;
-  transition:opacity 2600ms ease-in-out;
-}
-
-/* =========================
-   STICKY PLAYER
-========================= */
-
-#podcast-player{
-  position:fixed;
-  left:0;
-  bottom:0;
-  width:100%;
-  height:68px;
-  background:rgba(10,10,10,.92);
-  display:grid;
-  grid-template-columns:auto 1fr auto;
-  align-items:center;
-  gap:20px;
-  padding:0 18px;
-  border-top:1px solid rgba(255,255,255,.08);
-  z-index:9999;
-}
-
-.player-left img{
-  width:42px;
-  height:42px;
-  border-radius:6px;
-  object-fit:cover;
-}
-
-/* =========================
-   MOBILE
-========================= */
-
-@media (max-width:900px){
-  .two-col{ grid-template-columns:1fr; }
-  #escritura .strip-3{ grid-template-columns:1fr; }
-  #escritura .strip-item{ height:220px; }
-}
-
-@media (max-width:768px){
-  body{ padding-bottom:80px; }
-
-  .headline{
-    font-size:clamp(32px,8vw,46px);
-    line-height:1.15;
-  }
-}
-/* =========================
-   REALCE LUMINOSO PODCAST CENTER (FINO)
-========================= */
-
-.podcast-center{
-  position:relative;
-}
-
-.podcast-center img{
-  filter: brightness(1.45) contrast(1.12) saturate(1.08);
-  transition: filter .3s ease;
-}
-
-.podcast-center::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background: radial-gradient(
-    circle at center,
-    rgba(255,255,255,.22),
-    rgba(255,255,255,.05) 45%,
-    rgba(255,255,255,0) 70%
-  );
-  mix-blend-mode: screen;
-  pointer-events:none;
-}
-/* =========================
-   MOBILE NAV FIX
-========================= */
-
-@media (max-width: 768px){
-
-  .top-nav{
-    position:absolute;
-    top:18px;
-    left:0;
-    right:0;
-    padding:0 20px;
-  }
-
-  .nav-inner{
-    justify-content:center;
-  }
-
-  .nav-list{
-    gap:18px;
-  }
-
-  .submenu{
-    right:auto;
-    left:50%;
-    transform:translateX(-50%) translateY(6px);
-  }
-
-  .nav-item.has-submenu:hover .submenu{
-    transform:translateX(-50%) translateY(0);
-  }
-
-}
-/* =========================
-   FOOTER CONTACTO NEGRO
-========================= */
-
-.site-footer{
-  background:#0b0b0c;
-  padding:60px 0 72px;
-  border-top:1px solid rgba(255,255,255,.06);
-}
-
-.footer-inner{
-  text-align:center;
-}
-
-.site-footer p{
-  margin:0;
-  font-size:11px;
-  letter-spacing:.18em;
-  text-transform:uppercase;
-  color:rgba(255,255,255,.55);
-}
-
-.site-footer a{
-  color:rgba(255,255,255,.75);
-  text-decoration:none;
-  border-bottom:1px solid rgba(255,255,255,.25);
-  padding-bottom:2px;
-  transition:all .25s ease;
-}
-
-.site-footer a:hover{
-  color:#ffffff;
-  border-color:#ffffff;
+@media (max-width: 900px) {
+  .two-col, .two-col-equal { grid-template-columns: 1fr; }
+  .top-nav { position: relative; top: 0; right: 0; padding: 20px 0; }
+  .nav-inner { justify-content: center; }
+  .nav-list { gap: 15px; flex-wrap: wrap; justify-content: center; }
+  .submenu { left: 50%; right: auto; transform: translateX(-50%) translateY(10px); }
+  .strip-3 { grid-template-columns: 1fr !important; }
 }
