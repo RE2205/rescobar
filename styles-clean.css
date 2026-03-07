@@ -241,15 +241,15 @@ body {
 }
 
 /* =========================
-   LOGOS PSYCHE (BLANCO)
+   LOGOS PSYCHE (LOGO FULL)
 ========================= */
 
 .logos-light { background: var(--cream); }
 .logos-light .copy h2, .logos-light .copy p { color: var(--dark-text); }
 
 .logo-holder {
-  height: 380px;
-  padding: 40px;
+  height: 420px;
+  padding: 0; /* Imagen hasta los bordes */
   border-radius: 24px;
   background: #ffffff;
   display: flex;
@@ -257,15 +257,25 @@ body {
   justify-content: center;
   overflow: hidden;
   box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+  border: 1px solid rgba(0,0,0,0.05);
 }
 
-.logo-image { width: 100%; height: 100%; object-fit: contain; }
+.logo-image { 
+  width: 100%; 
+  height: 100%; 
+  object-fit: cover; /* Llena el espacio del recuadro */
+  transition: transform .5s ease;
+}
+
+.logo-holder:hover .logo-image {
+  transform: scale(1.02);
+}
 
 /* =========================
    BOTONES (CTAS)
 ========================= */
 
-.cta-primary, .cta-creser {
+.cta-primary, .cta-creser, .cta-clinic {
   display: inline-flex;
   padding: 14px 32px;
   border: 1px solid var(--dark-text);
@@ -278,7 +288,7 @@ body {
   transition: all .3s ease;
 }
 
-.cta-primary:hover { background: var(--dark-text); color: #fff; }
+.cta-primary:hover, .cta-clinic:hover { background: var(--dark-text); color: #fff; }
 
 .cta-creser { border-color: #fff; color: #fff; }
 .cta-creser:hover { background: #fff; color: #000; }
@@ -322,6 +332,10 @@ body {
 .podcast-card img { width: 100%; height: 150px; object-fit: cover; filter: grayscale(60%); transition: .4s ease; }
 .podcast-card:hover img { filter: none; }
 
+.podcast-center { position: relative; }
+.podcast-center img { height: 170px; filter: brightness(1.45) contrast(1.12); }
+.podcast-cta { text-align: center; margin-top: 28px; }
+
 /* =========================
    FRANJA AMARILLA
 ========================= */
@@ -336,7 +350,7 @@ body {
 #escritura { background: var(--cream); padding-bottom: 120px; }
 #escritura h2 { font-family: Georgia, serif; font-size: clamp(42px, 4.8vw, 72px); color: var(--dark-text); margin: 14px 0; }
 #escritura .strip-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 40px 0; }
-.strip-item { height: 320px; border-radius: 20px; background-size: cover; background-position: center; }
+.strip-item { height: 320px; border-radius: 20px; background-size: cover; background-position: center; position: relative; overflow: hidden; }
 
 /* =========================
    FOOTER
@@ -353,9 +367,10 @@ body {
 
 @media (max-width: 900px) {
   .two-col, .two-col-equal { grid-template-columns: 1fr; }
-  .top-nav { position: relative; top: 0; right: 0; padding: 20px 0; }
+  .top-nav { position: relative; top: 0; right: 0; padding: 40px 0 20px; }
   .nav-inner { justify-content: center; }
   .nav-list { gap: 15px; flex-wrap: wrap; justify-content: center; }
   .submenu { left: 50%; right: auto; transform: translateX(-50%) translateY(10px); }
   .strip-3 { grid-template-columns: 1fr !important; }
+  .logo-holder { height: 300px; }
 }
