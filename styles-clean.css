@@ -213,7 +213,7 @@ body{
 }
 
 /* =========================
-   LOGOS PSYCHE (CAMBIO APLICADO)
+   LOGOS PSYCHE (CEREBRO FULL)
 ========================= */
 
 .logos-light{
@@ -229,7 +229,7 @@ body{
   height:320px;
   padding:0;
   border-radius:22px;
-  border:1px solid rgba(255,255,255,.12);
+  border:1px solid rgba(0,0,0,.10);
   background:#000;
   display:flex;
   align-items:center;
@@ -319,7 +319,6 @@ body{
 .podcast-center img{
   height:170px;
 }
-
 .podcast-cta{
   text-align:center;
   margin-top:28px;
