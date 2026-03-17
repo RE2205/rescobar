@@ -237,13 +237,12 @@ body{
   overflow:hidden;
 }
 
-.logo-image{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  display:block;
+.logo-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Esto evitará que el logo se corte */
+  padding: 20px;       /* Espacio interno para que el logo "respire" */
 }
-
 /* =========================
    CTA CLÍNICO QUIRÚRGICO
 ========================= */
