@@ -213,7 +213,7 @@ body{
 }
 
 /* =========================
-   LOGOS PSYCHE (BLANCO)
+   LOGOS PSYCHE (CAMBIO APLICADO)
 ========================= */
 
 .logos-light{
@@ -227,10 +227,10 @@ body{
 
 .logo-holder{
   height:320px;
-  padding:22px;
+  padding:0;
   border-radius:22px;
-  border:1px solid rgba(0,0,0,.10);
-  background:#f6f6f4;
+  border:1px solid rgba(255,255,255,.12);
+  background:#000;
   display:flex;
   align-items:center;
   justify-content:center;
@@ -240,8 +240,10 @@ body{
 .logo-image{
   width:100%;
   height:100%;
-  object-fit:contain;
+  object-fit:cover;
+  display:block;
 }
+
 /* =========================
    CTA CLÍNICO QUIRÚRGICO
 ========================= */
@@ -267,7 +269,9 @@ body{
   background:#111;
   color:#fff;
   border-color:#111;
-}/* =========================
+}
+
+/* =========================
    PODCAST (NEGRO)
 ========================= */
 
@@ -315,6 +319,7 @@ body{
 .podcast-center img{
   height:170px;
 }
+
 .podcast-cta{
   text-align:center;
   margin-top:28px;
@@ -335,6 +340,7 @@ body{
   color:#fff;
   border-color:#fff;
 }
+
 /* =========================
    FRANJA AMARILLA
 ========================= */
@@ -409,6 +415,7 @@ body{
   background-repeat:no-repeat;
   background-color:rgba(255,255,255,.05);
 }
+
 /* =========================
    CTA CRESER (FONDO OSCURO)
 ========================= */
@@ -434,7 +441,9 @@ body{
   background:#fff;
   color:#000;
   border-color:#fff;
-}/* =========================
+}
+
+/* =========================
    INVERSIÓN DESKTOP
 ========================= */
 
@@ -535,6 +544,7 @@ body{
     line-height:1.15;
   }
 }
+
 /* =========================
    REALCE LUMINOSO PODCAST CENTER (FINO)
 ========================= */
@@ -561,6 +571,7 @@ body{
   mix-blend-mode: screen;
   pointer-events:none;
 }
+
 /* =========================
    MOBILE NAV FIX
 ========================= */
@@ -594,6 +605,7 @@ body{
   }
 
 }
+
 /* =========================
    FOOTER CONTACTO NEGRO
 ========================= */
