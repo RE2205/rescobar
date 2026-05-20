@@ -34,18 +34,6 @@
     color: var(--blanco);
     font-family: 'Courier Prime', monospace;
     overflow-x: hidden;
-    cursor: none;
-  }
-
-  .cursor {
-    width: 8px; height: 8px; background: var(--teal);
-    border-radius: 50%; position: fixed; pointer-events: none; z-index: 9999;
-    transition: transform 0.15s ease; transform: translate(-50%, -50%);
-  }
-  .cursor-ring {
-    width: 30px; height: 30px; border: 1px solid rgba(78,205,196,0.4);
-    border-radius: 50%; position: fixed; pointer-events: none; z-index: 9998;
-    transition: width 0.3s, height 0.3s; transform: translate(-50%, -50%);
   }
 
   body::after {
@@ -485,9 +473,6 @@
 </head>
 <body>
 
-<div class="cursor" id="cursor"></div>
-<div class="cursor-ring" id="cursorRing"></div>
-
 <nav>
   <a href="https://ronaldescobar.com" class="nav-back">Ronald Escobar</a>
   <a href="https://ronaldescobar.com" class="nav-logo">Logos <span>Psyche</span></a>
@@ -536,7 +521,7 @@
   <div class="metodo-left reveal">
     <span class="seccion-label">Quién soy</span>
     <h2 class="metodo-titulo">
-      Soy un paciente psiquiátrico que decidió estudiar psiquiatría.
+      Conozco la psiquiatría desde los dos lados.
     </h2>
   </div>
 
@@ -562,6 +547,10 @@
   </div>
 
   <div class="metodo-right">
+    <p class="metodo-parrafo reveal">
+      Soy un paciente psiquiátrico que decidió estudiar psiquiatría.
+    </p>
+
     <p class="metodo-parrafo reveal">
       Trabajo con límites claros. Sin ellos no hay profundidad. <strong>El tiempo y el encuadre no están para apurar procesos — sino para hacerlos posibles.</strong>
     </p>
@@ -595,7 +584,7 @@
 
   <div class="metodo-right">
     <p class="metodo-parrafo reveal">
-      No soy antipsiquiatría. Entiendo el valor de la medicación — y precisamente por eso la uso con criterio. <strong>La medicación no es el objetivo. Es el puente.</strong> Nos hace permeables al tratamiento, nos ayuda a ordenarnos para que el trabajo verdadero pueda ocurrir.
+      Entiendo el valor de la medicación — y precisamente por eso la uso con criterio. <strong>La medicación no es el objetivo. Es el puente.</strong> Nos hace permeables al tratamiento, nos ayuda a ordenarnos para que el trabajo verdadero pueda ocurrir.
     </p>
 
     <blockquote class="metodo-cita reveal">
@@ -763,16 +752,6 @@
 </footer>
 
 <script>
-  const cursor = document.getElementById('cursor');
-  const ring = document.getElementById('cursorRing');
-  let mx=0,my=0,rx=0,ry=0;
-  document.addEventListener('mousemove',e=>{ mx=e.clientX; my=e.clientY; cursor.style.left=mx+'px'; cursor.style.top=my+'px'; });
-  (function anim(){ rx+=(mx-rx)*0.1; ry+=(my-ry)*0.1; ring.style.left=rx+'px'; ring.style.top=ry+'px'; requestAnimationFrame(anim); })();
-  document.querySelectorAll('a,button').forEach(el=>{
-    el.addEventListener('mouseenter',()=>{ cursor.style.transform='translate(-50%,-50%) scale(2.5)'; ring.style.width='52px'; ring.style.height='52px'; });
-    el.addEventListener('mouseleave',()=>{ cursor.style.transform='translate(-50%,-50%) scale(1)'; ring.style.width='30px'; ring.style.height='30px'; });
-  });
-
   const obs=new IntersectionObserver(entries=>{ entries.forEach((e,i)=>{ if(e.isIntersecting){ setTimeout(()=>e.target.classList.add('visible'),i*70); obs.unobserve(e.target); } }); },{threshold:0.1});
   document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 </script>
