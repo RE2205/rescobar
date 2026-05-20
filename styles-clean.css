@@ -280,6 +280,39 @@ body{
   border-color:#111;
 }
 
+.cta-row{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+  margin-top:38px;
+}
+
+.cta-row .cta-clinic,
+.cta-row .cta-whatsapp{
+  margin-top:0;
+}
+
+.cta-whatsapp{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:12px 26px;
+  border:1px solid #25D366;
+  border-radius:999px;
+  font-size:12px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  text-decoration:none;
+  color:#25D366;
+  background:transparent;
+  transition:all .25s ease;
+}
+
+.cta-whatsapp:hover{
+  background:#25D366;
+  color:#fff;
+}
+
 /* =========================
    PODCAST (NEGRO)
 ========================= */
