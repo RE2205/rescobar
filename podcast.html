@@ -100,7 +100,7 @@
   .hero-foto-img {
     position: absolute; inset: 0;
     width: 100%; height: 100%;
-    object-fit: cover; object-position: center top;
+    object-fit: cover; object-position: right center;
     filter: grayscale(20%) contrast(1.05);
     opacity: 0; animation: fadeIn 1.5s ease 0.3s forwards;
   }
@@ -222,8 +222,8 @@
   }
 
   .que-es-parrafo {
-    font-size: 13px; line-height: 2.2;
-    color: rgba(240,237,230,0.82); margin-bottom: 28px;
+    font-size: 15px; line-height: 2.2;
+    color: rgba(240,237,230,0.9); margin-bottom: 28px;
   }
   .que-es-parrafo strong { color: #ffffff; font-weight: 700; }
 
@@ -284,14 +284,14 @@
 
   .clip {
     background: #111109; position: relative; overflow: hidden;
-    aspect-ratio: 16/9;
+    aspect-ratio: 4/3;
     display: flex; align-items: center; justify-content: center;
     transition: background 0.3s;
   }
   .clip:hover { background: #161610; }
 
   .clip video {
-    width: 100%; height: 100%; object-fit: cover; opacity: 0.7;
+    width: 100%; height: 100%; object-fit: contain; opacity: 0.7;
     transition: opacity 0.3s;
   }
   .clip:hover video { opacity: 1; }
@@ -503,7 +503,7 @@
 <!-- QUÉ ES DESDE ADENTRO -->
 <section class="que-es">
   <div class="que-es-left reveal">
-    <span class="seccion-label">Lo que viene</span>
+    <span class="seccion-label">Temporada 3 · En proceso</span>
     <h2 class="que-es-titulo">
       Una voz<br>
       desde el otro<br>
@@ -526,6 +526,10 @@
 
     <p class="que-es-parrafo reveal">
       Va de la individualidad al colectivo. Parte de una sola voz — la mía — y llega a la pregunta que es de todos. Porque todos somos todos. Y eso se escucha mejor desde adentro.
+    </p>
+
+    <p class="que-es-parrafo reveal">
+      <strong>Desde Adentro es la nueva temporada.</strong> El nombre cambió porque el proceso cambió. Ya no se trata de desaprender — se trata de hablar desde lo que queda después.
     </p>
   </div>
 </section>
