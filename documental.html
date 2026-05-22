@@ -1,355 +1,440 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Antes de nombrar · Documental</title>
-<meta name="description" content="Algunas historias se transforman cuando son contadas. Otras ya estaban allí, esperando escucha.">
+<meta name="description" content="Por Engasado — Serie documental. Un psiquiatra con trastorno bipolar busca su propio reflejo en otros espejos. Ronald Escobar + Pablo Rojas Castillo.">
+<meta property="og:title" content="Por Engasado | Serie Documental">
+<meta property="og:description" content="Un estudio antropológico del trastorno bipolar. Observar otro espejo, otra cultura, otro ser humano — para empezar a verme.">
+<meta property="og:image" content="https://ronaldescobar.com/assets/ronaldpodcast.png">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://ronaldescobar.com/documental.html">
-<meta property="og:title" content="Antes de nombrar · Documental">
-<meta property="og:description" content="Algunas historias se transforman cuando son contadas. Otras ya estaban allí, esperando escucha.">
-<meta property="og:image" content="https://ronaldescobar.com/assets/documental-portada-v2.jpg">
+<meta property="og:url" content="https://ronaldescobar.com/documental">
 <link rel="icon" href="/assets/logo-image.png" type="image/png">
-
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Source+Serif+4:wght@400;500&display=swap" rel="stylesheet">
-
+<title>Por Engasado | Serie Documental | Ronald Escobar</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 <style>
-:root{
-  --negro:#0C0C0E;
-  --blanco:#F1EFEA;
-  --gris-linea:#D8D5CF;
-  --gris-texto:#6C6A65;
-  --bronce:#8E7A58;
-  --nav-h:64px;
-}
+  :root {
+    --negro: #08080a;
+    --blanco: #f0ede6;
+    --teal: #4ecdc4;
+    --verde: #8ec44e;
+    --amarillo: #d4b84a;
+    --naranja: #c4763a;
+    --rojo: #c44a2a;
+    --gris: #6b6860;
+    --fondo-medio: #0e0e10;
+    --linea: rgba(78,205,196,0.15);
+  }
 
-*{box-sizing:border-box;}
-html{scroll-behavior:smooth;}
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
 
-body{
-  margin:0;
-  font-family:'Source Serif 4', serif;
-  background:var(--blanco);
-  color:var(--negro);
-  line-height:1.75;
-  -webkit-font-smoothing:antialiased;
-}
+  body {
+    background: var(--negro);
+    color: var(--blanco);
+    font-family: 'Courier Prime', monospace;
+    overflow-x: hidden;
+  }
 
-/* ---------- ANIMACIONES ---------- */
-.reveal {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: all 1.2s ease-out;
-}
+  body::after {
+    content: ''; position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 100; opacity: 0.5;
+  }
 
-.reveal.active {
-  opacity: 1;
-  transform: translateY(0);
-}
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    z-index: 50; padding: 22px 48px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  nav::before {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(to bottom, rgba(8,8,10,0.96) 0%, transparent 100%);
+    pointer-events: none;
+  }
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px; font-weight: 300; letter-spacing: 0.12em;
+    color: var(--blanco); text-decoration: none; position: relative;
+  }
+  .nav-logo span {
+    background: linear-gradient(90deg, var(--teal), var(--rojo));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .nav-links { display: flex; gap: 32px; list-style: none; position: relative; }
+  .nav-links a {
+    font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--gris); text-decoration: none; transition: color 0.3s;
+  }
+  .nav-links a:hover { color: var(--teal); }
+  .nav-links .nav-cta { color: var(--teal); }
 
-/* ---------- BASE ---------- */
-.wrap{
-  max-width:1100px;
-  margin:0 auto;
-  padding:0 32px;
-}
+  /* BUTTONS */
+  .btn-grad {
+    font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+    padding: 14px 32px; text-decoration: none; font-weight: 700;
+    background: linear-gradient(100deg, var(--naranja), var(--rojo));
+    background-size: 200% 100%; color: var(--negro);
+    transition: background-position 0.5s ease, transform 0.2s;
+    display: inline-block;
+  }
+  .btn-grad:hover { background-position: 100% 0; transform: translateY(-2px); }
+  .btn-ghost {
+    font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--gris); text-decoration: none; transition: color 0.3s;
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .btn-ghost:hover { color: var(--teal); }
 
-section{
-  padding:120px 0;
-}
+  .sep { width: 100%; height: 1px; background: linear-gradient(90deg, transparent, rgba(196,74,42,0.22) 30%, rgba(212,184,74,0.22) 70%, transparent); }
+  .seccion-label { font-size: 11px; letter-spacing: 0.35em; text-transform: uppercase; color: var(--naranja); margin-bottom: 24px; display: block; }
 
-h1,h2,h3{
-  font-family:'Cormorant Garamond', serif;
-  font-weight:500;
-  margin:0 0 18px 0;
-}
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center;
+    padding: 120px 48px 80px;
+    position: relative; overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 60% 50% at 50% 35%, rgba(196,74,42,0.08) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 40% at 35% 65%, rgba(212,184,74,0.04) 0%, transparent 50%),
+      radial-gradient(ellipse 35% 35% at 65% 70%, rgba(196,118,58,0.05) 0%, transparent 50%);
+  }
+  .hero-content { position: relative; z-index: 2; max-width: 800px; }
+  .hero-badge {
+    display: inline-block; font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--naranja); border: 1px solid rgba(196,74,42,0.3); padding: 6px 16px;
+    margin-bottom: 48px;
+    opacity: 0; animation: fadeUp 0.8s ease 0.2s forwards;
+  }
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(56px, 8vw, 110px);
+    font-weight: 300; line-height: 0.95; letter-spacing: -0.02em;
+    margin-bottom: 20px;
+    opacity: 0; animation: fadeUp 1s ease 0.4s forwards;
+  }
+  .hero-title em {
+    font-style: italic;
+    background: linear-gradient(100deg, var(--naranja) 0%, var(--rojo) 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .hero-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(20px, 2.5vw, 28px);
+    font-weight: 300; font-style: italic;
+    line-height: 1.5; color: rgba(240,237,230,0.75);
+    max-width: 600px; margin: 0 auto;
+    opacity: 0; animation: fadeUp 1s ease 0.6s forwards;
+  }
+  .hero-meta {
+    margin-top: 48px; font-size: 12px; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--gris);
+    opacity: 0; animation: fadeUp 1s ease 0.8s forwards;
+  }
+  .hero-status {
+    margin-top: 56px; display: flex; gap: 32px; justify-content: center; align-items: center;
+    opacity: 0; animation: fadeUp 1s ease 1s forwards;
+  }
+  .status-item { text-align: center; }
+  .status-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 36px; font-weight: 300; line-height: 1;
+    background: linear-gradient(100deg, var(--naranja), var(--rojo));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .status-label { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gris); margin-top: 4px; display: block; }
 
-h1{font-size:clamp(2.8rem,4vw,3.8rem);}
-h2{font-size:clamp(2rem,3vw,2.6rem);}
+  /* SINOPSIS */
+  .sinopsis {
+    padding: 120px 48px;
+    max-width: 800px; margin: 0 auto;
+  }
+  .sinopsis-text {
+    font-size: 16px; line-height: 2.2; color: rgba(240,237,230,0.85);
+    margin-bottom: 20px;
+  }
+  .sinopsis-frase {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px; font-style: italic; font-weight: 300; line-height: 1.5;
+    color: rgba(240,237,230,0.9);
+    border-left: 2px solid transparent;
+    border-image: linear-gradient(to bottom, var(--naranja), var(--rojo)) 1;
+    padding-left: 24px; margin: 48px 0;
+  }
 
-h3{
-  font-size:.85rem;
-  letter-spacing:.14em;
-  text-transform:uppercase;
-  color:var(--gris-texto);
-}
+  /* EPISODIOS */
+  .episodios { padding: 100px 48px; background: var(--fondo-medio); }
+  .episodios-header { margin-bottom: 64px; }
+  .episodios-titulo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(28px, 3.5vw, 44px); font-weight: 300; line-height: 1.1;
+  }
+  .episodios-titulo em {
+    font-style: italic;
+    background: linear-gradient(100deg, var(--naranja), var(--rojo));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .episodios-grid { display: grid; grid-template-columns: 1fr; gap: 2px; }
+  .episodio {
+    display: grid; grid-template-columns: 80px 1fr; gap: 32px;
+    padding: 40px 32px; background: #111118;
+    align-items: start; transition: background 0.4s;
+    position: relative; overflow: hidden;
+  }
+  .episodio:hover { background: #181820; }
+  .episodio::after {
+    content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 2px;
+    transform: scaleY(0); transform-origin: top; transition: transform 0.45s ease;
+  }
+  .episodio:hover::after { transform: scaleY(1); }
+  .episodio:nth-child(1)::after { background: linear-gradient(to bottom, var(--naranja), var(--rojo)); }
+  .episodio:nth-child(2)::after { background: linear-gradient(to bottom, var(--teal), var(--verde)); }
+  .episodio:nth-child(3)::after { background: linear-gradient(to bottom, var(--amarillo), var(--naranja)); }
+  .episodio:nth-child(4)::after { background: linear-gradient(to bottom, var(--verde), var(--teal)); }
+  .episodio:nth-child(5)::after { background: linear-gradient(to bottom, var(--rojo), var(--naranja)); }
+  .ep-numero {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 48px; font-weight: 300; line-height: 1;
+    color: rgba(240,237,230,0.15);
+  }
+  .ep-content {}
+  .ep-label { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 8px; }
+  .episodio:nth-child(1) .ep-label { color: var(--naranja); }
+  .episodio:nth-child(2) .ep-label { color: var(--teal); }
+  .episodio:nth-child(3) .ep-label { color: var(--amarillo); }
+  .episodio:nth-child(4) .ep-label { color: var(--verde); }
+  .episodio:nth-child(5) .ep-label { color: var(--rojo); }
+  .ep-nombre {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px; font-weight: 400; line-height: 1.2; margin-bottom: 12px;
+  }
+  .ep-desc { font-size: 14px; line-height: 1.9; color: rgba(240,237,230,0.72); }
 
-p{
-  margin:0 0 20px 0;
-  max-width:760px;
-  font-size:1.08rem;
-}
+  /* AUTORES */
+  .autores {
+    padding: 120px 48px;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 80px;
+    max-width: 1000px; margin: 0 auto;
+  }
+  .autor {}
+  .autor-nombre {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px; font-weight: 400; line-height: 1.2; margin-bottom: 8px;
+  }
+  .autor-rol { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--naranja); margin-bottom: 20px; display: block; }
+  .autor-bio { font-size: 14px; line-height: 2; color: rgba(240,237,230,0.75); }
 
-blockquote{
-  margin:40px 0 0 0;
-  font-style:italic;
-  font-size:clamp(1.05rem,1.6vw,1.3rem);
-  padding-left:22px;
-  border-left:2px solid var(--bronce);
-  max-width:760px;
-}
+  /* CIERRE */
+  .cierre {
+    padding: 120px 48px; text-align: center;
+    position: relative; overflow: hidden;
+  }
+  .cierre::before {
+    content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+    width: 600px; height: 350px;
+    background: radial-gradient(ellipse, rgba(196,74,42,0.07) 0%, rgba(212,184,74,0.05) 50%, transparent 75%);
+    pointer-events: none;
+  }
+  .cierre-frase {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(32px, 5vw, 56px); font-weight: 300; font-style: italic;
+    line-height: 1.2; margin-bottom: 32px; position: relative;
+    background: linear-gradient(100deg, var(--naranja), var(--amarillo));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .cierre-sub {
+    font-size: 14px; color: rgba(240,237,230,0.6);
+    letter-spacing: 0.1em; margin-bottom: 48px; position: relative; line-height: 2;
+  }
+  .cierre-cta { position: relative; display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
 
-/* ---------- NAV ---------- */
-.nav{
-  position:sticky;
-  top:0;
-  background:rgba(12,12,14,.95);
-  backdrop-filter:blur(8px);
-  border-bottom:1px solid rgba(255,255,255,.06);
-  z-index:1000;
-  padding-top:env(safe-area-inset-top);
-}
+  /* FOOTER */
+  footer {
+    padding: 28px 48px; border-top: 1px solid var(--linea);
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 11px; color: var(--gris); letter-spacing: 0.08em;
+  }
+  .footer-grad {
+    background: linear-gradient(90deg, var(--naranja), var(--rojo));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
 
-.nav .wrap{
-  display:flex;
-  align-items:center;
-  justify-content:flex-end;
-  padding:18px 32px;
-}
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.85s ease, transform 0.85s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
 
-.nav-inner{
-  display:flex;
-  gap:28px;
-  font-size:.78rem;
-  letter-spacing:.12em;
-  text-transform:uppercase;
-  color:var(--blanco);
-}
-
-.nav-inner a{
-  opacity:.75;
-  position:relative;
-  text-decoration:none;
-  color:inherit;
-  transition:opacity .2s ease;
-}
-
-.nav-inner a:hover{ opacity:1; }
-
-.nav-inner a::after{
-  content:"";
-  position:absolute;
-  left:0;
-  bottom:-6px;
-  width:0;
-  height:1px;
-  background:var(--bronce);
-  transition:width .25s ease;
-}
-
-.nav-inner a:hover::after{ width:100%; }
-
-/* ---------- HERO ---------- */
-.hero{
-  background:var(--negro);
-  color:var(--blanco);
-}
-
-.hero-inner{
-  min-height:calc(85vh - var(--nav-h));
-  display:flex;
-  align-items:center;
-  padding:140px 0;
-}
-
-/* ---------- TRÍPTICO ---------- */
-.triptych{
-  background:var(--negro);
-  padding:0;
-  border-top:1px solid rgba(255,255,255,.05);
-  border-bottom:1px solid rgba(255,255,255,.05);
-}
-
-.triptych-row{
-  display:grid;
-  grid-template-columns: 1fr 1.55fr 1fr;
-  align-items:stretch;
-}
-
-.triptych-row img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  display:block;
-  filter:saturate(90%) contrast(97%) brightness(98%);
-}
-
-/* ---------- ARCHIVO ---------- */
-.archivo-curado{
-  background:var(--blanco);
-  border-top:1px solid var(--gris-linea);
-}
-
-.curated-item{
-  padding:60px 0;
-  border-bottom:1px solid var(--gris-linea);
-}
-
-.curated-meta{
-  font-size:.9rem;
-  letter-spacing:.14em;
-  text-transform:uppercase;
-  color:var(--gris-texto);
-  margin-bottom:40px;
-}
-
-/* ---------- CRÉDITOS ---------- */
-.team-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:56px;
-  margin-top:50px;
-}
-
-.team-card{
-  border-top:1px solid var(--gris-linea);
-  padding-top:18px;
-}
-
-/* ---------- FOOTER / COLAB ---------- */
-.dark-footer{
-  background:var(--negro);
-  color:rgba(241,239,234,.85);
-  border-top:1px solid rgba(255,255,255,.06);
-}
-
-.colab-contact{
-  margin-top:40px;
-  font-size:1.1rem;
-}
-
-.colab-contact a{
-  color:var(--blanco);
-  text-decoration:none;
-  border-bottom:1px solid var(--bronce);
-  transition:all .25s ease;
-}
-
-.colab-contact a:hover{ color:var(--bronce); }
-
-footer{
-  background:var(--negro);
-  color:rgba(241,239,234,.4);
-  padding:60px 0;
-  text-align:center;
-  font-size:.85rem;
-}
-
-@media (max-width:980px){
-  .triptych-row{ grid-template-columns:1fr; }
-  .team-grid{ grid-template-columns:1fr; }
-}
+  @media (max-width: 840px) {
+    nav { padding: 18px 24px; }
+    .nav-links { gap: 16px; }
+    .nav-links a { font-size: 9px; }
+    .hero { padding: 100px 24px 60px; }
+    .sinopsis { padding: 80px 24px; }
+    .episodios { padding: 80px 24px; }
+    .episodio { grid-template-columns: 60px 1fr; gap: 20px; padding: 32px 24px; }
+    .autores { grid-template-columns: 1fr; padding: 80px 24px; gap: 48px; }
+    .cierre { padding: 80px 24px; }
+    footer { padding: 24px; flex-direction: column; gap: 10px; text-align: center; }
+  }
+  @media (max-width: 480px) {
+    .nav-links { display: none; }
+    .episodio { grid-template-columns: 1fr; }
+    .ep-numero { font-size: 36px; }
+    .hero-status { flex-direction: column; gap: 20px; }
+  }
 </style>
 </head>
-
 <body>
 
-<nav class="nav">
-  <div class="wrap">
-    <div class="nav-inner">
-      <a href="index.html">Inicio</a>
-      <a href="#archivo">Archivo</a>
-      <a href="#mirada">Mirada</a>
-      <a href="#equipo">Créditos</a>
-      <a href="#apoyar">Colaboraciones</a>
-    </div>
-  </div>
+<nav>
+  <a href="/" class="nav-logo">Logos <span>Psyche</span></a>
+  <ul class="nav-links">
+    <li><a href="logos-psyche.html">Clínica</a></li>
+    <li><a href="podcast.html">Podcast</a></li>
+    <li><a href="/#puertas">Proyectos</a></li>
+    <li><a href="https://ronaldescobar.substack.com" target="_blank">Escritura</a></li>
+    <li><a href="https://wa.me/50230607168?text=Hola,%20quisiera%20iniciar%20proceso%20clínico." class="nav-cta">Consulta</a></li>
+  </ul>
 </nav>
 
-<header class="hero">
-  <div class="wrap hero-inner reveal">
-    <div>
-      <h1>Antes de nombrar</h1>
-      <p>Algunas historias se transforman cuando son contadas. Otras ya estaban allí, esperando escucha.</p>
-      <blockquote>“Qué hace una persona sensible en un mundo que no sabe escuchar.”</blockquote>
-    </div>
-  </div>
-</header>
-
-<section class="triptych reveal">
-  <div class="triptych-row">
-    <img src="assets/pablo.jpg" alt="Registro de campo">
-    <img src="assets/ronald2.jpg" alt="Encuentro familiar">
-    <img src="assets/livingston.jpg" alt="Livingston, territorio">
-  </div>
-</section>
-
-<section id="archivo" class="archivo-curado reveal">
-  <div class="wrap">
-    <h2>Archivo · Fragmentos seleccionados</h2>
-    <p>Fragmentos del proceso, no exhaustivos.</p>    
-    <div id="curated-container"></div>
-  </div>
-</section>
-
-<section id="mirada" class="light reveal">
-  <div class="wrap">
-    <h2>Mirada</h2>
-    <p>Este trabajo se aproxima sin prisa. No busca traducir de inmediato, sino sostener el tiempo necesario para que la experiencia pueda desplegarse en su propio lenguaje.</p>
-  </div>
-</section>
-
-<section id="equipo" class="light reveal">
-  <div class="wrap">
-    <h2>Créditos</h2>
-    <div class="team-grid">
-      <div class="team-card"><h3>Dirección</h3><p>Pablo Rojas y Ronald Escobar</p></div>
-      <div class="team-card"><h3>Registro en campo</h3><p>Ronald Escobar y Pablo Rojas</p></div>
-      <div class="team-card"><h3>Producción</h3><p>En desarrollo</p></div>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <span class="hero-badge">Serie documental · En desarrollo</span>
+    <h1 class="hero-title">Por<br><em>Engasado</em></h1>
+    <p class="hero-subtitle">Una mirada antropológica al trastorno bipolar. Observar otro espejo, otra cultura, otro ser humano — para empezar a verme.</p>
+    <p class="hero-meta">Ronald Escobar + Pablo Rojas Castillo</p>
+    <div class="hero-status">
+      <div class="status-item">
+        <span class="status-num">5</span>
+        <span class="status-label">Episodios</span>
+      </div>
+      <div class="status-item">
+        <span class="status-num">1</span>
+        <span class="status-label">Temporada</span>
+      </div>
     </div>
   </div>
 </section>
 
-<section id="apoyar" class="dark-footer reveal">
-  <div class="wrap">
-    <h2>Colaboraciones</h2>
-    <p>Esta producción está abierta a encuentros y colaboraciones que compartan su ética de escucha.</p>
-    <p class="colab-contact">
-      <a href="mailto:contacto@ronaldescobar.com">contacto@ronaldescobar.com</a>
-    </p>  
+<div class="sep"></div>
+
+<!-- SINOPSIS -->
+<section class="sinopsis">
+  <div class="reveal">
+    <span class="seccion-label">La búsqueda</span>
+    <p class="sinopsis-text">Un psiquiatra con trastorno bipolar sale a buscar respuestas que la psiquiatría occidental no le ha dado. No como investigador — como paciente. Lo que encuentra no es un tratamiento sino un método: observar otro ser humano, otra cultura, otra forma de nombrar lo que él lleva adentro.</p>
+    <p class="sinopsis-text">Bomberos voluntarios. Filosofía estoica. Medicina garífuna. Psicodélicos. Ultramaratones. La escritura. Cada episodio es una puerta distinta hacia la misma pregunta: ¿se puede estudiar la propia locura sin que el estudio sea un síntoma más?</p>
+    <blockquote class="sinopsis-frase">"Él consiguió un loco que le escuche y yo un loco a quien escuchar."</blockquote>
+    <p class="sinopsis-text">Por Engasado no es un documental sobre la bipolaridad. Es un documental desde la bipolaridad. La cámara no observa desde afuera — el sujeto ya sabe que está siendo filmado por sí mismo.</p>
   </div>
 </section>
 
-<footer>© 2026 · Archivo documental</footer>
+<div class="sep"></div>
+
+<!-- EPISODIOS -->
+<section class="episodios">
+  <div class="episodios-header reveal">
+    <span class="seccion-label">Episodios</span>
+    <h2 class="episodios-titulo">Cinco puertas.<br><em>Una misma búsqueda.</em></h2>
+  </div>
+
+  <div class="episodios-grid">
+    <div class="episodio reveal">
+      <span class="ep-numero">01</span>
+      <div class="ep-content">
+        <span class="ep-label">Movimiento</span>
+        <h3 class="ep-nombre">Correr</h3>
+        <p class="ep-desc">El cuerpo como primer laboratorio. Ultramaratones, agotamiento voluntario, la línea donde termina la resistencia física y empieza otra cosa. ¿Qué busca un bipolar cuando corre hasta que no puede más?</p>
+      </div>
+    </div>
+
+    <div class="episodio reveal">
+      <span class="ep-numero">02</span>
+      <div class="ep-content">
+        <span class="ep-label">Sustancias</span>
+        <h3 class="ep-nombre">Psicodélicos</h3>
+        <p class="ep-desc">La frontera entre la experiencia terapéutica y el riesgo clínico. Un psiquiatra que conoce la farmacología desde la teoría decide conocerla desde el cuerpo. Lo que encuentra no estaba en ningún paper.</p>
+      </div>
+    </div>
+
+    <div class="episodio reveal">
+      <span class="ep-numero">03</span>
+      <div class="ep-content">
+        <span class="ep-label">Cosmología</span>
+        <h3 class="ep-nombre">Medicina garífuna</h3>
+        <p class="ep-desc">Livingston. Fermín. El Gubida. Una cosmología que no separa cuerpo y espíritu, que no necesita el DSM para nombrar lo que habita adentro. El espejo más inesperado de todos.</p>
+      </div>
+    </div>
+
+    <div class="episodio reveal">
+      <span class="ep-numero">04</span>
+      <div class="ep-content">
+        <span class="ep-label">Filosofía</span>
+        <h3 class="ep-nombre">Más Platón y menos Prozac</h3>
+        <p class="ep-desc">Los bomberos. La camaradería como lo más parecido a una cura que existe. Y la pregunta que la psiquiatría no responde: ¿qué hacés cuando los medicamentos no alcanzan? Estoicismo, filosofía, la búsqueda de marcos para seguir vivo cuando no hay razón para levantarse de la cama.</p>
+      </div>
+    </div>
+
+    <div class="episodio reveal">
+      <span class="ep-numero">05</span>
+      <div class="ep-content">
+        <span class="ep-label">Palabra</span>
+        <h3 class="ep-nombre">La escritura</h3>
+        <p class="ep-desc">Escribir como síntoma. Escribir como cura. Escribir como la única forma de ordenar lo que adentro no se ordena. Cuando tu terapeuta te dice que escribir es un síntoma y vos seguís escribiendo de todas formas.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="sep"></div>
+
+<!-- AUTORES -->
+<section class="autores">
+  <div class="reveal">
+    <h3 class="autor-nombre">Ronald Escobar</h3>
+    <span class="autor-rol">Sujeto · Co-guionista</span>
+    <p class="autor-bio">Psiquiatra. Escritor. Diagnosticado con trastorno bipolar. Fundador de Logos Psyche. En Por Engasado no dirige — se deja dirigir. Es el paciente que estudia su propia enfermedad mientras la enfermedad lo estudia a él.</p>
+  </div>
+  <div class="reveal">
+    <h3 class="autor-nombre">Pablo Rojas Castillo</h3>
+    <span class="autor-rol">Director · Co-guionista</span>
+    <p class="autor-bio">Cineasta. La mirada externa que convierte el material autobiográfico en estructura narrativa. Pablo no filma a Ronald — filma lo que Ronald no puede ver de sí mismo.</p>
+  </div>
+</section>
+
+<div class="sep"></div>
+
+<!-- CIERRE -->
+<section class="cierre">
+  <h2 class="cierre-frase reveal">Todos somos todos.</h2>
+  <p class="cierre-sub reveal">Serie documental · 5 episodios · En desarrollo<br>Guatemala, 2024–2026</p>
+  <div class="cierre-cta reveal">
+    <a href="/" class="btn-ghost">← Volver al inicio</a>
+  </div>
+</section>
+
+<footer>
+  <span>© Ronald Escobar · Logos Psyche</span>
+  <span class="footer-grad">Neurociencia · Arte · Humanidad</span>
+  <span>ronaldescobar.com</span>
+</footer>
 
 <script>
-// Lógica de fragmentos aleatorios
-const fragments = [
-  { meta:"2020 · Primer encuentro", quote:"No fue una explicación lo que apareció, sino un nombre compartido.", text:"La conversación no buscaba diagnóstico. Buscaba reconocimiento." },
-  { meta:"Noviembre 2020 · Territorio", quote:"El paisaje también recuerda.", text:"La memoria no estaba solo en las palabras, sino en el lugar que las sostenía." },
-  { meta:"Septiembre 2022 · Silencio", quote:"A veces lo que no se dice también nombra.", text:"El silencio no era ausencia, sino forma de cuidado." },
-  { meta:"Noviembre 2023 · Comunidad", quote:"Nombrar es compartir carga.", text:"El fenómeno no pertenece a un individuo aislado." }
-];
-
-function shuffle(array){ return array.sort(()=>0.5-Math.random()); }
-const selected = shuffle(fragments).slice(0,3);
-const container = document.getElementById("curated-container");
-
-selected.forEach(item => {
-  const article = document.createElement("article");
-  article.className = "curated-item";
-  article.innerHTML = `<div class="curated-meta">${item.meta}</div><blockquote>${item.quote}</blockquote><p>${item.text}</p>`;
-  container.appendChild(article);
-});
-
-// Lógica de Revelación al hacer Scroll (Fade In)
-function reveal() {
-  var reveals = document.querySelectorAll(".reveal");
-  for (var i = 0; i < reveals.length; i++) {
-    var windowHeight = window.innerHeight;
-    var elementTop = reveals[i].getBoundingClientRect().top;
-    var elementVisible = 100;
-    if (elementTop < windowHeight - elementVisible) {
-      reveals[i].classList.add("active");
-    }
-  }
-}
-
-window.addEventListener("scroll", reveal);
-// Ejecutar una vez al cargar para mostrar el Hero
-reveal();
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) { setTimeout(() => e.target.classList.add('visible'), i * 70); obs.unobserve(e.target); }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 </script>
-
 </body>
 </html>
