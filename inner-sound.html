@@ -1,393 +1,817 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Inner Sound — Ronald Escobar</title>
+<meta name="description" content="Inner Sound — La música como tecnología de acceso al interior. Experiencia sonora guiada por Ronald Escobar. Guatemala.">
+<meta name="robots" content="index, follow">
+<meta name="author" content="Ronald Escobar">
+<meta property="og:title" content="Inner Sound — Experiencia Sonora">
+<meta property="og:description" content="La música como tecnología de acceso al interior. El sonido bien dirigido llega donde las palabras todavía no alcanzan.">
+<meta property="og:image" content="https://ronaldescobar.com/assets/logo-image.png">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://ronaldescobar.com/inner-sound.html">
 
-<title>Inner Sound · Medicina de Precisión Sónica</title>
-<meta name="description" content="Intervención neuroacústica guiada mediante frecuencias bio-armónicas y cancelación de ruido para recuperar claridad mental." />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://ronaldescobar.com/inner-sound.html" />
-<meta property="og:title" content="Inner Sound · Medicina de Precisión Sónica" />
-<meta property="og:description" content="Intervención neuroacústica guiada mediante frecuencias bio-armónicas y cancelación de ruido para recuperar claridad mental." />
-<meta property="og:image" content="https://ronaldescobar.com/assets/inner-sound.jpg" />
-<link rel="icon" href="/assets/logo-image.png" type="image/png" />
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JH9BQK27RM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-JH9BQK27RM');
+</script>
 
+<link rel="icon" href="/assets/logo-image.png" type="image/png">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 <style>
-/* ==================================================
-   INNER SOUND · Optimización de Experiencia 2026
-================================================== */
-
-:root{
-  --blanco:#f6f6f2;
-  --negro:#0b0b0c;
-  --gris:#6f6f6f;
-  --violeta:#7b5cff;
-  --linea:rgba(0,0,0,.08);
-  --curva-onda: cubic-bezier(0.45, 0.05, 0.55, 0.95);
-}
-
-*{ box-sizing:border-box; }
-
-body{
-  margin:0;
-  background:var(--blanco);
-  color:var(--negro);
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
-  line-height:1.6;
-  -webkit-font-smoothing:antialiased;
-  overflow-x: hidden;
-}
-
-.wrap{
-  max-width:1100px;
-  margin:0 auto;
-  padding:0 32px;
-}
-
-/* ================= NAV ================= */
-
-.nav{
-  height:80px;
-  border-bottom:1px solid var(--linea);
-  display:flex;
-  align-items:center;
-  position: sticky;
-  top: 0;
-  background: rgba(246, 246, 242, 0.9);
-  backdrop-filter: blur(10px);
-  z-index: 100;
-}
-
-.nav-inner{
-  width:100%;
-  display:flex;
-  justify-content:space-between;
-  align-items: center;
-}
-
-.logo-text {
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  font-size: 14px;
-}
-
-.nav-links {
-  display:flex;
-  gap:40px;
-}
-
-.nav a{
-  font-size:11px;
-  letter-spacing:.2em;
-  text-transform:uppercase;
-  text-decoration:none;
-  color:rgba(0,0,0,.5);
-  transition:.3s ease;
-}
-
-.nav a:hover{
-  color:var(--violeta);
-}
-
-/* ================= HERO ================= */
-
-.hero{
-  padding:140px 0 100px;
-  background: radial-gradient(circle at top right, rgba(123, 92, 255, 0.05), transparent);
-}
-
-.hero .kicker{
-  font-size:11px;
-  letter-spacing:.40em;
-  text-transform:uppercase;
-  color:var(--violeta);
-  font-weight:700;
-  margin:0 0 24px;
-}
-
-.hero h1{
-  font-size:clamp(48px,8vw,82px);
-  font-weight:600;
-  line-height:1;
-  margin:0 0 32px;
-  letter-spacing:-0.03em;
-}
-
-.hero .subhero{
-  font-size:24px;
-  color:var(--gris);
-  max-width:680px;
-  font-weight: 300;
-}
-
-/* ================= AXIOMA ================= */
-
-.axioma{
-  background:var(--negro);
-  padding:80px 0;
-  text-align:center;
-}
-
-.axioma p{
-  margin:0;
-  font-size:14px;
-  letter-spacing:.5em;
-  text-transform:uppercase;
-  color:#fff;
-  font-weight: 300;
-}
-
-/* ================= BLOQUE MANIFIESTO ================= */
-
-.experiencia{
-  padding:160px 0;
-}
-
-.experiencia-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:100px;
-  align-items:center;
-}
-
-.experiencia-img{
-  border-radius:2px;
-  overflow:hidden;
-  filter: grayscale(100%);
-  transition: 0.8s filter ease;
-}
-
-.experiencia-img:hover {
-  filter: grayscale(0%);
-}
-
-.experiencia-img img{
-  width:100%;
-  display:block;
-  transform: scale(1.05);
-}
-
-.experiencia-texto{
-  font-size:28px;
-  line-height:1.4;
-  color:var(--negro);
-  font-weight: 400;
-}
-
-.experiencia-texto span{
-  display:block;
-  font-size:17px;
-  color:var(--gris);
-  margin-top:32px;
-  line-height:1.8;
-}
-
-/* ================= ONDA SONORA ANIMADA ================= */
-
-.onda-contenedor{
-  width:100%;
-  background:var(--negro);
-  padding:100px 0;
-  display:flex;
-  justify-content:center;
-  overflow: hidden;
-}
-
-.onda-visual{
-  width:600px;
-  height:120px;
-}
-
-.path-animado {
-  stroke: var(--violeta);
-  stroke-width: 1;
-  fill: none;
-  stroke-dasharray: 1000;
-  stroke-dashoffset: 1000;
-  animation: escribir 4s infinite var(--curva-onda);
-}
-
-@keyframes escribir {
-  0% { stroke-dashoffset: 1000; opacity: 0; }
-  50% { stroke-dashoffset: 0; opacity: 1; }
-  100% { stroke-dashoffset: -1000; opacity: 0; }
-}
-
-/* ================= PROTOCOLO ================= */
-
-.protocolo{
-  background:var(--negro);
-  padding:120px 0 160px;
-}
-
-.grid-capsulas{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:64px;
-}
-
-.capsula{
-  padding: 40px;
-  border: 1px solid rgba(255,255,255,0.05);
-  transition: 0.4s ease;
-}
-
-.capsula:hover {
-  background: rgba(123, 92, 255, 0.03);
-  border-color: rgba(123, 92, 255, 0.2);
-}
-
-.capsula h3{
-  font-size:12px;
-  letter-spacing:.3em;
-  text-transform:uppercase;
-  margin:0 0 24px;
-  color:var(--violeta);
-}
-
-.capsula p{
-  margin:0;
-  font-size:16px;
-  line-height:1.8;
-  color:rgba(255,255,255,0.7);
-  font-weight: 300;
-}
-
-/* ================= CIERRE ================= */
-
-.cierre{
-  padding:160px 0;
-  background:#fff;
-  text-align:center;
-}
-
-.cierre-texto{
-  max-width:600px;
-  margin:0 auto 64px;
-  font-size:26px;
-  font-weight: 400;
-  color:var(--negro);
-}
-
-.cta{
-  display:inline-block;
-  font-size:12px;
-  letter-spacing:.4em;
-  text-transform:uppercase;
-  color:var(--negro);
-  text-decoration:none;
-  border:1px solid var(--negro);
-  padding:24px 50px;
-  transition:.4s cubic-bezier(0.19, 1, 0.22, 1);
-  position: relative;
-  overflow: hidden;
-}
-
-.cta:hover{
-  background:var(--negro);
-  color:#fff;
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-}
-
-/* ================= RESPONSIVE ================= */
-
-@media (max-width:900px){
-  .experiencia-grid, .grid-capsulas{
-    grid-template-columns:1fr;
-    gap:60px;
+  :root {
+    --negro: #08080c;
+    --blanco: #f0ede6;
+    --purpura: #7c4dff;
+    --purpura-suave: #9c6fff;
+    --teal: #4ecdc4;
+    --gris: #6b6860;
+    --fondo-medio: #0d0d14;
+    --linea: rgba(124,77,255,0.18);
   }
-  .nav-links { display: none; }
-}
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--negro);
+    color: var(--blanco);
+    font-family: 'Courier Prime', monospace;
+    overflow-x: hidden;
+  }
+
+  body::after {
+    content: ''; position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 100; opacity: 0.5;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    z-index: 50; padding: 22px 48px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  nav::before {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(to bottom, rgba(8,8,12,0.96) 0%, transparent 100%);
+    pointer-events: none;
+  }
+  .nav-back {
+    font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--gris); text-decoration: none; transition: color 0.3s;
+    display: flex; align-items: center; gap: 8px; position: relative;
+  }
+  .nav-back::before { content: '←'; font-size: 14px; }
+  .nav-back:hover { color: var(--purpura-suave); }
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 15px; font-weight: 300; letter-spacing: 0.15em;
+    color: var(--blanco); text-decoration: none; position: relative;
+  }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column; justify-content: flex-end;
+    padding: 140px 48px 100px;
+    position: relative; overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 70% 90% at 50% 70%, rgba(124,77,255,0.12) 0%, transparent 70%),
+      radial-gradient(ellipse 30% 40% at 10% 20%, rgba(78,205,196,0.05) 0%, transparent 50%),
+      radial-gradient(ellipse 40% 50% at 90% 80%, rgba(124,77,255,0.07) 0%, transparent 60%);
+  }
+
+  /* Olas de sonido decorativas */
+  .soundwave {
+    position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+    pointer-events: none; overflow: hidden;
+  }
+  .soundwave svg { position: absolute; width: 200%; left: -50%; opacity: 0.05; animation: waveDrift 20s linear infinite; }
+  @keyframes waveDrift { from { transform: translateX(0); } to { transform: translateX(25%); } }
+
+  .hero-content { position: relative; z-index: 2; max-width: 900px; }
+
+  .hero-eyebrow {
+    font-size: 9px; letter-spacing: 0.35em; text-transform: uppercase;
+    color: var(--purpura-suave); margin-bottom: 40px; display: block;
+    opacity: 0; animation: fadeUp 0.8s ease 0.2s forwards;
+  }
+
+  .hero-h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(64px, 11vw, 140px);
+    font-weight: 300; line-height: 0.88; letter-spacing: -0.03em;
+    margin-bottom: 56px;
+  }
+  .hero-h1 .l1 { display: block; opacity: 0; animation: fadeUp 1s ease 0.3s forwards; }
+  .hero-h1 .l2 {
+    display: block; font-style: italic;
+    background: linear-gradient(120deg, var(--purpura) 0%, var(--purpura-suave) 40%, var(--teal) 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    opacity: 0; animation: fadeUp 1s ease 0.55s forwards;
+  }
+
+  .hero-frase {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(20px, 2.8vw, 34px);
+    font-weight: 300; line-height: 1.4;
+    color: rgba(240,237,230,0.65);
+    max-width: 640px;
+    opacity: 0; animation: fadeUp 1s ease 0.85s forwards;
+  }
+  .hero-frase em {
+    font-style: italic;
+    background: linear-gradient(90deg, var(--purpura-suave), var(--teal));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+
+  /* Visualizador */
+  .visualizer {
+    margin-top: 56px; display: flex; gap: 3px; align-items: flex-end; height: 44px;
+    opacity: 0; animation: fadeUp 1s ease 1.1s forwards;
+  }
+  .bar {
+    width: 3px; background: linear-gradient(to top, var(--purpura), var(--teal));
+    border-radius: 2px; opacity: 0.5;
+    animation: barPulse var(--d) ease-in-out infinite alternate;
+    animation-delay: var(--delay);
+  }
+  @keyframes barPulse {
+    from { height: 3px; opacity: 0.25; }
+    to   { height: var(--h); opacity: 0.75; }
+  }
+
+  /* SEP */
+  .sep {
+    width: 100%; height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(124,77,255,0.22) 30%, rgba(78,205,196,0.15) 70%, transparent);
+    position: relative; z-index: 1;
+  }
+
+  /* ORIGEN */
+  .origen {
+    padding: 140px 48px;
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 100px; align-items: center;
+    position: relative; z-index: 1;
+  }
+
+  .origen-texto {}
+  .seccion-label {
+    font-size: 9px; letter-spacing: 0.35em; text-transform: uppercase;
+    color: var(--purpura-suave); margin-bottom: 28px; display: block;
+  }
+  .origen-titulo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(32px, 3.5vw, 52px);
+    font-weight: 300; line-height: 1.1; letter-spacing: -0.01em; margin-bottom: 40px;
+  }
+  .origen-titulo em {
+    font-style: italic;
+    background: linear-gradient(90deg, var(--purpura-suave), var(--teal));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .origen-parrafo {
+    font-size: 13px; line-height: 2.2;
+    color: rgba(240,237,230,0.65); margin-bottom: 24px;
+  }
+  .origen-parrafo strong { color: var(--blanco); font-weight: 700; }
+
+  /* Cita interna */
+  .origen-cita {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px; font-style: italic; font-weight: 300; line-height: 1.65;
+    padding-left: 24px; margin: 40px 0;
+    color: rgba(240,237,230,0.85);
+    border-left: 2px solid transparent;
+    border-image: linear-gradient(to bottom, var(--purpura), var(--teal)) 1;
+  }
+
+  /* Visual — círculos */
+  .origen-visual {
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+  }
+  .rings { position: relative; width: 300px; height: 300px; }
+  .ring {
+    position: absolute; border-radius: 50%; border: 1px solid;
+    top: 50%; left: 50%; transform: translate(-50%, -50%);
+    animation: ringPulse var(--rd) ease-in-out infinite;
+  }
+  .ring:nth-child(1) { width: 70px;  height: 70px;  border-color: rgba(124,77,255,0.75); --rd:3s; }
+  .ring:nth-child(2) { width: 125px; height: 125px; border-color: rgba(124,77,255,0.45); --rd:3.5s; animation-delay:0.3s; }
+  .ring:nth-child(3) { width: 185px; height: 185px; border-color: rgba(124,77,255,0.28); --rd:4s; animation-delay:0.6s; }
+  .ring:nth-child(4) { width: 245px; height: 245px; border-color: rgba(78,205,196,0.15); --rd:4.5s; animation-delay:0.9s; }
+  .ring:nth-child(5) { width: 298px; height: 298px; border-color: rgba(78,205,196,0.07); --rd:5s; animation-delay:1.2s; }
+  @keyframes ringPulse {
+    0%,100% { transform: translate(-50%,-50%) scale(1); opacity:1; }
+    50%      { transform: translate(-50%,-50%) scale(1.05); opacity:0.6; }
+  }
+  .ring-center {
+    position: absolute; top:50%; left:50%;
+    transform: translate(-50%,-50%);
+    width: 24px; height: 24px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--purpura), var(--teal));
+    box-shadow: 0 0 40px rgba(124,77,255,0.6), 0 0 80px rgba(124,77,255,0.2);
+    animation: centerGlow 3s ease-in-out infinite;
+  }
+  @keyframes centerGlow {
+    0%,100% { box-shadow: 0 0 40px rgba(124,77,255,0.6), 0 0 80px rgba(124,77,255,0.2); }
+    50%      { box-shadow: 0 0 60px rgba(124,77,255,0.8), 0 0 120px rgba(78,205,196,0.3); }
+  }
+
+  /* LAS DOS CANCIONES */
+  .dos-canciones {
+    padding: 100px 48px;
+    background: var(--fondo-medio);
+    position: relative; z-index: 1; overflow: hidden;
+  }
+  .dos-canciones::before {
+    content: ''; position: absolute; top:50%; left:50%;
+    transform: translate(-50%,-50%);
+    width: 800px; height: 400px;
+    background: radial-gradient(ellipse, rgba(124,77,255,0.07) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .dos-canciones-header { margin-bottom: 64px; max-width: 600px; }
+  .dos-canciones-titulo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(32px, 4vw, 54px);
+    font-weight: 300; line-height: 1.05; letter-spacing: -0.02em;
+  }
+  .dos-canciones-titulo em {
+    font-style: italic;
+    background: linear-gradient(90deg, var(--purpura-suave), var(--teal));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+
+  .canciones-duo {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 2px;
+  }
+
+  .cancion-card {
+    padding: 56px 48px;
+    position: relative; overflow: hidden;
+    transition: background 0.4s;
+  }
+  .cancion-card:first-child { background: #0f0f1a; }
+  .cancion-card:last-child  { background: #0a0f14; }
+  .cancion-card:hover { background: #141420; }
+
+  .cancion-card::before {
+    content: ''; position: absolute; top:0; left:0; right:0; height:1px;
+    background: linear-gradient(90deg, var(--purpura), var(--teal));
+    transform: scaleX(0); transform-origin: left; transition: transform 0.5s ease;
+  }
+  .cancion-card:hover::before { transform: scaleX(1); }
+
+  .cancion-artista {
+    font-size: 9px; letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--purpura-suave); margin-bottom: 16px; display: block;
+  }
+  .cancion-titulo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(28px, 3vw, 42px);
+    font-weight: 300; font-style: italic; line-height: 1.1;
+    margin-bottom: 32px;
+  }
+  .cancion-lectura {
+    font-size: 13px; line-height: 2.1;
+    color: rgba(240,237,230,0.62);
+  }
+  .cancion-lectura strong { color: var(--blanco); font-weight: 700; }
+
+  /* LA PLAYLIST */
+  .playlist-section {
+    padding: 120px 48px;
+    position: relative; z-index: 1;
+  }
+
+  .playlist-header { margin-bottom: 64px; }
+  .playlist-titulo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(32px, 4vw, 54px);
+    font-weight: 300; line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 16px;
+  }
+  .playlist-sub { font-size: 12px; color: var(--gris); line-height: 1.8; font-style: italic; }
+
+  /* Universos de artistas */
+  .universos { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; }
+
+  .universo-card {
+    background: var(--fondo-medio); padding: 40px 32px;
+    position: relative; overflow: hidden; transition: background 0.4s;
+    min-height: 200px; display: flex; flex-direction: column; gap: 16px;
+  }
+  .universo-card::after {
+    content: ''; position: absolute; bottom:0; left:0; right:0; height:2px;
+    background: linear-gradient(90deg, var(--purpura), var(--teal));
+    transform: scaleX(0); transform-origin: left; transition: transform 0.45s ease;
+  }
+  .universo-card:hover { background: #111118; }
+  .universo-card:hover::after { transform: scaleX(1); }
+
+  .universo-label {
+    font-size: 9px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--purpura-suave);
+  }
+  .universo-nombre {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px; font-weight: 400; line-height: 1.2; flex: 1;
+  }
+  .universo-efecto { font-size: 11px; line-height: 1.85; color: var(--gris); font-style: italic; }
+
+  /* CIENCIA */
+  .ciencia {
+    padding: 100px 48px; background: var(--fondo-medio);
+    position: relative; z-index: 1; overflow: hidden;
+  }
+  .ciencia::before {
+    content: ''; position: absolute; top:50%; left:50%;
+    transform: translate(-50%,-50%);
+    width: 700px; height: 500px;
+    background: radial-gradient(ellipse, rgba(124,77,255,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .ciencia-header { margin-bottom: 56px; }
+  .ciencia-titulo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(28px, 3.5vw, 48px);
+    font-weight: 300; line-height: 1.1; letter-spacing: -0.01em;
+  }
+  .ciencia-titulo em {
+    font-style: italic;
+    background: linear-gradient(90deg, var(--purpura-suave), var(--teal));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+
+  .etapas { display: flex; flex-direction: column; gap: 2px; }
+  .etapa { display: grid; grid-template-columns: 180px 1fr; gap: 2px; }
+  .etapa-celda {
+    background: #111118; padding: 28px 32px;
+    display: flex; flex-direction: column; gap: 8px;
+    position: relative; overflow: hidden; transition: background 0.3s;
+  }
+  .etapa-celda:hover { background: #16161f; }
+  .etapa-nombre {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px; font-weight: 300; font-style: italic;
+  }
+  .etapa-hz { font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--purpura-suave); }
+  .etapa-neuro { font-size: 12px; line-height: 1.8; color: rgba(240,237,230,0.65); }
+  .etapa-neuro strong { color: var(--blanco); font-weight: 700; }
+  .etapa-barra { position: absolute; bottom:0; left:0; height:1px; background: linear-gradient(90deg, var(--purpura), var(--teal)); }
+  .etapa:nth-child(1) .etapa-barra { width:20%; }
+  .etapa:nth-child(2) .etapa-barra { width:40%; }
+  .etapa:nth-child(3) .etapa-barra { width:65%; }
+  .etapa:nth-child(4) .etapa-barra { width:85%; }
+  .etapa:nth-child(5) .etapa-barra { width:100%; }
+
+  /* PARA QUIÉN */
+  .para-quien { padding: 120px 48px; position: relative; z-index: 1; }
+  .para-quien-header { margin-bottom: 64px; max-width: 600px; }
+  .para-quien-titulo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(32px, 4vw, 52px);
+    font-weight: 300; line-height: 1.1; letter-spacing:-0.01em; margin-bottom: 16px;
+  }
+  .para-quien-sub { font-size: 13px; color: var(--gris); line-height: 1.8; font-style: italic; }
+
+  .personas { display: grid; grid-template-columns: repeat(2,1fr); gap: 2px; }
+  .persona {
+    background: var(--fondo-medio); padding: 48px 40px;
+    position: relative; overflow: hidden; transition: background 0.4s;
+  }
+  .persona::after {
+    content: ''; position: absolute; left:0; top:0; bottom:0; width:2px;
+    background: linear-gradient(to bottom, var(--purpura), var(--teal));
+    transform: scaleY(0); transform-origin: top; transition: transform 0.5s ease;
+  }
+  .persona:hover { background: #111118; }
+  .persona:hover::after { transform: scaleY(1); }
+  .persona-tipo {
+    font-size: 9px; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--purpura-suave); margin-bottom: 16px; display: block;
+  }
+  .persona-descripcion {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(18px, 2vw, 24px);
+    font-weight: 300; line-height: 1.4; margin-bottom: 20px; font-style: italic;
+  }
+  .persona-detalle { font-size: 12px; line-height: 1.9; color: var(--gris); }
+
+  /* CTA */
+  .cta-final {
+    padding: 140px 48px; text-align: center;
+    position: relative; z-index: 1; overflow: hidden;
+  }
+  .cta-final::before {
+    content: ''; position: absolute; top:50%; left:50%;
+    transform: translate(-50%,-50%);
+    width: 600px; height: 600px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(124,77,255,0.1) 0%, rgba(78,205,196,0.05) 40%, transparent 70%);
+    pointer-events: none; animation: ctaGlow 7s ease-in-out infinite;
+  }
+  @keyframes ctaGlow {
+    0%,100% { transform: translate(-50%,-50%) scale(1); opacity:1; }
+    50%      { transform: translate(-50%,-50%) scale(1.12); opacity:0.7; }
+  }
+
+  .cta-pretitulo {
+    font-size: 9px; letter-spacing: 0.35em; text-transform: uppercase;
+    color: var(--purpura-suave); margin-bottom: 32px; display: block; position: relative;
+  }
+  .cta-titulo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 6vw, 80px);
+    font-weight: 300; font-style: italic; line-height: 1.05;
+    margin-bottom: 24px; position: relative;
+  }
+  .cta-titulo em {
+    background: linear-gradient(120deg, var(--purpura), var(--purpura-suave), var(--teal));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    font-style: normal;
+  }
+  .cta-sub { font-size: 13px; color: var(--gris); margin-bottom: 48px; letter-spacing: 0.08em; position: relative; }
+  .cta-botones { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; position: relative; }
+
+  .btn-grad {
+    font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
+    padding: 14px 36px; text-decoration: none; font-weight: 700;
+    background: linear-gradient(120deg, var(--purpura), var(--purpura-suave), var(--teal));
+    background-size: 200% 100%; color: var(--negro);
+    transition: background-position 0.5s ease, transform 0.2s;
+  }
+  .btn-grad:hover { background-position: 100% 0; transform: translateY(-2px); }
+  .btn-ghost {
+    font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--gris); text-decoration: none; transition: color 0.3s;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .btn-ghost:hover { color: var(--purpura-suave); }
+
+  footer {
+    padding: 28px 48px; border-top: 1px solid var(--linea);
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 10px; color: var(--gris); letter-spacing: 0.08em; position: relative; z-index: 1;
+  }
+  .footer-grad {
+    background: linear-gradient(90deg, var(--purpura-suave), var(--teal));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(28px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .reveal {
+    opacity: 0; transform: translateY(28px);
+    transition: opacity 0.85s ease, transform 0.85s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 840px) {
+    nav { padding: 18px 24px; }
+    .hero { padding: 100px 24px 60px; }
+    .origen { grid-template-columns: 1fr; padding: 80px 24px; gap: 48px; }
+    .origen-visual { display: none; }
+    .canciones-duo { grid-template-columns: 1fr; }
+    .universos { grid-template-columns: 1fr; }
+    .etapa { grid-template-columns: 1fr; }
+    .personas { grid-template-columns: 1fr; }
+    .dos-canciones, .playlist-section, .ciencia, .para-quien, .cta-final { padding: 80px 24px; }
+    footer { padding: 24px; flex-direction: column; gap: 10px; text-align: center; }
+  }
 </style>
 </head>
-
 <body>
 
-<nav class="nav">
-  <div class="wrap nav-inner">
-    <div class="logo-text">Inner Sound</div>
-    <div class="nav-links">
-      <a href="/">Inicio</a>
-      <a href="/clinica.html">Clínica</a>
-    </div>
-  </div>
+<nav>
+  <a href="https://ronaldescobar.com" class="nav-back">Ronald Escobar</a>
+  <a href="https://ronaldescobar.com" class="nav-logo">Ronald Escobar</a>
 </nav>
 
+<!-- HERO -->
 <section class="hero">
-  <div class="wrap">
-    <p class="kicker">Protocolo Neuroacústico Guiado</p>
-    <h1>Inner <span style="color:var(--violeta)">Sound</span></h1>
-    <p class="subhero">
-      Una intervención diseñada para silenciar el ruido sistémico y recuperar la soberanía de la atención.
+  <div class="hero-bg"></div>
+  <div class="soundwave">
+    <svg viewBox="0 0 1440 400" preserveAspectRatio="none">
+      <path d="M0,200 C180,100 360,300 540,200 C720,100 900,300 1080,200 C1260,100 1380,280 1440,200" fill="none" stroke="#7c4dff" stroke-width="1"/>
+      <path d="M0,220 C200,140 400,320 600,220 C800,140 1000,320 1200,220 C1340,160 1400,260 1440,220" fill="none" stroke="#4ecdc4" stroke-width="0.5"/>
+      <path d="M0,180 C150,80 350,280 550,180 C750,80 950,280 1150,180 C1320,100 1400,240 1440,180" fill="none" stroke="#7c4dff" stroke-width="0.5" opacity="0.5"/>
+    </svg>
+  </div>
+
+  <div class="hero-content">
+    <span class="hero-eyebrow">Ronald Escobar · Logos Psyche · Experiencia sonora</span>
+    <h1 class="hero-h1">
+      <span class="l1">Inner</span>
+      <span class="l2">Sound</span>
+    </h1>
+    <p class="hero-frase">
+      La música son <em>colores que no todos pueden ver.</em><br>
+      Yo te enseño a verlos.
+    </p>
+    <div class="visualizer" id="viz"></div>
+  </div>
+</section>
+
+<div class="sep"></div>
+
+<!-- ORIGEN -->
+<section class="origen">
+  <div class="origen-texto">
+    <span class="seccion-label reveal">El origen</span>
+    <h2 class="origen-titulo reveal">
+      Nació de un padre<br>
+      que quería enseñar<br>
+      a <em>escuchar de verdad.</em>
+    </h2>
+    <p class="origen-parrafo reveal">
+      De niño, veía a mi padre dejarse llevar por la música. En esos momentos quería enseñarnos algo — ponía los Carpenters, decía que nos enseñaba inglés. <strong>No era inglés. Era que la música puede abrirte a lugares que normalmente están cerrados.</strong> Que una canción puede decirte lo que vos no sabés decirte.
+    </p>
+
+    <blockquote class="origen-cita reveal">
+      "Cuando una canción te nombra exactamente lo que vivís y no sabías cómo decir — de repente no estás solo en eso. Porque alguien lo escribió, lo cantó, y llegó hasta vos."
+    </blockquote>
+
+    <p class="origen-parrafo reveal">
+      Años después, con audífonos de cancelación de ruido y en procesos de terapia profunda, entendí lo que él intuyó: que el sonido bien dirigido — las frecuencias correctas, la secuencia correcta, la intención correcta — <strong>abre puertas que normalmente permanecen cerradas.</strong>
+    </p>
+    <p class="origen-parrafo reveal">
+      Inner Sound es lo que aprendí. La versión consciente, sostenida, sin muletas. Con toda la profundidad intacta.
+    </p>
+  </div>
+
+  <div class="origen-visual reveal">
+    <div class="rings">
+      <div class="ring"></div>
+      <div class="ring"></div>
+      <div class="ring"></div>
+      <div class="ring"></div>
+      <div class="ring"></div>
+      <div class="ring-center"></div>
+    </div>
+  </div>
+</section>
+
+<div class="sep"></div>
+
+<!-- LAS DOS CANCIONES -->
+<section class="dos-canciones">
+  <div class="dos-canciones-header reveal">
+    <h2 class="dos-canciones-titulo">
+      Hay canciones que<br>
+      <em>rompen algo adentro</em><br>
+      cada vez.
+    </h2>
+  </div>
+
+  <div class="canciones-duo">
+    <div class="cancion-card reveal">
+      <span class="cancion-artista">Elton John</span>
+      <h3 class="cancion-titulo">I Want Love</h3>
+      <p class="cancion-lectura">
+        No la versión de quien ruega. La versión de un hombre que ya sabe exactamente qué es el amor — y sabe que igual no lo tiene. <strong>La dignidad en esa voz duele más que el llanto.</strong> No te pide lástima. Te pide que lo acompañes a estar en eso.
+      </p>
+    </div>
+
+    <div class="cancion-card reveal">
+      <span class="cancion-artista">Ricardo Arjona</span>
+      <h3 class="cancion-titulo">Acompáñame a Estar Solo</h3>
+      <p class="cancion-lectura">
+        La paradoja más honesta que existe. No pido que te quedes. No pido que te vayas. <strong>Pido que estés mientras estoy solo.</strong> Que es exactamente lo que no se puede pedir — y lo que más se necesita. Eso no se explica. Se escucha.
+      </p>
+    </div>
+  </div>
+
+  <div style="margin-top: 48px; text-align: center;">
+    <p style="font-family:'Cormorant Garamond',serif; font-size:18px; font-style:italic; font-weight:300; color:rgba(240,237,230,0.4); letter-spacing:0.05em;">
+      Todos somos todos. Eso es lo que la música sabe antes que nosotros.
     </p>
   </div>
 </section>
 
-<section class="axioma">
-  <div class="wrap">
-    <p>La música es medicina de precisión</p>
-  </div>
-</section>
+<div class="sep"></div>
 
-<section class="experiencia">
-  <div class="wrap experiencia-grid">
-    <div class="experiencia-img">
-      <img src="/assets/inners.jpg" alt="Dr Ronald Escobar">
+<!-- LA PLAYLIST — universos -->
+<section class="playlist-section">
+  <div class="playlist-header reveal">
+    <h2 class="playlist-titulo">No escucho canciones.<br>Escucho lo que abren.</h2>
+    <p class="playlist-sub">129 canciones. 9 horas y 36 minutos. Cada artista es una puerta. Sé exactamente adónde lleva cada una.</p>
+  </div>
+
+  <div class="universos">
+    <div class="universo-card reveal">
+      <span class="universo-label">La seducción</span>
+      <h3 class="universo-nombre">Soda Stereo · Cerati</h3>
+      <p class="universo-efecto">Su voz no cuenta una historia. Te hace sentir que estás parado en el escenario recibiendo la energía de todos. La seducción como estado puro.</p>
     </div>
-    <div class="experiencia-texto">
-      “Inner Sound no es una escucha pasiva; es una <strong>cirugía sónica</strong>.”
-      <span>
-        Usamos tecnología de cancelación de ruido y frecuencias bio-armónicas 
-        para reorganizar el flujo neuroquímico y abrir un espacio de claridad 
-        donde la mente vuelve a escuchar.
 
-         Una sesión guiada de modulación sensorial
-         utilizando cancelación de ruido y música
-         estructurada para reorganizar la atención.
-         Duración aproximada: 60 minutos.      
-      </span>
+    <div class="universo-card reveal">
+      <span class="universo-label">El vuelo</span>
+      <h3 class="universo-nombre">Fito Páez</h3>
+      <p class="universo-efecto">Mariposa Tecnicolor te lleva a los colores, a la vida, a todo lo bueno que viviste. En alas. Sin peso. Fito sabe cómo hacerte volar sin avisarte.</p>
+    </div>
+
+    <div class="universo-card reveal">
+      <span class="universo-label">El dolor que libera</span>
+      <h3 class="universo-nombre">Aterciopelados · Andrea Echeverri</h3>
+      <p class="universo-efecto">Una voz que grita dolor y libertad al mismo tiempo. El que escucha aprende que pueden coexistir. Que no hay que elegir entre las dos.</p>
+    </div>
+
+    <div class="universo-card reveal">
+      <span class="universo-label">La protesta sin palabras</span>
+      <h3 class="universo-nombre">Silvio Rodríguez</h3>
+      <p class="universo-efecto">No son las palabras. Son los tonos, los tiempos. Los que te hacen moverte antes de entender por qué. La música de protesta que actúa en el cuerpo primero.</p>
+    </div>
+
+    <div class="universo-card reveal">
+      <span class="universo-label">La herida elegante</span>
+      <h3 class="universo-nombre">Bunbury · Sabina · Serrat</h3>
+      <p class="universo-efecto">El dolor convertido en arte. La melancolía que no aplasta — que acompaña. Tres formas distintas de llevar lo que duele con dignidad.</p>
+    </div>
+
+    <div class="universo-card reveal">
+      <span class="universo-label">La rabia que sana</span>
+      <h3 class="universo-nombre">Nirvana · Metallica · RHCP</h3>
+      <p class="universo-efecto">Hay emociones que no caben en baladas. Estas canciones le dan forma y contenedor a lo que de otra manera se queda sin salida.</p>
+    </div>
+
+    <div class="universo-card reveal">
+      <span class="universo-label">Lo universal</span>
+      <h3 class="universo-nombre">Beatles · Bob Marley · Lennon</h3>
+      <p class="universo-efecto">Canciones que cruzaron todas las fronteras porque tocaron algo que no tiene idioma. Imagine. Is This Love. Something. No necesitan traducción.</p>
+    </div>
+
+    <div class="universo-card reveal">
+      <span class="universo-label">La soledad compartida</span>
+      <h3 class="universo-nombre">Ricardo Arjona</h3>
+      <p class="universo-efecto">No compartís su dolor. Compartís el tuyo con él. Eso es distinto. Eso es lo que hace que sentirse solo en una canción de Arjona sea, paradójicamente, menos solo.</p>
+    </div>
+
+    <div class="universo-card reveal">
+      <span class="universo-label">El encuentro</span>
+      <h3 class="universo-nombre">Fernando Delgadillo · Alejandro Sanz</h3>
+      <p class="universo-efecto">Voces que encuentran al que escucha donde está. Sin juzgar. Sin prisa. Como debería ser toda conversación importante.</p>
     </div>
   </div>
 </section>
 
-<div class="onda-contenedor">
-  <svg class="onda-visual" viewBox="0 0 500 100">
-    <path class="path-animado" d="M0,50 Q125,100 250,50 T500,50" />
-  </svg>
-</div>
+<div class="sep"></div>
 
-<section class="protocolo">
-  <div class="wrap">
-    <div class="grid-capsulas">
-      <div class="capsula">
-        <h3>01. Aislamiento</h3>
-        <p>Deprivación sensorial selectiva mediante cancelación activa. El cerebro deja de filtrar amenazas externas para enfocarse en la reconstrucción interna.</p>
+<!-- CIENCIA -->
+<section class="ciencia">
+  <div class="ciencia-header reveal">
+    <h2 class="ciencia-titulo">
+      La música no es aleatoria.<br>
+      <em>Cada frecuencia hace algo específico.</em>
+    </h2>
+  </div>
+
+  <div class="etapas reveal">
+    <div class="etapa">
+      <div class="etapa-celda">
+        <span class="etapa-hz">Apertura · Alfa 8–12 Hz</span>
+        <div class="etapa-nombre">Silencio del afuera</div>
+        <div class="etapa-barra"></div>
       </div>
-      <div class="capsula">
-        <h3>02. Resonancia</h3>
-        <p>Uso de frecuencias para el arrastre cerebral (entrainment), movilizando el sistema nervioso desde el estrés hacia estados de flujo y asociación creativa.</p>
+      <div class="etapa-celda">
+        <div class="etapa-neuro"><strong>Serotonina.</strong> El exterior se apaga. El interior se abre. Audífonos puestos, mundo afuera. Este es el primer permiso — el más difícil para algunos.</div>
+        <div class="etapa-barra"></div>
       </div>
-      <div class="capsula">
-        <h3>03. Integración</h3>
-        <p>Fijación emocional de la experiencia mediante texturas sonoras que consolidan claridad mental duradera.</p>
+    </div>
+
+    <div class="etapa">
+      <div class="etapa-celda">
+        <span class="etapa-hz">Exploración · Alfa→Theta 4–8 Hz</span>
+        <div class="etapa-nombre">Las imágenes llegan</div>
+        <div class="etapa-barra"></div>
+      </div>
+      <div class="etapa-celda">
+        <div class="etapa-neuro"><strong>Estado Theta.</strong> Imagen, introspección, asociación libre. El cerebro empieza a conectar lo que normalmente mantiene separado. Aquí es donde aparece lo que no sabías que estabas cargando.</div>
+        <div class="etapa-barra"></div>
+      </div>
+    </div>
+
+    <div class="etapa">
+      <div class="etapa-celda">
+        <span class="etapa-hz">Fluir · Theta sostenido</span>
+        <div class="etapa-nombre">La música dirige</div>
+        <div class="etapa-barra"></div>
+      </div>
+      <div class="etapa-celda">
+        <div class="etapa-neuro"><strong>Dopamina.</strong> Placer, conexión emocional profunda. Sentís que la canción te conoce. Porque en este estado, así es. No es casualidad. Es bioquímica con intención.</div>
+        <div class="etapa-barra"></div>
+      </div>
+    </div>
+
+    <div class="etapa">
+      <div class="etapa-celda">
+        <span class="etapa-hz">Clímax · Beta ligera 13–30 Hz</span>
+        <div class="etapa-nombre">El cuerpo responde</div>
+        <div class="etapa-barra"></div>
+      </div>
+      <div class="etapa-celda">
+        <div class="etapa-neuro"><strong>Dopamina + oxitocina.</strong> El momento en que algo se mueve adentro y no podés explicar bien qué fue. Ese escalofrío. Esa presión en el pecho. Es real. Es neurológico. Es tuyo.</div>
+        <div class="etapa-barra"></div>
+      </div>
+    </div>
+
+    <div class="etapa">
+      <div class="etapa-celda">
+        <span class="etapa-hz">Cierre · Alfa retomado</span>
+        <div class="etapa-nombre">La integración</div>
+        <div class="etapa-barra"></div>
+      </div>
+      <div class="etapa-celda">
+        <div class="etapa-neuro"><strong>Tranquilidad con foco.</strong> Lo que se abrió no se cierra. Se integra. Salís distinto de como entraste — pero sabés exactamente dónde estás parado.</div>
+        <div class="etapa-barra"></div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="cierre">
-  <div class="wrap">
-    <p class="cierre-texto">
-      Un espacio reservado para personas y equipos que buscan claridad colectiva en entornos de alta complejidad.
-    </p>
-    <a href="mailto:clinicalogos@ronaldescobar.com" class="cta">
-      Iniciar Cirugía Sónica
-    </a>
+<div class="sep"></div>
+
+<!-- PARA QUIÉN -->
+<section class="para-quien">
+  <div class="para-quien-header reveal">
+    <h2 class="para-quien-titulo">¿Para quién es esto?</h2>
+    <p class="para-quien-sub">Para el que acepta que esta canción, esta voz, le hace llorar — y quiere saber por qué. Para el que quiera sentir lo que no se deja sentir.</p>
+  </div>
+
+  <div class="personas">
+    <div class="persona reveal">
+      <span class="persona-tipo">El que siente pero no entiende</span>
+      <p class="persona-descripcion">"Hay canciones que me destruyen y no sé por qué."</p>
+      <p class="persona-detalle">Esa reacción no es debilidad. Es información. Inner Sound te ayuda a leer lo que tu cuerpo ya sabe y tu mente todavía no ha procesado.</p>
+    </div>
+
+    <div class="persona reveal">
+      <span class="persona-tipo">El creativo bloqueado</span>
+      <p class="persona-descripcion">"Tengo algo adentro pero no sale."</p>
+      <p class="persona-detalle">El bloqueo creativo casi siempre es emocional, no técnico. La música abre lo que el miedo cierra. De ahí sale lo que tenés que crear.</p>
+    </div>
+
+    <div class="persona reveal">
+      <span class="persona-tipo">El que vive de afuera hacia adentro</span>
+      <p class="persona-descripcion">"Hace tiempo que no me escucho."</p>
+      <p class="persona-detalle">El ruido externo es el mejor anestésico que existe. Audífonos puestos, mundo afuera. Dos horas de vuelta hacia adentro.</p>
+    </div>
+
+    <div class="persona reveal">
+      <span class="persona-tipo">El paciente en proceso</span>
+      <p class="persona-descripcion">"Entiendo lo que me pasa, pero no lo siento."</p>
+      <p class="persona-detalle">Entre sesiones clínicas, la música puede llegar donde las palabras no alcanzan. Inner Sound complementa — nunca sustituye — el proceso terapéutico.</p>
+    </div>
   </div>
 </section>
 
+<!-- CTA -->
+<section class="cta-final">
+  <span class="cta-pretitulo reveal">Experiencia individual o grupal · Presencial y online</span>
+  <h2 class="cta-titulo reveal">
+    ¿Qué canción<br>
+    <em>todavía no te has</em><br>
+    permitido sentir?
+  </h2>
+  <p class="cta-sub reveal">Guatemala City · Integra Medical Center · ronaldescobar.com</p>
+  <div class="cta-botones reveal">
+    <a href="https://wa.me/50230607168?text=Hola,%20me%20interesa%20Inner%20Sound." class="btn-grad">Vivir la experiencia</a>
+    <a href="https://ronaldescobar.com" class="btn-ghost" style="color:var(--gris)">← Ronald Escobar</a>
+  </div>
+</section>
+
+<footer>
+  <span>© Ronald Escobar · Inner Sound</span>
+  <span class="footer-grad">Escucha hacia adentro · Crea hacia afuera</span>
+  <span>ronaldescobar.com</span>
+</footer>
+
+<script>
+  // Visualizador
+  const viz = document.getElementById('viz');
+  const h=[12,20,32,44,36,48,40,28,44,36,48,32,24,40,36,28,44,32,20,36,44,28,16,32,40,24,36,48,32,20];
+  const d=[0,0.1,0.2,0.15,0.3,0.05,0.25,0.1,0.2,0.35,0.05,0.15,0.3,0.1,0.2,0.05,0.25,0.15,0.3,0.1,0.2,0.35,0.05,0.25,0.1,0.3,0.15,0.05,0.2,0.25];
+  const dur=[0.8,1.1,0.9,1.3,0.7,1.0,1.2,0.85,0.95,1.1,0.75,1.05,0.9,1.2,0.8,1.0,0.85,1.15,0.7,1.0,0.9,0.8,1.1,0.75,1.05,0.9,0.85,1.2,0.95,0.8];
+  h.forEach((v,i)=>{ const b=document.createElement('div'); b.className='bar'; b.style.setProperty('--h',v+'px'); b.style.setProperty('--delay',d[i]+'s'); b.style.setProperty('--d',dur[i]+'s'); b.style.height='3px'; viz.appendChild(b); });
+
+  // Scroll reveal
+  const obs=new IntersectionObserver(entries=>{ entries.forEach((e,i)=>{ if(e.isIntersecting){ setTimeout(()=>e.target.classList.add('visible'),i*70); obs.unobserve(e.target); } }); },{threshold:0.1});
+  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
 </body>
 </html>
