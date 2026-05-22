@@ -1,298 +1,680 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>CreSer · Movimiento Sociocultural</title>
-<meta name="description" content="Pensar juntos es construir cultura. CreSer es un movimiento sociocultural orientado a formar conciencia colectiva en América Latina.">
+<title>CreSer — Ronald Escobar</title>
+<meta name="description" content="CreSer — Evolucionar como sociedad. Un movimiento sociocultural para Guatemala. Ronald Escobar.">
+<meta name="robots" content="index, follow">
+<meta name="author" content="Ronald Escobar">
+<meta property="og:title" content="CreSer — Evolucionar como sociedad">
+<meta property="og:description" content="Un llamado a la acción colectiva que respeta al individuo. Psicoeducación y consciencia para Guatemala.">
+<meta property="og:image" content="https://ronaldescobar.com/assets/CR1.png">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://ronaldescobar.com/creser.html">
-<meta property="og:title" content="CreSer · Movimiento Sociocultural">
-<meta property="og:description" content="Pensar juntos es construir cultura. CreSer es un movimiento sociocultural orientado a formar conciencia colectiva en América Latina.">
-<meta property="og:image" content="https://ronaldescobar.com/assets/creser-square.jpg">
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JH9BQK27RM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-JH9BQK27RM');
+</script>
+
 <link rel="icon" href="/assets/logo-image.png" type="image/png">
-
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 <style>
-
-/* ==================================================
-   CRESER
-   Movimiento Sociocultural Latinoamericano
-   Editorial minimalista estructural
-   ================================================== */
-
-:root{
-  --negro:#121212;
-  --blanco:#f4f1ea;
-  --gris:#6c6861;
-  --linea:#ddd8cf;
-  --naranja:#c65a1e;
-}
-
-/* ==============================
-   RESET
-============================== */
-
-*{
-  box-sizing:border-box;
-}
-
-html{
-  scroll-behavior:smooth;
-}
-
-body{
-  margin:0;
-  background:var(--blanco);
-  color:var(--negro);
-  font-family: Georgia, serif;
-  line-height:1.75;
-  -webkit-font-smoothing:antialiased;
-}
-
-/* ==============================
-   FIRMA VISUAL
-============================== */
-
-.lateral{
-  position:fixed;
-  left:0;
-  top:0;
-  width:6px;
-  height:100vh;
-  background:var(--naranja);
-  opacity:0.85;
-}
-
-/* ==============================
-   BOTÓN VOLVER
-============================== */
-
-.volver{
-  position:fixed;
-  top:40px;
-  right:60px;
-  font-size:15px;
-  text-decoration:none;
-  color:var(--gris);
-  letter-spacing:0.5px;
-  transition:all .3s ease;
-}
-
-.volver:hover{
-  color:var(--naranja);
-  border-bottom:1px solid var(--naranja);
-  padding-bottom:2px;
-}
-
-/* ==============================
-   CONTENEDOR
-============================== */
-
-.wrap{
-  max-width:980px;
-  margin:0 auto;
-  padding:140px 60px 140px 80px;
-}
-
-/* ==============================
-   HERO
-============================== */
-
-.hero{
-  margin-bottom:160px;
-}
-
-.hero h1{
-  font-size:64px;
-  font-weight:500;
-  letter-spacing:-1px;
-  margin:0 0 36px 0;
-}
-
-.hero p{
-  font-size:22px;
-  max-width:720px;
-  color:var(--gris);
-  margin:0 0 28px 0;
-}
-
-/* ==============================
-   DIVISOR
-============================== */
-
-.divisor{
-  height:1px;
-  background:var(--linea);
-  margin:150px 0;
-}
-
-/* ==============================
-   SECCIÓN BASE
-============================== */
-.section{
-  margin-bottom:100px;
-}
-
-.divisor{
-  margin:90px 0;
-}
-
-.cierre{
-  padding-top:80px;
-}
-/* ==============================
-   LISTAS
-============================== */
-
-.lista{
-  list-style:none;
-  padding:0;
-  margin:0;
-}
-
-.lista li{
-  padding:22px 0;
-  border-bottom:1px solid var(--linea);
-  font-size:18px;
-  color:var(--gris);
-}
-
-.lista li:last-child{
-  border-bottom:none;
-}
-
-/* ==============================
-   BLOQUE RED
-============================== */
-
-.red{
-  border-left:3px solid var(--naranja);
-  padding-left:40px;
-}
-
-.red p{
-  font-size:20px;
-  color:var(--negro);
-}
-
-/* ==============================
-   CIERRE
-============================== */
-
-.cierre{
-  padding-top:140px;
-  border-top:1px solid var(--linea);
-}
-
-.cierre p{
-  font-size:22px;
-  line-height:1.6; 
-  max-width:720px;
-  margin:0;
-}
-
-/* ==============================
-   RESPONSIVE
-============================== */
-
-@media (max-width:768px){
-
-  .lateral{
-    width:4px;
+  :root {
+    --negro: #08080a;
+    --arena: #e8dcc8;
+    --blanco: #f0ede6;
+    --azul: #1a3a5c;
+    --azul-medio: #2a5a8c;
+    --rojo: #c44a2a;
+    --amarillo: #d4a030;
+    --teal: #4ecdc4;
+    --verde: #2d6a4f;
+    --gris: #6b6860;
+    --fondo-medio: #0e0e0a;
+    --linea: rgba(232,220,200,0.12);
   }
 
-  .wrap{
-    padding:100px 30px 120px 40px;
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--negro);
+    color: var(--blanco);
+    font-family: 'Courier Prime', monospace;
+    overflow-x: hidden;
   }
 
-  .hero h1{
-    font-size:42px;
+  body::after {
+    content: ''; position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 100; opacity: 0.6;
   }
 
-  .hero p{
-    font-size:19px;
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    z-index: 50; padding: 22px 48px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  nav::before {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(to bottom, rgba(8,8,10,0.96) 0%, transparent 100%);
+    pointer-events: none;
+  }
+  .nav-back {
+    font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--gris); text-decoration: none; transition: color 0.3s;
+    display: flex; align-items: center; gap: 8px; position: relative;
+  }
+  .nav-back::before { content: '←'; font-size: 14px; }
+  .nav-back:hover { color: var(--amarillo); }
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 15px; font-weight: 300; letter-spacing: 0.15em;
+    color: var(--blanco); text-decoration: none; position: relative;
   }
 
-  .section p{
-    font-size:18px;
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 140px 48px 100px;
+    position: relative; overflow: hidden;
   }
 
-  .volver{
-    right:30px;
-    top:30px;
+  /* Textura de muro — fondo */
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 40%, rgba(26,58,92,0.12) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 50% at 15% 70%, rgba(196,74,42,0.08) 0%, transparent 50%),
+      radial-gradient(ellipse 50% 40% at 85% 20%, rgba(212,160,48,0.06) 0%, transparent 50%);
   }
 
-}
+  /* Logo CreSer como imagen de fondo sutil */
+  .hero-logo-bg {
+    position: absolute; right: -5%; top: 50%;
+    transform: translateY(-50%);
+    width: 55%; opacity: 0.06;
+    pointer-events: none;
+  }
 
+  .hero-content { position: relative; z-index: 2; max-width: 800px; }
+
+  .hero-eyebrow {
+    font-size: 9px; letter-spacing: 0.35em; text-transform: uppercase;
+    margin-bottom: 40px; display: inline-block;
+    background: linear-gradient(90deg, var(--rojo), var(--amarillo), var(--teal));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    opacity: 0; animation: fadeUp 0.8s ease 0.2s forwards;
+  }
+
+  .hero-h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(80px, 14vw, 180px);
+    font-weight: 300; line-height: 0.85; letter-spacing: -0.04em;
+    margin-bottom: 56px;
+  }
+  .hero-h1 .cre {
+    display: inline;
+    color: var(--blanco);
+    opacity: 0; animation: fadeUp 1s ease 0.3s forwards;
+  }
+  .hero-h1 .ser {
+    display: inline;
+    font-style: italic;
+    background: linear-gradient(120deg, var(--rojo), var(--amarillo), var(--teal));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    opacity: 0; animation: fadeUp 1s ease 0.5s forwards;
+  }
+
+  .hero-definicion {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(22px, 3vw, 38px);
+    font-weight: 300; line-height: 1.3;
+    color: rgba(240,237,230,0.9);
+    max-width: 640px;
+    opacity: 0; animation: fadeUp 1s ease 0.7s forwards;
+  }
+  .hero-definicion em {
+    font-style: italic;
+    background: linear-gradient(90deg, var(--amarillo), var(--teal));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+
+  .hero-sub {
+    margin-top: 32px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(16px, 1.8vw, 22px);
+    line-height: 1.9; font-style: italic; font-weight: 300;
+    color: rgba(240,237,230,0.82);
+    max-width: 560px;
+    border-left: 1px solid rgba(212,160,48,0.4);
+    padding-left: 20px;
+    opacity: 0; animation: fadeUp 1s ease 0.9s forwards;
+  }
+
+  /* SEP */
+  .sep {
+    width: 100%; height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(212,160,48,0.2) 30%, rgba(78,205,196,0.15) 70%, transparent);
+  }
+
+  /* LA HERIDA */
+  .la-herida {
+    padding: 140px 48px;
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 100px; align-items: center;
+    position: relative;
+  }
+
+  .herida-texto {}
+  .seccion-label {
+    font-size: 9px; letter-spacing: 0.35em; text-transform: uppercase;
+    color: var(--amarillo); margin-bottom: 28px; display: block;
+  }
+  .herida-titulo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(32px, 3.5vw, 52px);
+    font-weight: 300; line-height: 1.1; letter-spacing: -0.01em;
+    margin-bottom: 40px;
+  }
+  .herida-titulo em {
+    font-style: italic;
+    background: linear-gradient(90deg, var(--rojo), var(--amarillo));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .herida-parrafo {
+    font-size: 13px; line-height: 2.2;
+    color: rgba(240,237,230,0.78); margin-bottom: 24px;
+  }
+  .herida-parrafo strong { color: var(--blanco); font-weight: 700; }
+
+  .herida-cita {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px; font-style: italic; font-weight: 300; line-height: 1.65;
+    padding-left: 24px; margin: 40px 0;
+    color: rgba(240,237,230,0.9);
+    border-left: 2px solid transparent;
+    border-image: linear-gradient(to bottom, var(--rojo), var(--amarillo)) 1;
+  }
+
+  /* Visual — S de CreSer */
+  .herida-visual {
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+  }
+  .creser-logo-wrap {
+    position: relative; width: 100%; max-width: 380px;
+  }
+  .creser-logo-halo {
+    position: absolute; top:50%; left:50%;
+    transform: translate(-50%,-50%);
+    width: 110%; height: 110%; border-radius: 50%;
+    background: conic-gradient(
+      from 0deg,
+      rgba(196,74,42,0.15), rgba(212,160,48,0.12),
+      rgba(78,205,196,0.1), rgba(196,74,42,0.15)
+    );
+    filter: blur(50px);
+    animation: haloSpin 16s linear infinite;
+  }
+  @keyframes haloSpin {
+    from { transform: translate(-50%,-50%) rotate(0deg); }
+    to   { transform: translate(-50%,-50%) rotate(360deg); }
+  }
+  .creser-logo-img {
+    position: relative; z-index: 2;
+    width: 100%; height: auto;
+    animation: logoFloat 8s ease-in-out infinite;
+  }
+  @keyframes logoFloat {
+    0%,100% { transform: translateY(0); }
+    50%      { transform: translateY(-12px); }
+  }
+
+  /* LO QUE NO SOMOS */
+  .no-somos {
+    padding: 100px 48px;
+    background: var(--fondo-medio);
+    position: relative; overflow: hidden;
+  }
+  .no-somos::before {
+    content: 'CreSer';
+    position: absolute; bottom: -40px; right: -20px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 200px; font-weight: 300; font-style: italic;
+    color: rgba(240,237,230,0.02);
+    pointer-events: none; letter-spacing: -0.04em;
+  }
+
+  .no-somos-header { margin-bottom: 64px; position: relative; z-index: 1; }
+  .no-somos-titulo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(32px, 4vw, 56px);
+    font-weight: 300; line-height: 1.05; letter-spacing: -0.02em;
+  }
+  .no-somos-titulo em {
+    font-style: italic;
+    background: linear-gradient(90deg, var(--rojo), var(--amarillo), var(--teal));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+
+  .contrastes {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 2px; position: relative; z-index: 1;
+  }
+
+  .contraste {
+    padding: 48px 40px; position: relative; overflow: hidden;
+    transition: background 0.4s;
+  }
+  .contraste.no { background: #0a0a08; }
+  .contraste.si { background: #0d0d0a; }
+  .contraste:hover { background: #131310; }
+
+  .contraste-label {
+    font-size: 9px; letter-spacing: 0.3em; text-transform: uppercase;
+    margin-bottom: 24px; display: block;
+  }
+  .contraste.no .contraste-label { color: rgba(196,74,42,0.7); }
+  .contraste.si .contraste-label { color: var(--teal); }
+
+  .contraste-items { display: flex; flex-direction: column; gap: 16px; }
+  .contraste-item {
+    font-size: 13px; line-height: 1.7;
+    padding-left: 20px; position: relative;
+    color: rgba(240,237,230,0.7);
+  }
+  .contraste-item::before {
+    content: ''; position: absolute; left: 0; top: 8px;
+    width: 6px; height: 6px; border-radius: 50%;
+  }
+  .contraste.no .contraste-item::before { background: rgba(196,74,42,0.6); }
+  .contraste.si .contraste-item::before { background: var(--teal); }
+  .contraste-item strong { color: var(--blanco); font-weight: 700; }
+
+  /* DONDE SÓCRATES */
+  .socrates {
+    padding: 140px 48px;
+    position: relative; overflow: hidden;
+  }
+
+  .socrates-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 60% 70% at 50% 50%, rgba(26,58,92,0.15) 0%, transparent 65%),
+      radial-gradient(ellipse 30% 40% at 10% 80%, rgba(212,160,48,0.06) 0%, transparent 50%);
+  }
+
+  .socrates-content {
+    position: relative; z-index: 2;
+    max-width: 760px; margin: 0 auto; text-align: center;
+  }
+
+  .socrates-pretitulo {
+    font-size: 9px; letter-spacing: 0.35em; text-transform: uppercase;
+    color: var(--amarillo); margin-bottom: 40px; display: block;
+  }
+
+  .socrates-titulo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(48px, 7vw, 96px);
+    font-weight: 300; line-height: 0.9; letter-spacing: -0.03em;
+    margin-bottom: 40px;
+  }
+  .socrates-titulo em {
+    display: block; font-style: italic;
+    background: linear-gradient(120deg, var(--azul-medio), var(--teal), var(--amarillo));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+
+  .socrates-descripcion {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(18px, 2.2vw, 26px);
+    font-weight: 300; line-height: 1.7;
+    color: rgba(240,237,230,0.75);
+    margin-bottom: 48px;
+  }
+
+  .socrates-descripcion strong { color: var(--blanco); font-weight: 400; }
+
+  .socrates-tag {
+    display: inline-block;
+    font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase;
+    border: 1px solid rgba(212,160,48,0.3); color: var(--amarillo);
+    padding: 8px 20px;
+  }
+
+  /* LA INVITACIÓN */
+  .invitacion {
+    padding: 80px 48px 120px;
+    position: relative;
+  }
+
+  .invitacion-header { margin-bottom: 64px; }
+  .invitacion-titulo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(32px, 4vw, 56px);
+    font-weight: 300; line-height: 1.05; letter-spacing: -0.02em;
+  }
+
+  .preguntas {
+    display: grid; grid-template-columns: repeat(3,1fr); gap: 2px;
+  }
+
+  .pregunta {
+    background: var(--fondo-medio); padding: 48px 36px;
+    position: relative; overflow: hidden; transition: background 0.4s;
+    display: flex; flex-direction: column; gap: 20px;
+    min-height: 280px;
+  }
+  .pregunta::after {
+    content: ''; position: absolute; bottom:0; left:0; right:0; height:2px;
+    transform: scaleX(0); transform-origin: left; transition: transform 0.45s ease;
+  }
+  .pregunta:hover { background: #131310; }
+  .pregunta:hover::after { transform: scaleX(1); }
+  .pregunta:nth-child(1)::after { background: linear-gradient(90deg, var(--rojo), var(--amarillo)); }
+  .pregunta:nth-child(2)::after { background: linear-gradient(90deg, var(--amarillo), var(--teal)); }
+  .pregunta:nth-child(3)::after { background: linear-gradient(90deg, var(--teal), var(--azul-medio)); }
+  .pregunta:nth-child(4)::after { background: linear-gradient(90deg, var(--azul-medio), var(--rojo)); }
+  .pregunta:nth-child(5)::after { background: linear-gradient(90deg, var(--rojo), var(--amarillo)); }
+  .pregunta:nth-child(6)::after { background: linear-gradient(90deg, var(--amarillo), var(--teal)); }
+
+  .pregunta-num { font-size: 9px; letter-spacing: 0.2em; color: var(--amarillo); }
+  .pregunta-texto {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px; font-weight: 300; font-style: italic; line-height: 1.4; flex: 1;
+    color: rgba(240,237,230,0.9);
+  }
+  .pregunta-contexto { font-size: 11px; line-height: 1.8; color: var(--gris); }
+
+  /* CTA */
+  .cta-final {
+    padding: 120px 48px; text-align: center;
+    background: var(--fondo-medio);
+    position: relative; overflow: hidden;
+  }
+  .cta-final::before {
+    content: ''; position: absolute; top:50%; left:50%;
+    transform: translate(-50%,-50%);
+    width: 700px; height: 500px;
+    background: radial-gradient(ellipse, rgba(212,160,48,0.07) 0%, rgba(196,74,42,0.06) 40%, transparent 75%);
+    pointer-events: none;
+  }
+
+  .cta-pretitulo {
+    font-size: 9px; letter-spacing: 0.35em; text-transform: uppercase;
+    color: var(--amarillo); margin-bottom: 32px; display: block; position: relative;
+  }
+  .cta-titulo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 6vw, 72px);
+    font-weight: 300; line-height: 1.05; margin-bottom: 24px; position: relative;
+  }
+  .cta-titulo em {
+    font-style: italic;
+    background: linear-gradient(120deg, var(--rojo), var(--amarillo), var(--teal));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .cta-sub { font-size: 13px; color: rgba(240,237,230,0.6); margin-bottom: 48px; line-height: 1.8; position: relative; }
+  .cta-botones { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; position: relative; }
+
+  .btn-grad {
+    font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
+    padding: 14px 36px; text-decoration: none; font-weight: 700;
+    background: linear-gradient(120deg, var(--rojo), var(--amarillo), var(--teal));
+    background-size: 200% 100%; color: var(--negro);
+    transition: background-position 0.5s ease, transform 0.2s;
+  }
+  .btn-grad:hover { background-position: 100% 0; transform: translateY(-2px); }
+  .btn-ghost {
+    font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--gris); text-decoration: none; transition: color 0.3s;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .btn-ghost:hover { color: var(--amarillo); }
+
+  footer {
+    padding: 28px 48px; border-top: 1px solid var(--linea);
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 10px; color: var(--gris); letter-spacing: 0.08em;
+  }
+  .footer-grad {
+    background: linear-gradient(90deg, var(--rojo), var(--amarillo), var(--teal));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(28px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .reveal {
+    opacity: 0; transform: translateY(28px);
+    transition: opacity 0.85s ease, transform 0.85s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 840px) {
+    nav { padding: 18px 24px; }
+    .hero { padding: 100px 24px 60px; }
+    .la-herida { grid-template-columns: 1fr; padding: 80px 24px; gap: 48px; }
+    .herida-visual { display: none; }
+    .contrastes { grid-template-columns: 1fr; }
+    .preguntas { grid-template-columns: 1fr; }
+    .no-somos, .socrates, .invitacion, .cta-final { padding: 80px 24px; }
+    footer { padding: 24px; flex-direction: column; gap: 10px; text-align: center; }
+  }
 </style>
 </head>
-
 <body>
 
-<div class="lateral"></div>
+<nav>
+  <a href="https://ronaldescobar.com" class="nav-back">Ronald Escobar</a>
+  <a href="https://ronaldescobar.com" class="nav-logo">Ronald Escobar</a>
+</nav>
 
-<a href="index.html" class="volver">Volver al inicio</a>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <img src="https://ronaldescobar.com/assets/CR1.png" alt="" class="hero-logo-bg" onerror="this.style.display='none'">
 
-<div class="wrap">
-
-  <section class="hero">
-    <h1>Pensar juntos es construir cultura.</h1>
-    <p>
-      CreSer es un movimiento sociocultural que propone pasar de la reacción al pensamiento,
-      del impulso a la responsabilidad y del individuo aislado a la conciencia colectiva.
+  <div class="hero-content">
+    <span class="hero-eyebrow">Movimiento sociocultural · Guatemala</span>
+    <h1 class="hero-h1">
+      <span class="cre">Cre</span><span class="ser">Ser</span>
+    </h1>
+    <p class="hero-definicion">
+      Evolucionar como <em>sociedad.</em>
     </p>
-    <p>
-      Basado en fundamentos filosóficos y científicos, busca formar estructuras de pensamiento
-      capaces de sostener transformación cultural a largo plazo en América Latina.
+    <p class="hero-sub">
+      "Soy guatemalteco, de padres guatemaltecos<br>
+      y educado en Guatemala.<br>
+      Por tanto soy hijo del alcoholismo,<br>
+      del machismo y de la violencia.<br><br>
+      Eso no es una queja.<br>
+      Es el punto de partida."
     </p>
-  </section>
-<section class="section">
-  <h2>Diagnóstico de época</h2>
-  <p>
-    Vivimos en una cultura saturada de información,
-    pero cada vez más incapaz de sostener pensamiento profundo.
+  </div>
+</section>
+
+<div class="sep"></div>
+
+<!-- LA HERIDA -->
+<section class="la-herida">
+  <div class="herida-texto">
+    <span class="seccion-label reveal">El diagnóstico</span>
+    <h2 class="herida-titulo reveal">
+      Somos tan amables<br>
+      con el turista.<br>
+      ¿Por qué no lo somos<br>
+      <em>con nosotros mismos?</em>
+    </h2>
+    <p class="herida-parrafo reveal">
+      Hay una herida que cargamos sin nombrarla. Una que aprendimos a normalizar. La que hace que admiremos al extranjero y desconfiemos del vecino. La que hace que los guatemaltecos sean considerados los mejores trabajadores fuera — <strong>porque aprendieron que su valor solo existe en función de lo que producen para otro.</strong>
+    </p>
+
+    <blockquote class="herida-cita reveal">
+      "CreSer es un intento por que dejemos de normalizar lo que es Guatemala hoy."
+    </blockquote>
+
+    <p class="herida-parrafo reveal">
+      No es un llamado al nacionalismo. Es exactamente lo contrario — <strong>es un llamado a vernos con honestidad.</strong> A entender de dónde venimos, qué nos hicieron creer, y qué podríamos ser si decidiéramos pensar en lugar de obedecer.
+    </p>
+  </div>
+
+  <div class="herida-visual reveal">
+    <div class="creser-logo-wrap">
+      <div class="creser-logo-halo"></div>
+      <img
+        src="https://ronaldescobar.com/assets/CR1.png"
+        alt="CreSer"
+        class="creser-logo-img"
+        onerror="this.style.display='none'">
+    </div>
+  </div>
+</section>
+
+<div class="sep"></div>
+
+<!-- LO QUE NO SOMOS / LO QUE SOMOS -->
+<section class="no-somos">
+  <div class="no-somos-header reveal">
+    <h2 class="no-somos-titulo">
+      CreSer no explica.<br>
+      <em>Invita a pensar.</em>
+    </h2>
+  </div>
+
+  <div class="contrastes">
+    <div class="contraste no reveal">
+      <span class="contraste-label">No es</span>
+      <div class="contraste-items">
+        <div class="contraste-item">Desarrollo personal que termina en el individuo</div>
+        <div class="contraste-item">Política partidaria ni bandera de ningún partido</div>
+        <div class="contraste-item">Nacionalismo ni nostalgia de un pasado que no existió</div>
+        <div class="contraste-item">Un grupo donde todos llegan a relamerse las heridas</div>
+        <div class="contraste-item"><strong>Autoayuda con otro nombre</strong></div>
+      </div>
+    </div>
+
+    <div class="contraste si reveal">
+      <span class="contraste-label">Es</span>
+      <div class="contraste-items">
+        <div class="contraste-item">Crecimiento individual <strong>para una mejora común</strong></div>
+        <div class="contraste-item">Consciencia ciudadana sin ingenuidad</div>
+        <div class="contraste-item">Conexión con el pedazo de tierra en que naciste</div>
+        <div class="contraste-item">Un llamado a la acción colectiva que respeta al individuo</div>
+        <div class="contraste-item"><strong>Filosofía que mueve. No que adorna.</strong></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="sep"></div>
+
+<!-- DONDE SÓCRATES -->
+<section class="socrates">
+  <div class="socrates-bg"></div>
+  <div class="socrates-content">
+    <span class="socrates-pretitulo reveal">La visión · Lo que viene</span>
+    <h2 class="socrates-titulo reveal">
+      Donde
+      <em>Sócrates</em>
+    </h2>
+    <p class="socrates-descripcion reveal">
+      Un lugar donde la gente se reúna a pensar.<br>
+      A escuchar música con sentido.<br>
+      A mover el país hacia otro lugar.<br><br>
+      <strong>No un bar. Un espacio de consciencia con barra.</strong><br>
+      Donde la conversación sea el entretenimiento.<br>
+      Donde llegar a una mesa sea llegar a una idea.
+    </p>
+    <span class="socrates-tag reveal">Próximamente · Ciudad de Guatemala</span>
+  </div>
+</section>
+
+<div class="sep"></div>
+
+<!-- LA INVITACIÓN — preguntas para pensar -->
+<section class="invitacion">
+  <div class="invitacion-header reveal">
+    <h2 class="invitacion-titulo">Preguntas para<br>no agachar la cabeza.</h2>
+  </div>
+
+  <div class="preguntas">
+    <div class="pregunta reveal">
+      <span class="pregunta-num">01</span>
+      <p class="pregunta-texto">"¿Por qué somos amables con el turista y crueles con el vecino?"</p>
+      <p class="pregunta-contexto">La herida que aprendimos a llamar cultura.</p>
+    </div>
+
+    <div class="pregunta reveal">
+      <span class="pregunta-num">02</span>
+      <p class="pregunta-texto">"¿Quién se beneficia de que no pensemos?"</p>
+      <p class="pregunta-contexto">La incompetencia no siempre es accidental.</p>
+    </div>
+
+    <div class="pregunta reveal">
+      <span class="pregunta-num">03</span>
+      <p class="pregunta-texto">"¿Por qué aspiramos a ser lo que no somos en lugar de ser mejor lo que sí somos?"</p>
+      <p class="pregunta-contexto">La identidad robada y la aspiración prestada.</p>
+    </div>
+
+    <div class="pregunta reveal">
+      <span class="pregunta-num">04</span>
+      <p class="pregunta-texto">"¿Qué pasaría si leyéramos más de lo que consumimos?"</p>
+      <p class="pregunta-contexto">Leer es un acto político en un país que prefiere que no lo hagas.</p>
+    </div>
+
+    <div class="pregunta reveal">
+      <span class="pregunta-num">05</span>
+      <p class="pregunta-texto">"¿Cuándo fue la última vez que viste a alguien diferente a vos y te reconociste en él?"</p>
+      <p class="pregunta-contexto">Todos somos todos. Eso no es poesía. Es diagnóstico.</p>
+    </div>
+
+    <div class="pregunta reveal">
+      <span class="pregunta-num">06</span>
+      <p class="pregunta-texto">"¿Qué merecemos que todavía no nos hemos atrevido a exigir?"</p>
+      <p class="pregunta-contexto">La pregunta que CreSer existe para que no dejemos de hacernos.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-final">
+  <span class="cta-pretitulo reveal">Sumarse al movimiento</span>
+  <h2 class="cta-titulo reveal">
+    Si te incomoda<br>
+    <em>alguna de estas preguntas,</em><br>
+    bienvenido.
+  </h2>
+  <p class="cta-sub reveal">
+    CreSer no necesita que estés de acuerdo con todo.<br>
+    Solo necesita que no dejes de pensar.
   </p>
-  <p>
-    La velocidad reemplazó a la reflexión.
-    La reacción sustituyó al criterio.
-    Y la opinión constante desplazó al diálogo.
-  </p>
-  <p>
-    CreSer nace como respuesta a esa fragilidad estructural.
-  </p>
-</section> 
-   <div class="divisor"></div>
+  <div class="cta-botones reveal">
+    <a href="https://wa.me/50230607168?text=Hola,%20quiero%20saber%20más%20sobre%20CreSer." class="btn-grad">Conectar</a>
+    <a href="https://ronaldescobar.com" class="btn-ghost" style="color:var(--gris)">← Ronald Escobar</a>
+  </div>
+</section>
 
-  <section class="section">
-    <h2>Implementación</h2>
-    <p>
-      Modelo replicable de tres meses orientado a diagnóstico cultural,
-      formación estructural y consolidación de núcleos autónomos.
-    </p>
-  </section>
+<footer>
+  <span>© Ronald Escobar · CreSer</span>
+  <span class="footer-grad">Evolucionar como sociedad</span>
+  <span>ronaldescobar.com</span>
+</footer>
 
-  <div class="divisor"></div>
-
-  <section class="section red">
-    <h2>Red Latinoamericana</h2>
-    <p>
-      CreSer se expande cuando comunidades adoptan el marco,
-      lo implementan y sostienen procesos de pensamiento colectivo.
-    </p>
-  </section>
-
-  <div class="divisor"></div>
-
-  <section class="cierre">
-    <p>
-     CreSer no busca seguidores.
-      Busca comunidades capaces de pensar su tiempo
-      y diseñar futuro con criterio.    
-    </p>
-  </section>
-
-</div>
-
+<script>
+  const obs=new IntersectionObserver(entries=>{ entries.forEach((e,i)=>{ if(e.isIntersecting){ setTimeout(()=>e.target.classList.add('visible'),i*70); obs.unobserve(e.target); } }); },{threshold:0.1});
+  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
 </body>
 </html>
