@@ -64,11 +64,11 @@
     pointer-events: none;
   }
   .nav-back {
-    font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
+    font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
     color: var(--gris); text-decoration: none; transition: color 0.3s;
     display: flex; align-items: center; gap: 8px; position: relative;
   }
-  .nav-back::before { content: '←'; font-size: 14px; }
+  .nav-back::before { content: '←'; font-size: 16px; }
   .nav-back:hover { color: var(--purpura-suave); }
   .nav-logo {
     font-family: 'Cormorant Garamond', serif;
@@ -103,7 +103,7 @@
   .hero-content { position: relative; z-index: 2; max-width: 900px; }
 
   .hero-eyebrow {
-    font-size: 9px; letter-spacing: 0.35em; text-transform: uppercase;
+    font-size: 11px; letter-spacing: 0.35em; text-transform: uppercase;
     color: var(--purpura-suave); margin-bottom: 40px; display: block;
     opacity: 0; animation: fadeUp 0.8s ease 0.2s forwards;
   }
@@ -169,7 +169,7 @@
 
   .origen-texto {}
   .seccion-label {
-    font-size: 9px; letter-spacing: 0.35em; text-transform: uppercase;
+    font-size: 11px; letter-spacing: 0.35em; text-transform: uppercase;
     color: var(--purpura-suave); margin-bottom: 28px; display: block;
   }
   .origen-titulo {
@@ -183,7 +183,7 @@
     -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
   }
   .origen-parrafo {
-    font-size: 13px; line-height: 2.2;
+    font-size: 15px; line-height: 2.2;
     color: rgba(240,237,230,0.65); margin-bottom: 24px;
   }
   .origen-parrafo strong { color: var(--blanco); font-weight: 700; }
@@ -278,7 +278,7 @@
   .cancion-card:hover::before { transform: scaleX(1); }
 
   .cancion-artista {
-    font-size: 9px; letter-spacing: 0.3em; text-transform: uppercase;
+    font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase;
     color: var(--purpura-suave); margin-bottom: 16px; display: block;
   }
   .cancion-titulo {
@@ -288,7 +288,7 @@
     margin-bottom: 32px;
   }
   .cancion-lectura {
-    font-size: 13px; line-height: 2.1;
+    font-size: 15px; line-height: 2.1;
     color: rgba(240,237,230,0.62);
   }
   .cancion-lectura strong { color: var(--blanco); font-weight: 700; }
@@ -305,7 +305,7 @@
     font-size: clamp(32px, 4vw, 54px);
     font-weight: 300; line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 16px;
   }
-  .playlist-sub { font-size: 12px; color: var(--gris); line-height: 1.8; font-style: italic; }
+  .playlist-sub { font-size: 14px; color: var(--gris); line-height: 1.8; font-style: italic; }
 
   /* Universos de artistas */
   .universos { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; }
@@ -324,13 +324,13 @@
   .universo-card:hover::after { transform: scaleX(1); }
 
   .universo-label {
-    font-size: 9px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--purpura-suave);
+    font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--purpura-suave);
   }
   .universo-nombre {
     font-family: 'Cormorant Garamond', serif;
     font-size: 20px; font-weight: 400; line-height: 1.2; flex: 1;
   }
-  .universo-efecto { font-size: 11px; line-height: 1.85; color: var(--gris); font-style: italic; }
+  .universo-efecto { font-size: 13px; line-height: 1.85; color: var(--gris); font-style: italic; }
 
   /* CIENCIA */
   .ciencia {
@@ -369,8 +369,8 @@
     font-family: 'Cormorant Garamond', serif;
     font-size: 20px; font-weight: 300; font-style: italic;
   }
-  .etapa-hz { font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--purpura-suave); }
-  .etapa-neuro { font-size: 12px; line-height: 1.8; color: rgba(240,237,230,0.65); }
+  .etapa-hz { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--purpura-suave); }
+  .etapa-neuro { font-size: 14px; line-height: 1.8; color: rgba(240,237,230,0.65); }
   .etapa-neuro strong { color: var(--blanco); font-weight: 700; }
   .etapa-barra { position: absolute; bottom:0; left:0; height:1px; background: linear-gradient(90deg, var(--purpura), var(--teal)); }
   .etapa:nth-child(1) .etapa-barra { width:20%; }
@@ -387,7 +387,7 @@
     font-size: clamp(32px, 4vw, 52px);
     font-weight: 300; line-height: 1.1; letter-spacing:-0.01em; margin-bottom: 16px;
   }
-  .para-quien-sub { font-size: 13px; color: var(--gris); line-height: 1.8; font-style: italic; }
+  .para-quien-sub { font-size: 15px; color: var(--gris); line-height: 1.8; font-style: italic; }
 
   .personas { display: grid; grid-template-columns: repeat(2,1fr); gap: 2px; }
   .persona {
@@ -402,7 +402,7 @@
   .persona:hover { background: #111118; }
   .persona:hover::after { transform: scaleY(1); }
   .persona-tipo {
-    font-size: 9px; letter-spacing: 0.25em; text-transform: uppercase;
+    font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase;
     color: var(--purpura-suave); margin-bottom: 16px; display: block;
   }
   .persona-descripcion {
@@ -410,7 +410,7 @@
     font-size: clamp(18px, 2vw, 24px);
     font-weight: 300; line-height: 1.4; margin-bottom: 20px; font-style: italic;
   }
-  .persona-detalle { font-size: 12px; line-height: 1.9; color: var(--gris); }
+  .persona-detalle { font-size: 14px; line-height: 1.9; color: var(--gris); }
 
   /* CTA */
   .cta-final {
@@ -430,7 +430,7 @@
   }
 
   .cta-pretitulo {
-    font-size: 9px; letter-spacing: 0.35em; text-transform: uppercase;
+    font-size: 11px; letter-spacing: 0.35em; text-transform: uppercase;
     color: var(--purpura-suave); margin-bottom: 32px; display: block; position: relative;
   }
   .cta-titulo {
@@ -444,11 +444,11 @@
     -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
     font-style: normal;
   }
-  .cta-sub { font-size: 13px; color: var(--gris); margin-bottom: 48px; letter-spacing: 0.08em; position: relative; }
+  .cta-sub { font-size: 15px; color: var(--gris); margin-bottom: 48px; letter-spacing: 0.08em; position: relative; }
   .cta-botones { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; position: relative; }
 
   .btn-grad {
-    font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
+    font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
     padding: 14px 36px; text-decoration: none; font-weight: 700;
     background: linear-gradient(120deg, var(--purpura), var(--purpura-suave), var(--teal));
     background-size: 200% 100%; color: var(--negro);
@@ -456,7 +456,7 @@
   }
   .btn-grad:hover { background-position: 100% 0; transform: translateY(-2px); }
   .btn-ghost {
-    font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
+    font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
     color: var(--gris); text-decoration: none; transition: color 0.3s;
     display: flex; align-items: center; gap: 8px;
   }
@@ -465,7 +465,7 @@
   footer {
     padding: 28px 48px; border-top: 1px solid var(--linea);
     display: flex; justify-content: space-between; align-items: center;
-    font-size: 10px; color: var(--gris); letter-spacing: 0.08em; position: relative; z-index: 1;
+    font-size: 11px; color: var(--gris); letter-spacing: 0.08em; position: relative; z-index: 1;
   }
   .footer-grad {
     background: linear-gradient(90deg, var(--purpura-suave), var(--teal));
