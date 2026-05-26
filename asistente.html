@@ -15,7 +15,8 @@
     --teal: #4ecdc4;
     --rojo: #c44a2a;
     --gris: #6b6860;
-    --fondo-medio: #0e0e10;
+    --fondo-medio: #121216;
+    --fondo-bubble: #181820;
     --linea: rgba(78,205,196,0.15);
   }
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -29,7 +30,7 @@
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
     pointer-events: none; z-index: 100; opacity: 0.5;
   }
-  ::placeholder { color: var(--gris); font-family: 'Courier Prime', monospace; }
+  ::placeholder { color: var(--gris); font-family: 'Courier Prime', monospace; font-size: 15px; }
   ::-webkit-scrollbar { width: 3px; }
   ::-webkit-scrollbar-track { background: transparent; }
   ::-webkit-scrollbar-thumb { background: rgba(78,205,196,0.12); border-radius: 2px; }
@@ -37,11 +38,13 @@
 
   @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
   @keyframes msgIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
-  @keyframes brainPulse { 0%,100% { opacity: 0.15; transform: scale(1); } 50% { opacity: 0.35; transform: scale(1.05); } }
-  @keyframes brainThink { 0%,100% { opacity: 0.6; filter: drop-shadow(0 0 12px rgba(78,205,196,0.3)); } 50% { opacity: 1; filter: drop-shadow(0 0 24px rgba(78,205,196,0.6)); } }
-  @keyframes dotPulse { 0%,100% { opacity: 0.2; } 50% { opacity: 0.8; } }
+  @keyframes brainThink {
+    0%, 100% { opacity: 0.7; filter: drop-shadow(0 0 16px rgba(78,205,196,0.4)); transform: scale(1); }
+    50% { opacity: 1; filter: drop-shadow(0 0 32px rgba(78,205,196,0.7)); transform: scale(1.08); }
+  }
+  @keyframes dotPulse { 0%,100% { opacity: 0.2; } 50% { opacity: 0.9; } }
 
-  /* NAV */
+  /* NAV — only on landing */
   .lp-nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 50;
     padding: 22px 48px; display: flex; justify-content: space-between; align-items: center;
@@ -62,108 +65,155 @@
   }
   #landing.entered { opacity: 1; transform: translateY(0); }
   .landing-glow { position: absolute; top: 30%; left: 50%; transform: translate(-50%,-50%); width: 600px; height: 400px; background: radial-gradient(ellipse, rgba(78,205,196,0.06), transparent 70%); pointer-events: none; }
-  .landing-label { font-size: 13px; letter-spacing: 0.35em; text-transform: uppercase; color: var(--teal); margin-bottom: 24px; animation: fadeUp 0.8s ease 0.2s both; }
-  .landing-logo { width: 180px; margin-bottom: 40px; filter: drop-shadow(0 0 30px rgba(78,205,196,0.08)); animation: fadeUp 1s ease 0.4s both; }
-  .landing-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(28px, 4vw, 48px); font-weight: 300; line-height: 1.15; margin-bottom: 24px; max-width: 600px; animation: fadeUp 1s ease 0.6s both; }
+  .landing-label { font-size: 14px; letter-spacing: 0.35em; text-transform: uppercase; color: var(--teal); margin-bottom: 24px; animation: fadeUp 0.8s ease 0.2s both; }
+  .landing-logo { width: 200px; margin-bottom: 40px; filter: drop-shadow(0 0 30px rgba(78,205,196,0.08)); animation: fadeUp 1s ease 0.4s both; }
+  .landing-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(30px, 4.5vw, 52px); font-weight: 300; line-height: 1.15; margin-bottom: 28px; max-width: 620px; animation: fadeUp 1s ease 0.6s both; }
   .landing-title em { font-style: italic; background: linear-gradient(100deg, #4ecdc4, #d4b84a, #c44a2a); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-  .landing-desc { font-size: 16px; line-height: 2; color: rgba(240,237,230,0.85); max-width: 520px; margin-bottom: 12px; animation: fadeUp 1s ease 0.8s both; }
-  .landing-note { font-size: 14px; color: rgba(240,237,230,0.55); font-style: italic; margin-bottom: 48px; animation: fadeUp 1s ease 0.9s both; }
-  .login-form { width: 100%; max-width: 360px; animation: fadeUp 1s ease 1s both; }
-  .login-form label { display: block; font-size: 13px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gris); margin-bottom: 12px; text-align: left; }
+  .landing-desc { font-size: 17px; line-height: 2; color: rgba(240,237,230,0.85); max-width: 540px; margin-bottom: 14px; animation: fadeUp 1s ease 0.8s both; }
+  .landing-note { font-size: 15px; color: rgba(240,237,230,0.55); font-style: italic; margin-bottom: 48px; animation: fadeUp 1s ease 0.9s both; }
+
+  .login-form { width: 100%; max-width: 380px; animation: fadeUp 1s ease 1s both; }
+  .privacy-box {
+    margin-bottom: 32px; padding: 22px; border: 1px solid rgba(78,205,196,0.15);
+    border-radius: 8px; text-align: left; background: rgba(78,205,196,0.03);
+  }
+  .privacy-box .privacy-title { font-size: 14px; color: var(--teal); margin-bottom: 14px; font-weight: 700; }
+  .privacy-box p { font-size: 14px; color: rgba(240,237,230,0.6); line-height: 1.9; margin-bottom: 6px; }
+  .privacy-box p:last-child { margin-bottom: 0; }
+  .login-form label { display: block; font-size: 14px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gris); margin-bottom: 12px; text-align: left; }
   .login-form input {
-    width: 100%; padding: 14px 0; background: transparent; border: none;
+    width: 100%; padding: 16px 0; background: transparent; border: none;
     border-bottom: 1px solid rgba(78,205,196,0.3); color: var(--blanco);
-    font-size: 16px; font-family: 'Courier Prime', monospace; letter-spacing: 0.15em;
+    font-size: 18px; font-family: 'Courier Prime', monospace; letter-spacing: 0.15em;
     outline: none; transition: border-color 0.3s; caret-color: var(--teal);
   }
   .login-form input:focus { border-bottom-color: var(--teal); }
-  .login-hint { font-size: 13px; color: rgba(240,237,230,0.4); margin-top: 10px; font-style: italic; text-align: left; }
-  .login-error { font-size: 14px; color: var(--rojo); margin-top: 12px; font-style: italic; display: none; }
+  .login-hint { font-size: 14px; color: rgba(240,237,230,0.45); margin-top: 10px; font-style: italic; text-align: left; }
+  .login-error { font-size: 15px; color: var(--rojo); margin-top: 12px; font-style: italic; display: none; }
   .btn-enter {
-    width: 100%; margin-top: 28px; padding: 14px 32px;
-    font-size: 13px; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 700;
+    width: 100%; margin-top: 28px; padding: 16px 32px;
+    font-size: 14px; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 700;
     font-family: 'Courier Prime', monospace;
     background: linear-gradient(100deg, #4ecdc4, #8ec44e, #d4b84a, #c4763a, #c44a2a);
     background-size: 200% 100%; color: var(--negro); border: none; cursor: pointer;
     transition: background-position 0.5s ease, transform 0.2s, opacity 0.3s;
+    border-radius: 4px;
   }
   .btn-enter:hover { background-position: 100% 0; transform: translateY(-2px); }
   .btn-enter:disabled { opacity: 0.6; cursor: wait; }
-  .landing-footer { margin-top: 64px; font-size: 13px; color: var(--gris); line-height: 1.8; max-width: 340px; animation: fadeUp 1s ease 1.2s both; }
+  .landing-footer { margin-top: 64px; font-size: 14px; color: var(--gris); line-height: 1.8; max-width: 360px; animation: fadeUp 1s ease 1.2s both; }
 
-  /* CHAT */
+  /* CHAT SCREEN */
   #chat { display: none; height: 100vh; flex-direction: column; }
   #chat.active { display: flex; }
 
+  /* Chat header — NOT fixed, just top of flex */
   .chat-header {
-    padding: 14px 24px; display: flex; align-items: center; gap: 14;
-    border-bottom: 1px solid var(--linea); position: relative; z-index: 2;
-    background: linear-gradient(to bottom, rgba(8,8,10,0.98), rgba(8,8,10,0.92));
+    padding: 18px 24px; display: flex; align-items: center; gap: 16px;
+    border-bottom: 1px solid var(--linea);
+    background: var(--fondo-medio); flex-shrink: 0;
   }
-  .chat-header .brain-icon { width: 40px; height: 40px; object-fit: contain; filter: drop-shadow(0 0 8px rgba(78,205,196,0.15)); }
-  .chat-header .info { flex: 1; margin-left: 14px; }
-  .chat-header .info .name { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 400; letter-spacing: 0.08em; }
-  .chat-header .info .sub { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gris); margin-top: 2px; }
-  .chat-header .status { display: flex; align-items: center; gap: 6px; }
-  .chat-header .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--teal); box-shadow: 0 0 8px rgba(78,205,196,0.5); }
+  .chat-header .brain-icon {
+    width: 44px; height: 44px; object-fit: contain;
+    filter: drop-shadow(0 0 12px rgba(78,205,196,0.2));
+  }
+  .chat-header .info { flex: 1; }
+  .chat-header .info .name {
+    font-family: 'Cormorant Garamond', serif; font-size: 20px;
+    font-weight: 400; letter-spacing: 0.08em;
+  }
+  .chat-header .info .sub {
+    font-size: 12px; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--gris); margin-top: 3px;
+  }
+  .chat-header .nav-links { display: flex; gap: 20px; align-items: center; }
+  .chat-header .nav-links a {
+    font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--gris); text-decoration: none; transition: color 0.3s;
+  }
+  .chat-header .nav-links a:hover { color: var(--teal); }
+  .chat-header .status { display: flex; align-items: center; gap: 6px; margin-left: 16px; }
+  .chat-header .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--teal); box-shadow: 0 0 10px rgba(78,205,196,0.6); }
   .chat-header .status span { font-size: 11px; color: var(--gris); letter-spacing: 0.1em; }
 
+  /* Messages area */
   .chat-messages {
-    flex: 1; overflow-y: auto; padding: 24px 20px 8px;
+    flex: 1; overflow-y: auto; padding: 28px 24px 8px;
     position: relative; z-index: 1;
   }
-  .chat-disclaimer { text-align: center; padding: 12px 20px; margin-bottom: 28px; border-bottom: 1px solid rgba(78,205,196,0.08); }
+  .chat-disclaimer {
+    text-align: center; padding: 16px 24px; margin-bottom: 32px;
+    border: 1px solid rgba(78,205,196,0.08); border-radius: 8px;
+    background: rgba(78,205,196,0.02);
+  }
   .chat-disclaimer p { font-size: 13px; color: var(--gris); line-height: 1.8; font-style: italic; }
+  .chat-disclaimer .privacy { margin-top: 6px; font-size: 12px; color: rgba(78,205,196,0.5); }
 
-  .msg { display: flex; margin-bottom: 24px; animation: msgIn 0.5s cubic-bezier(0.16,1,0.3,1); }
-  .msg.user { justify-content: flex-end; padding-left: 12%; }
-  .msg.assistant { justify-content: flex-start; padding-right: 12%; }
-  .msg .bubble { padding: 18px 22px; border-radius: 10px; max-width: 100%; }
-  .msg.user .bubble { background: rgba(78,205,196,0.07); border: 1px solid rgba(78,205,196,0.12); color: rgba(240,237,230,0.9); font-size: 15px; line-height: 1.9; font-family: 'Courier Prime', monospace; white-space: pre-wrap; }
+  .msg { display: flex; margin-bottom: 28px; animation: msgIn 0.5s cubic-bezier(0.16,1,0.3,1); }
+  .msg.user { justify-content: flex-end; padding-left: 10%; }
+  .msg.assistant { justify-content: flex-start; padding-right: 10%; }
+  .msg .bubble { padding: 20px 24px; border-radius: 12px; max-width: 100%; }
+  .msg.user .bubble {
+    background: rgba(78,205,196,0.06); border: 1px solid rgba(78,205,196,0.1);
+    color: rgba(240,237,230,0.9); font-size: 15px; line-height: 1.9;
+    font-family: 'Courier Prime', monospace; white-space: pre-wrap;
+    border-radius: 12px 12px 4px 12px;
+  }
   .msg.assistant .bubble {
-    background: var(--fondo-medio); border-left: 3px solid rgba(78,205,196,0.35);
+    background: var(--fondo-bubble); border-left: 3px solid rgba(78,205,196,0.35);
     color: rgba(240,237,230,0.92); font-size: 15px; line-height: 1.9;
     font-family: 'Courier Prime', monospace;
+    border-radius: 12px 12px 12px 4px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.3);
   }
-  .msg.assistant .bubble p { margin-bottom: 14px; }
+  .msg.assistant .bubble p { margin-bottom: 16px; }
   .msg.assistant .bubble p:last-child { margin-bottom: 0; }
   .msg.assistant .bubble strong { color: var(--teal); font-weight: 700; }
-  .msg.assistant .bubble em { color: rgba(240,237,230,0.7); }
-  .msg.assistant .bubble ol, .msg.assistant .bubble ul { margin: 10px 0 14px 20px; }
-  .msg.assistant .bubble li { margin-bottom: 6px; }
+  .msg.assistant .bubble em { color: rgba(240,237,230,0.65); }
+  .msg.assistant .bubble ol, .msg.assistant .bubble ul { margin: 10px 0 16px 20px; }
+  .msg.assistant .bubble li { margin-bottom: 8px; }
 
-  /* Thinking indicator with brain */
-  .thinking { display: none; margin-bottom: 24px; align-items: center; gap: 16px; animation: msgIn 0.5s ease; }
+  /* Thinking — centered, bigger brain */
+  .thinking {
+    display: none; margin: 32px 0; flex-direction: column;
+    align-items: center; gap: 16px; animation: msgIn 0.5s ease;
+  }
   .thinking.active { display: flex; }
-  .thinking .brain-think { width: 36px; height: 36px; object-fit: contain; animation: brainThink 2s ease-in-out infinite; }
-  .thinking .dots { display: flex; gap: 5px; align-items: center; }
-  .thinking .dots span { font-size: 13px; color: var(--gris); font-style: italic; letter-spacing: 0.05em; }
-  .thinking .d { width: 4px; height: 4px; border-radius: 50%; background: var(--teal); }
-  .thinking .d:nth-child(1) { animation: dotPulse 1.2s ease-in-out 0s infinite; }
-  .thinking .d:nth-child(2) { animation: dotPulse 1.2s ease-in-out 0.2s infinite; }
-  .thinking .d:nth-child(3) { animation: dotPulse 1.2s ease-in-out 0.4s infinite; }
+  .thinking .brain-think {
+    width: 64px; height: 64px; object-fit: contain;
+    animation: brainThink 2s ease-in-out infinite;
+  }
+  .thinking .dots { display: flex; gap: 6px; align-items: center; }
+  .thinking .dots span {
+    font-size: 14px; color: rgba(78,205,196,0.6);
+    font-style: italic; letter-spacing: 0.1em; margin-right: 8px;
+  }
+  .thinking .d { width: 5px; height: 5px; border-radius: 50%; background: var(--teal); }
+  .thinking .d:nth-child(2) { animation: dotPulse 1.2s ease-in-out 0s infinite; }
+  .thinking .d:nth-child(3) { animation: dotPulse 1.2s ease-in-out 0.2s infinite; }
+  .thinking .d:nth-child(4) { animation: dotPulse 1.2s ease-in-out 0.4s infinite; }
 
   /* Input area */
   .chat-input {
-    padding: 14px 20px 18px; border-top: 1px solid var(--linea);
-    position: relative; z-index: 2; background: var(--negro);
-    display: flex; gap: 12px; align-items: flex-end;
+    padding: 16px 24px 20px; border-top: 1px solid var(--linea);
+    background: var(--fondo-medio);
+    display: flex; gap: 14px; align-items: flex-end; flex-shrink: 0;
   }
   .chat-input textarea {
-    flex: 1; padding: 12px 0; background: transparent; border: none;
-    border-bottom: 1px solid rgba(78,205,196,0.15); color: var(--blanco);
-    font-size: 15px; font-family: 'Courier Prime', monospace;
+    flex: 1; padding: 14px 0; background: transparent; border: none;
+    border-bottom: 1px solid rgba(78,205,196,0.18); color: var(--blanco);
+    font-size: 16px; font-family: 'Courier Prime', monospace;
     outline: none; transition: border-color 0.3s; caret-color: var(--teal);
-    resize: none; min-height: 24px; max-height: 150px; line-height: 1.6;
+    resize: none; min-height: 26px; max-height: 160px; line-height: 1.7;
     overflow-y: auto;
   }
-  .chat-input textarea:focus { border-bottom-color: rgba(78,205,196,0.4); }
+  .chat-input textarea:focus { border-bottom-color: rgba(78,205,196,0.45); }
   .btn-send {
-    padding: 10px 24px; border: none; font-size: 13px; letter-spacing: 0.2em;
+    padding: 12px 28px; border: none; font-size: 13px; letter-spacing: 0.2em;
     text-transform: uppercase; font-weight: 700; font-family: 'Courier Prime', monospace;
-    background: transparent; color: var(--gris); border-radius: 4px;
+    background: transparent; color: var(--gris); border-radius: 6px;
     cursor: default; transition: all 0.3s ease; opacity: 0.3;
-    flex-shrink: 0; margin-bottom: 4px;
+    flex-shrink: 0; margin-bottom: 6px;
   }
   .btn-send.ready { background: var(--teal); color: var(--negro); cursor: pointer; opacity: 1; }
   .btn-send.ready:hover { opacity: 0.85; }
@@ -171,16 +221,20 @@
   @media (max-width: 600px) {
     .lp-nav { padding: 18px 20px; }
     .lp-nav .links { display: none; }
-    .msg.user { padding-left: 8%; }
-    .msg.assistant { padding-right: 8%; }
-    .chat-header { padding: 12px 16px; }
-    .chat-input { padding: 12px 16px 16px; }
+    .msg.user { padding-left: 5%; }
+    .msg.assistant { padding-right: 5%; }
+    .chat-header { padding: 14px 16px; gap: 12px; }
+    .chat-header .nav-links { display: none; }
+    .chat-header .brain-icon { width: 36px; height: 36px; }
+    .chat-input { padding: 14px 16px 18px; }
+    .thinking .brain-think { width: 52px; height: 52px; }
   }
 </style>
 </head>
 <body>
 
-<nav class="lp-nav">
+<!-- NAV — only shows on landing -->
+<nav class="lp-nav" id="landing-nav">
   <a href="/" class="logo">Logos Psyche</a>
   <div class="links">
     <a href="/">Inicio</a>
@@ -196,13 +250,22 @@
   <h1 class="landing-title">Tu espacio terapéutico<br><em>entre consulta y consulta.</em></h1>
   <p class="landing-desc">Una herramienta diseñada por tu psiquiatra para acompañar el proceso terapéutico cuando no estás en sesión. No reemplaza el vínculo humano — lo extiende.</p>
   <p class="landing-note">Disponible para pacientes de Logos Psyche.</p>
+
   <div class="login-form">
+    <div class="privacy-box">
+      <p class="privacy-title">Sobre tu privacidad</p>
+      <p>• Tus conversaciones no se almacenan ni se guardan en ningún servidor.</p>
+      <p>• El Dr. Escobar no tiene acceso a lo que escribís acá.</p>
+      <p>• Cuando cerrás la pestaña, la conversación desaparece.</p>
+      <p>• Si querés compartir algo con tu terapeuta, el asistente te genera un resumen al final para que vos decidas qué enviar.</p>
+    </div>
     <label for="clave">Clave de acceso</label>
     <input type="password" id="clave" autocomplete="off" onkeydown="if(event.key==='Enter')handleLogin()">
     <p class="login-hint">Tu clave te la entrega el Dr. Escobar en consulta.</p>
     <p class="login-error" id="login-error"></p>
     <button class="btn-enter" id="btn-enter" onclick="handleLogin()">Entrar</button>
   </div>
+
   <p class="landing-footer">
     Este espacio no sustituye la consulta con tu terapeuta.<br>
     Si estás en crisis, contacta directamente al<br>
@@ -218,6 +281,10 @@
       <p class="name">Logos Psyche</p>
       <p class="sub">Espacio entre sesiones</p>
     </div>
+    <div class="nav-links">
+      <a href="/">Inicio</a>
+      <a href="/logos-psyche.html">Clínica</a>
+    </div>
     <div class="status">
       <div class="dot"></div>
       <span>Activo</span>
@@ -227,6 +294,7 @@
   <div class="chat-messages" id="chat-messages">
     <div class="chat-disclaimer">
       <p>Este espacio acompaña tu proceso terapéutico. No sustituye la sesión con tu terapeuta.</p>
+      <p class="privacy">Esta conversación no se almacena. El Dr. Escobar no tiene acceso a lo que escribís acá.</p>
     </div>
 
     <div class="thinking" id="thinking">
@@ -253,21 +321,17 @@ let isTyping = false;
 
 setTimeout(() => document.getElementById("landing").classList.add("entered"), 200);
 
-// Auto-resize textarea
 const textarea = document.getElementById("msg-input");
 textarea.addEventListener("input", function() {
-  this.style.height = "24px";
-  this.style.height = Math.min(this.scrollHeight, 150) + "px";
+  this.style.height = "26px";
+  this.style.height = Math.min(this.scrollHeight, 160) + "px";
   const btn = document.getElementById("btn-send");
   if (this.value.trim() && !isTyping) btn.classList.add("ready");
   else btn.classList.remove("ready");
 });
 
 function handleTextareaKey(e) {
-  if (e.key === "Enter" && !e.shiftKey) {
-    e.preventDefault();
-    handleSend();
-  }
+  if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); handleSend(); }
 }
 
 async function handleLogin() {
@@ -287,6 +351,7 @@ async function handleLogin() {
     const data = await res.json();
     messages = [{ role: "assistant", text: data.text }];
     document.getElementById("landing").style.display = "none";
+    document.getElementById("landing-nav").style.display = "none";
     document.getElementById("chat").classList.add("active");
     renderMessages();
     document.getElementById("msg-input").focus();
@@ -302,7 +367,7 @@ async function handleSend() {
   const input = document.getElementById("msg-input");
   const text = input.value.trim();
   if (!text || isTyping) return;
-  input.value = ""; input.style.height = "24px";
+  input.value = ""; input.style.height = "26px";
   document.getElementById("btn-send").classList.remove("ready");
   messages.push({ role: "user", text });
   renderMessages();
@@ -341,39 +406,26 @@ function renderMessages() {
 }
 
 function renderMarkdown(text) {
-  // Simple markdown: **bold**, *italic*, numbered lists, line breaks to paragraphs
   let html = escapeHtml(text);
-  // Bold
   html = html.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
-  // Italic
   html = html.replace(/\*(.+?)\*/g, '<em>$1</em>');
-  // Split into paragraphs by double newline
   const paragraphs = html.split(/\n\n+/);
   html = paragraphs.map(p => {
     p = p.trim();
     if (!p) return '';
-    // Check if it's a numbered list
     const lines = p.split('\n');
     const isNumberedList = lines.every(l => /^\d+\.\s/.test(l.trim()));
     if (isNumberedList) {
       const items = lines.map(l => '<li>' + l.replace(/^\d+\.\s*/, '') + '</li>').join('');
       return '<ol>' + items + '</ol>';
     }
-    // Regular paragraph with single line breaks
     return '<p>' + p.replace(/\n/g, '<br>') + '</p>';
   }).join('');
   return html;
 }
 
-function scrollToBottom() {
-  document.getElementById("chat-end").scrollIntoView({ behavior: "smooth" });
-}
-
-function escapeHtml(str) {
-  const div = document.createElement("div");
-  div.textContent = str;
-  return div.innerHTML;
-}
+function scrollToBottom() { document.getElementById("chat-end").scrollIntoView({ behavior: "smooth" }); }
+function escapeHtml(str) { const d = document.createElement("div"); d.textContent = str; return d.innerHTML; }
 </script>
 </body>
 </html>
