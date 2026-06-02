@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Logos Psyche — Admin</title>
+<link rel="icon" href="/assets/cerebro-isotipo.png" type="image/png">
+<link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #08080a; color: #f0ede6; font-family: 'Courier Prime', monospace; min-height: 100vh; padding: 40px 24px; }
+  h1 { font-size: 24px; font-weight: 400; margin-bottom: 8px; }
+  .sub { font-size: 13px; color: #6b6860; margin-bottom: 40px; letter-spacing: 0.1em; }
+  .section { margin-bottom: 48px; }
+  .section h2 { font-size: 16px; color: #4ecdc4; margin-bottom: 20px; letter-spacing: 0.15em; text-transform: uppercase; }
+  #login { max-width: 400px; margin: 120px auto; text-align: center; }
+  #login h1 { margin-bottom: 32px; }
+  #login input { width: 100%; padding: 14px 0; background: transparent; border: none; border-bottom: 1px solid rgba(78,205,196,0.3); color: #f0ede6; font-size: 16px; font-family: 'Courier Prime', monospace; outline: none; text-align: center; letter-spacing: 0.2em; caret-color: #4ecdc4; }
+  #login input:focus { border-bottom-color: #4ecdc4; }
+  #login button { margin-top: 24px; padding: 14px 48px; background: #4ecdc4; color: #08080a; border: none; font-size: 13px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; font-family: 'Courier Prime', monospace; cursor: pointer; border-radius: 4px; }
+  .error { color: #c44a2a; font-size: 14px; margin-top: 16px; }
+  #dashboard { display: none; max-width: 900px; margin: 0 auto; }
+  #dashboard.active { display: block; }
+  .form-row { display: flex; gap: 12px; margin-bottom: 16px; flex-wrap: wrap; align-items: flex-end; }
+  .form-group { display: flex; flex-direction: column; gap: 6px; }
+  .form-group label { font-size: 11px; color: #6b6860; letter-spacing: 0.1em; text-transform: uppercase; }
+  .form-group input, .form-group select { padding: 12px; background: #121216; border: 1px solid rgba(78,205,196,0.15); color: #f0ede6; font-size: 14px; font-family: 'Courier Prime', monospace; outline: none; border-radius: 4px; }
+  .form-group input:focus, .form-group select:focus { border-color: #4ecdc4; }
+  .form-group input[readonly] { color: #4ecdc4; background: rgba(78,205,196,0.05); }
+  .form-group.nombre { flex: 1; min-width: 200px; }
+  .form-group.clave input { width: 140px; }
+  .form-group.skill select { width: 160px; }
+  .btn-add { padding: 12px 24px; background: #4ecdc4; color: #08080a; border: none; font-size: 13px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; font-family: 'Courier Prime', monospace; cursor: pointer; border-radius: 4px; height: 44px; }
+  .btn-add:hover { opacity: 0.85; }
+  .btn-regen { padding: 8px 12px; background: transparent; border: 1px solid rgba(78,205,196,0.2); color: #4ecdc4; font-size: 11px; font-family: 'Courier Prime', monospace; cursor: pointer; border-radius: 4px; height: 44px; letter-spacing: 0.05em; }
+  .btn-regen:hover { background: rgba(78,205,196,0.05); }
+  .patients-table { width: 100%; border-collapse: collapse; margin-top: 16px; }
+  .patients-table th { text-align: left; padding: 12px 16px; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: #6b6860; border-bottom: 1px solid rgba(78,205,196,0.1); }
+  .patients-table td { padding: 14px 16px; font-size: 14px; border-bottom: 1px solid rgba(255,255,255,0.04); }
+  .patients-table tr:hover td { background: rgba(78,205,196,0.03); }
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 3px; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 700; }
+  .badge.general { background: rgba(78,205,196,0.15); color: #4ecdc4; }
+  .badge.artistas { background: rgba(196,118,58,0.15); color: #c4763a; }
+  .badge.active { background: rgba(142,196,78,0.15); color: #8ec44e; }
+  .badge.inactive { background: rgba(196,74,42,0.15); color: #c44a2a; }
+  .btn-deactivate { padding: 6px 14px; background: transparent; border: 1px solid rgba(196,74,42,0.3); color: #c44a2a; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; font-family: 'Courier Prime', monospace; cursor: pointer; border-radius: 3px; }
+  .btn-deactivate:hover { background: rgba(196,74,42,0.1); }
+  .btn-reactivate { padding: 6px 14px; background: transparent; border: 1px solid rgba(142,196,78,0.3); color: #8ec44e; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; font-family: 'Courier Prime', monospace; cursor: pointer; border-radius: 3px; }
+  .btn-reactivate:hover { background: rgba(142,196,78,0.1); }
+  .last-use { font-size: 12px; color: #6b6860; }
+  .msg { padding: 12px 16px; border-radius: 4px; margin-bottom: 16px; font-size: 14px; }
+  .msg.ok { background: rgba(78,205,196,0.1); color: #4ecdc4; border: 1px solid rgba(78,205,196,0.2); }
+  .msg.err { background: rgba(196,74,42,0.1); color: #c44a2a; border: 1px solid rgba(196,74,42,0.2); }
+  .loading { color: #6b6860; font-style: italic; }
+  .stats { display: flex; gap: 32px; margin-bottom: 32px; }
+  .stat { text-align: center; }
+  .stat .num { font-size: 36px; color: #4ecdc4; font-weight: 700; }
+  .stat .label { font-size: 11px; color: #6b6860; letter-spacing: 0.15em; text-transform: uppercase; margin-top: 4px; }
+  .clave-display { font-size: 13px; color: rgba(78,205,196,0.5); margin-top: 8px; }
+  .clave-display strong { color: #4ecdc4; font-size: 16px; letter-spacing: 0.15em; }
+  @media (max-width: 600px) {
+    body { padding: 24px 16px; }
+    .form-row { flex-direction: column; }
+    .form-group.clave input, .form-group.skill select { width: 100%; }
+    .patients-table { font-size: 12px; }
+    .patients-table th, .patients-table td { padding: 10px 8px; }
+    .stats { gap: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<div id="login">
+  <h1>Logos Psyche — Admin</h1>
+  <input type="password" id="admin-pass" placeholder="Contraseña" onkeydown="if(event.key==='Enter')doLogin()">
+  <br>
+  <button onclick="doLogin()">Entrar</button>
+  <p class="error" id="login-error"></p>
+</div>
+
+<div id="dashboard">
+  <h1>Panel de Pacientes</h1>
+  <p class="sub">Logos Psyche — Asistente Entre Sesiones</p>
+  <div id="feedback"></div>
+  <div class="stats" id="stats"></div>
+
+  <div class="section">
+    <h2>Nuevo Paciente</h2>
+    <div class="form-row">
+      <div class="form-group nombre">
+        <label>Nombre</label>
+        <input type="text" id="f-nombre" placeholder="Nombre del paciente">
+      </div>
+      <div class="form-group skill">
+        <label>Tipo</label>
+        <select id="f-skill" onchange="generateKey()">
+          <option value="general">General</option>
+          <option value="artistas">Artistas</option>
+        </select>
+      </div>
+      <div class="form-group clave">
+        <label>Clave generada</label>
+        <input type="text" id="f-clave" readonly>
+      </div>
+      <button class="btn-regen" onclick="generateKey()" title="Generar otra clave">Otra clave</button>
+      <button class="btn-add" onclick="addPatient()">Agregar</button>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Pacientes Registrados</h2>
+    <p class="loading" id="loading">Cargando...</p>
+    <table class="patients-table" id="table" style="display:none;">
+      <thead>
+        <tr>
+          <th>Clave</th>
+          <th>Nombre</th>
+          <th>Tipo</th>
+          <th>Estado</th>
+          <th>Último uso</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody id="tbody"></tbody>
+    </table>
+    <p id="empty-msg" style="display:none; color:#6b6860; font-style:italic; margin-top:16px;">No hay pacientes registrados aún.</p>
+  </div>
+</div>
+
+<script>
+const API = "https://logos-psyche-api.vercel.app/api/admin";
+let password = "";
+
+// Generar clave única
+function generateKey() {
+  const skill = document.getElementById("f-skill").value;
+  const prefix = skill === "artistas" ? "LP-A" : "LP-G";
+  const chars = "23456789ABCDEFGHJKLMNPQRSTUVWXYZ"; // sin 0,O,1,I,L para evitar confusión
+  let code = "";
+  for (let i = 0; i < 4; i++) code += chars[Math.floor(Math.random() * chars.length)];
+  document.getElementById("f-clave").value = prefix + code;
+}
+
+// Generar clave al cargar
+generateKey();
+
+function doLogin() {
+  password = document.getElementById("admin-pass").value.trim();
+  if (!password) return;
+  fetch(API, { headers: { Authorization: "Bearer " + password } })
+    .then(r => {
+      if (r.status === 401) { document.getElementById("login-error").textContent = "Contraseña incorrecta"; return; }
+      if (r.status === 500) {
+        // KV no configurado pero password correcta — mostrar dashboard vacío
+        document.getElementById("login").style.display = "none";
+        document.getElementById("dashboard").classList.add("active");
+        document.getElementById("loading").style.display = "none";
+        showMsg("Base de datos KV no configurada. Configurala en Vercel → Storage → KV.", "err");
+        return;
+      }
+      document.getElementById("login").style.display = "none";
+      document.getElementById("dashboard").classList.add("active");
+      loadPatients();
+    })
+    .catch(() => { document.getElementById("login-error").textContent = "Error de conexión"; });
+}
+
+async function loadPatients() {
+  document.getElementById("loading").style.display = "block";
+  document.getElementById("table").style.display = "none";
+  document.getElementById("empty-msg").style.display = "none";
+  try {
+    const res = await fetch(API, { headers: { Authorization: "Bearer " + password } });
+    const data = await res.json();
+    if (data.error) { showMsg(data.error, "err"); document.getElementById("loading").style.display = "none"; return; }
+
+    const activos = data.pacientes.filter(p => p.active).length;
+    const artistas = data.pacientes.filter(p => p.skill === "artistas" && p.active).length;
+    document.getElementById("stats").innerHTML =
+      '<div class="stat"><div class="num">' + data.total + '</div><div class="label">Total</div></div>' +
+      '<div class="stat"><div class="num">' + activos + '</div><div class="label">Activos</div></div>' +
+      '<div class="stat"><div class="num">' + artistas + '</div><div class="label">Artistas</div></div>';
+
+    const tbody = document.getElementById("tbody");
+    tbody.innerHTML = "";
+
+    if (data.pacientes.length === 0) {
+      document.getElementById("loading").style.display = "none";
+      document.getElementById("empty-msg").style.display = "block";
+      return;
+    }
+
+    data.pacientes.forEach(p => {
+      const lu = p.lastUse ? new Date(p.lastUse).toLocaleDateString("es-GT", { day: "2-digit", month: "short", year: "numeric", hour: "2-digit", minute: "2-digit" }) : "Nunca";
+      const tr = document.createElement("tr");
+      const actionBtn = p.active
+        ? '<button class="btn-deactivate" onclick="togglePatient(\'' + p.clave + '\', false)">Desactivar</button>'
+        : '<button class="btn-reactivate" onclick="togglePatient(\'' + p.clave + '\', true)">Reactivar</button>';
+      tr.innerHTML =
+        '<td><strong>' + p.clave + '</strong></td>' +
+        '<td>' + p.nombre + '</td>' +
+        '<td><span class="badge ' + p.skill + '">' + p.skill + '</span></td>' +
+        '<td><span class="badge ' + (p.active ? 'active' : 'inactive') + '">' + (p.active ? 'Activo' : 'Inactivo') + '</span></td>' +
+        '<td class="last-use">' + lu + '</td>' +
+        '<td>' + actionBtn + '</td>';
+      tbody.appendChild(tr);
+    });
+
+    document.getElementById("loading").style.display = "none";
+    document.getElementById("table").style.display = "table";
+  } catch (e) { showMsg("Error cargando pacientes", "err"); document.getElementById("loading").style.display = "none"; }
+}
+
+async function addPatient() {
+  const clave = document.getElementById("f-clave").value.trim();
+  const nombre = document.getElementById("f-nombre").value.trim();
+  const skill = document.getElementById("f-skill").value;
+  if (!nombre) { showMsg("Escribí el nombre del paciente", "err"); return; }
+  if (!clave) { showMsg("Generá una clave primero", "err"); return; }
+
+  try {
+    const res = await fetch(API, {
+      method: "POST",
+      headers: { Authorization: "Bearer " + password, "Content-Type": "application/json" },
+      body: JSON.stringify({ clave, nombre, skill }),
+    });
+    const data = await res.json();
+    if (data.ok) {
+      showMsg("Paciente creado. Clave: " + clave.toUpperCase() + " — enviala por WhatsApp.", "ok");
+      document.getElementById("f-nombre").value = "";
+      generateKey();
+      loadPatients();
+    } else { showMsg(data.error, "err"); }
+  } catch (e) { showMsg("Error de conexión", "err"); }
+}
+
+async function togglePatient(clave, activate) {
+  const action = activate ? "reactivar" : "desactivar";
+  if (!confirm("¿" + action.charAt(0).toUpperCase() + action.slice(1) + " acceso de " + clave + "?")) return;
+
+  if (activate) {
+    // Reactivar: POST con los datos existentes
+    try {
+      const res = await fetch(API, { headers: { Authorization: "Bearer " + password } });
+      const data = await res.json();
+      const paciente = data.pacientes.find(p => p.clave === clave);
+      if (!paciente) return;
+      const res2 = await fetch(API, {
+        method: "POST",
+        headers: { Authorization: "Bearer " + password, "Content-Type": "application/json" },
+        body: JSON.stringify({ clave, nombre: paciente.nombre, skill: paciente.skill }),
+      });
+      const data2 = await res2.json();
+      if (data2.ok) { showMsg(clave + " reactivado", "ok"); loadPatients(); }
+    } catch (e) { showMsg("Error", "err"); }
+  } else {
+    // Desactivar
+    try {
+      const res = await fetch(API, {
+        method: "DELETE",
+        headers: { Authorization: "Bearer " + password, "Content-Type": "application/json" },
+        body: JSON.stringify({ clave }),
+      });
+      const data = await res.json();
+      if (data.ok) { showMsg(clave + " desactivado", "ok"); loadPatients(); }
+      else { showMsg(data.error, "err"); }
+    } catch (e) { showMsg("Error", "err"); }
+  }
+}
+
+function showMsg(text, type) {
+  const el = document.getElementById("feedback");
+  el.innerHTML = '<div class="msg ' + type + '">' + text + '</div>';
+  setTimeout(() => { el.innerHTML = ""; }, 6000);
+}
+</script>
+</body>
+</html>
