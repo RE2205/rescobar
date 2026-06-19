@@ -1,0 +1,6 @@
+{
+  "rewrites": [
+    { "source": "/quiniela", "destination": "/quiniela/index.html" },
+    { "source": "/quiniela/admin", "destination": "/quiniela/admin.html" }
+  ]
+}
