@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /quiniela/
 
 Sitemap: https://ronaldescobar.com/sitemap.xml
