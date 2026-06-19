@@ -483,29 +483,13 @@
       <tbody id="standingsBody"></tbody>
     </table>
 
-    <!-- GRÁFICA: Distribución de favoritos -->
+    <!-- GRÁFICA: Próximo partido dinámico -->
+    <div class="chart-section" id="nextMatchSection"></div>
+
+    <!-- GRÁFICA: Campeón -->
     <div class="chart-section">
       <h3>Pronóstico Campeón 🏆</h3>
       <div id="campeonChart"></div>
-    </div>
-
-    <div class="chart-section">
-      <h3>🇺🇸 EE.UU. vs Australia 🇦🇺 — Pronósticos · HOY 13:00</h3>
-      <div class="match-preview">
-        <div class="match-meta">
-          <span class="match-title">Estados Unidos vs Australia</span>
-          <span class="match-date">Hoy · Jun 19 · 13:00 · Grupo D · Seattle</span>
-        </div>
-        <div style="margin-bottom:12px;">
-          <div class="consensus" id="consensusBar"></div>
-          <div class="consensus-legend">
-            <span class="l1">EE.UU. gana 63.6%</span>
-            <span class="l2">Empate 9.1%</span>
-            <span class="l3">Australia gana 27.3%</span>
-          </div>
-        </div>
-        <div class="prediction-bars" id="predBars"></div>
-      </div>
     </div>
   </div>
 
@@ -740,26 +724,67 @@ function renderScoreGrid() {
   </div>`;
 }
 
-// ─── RENDER PREDICTION BARS ──────────────────────────────────────────
-function renderPredBars() {
-  const el = document.getElementById('predBars');
-  el.innerHTML = predictions.map(p => `
+// ─── PRONÓSTICOS POR PARTIDO ─────────────────────────────────────────
+const matchPredictions = {
+  'm29': { // EE.UU. vs Australia
+    preds: [{score:'2-1',pct:22.7},{score:'2-0',pct:18.2},{score:'1-0',pct:13.6},{score:'1-2',pct:13.6},{score:'1-1',pct:9.1},{score:'3-0',pct:4.5},{score:'0-2',pct:4.5},{score:'0-1',pct:4.5},{score:'1-3',pct:4.5}],
+    win1:63.6, draw:9.1, win2:27.3, l1:'EE.UU. 63.6%', l2:'Empate 9.1%', l3:'Australia 27.3%'
+  },
+  'm30': { // Escocia vs Marruecos
+    preds: [{score:'1-1',pct:22.7},{score:'0-1',pct:18.2},{score:'1-2',pct:13.6},{score:'2-1',pct:13.6},{score:'0-2',pct:9.1},{score:'1-0',pct:9.1},{score:'2-0',pct:4.5},{score:'0-0',pct:4.5}],
+    win1:36.4, draw:27.3, win2:36.4, l1:'Escocia 36.4%', l2:'Empate 27.3%', l3:'Marruecos 36.4%'
+  },
+  'm31': { // Brasil vs Haití
+    preds: [{score:'3-0',pct:31.8},{score:'4-0',pct:22.7},{score:'2-0',pct:18.2},{score:'3-1',pct:13.6},{score:'2-1',pct:9.1},{score:'1-0',pct:4.5}],
+    win1:95.5, draw:0, win2:4.5, l1:'Brasil 95.5%', l2:'Empate 0%', l3:'Haití 4.5%'
+  },
+  'm32': { // Turquía vs Paraguay
+    preds: [{score:'2-1',pct:27.3},{score:'1-0',pct:22.7},{score:'2-0',pct:18.2},{score:'1-1',pct:13.6},{score:'0-1',pct:9.1},{score:'0-2',pct:4.5},{score:'1-2',pct:4.5}],
+    win1:54.5, draw:13.6, win2:31.8, l1:'Turquía 54.5%', l2:'Empate 13.6%', l3:'Paraguay 31.8%'
+  },
+};
+
+function renderNextMatch() {
+  // Find first match without result
+  const next = matches.find(m => !m.done);
+  const section = document.getElementById('nextMatchSection');
+  if (!next || !section) return;
+
+  const pred = matchPredictions[next.id];
+  if (!pred) { section.innerHTML = ''; return; }
+
+  const barsHtml = pred.preds.map(p => `
     <div class="pred-row">
       <span class="pred-score">${p.score}</span>
-      <div class="pred-bar-track">
-        <div class="pred-bar-fill" style="width:${p.pct}%"></div>
-      </div>
+      <div class="pred-bar-track"><div class="pred-bar-fill" style="width:${p.pct}%"></div></div>
       <span class="pred-pct">${p.pct.toFixed(1)}%</span>
-    </div>
-  `).join('');
+    </div>`).join('');
 
-  // consensus bar: 100% Portugal
-  const bar = document.getElementById('consensusBar');
-  bar.innerHTML = `
-    <div class="consensus-block win1" style="width:63.6%;">EE.UU. 63.6%</div>
-    <div class="consensus-block draw" style="width:9.1%;font-size:10px;">E 9%</div>
-    <div class="consensus-block win2" style="width:27.3%;">AUS 27.3%</div>
-  `;
+  section.innerHTML = `
+    <h3>${next.f1} ${next.t1} vs ${next.t2} ${next.f2} — Pronósticos</h3>
+    <div class="match-preview">
+      <div class="match-meta">
+        <span class="match-title">${next.t1} vs ${next.t2}</span>
+        <span class="match-date">${next.jornada}</span>
+      </div>
+      <div style="margin-bottom:12px;">
+        <div class="consensus">
+          <div class="consensus-block win1" style="width:${pred.win1}%;">${pred.l1}</div>
+          <div class="consensus-block draw" style="width:${pred.draw}%;font-size:10px;">${pred.draw > 5 ? pred.l2 : ''}</div>
+          <div class="consensus-block win2" style="width:${pred.win2}%;">${pred.win2 > 10 ? pred.l3 : ''}</div>
+        </div>
+        <div class="consensus-legend">
+          <span class="l1">${pred.l1}</span>
+          <span class="l2">${pred.l2}</span>
+          <span class="l3">${pred.l3}</span>
+        </div>
+      </div>
+      <div class="prediction-bars">${barsHtml}</div>
+    </div>`;
+}
+
+function renderPredBars() {
+  renderNextMatch();
 }
 
 // ─── RENDER CAMPEON CHARTS ───────────────────────────────────────────
