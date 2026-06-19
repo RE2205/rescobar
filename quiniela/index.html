@@ -674,7 +674,11 @@ function renderStandings() {
 // ─── RENDER MATCHES ──────────────────────────────────────────────────
 function renderMatches() {
   const grid = document.getElementById('matchesGrid');
-  grid.innerHTML = matches.map(m => {
+  const sorted = [
+    ...matches.filter(m => !m.done),
+    ...matches.filter(m => m.done).reverse(),
+  ];
+  grid.innerHTML = sorted.map(m => {
     const scoreDisplay = m.done
       ? `<div class="score-box">${m.s1} – ${m.s2}</div>`
       : `<div class="score-box" style="color:var(--muted);font-size:16px;">vs</div>`;
