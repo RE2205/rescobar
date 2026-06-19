@@ -238,9 +238,16 @@
     pointer-events: none;
   }
   .ia-inner { max-width: 700px; margin: 0 auto; text-align: center; position: relative; z-index: 1; }
-  .ia-titulo {
+  .ia-titulo, .section-title {
     font-family: 'Cormorant Garamond', serif;
     font-size: clamp(28px, 3.5vw, 44px); font-weight: 300; line-height: 1.15; margin-bottom: 24px;
+  }
+  .grad-text {
+    font-style: italic;
+    background: linear-gradient(100deg, #4ecdc4, #d4b84a, #c44a2a);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
   .ia-titulo em {
     font-style: italic;
@@ -467,8 +474,8 @@
 <section class="ia-section">
   <div class="ia-inner reveal">
     <span class="seccion-label">Entre sesiones</span>
-    <h2 class="ia-titulo">No estás solo<br><em>entre consulta y consulta.</em></h2>
-    <p class="ia-desc">Una herramienta diseñada por tu psiquiatra para acompañar el proceso terapéutico cuando no estás en sesión. No reemplaza el vínculo humano — lo extiende.</p>
+    <h2 class="section-title">Una extensión de ese vínculo terapéutico <em class="grad-text">que hemos logrado.</em></h2>
+    <p class="ia-desc">No es un chatbot. No es una app de meditación. Es la continuidad de ese espacio que construimos juntos — para que el proceso no se detenga cuando salís del consultorio.</p>
     <p class="ia-nota">Disponible para pacientes de Logos Psyche.</p>
     <a href="asistente.html" class="btn-grad">ENTRAR AL ESPACIO</a>
   </div>
