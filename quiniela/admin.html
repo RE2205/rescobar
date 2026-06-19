@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin — Quiniela Mundial 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;700&display=swap');
+
+  :root {
+    --pitch: #0a2e1a;
+    --pitch-mid: #0f3d24;
+    --gold: #c9a84c;
+    --gold-light: #e8c97a;
+    --card: #0d3520;
+    --border: rgba(201,168,76,0.18);
+    --red: #d93025;
+    --green: #4ade80;
+    --radius: 10px;
+    --white: #f0f4f0;
+    --muted: #6b8f77;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--pitch); color: var(--white); font-family: 'Inter', sans-serif; min-height: 100vh; }
+
+  /* LOGIN */
+  #loginScreen {
+    display: flex; align-items: center; justify-content: center;
+    min-height: 100vh; padding: 20px;
+  }
+  .login-box {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 40px;
+    width: 100%; max-width: 360px;
+    text-align: center;
+  }
+  .login-ball { font-size: 48px; margin-bottom: 16px; }
+  .login-box h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 22px; color: var(--gold);
+    margin-bottom: 6px;
+  }
+  .login-box p { font-size: 13px; color: var(--muted); margin-bottom: 28px; }
+  .login-box input {
+    width: 100%; padding: 12px 16px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid var(--border);
+    border-radius: 8px; color: var(--white);
+    font-size: 15px; margin-bottom: 12px;
+    outline: none; letter-spacing: 2px;
+  }
+  .login-box input:focus { border-color: var(--gold); }
+  .btn {
+    width: 100%; padding: 12px;
+    background: var(--gold); color: #0a2e1a;
+    border: none; border-radius: 8px;
+    font-size: 15px; font-weight: 700;
+    cursor: pointer; transition: opacity 0.2s;
+  }
+  .btn:hover { opacity: 0.85; }
+  .btn-secondary {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    margin-top: 8px;
+  }
+  .btn-secondary:hover { border-color: var(--gold); color: var(--white); }
+  .error-msg { color: var(--red); font-size: 13px; margin-top: 8px; display: none; }
+
+  /* ADMIN */
+  #adminScreen { display: none; }
+  .admin-header {
+    background: var(--card);
+    border-bottom: 1px solid var(--border);
+    padding: 16px 20px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .admin-header h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 16px; color: var(--gold);
+  }
+  .logout-btn {
+    font-size: 12px; color: var(--muted);
+    cursor: pointer; padding: 6px 12px;
+    border: 1px solid var(--border);
+    border-radius: 50px; background: none;
+    transition: all 0.2s;
+  }
+  .logout-btn:hover { color: var(--white); border-color: var(--gold); }
+
+  .admin-tabs {
+    display: flex; gap: 4px; padding: 16px 20px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .admin-tab {
+    padding: 8px 18px; font-size: 13px; font-weight: 500;
+    cursor: pointer; border: none; background: none;
+    color: var(--muted); border-bottom: 2px solid transparent;
+    transition: all 0.2s;
+  }
+  .admin-tab.active { color: var(--gold); border-bottom-color: var(--gold); }
+
+  .admin-content { padding: 20px; max-width: 700px; margin: 0 auto; }
+
+  /* SECCIÓN RESULTADOS */
+  .section-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 16px; font-weight: 700;
+    margin-bottom: 16px; color: var(--white);
+  }
+  .match-item {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 14px 16px;
+    margin-bottom: 10px;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr auto;
+    align-items: center;
+    gap: 10px;
+  }
+  .match-item.done { border-color: rgba(74,222,128,0.25); }
+  .team-label { font-size: 13px; font-weight: 600; }
+  .team-label.right { text-align: right; }
+  .score-inputs { display: flex; align-items: center; gap: 6px; }
+  .score-input {
+    width: 44px; height: 38px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid var(--border);
+    border-radius: 6px; color: var(--white);
+    font-size: 18px; font-weight: 700;
+    text-align: center; outline: none;
+    font-family: 'Space Grotesk', sans-serif;
+  }
+  .score-input:focus { border-color: var(--gold); }
+  .score-sep { font-size: 18px; color: var(--muted); font-weight: 700; }
+  .save-btn {
+    padding: 8px 14px;
+    background: var(--gold); color: #0a2e1a;
+    border: none; border-radius: 6px;
+    font-size: 12px; font-weight: 700;
+    cursor: pointer; transition: opacity 0.2s;
+    white-space: nowrap;
+  }
+  .save-btn:hover { opacity: 0.85; }
+  .save-btn.saved {
+    background: rgba(74,222,128,0.2);
+    color: var(--green);
+    border: 1px solid var(--green);
+  }
+  .match-date-label {
+    grid-column: 1 / -1;
+    font-size: 11px; color: var(--muted);
+    text-transform: uppercase; letter-spacing: 0.7px;
+    padding-bottom: 2px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    margin-bottom: 4px;
+  }
+
+  /* SECCIÓN PREVIAS */
+  .previa-form { display: flex; flex-direction: column; gap: 12px; }
+  .form-label { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 4px; }
+  .form-input, .form-textarea {
+    width: 100%; padding: 12px 14px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid var(--border);
+    border-radius: 8px; color: var(--white);
+    font-size: 14px; outline: none;
+    font-family: 'Inter', sans-serif;
+    transition: border-color 0.2s;
+  }
+  .form-input:focus, .form-textarea:focus { border-color: var(--gold); }
+  .form-textarea { min-height: 140px; resize: vertical; line-height: 1.6; }
+  .publish-btn {
+    padding: 14px;
+    background: var(--gold); color: #0a2e1a;
+    border: none; border-radius: 8px;
+    font-size: 15px; font-weight: 700;
+    cursor: pointer; transition: opacity 0.2s;
+  }
+  .publish-btn:hover { opacity: 0.85; }
+
+  .previas-list { margin-top: 24px; }
+  .previa-item {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 16px;
+    margin-bottom: 8px;
+    display: flex; justify-content: space-between; align-items: flex-start;
+    gap: 12px;
+  }
+  .previa-item-text h4 { font-size: 14px; font-weight: 600; margin-bottom: 3px; }
+  .previa-item-text p { font-size: 12px; color: var(--muted); }
+  .delete-btn {
+    background: rgba(217,48,37,0.15);
+    color: var(--red); border: 1px solid rgba(217,48,37,0.3);
+    border-radius: 6px; padding: 6px 10px;
+    font-size: 12px; cursor: pointer;
+    white-space: nowrap; flex-shrink: 0;
+  }
+  .delete-btn:hover { background: rgba(217,48,37,0.3); }
+
+  /* TABLA ADMIN */
+  .standings-table { width: 100%; border-collapse: collapse; }
+  .standings-table th {
+    font-size: 11px; text-transform: uppercase;
+    letter-spacing: 0.7px; color: var(--muted);
+    padding: 8px 12px; text-align: left;
+    border-bottom: 1px solid var(--border);
+  }
+  .standings-table td { padding: 10px 12px; font-size: 14px; border-bottom: 1px solid rgba(255,255,255,0.04); }
+  .pts-cell { font-family: 'Space Grotesk', sans-serif; font-size: 20px; font-weight: 700; color: var(--gold); }
+  .pts-edit {
+    width: 60px; padding: 6px 8px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid var(--border);
+    border-radius: 6px; color: var(--gold);
+    font-size: 16px; font-weight: 700;
+    text-align: center; outline: none;
+    font-family: 'Space Grotesk', sans-serif;
+  }
+  .pts-edit:focus { border-color: var(--gold); }
+
+  .toast {
+    position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
+    background: var(--green); color: #0a2e1a;
+    padding: 12px 24px; border-radius: 50px;
+    font-weight: 700; font-size: 14px;
+    opacity: 0; transition: opacity 0.3s;
+    pointer-events: none; z-index: 999;
+  }
+  .toast.show { opacity: 1; }
+
+  @media (max-width: 500px) {
+    .match-item { grid-template-columns: 1fr auto 1fr; }
+    .save-btn { grid-column: 1 / -1; width: 100%; }
+  }
+</style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div id="loginScreen">
+  <div class="login-box">
+    <div class="login-ball">⚽</div>
+    <h1>Panel Admin</h1>
+    <p>Quiniela Mundial 2026 · Solo Henry</p>
+    <input type="password" id="pwdInput" placeholder="Contraseña" onkeydown="if(event.key==='Enter')login()">
+    <button class="btn" onclick="login()">Entrar</button>
+    <p class="error-msg" id="errorMsg">Contraseña incorrecta</p>
+  </div>
+</div>
+
+<!-- ADMIN -->
+<div id="adminScreen">
+  <div class="admin-header">
+    <h1>⚽ Admin — Quiniela Mundial 2026</h1>
+    <button class="logout-btn" onclick="logout()">Cerrar sesión</button>
+  </div>
+
+  <div class="admin-tabs">
+    <button class="admin-tab active" onclick="showAdminTab('resultados', this)">Resultados</button>
+    <button class="admin-tab" onclick="showAdminTab('previas', this)">Previas</button>
+    <button class="admin-tab" onclick="showAdminTab('tabla', this)">Tabla</button>
+  </div>
+
+  <div class="admin-content">
+
+    <!-- RESULTADOS -->
+    <div id="tab-resultados">
+      <p class="section-title" style="margin-top:16px;">Ingresar resultados de partidos</p>
+      <div id="matchesList"></div>
+    </div>
+
+    <!-- PREVIAS -->
+    <div id="tab-previas" style="display:none;">
+      <p class="section-title" style="margin-top:16px;">Publicar previa o resumen</p>
+      <div class="previa-form">
+        <div>
+          <div class="form-label">Título</div>
+          <input class="form-input" id="previaTitle" placeholder="Ej: ¡Portugal golea! Resumen Jornada 4">
+        </div>
+        <div>
+          <div class="form-label">Texto</div>
+          <textarea class="form-textarea" id="previaBody" placeholder="Escribe la previa o resumen aquí..."></textarea>
+        </div>
+        <button class="publish-btn" onclick="publishPrevia()">📢 Publicar</button>
+      </div>
+
+      <div class="previas-list">
+        <p class="section-title" style="margin-top:8px;">Publicadas</p>
+        <div id="previasList"></div>
+      </div>
+    </div>
+
+    <!-- TABLA -->
+    <div id="tab-tabla" style="display:none;">
+      <p class="section-title" style="margin-top:16px;">Editar puntos manualmente</p>
+      <p style="font-size:13px;color:var(--muted);margin-bottom:16px;">Editá los puntos de cada participante y guardá.</p>
+      <table class="standings-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Participante</th>
+            <th>Puntos</th>
+          </tr>
+        </thead>
+        <tbody id="adminTableBody"></tbody>
+      </table>
+      <button class="publish-btn" style="margin-top:16px;" onclick="saveTable()">💾 Guardar tabla</button>
+    </div>
+
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const PASSWORD = 'Henry2026';
+
+const allMatches = [
+  // JORNADA 1
+  { id:'m01', date:'Jun 11', t1:'México',       t2:'Sudáfrica',    done:true,  s1:2, s2:0 },
+  { id:'m02', date:'Jun 11', t1:'Corea del Sur',t2:'Chequia',      done:true,  s1:2, s2:1 },
+  { id:'m03', date:'Jun 12', t1:'Canadá',       t2:'Bosnia',       done:true,  s1:1, s2:1 },
+  { id:'m04', date:'Jun 12', t1:'EE.UU.',       t2:'Paraguay',     done:true,  s1:4, s2:1 },
+  { id:'m05', date:'Jun 13', t1:'Qatar',        t2:'Suiza',        done:true,  s1:1, s2:1 },
+  { id:'m06', date:'Jun 13', t1:'Brasil',       t2:'Marruecos',    done:true,  s1:4, s2:1 },
+  { id:'m07', date:'Jun 13', t1:'Haití',        t2:'Escocia',      done:true,  s1:0, s2:2 },
+  { id:'m08', date:'Jun 13', t1:'Australia',    t2:'Turquía',      done:true,  s1:2, s2:0 },
+  { id:'m09', date:'Jun 14', t1:'Alemania',     t2:'Curazao',      done:true,  s1:5, s2:0 },
+  { id:'m10', date:'Jun 14', t1:'Países Bajos', t2:'Japón',        done:true,  s1:3, s2:1 },
+  { id:'m11', date:'Jun 14', t1:'C. de Marfil', t2:'Ecuador',      done:true,  s1:2, s2:1 },
+  { id:'m12', date:'Jun 14', t1:'Suecia',       t2:'Túnez',        done:true,  s1:5, s2:1 },
+  { id:'m13', date:'Jun 15', t1:'España',       t2:'Cabo Verde',   done:true,  s1:0, s2:0 },
+  { id:'m14', date:'Jun 15', t1:'Bélgica',      t2:'Egipto',       done:true,  s1:1, s2:1 },
+  { id:'m15', date:'Jun 15', t1:'Arabia Saudita',t2:'Uruguay',     done:true,  s1:1, s2:1 },
+  { id:'m16', date:'Jun 15', t1:'Irán',         t2:'Nueva Zelanda',done:true,  s1:2, s2:2 },
+  { id:'m17', date:'Jun 15', t1:'Austria',      t2:'Jordania',     done:true,  s1:2, s2:0 },
+  { id:'m18', date:'Jun 16', t1:'Francia',      t2:'Senegal',      done:true,  s1:3, s2:1 },
+  { id:'m19', date:'Jun 16', t1:'Irak',         t2:'Noruega',      done:true,  s1:1, s2:4 },
+  { id:'m20', date:'Jun 16', t1:'Argentina',    t2:'Argelia',      done:true,  s1:3, s2:0 },
+  { id:'m21', date:'Jun 17', t1:'Portugal',     t2:'RD Congo',     done:false, s1:0, s2:0 },
+  { id:'m22', date:'Jun 17', t1:'Inglaterra',   t2:'Croacia',      done:false, s1:0, s2:0 },
+  { id:'m23', date:'Jun 17', t1:'Ghana',        t2:'Panamá',       done:false, s1:0, s2:0 },
+  { id:'m24', date:'Jun 17', t1:'Uzbekistán',   t2:'Colombia',     done:false, s1:0, s2:0 },
+  // JORNADA 2
+  { id:'m25', date:'Jun 18', t1:'Chequia',      t2:'Sudáfrica',    done:true,  s1:1, s2:1 },
+  { id:'m26', date:'Jun 18', t1:'Suiza',        t2:'Bosnia',       done:true,  s1:4, s2:1 },
+  { id:'m27', date:'Jun 18', t1:'Canadá',       t2:'Qatar',        done:true,  s1:6, s2:0 },
+  { id:'m28', date:'Jun 18', t1:'México',       t2:'Corea del Sur',done:true,  s1:1, s2:0 },
+  { id:'m29', date:'Jun 19', t1:'EE.UU.',       t2:'Australia',    done:false, s1:0, s2:0 },
+  { id:'m30', date:'Jun 19', t1:'Escocia',      t2:'Marruecos',    done:false, s1:0, s2:0 },
+  { id:'m31', date:'Jun 19', t1:'Brasil',       t2:'Haití',        done:false, s1:0, s2:0 },
+  { id:'m32', date:'Jun 19', t1:'Turquía',      t2:'Paraguay',     done:false, s1:0, s2:0 },
+];
+
+const participants = [
+  { name:'Sophia Escobar',     pts:30 },
+  { name:'Gilmar Pacheco',     pts:30 },
+  { name:'Erick Palma',        pts:29 },
+  { name:'Walter',             pts:29 },
+  { name:'Henry',              pts:28 },
+  { name:'Gabby Escobar',      pts:27 },
+  { name:'Alfaro De León',     pts:26 },
+  { name:'Javier del Cid',     pts:25 },
+  { name:'Winny',              pts:24 },
+  { name:'Sofia Pacheco (Fer)',pts:24 },
+  { name:'Estuardo del Cid',   pts:22 },
+  { name:'Girón Alfaro',       pts:22 },
+  { name:'René del Cid',       pts:21 },
+  { name:'Sotomayor Leiva',    pts:21 },
+  { name:'Ronald Ochoa',       pts:20 },
+  { name:'Mario Escobar',      pts:20 },
+  { name:'Andres',             pts:20 },
+  { name:'Alejandro',          pts:19 },
+  { name:'Mazariegos Lucas',   pts:19 },
+  { name:'Rodrigo del Cid',    pts:18 },
+  { name:'Karla',              pts:18 },
+  { name:'Ronalito',           pts:14 },
+  { name:'Pivaral',            pts:13 },
+  { name:'Claudio',            pts:11 },
+];
+
+// ── STORAGE ──────────────────────────────────────────────
+function getData(key) {
+  try { return JSON.parse(localStorage.getItem('quiniela_' + key)) || null; } catch { return null; }
+}
+function setData(key, val) {
+  localStorage.setItem('quiniela_' + key, JSON.stringify(val));
+}
+
+// ── LOGIN ─────────────────────────────────────────────────
+function login() {
+  const pwd = document.getElementById('pwdInput').value;
+  if (pwd === PASSWORD) {
+    sessionStorage.setItem('admin_auth', '1');
+    document.getElementById('loginScreen').style.display = 'none';
+    document.getElementById('adminScreen').style.display = 'block';
+    initAdmin();
+  } else {
+    document.getElementById('errorMsg').style.display = 'block';
+    document.getElementById('pwdInput').value = '';
+  }
+}
+function logout() {
+  sessionStorage.removeItem('admin_auth');
+  document.getElementById('adminScreen').style.display = 'none';
+  document.getElementById('loginScreen').style.display = 'flex';
+  document.getElementById('pwdInput').value = '';
+}
+
+// ── TABS ──────────────────────────────────────────────────
+function showAdminTab(id, btn) {
+  ['resultados','previas','tabla'].forEach(t => {
+    document.getElementById('tab-' + t).style.display = 'none';
+  });
+  document.querySelectorAll('.admin-tab').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + id).style.display = 'block';
+  btn.classList.add('active');
+}
+
+// ── MATCHES ───────────────────────────────────────────────
+function renderMatches() {
+  const saved = getData('results') || {};
+  const list = document.getElementById('matchesList');
+  let lastDate = '';
+  list.innerHTML = allMatches.map(m => {
+    const r = saved[m.id] || { s1: m.s1, s2: m.s2, done: m.done };
+    const dateHeader = m.date !== lastDate
+      ? `<div class="match-date-label">${m.date}</div>` : '';
+    lastDate = m.date;
+    const doneClass = r.done ? 'done' : '';
+    const savedLabel = r.done
+      ? `<button class="save-btn saved" onclick="clearResult('${m.id}')">✓ Final</button>`
+      : `<button class="save-btn" onclick="saveResult('${m.id}')">Guardar</button>`;
+    return `${dateHeader}
+    <div class="match-item ${doneClass}" id="mi-${m.id}">
+      <span class="team-label">${m.t1}</span>
+      <div class="score-inputs">
+        <input class="score-input" id="s1-${m.id}" type="number" min="0" max="20" value="${r.s1}" ${r.done?'readonly':''}>
+        <span class="score-sep">–</span>
+        <input class="score-input" id="s2-${m.id}" type="number" min="0" max="20" value="${r.s2}" ${r.done?'readonly':''}>
+      </div>
+      <span class="team-label right">${m.t2}</span>
+      ${savedLabel}
+    </div>`;
+  }).join('');
+}
+
+function saveResult(id) {
+  const s1 = parseInt(document.getElementById('s1-' + id).value);
+  const s2 = parseInt(document.getElementById('s2-' + id).value);
+  if (isNaN(s1) || isNaN(s2)) return;
+  const saved = getData('results') || {};
+  saved[id] = { s1, s2, done: true };
+  setData('results', saved);
+  showToast('✓ Resultado guardado');
+  renderMatches();
+}
+
+function clearResult(id) {
+  const saved = getData('results') || {};
+  if (saved[id]) { saved[id].done = false; setData('results', saved); }
+  renderMatches();
+}
+
+// ── PREVIAS ───────────────────────────────────────────────
+function publishPrevia() {
+  const title = document.getElementById('previaTitle').value.trim();
+  const body = document.getElementById('previaBody').value.trim();
+  if (!title || !body) { showToast('Completá el título y el texto', true); return; }
+  const previas = getData('previas') || [];
+  previas.unshift({ id: Date.now(), title, body, date: new Date().toLocaleDateString('es-GT', {day:'numeric',month:'short',year:'numeric'}) });
+  setData('previas', previas);
+  document.getElementById('previaTitle').value = '';
+  document.getElementById('previaBody').value = '';
+  showToast('📢 Previa publicada');
+  renderPrevias();
+}
+
+function deletePrevia(id) {
+  if (!confirm('¿Eliminar esta previa?')) return;
+  const previas = (getData('previas') || []).filter(p => p.id !== id);
+  setData('previas', previas);
+  renderPrevias();
+}
+
+function renderPrevias() {
+  const previas = getData('previas') || [];
+  const list = document.getElementById('previasList');
+  if (!previas.length) {
+    list.innerHTML = '<p style="color:var(--muted);font-size:13px;">No hay previas publicadas aún.</p>';
+    return;
+  }
+  list.innerHTML = previas.map(p => `
+    <div class="previa-item">
+      <div class="previa-item-text">
+        <h4>${p.title}</h4>
+        <p>${p.date}</p>
+      </div>
+      <button class="delete-btn" onclick="deletePrevia(${p.id})">Eliminar</button>
+    </div>
+  `).join('');
+}
+
+// ── TABLA ─────────────────────────────────────────────────
+function renderAdminTable() {
+  const saved = getData('tabla') || participants;
+  const body = document.getElementById('adminTableBody');
+  body.innerHTML = saved.map((p, i) => `
+    <tr>
+      <td style="color:var(--muted);font-weight:700;">${i+1}</td>
+      <td>${p.name}</td>
+      <td><input class="pts-edit" id="pts-${i}" type="number" value="${p.pts}" min="0"></td>
+    </tr>
+  `).join('');
+}
+
+function saveTable() {
+  const saved = getData('tabla') || participants;
+  const updated = saved.map((p, i) => ({
+    ...p,
+    pts: parseInt(document.getElementById('pts-' + i).value) || p.pts
+  })).sort((a,b) => b.pts - a.pts);
+  setData('tabla', updated);
+  showToast('💾 Tabla guardada');
+  renderAdminTable();
+}
+
+// ── TOAST ─────────────────────────────────────────────────
+function showToast(msg, error=false) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.style.background = error ? 'var(--red)' : 'var(--green)';
+  t.style.color = error ? '#fff' : '#0a2e1a';
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2500);
+}
+
+// ── INIT ──────────────────────────────────────────────────
+function initAdmin() {
+  renderMatches();
+  renderPrevias();
+  renderAdminTable();
+}
+
+// Check session
+if (sessionStorage.getItem('admin_auth') === '1') {
+  document.getElementById('loginScreen').style.display = 'none';
+  document.getElementById('adminScreen').style.display = 'block';
+  initAdmin();
+}
+</script>
+</body>
+</html>
