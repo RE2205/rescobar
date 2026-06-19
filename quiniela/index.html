@@ -789,13 +789,49 @@ function toggleUser() {
   document.getElementById('avatarInitial').textContent = initials[idx];
 }
 
-// ─── INIT ─────────────────────────────────────────────────────────────
-renderStandings();
-renderMatches();
-renderPrevias();
-renderPredBars();
-renderCampeonChart('campeonChart');
-renderCampeonChart('campeonChartPuntos');
+// ─── INIT — carga datos desde Redis ───────────────────────────────────
+async function init() {
+  try {
+    const res = await fetch('/api/quiniela?action=tabla');
+    const tablaRedis = await res.json();
+    if (tablaRedis && Array.isArray(tablaRedis) && tablaRedis.length > 0) {
+      participants.length = 0;
+      tablaRedis.forEach(p => participants.push(p));
+    }
+  } catch(e) {}
+
+  try {
+    const res = await fetch('/api/quiniela?action=previas');
+    const previasRedis = await res.json();
+    if (previasRedis && Array.isArray(previasRedis) && previasRedis.length > 0) {
+      previas.length = 0;
+      previasRedis.forEach(p => previas.push(p));
+    }
+  } catch(e) {}
+
+  try {
+    const res = await fetch('/api/quiniela?action=results');
+    const resultsRedis = await res.json();
+    if (resultsRedis && Object.keys(resultsRedis).length > 0) {
+      matches.forEach(m => {
+        if (resultsRedis[m.id]) {
+          m.s1 = resultsRedis[m.id].s1;
+          m.s2 = resultsRedis[m.id].s2;
+          m.done = resultsRedis[m.id].done;
+        }
+      });
+    }
+  } catch(e) {}
+
+  renderStandings();
+  renderMatches();
+  renderPrevias();
+  renderPredBars();
+  renderCampeonChart('campeonChart');
+  renderCampeonChart('campeonChartPuntos');
+}
+
+init();
 </script>
 </body>
 </html>
