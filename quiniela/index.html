@@ -667,9 +667,11 @@ function renderStandings() {
   const body = document.getElementById('standingsBody');
   body.innerHTML = participants.map((p, i) => {
     const rank = i < 3 ? `<span class="rank top medal">${medals[i]}</span>` : `<span class="rank">${i+1}</span>`;
-    const tClass = p.trend.startsWith('+') ? 'up' : p.trend === '0' ? 'flat' : 'down';
-    const tSign = p.trend.startsWith('+') ? p.trend : p.trend;
-    const racha = `<div class="sparkbar">${p.racha.map(r=>`<span class="${r?'hit':''}" style="height:${r?18:8}px"></span>`).join('')}</div>`;
+    const trend = p.trend || '0';
+    const tClass = trend.startsWith('+') ? 'up' : trend === '0' ? 'flat' : 'down';
+    const tSign = trend;
+    const rachaData = p.racha || [0,0,0,0,0,0];
+    const racha = `<div class="sparkbar">${rachaData.map(r=>`<span class="${r?'hit':''}" style="height:${r?18:8}px"></span>`).join('')}</div>`;
     return `<tr>
       <td>${rank}</td>
       <td class="player-name">${p.name}</td>
