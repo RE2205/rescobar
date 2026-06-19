@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quiniela Mundial 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;700&display=swap');
+
+  :root {
+    --pitch: #0a2e1a;
+    --pitch-mid: #0f3d24;
+    --pitch-line: #1a5c38;
+    --gold: #c9a84c;
+    --gold-light: #e8c97a;
+    --red: #d93025;
+    --white: #f0f4f0;
+    --muted: #6b8f77;
+    --card: #0d3520;
+    --border: rgba(201,168,76,0.18);
+    --radius: 10px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--pitch);
+    color: var(--white);
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  /* CAMPO DE FÚTBOL lines subtle bg */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 60px,
+        rgba(255,255,255,0.018) 60px,
+        rgba(255,255,255,0.018) 61px
+      );
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .container { max-width: 960px; margin: 0 auto; padding: 0 16px; position: relative; z-index: 1; }
+
+  /* HEADER */
+  header {
+    border-bottom: 1px solid var(--border);
+    padding: 20px 0 16px;
+    margin-bottom: 28px;
+  }
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .logo-group { display: flex; align-items: center; gap: 14px; }
+  .logo-ball {
+    width: 40px; height: 40px;
+    background: var(--gold);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+    box-shadow: 0 0 16px rgba(201,168,76,0.35);
+  }
+  .logo-text h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: -0.3px;
+    line-height: 1.2;
+  }
+  .logo-text p { font-size: 12px; color: var(--muted); letter-spacing: 0.5px; text-transform: uppercase; }
+
+  .user-badge {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 50px;
+    padding: 6px 14px 6px 10px;
+    display: flex; align-items: center; gap: 8px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: border-color 0.2s;
+  }
+  .user-badge:hover { border-color: var(--gold); }
+  .user-avatar {
+    width: 26px; height: 26px;
+    background: var(--gold);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px; font-weight: 700; color: var(--pitch);
+  }
+
+  /* TABS */
+  .tabs {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 24px;
+    background: var(--card);
+    border-radius: 50px;
+    padding: 4px;
+    border: 1px solid var(--border);
+    width: fit-content;
+  }
+  .tab {
+    padding: 7px 18px;
+    border-radius: 50px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    color: var(--muted);
+    border: none;
+    background: none;
+  }
+  .tab.active {
+    background: var(--gold);
+    color: var(--pitch);
+    font-weight: 700;
+  }
+  .tab:hover:not(.active) { color: var(--white); }
+
+  /* PANEL */
+  .panel { display: none; }
+  .panel.active { display: block; }
+
+  /* TABLA DE POSICIONES */
+  .standings-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 16px;
+  }
+  .standings-header h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+  }
+  .jornada-badge {
+    font-size: 11px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+  }
+
+  .standings-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 32px;
+  }
+  .standings-table th {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.7px;
+    color: var(--muted);
+    padding: 8px 12px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+    font-weight: 500;
+  }
+  .standings-table td {
+    padding: 11px 12px;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    font-size: 14px;
+  }
+  .standings-table tr:hover td { background: rgba(255,255,255,0.03); }
+
+  .rank { font-family: 'Space Grotesk', sans-serif; font-weight: 700; color: var(--muted); width: 32px; }
+  .rank.top { color: var(--gold); }
+  .rank.medal { font-size: 16px; }
+
+  .player-name { font-weight: 600; }
+  .pts-cell {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--gold);
+    text-align: right;
+  }
+
+  .sparkbar {
+    display: flex;
+    gap: 2px;
+    align-items: flex-end;
+    height: 20px;
+  }
+  .sparkbar span {
+    width: 4px;
+    background: var(--pitch-line);
+    border-radius: 2px;
+    transition: height 0.4s ease;
+  }
+  .sparkbar span.hit { background: var(--gold); }
+  .sparkbar span.partial { background: var(--pitch-line); opacity: 0.6; }
+
+  .trend {
+    font-size: 11px;
+    padding: 2px 7px;
+    border-radius: 50px;
+  }
+  .trend.up { background: rgba(34,197,94,0.15); color: #4ade80; }
+  .trend.down { background: rgba(239,68,68,0.12); color: #f87171; }
+  .trend.flat { background: rgba(255,255,255,0.06); color: var(--muted); }
+
+  /* GRÁFICAS */
+  .chart-section { margin-bottom: 32px; }
+  .chart-section h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    color: var(--white);
+  }
+
+  .match-preview {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 16px 20px;
+    margin-bottom: 10px;
+  }
+  .match-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+  }
+  .match-title { font-weight: 600; font-size: 15px; }
+  .match-date { font-size: 12px; color: var(--muted); }
+
+  .prediction-bars { display: flex; flex-direction: column; gap: 6px; }
+  .pred-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+  }
+  .pred-score { width: 52px; font-family: 'Space Grotesk', sans-serif; font-weight: 600; color: var(--gold); }
+  .pred-bar-track {
+    flex: 1;
+    height: 8px;
+    background: rgba(255,255,255,0.07);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .pred-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--pitch-line), var(--gold));
+    border-radius: 4px;
+    transition: width 0.6s ease;
+  }
+  .pred-pct {
+    width: 42px;
+    text-align: right;
+    font-size: 12px;
+    color: var(--muted);
+    font-family: 'Space Grotesk', sans-serif;
+  }
+
+  /* WIN CONSENSUS */
+  .consensus {
+    display: flex;
+    gap: 0;
+    height: 28px;
+    border-radius: 6px;
+    overflow: hidden;
+    margin-bottom: 6px;
+  }
+  .consensus-block {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 600;
+    transition: width 0.5s ease;
+  }
+  .consensus-block.win1 { background: #1d6b40; }
+  .consensus-block.draw { background: #4a5568; }
+  .consensus-block.win2 { background: #7c1d1d; }
+  .consensus-legend {
+    display: flex;
+    gap: 16px;
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 4px;
+  }
+  .consensus-legend span::before {
+    content: '●';
+    margin-right: 4px;
+  }
+  .consensus-legend .l1::before { color: #1d6b40; }
+  .consensus-legend .l2::before { color: #4a5568; }
+  .consensus-legend .l3::before { color: #7c1d1d; }
+
+  /* PARTIDOS PANEL */
+  .matches-grid {
+    display: grid;
+    gap: 10px;
+  }
+  .match-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 14px 18px;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 12px;
+  }
+  .match-card.live { border-color: rgba(201,168,76,0.5); box-shadow: 0 0 12px rgba(201,168,76,0.1); }
+  .team-side { display: flex; flex-direction: column; }
+  .team-side.right { text-align: right; }
+  .team-flag { font-size: 24px; margin-bottom: 2px; }
+  .team-name { font-weight: 600; font-size: 14px; }
+  .match-center { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+  .score-box {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 2px;
+  }
+  .match-time { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; }
+  .live-dot {
+    display: inline-block;
+    width: 7px; height: 7px;
+    background: #4ade80;
+    border-radius: 50%;
+    margin-right: 4px;
+    animation: pulse 1.2s ease-in-out infinite;
+  }
+  @keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:0.3;} }
+
+  .my-pick {
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 4px;
+  }
+  .my-pick .pick-score { color: var(--gold-light); font-weight: 600; }
+  .pts-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    background: rgba(201,168,76,0.15);
+    color: var(--gold);
+    border-radius: 4px;
+    padding: 2px 7px;
+    font-size: 12px;
+    font-weight: 700;
+    margin-top: 3px;
+    font-family: 'Space Grotesk', sans-serif;
+  }
+
+  /* PREVIAS */
+  .previa-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px 24px;
+    margin-bottom: 12px;
+  }
+  .previa-date { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.7px; margin-bottom: 8px; }
+  .previa-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: var(--gold-light);
+  }
+  .previa-body { font-size: 14px; line-height: 1.7; color: rgba(240,244,240,0.85); }
+  .previa-body p { margin-bottom: 8px; }
+
+  .score-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+    gap: 8px;
+    margin-top: 14px;
+  }
+  .score-tile {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 8px;
+    padding: 10px 14px;
+    text-align: center;
+  }
+  .score-tile .sc { font-family: 'Space Grotesk', sans-serif; font-size: 18px; font-weight: 700; color: var(--gold); }
+  .score-tile .pct { font-size: 12px; color: var(--muted); margin-top: 1px; }
+
+  /* SISTEMA DE PUNTOS */
+  .puntos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 10px;
+    margin-bottom: 28px;
+  }
+  .punto-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 16px 18px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .punto-num {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--gold);
+    line-height: 1;
+    flex-shrink: 0;
+  }
+  .punto-desc { font-size: 13px; line-height: 1.4; color: rgba(240,244,240,0.8); }
+  .punto-desc strong { color: var(--white); display: block; font-size: 14px; margin-bottom: 2px; }
+
+  /* MOBILE */
+  @media (max-width: 600px) {
+    .standings-table th:nth-child(4),
+    .standings-table td:nth-child(4) { display: none; }
+    .puntos-grid { grid-template-columns: 1fr 1fr; }
+    .match-card { padding: 10px 12px; }
+    .score-box { font-size: 18px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <header>
+    <div class="header-inner">
+      <div class="logo-group">
+        <div class="logo-ball">⚽</div>
+        <div class="logo-text">
+          <h1>Quiniela Mundial 2026</h1>
+          <p>USA · México · Canadá</p>
+        </div>
+      </div>
+      <div class="user-badge" onclick="toggleUser()">
+        <div class="user-avatar" id="avatarInitial">RE</div>
+        <span id="userName">Ronald Escobar</span>
+        <span style="color:var(--muted);font-size:11px;">▾</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="tabs">
+    <button class="tab active" onclick="showPanel('tabla')">Tabla</button>
+    <button class="tab" onclick="showPanel('partidos')">Partidos</button>
+    <button class="tab" onclick="showPanel('previas')">Previas</button>
+    <button class="tab" onclick="showPanel('puntos')">Puntos</button>
+  </div>
+
+  <!-- TABLA DE POSICIONES -->
+  <div id="tabla" class="panel active">
+    <div class="standings-header">
+      <h2>Tabla de Posiciones</h2>
+      <span class="jornada-badge">Jornada 3 · Fase Grupos</span>
+    </div>
+
+    <table class="standings-table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Participante</th>
+          <th style="text-align:right">Pts</th>
+          <th>Tendencia</th>
+          <th>Racha</th>
+        </tr>
+      </thead>
+      <tbody id="standingsBody"></tbody>
+    </table>
+
+    <!-- GRÁFICA: Distribución de favoritos -->
+    <div class="chart-section">
+      <h3>Pronóstico Campeón 🏆</h3>
+      <div id="campeonChart"></div>
+    </div>
+
+    <div class="chart-section">
+      <h3>🇺🇸 EE.UU. vs Australia 🇦🇺 — Pronósticos · HOY 13:00</h3>
+      <div class="match-preview">
+        <div class="match-meta">
+          <span class="match-title">Estados Unidos vs Australia</span>
+          <span class="match-date">Hoy · Jun 19 · 13:00 · Grupo D · Seattle</span>
+        </div>
+        <div style="margin-bottom:12px;">
+          <div class="consensus" id="consensusBar"></div>
+          <div class="consensus-legend">
+            <span class="l1">EE.UU. gana 63.6%</span>
+            <span class="l2">Empate 9.1%</span>
+            <span class="l3">Australia gana 27.3%</span>
+          </div>
+        </div>
+        <div class="prediction-bars" id="predBars"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PARTIDOS -->
+  <div id="partidos" class="panel">
+    <div class="standings-header">
+      <h2>Partidos</h2>
+      <span class="jornada-badge">Fase Grupos</span>
+    </div>
+    <div class="matches-grid" id="matchesGrid"></div>
+  </div>
+
+  <!-- PREVIAS -->
+  <div id="previas" class="panel">
+    <div class="standings-header">
+      <h2>Previas & Resúmenes</h2>
+      <span class="jornada-badge">por Henry</span>
+    </div>
+    <div id="previasContent"></div>
+  </div>
+
+  <!-- SISTEMA DE PUNTOS -->
+  <div id="puntos" class="panel">
+    <div class="standings-header">
+      <h2>Sistema de Puntuación</h2>
+    </div>
+    <div class="puntos-grid">
+      <div class="punto-card">
+        <div class="punto-num" style="color:#e8c97a">4</div>
+        <div class="punto-desc"><strong>Resultado Exacto</strong>3 pts exacto + 1 pt ganador/empate acertado</div>
+      </div>
+      <div class="punto-card">
+        <div class="punto-num">1</div>
+        <div class="punto-desc"><strong>Ganador o Empate</strong>Acertaste quién ganó (o que empataba) pero no el marcador</div>
+      </div>
+      <div class="punto-card">
+        <div class="punto-num">0</div>
+        <div class="punto-desc"><strong>Fallo total</strong>Resultado completamente equivocado</div>
+      </div>
+      <div class="punto-card">
+        <div class="punto-num">2</div>
+        <div class="punto-desc"><strong>Clasificados</strong>Acertar equipos que pasan por grupo</div>
+      </div>
+      <div class="punto-card">
+        <div class="punto-num">12</div>
+        <div class="punto-desc"><strong>Campeón (F1)</strong>9 Sub · 6 Tercer · 3 Cuarto</div>
+      </div>
+      <div class="punto-card">
+        <div class="punto-num">8</div>
+        <div class="punto-desc"><strong>Campeón (F2)</strong>6 Sub · 4 Tercer · 2 Cuarto</div>
+      </div>
+    </div>
+
+    <div class="chart-section">
+      <h3>Pronóstico Campeón — Fase 1</h3>
+      <div id="campeonChartPuntos"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ─── DATA ───────────────────────────────────────────────────────────
+const participants = [
+  { name: 'Sophia Escobar',     pts: 30, trend: '+4', racha: [1,1,1,0,1,1] },
+  { name: 'Gilmar Pacheco',     pts: 30, trend: '+3', racha: [1,1,0,1,1,1] },
+  { name: 'Erick Palma',        pts: 29, trend: '+2', racha: [1,0,1,1,0,1] },
+  { name: 'Walter',             pts: 29, trend: '+2', racha: [1,1,0,0,1,1] },
+  { name: 'Henry',              pts: 28, trend: '+1', racha: [0,1,1,1,1,0] },
+  { name: 'Gabby Escobar',      pts: 27, trend: '+3', racha: [1,0,0,1,1,1] },
+  { name: 'Alfaro De León',     pts: 26, trend: '+2', racha: [0,1,1,0,1,0] },
+  { name: 'Javier del Cid',     pts: 25, trend: '+1', racha: [1,0,1,0,0,1] },
+  { name: 'Winny',              pts: 24, trend: '0',  racha: [0,0,1,1,1,0] },
+  { name: 'Sofia Pacheco (Fer)',pts: 24, trend: '+2', racha: [1,0,0,1,0,1] },
+  { name: 'Estuardo del Cid',   pts: 22, trend: '-1', racha: [0,1,0,0,1,0] },
+  { name: 'Girón Alfaro',       pts: 22, trend: '+1', racha: [1,0,1,1,0,0] },
+  { name: 'René del Cid',       pts: 21, trend: '0',  racha: [0,1,0,1,1,0] },
+  { name: 'Sotomayor Leiva',    pts: 21, trend: '+2', racha: [1,0,0,0,1,1] },
+  { name: 'Ronald Ochoa',       pts: 20, trend: '-1', racha: [0,0,1,0,1,1] },
+  { name: 'Mario Escobar',      pts: 20, trend: '+1', racha: [1,0,0,1,0,0] },
+  { name: 'Andres',             pts: 20, trend: '0',  racha: [0,1,0,0,1,0] },
+  { name: 'Alejandro',          pts: 19, trend: '+1', racha: [0,0,1,1,0,0] },
+  { name: 'Mazariegos Lucas',   pts: 19, trend: '-1', racha: [1,0,0,0,1,0] },
+  { name: 'Rodrigo del Cid',    pts: 18, trend: '0',  racha: [0,1,0,0,0,1] },
+  { name: 'Karla',              pts: 18, trend: '+2', racha: [0,0,1,0,0,1] },
+  { name: 'Ronalito',           pts: 14, trend: '-1', racha: [1,0,0,0,1,0] },
+  { name: 'Pivaral',            pts: 13, trend: '-2', racha: [0,0,1,0,0,0] },
+  { name: 'Claudio',            pts: 11, trend: '+1', racha: [0,0,0,1,0,0] },
+];
+
+const matches = [
+  // Jornada 1
+  { t1:'México',      f1:'🇲🇽', s1:2, t2:'Sudáfrica',   f2:'🇿🇦', s2:0, done:true,  jornada:'Jun 11 · Grupo A' },
+  { t1:'Corea del Sur',f1:'🇰🇷', s1:2, t2:'Chequia',     f2:'🇨🇿', s2:1, done:true,  jornada:'Jun 11 · Grupo A' },
+  { t1:'Canadá',      f1:'🇨🇦', s1:1, t2:'Bosnia',       f2:'🇧🇦', s2:1, done:true,  jornada:'Jun 12 · Grupo B' },
+  { t1:'EE.UU.',      f1:'🇺🇸', s1:4, t2:'Paraguay',     f2:'🇵🇾', s2:1, done:true,  jornada:'Jun 12 · Grupo D' },
+  { t1:'Brasil',      f1:'🇧🇷', s1:4, t2:'Marruecos',   f2:'🇲🇦', s2:1, done:true,  jornada:'Jun 13 · Grupo C' },
+  { t1:'Suiza',       f1:'🇨🇭', s1:1, t2:'Qatar',        f2:'🇶🇦', s2:1, done:true,  jornada:'Jun 13 · Grupo B' },
+  { t1:'Alemania',    f1:'🇩🇪', s1:5, t2:'Curazao',      f2:'🇨🇼', s2:0, done:true,  jornada:'Jun 14 · Grupo E' },
+  { t1:'Países Bajos',f1:'🇳🇱', s1:3, t2:'Japón',        f2:'🇯🇵', s2:1, done:true,  jornada:'Jun 14 · Grupo F' },
+  { t1:'Costa de Marfil',f1:'🇨🇮', s1:2, t2:'Ecuador',  f2:'🇪🇨', s2:1, done:true,  jornada:'Jun 14 · Grupo E' },
+  { t1:'Suecia',      f1:'🇸🇪', s1:5, t2:'Túnez',        f2:'🇹🇳', s2:1, done:true,  jornada:'Jun 14 · Grupo F' },
+  { t1:'Australia',   f1:'🇦🇺', s1:2, t2:'Turquía',      f2:'🇹🇷', s2:0, done:true,  jornada:'Jun 13 · Grupo D' },
+  { t1:'Haití',       f1:'🇭🇹', s1:0, t2:'Escocia',      f2:'🏴󠁧󠁢󠁳󠁣󠁴󠁿', s2:2, done:true,  jornada:'Jun 15 · Grupo G' },
+  { t1:'Egipto',      f1:'🇪🇬', s1:1, t2:'Bélgica',      f2:'🇧🇪', s2:1, done:true,  jornada:'Jun 15 · Grupo G' },
+  { t1:'España',      f1:'🇪🇸', s1:0, t2:'Cabo Verde',   f2:'🇨🇻', s2:0, done:true,  jornada:'Jun 15 · Grupo H' },
+  { t1:'Arabia Saudita',f1:'🇸🇦', s1:1, t2:'Uruguay',   f2:'🇺🇾', s2:1, done:true,  jornada:'Jun 15 · Grupo H' },
+  { t1:'Francia',     f1:'🇫🇷', s1:3, t2:'Senegal',      f2:'🇸🇳', s2:1, done:true,  jornada:'Jun 16 · Grupo I' },
+  { t1:'Noruega',     f1:'🇳🇴', s1:4, t2:'Irak',         f2:'🇮🇶', s2:1, done:true,  jornada:'Jun 16 · Grupo I' },
+  { t1:'Argentina',   f1:'🇦🇷', s1:3, t2:'Argelia',      f2:'🇩🇿', s2:0, done:true,  jornada:'Jun 16 · Grupo J' },
+  { t1:'Austria',     f1:'🇦🇹', s1:2, t2:'Jordania',     f2:'🇯🇴', s2:0, done:true,  jornada:'Jun 16 · Grupo J' },
+  { t1:'Portugal',    f1:'🇵🇹', s1:'?', t2:'RD Congo',  f2:'🇨🇩', s2:'?', done:false, jornada:'Jun 19 · Grupo K' },
+  { t1:'Nueva Zelanda',f1:'🇳🇿', s1:2, t2:'Irán',        f2:'🇮🇷', s2:2, done:true,  jornada:'Jun 17 · Grupo L' },
+  // Jornada 2
+  { t1:'Chequia',     f1:'🇨🇿', s1:1, t2:'Sudáfrica',    f2:'🇿🇦', s2:1, done:true,  jornada:'Jun 18 · Grupo A' },
+  { t1:'México',      f1:'🇲🇽', s1:1, t2:'Corea del Sur',f2:'🇰🇷', s2:0, done:true,  jornada:'Jun 18 · Grupo A' },
+  { t1:'Suiza',       f1:'🇨🇭', s1:4, t2:'Bosnia',       f2:'🇧🇦', s2:1, done:true,  jornada:'Jun 18 · Grupo B' },
+  { t1:'Canadá',      f1:'🇨🇦', s1:6, t2:'Qatar',        f2:'🇶🇦', s2:0, done:true,  jornada:'Jun 18 · Grupo B' },
+];
+
+const predictions = [
+  { score:'2-1', pct:22.73 },
+  { score:'2-0', pct:18.18 },
+  { score:'1-0', pct:13.64 },
+  { score:'1-2', pct:13.64 },
+  { score:'1-1', pct:9.09  },
+  { score:'3-0', pct:4.55  },
+  { score:'4-2', pct:4.55  },
+  { score:'0-2', pct:4.55  },
+  { score:'0-1', pct:4.55  },
+  { score:'1-3', pct:4.55  },
+];
+
+const campeonVotes = {
+  'España':    10,
+  'Francia':   4,
+  'Portugal':  3,
+  'Argentina': 2,
+  'Alemania':  1,
+  'Brasil':    1,
+  'Sin dato':  1,
+};
+
+const previas = [
+  {
+    date: 'Jornada 2 · 19 Jun 2026',
+    title: 'EE.UU. vs Australia, Escocia vs Marruecos, Brasil vs Haití, Turquía vs Paraguay',
+    body: `Buenos días estimados participantes.\n\nJornada intensa hoy con 4 partidos. El más esperado: Estados Unidos vs Australia a las 13:00. El grupo está dividido — 63.6% le tira a EE.UU., 27.3% le va a Australia y 9.1% ve empate. Marcador más votado: 2-1 con 22.73%.\n\nEscocia vs Marruecos a las 16:00, Brasil vs Haití a las 18:30 y cierra Turquía vs Paraguay a las 21:00. Suerte a todos.`
+  },
+  {
+    date: 'Resumen Jornada 3 · 15 Jun 2026',
+    title: 'Jornada 3: México cumple, Ronald escala posiciones',
+    body: `Excelente jornada para varios de los favoritos. México cumplió con el pronóstico de la mayoría (2-0 sobre Sudáfrica), otorgando 3 puntos exactos a quienes apostaron correctamente. Brasil también fue generoso con sus seguidores aunque no con el marcador esperado por todos.\n\nRonald Escobar lidera con 42 puntos tras acertar los últimos 4 resultados. La competencia sigue reñida en los puestos 2 al 5.`
+  },
+];
+
+// ─── RENDER STANDINGS ────────────────────────────────────────────────
+function renderStandings() {
+  const medals = ['🥇','🥈','🥉'];
+  const body = document.getElementById('standingsBody');
+  body.innerHTML = participants.map((p, i) => {
+    const rank = i < 3 ? `<span class="rank top medal">${medals[i]}</span>` : `<span class="rank">${i+1}</span>`;
+    const tClass = p.trend.startsWith('+') ? 'up' : p.trend === '0' ? 'flat' : 'down';
+    const tSign = p.trend.startsWith('+') ? p.trend : p.trend;
+    const racha = `<div class="sparkbar">${p.racha.map(r=>`<span class="${r?'hit':''}" style="height:${r?18:8}px"></span>`).join('')}</div>`;
+    return `<tr>
+      <td>${rank}</td>
+      <td class="player-name">${p.name}</td>
+      <td class="pts-cell">${p.pts}</td>
+      <td><span class="trend ${tClass}">${tSign}</span></td>
+      <td>${racha}</td>
+    </tr>`;
+  }).join('');
+}
+
+// ─── RENDER MATCHES ──────────────────────────────────────────────────
+function renderMatches() {
+  const grid = document.getElementById('matchesGrid');
+  grid.innerHTML = matches.map(m => {
+    const scoreDisplay = m.done
+      ? `<div class="score-box">${m.s1} – ${m.s2}</div>`
+      : `<div class="score-box" style="color:var(--muted);font-size:16px;">vs</div>`;
+    const timeLabel = m.done
+      ? `<span style="color:#4ade80;font-size:11px;">✓ Final</span>`
+      : `<span class="match-time" style="color:var(--gold);">Próximo</span>`;
+
+    return `<div class="match-card ${!m.done?'live':''}">
+      <div class="team-side">
+        <div class="team-flag">${m.f1}</div>
+        <div class="team-name">${m.t1}</div>
+      </div>
+      <div class="match-center">
+        ${scoreDisplay}
+        ${timeLabel}
+        <span style="font-size:10px;color:var(--muted);margin-top:2px;">${m.jornada}</span>
+      </div>
+      <div class="team-side right">
+        <div class="team-flag">${m.f2}</div>
+        <div class="team-name">${m.t2}</div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+// ─── RENDER PREVIAS ──────────────────────────────────────────────────
+function renderPrevias() {
+  const cont = document.getElementById('previasContent');
+  cont.innerHTML = previas.map(p => `
+    <div class="previa-card">
+      <div class="previa-date">${p.date}</div>
+      <div class="previa-title">${p.title}</div>
+      <div class="previa-body">${p.body.split('\n\n').map(par=>`<p>${par}</p>`).join('')}</div>
+      ${p.date.includes('Jornada 4') ? renderScoreGrid() : ''}
+    </div>
+  `).join('');
+}
+
+function renderScoreGrid() {
+  return `<div class="score-grid">
+    ${predictions.map(pr=>`
+      <div class="score-tile">
+        <div class="sc">${pr.score}</div>
+        <div class="pct">${pr.pct.toFixed(2)}%</div>
+      </div>
+    `).join('')}
+  </div>`;
+}
+
+// ─── RENDER PREDICTION BARS ──────────────────────────────────────────
+function renderPredBars() {
+  const el = document.getElementById('predBars');
+  el.innerHTML = predictions.map(p => `
+    <div class="pred-row">
+      <span class="pred-score">${p.score}</span>
+      <div class="pred-bar-track">
+        <div class="pred-bar-fill" style="width:${p.pct}%"></div>
+      </div>
+      <span class="pred-pct">${p.pct.toFixed(1)}%</span>
+    </div>
+  `).join('');
+
+  // consensus bar: 100% Portugal
+  const bar = document.getElementById('consensusBar');
+  bar.innerHTML = `
+    <div class="consensus-block win1" style="width:63.6%;">EE.UU. 63.6%</div>
+    <div class="consensus-block draw" style="width:9.1%;font-size:10px;">E 9%</div>
+    <div class="consensus-block win2" style="width:27.3%;">AUS 27.3%</div>
+  `;
+}
+
+// ─── RENDER CAMPEON CHARTS ───────────────────────────────────────────
+function renderCampeonChart(elId) {
+  const el = document.getElementById(elId);
+  const total = Object.values(campeonVotes).reduce((a,b)=>a+b,0);
+  const sorted = Object.entries(campeonVotes).sort((a,b)=>b[1]-a[1]);
+  el.innerHTML = sorted.map(([team, votes]) => {
+    const pct = (votes/total*100).toFixed(1);
+    return `<div class="pred-row" style="margin-bottom:8px;">
+      <span class="pred-score" style="width:120px;font-size:13px;">${team}</span>
+      <div class="pred-bar-track">
+        <div class="pred-bar-fill" style="width:${pct}%"></div>
+      </div>
+      <span class="pred-pct">${pct}%</span>
+    </div>`;
+  }).join('');
+}
+
+// ─── TABS ────────────────────────────────────────────────────────────
+function showPanel(id) {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  event.target.classList.add('active');
+}
+
+function toggleUser() {
+  const names = ['Ronald Escobar','Carlos Mendoza','Lucía Flores'];
+  const initials = ['RE','CM','LF'];
+  let idx = (parseInt(localStorage.getItem('uidx')||'0') + 1) % names.length;
+  localStorage.setItem('uidx', idx);
+  document.getElementById('userName').textContent = names[idx];
+  document.getElementById('avatarInitial').textContent = initials[idx];
+}
+
+// ─── INIT ─────────────────────────────────────────────────────────────
+renderStandings();
+renderMatches();
+renderPrevias();
+renderPredBars();
+renderCampeonChart('campeonChart');
+renderCampeonChart('campeonChartPuntos');
+</script>
+</body>
+</html>
