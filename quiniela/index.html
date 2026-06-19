@@ -791,37 +791,46 @@ function toggleUser() {
 
 // ─── INIT — carga datos desde Redis ───────────────────────────────────
 async function init() {
+  // Tabla
   try {
     const res = await fetch('/api/quiniela?action=tabla');
-    const tablaRedis = await res.json();
-    if (tablaRedis && Array.isArray(tablaRedis) && tablaRedis.length > 0) {
-      participants.length = 0;
-      tablaRedis.forEach(p => participants.push(p));
+    if (res.ok) {
+      const tablaRedis = await res.json();
+      if (tablaRedis && Array.isArray(tablaRedis) && tablaRedis.length === 24) {
+        participants.length = 0;
+        tablaRedis.forEach(p => participants.push(p));
+      }
     }
-  } catch(e) {}
+  } catch(e) { console.log('tabla fallback', e); }
 
+  // Previas
   try {
     const res = await fetch('/api/quiniela?action=previas');
-    const previasRedis = await res.json();
-    if (previasRedis && Array.isArray(previasRedis) && previasRedis.length > 0) {
-      previas.length = 0;
-      previasRedis.forEach(p => previas.push(p));
+    if (res.ok) {
+      const previasRedis = await res.json();
+      if (previasRedis && Array.isArray(previasRedis) && previasRedis.length > 0) {
+        previas.length = 0;
+        previasRedis.forEach(p => previas.push(p));
+      }
     }
-  } catch(e) {}
+  } catch(e) { console.log('previas fallback', e); }
 
+  // Resultados
   try {
     const res = await fetch('/api/quiniela?action=results');
-    const resultsRedis = await res.json();
-    if (resultsRedis && Object.keys(resultsRedis).length > 0) {
-      matches.forEach(m => {
-        if (resultsRedis[m.id]) {
-          m.s1 = resultsRedis[m.id].s1;
-          m.s2 = resultsRedis[m.id].s2;
-          m.done = resultsRedis[m.id].done;
-        }
-      });
+    if (res.ok) {
+      const r = await res.json();
+      if (r && typeof r === 'object') {
+        matches.forEach(m => {
+          if (r[m.id] && typeof r[m.id].s1 === 'number') {
+            m.s1 = r[m.id].s1;
+            m.s2 = r[m.id].s2;
+            m.done = r[m.id].done;
+          }
+        });
+      }
     }
-  } catch(e) {}
+  } catch(e) { console.log('results fallback', e); }
 
   renderStandings();
   renderMatches();
