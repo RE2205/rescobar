@@ -97,20 +97,20 @@
 
         .hero-content {
             position: relative; z-index: 2;
-            padding: 0 36px 64px;
-            max-width: 760px;
+            padding: 0 48px 80px;
+            max-width: 960px;
         }
         .hero-eyebrow {
-            display: inline-block; margin-bottom: 18px;
-            font-size: 10px; letter-spacing: 0.35em;
+            display: inline-block; margin-bottom: 24px;
+            font-size: 11px; letter-spacing: 0.4em;
             text-transform: uppercase; color: var(--teal);
             opacity: 0; animation: fadeUp 0.8s ease 0.3s forwards;
         }
         .hero-title {
             font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(38px, 6.5vw, 72px);
-            font-weight: 300; line-height: 1.1;
-            margin-bottom: 20px;
+            font-size: clamp(52px, 8vw, 96px);
+            font-weight: 300; line-height: 1.05;
+            margin-bottom: 28px;
             opacity: 0; animation: fadeUp 0.8s ease 0.5s forwards;
         }
         .hero-title em {
@@ -121,9 +121,9 @@
             background-clip: text;
         }
         .hero-sub {
-            font-size: 14px; line-height: 1.9;
+            font-size: 13px; line-height: 2;
             color: var(--gris-claro);
-            max-width: 440px;
+            max-width: 440px; letter-spacing: 0.04em;
             opacity: 0; animation: fadeUp 0.8s ease 0.7s forwards;
         }
 
@@ -148,15 +148,15 @@
 
         /* ═══ SECCIÓN CHAT ═══ */
         .chat-section {
-            max-width: 700px; margin: 0 auto;
-            padding: 0 24px 60px;
+            max-width: 780px; margin: 0 auto;
+            padding: 0 32px 80px;
         }
 
         /* Separador sutil */
         .section-divider {
             display: flex; align-items: center; gap: 16px;
-            padding: 48px 24px 40px;
-            max-width: 700px; margin: 0 auto;
+            padding: 56px 32px 48px;
+            max-width: 780px; margin: 0 auto;
         }
         .section-divider::before,
         .section-divider::after {
@@ -171,21 +171,21 @@
 
         /* Header del chat */
         .chat-header {
-            display: flex; align-items: center; gap: 14px;
-            padding: 0 0 20px;
+            display: flex; align-items: center; gap: 18px;
+            padding: 0 0 28px;
             border-bottom: 1px solid var(--linea);
             margin-bottom: 4px;
         }
-        .chat-brain { width: 34px; height: auto; flex-shrink: 0; }
+        .chat-brain { width: 48px; height: auto; flex-shrink: 0; }
         .chat-header-info { flex: 1; }
         .chat-header-title {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 16px; font-weight: 300; letter-spacing: 0.1em;
+            font-size: 22px; font-weight: 300; letter-spacing: 0.1em;
         }
         .chat-header-sub {
-            font-size: 9px; letter-spacing: 0.2em;
+            font-size: 10px; letter-spacing: 0.22em;
             text-transform: uppercase; color: var(--gris);
-            margin-top: 3px;
+            margin-top: 4px;
         }
         .status-dot {
             display: flex; align-items: center; gap: 7px;
@@ -203,37 +203,42 @@
         }
 
         /* Mensajes */
-        .messages { min-height: 180px; padding: 24px 0 8px; }
+        .messages { min-height: 200px; padding: 32px 0 12px; }
         .chat-disclaimer {
-            text-align: center; padding: 0 12px 24px;
-            margin-bottom: 8px;
+            text-align: center; padding: 0 16px 28px;
+            margin-bottom: 12px;
             border-bottom: 1px solid rgba(78,205,196,0.06);
         }
         .chat-disclaimer p {
-            font-size: 11px; color: var(--gris);
-            line-height: 1.9; font-style: italic;
+            font-size: 12px; color: var(--gris);
+            line-height: 2; font-style: italic;
         }
 
         .msg {
-            display: flex; margin-bottom: 20px;
+            display: flex; margin-bottom: 28px;
             animation: msgIn 0.45s cubic-bezier(0.16,1,0.3,1);
         }
-        .msg.user { justify-content: flex-end; padding-left: 56px; }
-        .msg.assistant { justify-content: flex-start; padding-right: 56px; }
+        .msg.user { justify-content: flex-end; padding-left: 80px; }
+        .msg.assistant { justify-content: flex-start; padding-right: 80px; }
 
         .msg-bubble {
-            padding: 16px 20px; font-size: 14px;
-            line-height: 1.85; color: rgba(240,237,230,0.88);
+            padding: 22px 28px;
+            line-height: 1.9;
+            color: rgba(240,237,230,0.9);
         }
         .msg.user .msg-bubble {
+            font-family: 'Courier Prime', monospace;
+            font-size: 15px;
             background: rgba(78,205,196,0.07);
             border-right: 2px solid rgba(78,205,196,0.2);
         }
         .msg.assistant .msg-bubble {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 18px; font-weight: 300;
             background: var(--fondo-medio);
             border-left: 2px solid rgba(78,205,196,0.28);
         }
-        .msg-bubble p { margin-bottom: 10px; }
+        .msg-bubble p { margin-bottom: 14px; }
         .msg-bubble p:last-child { margin-bottom: 0; }
 
         /* Typing */
@@ -270,24 +275,25 @@
         .cta-bar a:hover { color: var(--blanco); }
 
         /* Input */
-        .input-area { padding-top: 18px; border-top: 1px solid var(--linea); }
-        .input-row { display: flex; gap: 12px; align-items: center; }
+        .input-area { padding-top: 24px; border-top: 1px solid var(--linea); }
+        .input-row { display: flex; gap: 16px; align-items: center; }
         .input-field {
-            flex: 1; padding: 14px 0;
+            flex: 1; padding: 16px 0;
             background: transparent; border: none;
             border-bottom: 1px solid rgba(78,205,196,0.12);
-            color: var(--blanco); font-size: 14px;
-            font-family: 'Courier Prime', monospace;
+            color: var(--blanco); font-size: 16px;
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
             outline: none; transition: border-color 0.3s;
             caret-color: var(--teal);
         }
         .input-field:focus { border-bottom-color: rgba(78,205,196,0.4); }
-        .input-field::placeholder { color: rgba(107,104,96,0.7); font-style: italic; }
+        .input-field::placeholder { color: rgba(107,104,96,0.6); font-style: italic; }
 
         .btn-send {
             flex-shrink: 0;
-            padding: 10px 22px; border: none;
-            font-size: 10px; letter-spacing: 0.22em;
+            padding: 12px 28px; border: none;
+            font-size: 10px; letter-spacing: 0.25em;
             text-transform: uppercase; font-weight: 700;
             font-family: 'Courier Prime', monospace;
             background: transparent; color: var(--gris);
@@ -301,15 +307,15 @@
 
         /* Footer */
         .page-footer {
-            text-align: center; padding: 40px 24px 36px;
+            text-align: center; padding: 48px 32px 40px;
             border-top: 1px solid var(--linea);
-            max-width: 700px; margin: 0 auto;
+            max-width: 780px; margin: 0 auto;
         }
-        .page-footer p { font-size: 11px; color: var(--gris); line-height: 1.9; }
+        .page-footer p { font-size: 12px; color: var(--gris); line-height: 2; }
         .page-footer a { color: var(--teal); text-decoration: none; }
         .page-footer a:hover { color: var(--blanco); }
         .footer-crisis {
-            margin-top: 16px; padding-top: 16px;
+            margin-top: 20px; padding-top: 20px;
             border-top: 1px solid rgba(78,205,196,0.06);
         }
 
@@ -341,13 +347,14 @@
         /* ═══ RESPONSIVE ═══ */
         @media (max-width: 600px) {
             .nav { padding: 16px 18px; }
-            .hero-content { padding: 0 18px 56px; }
-            .hero-title { font-size: clamp(32px, 9vw, 48px); }
-            .section-divider { padding: 36px 18px 28px; }
-            .chat-section { padding: 0 18px 48px; }
-            .msg.user { padding-left: 24px; }
-            .msg.assistant { padding-right: 24px; }
-            .btn-send { padding: 10px 14px; font-size: 9px; }
+            .hero-content { padding: 0 20px 56px; }
+            .hero-title { font-size: clamp(40px, 10vw, 60px); }
+            .section-divider { padding: 40px 20px 32px; }
+            .chat-section { padding: 0 20px 56px; }
+            .msg.user { padding-left: 32px; }
+            .msg.assistant { padding-right: 32px; }
+            .msg.assistant .msg-bubble { font-size: 16px; }
+            .btn-send { padding: 12px 16px; font-size: 9px; }
         }
 
         @media (prefers-reduced-motion: reduce) {
