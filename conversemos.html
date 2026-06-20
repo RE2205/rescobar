@@ -149,7 +149,7 @@
         /* Separador sutil */
         .section-divider {
             display: flex; align-items: center; gap: 16px;
-            padding: 56px 32px 48px;
+            padding: 72px 32px 56px;
             max-width: 780px; margin: 0 auto;
         }
         .section-divider::before,
@@ -204,9 +204,22 @@
             border-bottom: 1px solid rgba(78,205,196,0.06);
         }
         .chat-disclaimer p {
-            font-size: 12px; color: var(--gris);
+            font-size: 12px; color: rgba(240,237,230,0.5);
             line-height: 2; font-style: italic;
         }
+
+        /* Crisis banner — visible, antes del chat */
+        .crisis-banner {
+            margin-bottom: 28px; padding: 14px 20px;
+            border-left: 2px solid rgba(196,74,42,0.5);
+            background: rgba(196,74,42,0.04);
+        }
+        .crisis-banner p {
+            font-size: 11px; color: rgba(240,237,230,0.45);
+            line-height: 1.8;
+        }
+        .crisis-banner a { color: var(--rojo); text-decoration: none; }
+        .crisis-banner a:hover { color: var(--blanco); }
 
         .msg {
             display: flex; margin-bottom: 28px;
@@ -228,9 +241,15 @@
         }
         .msg.assistant .msg-bubble {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 18px; font-weight: 300;
+            font-size: 26px; font-weight: 300;
             background: var(--fondo-medio);
             border-left: 2px solid rgba(78,205,196,0.28);
+        }
+        .msg.user .msg-bubble {
+            font-family: 'Courier Prime', monospace;
+            font-size: 18px;
+            background: rgba(78,205,196,0.07);
+            border-right: 2px solid rgba(78,205,196,0.2);
         }
         .msg-bubble p { margin-bottom: 14px; }
         .msg-bubble p:last-child { margin-bottom: 0; }
@@ -274,24 +293,24 @@
         .input-field {
             flex: 1; padding: 16px 0;
             background: transparent; border: none;
-            border-bottom: 1px solid rgba(78,205,196,0.12);
-            color: var(--blanco); font-size: 16px;
+            border-bottom: 1px solid rgba(78,205,196,0.3);
+            color: var(--blanco); font-size: 18px;
             font-family: 'Cormorant Garamond', serif;
             font-weight: 300;
             outline: none; transition: border-color 0.3s;
             caret-color: var(--teal);
         }
-        .input-field:focus { border-bottom-color: rgba(78,205,196,0.4); }
-        .input-field::placeholder { color: rgba(107,104,96,0.6); font-style: italic; }
+        .input-field:focus { border-bottom-color: rgba(78,205,196,0.6); }
+        .input-field::placeholder { color: rgba(240,237,230,0.4); font-style: italic; }
 
         .btn-send {
             flex-shrink: 0;
             padding: 12px 28px; border: none;
-            font-size: 10px; letter-spacing: 0.25em;
+            font-size: 11px; letter-spacing: 0.25em;
             text-transform: uppercase; font-weight: 700;
             font-family: 'Courier Prime', monospace;
-            background: transparent; color: var(--gris);
-            cursor: default; transition: all 0.3s ease; opacity: 0.3;
+            background: transparent; color: rgba(240,237,230,0.4);
+            cursor: default; transition: all 0.3s ease;
         }
         .btn-send.ready {
             background: var(--grad); background-size: 200% 100%;
@@ -418,10 +437,9 @@
 
         <div class="messages" id="messages">
             <div class="chat-disclaimer">
-                <p>
-                    Esto no es terapia ni diagnóstico. Es un primer espacio para pensar.<br>
-                    Tus conversaciones no se almacenan. Cuando cerrás la pestaña, desaparecen.
-                </p>
+                <p>Este espacio es para pensar, no para diagnosticar.<br>
+                Lo que hablés acá puede abrirte las preguntas correctas para tu primera consulta.<br>
+                Tus conversaciones no se almacenan. Cuando cerrás la pestaña, desaparecen.</p>
             </div>
         </div>
 
@@ -454,10 +472,6 @@
             <a href="https://wa.me/50230607168">+502 3060-7168</a> ·
             <a href="mailto:clinicalogos@ronaldescobar.com">clinicalogos@ronaldescobar.com</a>
         </p>
-        <p class="footer-crisis">
-            Si estás en crisis, contactá directamente al
-            <a href="https://wa.me/50230607168">+502 3060-7168</a>
-        </p>
     </footer>
 
     <script>
@@ -487,7 +501,7 @@
 
         /* — Mensaje inicial — */
         window.addEventListener('DOMContentLoaded', () => {
-            const bienvenida = "Hola. Bienvenido a Logos Psyche.\n\nEsto no es una sesión de terapia y yo no soy el Dr. Escobar — soy un asistente diseñado por él para que puedas tener una primera conversación sin compromiso.\n\nMi función es simple: ayudarte a pensar qué te trae acá, y si el enfoque del Dr. Escobar podría ser el adecuado para lo que vivís.\n\n¿Qué te trae acá hoy?";
+            const bienvenida = "Hola. Soy Logos Psyche.\n\nNo soy el Dr. Escobar — soy una herramienta de IA diseñada por él para que puedas pensar en voz alta antes de tu primera consulta.\n\nPuedo ayudarte a ordenar lo que traés, entender si el enfoque del Dr. Escobar es el adecuado para vos, y acompañarte a dar el paso cuando estés listo.\n\n¿Qué te trae acá hoy?";
             addMessage('assistant', bienvenida);
             messages.push({ role: 'assistant', content: bienvenida });
         });
