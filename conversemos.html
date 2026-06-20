@@ -65,37 +65,36 @@
         /* ═══ HERO ═══ */
         .hero {
             position: relative;
-            height: 100vh; min-height: 600px;
             display: flex; flex-direction: column;
-            justify-content: flex-end;
             overflow: hidden;
         }
-        .hero-img {
-            position: absolute; inset: 0;
-            width: 100%; height: 100%;
-            object-fit: cover; object-position: center center;
-            display: block;
-            filter: brightness(0.7);
+        .hero-img-wrapper {
+            position: relative; width: 100%;
+            max-height: 70vh; overflow: hidden;
         }
-        .hero::after {
+        .hero-img {
+            width: 100%; height: auto;
+            display: block;
+            filter: brightness(0.85);
+        }
+        .hero-img-wrapper::after {
             content: ''; position: absolute; inset: 0;
             background: linear-gradient(
                 to bottom,
-                rgba(8,8,10,0.3) 0%,
-                rgba(8,8,10,0.0) 35%,
-                rgba(8,8,10,0.5) 65%,
-                rgba(8,8,10,0.95) 88%,
+                rgba(8,8,10,0.2) 0%,
+                rgba(8,8,10,0.0) 40%,
+                rgba(8,8,10,0.7) 80%,
                 rgba(8,8,10,1) 100%
             );
             pointer-events: none;
         }
         .hero-content {
             position: relative; z-index: 2;
-            padding: 0 56px 72px;
-            max-width: 900px;
+            padding: 40px 56px 56px;
+            margin-top: -120px;
         }
         .hero-eyebrow {
-            display: inline-block; margin-bottom: 24px;
+            display: inline-block; margin-bottom: 20px;
             font-size: 11px; letter-spacing: 0.4em;
             text-transform: uppercase; color: var(--teal);
             opacity: 0; animation: fadeUp 0.8s ease 0.3s forwards;
@@ -104,7 +103,7 @@
             font-family: 'Cormorant Garamond', serif;
             font-size: clamp(48px, 7vw, 88px);
             font-weight: 300; line-height: 1.08;
-            margin-bottom: 28px;
+            margin-bottom: 24px;
             opacity: 0; animation: fadeUp 0.8s ease 0.5s forwards;
         }
         .hero-title em {
@@ -120,8 +119,8 @@
             opacity: 0; animation: fadeUp 0.8s ease 0.7s forwards;
         }
         .scroll-cue {
-            position: absolute; bottom: 32px; left: 56px;
-            z-index: 3; display: flex; align-items: center; gap: 16px;
+            display: flex; align-items: center; gap: 16px;
+            padding: 24px 56px 48px;
             opacity: 0; animation: fadeIn 1s ease 1.4s forwards;
             cursor: pointer;
         }
@@ -134,7 +133,6 @@
             background: linear-gradient(to right, rgba(78,205,196,0.5), transparent);
             animation: linePulse 2s ease-in-out infinite;
         }
-        /* columna lateral — ya no se usa */
         .hero-image-col, .hero-divider-line { display: none; }
 
         /* ═══ SECCIÓN CHAT ═══ */
@@ -370,12 +368,14 @@
 
     <!-- ═══ HERO ═══ -->
     <section class="hero" id="hero">
-        <img
-            src="https://ronaldescobar.com/assets/clinica-final.jpg"
-            alt="Clínica Logos Psyche — Integra Medical Center, Guatemala"
-            class="hero-img"
-            loading="eager"
-        >
+        <div class="hero-img-wrapper">
+            <img
+                src="https://ronaldescobar.com/assets/clinica-final.jpg"
+                alt="Clínica Logos Psyche — Integra Medical Center, Guatemala"
+                class="hero-img"
+                loading="eager"
+            >
+        </div>
         <div class="hero-content">
             <span class="hero-eyebrow">Primera conversación</span>
             <h1 class="hero-title">
