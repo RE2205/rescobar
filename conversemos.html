@@ -65,52 +65,32 @@
         /* ═══ HERO — PUERTA DE ENTRADA ═══ */
         .hero {
             position: relative;
-            height: 100vh; min-height: 600px;
-            display: flex; flex-direction: column;
-            justify-content: flex-end;
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: 1fr 420px;
+            grid-template-rows: 1fr auto;
+            align-items: center;
+            padding: 100px 0 80px;
             overflow: hidden;
-        }
-        .hero-img {
-            position: absolute; inset: 0;
-            width: 100%; height: 100%;
-            object-fit: cover; object-position: center 35%;
-            display: block;
-            transform: scale(1.03);
-            transition: transform 8s ease-out;
-        }
-        .hero-img.loaded { transform: scale(1); }
-
-        /* Degradado: negro suave arriba, muy denso abajo */
-        .hero::after {
-            content: ''; position: absolute; inset: 0;
-            background:
-                linear-gradient(to bottom,
-                    rgba(8,8,10,0.55) 0%,
-                    rgba(8,8,10,0.1) 30%,
-                    rgba(8,8,10,0.0) 50%,
-                    rgba(8,8,10,0.6) 70%,
-                    rgba(8,8,10,0.97) 90%,
-                    rgba(8,8,10,1) 100%
-                );
-            pointer-events: none;
         }
 
         .hero-content {
             position: relative; z-index: 2;
-            padding: 0 48px 80px;
-            max-width: 960px;
+            padding: 0 56px;
+            grid-column: 1; grid-row: 1;
+            align-self: center;
         }
         .hero-eyebrow {
-            display: inline-block; margin-bottom: 24px;
+            display: inline-block; margin-bottom: 28px;
             font-size: 11px; letter-spacing: 0.4em;
             text-transform: uppercase; color: var(--teal);
             opacity: 0; animation: fadeUp 0.8s ease 0.3s forwards;
         }
         .hero-title {
             font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(52px, 8vw, 96px);
-            font-weight: 300; line-height: 1.05;
-            margin-bottom: 28px;
+            font-size: clamp(48px, 6vw, 86px);
+            font-weight: 300; line-height: 1.08;
+            margin-bottom: 32px;
             opacity: 0; animation: fadeUp 0.8s ease 0.5s forwards;
         }
         .hero-title em {
@@ -121,29 +101,60 @@
             background-clip: text;
         }
         .hero-sub {
-            font-size: 13px; line-height: 2;
+            font-size: 13px; line-height: 2.1;
             color: var(--gris-claro);
-            max-width: 440px; letter-spacing: 0.04em;
+            letter-spacing: 0.04em;
             opacity: 0; animation: fadeUp 0.8s ease 0.7s forwards;
+        }
+
+        /* Foto lateral — detalle, no fondo */
+        .hero-image-col {
+            grid-column: 2; grid-row: 1 / 3;
+            position: relative; align-self: stretch;
+            opacity: 0; animation: fadeIn 1.2s ease 0.6s forwards;
+        }
+        .hero-image-col::before {
+            content: '';
+            position: absolute; inset: 0;
+            background: linear-gradient(to right, var(--negro) 0%, transparent 25%);
+            z-index: 1; pointer-events: none;
+        }
+        .hero-image-col::after {
+            content: '';
+            position: absolute; inset: 0;
+            background: linear-gradient(to bottom, var(--negro) 0%, transparent 15%, transparent 85%, var(--negro) 100%);
+            z-index: 1; pointer-events: none;
+        }
+        .hero-img {
+            width: 100%; height: 100%;
+            object-fit: cover; object-position: center 30%;
+            display: block;
+            filter: grayscale(30%) brightness(0.75);
+        }
+
+        /* Línea vertical decorativa entre texto y foto */
+        .hero-divider-line {
+            position: absolute; top: 15%; bottom: 15%;
+            left: 0; width: 1px;
+            background: linear-gradient(to bottom, transparent, rgba(78,205,196,0.2), transparent);
         }
 
         /* Flecha de scroll */
         .scroll-cue {
-            position: absolute; bottom: 28px; left: 50%; transform: translateX(-50%);
-            z-index: 3; display: flex; flex-direction: column; align-items: center; gap: 6px;
+            grid-column: 1; grid-row: 2;
+            display: flex; align-items: center; gap: 16px;
+            padding: 0 56px;
             opacity: 0; animation: fadeIn 1s ease 1.4s forwards;
-            cursor: pointer;
+            cursor: pointer; align-self: end;
         }
         .scroll-cue span {
-            font-size: 9px; letter-spacing: 0.25em;
-            text-transform: uppercase; color: rgba(240,237,230,0.35);
+            font-size: 9px; letter-spacing: 0.3em;
+            text-transform: uppercase; color: rgba(240,237,230,0.3);
         }
-        .scroll-arrow {
-            width: 20px; height: 20px;
-            border-right: 1px solid rgba(78,205,196,0.4);
-            border-bottom: 1px solid rgba(78,205,196,0.4);
-            transform: rotate(45deg);
-            animation: arrowPulse 2s ease-in-out infinite;
+        .scroll-line {
+            width: 48px; height: 1px;
+            background: linear-gradient(to right, rgba(78,205,196,0.4), transparent);
+            animation: linePulse 2s ease-in-out infinite;
         }
 
         /* ═══ SECCIÓN CHAT ═══ */
@@ -340,15 +351,34 @@
             50% { box-shadow: 0 0 12px rgba(78,205,196,0.7); }
         }
         @keyframes arrowPulse {
-            0%, 100% { opacity: 0.3; transform: rotate(45deg) translateY(0); }
-            50% { opacity: 0.7; transform: rotate(45deg) translateY(4px); }
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.7; }
+        }
+        @keyframes linePulse {
+            0%, 100% { opacity: 0.4; width: 48px; }
+            50% { opacity: 0.8; width: 64px; }
         }
 
         /* ═══ RESPONSIVE ═══ */
         @media (max-width: 600px) {
             .nav { padding: 16px 18px; }
-            .hero-content { padding: 0 20px 56px; }
-            .hero-title { font-size: clamp(40px, 10vw, 60px); }
+            .hero {
+                grid-template-columns: 1fr;
+                grid-template-rows: auto auto auto;
+                padding: 100px 0 48px;
+                min-height: 100svh;
+            }
+            .hero-content { padding: 0 24px; grid-column: 1; grid-row: 1; }
+            .hero-title { font-size: clamp(40px, 10vw, 58px); }
+            .hero-image-col {
+                grid-column: 1; grid-row: 2;
+                height: 220px; margin-top: 40px;
+            }
+            .hero-image-col::before {
+                background: linear-gradient(to bottom, var(--negro) 0%, transparent 30%);
+            }
+            .hero-divider-line { display: none; }
+            .scroll-cue { grid-column: 1; grid-row: 3; padding: 24px 24px 0; }
             .section-divider { padding: 40px 20px 32px; }
             .chat-section { padding: 0 20px 56px; }
             .msg.user { padding-left: 32px; }
@@ -374,30 +404,35 @@
 
     <!-- ═══ HERO ═══ -->
     <section class="hero" id="hero">
-        <img
-            src="https://ronaldescobar.com/assets/clinica-final.jpg"
-            alt="Clínica Logos Psyche — Integra Medical Center, Guatemala"
-            class="hero-img"
-            id="heroImg"
-            loading="eager"
-        >
 
         <div class="hero-content">
             <span class="hero-eyebrow">Primera conversación</span>
             <h1 class="hero-title">
-                No necesitás saber qué tenés.<br>
-                <em>Solo empezar a hablar.</em>
+                No necesitás<br>saber qué tenés.<br>
+                <em>Solo empezar<br>a hablar.</em>
             </h1>
             <p class="hero-sub">
-                Logos Psyche · Integra Medical Center, Clínica 810<br>
-                Ciudad de Guatemala
+                Logos Psyche · Integra Medical Center<br>
+                Clínica 810 · Ciudad de Guatemala
             </p>
         </div>
 
-        <div class="scroll-cue" id="scrollCue" onclick="scrollToChat()">
-            <span>Seguí</span>
-            <div class="scroll-arrow"></div>
+        <div class="hero-image-col">
+            <div class="hero-divider-line"></div>
+            <img
+                src="https://ronaldescobar.com/assets/clinica-final.jpg"
+                alt="Clínica Logos Psyche — Integra Medical Center, Guatemala"
+                class="hero-img"
+                id="heroImg"
+                loading="eager"
+            >
         </div>
+
+        <div class="scroll-cue" id="scrollCue" onclick="scrollToChat()">
+            <div class="scroll-line"></div>
+            <span>Seguí</span>
+        </div>
+
     </section>
 
     <!-- ═══ DIVISOR ═══ -->
@@ -470,13 +505,8 @@
         const btnSend    = document.getElementById('btnSend');
         const messagesDiv = document.getElementById('messages');
         const ctaBar     = document.getElementById('ctaBar');
-        const heroImg    = document.getElementById('heroImg');
 
-        /* — Imagen hero: sutil zoom-out al cargar — */
-        heroImg.addEventListener('load', () => heroImg.classList.add('loaded'));
-        if (heroImg.complete) heroImg.classList.add('loaded');
-
-        /* — Ocultar flecha al hacer scroll — */
+        /* — Ocultar "Seguí" al hacer scroll — */
         window.addEventListener('scroll', () => {
             const cue = document.getElementById('scrollCue');
             if (window.scrollY > 80) cue.style.opacity = '0';
