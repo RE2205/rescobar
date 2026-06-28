@@ -218,11 +218,22 @@ async function renderMatches() {
       ? `<div class="phase-label">🔴 ${m.date} — Round of 32</div>` : '';
     lastDate = m.date;
     const doneClass = r.done ? 'done' : '';
+    const isLive = r.live && !r.done;
+    const statusVal = r.done ? 'final' : r.live ? 'live' : 'pending';
+    const liveClass = isLive ? 'live' : r.done ? 'done' : '';
     const btn = r.done
       ? `<button class="save-btn saved" onclick="clearResult('${m.id}')">✓ Final</button>`
       : `<button class="save-btn" onclick="saveResult('${m.id}')">Guardar</button>`;
+    const statusSel = !r.done ? `
+      <div style="grid-column:1/-1;display:flex;gap:6px;margin-top:4px;">
+        <select id="status-${m.id}" style="flex:1;padding:6px 10px;background:rgba(255,255,255,0.06);border:1px solid var(--border);border-radius:6px;color:var(--white);font-size:12px;outline:none;">
+          <option value="pending" ${statusVal==='pending'?'selected':''}>⏳ Próximo</option>
+          <option value="live" ${statusVal==='live'?'selected':''}>🔴 En Vivo</option>
+          <option value="final" ${statusVal==='final'?'selected':''}>✓ Final</option>
+        </select>
+      </div>` : '';
     return `${dateHeader}
-    <div class="match-item ${doneClass}" id="mi-${m.id}">
+    <div class="match-item ${liveClass}" id="mi-${m.id}">
       <span class="team-label">${m.t1}</span>
       <div class="score-inputs">
         <input class="score-input" id="s1-${m.id}" type="number" min="0" max="20" value="${r.s1}" ${r.done?'readonly':''}>
@@ -231,6 +242,7 @@ async function renderMatches() {
       </div>
       <span class="team-label right">${m.t2}</span>
       ${btn}
+      ${statusSel}
     </div>`;
   }).join('');
 
@@ -241,8 +253,11 @@ async function saveResult(id) {
   const s1 = parseInt(document.getElementById('s1-'+id).value);
   const s2 = parseInt(document.getElementById('s2-'+id).value);
   if (isNaN(s1)||isNaN(s2)) return;
-  await api('POST','result',{id,s1,s2,done:true});
-  showToast('✓ Resultado guardado');
+  const status = document.getElementById('status-'+id).value;
+  const isLive = status === 'live';
+  const isDone = status === 'final';
+  await api('POST','result',{id,s1,s2,done:isDone,live:isLive});
+  showToast(isDone ? '✓ Final guardado' : '🔴 En Vivo actualizado');
   renderMatches();
 }
 async function clearResult(id) {

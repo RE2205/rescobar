@@ -775,6 +775,7 @@ async function fetchData() {
           m.s1 = res[m.id].s1;
           m.s2 = res[m.id].s2;
           m.done = res[m.id].done;
+          m.live = res[m.id].live || false;
         }
       });
       results = res;
@@ -963,10 +964,18 @@ function renderNextMatch() {
 // ─── RENDER MATCHES ───────────────────────────────────────────────────
 function renderMatches() {
   const container = document.getElementById('matches-container');
-  const pending = allMatches.filter(m => !m.done);
+  const live = allMatches.filter(m => m.live && !m.done);
+  const pending = allMatches.filter(m => !m.done && !m.live);
   const done = allMatches.filter(m => m.done).reverse();
+  const ordered = [...live, ...pending];
 
   let html = '';
+  if (live.length) {
+    html += `<div class="bracket-section">
+      <div class="bracket-title" style="color:var(--red);">🔴 En Vivo</div>
+      <div class="matches-grid">${live.map(matchCard).join('')}</div>
+    </div>`;
+  }
   if (pending.length) {
     html += `<div class="bracket-section">
       <div class="bracket-title">Próximos partidos</div>
@@ -983,16 +992,15 @@ function renderMatches() {
 }
 
 function matchCard(m) {
-  const today = new Date().toLocaleDateString('es-GT', {day:'2-digit', month:'short'}).replace('.','');
-  const isToday = m.date === 'Jun 28' || m.date === 'Jun 29' || m.date === 'Jun 30';
-  const cls = m.done ? 'done' : '';
-  const scoreHtml = m.done
+  const isLive = m.live && !m.done;
+  const cls = m.done ? 'done' : isLive ? 'live' : '';
+  const scoreHtml = (m.done || isLive)
     ? `<div class="score-box">${m.s1} – ${m.s2}</div>`
     : `<div class="score-box pending">vs</div>`;
   const status = m.done
     ? `<span class="match-status status-done">✓ Final</span>`
-    : isToday
-    ? `<span class="live-badge"><span class="live-dot"></span>HOY ${m.hora}</span>`
+    : isLive
+    ? `<span class="live-badge"><span class="live-dot"></span>En Vivo</span>`
     : `<span class="match-status status-next">${m.hora}</span>`;
   return `<div class="match-card ${cls}">
     <div class="team-side">
