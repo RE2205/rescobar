@@ -474,6 +474,140 @@ body::before {
   .matches-grid { grid-template-columns: 1fr; }
   .puntos-grid { grid-template-columns: 1fr 1fr; }
 }
+
+/* BRACKET */
+.bracket-wrapper {
+  overflow-x: auto;
+  padding-bottom: 20px;
+}
+.bracket {
+  display: flex;
+  gap: 0;
+  min-width: 900px;
+  align-items: center;
+  justify-content: center;
+}
+.bracket-round {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  flex: 1;
+}
+.bracket-round-title {
+  text-align: center;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--gold);
+  padding: 8px 4px 12px;
+}
+.bracket-matches {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.bracket-match-wrap {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  position: relative;
+}
+.bracket-match-wrap::after {
+  content: '';
+  position: absolute;
+  right: -1px;
+  top: 50%;
+  width: 12px;
+  height: 1px;
+  background: rgba(255,215,0,0.3);
+}
+.bracket-match-wrap:last-child::before {
+  content: '';
+  position: absolute;
+  right: -1px;
+  bottom: 50%;
+  width: 1px;
+  height: 50%;
+  background: rgba(255,215,0,0.3);
+}
+.bracket-match-wrap:first-child::before {
+  content: '';
+  position: absolute;
+  right: -1px;
+  top: 50%;
+  width: 1px;
+  height: 50%;
+  background: rgba(255,215,0,0.3);
+}
+.b-match {
+  background: var(--navy-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  width: 100%;
+  overflow: hidden;
+  margin: 4px 8px;
+  transition: border-color 0.2s;
+}
+.b-match:hover { border-color: var(--border-bright); }
+.b-match.done { border-color: rgba(0,230,118,0.25); }
+.b-match.tbd { opacity: 0.5; }
+.b-team {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 10px;
+  font-size: 12px;
+  font-weight: 600;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  position: relative;
+}
+.b-team:last-child { border-bottom: none; }
+.b-team.winner {
+  background: rgba(255,215,0,0.08);
+  color: var(--gold);
+}
+.b-team.loser { color: var(--muted); }
+.b-flag { font-size: 14px; }
+.b-name { flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.b-score {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 14px; font-weight: 800;
+  color: var(--gold); min-width: 18px; text-align: right;
+}
+.b-score.pending { color: var(--navy-light); }
+.b-date {
+  font-size: 9px; color: var(--muted);
+  text-align: center; padding: 3px;
+  border-top: 1px solid rgba(255,255,255,0.04);
+  background: rgba(0,0,0,0.2);
+  letter-spacing: 0.5px;
+}
+
+/* TROPHY CENTER */
+.bracket-trophy {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 16px;
+  flex-shrink: 0;
+}
+.trophy-icon {
+  font-size: 48px;
+  filter: drop-shadow(0 0 16px rgba(255,215,0,0.6));
+  animation: trophy-glow 2s ease-in-out infinite;
+}
+@keyframes trophy-glow {
+  0%,100% { filter: drop-shadow(0 0 12px rgba(255,215,0,0.4)); }
+  50% { filter: drop-shadow(0 0 24px rgba(255,215,0,0.8)); }
+}
+.trophy-label {
+  font-size: 10px; color: var(--gold);
+  text-transform: uppercase; letter-spacing: 1px;
+  margin-top: 6px; font-weight: 700;
+}
+
 </style>
 </head>
 <body>
@@ -496,6 +630,7 @@ body::before {
     <button class="tab active" onclick="showPanel('tabla',this)">🏅 Tabla</button>
     <button class="tab" onclick="showPanel('partidos',this)">🔴 Resultados Live</button>
     <button class="tab" onclick="showPanel('previas',this)">📢 Previas</button>
+    <button class="tab" onclick="showPanel('bracket',this)">🏆 Bracket</button>
     <button class="tab" onclick="showPanel('puntos',this)">📋 Sistema</button>
   </div>
 </div>
@@ -552,6 +687,18 @@ body::before {
     </div>
     <div id="previas-container">
       <div class="loading-pulse">Cargando previas</div>
+    </div>
+  </div>
+
+
+  <!-- BRACKET -->
+  <div id="bracket" class="panel">
+    <div class="section-header">
+      <span class="section-title">KO Stage 2026</span>
+      <span class="section-badge">Round of 32</span>
+    </div>
+    <div class="bracket-wrapper">
+      <div class="bracket" id="bracket-visual"></div>
     </div>
   </div>
 
@@ -634,6 +781,84 @@ async function fetchData() {
     }
   } catch(e) { console.log('API fallback', e); }
   renderAll();
+}
+
+
+// ─── RENDER BRACKET ───────────────────────────────────────────────────
+function renderBracket() {
+  const el = document.getElementById('bracket-visual');
+  if (!el) return;
+
+  // Left side matches (8)
+  const leftMatches = allMatches.slice(0, 8);
+  // Right side matches (8)
+  const rightMatches = allMatches.slice(8, 16);
+
+  function bMatchHtml(m) {
+    const s1 = m.done ? m.s1 : '';
+    const s2 = m.done ? m.s2 : '';
+    const w1 = m.done && m.s1 > m.s2;
+    const w2 = m.done && m.s2 > m.s1;
+    const scoreClass = m.done ? '' : 'pending';
+    const cardClass = m.done ? 'done' : (!m.t1.includes('?') ? '' : 'tbd');
+    return `<div class="b-match ${cardClass}">
+      <div class="b-team ${w1 ? 'winner' : m.done ? 'loser' : ''}">
+        <span class="b-flag">${m.f1}</span>
+        <span class="b-name">${m.t1}</span>
+        <span class="b-score ${scoreClass}">${s1}</span>
+      </div>
+      <div class="b-team ${w2 ? 'winner' : m.done ? 'loser' : ''}">
+        <span class="b-flag">${m.f2}</span>
+        <span class="b-name">${m.t2}</span>
+        <span class="b-score ${scoreClass}">${s2}</span>
+      </div>
+      <div class="b-date">${m.date} · ${m.hora}</div>
+    </div>`;
+  }
+
+  const leftHtml = leftMatches.map(m => `
+    <div class="bracket-match-wrap">${bMatchHtml(m)}</div>
+  `).join('');
+
+  const rightHtml = rightMatches.map(m => `
+    <div class="bracket-match-wrap">${bMatchHtml(m)}</div>
+  `).join('');
+
+  el.innerHTML = `
+    <div class="bracket-round">
+      <div class="bracket-round-title">Round of 32</div>
+      <div class="bracket-matches">${leftHtml}</div>
+    </div>
+    <div class="bracket-round" style="max-width:80px;flex:0;">
+      <div class="bracket-round-title">R16</div>
+      <div class="bracket-matches">
+        ${[0,1,2,3].map(() => `<div class="bracket-match-wrap">
+          <div class="b-match tbd">
+            <div class="b-team"><span class="b-flag">🏳</span><span class="b-name">Por definir</span></div>
+            <div class="b-team"><span class="b-flag">🏳</span><span class="b-name">Por definir</span></div>
+          </div>
+        </div>`).join('')}
+      </div>
+    </div>
+    <div class="bracket-trophy">
+      <div class="trophy-icon">🏆</div>
+      <div class="trophy-label">WC 2026</div>
+    </div>
+    <div class="bracket-round" style="max-width:80px;flex:0;">
+      <div class="bracket-round-title">R16</div>
+      <div class="bracket-matches">
+        ${[0,1,2,3].map(() => `<div class="bracket-match-wrap">
+          <div class="b-match tbd">
+            <div class="b-team"><span class="b-flag">🏳</span><span class="b-name">Por definir</span></div>
+            <div class="b-team"><span class="b-flag">🏳</span><span class="b-name">Por definir</span></div>
+          </div>
+        </div>`).join('')}
+      </div>
+    </div>
+    <div class="bracket-round">
+      <div class="bracket-round-title">Round of 32</div>
+      <div class="bracket-matches">${rightHtml}</div>
+    </div>`;
 }
 
 // ─── RENDER STANDINGS ─────────────────────────────────────────────────
@@ -815,6 +1040,7 @@ function renderAll() {
   renderNextMatch();
   renderMatches();
   renderPrevias();
+  renderBracket();
 }
 
 // Auto-refresh cada 60 segundos
