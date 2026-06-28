@@ -259,6 +259,23 @@ body::before {
 .status-done { color: var(--green-hit); }
 .status-next { color: var(--gold); }
 .status-live { color: var(--red); }
+.live-dot {
+  display: inline-block;
+  width: 8px; height: 8px;
+  background: var(--red);
+  border-radius: 50%;
+  margin-right: 5px;
+  animation: pulse 1s ease-in-out infinite;
+}
+.live-badge {
+  display: inline-flex; align-items: center;
+  background: rgba(230,57,70,0.15);
+  border: 1px solid rgba(230,57,70,0.4);
+  color: var(--red);
+  font-size: 11px; font-weight: 700;
+  padding: 3px 8px; border-radius: 50px;
+  letter-spacing: 0.5px;
+}
 .match-meta { font-size: 10px; color: var(--muted); text-align: center; }
 
 /* CHART */
@@ -477,8 +494,7 @@ body::before {
 <div class="tabs-wrapper">
   <div class="tabs">
     <button class="tab active" onclick="showPanel('tabla',this)">🏅 Tabla</button>
-    <button class="tab" onclick="showPanel('partidos',this)">⚽ Partidos</button>
-    <button class="tab" onclick="showPanel('grafica',this)">📊 Gráfica</button>
+    <button class="tab" onclick="showPanel('partidos',this)">🔴 Resultados Live</button>
     <button class="tab" onclick="showPanel('previas',this)">📢 Previas</button>
     <button class="tab" onclick="showPanel('puntos',this)">📋 Sistema</button>
   </div>
@@ -527,17 +543,6 @@ body::before {
     </div>
   </div>
 
-  <!-- GRÁFICA -->
-  <div id="grafica" class="panel">
-    <div class="section-header">
-      <span class="section-title">Puntos Acumulados</span>
-      <span class="section-badge" id="grafica-badge">Live</span>
-    </div>
-    <div class="chart-card">
-      <div class="chart-title">📈 Clasificación General</div>
-      <div id="bar-chart"><div class="loading-pulse">Cargando gráfica</div></div>
-    </div>
-  </div>
 
   <!-- PREVIAS -->
   <div id="previas" class="panel">
@@ -753,12 +758,16 @@ function renderMatches() {
 }
 
 function matchCard(m) {
+  const today = new Date().toLocaleDateString('es-GT', {day:'2-digit', month:'short'}).replace('.','');
+  const isToday = m.date === 'Jun 28' || m.date === 'Jun 29' || m.date === 'Jun 30';
   const cls = m.done ? 'done' : '';
   const scoreHtml = m.done
     ? `<div class="score-box">${m.s1} – ${m.s2}</div>`
     : `<div class="score-box pending">vs</div>`;
   const status = m.done
     ? `<span class="match-status status-done">✓ Final</span>`
+    : isToday
+    ? `<span class="live-badge"><span class="live-dot"></span>HOY ${m.hora}</span>`
     : `<span class="match-status status-next">${m.hora}</span>`;
   return `<div class="match-card ${cls}">
     <div class="team-side">
@@ -802,7 +811,6 @@ function showPanel(id, btn) {
 
 function renderAll() {
   renderStandings();
-  renderBarChart();
   renderChampionChart();
   renderNextMatch();
   renderMatches();
