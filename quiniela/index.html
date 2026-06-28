@@ -967,23 +967,24 @@ function renderMatches() {
   const container = document.getElementById('matches-container');
 
   // Schedule: next match start times (Guatemala time, UTC-6)
+  // Horarios en hora de Guatemala (CT = UTC-6)
   const schedule = {
-    'm73': new Date('2026-06-28T13:00:00-06:00'),
-    'm76': new Date('2026-06-29T13:00:00-06:00'),
-    'm74': new Date('2026-06-29T16:30:00-06:00'),
-    'm75': new Date('2026-06-29T21:00:00-06:00'),
-    'm78': new Date('2026-06-30T13:00:00-06:00'),
-    'm77': new Date('2026-06-30T17:00:00-06:00'),
-    'm79': new Date('2026-06-30T21:00:00-06:00'),
-    'm80': new Date('2026-07-01T12:00:00-06:00'),
-    'm82': new Date('2026-07-01T16:00:00-06:00'),
-    'm81': new Date('2026-07-01T20:00:00-06:00'),
-    'm84': new Date('2026-07-02T15:00:00-06:00'),
-    'm83': new Date('2026-07-02T19:00:00-06:00'),
-    'm85': new Date('2026-07-02T23:00:00-06:00'),
-    'm88': new Date('2026-07-03T14:00:00-06:00'),
-    'm86': new Date('2026-07-03T18:00:00-06:00'),
-    'm87': new Date('2026-07-04T02:30:00-06:00'),
+    'm73': new Date('2026-06-28T13:00:00-06:00'), // Sudáfrica vs Canadá
+    'm76': new Date('2026-06-29T13:00:00-06:00'), // Brasil vs Japón
+    'm74': new Date('2026-06-29T16:30:00-06:00'), // Alemania vs Paraguay
+    'm75': new Date('2026-06-29T21:00:00-06:00'), // Países Bajos vs Marruecos
+    'm78': new Date('2026-06-30T13:00:00-06:00'), // C. de Marfil vs Noruega
+    'm77': new Date('2026-06-30T17:00:00-06:00'), // Francia vs Suecia
+    'm79': new Date('2026-06-30T21:00:00-06:00'), // México vs Ecuador
+    'm80': new Date('2026-07-01T12:00:00-06:00'), // Inglaterra vs RD Congo
+    'm82': new Date('2026-07-01T16:00:00-06:00'), // Bélgica vs Senegal
+    'm81': new Date('2026-07-01T20:00:00-06:00'), // EE.UU. vs Bosnia
+    'm84': new Date('2026-07-02T15:00:00-06:00'), // España vs Austria
+    'm83': new Date('2026-07-02T19:00:00-06:00'), // Portugal vs Croacia
+    'm85': new Date('2026-07-02T23:00:00-06:00'), // Suiza vs Argelia
+    'm88': new Date('2026-07-03T14:00:00-06:00'), // Australia vs Egipto
+    'm86': new Date('2026-07-03T18:00:00-06:00'), // Argentina vs Cabo Verde
+    'm87': new Date('2026-07-04T02:30:00-06:00'), // Colombia vs Ghana (madrugada GT)
   };
 
   const now = new Date();
