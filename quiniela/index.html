@@ -721,22 +721,22 @@ body::before {
 <script>
 // ─── DATA ───────────────────────────────────────────────────────────
 const allMatches = [
-  {id:'m73', t1:'Sudáfrica',   f1:'🇿🇦', t2:'Canadá',      f2:'🇨🇦', s1:0, s2:0, done:false, date:'Jun 28', hora:'14:00', grupo:'Round of 32'},
-  {id:'m76', t1:'Brasil',      f1:'🇧🇷', t2:'Japón',        f2:'🇯🇵', s1:0, s2:0, done:false, date:'Jun 29', hora:'12:00', grupo:'Round of 32'},
-  {id:'m74', t1:'Alemania',    f1:'🇩🇪', t2:'Paraguay',     f2:'🇵🇾', s1:0, s2:0, done:false, date:'Jun 29', hora:'15:30', grupo:'Round of 32'},
-  {id:'m75', t1:'Países Bajos',f1:'🇳🇱', t2:'Marruecos',   f2:'🇲🇦', s1:0, s2:0, done:false, date:'Jun 29', hora:'20:00', grupo:'Round of 32'},
-  {id:'m78', t1:'C. de Marfil',f1:'🇨🇮', t2:'Noruega',     f2:'🇳🇴', s1:0, s2:0, done:false, date:'Jun 30', hora:'12:00', grupo:'Round of 32'},
-  {id:'m77', t1:'Francia',     f1:'🇫🇷', t2:'Suecia',      f2:'🇸🇪', s1:0, s2:0, done:false, date:'Jun 30', hora:'16:00', grupo:'Round of 32'},
-  {id:'m79', t1:'México',      f1:'🇲🇽', t2:'Ecuador',     f2:'🇪🇨', s1:0, s2:0, done:false, date:'Jun 30', hora:'20:00', grupo:'Round of 32'},
-  {id:'m80', t1:'Inglaterra',  f1:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', t2:'RD Congo',   f2:'🇨🇩', s1:0, s2:0, done:false, date:'Jul 1',  hora:'11:00', grupo:'Round of 32'},
-  {id:'m82', t1:'Bélgica',     f1:'🇧🇪', t2:'Senegal',     f2:'🇸🇳', s1:0, s2:0, done:false, date:'Jul 1',  hora:'15:00', grupo:'Round of 32'},
-  {id:'m81', t1:'EE.UU.',      f1:'🇺🇸', t2:'Bosnia',      f2:'🇧🇦', s1:0, s2:0, done:false, date:'Jul 1',  hora:'19:00', grupo:'Round of 32'},
-  {id:'m84', t1:'España',      f1:'🇪🇸', t2:'Austria',     f2:'🇦🇹', s1:0, s2:0, done:false, date:'Jul 2',  hora:'14:00', grupo:'Round of 32'},
-  {id:'m83', t1:'Portugal',    f1:'🇵🇹', t2:'Croacia',     f2:'🇭🇷', s1:0, s2:0, done:false, date:'Jul 2',  hora:'18:00', grupo:'Round of 32'},
-  {id:'m85', t1:'Suiza',       f1:'🇨🇭', t2:'Argelia',     f2:'🇩🇿', s1:0, s2:0, done:false, date:'Jul 2',  hora:'22:00', grupo:'Round of 32'},
-  {id:'m88', t1:'Australia',   f1:'🇦🇺', t2:'Egipto',      f2:'🇪🇬', s1:0, s2:0, done:false, date:'Jul 3',  hora:'13:00', grupo:'Round of 32'},
-  {id:'m86', t1:'Argentina',   f1:'🇦🇷', t2:'Cabo Verde',  f2:'🇨🇻', s1:0, s2:0, done:false, date:'Jul 3',  hora:'17:00', grupo:'Round of 32'},
-  {id:'m87', t1:'Colombia',    f1:'🇨🇴', t2:'Ghana',       f2:'🇬🇭', s1:0, s2:0, done:false, date:'Jul 3',  hora:'20:30', grupo:'Round of 32'},
+  {id:'m73', t1:'Sudáfrica',   f1:'🇿🇦', t2:'Canadá',      f2:'🇨🇦', s1:0, s2:0, done:false, date:'Jun 28', hora:'13:00', grupo:'Round of 32'},
+  {id:'m76', t1:'Brasil',      f1:'🇧🇷', t2:'Japón',        f2:'🇯🇵', s1:0, s2:0, done:false, date:'Jun 29', hora:'13:00', grupo:'Round of 32'},
+  {id:'m74', t1:'Alemania',    f1:'🇩🇪', t2:'Paraguay',     f2:'🇵🇾', s1:0, s2:0, done:false, date:'Jun 29', hora:'14:30', grupo:'Round of 32'},
+  {id:'m75', t1:'Países Bajos',f1:'🇳🇱', t2:'Marruecos',   f2:'🇲🇦', s1:0, s2:0, done:false, date:'Jun 29', hora:'19:00', grupo:'Round of 32'},
+  {id:'m78', t1:'C. de Marfil',f1:'🇨🇮', t2:'Noruega',     f2:'🇳🇴', s1:0, s2:0, done:false, date:'Jun 30', hora:'11:00', grupo:'Round of 32'},
+  {id:'m77', t1:'Francia',     f1:'🇫🇷', t2:'Suecia',      f2:'🇸🇪', s1:0, s2:0, done:false, date:'Jun 30', hora:'15:00', grupo:'Round of 32'},
+  {id:'m79', t1:'México',      f1:'🇲🇽', t2:'Ecuador',     f2:'🇪🇨', s1:0, s2:0, done:false, date:'Jun 30', hora:'19:00', grupo:'Round of 32'},
+  {id:'m80', t1:'Inglaterra',  f1:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', t2:'RD Congo',   f2:'🇨🇩', s1:0, s2:0, done:false, date:'Jul 1',  hora:'10:00', grupo:'Round of 32'},
+  {id:'m82', t1:'Bélgica',     f1:'🇧🇪', t2:'Senegal',     f2:'🇸🇳', s1:0, s2:0, done:false, date:'Jul 1',  hora:'14:00', grupo:'Round of 32'},
+  {id:'m81', t1:'EE.UU.',      f1:'🇺🇸', t2:'Bosnia',      f2:'🇧🇦', s1:0, s2:0, done:false, date:'Jul 1',  hora:'18:00', grupo:'Round of 32'},
+  {id:'m84', t1:'España',      f1:'🇪🇸', t2:'Austria',     f2:'🇦🇹', s1:0, s2:0, done:false, date:'Jul 2',  hora:'13:00', grupo:'Round of 32'},
+  {id:'m83', t1:'Portugal',    f1:'🇵🇹', t2:'Croacia',     f2:'🇭🇷', s1:0, s2:0, done:false, date:'Jul 2',  hora:'17:00', grupo:'Round of 32'},
+  {id:'m85', t1:'Suiza',       f1:'🇨🇭', t2:'Argelia',     f2:'🇩🇿', s1:0, s2:0, done:false, date:'Jul 2',  hora:'21:00', grupo:'Round of 32'},
+  {id:'m88', t1:'Australia',   f1:'🇦🇺', t2:'Egipto',      f2:'🇪🇬', s1:0, s2:0, done:false, date:'Jul 3',  hora:'12:00', grupo:'Round of 32'},
+  {id:'m86', t1:'Argentina',   f1:'🇦🇷', t2:'Cabo Verde',  f2:'🇨🇻', s1:0, s2:0, done:false, date:'Jul 3',  hora:'16:00', grupo:'Round of 32'},
+  {id:'m87', t1:'Colombia',    f1:'🇨🇴', t2:'Ghana',       f2:'🇬🇭', s1:0, s2:0, done:false, date:'Jul 3',  hora:'19:30', grupo:'Round of 32'},
 ];
 
 const champVotes = {
@@ -967,24 +967,24 @@ function renderMatches() {
   const container = document.getElementById('matches-container');
 
   // Schedule: next match start times (Guatemala time, UTC-6)
-  // Horarios en hora de Guatemala (CT = UTC-6 = ET-1)
+  // Horarios oficiales Guatemala (Prensa Libre / ClaroSports)
   const schedule = {
-    'm73': new Date('2026-06-28T14:00:00-06:00'), // Sudáfrica vs Canadá — 3pm ET = 2pm GT
-    'm76': new Date('2026-06-29T12:00:00-06:00'), // Brasil vs Japón — 1pm ET = 12pm GT
-    'm74': new Date('2026-06-29T15:30:00-06:00'), // Alemania vs Paraguay — 4:30pm ET = 3:30pm GT
-    'm75': new Date('2026-06-29T20:00:00-06:00'), // Países Bajos vs Marruecos — 9pm ET = 8pm GT
-    'm78': new Date('2026-06-30T12:00:00-06:00'), // C. de Marfil vs Noruega — 1pm ET = 12pm GT
-    'm77': new Date('2026-06-30T16:00:00-06:00'), // Francia vs Suecia — 5pm ET = 4pm GT
-    'm79': new Date('2026-06-30T20:00:00-06:00'), // México vs Ecuador — 9pm ET = 8pm GT
-    'm80': new Date('2026-07-01T11:00:00-06:00'), // Inglaterra vs RD Congo — 12pm ET = 11am GT
-    'm82': new Date('2026-07-01T15:00:00-06:00'), // Bélgica vs Senegal — 4pm ET = 3pm GT
-    'm81': new Date('2026-07-01T19:00:00-06:00'), // EE.UU. vs Bosnia — 8pm ET = 7pm GT
-    'm84': new Date('2026-07-02T14:00:00-06:00'), // España vs Austria — 3pm ET = 2pm GT
-    'm83': new Date('2026-07-02T18:00:00-06:00'), // Portugal vs Croacia — 7pm ET = 6pm GT
-    'm85': new Date('2026-07-02T22:00:00-06:00'), // Suiza vs Argelia — 11pm ET = 10pm GT
-    'm88': new Date('2026-07-03T13:00:00-06:00'), // Australia vs Egipto — 2pm ET = 1pm GT
-    'm86': new Date('2026-07-03T17:00:00-06:00'), // Argentina vs Cabo Verde — 6pm ET = 5pm GT
-    'm87': new Date('2026-07-03T20:30:00-06:00'), // Colombia vs Ghana — 9:30pm ET = 8:30pm GT
+    'm73': new Date('2026-06-28T13:00:00-06:00'), // Sudáfrica vs Canadá — 13:00 GT
+    'm76': new Date('2026-06-29T13:00:00-06:00'), // Brasil vs Japón — 13:00 GT
+    'm74': new Date('2026-06-29T14:30:00-06:00'), // Alemania vs Paraguay — 14:30 GT
+    'm75': new Date('2026-06-29T19:00:00-06:00'), // Países Bajos vs Marruecos — 19:00 GT
+    'm78': new Date('2026-06-30T11:00:00-06:00'), // C. de Marfil vs Noruega — 11:00 GT
+    'm77': new Date('2026-06-30T15:00:00-06:00'), // Francia vs Suecia — 15:00 GT
+    'm79': new Date('2026-06-30T19:00:00-06:00'), // México vs Ecuador — 19:00 GT
+    'm80': new Date('2026-07-01T10:00:00-06:00'), // Inglaterra vs RD Congo — 10:00 GT
+    'm82': new Date('2026-07-01T14:00:00-06:00'), // Bélgica vs Senegal — 14:00 GT
+    'm81': new Date('2026-07-01T18:00:00-06:00'), // EE.UU. vs Bosnia — 18:00 GT
+    'm84': new Date('2026-07-02T13:00:00-06:00'), // España vs Austria — 13:00 GT
+    'm83': new Date('2026-07-02T17:00:00-06:00'), // Portugal vs Croacia — 17:00 GT
+    'm85': new Date('2026-07-02T21:00:00-06:00'), // Suiza vs Argelia — 21:00 GT
+    'm88': new Date('2026-07-03T12:00:00-06:00'), // Australia vs Egipto — 12:00 GT
+    'm86': new Date('2026-07-03T16:00:00-06:00'), // Argentina vs Cabo Verde — 16:00 GT
+    'm87': new Date('2026-07-03T19:30:00-06:00'), // Colombia vs Ghana — 19:30 GT
   };
 
   const now = new Date();
