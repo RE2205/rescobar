@@ -964,30 +964,87 @@ function renderNextMatch() {
 // ─── RENDER MATCHES ───────────────────────────────────────────────────
 function renderMatches() {
   const container = document.getElementById('matches-container');
+
+  // Schedule: next match start times (Guatemala time, UTC-6)
+  const schedule = {
+    'm73': new Date('2026-06-28T13:00:00-06:00'),
+    'm76': new Date('2026-06-29T13:00:00-06:00'),
+    'm74': new Date('2026-06-29T16:30:00-06:00'),
+    'm75': new Date('2026-06-29T21:00:00-06:00'),
+    'm78': new Date('2026-06-30T13:00:00-06:00'),
+    'm77': new Date('2026-06-30T17:00:00-06:00'),
+    'm79': new Date('2026-06-30T21:00:00-06:00'),
+    'm80': new Date('2026-07-01T12:00:00-06:00'),
+    'm82': new Date('2026-07-01T16:00:00-06:00'),
+    'm81': new Date('2026-07-01T20:00:00-06:00'),
+    'm84': new Date('2026-07-02T15:00:00-06:00'),
+    'm83': new Date('2026-07-02T19:00:00-06:00'),
+    'm85': new Date('2026-07-02T23:00:00-06:00'),
+    'm88': new Date('2026-07-03T14:00:00-06:00'),
+    'm86': new Date('2026-07-03T18:00:00-06:00'),
+    'm87': new Date('2026-07-04T02:30:00-06:00'),
+  };
+
+  const now = new Date();
+
+  // Find next pending match
+  const nextMatch = allMatches.find(m => !m.done && !m.live);
+  const nextMatchTime = nextMatch ? schedule[nextMatch.id] : null;
+
+  // A finished match stays on top until the NEXT match kicks off
   const live = allMatches.filter(m => m.live && !m.done);
+
+  // Most recently finished match — show on top if next hasn't started yet
+  const recentlyDone = allMatches
+    .filter(m => m.done)
+    .sort((a,b) => {
+      const ta = schedule[a.id] || new Date(0);
+      const tb = schedule[b.id] || new Date(0);
+      return tb - ta;
+    });
+
+  const lastFinished = recentlyDone[0];
+  const showLastOnTop = lastFinished && nextMatchTime && now < nextMatchTime;
+
   const pending = allMatches.filter(m => !m.done && !m.live);
-  const done = allMatches.filter(m => m.done).reverse();
-  const ordered = [...live, ...pending];
+  const olderDone = showLastOnTop
+    ? recentlyDone.slice(1)
+    : recentlyDone;
 
   let html = '';
+
+  // 🔴 EN VIVO — absolute top
   if (live.length) {
     html += `<div class="bracket-section">
       <div class="bracket-title" style="color:var(--red);">🔴 En Vivo</div>
       <div class="matches-grid">${live.map(matchCard).join('')}</div>
     </div>`;
   }
+
+  // Último resultado — arriba hasta que empiece el siguiente
+  if (showLastOnTop && !live.length) {
+    html += `<div class="bracket-section">
+      <div class="bracket-title" style="color:var(--green-hit);">✓ Último resultado</div>
+      <div class="matches-grid">${matchCard(lastFinished)}</div>
+    </div>`;
+  }
+
+  // Próximos
   if (pending.length) {
     html += `<div class="bracket-section">
       <div class="bracket-title">Próximos partidos</div>
       <div class="matches-grid">${pending.map(matchCard).join('')}</div>
     </div>`;
   }
-  if (done.length) {
+
+  // Resto de resultados
+  if (olderDone.length) {
     html += `<div class="bracket-section">
       <div class="bracket-title">Resultados</div>
-      <div class="matches-grid">${done.map(matchCard).join('')}</div>
+      <div class="matches-grid">${olderDone.map(matchCard).join('')}</div>
     </div>`;
   }
+
   container.innerHTML = html || '<div class="empty-state">No hay partidos cargados</div>';
 }
 
