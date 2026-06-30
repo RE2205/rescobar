@@ -51,6 +51,15 @@ module.exports = async (req, res) => {
       await redis.set('quiniela:previas', previas);
       return res.status(200).json({ ok: true });
     }
+    if (req.method === 'POST' && action === 'picks') {
+      const { picks } = req.body;
+      await redis.set('quiniela:picks', picks);
+      return res.status(200).json({ ok: true, participantes: Object.keys(picks).length });
+    }
+    if (req.method === 'GET' && action === 'picks') {
+      const data = await redis.get('quiniela:picks') || {};
+      return res.status(200).json(data);
+    }
     return res.status(400).json({ error: 'Unknown action' });
   } catch (e) {
     return res.status(500).json({ error: e.message });

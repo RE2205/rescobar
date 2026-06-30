@@ -290,7 +290,6 @@ body::before {
 }
 .qsub-btn.active { color: var(--navy); background: var(--gold); border-color: var(--gold); }
 .qsub-btn:hover:not(.active) { color: var(--white); border-color: var(--border-bright); }
-
 .q-selector {
   width: 100%; padding: 12px 16px; margin-bottom: 18px;
   background: var(--navy-card); border: 1px solid var(--border);
@@ -299,7 +298,6 @@ body::before {
   appearance: none; cursor: pointer;
 }
 .q-selector:focus { outline: none; border-color: var(--gold-dim); }
-
 .q-summary-card {
   background: var(--navy-card); border: 1px solid var(--border);
   border-radius: var(--radius); padding: 16px 18px; margin-bottom: 18px;
@@ -308,7 +306,6 @@ body::before {
 .q-summary-item { text-align: center; }
 .q-summary-label { font-size: 9px; text-transform: uppercase; letter-spacing: 0.6px; color: var(--muted); margin-bottom: 4px; }
 .q-summary-value { font-size: 13px; font-weight: 700; color: var(--gold); }
-
 .q-pick-row {
   display: grid; grid-template-columns: 1fr auto 1fr auto;
   align-items: center; gap: 10px;
@@ -327,7 +324,6 @@ body::before {
 .q-status-partial { color: var(--blue-partial); }
 .q-status-fail { color: var(--red); }
 .q-status-pending { color: var(--muted); }
-
 .q-podium-grid {
   display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 24px;
 }
@@ -337,7 +333,6 @@ body::before {
 }
 .q-podium-label { font-size: 9px; text-transform: uppercase; letter-spacing: 0.6px; color: var(--gold-dim); margin-bottom: 6px; }
 .q-podium-team { font-size: 13px; font-weight: 700; color: var(--white); }
-
 .q-match-result-banner {
   background: var(--navy-card); border: 1px solid var(--border-bright);
   border-radius: var(--radius); padding: 16px; margin-bottom: 18px;
@@ -345,7 +340,6 @@ body::before {
 }
 .q-match-result-banner .team-flag { font-size: 32px; }
 .q-match-result-banner .score-box { font-size: 30px; }
-
 .q-vote-row {
   display: grid; grid-template-columns: 1fr auto auto;
   align-items: center; gap: 12px;
@@ -841,14 +835,12 @@ body::before {
       <button class="qsub-btn active" id="qsub-participante" onclick="showQSub('participante')">👤 Por Participante</button>
       <button class="qsub-btn" id="qsub-partido" onclick="showQSub('partido')">⚽ Por Partido</button>
     </div>
-
     <div id="qview-participante">
       <select class="q-selector" id="participant-select" onchange="renderParticipantView()"></select>
       <div id="participant-podium"></div>
       <div id="participant-summary"></div>
       <div id="participant-picks"></div>
     </div>
-
     <div id="qview-partido" style="display:none;">
       <select class="q-selector" id="match-select" onchange="renderMatchView()"></select>
       <div id="match-result-banner"></div>
@@ -933,10 +925,10 @@ async function fetchData() {
     const prev = await previasRes.json();
     const res = await resultsRes.json();
     const picks = await picksRes.json();
+    if (picks && typeof picks === 'object') picksData = picks;
 
     if (tabla && Array.isArray(tabla) && tabla.length > 0) participants = tabla;
     if (prev && Array.isArray(prev)) previas = prev;
-    if (picks && typeof picks === 'object') picksData = picks;
     if (res && typeof res === 'object') {
       allMatches.forEach(m => {
         if (res[m.id] && typeof res[m.id].s1 === 'number') {
@@ -972,8 +964,7 @@ function renderBracket() {
   if (!el) return;
 
   // Orden real del cuadro eliminatorio (verificado vs ESPN bracket):
-  // Lado A produce un finalista, Lado B produce el otro — el orden NO es cronológico,
-  // sino según qué partidos se enfrentan entre sí en la siguiente ronda.
+  // Lado A produce un finalista, Lado B produce el otro.
   const bracketLeftIds  = ['m74','m77','m73','m75','m83','m84','m81','m82'];
   const bracketRightIds = ['m76','m78','m79','m80','m86','m88','m85','m87'];
   const leftMatches = bracketLeftIds.map(id => allMatches.find(m => m.id === id)).filter(Boolean);
@@ -1261,6 +1252,7 @@ function matchCard(m) {
   </div>`;
 }
 
+// ─── RENDER PREVIAS ───────────────────────────────────────────────────
 // ─── RENDER QUINIELAS ──────────────────────────────────────────────────
 function showQSub(which) {
   document.getElementById('qsub-participante').classList.toggle('active', which === 'participante');
@@ -1282,7 +1274,6 @@ function pickStatus(m, pick) {
 function renderQuinielas() {
   const names = Object.keys(picksData).sort((a,b) => a.localeCompare(b, 'es'));
   document.getElementById('quinielas-badge').textContent = names.length + ' participantes';
-
   const pSel = document.getElementById('participant-select');
   if (pSel && pSel.options.length !== names.length) {
     pSel.innerHTML = names.map(n => `<option value="${n}">${n}</option>`).join('');
@@ -1301,7 +1292,6 @@ function renderParticipantView() {
   const name = sel.value;
   const data = picksData[name];
   if (!data) return;
-
   document.getElementById('participant-podium').innerHTML = `
     <div class="q-podium-grid">
       <div class="q-podium-item"><div class="q-podium-label">🏆 Campeón</div><div class="q-podium-team">${data.campeon || '—'}</div></div>
@@ -1309,7 +1299,6 @@ function renderParticipantView() {
       <div class="q-podium-item"><div class="q-podium-label">🥉 3er Lugar</div><div class="q-podium-team">${data.tercero || '—'}</div></div>
       <div class="q-podium-item"><div class="q-podium-label">4° Lugar</div><div class="q-podium-team">${data.cuarto || '—'}</div></div>
     </div>`;
-
   let exact = 0, partial = 0, fail = 0, pending = 0;
   allMatches.forEach(m => {
     const st = pickStatus(m, data.picks[m.id]);
@@ -1325,7 +1314,6 @@ function renderParticipantView() {
       <div class="q-summary-item"><div class="q-summary-label">Fallos</div><div class="q-summary-value" style="color:var(--red)">${fail}</div></div>
       <div class="q-summary-item"><div class="q-summary-label">Pendientes</div><div class="q-summary-value" style="color:var(--muted)">${pending}</div></div>
     </div>`;
-
   document.getElementById('participant-picks').innerHTML = allMatches.map(m => {
     const pick = data.picks[m.id];
     const st = pickStatus(m, pick);
@@ -1345,7 +1333,6 @@ function renderMatchView() {
   const mid = sel.value;
   const m = allMatches.find(x => x.id === mid);
   if (!m) return;
-
   const scoreHtml = m.done ? `${m.s1} – ${m.s2}` : 'vs';
   document.getElementById('match-result-banner').innerHTML = `
     <div class="q-match-result-banner">
@@ -1353,9 +1340,8 @@ function renderMatchView() {
       <div class="score-box ${m.done ? '' : 'pending'}">${scoreHtml}</div>
       <div class="team-side"><div class="team-flag">${m.f2}</div><div class="team-name">${m.t2}</div></div>
     </div>`;
-
   const names = Object.keys(picksData).sort((a,b) => a.localeCompare(b, 'es'));
-  const rows = names.map(name => {
+  document.getElementById('match-votes').innerHTML = names.map(name => {
     const pick = picksData[name].picks[mid];
     const st = pickStatus(m, pick);
     const pickScore = pick ? `${pick.s1}-${pick.s2}` : '—';
@@ -1365,7 +1351,6 @@ function renderMatchView() {
       <div class="q-pick-status ${st.cls}">${st.icon}</div>
     </div>`;
   }).join('');
-  document.getElementById('match-votes').innerHTML = rows;
 }
 
 // ─── RENDER PREVIAS ───────────────────────────────────────────────────
