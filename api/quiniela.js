@@ -5,32 +5,47 @@ const redis = new Redis({
   token: process.env.KV_REST_API_TOKEN,
 });
 
-// Calcula puntos de un pick vs resultado real
-// 4 pts = exacto (3 resultado + 1 ganador)
-// 1 pt  = ganador/empate correcto
-// 0 pts = fallo
 function calcPts(pick, real) {
   if (!pick || real.s1 === undefined) return 0;
   if (pick.s1 === real.s1 && pick.s2 === real.s2) return 4;
-  const realWinner = real.s1 === real.s2 ? 'E' : (real.s1 > real.s2 ? '1' : '2');
-  const pickWinner = pick.s1 === pick.s2 ? 'E' : (pick.s1 > pick.s2 ? '1' : '2');
-  if (pickWinner === realWinner) return 1;
-  return 0;
+  const rw = real.s1 === real.s2 ? 'E' : (real.s1 > real.s2 ? '1' : '2');
+  const pw = pick.s1 === pick.s2 ? 'E' : (pick.s1 > pick.s2 ? '1' : '2');
+  return pw === rw ? 1 : 0;
 }
 
-// Recalcula la tabla completa desde picks + results
+const MATCH_ORDER = ['m73','m76','m74','m75','m78','m77','m79','m80','m82','m81','m84','m83','m85','m88','m86','m87'];
+
 async function recalcTabla(results, picks, tablaActual) {
-  const tabla = (tablaActual || []).map(p => ({ ...p, pts: 0 }));
-  const doneResults = Object.entries(results).filter(([, r]) => r.done);
-  for (const entry of tabla) {
-    const playerPicks = picks[entry.name];
-    if (!playerPicks) continue;
+  // Incluye partidos done Y live para puntos en tiempo real
+  const activeResults = Object.entries(results).filter(([, r]) => r.done || r.live);
+  const orderedActive = MATCH_ORDER
+    .filter(id => results[id] && (results[id].done || results[id].live))
+    .map(id => [id, results[id]]);
+
+  const tabla = (tablaActual || []).map(p => {
+    const playerPicks = (picks[p.name] || {}).picks || {};
     let pts = 0;
-    for (const [matchId, real] of doneResults) {
-      pts += calcPts(playerPicks.picks[matchId], real);
+    orderedActive.forEach(([mid, real]) => { pts += calcPts(playerPicks[mid], real); });
+
+    // Racha: exactos consecutivos desde el último partido done hacia atrás
+    const doneOrdered = MATCH_ORDER.filter(id => results[id] && results[id].done);
+    let racha = 0;
+    for (let i = doneOrdered.length - 1; i >= 0; i--) {
+      if (calcPts(playerPicks[doneOrdered[i]], results[doneOrdered[i]]) === 4) racha++;
+      else break;
     }
-    entry.pts = pts;
-  }
+
+    // Array últimos 6 para la barra visual
+    const last6 = MATCH_ORDER.filter(id => results[id] && (results[id].done || results[id].live)).slice(-6);
+    const rachaArr = last6.map(mid => {
+      const p2 = calcPts(playerPicks[mid], results[mid]);
+      return p2 === 4 ? 2 : (p2 === 1 ? 1 : 0);
+    });
+    while (rachaArr.length < 6) rachaArr.unshift(0);
+
+    return { ...p, pts, racha: rachaArr, trend: String(racha) };
+  });
+
   tabla.sort((a, b) => b.pts - a.pts);
   return tabla;
 }
@@ -45,34 +60,34 @@ module.exports = async (req, res) => {
 
   try {
     if (req.method === 'GET' && action === 'results') {
-      const data = await redis.get('quiniela:results') || {};
-      return res.status(200).json(data);
+      return res.status(200).json(await redis.get('quiniela:results') || {});
     }
     if (req.method === 'GET' && action === 'tabla') {
-      const data = await redis.get('quiniela:tabla') || null;
-      return res.status(200).json(data);
+      return res.status(200).json(await redis.get('quiniela:tabla') || null);
     }
     if (req.method === 'GET' && action === 'previas') {
-      const data = await redis.get('quiniela:previas') || [];
-      return res.status(200).json(data);
+      return res.status(200).json(await redis.get('quiniela:previas') || []);
+    }
+    if (req.method === 'GET' && action === 'picks') {
+      return res.status(200).json(await redis.get('quiniela:picks') || {});
     }
 
-    // Cuando Henry mete un resultado → guarda + recalcula tabla automáticamente
+    // Henry mete gol o marca final → recalcula tabla automáticamente
     if (req.method === 'POST' && action === 'result') {
-      const { id, s1, s2, done } = req.body;
+      const { id, s1, s2, done, live } = req.body;
       const [results, picks, tablaActual] = await Promise.all([
         redis.get('quiniela:results'),
         redis.get('quiniela:picks'),
         redis.get('quiniela:tabla'),
       ]);
       const resultsUpd = results || {};
-      resultsUpd[id] = { s1, s2, done };
-      const tablaUpd = picks && done
+      resultsUpd[id] = { s1, s2, done: !!done, live: !!live };
+      const tablaUpd = picks
         ? await recalcTabla(resultsUpd, picks, tablaActual)
         : tablaActual;
       await Promise.all([
         redis.set('quiniela:results', resultsUpd),
-        picks && done ? redis.set('quiniela:tabla', tablaUpd) : Promise.resolve(),
+        picks ? redis.set('quiniela:tabla', tablaUpd) : Promise.resolve(),
       ]);
       return res.status(200).json({ ok: true, tabla: tablaUpd });
     }
@@ -100,10 +115,7 @@ module.exports = async (req, res) => {
       await redis.set('quiniela:picks', picks);
       return res.status(200).json({ ok: true, participantes: Object.keys(picks).length });
     }
-    if (req.method === 'GET' && action === 'picks') {
-      const data = await redis.get('quiniela:picks') || {};
-      return res.status(200).json(data);
-    }
+
     return res.status(400).json({ error: 'Unknown action' });
   } catch (e) {
     return res.status(500).json({ error: e.message });
