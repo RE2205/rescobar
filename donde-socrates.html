@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Dónde Sócrates · Logos Psyche | Dr. Ronald Escobar, Psiquiatra en Guatemala</title>
+    <meta name="description" content="No necesitás saber qué tenés. Solo empezar a hablar. Logos Psyche — Neurociencia, Arte, Humanidad.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --negro: #08080a;
+            --blanco: #f0ede6;
+            --teal: #4ecdc4;
+            --rojo: #c44a2a;
+            --amarillo: #d4b84a;
+            --gris: #908c86;
+            --fondo-medio: #0e0e10;
+            --linea: rgba(78,205,196,0.12);
+            --grad: linear-gradient(100deg, #4ecdc4, #8ec44e, #d4b84a, #c4763a, #c44a2a);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Courier Prime', monospace;
+            background: var(--negro);
+            color: var(--blanco);
+            overflow-x: hidden;
+        }
+
+        .nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            padding: 20px 36px;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .nav::before {
+            content: ''; position: absolute; inset: 0;
+            background: linear-gradient(to bottom, rgba(8,8,10,0.9) 0%, transparent 100%);
+            pointer-events: none;
+        }
+        .nav-brand {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 15px; font-weight: 300;
+            letter-spacing: 0.12em; color: var(--blanco);
+            text-decoration: none; position: relative; z-index: 1;
+        }
+        .nav-links { display: flex; gap: 28px; position: relative; z-index: 1; }
+        .nav-links a {
+            font-size: 10px; letter-spacing: 0.22em;
+            text-transform: uppercase; color: rgba(240,237,230,0.72);
+            text-decoration: none; transition: color 0.2s;
+        }
+        .nav-links a:hover { color: var(--teal); }
+
+        .hero { position: relative; display: flex; flex-direction: column; overflow: hidden; }
+        .hero-img-wrapper { position: relative; width: 100%; height: 85vh; overflow: hidden; }
+        .hero-img {
+            width: 100%; height: 100%;
+            object-fit: cover; object-position: center 25%;
+            display: block; filter: brightness(0.75);
+        }
+        .hero-img-wrapper::after {
+            content: ''; position: absolute; inset: 0;
+            background: linear-gradient(to bottom, rgba(8,8,10,0.2) 0%, rgba(8,8,10,0.0) 40%, rgba(8,8,10,0.75) 80%, rgba(8,8,10,1) 100%);
+            pointer-events: none;
+        }
+        .hero-content {
+            position: relative; z-index: 2;
+            padding: 32px 56px 32px;
+            margin-top: -200px;
+        }
+        .hero-eyebrow {
+            display: inline-block; margin-bottom: 20px;
+            font-size: 11px; letter-spacing: 0.4em;
+            text-transform: uppercase; color: var(--teal);
+            opacity: 0; animation: fadeUp 0.8s ease 0.3s forwards;
+        }
+        .hero-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(46px, 6.8vw, 88px);
+            font-weight: 300; line-height: 1.06; margin-bottom: 28px;
+            opacity: 0; animation: fadeUp 0.8s ease 0.5s forwards;
+        }
+        .hero-title em {
+            font-style: italic;
+            background: var(--grad);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero-doctor-card {
+            display: flex; align-items: center; gap: 18px;
+            margin-top: 32px; margin-bottom: 8px;
+            opacity: 0; animation: fadeUp 0.8s ease 0.7s forwards;
+        }
+        .hero-doctor-avatar {
+            width: 56px; height: 56px; border-radius: 50%;
+            overflow: hidden; flex-shrink: 0;
+            border: 1px solid rgba(78,205,196,0.25);
+            box-shadow: 0 0 20px rgba(78,205,196,0.08);
+        }
+        .hero-doctor-avatar img {
+            width: 100%; height: 100%;
+            object-fit: cover; object-position: center 25%;
+        }
+        .hero-doctor-nombre {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 16px; font-weight: 400; color: var(--blanco);
+            letter-spacing: 0.05em;
+        }
+        .hero-doctor-sub {
+            font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+            color: rgba(240,237,230,0.5); margin-top: 3px;
+        }
+        .hero-doctor-declaracion {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 13px; font-style: italic; font-weight: 300;
+            color: rgba(78,205,196,0.75); margin-top: 5px;
+            letter-spacing: 0.03em;
+        }
+        .hero-loc {
+            font-size: 12px; color: rgba(240,237,230,0.6);
+            letter-spacing: 0.08em; margin-top: 16px;
+            opacity: 0; animation: fadeUp 0.8s ease 0.9s forwards;
+        }
+
+        .section-divider {
+            display: flex; align-items: center; gap: 16px;
+            padding: 24px 32px; max-width: 780px; margin: 0 auto;
+        }
+        .section-divider::before, .section-divider::after {
+            content: ''; flex: 1; height: 1px; background: rgba(78,205,196,0.25);
+        }
+        .section-divider span {
+            font-size: 11px; letter-spacing: 0.25em;
+            text-transform: uppercase; color: rgba(78,205,196,0.75); white-space: nowrap;
+        }
+
+        .chat-section { max-width: 780px; margin: 0 auto; padding: 0 32px 80px; }
+
+        .chat-header {
+            display: flex; align-items: center; gap: 18px;
+            padding: 0 0 24px; border-bottom: 1px solid var(--linea); margin-bottom: 4px;
+        }
+        .chat-header-info { flex: 1; }
+        .chat-header-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 22px; font-weight: 300; letter-spacing: 0.1em;
+        }
+        .chat-header-sub {
+            font-size: 10px; letter-spacing: 0.18em;
+            text-transform: uppercase; color: rgba(144,140,134,0.9); margin-top: 4px;
+        }
+        .chat-header-autor {
+            font-size: 10px; letter-spacing: 0.12em;
+            color: rgba(78,205,196,0.7); margin-top: 3px;
+        }
+        .status-dot { display: flex; align-items: center; gap: 7px; }
+        .status-dot::before {
+            content: ''; width: 6px; height: 6px; border-radius: 50%;
+            background: var(--teal); box-shadow: 0 0 8px rgba(78,205,196,0.6);
+            animation: pulse 2.5s ease-in-out infinite;
+        }
+        .status-dot span {
+            font-size: 9px; letter-spacing: 0.15em;
+            text-transform: uppercase; color: rgba(78,205,196,0.6);
+        }
+
+        .messages { min-height: 200px; padding: 32px 0 12px; }
+        .chat-disclaimer {
+            text-align: center; padding: 0 16px 28px; margin-bottom: 12px;
+            border-bottom: 1px solid rgba(78,205,196,0.06);
+        }
+        .chat-disclaimer p {
+            font-size: 12px; color: rgba(240,237,230,0.58); line-height: 2; font-style: italic;
+        }
+
+        .msg { display: flex; margin-bottom: 28px; animation: msgIn 0.45s cubic-bezier(0.16,1,0.3,1); }
+        .msg.user { justify-content: flex-end; padding-left: 80px; }
+        .msg.assistant { justify-content: flex-start; padding-right: 80px; }
+        .msg-bubble { padding: 22px 28px; line-height: 1.95; color: rgba(240,237,230,0.93); }
+        .msg.user .msg-bubble {
+            font-family: 'Courier Prime', monospace; font-size: 15px;
+            background: rgba(78,205,196,0.07); border-right: 2px solid rgba(78,205,196,0.2);
+        }
+        .msg.assistant .msg-bubble {
+            font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 300;
+            background: var(--fondo-medio); border-left: 2px solid rgba(78,205,196,0.28);
+        }
+        .msg-bubble p { margin-bottom: 14px; }
+        .msg-bubble p:last-child { margin-bottom: 0; }
+
+        .typing { display: flex; margin-bottom: 20px; }
+        .typing-bubble {
+            padding: 18px 22px; background: var(--fondo-medio);
+            border-left: 2px solid rgba(78,205,196,0.28);
+            display: flex; gap: 6px; align-items: center;
+        }
+        .typing-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--teal); opacity: 0.4; }
+        .typing-dot:nth-child(1) { animation: typeDot 1.3s ease-in-out 0s infinite; }
+        .typing-dot:nth-child(2) { animation: typeDot 1.3s ease-in-out 0.15s infinite; }
+        .typing-dot:nth-child(3) { animation: typeDot 1.3s ease-in-out 0.3s infinite; }
+
+        .cta-bar {
+            margin-bottom: 16px; padding: 20px 24px;
+            border: 1px solid rgba(78,205,196,0.2);
+            background: rgba(78,205,196,0.04); display: none;
+        }
+        .cta-bar.visible { display: block; animation: msgIn 0.5s ease; }
+        .cta-bar-label {
+            font-size: 9px; letter-spacing: 0.25em; text-transform: uppercase;
+            color: var(--teal); margin-bottom: 8px; display: block;
+        }
+        .cta-bar p {
+            font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 300;
+            color: rgba(240,237,230,0.85); margin-bottom: 14px; line-height: 1.5;
+        }
+        .cta-bar-btn {
+            display: inline-block; font-size: 10px; letter-spacing: 0.2em;
+            text-transform: uppercase; padding: 12px 24px;
+            text-decoration: none; font-weight: 700; background: #25D366; color: var(--negro);
+        }
+
+        .input-area { padding-top: 24px; border-top: 1px solid var(--linea); }
+        .input-row { display: flex; gap: 16px; align-items: center; }
+        .input-field {
+            flex: 1; padding: 16px 0; background: transparent; border: none;
+            border-bottom: 1px solid rgba(78,205,196,0.3); color: var(--blanco);
+            font-size: 18px; font-family: 'Cormorant Garamond', serif;
+            font-weight: 300; outline: none; transition: border-color 0.3s; caret-color: var(--teal);
+        }
+        .input-field:focus { border-bottom-color: rgba(78,205,196,0.6); }
+        .input-field::placeholder { color: rgba(240,237,230,0.4); font-style: italic; }
+
+        /* BOTÓN ENVIAR — contraste mejorado */
+        .btn-send {
+            flex-shrink: 0; padding: 14px 32px;
+            border: 1px solid rgba(240,237,230,0.25);
+            font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase;
+            font-weight: 700; font-family: 'Courier Prime', monospace;
+            background: transparent; color: rgba(240,237,230,0.45);
+            cursor: default; transition: all 0.4s ease;
+        }
+        .btn-send.ready {
+            background: var(--grad); background-size: 200% 100%;
+            color: var(--negro); cursor: pointer; border-color: transparent;
+            box-shadow: 0 0 24px rgba(78,205,196,0.3);
+        }
+        .btn-send.ready:hover {
+            filter: brightness(1.1);
+            box-shadow: 0 0 32px rgba(78,205,196,0.4);
+        }
+
+        .wa-fijo {
+            margin-top: 20px; padding-top: 20px;
+            border-top: 1px solid rgba(78,205,196,0.06);
+            display: flex; align-items: center; justify-content: space-between;
+            flex-wrap: wrap; gap: 12px;
+        }
+        .wa-fijo-texto { font-size: 11px; color: rgba(240,237,230,0.4); letter-spacing: 0.05em; line-height: 1.7; }
+        .wa-fijo-btn {
+            font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+            color: #25D366; text-decoration: none;
+            display: flex; align-items: center; gap: 8px; transition: color 0.2s;
+        }
+        .wa-fijo-btn:hover { color: var(--blanco); }
+        .wa-dot { width: 6px; height: 6px; border-radius: 50%; background: #25D366; }
+
+        .page-footer {
+            text-align: center; padding: 48px 32px 40px;
+            border-top: 1px solid var(--linea); max-width: 780px; margin: 0 auto;
+        }
+        .page-footer p { font-size: 12px; color: var(--gris); line-height: 2; }
+        .page-footer a { color: var(--teal); text-decoration: none; }
+        .page-footer a:hover { color: var(--blanco); }
+
+        @keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes msgIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes typeDot { 0%, 100% { opacity: 0.2; transform: translateY(0); } 50% { opacity: 0.8; transform: translateY(-3px); } }
+        @keyframes pulse { 0%, 100% { box-shadow: 0 0 5px rgba(78,205,196,0.4); } 50% { box-shadow: 0 0 12px rgba(78,205,196,0.7); } }
+
+        @media (max-width: 600px) {
+            .nav { padding: 16px 18px; }
+            .hero-content { padding: 0 24px 48px; margin-top: -160px; }
+            .hero-title { font-size: clamp(38px, 10vw, 54px); }
+            .section-divider { padding: 40px 20px 32px; }
+            .chat-section { padding: 0 20px 56px; }
+            .msg.user { padding-left: 24px; }
+            .msg.assistant { padding-right: 24px; }
+            .msg.assistant .msg-bubble { font-size: 18px; }
+            .btn-send { padding: 12px 14px; font-size: 9px; }
+            .wa-fijo { flex-direction: column; align-items: flex-start; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="nav">
+        <a href="https://ronaldescobar.com/" class="nav-brand">Logos Psyche</a>
+        <div class="nav-links">
+            <a href="https://ronaldescobar.com/">Inicio</a>
+            <a href="https://ronaldescobar.com/logos-psyche.html">Clínica</a>
+        </div>
+    </nav>
+
+    <section class="hero" id="hero">
+        <div class="hero-img-wrapper">
+            <img src="assets/ronald_v2.jpg" alt="Dr. Ronald Escobar — Logos Psyche, Guatemala" class="hero-img" loading="eager">
+        </div>
+        <div class="hero-content">
+            <span class="hero-eyebrow">Primera conversación</span>
+            <h1 class="hero-title">
+                No necesitás saber qué tenés.<br>
+                <em>Solo empezar a hablar.</em>
+            </h1>
+            <div class="hero-doctor-card">
+                <div class="hero-doctor-avatar">
+                    <img src="assets/portada4.PNG" alt="Dr. Ronald Escobar">
+                </div>
+                <div>
+                    <div class="hero-doctor-nombre">Dr. Ronald Escobar</div>
+                    <div class="hero-doctor-sub">Psiquiatra · Guatemala</div>
+                    <div class="hero-doctor-declaracion">Conozco la psiquiatría desde los dos lados.</div>
+                </div>
+            </div>
+            <p class="hero-loc">Logos Psyche · Integra Medical Center, Clínica 810</p>
+        </div>
+    </section>
+
+    <div class="section-divider"><span>Conversá antes de decidir</span></div>
+
+    <div class="chat-section">
+        <div class="chat-header">
+            <div style="width:48px;height:48px;flex-shrink:0;">
+                <img src="https://ronaldescobar.com/assets/cerebro-isotipo.png" alt="Dónde Sócrates" style="width:48px;height:auto;">
+            </div>
+            <div class="chat-header-info">
+                <div class="chat-header-title">Dónde Sócrates</div>
+                <div class="chat-header-sub">Primera conversación · Logos Psyche</div>
+                <div class="chat-header-autor">Creado por el Dr. Ronald Escobar</div>
+            </div>
+            <div class="status-dot"><span>Disponible</span></div>
+        </div>
+
+        <div class="messages" id="messages">
+            <div class="chat-disclaimer">
+                <p>Este espacio es para pensar, no para diagnosticar.<br>
+                Lo que hablés acá puede abrirte las preguntas correctas para tu primera consulta.<br>
+                Logos Psyche no almacena tus conversaciones.</p>
+            </div>
+        </div>
+
+        <div class="input-area">
+            <div class="cta-bar" id="ctaBar">
+                <span class="cta-bar-label">Siguiente paso</span>
+                <p>¿Querés continuar esto con el Dr. Escobar?</p>
+                <a href="https://wa.me/50230607168?text=Hola,%20quisiera%20iniciar%20proceso%20clínico." target="_blank" class="cta-bar-btn">WhatsApp · Agendar consulta</a>
+            </div>
+
+            <div class="input-row">
+                <input type="text" class="input-field" id="inputField" placeholder="Escribí lo que traés hoy..." autocomplete="off" onkeydown="if(event.key==='Enter')sendMessage()">
+                <button class="btn-send" id="btnSend" onclick="sendMessage()">Enviar</button>
+            </div>
+
+            <div class="wa-fijo">
+                <span class="wa-fijo-texto">¿Preferís hablar directo con el consultorio?</span>
+                <a href="https://wa.me/50230607168?text=Hola,%20quisiera%20iniciar%20proceso%20clínico." target="_blank" class="wa-fijo-btn">
+                    <div class="wa-dot"></div>WhatsApp · 3060-7168
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <footer class="page-footer">
+        <p>
+            Logos Psyche · Neurociencia · Arte · Humanidad<br>
+            Integra Medical Center · Clínica 810 · Ciudad de Guatemala<br>
+            <a href="https://wa.me/50230607168">+502 3060-7168</a> ·
+            <a href="mailto:clinicalogos@ronaldescobar.com">clinicalogos@ronaldescobar.com</a> ·
+            <a href="https://ronaldescobar.com">ronaldescobar.com</a>
+        </p>
+    </footer>
+
+    <script>
+        const API_URL = 'https://logos-psyche-api.vercel.app/api/chat';
+        let messages = [], isTyping = false, messageCount = 0;
+
+        const inputField  = document.getElementById('inputField');
+        const btnSend     = document.getElementById('btnSend');
+        const messagesDiv = document.getElementById('messages');
+        const ctaBar      = document.getElementById('ctaBar');
+
+        inputField.addEventListener('input', () => {
+            btnSend.classList.toggle('ready', inputField.value.trim().length > 0 && !isTyping);
+        });
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const bienvenida = "Hola. Soy Dónde Sócrates.\n\nNo soy el Dr. Escobar — soy una herramienta creada por él para que puedas pensar antes de decidir.\n\n¿Qué te trajo hasta acá?";
+            addMessage('assistant', bienvenida);
+            messages.push({ role: 'assistant', content: bienvenida });
+        });
+
+        function addMessage(role, text) {
+            const wrapper = document.createElement('div');
+            wrapper.className = 'msg ' + role;
+            const bubble = document.createElement('div');
+            bubble.className = 'msg-bubble';
+            text.split('\n\n').filter(p => p.trim()).forEach(para => {
+                const p = document.createElement('p');
+                p.innerHTML = para.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>').replace(/\n/g, '<br>');
+                bubble.appendChild(p);
+            });
+            wrapper.appendChild(bubble);
+            messagesDiv.appendChild(wrapper);
+            wrapper.scrollIntoView({ behavior: 'smooth', block: 'end' });
+        }
+
+        function showTyping() {
+            const d = document.createElement('div');
+            d.className = 'typing'; d.id = 'typingIndicator';
+            d.innerHTML = '<div class="typing-bubble"><div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div></div>';
+            messagesDiv.appendChild(d);
+            d.scrollIntoView({ behavior: 'smooth', block: 'end' });
+        }
+        function hideTyping() { const e = document.getElementById('typingIndicator'); if (e) e.remove(); }
+
+        async function sendMessage() {
+            const text = inputField.value.trim();
+            if (!text || isTyping) return;
+            inputField.value = '';
+            btnSend.classList.remove('ready');
+            isTyping = true;
+            addMessage('user', text);
+            messages.push({ role: 'user', content: text });
+            messageCount++;
+            showTyping();
+            try {
+                const r = await fetch(API_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ mode: 'abierta', messages })
+                });
+                const data = await r.json();
+                hideTyping();
+                if (data.error) {
+                    addMessage('assistant', 'Hubo un problema de conexión. Si necesitás ayuda ahora, escribí al +502 3060-7168.');
+                } else {
+                    const reply = data.text || '';
+                    addMessage('assistant', reply);
+                    messages.push({ role: 'assistant', content: reply });
+                }
+            } catch (err) {
+                hideTyping();
+                addMessage('assistant', 'No pude conectarme. Si necesitás ayuda ahora, escribí al +502 3060-7168.');
+            }
+            isTyping = false;
+            inputField.focus();
+            if (messageCount >= 3) ctaBar.classList.add('visible');
+        }
+    </script>
+</body>
+</html>
