@@ -659,6 +659,80 @@ body::before {
   padding: 0; font-family: inherit;
 }
 
+
+/* QUINIELAS */
+.q-controls {
+  display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap;
+}
+.q-btn {
+  padding: 8px 16px; border-radius: 50px; font-size: 12px; font-weight: 700;
+  cursor: pointer; border: 1px solid var(--border); background: var(--navy-card);
+  color: var(--muted); transition: all 0.2s;
+}
+.q-btn.active { background: var(--gold); color: var(--navy); border-color: var(--gold); }
+.q-btn:hover:not(.active) { border-color: var(--gold); color: var(--white); }
+
+.q-select {
+  padding: 10px 16px; border-radius: 8px; font-size: 14px;
+  background: var(--navy-card); border: 1px solid var(--border);
+  color: var(--white); outline: none; width: 100%; max-width: 320px;
+  margin-bottom: 16px;
+}
+.q-select:focus { border-color: var(--gold); }
+
+/* Vista por participante */
+.q-participant-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 8px;
+}
+.q-match-row {
+  background: var(--navy-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 14px;
+  display: flex; align-items: center; gap: 10px;
+}
+.q-match-row.exacto { border-color: rgba(255,215,0,0.4); background: rgba(255,215,0,0.06); }
+.q-match-row.ganador { border-color: rgba(68,138,255,0.4); background: rgba(68,138,255,0.06); }
+.q-match-row.fallo { opacity: 0.5; }
+.q-teams { flex: 1; font-size: 12px; font-weight: 600; }
+.q-teams span { color: var(--muted); font-weight: 400; }
+.q-score {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 16px; font-weight: 800; color: var(--gold);
+  min-width: 48px; text-align: center;
+}
+.q-pts {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 13px; font-weight: 700;
+  padding: 2px 8px; border-radius: 50px; min-width: 32px; text-align: center;
+}
+.q-pts.p4 { background: rgba(255,215,0,0.2); color: var(--gold); }
+.q-pts.p1 { background: rgba(68,138,255,0.15); color: #448aff; }
+.q-pts.p0 { background: rgba(255,255,255,0.05); color: var(--muted); }
+.q-pts.pnd { background: transparent; color: var(--muted); }
+
+/* Vista por partido */
+.q-partido-grid {
+  display: flex; flex-direction: column; gap: 8px;
+}
+.q-person-row {
+  background: var(--navy-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 14px;
+  display: flex; align-items: center; gap: 12px;
+}
+.q-person-row.exacto { border-color: rgba(255,215,0,0.4); }
+.q-person-row.ganador { border-color: rgba(68,138,255,0.3); }
+.q-person-name { flex: 1; font-size: 13px; font-weight: 600; }
+.q-person-score {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 18px; font-weight: 800; color: var(--gold);
+}
+.q-stat-bars { margin-top: 16px; }
+
 </style>
 </head>
 <body>
@@ -679,6 +753,7 @@ body::before {
 <div class="tabs-wrapper">
   <div class="tabs">
     <button class="tab active" onclick="showPanel('tabla',this)">🏅 Tabla</button>
+    <button class="tab" onclick="showPanel('quinielas',this)">📋 Quinielas</button>
     <button class="tab" onclick="showPanel('partidos',this)">🔴 Resultados Live</button>
     <button class="tab" onclick="showPanel('bracket',this)">⚔️ Eliminatoria</button>
     <button class="tab" onclick="showPanel('previas',this)">📢 Previas</button>
@@ -752,6 +827,36 @@ body::before {
     </div>
   </div>
 
+
+
+  <!-- QUINIELAS -->
+  <div id="quinielas" class="panel">
+    <div class="section-header">
+      <span class="section-title">Quinielas</span>
+      <span class="section-badge" id="q-badge">Fase Eliminatoria</span>
+    </div>
+
+    <div class="q-controls">
+      <button class="q-btn active" onclick="setQView('participante', this)">👤 Por Participante</button>
+      <button class="q-btn" onclick="setQView('partido', this)">⚽ Por Partido</button>
+    </div>
+
+    <!-- Vista participante -->
+    <div id="q-participante">
+      <select class="q-select" id="q-person-select" onchange="renderQParticipante()">
+        <option value="">Selecciona un participante...</option>
+      </select>
+      <div id="q-participante-content"></div>
+    </div>
+
+    <!-- Vista partido -->
+    <div id="q-partido" style="display:none;">
+      <select class="q-select" id="q-match-select" onchange="renderQPartido()">
+        <option value="">Selecciona un partido...</option>
+      </select>
+      <div id="q-partido-content"></div>
+    </div>
+  </div>
 
   <!-- BRACKET -->
   <div id="bracket" class="panel">
@@ -846,6 +951,147 @@ async function fetchData() {
 }
 
 
+
+
+// ─── QUINIELAS ────────────────────────────────────────────────────────
+let quinielasData = {};
+let qView = 'participante';
+
+async function loadQuinielas() {
+  try {
+    const res = await fetch('/api/quiniela?action=picks');
+    if (res.ok) quinielasData = await res.json();
+  } catch(e) {}
+  initQSelects();
+}
+
+function initQSelects() {
+  // Person select
+  const pSel = document.getElementById('q-person-select');
+  if (!pSel) return;
+  const names = Object.keys(quinielasData).sort();
+  pSel.innerHTML = '<option value="">Selecciona un participante...</option>' +
+    names.map(n => `<option value="${n}">${n}</option>`).join('');
+
+  // Match select
+  const mSel = document.getElementById('q-match-select');
+  mSel.innerHTML = '<option value="">Selecciona un partido...</option>' +
+    allMatches.map(m => `<option value="${m.id}">${m.date} · ${m.t1} vs ${m.t2}</option>`).join('');
+}
+
+function setQView(view, btn) {
+  qView = view;
+  document.querySelectorAll('.q-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('q-participante').style.display = view === 'participante' ? 'block' : 'none';
+  document.getElementById('q-partido').style.display = view === 'partido' ? 'block' : 'none';
+}
+
+function getPts(pick, match) {
+  if (!match.done) return null;
+  if (!pick) return null;
+  if (pick.s1 === match.s1 && pick.s2 === match.s2) return 4;
+  const pRes = pick.s1 > pick.s2 ? 'W' : pick.s1 === pick.s2 ? 'D' : 'L';
+  const rRes = match.s1 > match.s2 ? 'W' : match.s1 === match.s2 ? 'D' : 'L';
+  return pRes === rRes ? 1 : 0;
+}
+
+function renderQParticipante() {
+  const name = document.getElementById('q-person-select').value;
+  const el = document.getElementById('q-participante-content');
+  if (!name) { el.innerHTML = ''; return; }
+
+  const picks = (quinielasData[name] || {}).picks || {};
+  let total = 0;
+
+  const rows = allMatches.map(m => {
+    const pick = picks[m.id];
+    const pts = pick ? getPts(pick, m) : null;
+    if (pts !== null) total += pts;
+
+    const cls = pts === 4 ? 'exacto' : pts === 1 ? 'ganador' : pts === 0 ? 'fallo' : '';
+    const ptsHtml = pts === null
+      ? `<span class="q-pts pnd">–</span>`
+      : `<span class="q-pts p${pts}">${pts > 0 ? '+' : ''}${pts}</span>`;
+
+    const scoreHtml = pick
+      ? `<span class="q-score">${pick.s1}–${pick.s2}</span>`
+      : `<span class="q-score" style="color:var(--muted);font-size:13px;">?</span>`;
+
+    const realHtml = m.done
+      ? `<span style="font-size:11px;color:var(--muted);">(${m.s1}–${m.s2})</span>` : '';
+
+    return `<div class="q-match-row ${cls}">
+      <div class="q-teams">${m.f1} ${m.t1} <span>vs</span> ${m.t2} ${m.f2}
+        <div style="font-size:10px;color:var(--muted);">${m.date} ${realHtml}</div>
+      </div>
+      ${scoreHtml}
+      ${ptsHtml}
+    </div>`;
+  }).join('');
+
+  el.innerHTML = `
+    <div style="margin-bottom:12px;display:flex;align-items:center;justify-content:space-between;">
+      <span style="font-size:13px;color:var(--muted);">Pronósticos de ${name}</span>
+      <span style="font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:800;color:var(--gold);">${total} pts</span>
+    </div>
+    <div class="q-participant-grid">${rows}</div>`;
+}
+
+function renderQPartido() {
+  const mid = document.getElementById('q-match-select').value;
+  const el = document.getElementById('q-partido-content');
+  if (!mid) { el.innerHTML = ''; return; }
+
+  const match = allMatches.find(m => m.id === mid);
+  if (!match) return;
+
+  const names = Object.keys(quinielasData).sort();
+  const scoreCounts = {};
+
+  const rows = names.map(name => {
+    const pick = quinielasData[name]?.picks?.[mid];
+    if (!pick) return null;
+    const key = `${pick.s1}-${pick.s2}`;
+    scoreCounts[key] = (scoreCounts[key] || 0) + 1;
+    const pts = getPts(pick, match);
+    const cls = pts === 4 ? 'exacto' : pts === 1 ? 'ganador' : pts === 0 ? 'fallo' : '';
+    const ptsHtml = pts !== null
+      ? `<span class="q-pts p${pts}">${pts > 0 ? '+' : ''}${pts}</span>` : '';
+    return `<div class="q-person-row ${cls}">
+      <span class="q-person-name">${name}</span>
+      <span class="q-person-score">${pick.s1}–${pick.s2}</span>
+      ${ptsHtml}
+    </div>`;
+  }).filter(Boolean).join('');
+
+  // Score distribution bars
+  const total = Object.values(scoreCounts).reduce((a,b)=>a+b,0);
+  const distBars = Object.entries(scoreCounts)
+    .sort((a,b) => b[1]-a[1])
+    .map(([score, count]) => {
+      const pct = (count/total*100).toFixed(1);
+      return `<div class="pred-row">
+        <span class="pred-score">${score}</span>
+        <div class="pred-track"><div class="pred-fill" style="width:${pct}%"></div></div>
+        <span class="pred-pct">${pct}%</span>
+      </div>`;
+    }).join('');
+
+  const resultHtml = match.done
+    ? `<span style="font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:800;color:var(--gold);">${match.s1}–${match.s2}</span> <span style="font-size:11px;color:var(--green-hit);">✓ Final</span>`
+    : `<span style="color:var(--muted);font-size:13px;">Pendiente</span>`;
+
+  el.innerHTML = `
+    <div class="chart-card" style="margin-bottom:16px;">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+        <div class="chart-title">${match.f1} ${match.t1} vs ${match.t2} ${match.f2}</div>
+        <div>${resultHtml}</div>
+      </div>
+      <div class="pred-bars">${distBars}</div>
+    </div>
+    <div class="q-partido-grid">${rows}</div>`;
+}
 
 // ─── RENDER HENRY BANNER ──────────────────────────────────────────────
 function renderHenryBanner() {
@@ -1183,12 +1429,22 @@ function renderAll() {
   renderPrevias();
   renderBracket();
   renderHenryBanner();
+  loadQuinielas();
 }
 
 // Auto-refresh cada 60 segundos
 fetchData();
-setInterval(fetchData, 60000);
+// Refresh inteligente: 15s si hay partido en vivo, 60s si no
+async function smartRefresh() {
+  await fetchData();
+  const res = await fetch('/api/quiniela?action=results').then(r=>r.json()).catch(()=>({}));
+  const hasLive = Object.values(res).some(r => r.live && !r.done);
+  clearTimeout(window._refreshTimer);
+  window._refreshTimer = setTimeout(smartRefresh, hasLive ? 15000 : 60000);
+}
+setTimeout(smartRefresh, 15000);
 </script>
 <!-- deploy 2026-06-28 -->
 </body>
 </html>
+<!-- force redeploy Wed Jul  1 21:24:37 UTC 2026 -->
