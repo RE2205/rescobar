@@ -3,836 +3,788 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Logos Psyche, clínica de psiquiatría en Guatemala City. Dr. Ronald Escobar, psiquiatra. Consulta privada en Integra Medical Center, Clínica 810. Neurociencia, Arte, Humanidad. Citas: 3060-7168.">
 <title>Logos Psyche — Psiquiatra en Guatemala City | Dr. Ronald Escobar | Integra Medical Center</title>
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://ronaldescobar.com/logos-psyche.html">
-<meta property="og:title" content="Logos Psyche | Ronald Escobar">
-<meta property="og:description" content="Logos Psyche — Psiquiatría basada en evidencia, escucha profunda y humanidad. Ronald Escobar, Guatemala.">
-<meta property="og:image" content="https://ronaldescobar.com/assets/logos-psyche-header.png">
-<link rel="icon" href="/assets/logo-image.png" type="image/png">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 <style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Courier+Prime:wght@400;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
   :root {
     --negro: #08080a;
-    --blanco: #f0ede6;
-    --teal: #4ecdc4;
-    --verde: #8ec44e;
-    --amarillo: #d4b84a;
-    --naranja: #c4763a;
-    --rojo: #c44a2a;
-    --gris: #6b6860;
-    --fondo-medio: #0e0e10;
-    --linea: rgba(78,205,196,0.15);
+    --blanco: rgb(240,237,230);
+    --teal: rgb(78,205,196);
+    --gris: rgba(240,237,230,0.85);
+    --gris-suave: rgba(240,237,230,0.6);
+    --gris-medio: rgba(240,237,230,0.45);
   }
-
-  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
 
   body {
     background: var(--negro);
     color: var(--blanco);
     font-family: 'Courier Prime', monospace;
-    overflow-x: hidden;
   }
 
-  body::after {
-    content: ''; position: fixed; inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
-    pointer-events: none; z-index: 100; opacity: 0.5;
+  /* Gradiente de marca */
+  .gt {
+    background: linear-gradient(100deg, rgb(78,205,196), rgb(142,196,78), rgb(212,184,74), rgb(196,118,58), rgb(196,74,42));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
 
-  /* NAV */
+  /* ── NAV ── */
   nav {
-    position: fixed; top: 0; left: 0; right: 0;
-    z-index: 50; padding: 22px 48px;
-    display: flex; justify-content: space-between; align-items: center;
-  }
-  nav::before {
-    content: ''; position: absolute; inset: 0;
-    background: linear-gradient(to bottom, rgba(8,8,10,0.96) 0%, transparent 100%);
-    pointer-events: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 64px;
   }
   .nav-back {
-    font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
-    color: var(--gris); text-decoration: none; transition: color 0.3s;
-    display: flex; align-items: center; gap: 8px; position: relative;
+    font-family: 'Courier Prime', monospace;
+    font-size: 10px;
+    letter-spacing: 2.2px;
+    color: rgba(240,237,230,0.45);
+    text-decoration: none;
+    text-transform: uppercase;
   }
-  .nav-back::before { content: '←'; font-size: 14px; }
   .nav-back:hover { color: var(--teal); }
-  .nav-logo {
+  .nav-marca {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 15px; font-weight: 300; letter-spacing: 0.15em;
-    color: var(--blanco); text-decoration: none; position: relative;
+    font-size: 15px;
+    font-weight: 300;
+    letter-spacing: 2.25px;
+    color: var(--blanco);
+    text-decoration: none;
   }
-  .nav-logo span {
-    background: linear-gradient(90deg, var(--teal), var(--rojo));
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  .nav-marca span { color: rgb(196,118,58); }
+
+  /* ── EYEBROW / LABELS ── */
+  .eyebrow, .label {
+    font-family: 'Courier Prime', monospace;
+    font-size: 9px;
+    letter-spacing: 3.15px;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 12px;
   }
 
-  /* HERO */
-  .hero {
-    min-height: 100vh;
-    display: grid; grid-template-columns: 1fr 1fr;
-    align-items: center; position: relative; overflow: hidden;
+  /* ── BOTÓN ── */
+  .btn {
+    display: inline-block;
+    background: linear-gradient(100deg, rgb(78,205,196), rgb(142,196,78), rgb(212,184,74), rgb(196,118,58), rgb(196,74,42));
+    background-size: 200% 100%;
+    color: rgb(8,8,10);
+    font-family: 'Courier Prime', monospace;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2.2px;
+    text-transform: uppercase;
+    padding: 14px 32px;
+    text-decoration: none;
+    transition: opacity 0.2s;
   }
-
-  /* FOTO clínica — izquierda */
-  .hero-foto {
-    position: relative; height: 100vh; overflow: hidden;
-    background-color: var(--negro);
-  }
-  .hero-foto-img {
-    position: absolute; inset: 0;
-    width: 100%; height: 100%;
-    object-fit: contain; object-position: center center;
-    filter: grayscale(30%) contrast(1.05);
-    opacity: 0; animation: fadeIn 1.5s ease 0.3s forwards;
-  }
-  .hero-foto::after {
-    content: ''; position: absolute; inset: 0;
-    background:
-      linear-gradient(to right, transparent 40%, var(--negro) 100%),
-      linear-gradient(to top, var(--negro) 0%, transparent 30%),
-      linear-gradient(to bottom, var(--negro) 0%, transparent 20%);
-    z-index: 1;
-  }
-
-  /* TEXTO — derecha */
-  .hero-texto {
-    padding: 120px 64px 80px 48px;
-    position: relative; z-index: 2;
-  }
-
-  .hero-eyebrow {
-    font-size: 9px; letter-spacing: 0.35em; text-transform: uppercase;
-    color: var(--teal); margin-bottom: 32px; display: block;
-    opacity: 0; animation: fadeUp 0.8s ease 0.4s forwards;
-  }
-
-  .hero-logo {
-    margin-bottom: 40px;
-    opacity: 0; animation: fadeUp 1s ease 0.5s forwards;
-  }
-  .hero-logo img {
-    height: 120px; width: auto;
-    filter: drop-shadow(0 0 20px rgba(78,205,196,0.15));
-  }
-
-  .hero-titulo {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(28px, 3vw, 42px);
-    font-weight: 300; line-height: 1.2; letter-spacing: -0.01em;
-    margin-bottom: 40px;
-  }
-  .hero-titulo .l1 {
-    display: block; color: var(--blanco);
-    opacity: 0; animation: fadeUp 1s ease 0.6s forwards;
-  }
-  .hero-titulo .l2 {
-    display: block; font-style: italic;
-    background: linear-gradient(100deg, var(--teal), var(--amarillo), var(--naranja));
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-    opacity: 0; animation: fadeUp 1s ease 0.8s forwards;
-  }
-
-  .hero-frase {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(18px, 2vw, 24px);
-    font-weight: 300; font-style: italic; line-height: 1.6;
-    color: rgba(240,237,230,0.85);
-    border-left: 1px solid rgba(78,205,196,0.5);
-    padding-left: 20px; max-width: 420px;
-    opacity: 0; animation: fadeUp 1s ease 1s forwards;
-  }
-
-  .hero-cta {
-    margin-top: 48px; display: flex; gap: 20px; align-items: center; flex-wrap: wrap;
-    opacity: 0; animation: fadeUp 1s ease 1.2s forwards;
-  }
-
-  .btn-grad {
-    font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
-    padding: 14px 32px; text-decoration: none; font-weight: 700;
-    background: linear-gradient(100deg, var(--teal), var(--verde), var(--amarillo), var(--naranja), var(--rojo));
-    background-size: 200% 100%; color: var(--negro);
-    transition: background-position 0.5s ease, transform 0.2s;
-  }
-  .btn-grad:hover { background-position: 100% 0; transform: translateY(-2px); }
-
+  .btn:hover { opacity: 0.85; }
   .btn-ghost {
-    font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
-    color: var(--gris); text-decoration: none; transition: color 0.3s;
-    display: flex; align-items: center; gap: 8px;
+    font-family: 'Courier Prime', monospace;
+    font-size: 10px;
+    letter-spacing: 2.2px;
+    text-transform: uppercase;
+    color: var(--gris-suave);
+    text-decoration: none;
+    transition: color 0.2s;
   }
-  .btn-ghost:hover { color: var(--teal); }
+  .btn-ghost:hover { color: var(--blanco); }
 
-  /* SEP */
-  .sep {
-    width: 100%; height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(78,205,196,0.22) 30%, rgba(196,74,42,0.18) 70%, transparent);
+  /* ── HERO ── */
+  .hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 90vh;
   }
-
-  /* EL MÉTODO */
-  .metodo {
-    padding: 140px 48px;
-    display: grid; grid-template-columns: 1fr 1fr;
-    gap: 100px; align-items: start;
+  .hero-foto {
+    position: relative;
+    overflow: hidden;
+    display: block;
   }
-
-  .metodo-left { position: sticky; top: 120px; }
-
-  .seccion-label {
-    font-size: 9px; letter-spacing: 0.35em; text-transform: uppercase;
-    color: var(--teal); margin-bottom: 24px; display: block;
+  .hero-foto img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center center;
+    filter: grayscale(0.3) contrast(1.05);
+    display: block;
   }
-
-  .metodo-titulo {
+  .hero-contenido {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 72px 80px 56px;
+  }
+  .hero-contenido .eyebrow { margin-bottom: 20px; }
+  .hero-logo {
+    width: 120px;
+    margin-bottom: 28px;
+    opacity: 1;
+    filter: brightness(1.1) saturate(1.15);
+  }
+  .hero-contenido h1 {
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(32px, 3.5vw, 52px);
-    font-weight: 300; line-height: 1.1; letter-spacing: -0.01em;
+    font-size: 36px;
+    font-weight: 300;
+    line-height: 43.2px;
+    letter-spacing: -0.36px;
+    color: var(--blanco);
+    margin-bottom: 24px;
   }
-  .metodo-titulo em {
+  .hero-subtitulo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
     font-style: italic;
-    background: linear-gradient(100deg, var(--teal), var(--amarillo), var(--naranja));
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    font-weight: 300;
+    color: var(--gris);
+    line-height: 38.4px;
+    margin-bottom: 48px;
+    border-left: 2px solid rgba(78,205,196,0.4);
+    padding-left: 24px;
   }
+  .hero-ctas { display: flex; gap: 24px; align-items: center; flex-wrap: wrap; }
 
-  .metodo-parrafo {
-    font-size: 15px; line-height: 2.2;
-    color: rgba(240,237,230,0.85); margin-bottom: 28px;
+  /* ── BANNER DÓNDE SÓCRATES ── */
+  .banner-ds {
+    background: #0e1614;
+    border-top: 1px solid #1a2420;
+    border-bottom: 1px solid #1a2420;
+    padding: 32px 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
   }
-  .metodo-parrafo strong { color: var(--blanco); font-weight: 700; }
-
-  .metodo-cita {
+  .banner-ds-left { display: flex; align-items: center; gap: 20px; }
+  .banner-ds img { width: 40px; opacity: 0.8; }
+  .banner-ds-label {
+    font-family: 'Courier Prime', monospace;
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 4px;
+  }
+  .banner-ds-desc {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 21px; font-style: italic; font-weight: 300; line-height: 1.65;
-    padding-left: 24px; margin: 44px 0;
+    font-size: 17px;
+    font-weight: 300;
+    color: var(--gris);
+  }
+  .banner-ds-link {
+    font-family: 'Courier Prime', monospace;
+    font-size: 9px;
+    letter-spacing: 2.2px;
+    text-transform: uppercase;
+    color: var(--teal);
+    text-decoration: none;
+    border: 1px solid rgba(78,205,196,0.35);
+    padding: 10px 24px;
+    white-space: nowrap;
+    transition: background 0.2s;
+  }
+  .banner-ds-link:hover { background: rgba(78,205,196,0.08); }
+
+  /* ── SECCIONES ── */
+  .seccion {
+    padding: 96px 64px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .seccion + .seccion { padding-top: 0; }
+
+  h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 42px;
+    font-weight: 300;
+    line-height: 46.2px;
+    letter-spacing: -0.42px;
+    color: var(--blanco);
+    margin-bottom: 28px;
+  }
+
+  .blockquote {
+    border-left: 2px solid rgba(78,205,196,0.5);
+    padding: 16px 28px;
+    margin: 28px 0;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 21px;
+    font-style: italic;
+    font-weight: 300;
     color: rgba(240,237,230,0.92);
-    border-left: 2px solid transparent;
-    border-image: linear-gradient(to bottom, var(--teal), var(--naranja)) 1;
+    line-height: 34.65px;
   }
 
-  /* LAS 4 CONSULTAS */
+  .cuerpo {
+    font-family: 'Courier Prime', monospace;
+    font-size: 15px;
+    line-height: 33px;
+    color: var(--gris);
+    max-width: 680px;
+  }
+  .cuerpo strong { color: var(--blanco); font-weight: 400; }
+  .cuerpo em { font-style: italic; color: rgba(240,237,230,0.7); }
+
+  /* ── DIVISOR ── */
+  .divisor {
+    width: 100%;
+    height: 1px;
+    background: #1a1a1a;
+    margin: 0;
+  }
+
+  /* ── CTA INTERMEDIO ── */
+  .cta-medio {
+    padding: 72px 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 48px;
+    border-top: 1px solid #1a1a1a;
+    border-bottom: 1px solid #1a1a1a;
+  }
+  .cta-medio h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 34px;
+    font-weight: 300;
+    line-height: 1.25;
+    margin-bottom: 12px;
+    color: var(--blanco);
+  }
+  .cta-medio p {
+    font-family: 'Courier Prime', monospace;
+    font-size: 13px;
+    line-height: 1.8;
+    color: var(--gris-suave);
+    max-width: 480px;
+  }
+  .cta-medio-acciones { display: flex; flex-direction: column; gap: 14px; min-width: 240px; }
+
+  /* ── PROCESO ── */
   .proceso {
-    padding: 100px 48px;
-    background: var(--fondo-medio);
-    position: relative; overflow: hidden;
+    background: #0d0d0d;
+    padding: 96px 64px;
   }
-  .proceso::before {
-    content: ''; position: absolute; top:50%; left:50%;
-    transform: translate(-50%,-50%);
-    width: 800px; height: 500px;
-    background: radial-gradient(ellipse, rgba(78,205,196,0.05) 0%, transparent 70%);
-    pointer-events: none;
+  .proceso-inner { max-width: 1100px; margin: 0 auto; }
+  .proceso h2 { margin-bottom: 56px; }
+  .pasos { display: grid; grid-template-columns: repeat(4,1fr); gap: 2px; }
+  .paso {
+    background: #111;
+    padding: 36px 28px;
+    border-top: 2px solid #1f1f1f;
+    transition: border-color 0.2s;
   }
-
-  .proceso-header { margin-bottom: 64px; position: relative; z-index: 1; }
-  .proceso-titulo {
+  .paso:hover { border-color: var(--teal); }
+  .paso:nth-child(1):hover { border-color: rgb(78,205,196); }
+  .paso:nth-child(1):hover .paso-num { color: rgba(78,205,196,0.25); }
+  .paso:nth-child(1):hover .paso-tag { color: rgb(78,205,196); }
+  .paso:nth-child(2):hover { border-color: rgb(156,111,255); }
+  .paso:nth-child(2):hover .paso-num { color: rgba(156,111,255,0.25); }
+  .paso:nth-child(2):hover .paso-tag { color: rgb(156,111,255); }
+  .paso:nth-child(3):hover { border-color: rgb(212,184,74); }
+  .paso:nth-child(3):hover .paso-num { color: rgba(212,184,74,0.25); }
+  .paso:nth-child(3):hover .paso-tag { color: rgb(212,184,74); }
+  .paso:nth-child(4):hover { border-color: rgb(196,118,58); }
+  .paso:nth-child(4):hover .paso-num { color: rgba(196,118,58,0.25); }
+  .paso:nth-child(4):hover .paso-tag { color: rgb(196,118,58); }
+  .paso-num {
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(32px, 4vw, 54px);
-    font-weight: 300; line-height: 1.05; letter-spacing: -0.02em;
+    font-size: 48px;
+    font-weight: 300;
+    color: #3a3a3a;
+    line-height: 1;
+    margin-bottom: 16px;
   }
-  .proceso-titulo em {
-    font-style: italic;
-    background: linear-gradient(90deg, var(--teal), var(--amarillo));
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  .paso-tag {
+    font-family: 'Courier Prime', monospace;
+    font-size: 9px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 12px;
   }
-  .proceso-sub {
-    margin-top: 16px; font-size: 15px; color: rgba(240,237,230,0.6);
-    line-height: 1.8; max-width: 520px; font-style: italic;
-  }
-
-  .consultas {
-    display: grid; grid-template-columns: repeat(4,1fr);
-    gap: 2px; position: relative; z-index: 1;
-  }
-
-  .consulta {
-    background: #111118; padding: 44px 32px;
-    position: relative; overflow: hidden;
-    display: flex; flex-direction: column; gap: 16px;
-    transition: background 0.4s;
-  }
-  .consulta::after {
-    content: ''; position: absolute; top:0; left:0; right:0; height:2px;
-    transform: scaleX(0); transform-origin: left; transition: transform 0.45s ease;
-  }
-  .consulta:hover { background: #161620; }
-  .consulta:hover::after { transform: scaleX(1); }
-  .consulta:nth-child(1)::after { background: var(--teal); }
-  .consulta:nth-child(2)::after { background: var(--verde); }
-  .consulta:nth-child(3)::after { background: var(--amarillo); }
-  .consulta:nth-child(4)::after { background: var(--naranja); }
-
-  .consulta-num {
+  .paso h3 {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 56px; font-weight: 300; line-height: 1;
-    opacity: 0.35;
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--blanco);
+    margin-bottom: 10px;
   }
-  .consulta:nth-child(1) .consulta-num { color: var(--teal); }
-  .consulta:nth-child(2) .consulta-num { color: var(--verde); }
-  .consulta:nth-child(3) .consulta-num { color: var(--amarillo); }
-  .consulta:nth-child(4) .consulta-num { color: var(--naranja); }
+  .paso p {
+    font-family: 'Courier Prime', monospace;
+    font-size: 13px;
+    line-height: 1.75;
+    color: var(--gris-suave);
+  }
+  .paso p strong { color: var(--gris); font-weight: 400; }
 
-  .consulta-nombre {
+  /* ── CONDICIONES ── */
+  .condiciones { padding: 96px 64px; max-width: 1100px; margin: 0 auto; }
+  .condiciones h2 { margin-bottom: 48px; }
+  .grid-condiciones { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; }
+  .condicion { background: #0d0d0d; padding: 36px 28px; }
+  .condicion .icono {
+    font-family: 'Courier Prime', monospace;
+    font-size: 9px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 12px;
+  }
+  .condicion h3 {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 22px; font-weight: 400; line-height: 1.2;
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--blanco);
+    margin-bottom: 10px;
   }
-  .consulta-desc {
-    font-size: 13px; line-height: 1.85; color: rgba(240,237,230,0.65);
-    flex: 1;
-  }
-  .consulta-nota {
-    font-size: 10px; letter-spacing: 0.1em; color: var(--gris); font-style: italic;
-  }
-
-  /* LO QUE SE ATIENDE */
-  .atiende {
-    padding: 120px 48px;
-    position: relative;
+  .condicion p {
+    font-family: 'Courier Prime', monospace;
+    font-size: 13px;
+    line-height: 1.75;
+    color: var(--gris-suave);
   }
 
-  .atiende-header { margin-bottom: 64px; }
-  .atiende-titulo {
+  /* ── COMPLEMENTOS ── */
+  .complementos { background: #0d0d0d; padding: 64px 64px 40px; }
+  .complementos-inner { max-width: 1100px; margin: 0 auto; }
+  .complementos h2 { margin-bottom: 48px; }
+  .grid-complementos { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+  .complemento {
+    padding: 48px 40px;
+    text-decoration: none;
+    display: block;
+    transition: background 0.2s;
+  }
+  .complemento-inner-sound { background: rgb(13,13,20); }
+  .complemento-inner-sound:hover { background: rgb(16,16,24); }
+  .complemento-reconectar { background: rgb(10,13,13); }
+  .complemento-reconectar:hover { background: rgb(13,16,13); }
+  .comp-label {
+    font-family: 'Courier Prime', monospace;
+    font-size: 9px;
+    letter-spacing: 2.25px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .complemento h3 {
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(32px, 4vw, 54px);
-    font-weight: 300; line-height: 1.05; letter-spacing: -0.02em;
+    font-size: 28px;
+    font-weight: 400;
+    color: var(--blanco);
+    line-height: 30.8px;
+    margin-bottom: 10px;
   }
-  .atiende-sub {
-    margin-top: 16px; font-size: 15px;
-    color: rgba(240,237,230,0.6); line-height: 1.8; font-style: italic;
+  .complemento p {
+    font-family: 'Courier Prime', monospace;
+    font-size: 14px;
+    line-height: 26.6px;
+    color: rgba(240,237,230,0.65);
+    margin-bottom: 20px;
   }
+  .comp-link {
+    font-family: 'Courier Prime', monospace;
+    font-size: 9px;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+  }
+  /* Colores individuales por tarjeta */
+  .complemento-inner-sound .comp-label,
+  .complemento-inner-sound .comp-link { color: rgb(156,111,255); }
+  .complemento-reconectar .comp-label,
+  .complemento-reconectar .comp-link { color: rgb(78,205,196); }
 
-  .areas {
-    display: grid; grid-template-columns: repeat(3,1fr); gap: 2px;
-  }
-
-  .area {
-    background: var(--fondo-medio); padding: 44px 36px;
-    position: relative; overflow: hidden; transition: background 0.4s;
-    display: flex; flex-direction: column; gap: 16px; min-height: 220px;
-  }
-  .area::before {
-    content: ''; position: absolute; bottom:0; left:0; right:0; height:1px;
-    background: linear-gradient(90deg, var(--teal), var(--naranja));
-    transform: scaleX(0); transform-origin: left; transition: transform 0.45s ease;
-  }
-  .area:hover { background: #131318; }
-  .area:hover::before { transform: scaleX(1); }
-
-  .area-icono {
-    font-size: 9px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--teal);
-  }
-  .area-nombre {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 24px; font-weight: 400; line-height: 1.2; flex: 1;
-  }
-  .area-desc { font-size: 13px; line-height: 1.85; color: rgba(240,237,230,0.6); }
-
-  /* HERRAMIENTAS COMPLEMENTARIAS */
-  .complementarias {
-    padding: 100px 48px;
-    background: var(--fondo-medio);
-    position: relative;
-  }
-
-  .comp-header { margin-bottom: 56px; }
-  .comp-titulo {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(28px, 3.5vw, 48px);
-    font-weight: 300; line-height: 1.1; letter-spacing: -0.01em;
-  }
-  .comp-titulo em {
-    font-style: italic;
-    background: linear-gradient(90deg, var(--teal), var(--amarillo));
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-  }
-  .comp-sub {
-    margin-top: 12px; font-size: 15px;
-    color: rgba(240,237,230,0.55); line-height: 1.8; font-style: italic;
-  }
-
-  .herramientas {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 2px;
-  }
-
+  /* ── HERRAMIENTA PACIENTES ── */
   .herramienta {
-    padding: 48px 40px; text-decoration: none; color: inherit;
-    position: relative; overflow: hidden; transition: background 0.4s;
-    display: flex; flex-direction: column; gap: 16px;
+    padding: 80px 64px;
+    border-top: 1px solid #1a1a1a;
   }
-  .herramienta:nth-child(1) { background: #0d0d14; }
-  .herramienta:nth-child(2) { background: #0a0d0d; }
-  .herramienta:hover { background: #131318; }
-  .herramienta::after {
-    content: ''; position: absolute; left:0; top:0; bottom:0; width:2px;
-    transform: scaleY(0); transform-origin: top; transition: transform 0.5s ease;
+  .herramienta-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
   }
-  .herramienta:nth-child(1)::after { background: linear-gradient(to bottom, #7c4dff, var(--teal)); }
-  .herramienta:nth-child(2)::after { background: linear-gradient(to bottom, var(--teal), var(--amarillo)); }
-  .herramienta:hover::after { transform: scaleY(1); }
-
-  .herr-label {
-    font-size: 9px; letter-spacing: 0.25em; text-transform: uppercase;
+  .herramienta h2 { margin-bottom: 16px; }
+  .herramienta p {
+    font-family: 'Courier Prime', monospace;
+    font-size: 14px;
+    line-height: 1.85;
+    color: var(--gris-suave);
+    margin-bottom: 32px;
+    max-width: 440px;
   }
-  .herramienta:nth-child(1) .herr-label { color: #9c6fff; }
-  .herramienta:nth-child(2) .herr-label { color: var(--teal); }
-
-  .herr-nombre {
+  .herramienta-card {
+    background: #0d0d0d;
+    padding: 44px 40px;
+    border-left: 1px solid #1a1a1a;
+  }
+  .herramienta-card img { width: 52px; margin-bottom: 20px; opacity: 0.75; display: block; }
+  .herramienta-card .card-label {
+    font-family: 'Courier Prime', monospace;
+    font-size: 9px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 10px;
+  }
+  .herramienta-card .card-quote {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 28px; font-weight: 400; line-height: 1.1;
-  }
-  .herr-desc { font-size: 14px; line-height: 1.9; color: rgba(240,237,230,0.65); flex: 1; }
-  .herr-link {
-    font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase;
-    display: flex; align-items: center; gap: 8px; transition: gap 0.3s;
-  }
-  .herramienta:hover .herr-link { gap: 14px; }
-  .herramienta:nth-child(1) .herr-link { color: #9c6fff; }
-  .herramienta:nth-child(2) .herr-link { color: var(--teal); }
-
-  /* CONTACTO */
-  .contacto {
-    padding: 140px 48px; text-align: center;
-    position: relative; overflow: hidden;
-  }
-  .contacto::before {
-    content: ''; position: absolute; top:50%; left:50%;
-    transform: translate(-50%,-50%);
-    width: 700px; height: 500px;
-    background: radial-gradient(ellipse, rgba(78,205,196,0.08) 0%, rgba(196,74,42,0.06) 50%, transparent 75%);
-    pointer-events: none; animation: ctaGlow 7s ease-in-out infinite;
-  }
-  @keyframes ctaGlow {
-    0%,100% { transform: translate(-50%,-50%) scale(1); opacity:1; }
-    50%      { transform: translate(-50%,-50%) scale(1.1); opacity:0.7; }
-  }
-
-  .contacto-pretitulo {
-    font-size: 9px; letter-spacing: 0.35em; text-transform: uppercase;
-    color: var(--teal); margin-bottom: 32px; display: block; position: relative;
-  }
-  .contacto-titulo {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(36px, 6vw, 72px);
-    font-weight: 300; line-height: 1.05; margin-bottom: 24px; position: relative;
-  }
-  .contacto-titulo em {
+    font-size: 20px;
     font-style: italic;
-    background: linear-gradient(120deg, var(--teal), var(--amarillo), var(--naranja));
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    font-weight: 300;
+    color: var(--gris);
+    line-height: 1.5;
+    margin-bottom: 16px;
   }
-  .contacto-sub {
-    font-size: 15px; color: rgba(240,237,230,0.6);
-    margin-bottom: 48px; line-height: 1.8; position: relative;
-  }
-  .contacto-botones { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; position: relative; }
-
-  .contacto-info {
-    margin-top: 48px; position: relative;
-    font-size: 11px; color: var(--gris); letter-spacing: 0.1em; line-height: 2;
+  .herramienta-card .card-nota {
+    font-family: 'Courier Prime', monospace;
+    font-size: 11px;
+    color: var(--gris-medio);
+    letter-spacing: 1px;
   }
 
+  /* ── CTA FINAL ── */
+  .cta-final {
+    padding: 120px 64px;
+    text-align: center;
+  }
+  .cta-final .eyebrow { justify-content: center; display: flex; margin-bottom: 28px; }
+  .cta-final h2 { font-size: 48px; margin-bottom: 16px; max-width: 700px; margin-left: auto; margin-right: auto; }
+  .cta-final p {
+    font-family: 'Courier Prime', monospace;
+    font-size: 14px;
+    color: var(--gris-suave);
+    margin-bottom: 48px;
+    line-height: 1.8;
+  }
+  .cta-acciones { display: flex; gap: 24px; justify-content: center; flex-wrap: wrap; }
+  .cta-info {
+    margin-top: 48px;
+    font-family: 'Courier Prime', monospace;
+    font-size: 11px;
+    color: rgba(240,237,230,0.45);
+    line-height: 2.2;
+    letter-spacing: 1.5px;
+    border-top: 1px solid #1a1a1a;
+    padding-top: 36px;
+    text-transform: uppercase;
+  }
+
+  /* ── FOOTER ── */
   footer {
-    padding: 28px 48px; border-top: 1px solid var(--linea);
-    display: flex; justify-content: space-between; align-items: center;
-    font-size: 10px; color: var(--gris); letter-spacing: 0.08em;
+    border-top: 1px solid #1a1a1a;
+    padding: 24px 64px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Courier Prime', monospace;
+    font-size: 10px;
+    color: #333;
+    letter-spacing: 1px;
   }
-  .footer-grad {
-    background: linear-gradient(90deg, var(--teal), var(--amarillo), var(--naranja));
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-  }
+  footer a { color: #333; text-decoration: none; }
+  footer a:hover { color: #666; }
 
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(28px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-
-  .reveal {
-    opacity: 0; transform: translateY(28px);
-    transition: opacity 0.85s ease, transform 0.85s ease;
-  }
-  .reveal.visible { opacity: 1; transform: translateY(0); }
-
+  /* ── RESPONSIVE MÓVIL (max-width: 840px) ── */
   @media (max-width: 840px) {
     nav { padding: 18px 24px; }
+
     .hero { grid-template-columns: 1fr; min-height: auto; }
-    .hero-foto { height: 60vw; }
-    .hero-texto { padding: 40px 24px 60px; }
-    .metodo { grid-template-columns: 1fr; padding: 80px 24px; gap: 40px; }
-    .metodo-left { position: static; }
-    .consultas { grid-template-columns: 1fr 1fr; }
-    .areas { grid-template-columns: 1fr; }
-    .herramientas { grid-template-columns: 1fr; }
-    .proceso, .atiende, .complementarias, .contacto { padding: 80px 24px; }
+    .hero-foto { height: auto; }
+    .hero-foto img { width: 100%; height: 60vw; object-fit: cover; object-position: center; }
+    .hero-contenido { padding: 40px 24px 60px; }
+    .hero-contenido h1 { font-size: 28px; line-height: 36px; }
+    .hero-subtitulo { font-size: 18px; line-height: 28px; }
+    .hero-logo { width: 90px; }
+
+    .banner-ds { flex-direction: column; padding: 28px 24px; gap: 20px; }
+    .banner-ds-link { align-self: flex-start; }
+
+    .seccion { padding: 64px 24px; }
+    .seccion + .seccion { padding-top: 0; }
+    h2 { font-size: 32px; line-height: 38px; }
+
+    .cta-medio { flex-direction: column; padding: 56px 24px; gap: 32px; }
+    .cta-medio-acciones { min-width: auto; width: 100%; }
+    .btn { text-align: center; }
+
+    .proceso { padding: 64px 24px; }
+    .proceso h2 { font-size: 32px; }
+    .pasos { grid-template-columns: 1fr 1fr; gap: 2px; }
+
+    .condiciones { padding: 64px 24px; }
+    .condiciones h2 { font-size: 32px; }
+    .grid-condiciones { grid-template-columns: 1fr; }
+
+    .complementos { padding: 64px 24px; }
+    .complementos h2 { font-size: 28px; }
+    .grid-complementos { grid-template-columns: 1fr; }
+
+    .herramienta { padding: 64px 24px; }
+    .herramienta-inner { grid-template-columns: 1fr; gap: 32px; }
+    .herramienta h2 { font-size: 28px; }
+
+    .cta-final { padding: 80px 24px; }
+    .cta-final h2 { font-size: 32px; }
+    .cta-acciones { flex-direction: column; align-items: center; }
+
     footer { padding: 24px; flex-direction: column; gap: 10px; text-align: center; }
   }
+
+  @media (max-width: 480px) {
+    .pasos { grid-template-columns: 1fr; }
+    .hero-contenido h1 { font-size: 24px; line-height: 30px; }
+    h2 { font-size: 26px; line-height: 32px; }
+  }
+
+  /* ── INTERCALADO MÓVIL ── */
+  @media (max-width: 840px) {
+    .seccion-origen { background: var(--negro); }
+    .seccion-quien  { background: #0d0d0d; }
+    .seccion-metodo { background: var(--negro); }
+    .seccion-med    { background: #0d0d0d; }
+    .proceso        { background: var(--negro) !important; }
+    .condiciones    { background: #0d0d0d !important; padding-left: 24px !important; padding-right: 24px !important; max-width: 100%; }
+    .complementos   { background: var(--negro) !important; padding-left: 24px !important; padding-right: 24px !important; }
+    .herramienta    { background: #0d0d0d; }
+    .cta-final      { background: var(--negro); }
+
+    /* quitar max-width en móvil para que el fondo llene todo */
+    .seccion-origen .seccion-inner,
+    .seccion-quien .seccion-inner,
+    .seccion-metodo .seccion-inner,
+    .seccion-med .seccion-inner { max-width: 100%; }
+  }
 </style>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "MedicalClinic",
-  "name": "Logos Psyche",
-  "url": "https://ronaldescobar.com/logos-psyche.html",
-  "telephone": "+502-3060-7168",
-  "email": "clinicalogos@ronaldescobar.com",
-  "medicalSpecialty": "Psychiatry",
-  "description": "Clínica de psiquiatría en Guatemala City. Neurociencia, Arte, Humanidad.",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "9 Calle 4-52, Integra Medical Center, Clínica 810",
-    "addressLocality": "Guatemala City",
-    "addressRegion": "Guatemala",
-    "postalCode": "01010",
-    "addressCountry": "GT"
-  },
-  "founder": {
-    "@type": "Physician",
-    "name": "Dr. Ronald Escobar",
-    "url": "https://ronaldescobar.com"
-  }
-}
-</script>
-<meta name="geo.region" content="GT-GU">
-<meta name="geo.placename" content="Guatemala City">
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Physician",
-  "name": "Dr. Ronald Escobar",
-  "description": "Psiquiatra en Guatemala City. Logos Psyche — Neurociencia, Arte, Humanidad.",
-  "url": "https://ronaldescobar.com",
-  "telephone": "+50230607168",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "Integra Medical Center, Clínica 810",
-    "addressLocality": "Ciudad de Guatemala",
-    "addressCountry": "GT"
-  },
-  "medicalSpecialty": "Psychiatry",
-  "availableService": {
-    "@type": "MedicalTherapy",
-    "name": "Consulta psiquiátrica presencial y online"
-  }
-}
-</script>
 </head>
 <body>
 
+<!-- NAV -->
 <nav>
-  <a href="https://ronaldescobar.com" class="nav-back">Ronald Escobar</a>
-  <a href="https://ronaldescobar.com" class="nav-logo">Logos <span>Psyche</span></a>
+  <a href="https://ronaldescobar.com" class="nav-back">← Ronald Escobar</a>
+  <a href="https://ronaldescobar.com" class="nav-marca">Logos <span>Psyche</span></a>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-foto">
-    <img
-      src="assets/clinica-final.png"
-      alt="Espacio clínico Logos Psyche"
-      class="hero-foto-img">
-  </div>
-
-  <div class="hero-texto">
-    <span class="hero-eyebrow">Psiquiatría · Guatemala · Logos Psyche</span>
-
-    <div class="hero-logo">
-      <img
-        src="https://ronaldescobar.com/assets/logos-psyche.png"
-        alt="Logos Psyche"
-        onerror="this.style.display='none'">
-    </div>
-
-    <h1 class="hero-titulo">
-      <span class="l1">Escuchar no es asentir.</span>
-      <span class="l2">Es sostener lo que incomoda.</span>
-    </h1>
-
-    <p class="hero-frase">
-      La psiquiatría es ciencia en su base<br>
-      y arte en su ejercicio.
-    </p>
-
-    <div class="hero-cta">
-      <a href="https://wa.me/50230607168?text=Hola,%20quisiera%20iniciar%20proceso%20clínico." class="btn-grad">Iniciar proceso</a>
+  <div class="hero-foto"><img src="https://ronaldescobar.com/assets/clinica-final.png" alt="Espacio clínico Logos Psyche"></div>
+  <div class="hero-contenido">
+    <div class="eyebrow">Psiquiatría · Guatemala · Logos Psyche</div>
+    <img src="https://ronaldescobar.com/assets/logos-psyche.png" alt="Logos Psyche" class="hero-logo">
+    <h1>Escuchar no es asentir.<em class="gt"> Es sostener lo que incomoda.</em></h1>
+    <p class="hero-subtitulo">La psiquiatría es ciencia en su base<br>y arte en su ejercicio.</p>
+    <div class="hero-ctas">
+      <a href="https://wa.me/50230607168?text=Hola,%20quisiera%20iniciar%20proceso%20clínico." class="btn">Iniciar proceso</a>
       <a href="#proceso" class="btn-ghost">Cómo funciona →</a>
     </div>
   </div>
 </section>
 
-<div class="sep"></div>
-
-<!-- POR QUÉ LOGOS PSYCHE -->
-<section class="metodo">
-  <div class="metodo-left reveal">
-    <span class="seccion-label">El origen</span>
-    <h2 class="metodo-titulo">
-      Logos Psyche.<br>
-      <em>El sentido del alma.</em>
-    </h2>
+<!-- BANNER DÓNDE SÓCRATES -->
+<div class="banner-ds">
+  <div class="banner-ds-left">
+    <img src="https://ronaldescobar.com/assets/cerebro-isotipo.png" alt="Dónde Sócrates">
+    <div>
+      <div class="banner-ds-label">¿Todavía no estás seguro?</div>
+      <div class="banner-ds-desc">Conversá primero con Dónde Sócrates — sin compromiso, antes de decidir.</div>
+    </div>
   </div>
+  <a href="https://ronaldescobar.com/donde-socrates.html" class="banner-ds-link">Entrar al espacio →</a>
+</div>
 
-  <div class="metodo-right">
-    <p class="metodo-parrafo reveal">
-      El nombre no es decorativo. Es una declaración sobre lo que hago y por qué lo hago.
-    </p>
-
-    <blockquote class="metodo-cita reveal">
-      "Logos — razón, palabra, sentido. Psyché — alma, mente, lo que sufre cuando no encuentra su porqué. Juntos: el sentido del alma. El alma que busca sentido."
-    </blockquote>
-
-    <p class="metodo-parrafo reveal">
-      Para Frankl, logos es propósito — la razón para levantarse. Una psyche enferma cuando pierde su sentido. Sanar es devolverle esa razón. Y mi trabajo empieza por algo más básico: <strong>ayudar a pensar.</strong>
-    </p>
-
-    <p class="metodo-parrafo reveal">
-      <strong>La palabra aplicada al alma.</strong> La neurociencia como base, el arte como lenguaje, la humanidad como fin. Todo lo que hago — la clínica, el podcast, los proyectos, la escritura — sale de la misma pregunta: <em>todos somos todos, ¿por qué no nos damos cuenta?</em>
-    </p>
+<!-- ORIGEN -->
+<div class="seccion seccion-origen">
+  <div class="seccion-inner">
+    <div class="label">El origen</div>
+    <h2>Logos Psyche.<em class="gt"> El sentido del alma.</em></h2>
+    <div class="blockquote">"Logos — razón, palabra, sentido. Psyché — alma, mente, lo que sufre cuando no encuentra su porqué. Juntos: el sentido del alma. El alma que busca sentido."</div>
+    <p class="cuerpo">Para Frankl, logos es propósito — la razón para levantarse. Una psyche enferma cuando pierde su sentido. Sanar es devolverle esa razón. Y mi trabajo empieza por algo más básico: <strong>ayudar a pensar.</strong><br><br>La neurociencia como base, el arte como lenguaje, la humanidad como fin. Todo lo que hago — la clínica, el podcast, los proyectos, la escritura — sale de la misma pregunta: <strong>todos somos todos, ¿por qué no nos damos cuenta?</strong></p>
   </div>
-</section>
-
-<div class="sep"></div>
+</div>
 
 <!-- QUIÉN SOY -->
-<section class="metodo">
-  <div class="metodo-left reveal">
-    <span class="seccion-label">Quién soy</span>
-    <h2 class="metodo-titulo">
-      Conozco la psiquiatría desde los dos lados.
-    </h2>
+<div class="seccion seccion-quien">
+  <div class="seccion-inner">
+    <div class="label">Quién soy</div>
+    <h2>Conozco la psiquiatría <em class="gt">desde los dos lados.</em></h2>
+    <p class="cuerpo">Médico y Cirujano, Universidad de San Carlos de Guatemala. Psiquiatra, formado en APSA Buenos Aires. Logoterapeuta, Instituto Viktor Frankl, Buenos Aires. Fundador de Logos Psyche.<br><br>Estudiando psiquiatría, descubrí que también era paciente. <strong>Aunque en el fondo, siempre lo supe.</strong></p>
   </div>
+</div>
 
-  <div class="metodo-right">
-    <p class="metodo-parrafo reveal">
-      Médico y Cirujano, Universidad de San Carlos de Guatemala. Psiquiatra, formado en APSA Buenos Aires. Logoterapeuta, formado en el Fundación Argentina de Logoterapia Viktor Frankl. Fundador de Logos Psyche.
-    </p>
-
-    <p class="metodo-parrafo reveal">
-      Estudiando psiquiatría, descubrí que también era paciente. Aunque en el fondo, siempre lo supe.
-    </p>
+<!-- MÉTODO -->
+<div class="seccion seccion-metodo">
+  <div class="seccion-inner">
+    <div class="label">El método</div>
+    <h2>No acompaño para tranquilizar.<em class="gt"> Acompaño para pensar lo que duele — y atravesarlo.</em></h2>
+    <div class="blockquote">"Escucho sin prisa, pero no sin dirección."</div>
+    <p class="cuerpo">Trabajo con límites claros. Sin ellos no hay profundidad. <strong>El tiempo y el encuadre no están para apurar procesos — sino para hacerlos posibles.</strong><br><br>La palabra del paciente importa. Al fin y al cabo es su cuerpo, su historia, su vida. Mi trabajo no es decirle qué le pasa — es ayudarle a entenderlo él mismo, con herramientas reales y sin prisa.</p>
   </div>
-</section>
-
-<div class="sep"></div>
-
-<!-- EL MÉTODO -->
-<section class="metodo">
-  <div class="metodo-left reveal">
-    <span class="seccion-label">El método</span>
-    <h2 class="metodo-titulo">
-      No acompaño<br>
-      para tranquilizar.<br>
-      Acompaño para<br>
-      <em>pensar lo que duele — y atravesarlo.</em>
-    </h2>
-  </div>
-
-  <div class="metodo-right">
-    <p class="metodo-parrafo reveal">
-      Trabajo con límites claros. Sin ellos no hay profundidad. <strong>El tiempo y el encuadre no están para apurar procesos — sino para hacerlos posibles.</strong>
-    </p>
-
-    <blockquote class="metodo-cita reveal">
-      "Escucho sin prisa, pero no sin dirección."
-    </blockquote>
-
-    <p class="metodo-parrafo reveal">
-      La psiquiatría que practico parte de un principio simple: <strong>la palabra del paciente importa.</strong> Al fin y al cabo es su cuerpo, su historia, su vida. Mi trabajo no es decirle qué le pasa — es ayudarle a entenderlo él mismo, con herramientas reales y sin prisa.
-    </p>
-
-    <p class="metodo-parrafo reveal">
-      Una primera conversación permite evaluar si este es el encuadre adecuado para lo que traés. <strong>No todo proceso clínico es para todos.</strong> Eso también es respeto.
-    </p>
-  </div>
-</section>
-
-<div class="sep"></div>
+</div>
 
 <!-- MEDICACIÓN -->
-<section class="metodo" style="background: var(--fondo-medio);">
-  <div class="metodo-left reveal">
-    <span class="seccion-label">Sobre la medicación</span>
-    <h2 class="metodo-titulo">
-      La menor dosis.<br>
-      El menor tiempo.<br>
-      <em>Siempre con una razón clara.</em>
-    </h2>
+<div class="seccion seccion-med">
+  <div class="seccion-inner">
+    <div class="label">Sobre la medicación</div>
+    <h2>La menor dosis.<br>El menor tiempo.<em class="gt"> Siempre con una razón clara.</em></h2>
+    <div class="blockquote">"Tenés derecho a saber cómo sos con medicación y cómo sos sin ella. Y a elegir con información real, no con miedo."</div>
+    <p class="cuerpo">Entiendo el valor de la medicación — y precisamente por eso la uso con criterio. <strong>La medicación no es el objetivo. Es el puente.</strong> Nos hace permeables al tratamiento, nos ayuda a ordenarnos para que el trabajo verdadero pueda ocurrir.<br><br>Y hay algo que no negocio: todo trastorno de salud mental tiene una raíz. Casi siempre en el trauma. <strong>Eso no se medica. Eso se trabaja.</strong> La medicación abre la puerta. Lo que está adentro hay que atravesarlo.</p>
   </div>
+</div>
 
-  <div class="metodo-right">
-    <p class="metodo-parrafo reveal">
-      Entiendo el valor de la medicación — y precisamente por eso la uso con criterio. <strong>La medicación no es el objetivo. Es el puente.</strong> Nos hace permeables al tratamiento, nos ayuda a ordenarnos para que el trabajo verdadero pueda ocurrir.
-    </p>
-
-    <blockquote class="metodo-cita reveal">
-      "Tenés derecho a saber cómo sos con medicación y cómo sos sin ella. Y a elegir con información real, no con miedo."
-    </blockquote>
-
-    <p class="metodo-parrafo reveal">
-      A unos nos toma más tiempo que a otros encontrar el equilibrio. Eso no es falla — es proceso. <strong>El objetivo siempre es llegar a ese equilibrio: con medicación o sin ella, pero consciente y capaz.</strong>
-    </p>
-
-    <p class="metodo-parrafo reveal">
-      Y hay algo que no negocio: todo trastorno de salud mental tiene una raíz. Casi siempre en el trauma. <strong>Eso no se medica. Eso se trabaja.</strong> La medicación abre la puerta. Lo que está adentro hay que atravesarlo.
-    </p>
+<!-- CTA INTERMEDIO -->
+<div class="cta-medio">
+  <div>
+    <h3>¿Es este el encuadre adecuado<em class="gt"> para lo que traés?</em></h3>
+    <p>Una primera conversación permite saberlo. Sin compromiso. Con toda la honestidad. O conversá primero con Dónde Sócrates si todavía no estás listo.</p>
   </div>
-</section>
-
-<div class="sep"></div>
-
-<!-- LAS 4 CONSULTAS -->
-<section class="proceso" id="proceso">
-  <div class="proceso-header reveal">
-    <h2 class="proceso-titulo">
-      Cuatro consultas para<br>
-      <em>entender qué traés.</em>
-    </h2>
-    <p class="proceso-sub">
-      El diagnóstico y el plan terapéutico no se improvisan. Se construyen juntos, con tiempo y con escucha.
-    </p>
+  <div class="cta-medio-acciones">
+    <a href="https://wa.me/50230607168?text=Hola,%20quisiera%20iniciar%20proceso%20clínico." class="btn">WhatsApp · 3060-7168</a>
+    <a href="https://ronaldescobar.com/donde-socrates.html" class="btn-ghost">Primero quiero conversar →</a>
   </div>
+</div>
 
-  <div class="consultas reveal">
-    <div class="consulta">
-      <span class="consulta-num">1</span>
-      <h3 class="consulta-nombre">La primera conversación</h3>
-      <p class="consulta-desc">Espacio para que cuentes lo que traés — sin filtros, sin apuro. No hay preguntas incorrectas. No hay historia demasiado complicada.</p>
-      <span class="consulta-nota">Evaluación inicial</span>
+<!-- HERRAMIENTA PARA PACIENTES -->
+<div class="herramienta">
+  <div class="herramienta-inner">
+    <div>
+      <div class="label">Exclusivo para pacientes activos</div>
+      <h2>Logos Psyche.<em class="gt"> El proceso no se detiene entre sesiones.</em></h2>
+      <p>Una extensión de ese vínculo terapéutico que hemos logrado. Diseñada con mi enfoque clínico para acompañarte cuando no estás en consulta. No reemplaza el vínculo — lo extiende.</p>
+      <a href="https://ronaldescobar.com/asistente.html" class="btn">Acceder al espacio</a>
     </div>
-
-    <div class="consulta">
-      <span class="consulta-num">2</span>
-      <h3 class="consulta-nombre">La historia completa</h3>
-      <p class="consulta-desc">Contexto, historia familiar, momentos clave. El síntoma no existe solo — existe en una vida. Necesito conocer esa vida.</p>
-      <span class="consulta-nota">Anamnesis profunda</span>
-    </div>
-
-    <div class="consulta">
-      <span class="consulta-num">3</span>
-      <h3 class="consulta-nombre">El mapa</h3>
-      <p class="consulta-desc">Empezamos a ver el patrón. Qué se repite, qué conecta, qué conviene nombrar antes de seguir. El diagnóstico empieza a tomar forma.</p>
-      <span class="consulta-nota">Formulación clínica</span>
-    </div>
-
-    <div class="consulta">
-      <span class="consulta-num">4</span>
-      <h3 class="consulta-nombre">El plan</h3>
-      <p class="consulta-desc">Plan diagnóstico y terapéutico construido con vos. Qué sigue, cómo, a qué ritmo. <strong>Decidís vos — porque es tu cuerpo.</strong></p>
-      <span class="consulta-nota">Plan terapéutico</span>
+    <div class="herramienta-card">
+      <img src="https://ronaldescobar.com/assets/cerebro-isotipo.png" alt="Logos Psyche asistente">
+      <div class="card-label">Logos Psyche · Asistente clínico</div>
+      <div class="card-quote">"Una extensión de ese vínculo terapéutico que hemos logrado."</div>
+      <div class="card-nota">Disponible · Solo para pacientes activos de Logos Psyche</div>
     </div>
   </div>
-</section>
+</div>
 
-<div class="sep"></div>
-
-<!-- LO QUE SE ATIENDE -->
-<section class="atiende">
-  <div class="atiende-header reveal">
-    <h2 class="atiende-titulo">Lo que se atiende.</h2>
-    <p class="atiende-sub">No hay malestar demasiado pequeño ni historia demasiado complicada.</p>
-  </div>
-
-  <div class="areas">
-    <div class="area reveal">
-      <span class="area-icono">Estado de ánimo</span>
-      <h3 class="area-nombre">Depresión y trastornos del ánimo</h3>
-      <p class="area-desc">Desde la tristeza que no se va hasta los episodios que interrumpen la vida. Con diagnóstico preciso y tratamiento basado en evidencia.</p>
+<!-- CONDICIONES -->
+<div class="condiciones">
+  <div class="label">Lo que se atiende</div>
+  <h2>No hay malestar demasiado pequeño<br>ni historia demasiado complicada.</h2>
+  <div class="grid-condiciones">
+    <div class="condicion">
+      <div class="icono">Estado de ánimo</div>
+      <h3>Depresión y trastornos del ánimo</h3>
+      <p>Desde la tristeza que no se va hasta los episodios que interrumpen la vida. Con diagnóstico preciso y tratamiento basado en evidencia.</p>
     </div>
-
-    <div class="area reveal">
-      <span class="area-icono">Ansiedad</span>
-      <h3 class="area-nombre">Ansiedad y sus formas</h3>
-      <p class="area-desc">Ansiedad generalizada, ataques de pánico, fobias, TOC. El miedo que se instala donde no debería y no sabe cómo salir.</p>
+    <div class="condicion">
+      <div class="icono">Ansiedad</div>
+      <h3>Ansiedad y sus formas</h3>
+      <p>Ansiedad generalizada, ataques de pánico, fobias, TOC. El miedo que se instala donde no debería y no sabe cómo salir.</p>
     </div>
-
-    <div class="area reveal">
-      <span class="area-icono">Trauma</span>
-      <h3 class="area-nombre">Trauma y experiencias difíciles</h3>
-      <p class="area-desc">Lo que el cuerpo recuerda aunque la mente quiera olvidar. Abordaje del trauma con encuadre seguro y sin prisa.</p>
+    <div class="condicion">
+      <div class="icono">Trauma</div>
+      <h3>Trauma y experiencias difíciles</h3>
+      <p>Lo que el cuerpo recuerda aunque la mente quiera olvidar. Abordaje del trauma con encuadre seguro y sin prisa.</p>
     </div>
-
-    <div class="area reveal">
-      <span class="area-icono">Atención</span>
-      <h3 class="area-nombre">TDAH y dificultades de atención</h3>
-      <p class="area-desc">En adultos y adolescentes. Diagnóstico que va más allá del checklist — que entiende la historia detrás de la inatención.</p>
+    <div class="condicion">
+      <div class="icono">Atención</div>
+      <h3>TDAH y dificultades de atención</h3>
+      <p>En adultos y adolescentes. Diagnóstico que va más allá del checklist — que entiende la historia detrás de la inatención.</p>
     </div>
-
-    <div class="area reveal">
-      <span class="area-icono">Procesos de vida</span>
-      <h3 class="area-nombre">Crisis y transiciones</h3>
-      <p class="area-desc">Duelos, separaciones, cambios de identidad, momentos bisagra. No todo es patología — pero todo merece acompañamiento.</p>
+    <div class="condicion">
+      <div class="icono">Procesos de vida</div>
+      <h3>Crisis y transiciones</h3>
+      <p>Duelos, separaciones, cambios de identidad, momentos bisagra. No todo es patología — pero todo merece acompañamiento.</p>
     </div>
-
-    <div class="area reveal">
-      <span class="area-icono">Otros</span>
-      <h3 class="area-nombre">Lo que no sabe cómo llamarse</h3>
-      <p class="area-desc">Muchas personas llegan sin saber exactamente qué les pasa. Eso también tiene lugar aquí. La primera conversación sirve exactamente para eso.</p>
+    <div class="condicion">
+      <div class="icono">Otros</div>
+      <h3>Lo que no sabe cómo llamarse</h3>
+      <p>Muchas personas llegan sin saber exactamente qué les pasa. La primera conversación sirve exactamente para eso.</p>
     </div>
   </div>
-</section>
+</div>
 
-<div class="sep"></div>
 
-<!-- HERRAMIENTAS COMPLEMENTARIAS -->
-<section class="complementarias">
-  <div class="comp-header reveal">
-    <h2 class="comp-titulo">
-      Más allá de la<br>
-      <em>consulta.</em>
-    </h2>
-    <p class="comp-sub">Herramientas que complementan el proceso clínico — nunca lo sustituyen.</p>
+<!-- PROCESO -->
+<div class="proceso" id="proceso">
+  <div class="proceso-inner">
+    <div class="label">El proceso</div>
+    <h2>Cuatro consultas para <em class="gt">entender qué traés.</em></h2>
+    <div class="pasos">
+      <div class="paso">
+        <div class="paso-num">01</div>
+        <div class="paso-tag">Evaluación inicial</div>
+        <h3>La primera conversación</h3>
+        <p>Espacio para contar lo que traés — sin filtros, sin apuro. No hay preguntas incorrectas ni historia demasiado complicada.</p>
+      </div>
+      <div class="paso">
+        <div class="paso-num">02</div>
+        <div class="paso-tag">Anamnesis profunda</div>
+        <h3>La historia completa</h3>
+        <p>Contexto, historia familiar, momentos clave. El síntoma no existe solo — existe en una vida. Necesito conocer esa vida.</p>
+      </div>
+      <div class="paso">
+        <div class="paso-num">03</div>
+        <div class="paso-tag">Formulación clínica</div>
+        <h3>El mapa</h3>
+        <p>Empezamos a ver el patrón. Qué se repite, qué conecta, qué conviene nombrar. El diagnóstico empieza a tomar forma.</p>
+      </div>
+      <div class="paso">
+        <div class="paso-num">04</div>
+        <div class="paso-tag">Plan terapéutico</div>
+        <h3>El plan</h3>
+        <p>Plan diagnóstico y terapéutico construido con vos. Qué sigue, cómo, a qué ritmo. <strong>Decidís vos — porque es tu cuerpo.</strong></p>
+      </div>
+    </div>
   </div>
+</div>
 
-  <div class="herramientas">
-    <a href="https://ronaldescobar.com/inner-sound.html" class="herramienta reveal">
-      <span class="herr-label">Experiencia sonora</span>
-      <h3 class="herr-nombre">Inner Sound</h3>
-      <p class="herr-desc">La música como tecnología de acceso al interior. Entre sesiones, el sonido bien dirigido puede llegar donde las palabras todavía no alcanzan.</p>
-      <span class="herr-link">Conocer Inner Sound →</span>
-    </a>
-
-    <a href="https://ronaldescobar.com/reconectar.html" class="herramienta reveal">
-      <span class="herr-label">Programa intensivo</span>
-      <h3 class="herr-nombre">ReConectar</h3>
-      <p class="herr-desc">Para quienes necesitan más que una consulta semanal. Un proceso estructurado de reconexión con uno mismo — con acompañamiento clínico cercano.</p>
-      <span class="herr-link">Conocer ReConectar →</span>
-    </a>
+<!-- COMPLEMENTOS -->
+<div class="complementos">
+  <div class="complementos-inner">
+    <div class="label">Más allá de la consulta</div>
+    <h2>Herramientas que complementan el proceso clínico —<em class="gt"> nunca lo sustituyen.</em></h2>
+    <div class="grid-complementos">
+      <a href="https://ronaldescobar.com/inner-sound.html" class="complemento complemento-inner-sound">
+        <div class="comp-label">Experiencia sonora</div>
+        <h3>Inner Sound</h3>
+        <p>La música como tecnología de acceso al interior. Entre sesiones, el sonido bien dirigido puede llegar donde las palabras todavía no alcanzan.</p>
+        <div class="comp-link">Conocer Inner Sound →</div>
+      </a>
+      <a href="https://ronaldescobar.com/reconectar.html" class="complemento complemento-reconectar">
+        <div class="comp-label">Programa intensivo · Artistas</div>
+        <h3>ReConectar</h3>
+        <p>Para quienes necesitan más que una consulta semanal. Un proceso estructurado de reconexión con uno mismo — con acompañamiento clínico cercano.</p>
+        <div class="comp-link">Conocer ReConectar →</div>
+      </a>
+    </div>
   </div>
-</section>
+</div>
 
-<!-- CONTACTO -->
-<section class="contacto" id="contacto">
-  <span class="contacto-pretitulo reveal">Primera consulta · Atención con cita</span>
-  <h2 class="contacto-titulo reveal">
-    ¿Es este el<br>
-    <em>encuadre adecuado</em><br>
-    para lo que traés?
-  </h2>
-  <p class="contacto-sub reveal">
-    Una primera conversación permite saberlo.<br>
-    Sin compromiso. Con toda la honestidad.
-  </p>
-  <div class="contacto-botones reveal">
-    <a href="https://wa.me/50230607168?text=Hola,%20quisiera%20iniciar%20proceso%20clínico." class="btn-grad">WhatsApp · 3060-7168</a>
-    <a href="mailto:clinicalogos@ronaldescobar.com" class="btn-ghost" style="color:var(--gris)">clinicalogos@ronaldescobar.com →</a>
+<!-- CTA FINAL -->
+<div class="cta-final" id="contacto">
+  <div class="eyebrow">Primera consulta · Atención con cita</div>
+  <h2>¿Es este el <em class="gt">encuadre adecuado</em> para lo que traés?</h2>
+  <p>Una primera conversación permite saberlo.<br>Sin compromiso. Con toda la honestidad.</p>
+  <div class="cta-acciones">
+    <a href="https://wa.me/50230607168?text=Hola,%20quisiera%20iniciar%20proceso%20clínico." class="btn">WhatsApp · 3060-7168</a>
+    <a href="mailto:clinicalogos@ronaldescobar.com" class="btn-ghost">clinicalogos@ronaldescobar.com →</a>
   </div>
-  <div class="contacto-info reveal">
-    Edificio Integra Medical Center · Clínica 810<br>
-    Ciudad de Guatemala · Atención presencial y online
+  <div class="cta-info">
+    Edificio Integra Medical Center · Clínica 810 · Ciudad de Guatemala<br>
+    Atención presencial y online · Lunes a viernes
   </div>
-</section>
+</div>
 
+<!-- FOOTER -->
 <footer>
   <span>© Ronald Escobar · Logos Psyche</span>
-  <span class="footer-grad">Neurociencia · Arte · Humanidad</span>
-  <span>ronaldescobar.com</span>
+  <span>Neurociencia · Arte · Humanidad</span>
+  <a href="https://ronaldescobar.com">ronaldescobar.com</a>
 </footer>
 
-<script>
-  const obs=new IntersectionObserver(entries=>{ entries.forEach((e,i)=>{ if(e.isIntersecting){ setTimeout(()=>e.target.classList.add('visible'),i*70); obs.unobserve(e.target); } }); },{threshold:0.1});
-  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
-</script>
 </body>
 </html>
