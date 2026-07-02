@@ -3,794 +3,754 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ReConectar — Ronald Escobar · Alejandro Marré</title>
-<meta name="description" content="ReConectar — proceso clínico-creativo para artistas bloqueados. Acompañamiento de Ronald Escobar y Alejandro Marré.">
-<meta name="robots" content="index, follow">
-<meta name="author" content="Ronald Escobar">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://ronaldescobar.com/reconectar.html">
-<meta property="og:title" content="ReConectar — Ronald Escobar · Alejandro Marré">
-<meta property="og:description" content="Proceso clínico-creativo para artistas bloqueados.">
-<meta property="og:image" content="https://ronaldescobar.com/assets/logo-image.png">
-<link rel="icon" href="/assets/logo-image.png" type="image/png">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<title>ReConectar — Proceso terapéutico para artistas y creativos | Dr. Ronald Escobar · Alejandro Marré · Guatemala</title>
+<meta name="description" content="ReConectar es un proceso terapéutico individual para artistas y creativos. Dúo clínico-creativo: Dr. Ronald Escobar, psiquiatra, y Alejandro Marré, artista visual y director creativo. Guatemala.">
 <style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Courier+Prime:wght@400;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
   :root {
     --negro: #08080a;
-    --blanco: #f0ede6;
-    --ocre: #b8860b;
-    --ocre-suave: #d4a030;
-    --terracota: #c4763a;
-    --verde: #3d5a3e;
-    --verde-claro: #5a8c5c;
-    --gris: #6b6860;
-    --fondo-medio: #0e0e0a;
-    --linea: rgba(184,134,11,0.18);
+    --blanco: rgb(240,237,230);
+    --teal: rgb(78,205,196);
+    --purpura: rgb(156,111,255);
+    --dorado: rgb(212,184,74);
+    --coral: rgb(196,118,58);
+    --gris: rgba(240,237,230,0.85);
+    --gris-suave: rgba(240,237,230,0.6);
+    --gris-medio: rgba(240,237,230,0.4);
+    --fondo-medio: #0d0d0d;
   }
-
-  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
 
   body {
     background: var(--negro);
     color: var(--blanco);
     font-family: 'Courier Prime', monospace;
-    overflow-x: hidden;
   }
 
-  body::after {
-    content: ''; position: fixed; inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
-    pointer-events: none; z-index: 100; opacity: 0.5;
+  /* Gradiente marca */
+  .gt {
+    background: linear-gradient(100deg, rgb(78,205,196), rgb(142,196,78), rgb(212,184,74), rgb(196,118,58), rgb(196,74,42));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
 
-  /* NAV */
+  /* ── NAV ── */
   nav {
-    position: fixed; top: 0; left: 0; right: 0;
-    z-index: 50; padding: 22px 48px;
-    display: flex; justify-content: space-between; align-items: center;
-  }
-  nav::before {
-    content: ''; position: absolute; inset: 0;
-    background: linear-gradient(to bottom, rgba(8,8,10,0.96) 0%, transparent 100%);
-    pointer-events: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 64px;
   }
   .nav-back {
-    font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
-    color: var(--gris); text-decoration: none; transition: color 0.3s;
-    display: flex; align-items: center; gap: 8px; position: relative;
+    font-family: 'Courier Prime', monospace;
+    font-size: 10px;
+    letter-spacing: 2.2px;
+    color: var(--gris-medio);
+    text-decoration: none;
+    text-transform: uppercase;
   }
-  .nav-back::before { content: '←'; font-size: 16px; }
-  .nav-back:hover { color: var(--ocre-suave); }
-  .nav-logo {
+  .nav-back:hover { color: var(--teal); }
+  .nav-marca {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 15px; font-weight: 300; letter-spacing: 0.15em;
-    color: var(--blanco); text-decoration: none; position: relative;
+    font-size: 15px;
+    font-weight: 300;
+    letter-spacing: 2.25px;
+    color: var(--blanco);
+    text-decoration: none;
   }
 
-  /* HERO */
+  /* ── LABEL ── */
+  .label {
+    font-family: 'Courier Prime', monospace;
+    font-size: 9px;
+    letter-spacing: 3.15px;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 12px;
+  }
+
+  /* ── BOTONES ── */
+  .btn {
+    display: inline-block;
+    background: linear-gradient(100deg, rgb(78,205,196), rgb(142,196,78), rgb(212,184,74), rgb(196,118,58), rgb(196,74,42));
+    background-size: 200% 100%;
+    color: rgb(8,8,10);
+    font-family: 'Courier Prime', monospace;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2.2px;
+    text-transform: uppercase;
+    padding: 14px 32px;
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+  .btn:hover { opacity: 0.85; }
+  .btn-ghost {
+    font-family: 'Courier Prime', monospace;
+    font-size: 10px;
+    letter-spacing: 2.2px;
+    text-transform: uppercase;
+    color: var(--gris-suave);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .btn-ghost:hover { color: var(--blanco); }
+
+  /* ── HERO ── */
   .hero {
-    min-height: 100vh;
-    display: flex; flex-direction: column; justify-content: center;
-    padding: 140px 48px 100px;
-    position: relative; overflow: hidden;
+    min-height: 92vh;
+    padding: 80px 64px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    position: relative;
+    overflow: hidden;
   }
-
   .hero-bg {
-    position: absolute; inset: 0;
-    background:
-      radial-gradient(ellipse 70% 80% at 50% 55%, rgba(184,134,11,0.07) 0%, transparent 65%),
-      radial-gradient(ellipse 40% 50% at 15% 20%, rgba(61,90,62,0.08) 0%, transparent 50%),
-      radial-gradient(ellipse 35% 45% at 85% 80%, rgba(196,118,58,0.06) 0%, transparent 55%);
+    position: absolute;
+    inset: 0;
+    background: url('https://ronaldescobar.com/assets/ronald3.jpg') center/cover no-repeat;
+    display: none;
+    z-index: 0;
   }
-
-  /* Marca de agua */
-  .hero-wm {
-    position: absolute; top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(100px, 18vw, 240px);
-    font-weight: 300; font-style: italic;
-    color: rgba(240,237,230,0.022);
-    pointer-events: none; white-space: nowrap; letter-spacing: -0.03em;
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    display: none;
+    z-index: 1;
   }
-
-  .hero-content { position: relative; z-index: 2; max-width: 760px; }
-
+  .hero-contenido {
+    position: relative;
+    z-index: 2;
+    max-width: 900px;
+  }
   .hero-eyebrow {
-    font-size: 11px; letter-spacing: 0.35em; text-transform: uppercase;
-    color: var(--ocre-suave); margin-bottom: 40px; display: block;
-    opacity: 0; animation: fadeUp 0.8s ease 0.2s forwards;
+    font-family: 'Courier Prime', monospace;
+    font-size: 9px;
+    letter-spacing: 3.15px;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 32px;
   }
-
-  .hero-h1 {
+  .hero-titulo {
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(64px, 11vw, 140px);
-    font-weight: 300; line-height: 0.88; letter-spacing: -0.03em;
-    margin-bottom: 56px;
+    font-size: 132px;
+    font-weight: 300;
+    line-height: 116.16px;
+    letter-spacing: -3.96px;
+    margin-bottom: 48px;
+    color: var(--blanco);
   }
-  .hero-h1 .re {
-    display: inline; color: rgba(240,237,230,0.4);
-    opacity: 0; animation: fadeUp 1s ease 0.3s forwards;
-  }
-  .hero-h1 .conectar {
-    display: inline; font-style: italic;
-    background: linear-gradient(100deg, var(--ocre) 0%, var(--ocre-suave) 40%, var(--verde-claro) 100%);
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-    opacity: 0; animation: fadeUp 1s ease 0.5s forwards;
-  }
-
+  .hero-titulo .re { color: rgba(240,237,230,0.35); }
   .hero-citas {
-    display: flex; flex-direction: column; gap: 0;
-    border-left: 1px solid rgba(212,160,48,0.35);
-    padding-left: 24px;
-    opacity: 0; animation: fadeUp 1s ease 0.8s forwards;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-bottom: 56px;
+    border-left: 2px solid rgba(78,205,196,0.3);
+    padding-left: 28px;
   }
   .hero-cita {
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(18px, 2.2vw, 28px);
-    font-weight: 300; font-style: italic; line-height: 1.5;
-    color: rgba(240,237,230,0.85);
-  }
-  .hero-cita + .hero-cita {
-    margin-top: 20px; padding-top: 20px;
-    border-top: 1px solid rgba(212,160,48,0.12);
-  }
-
-  .hero-cta {
-    margin-top: 56px; display: flex; gap: 24px; align-items: center; flex-wrap: wrap;
-    opacity: 0; animation: fadeUp 1s ease 1s forwards;
-  }
-
-  .btn-grad {
-    font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
-    padding: 14px 32px; text-decoration: none; font-weight: 700;
-    background: linear-gradient(100deg, var(--ocre), var(--ocre-suave), var(--verde-claro));
-    background-size: 200% 100%; color: var(--negro);
-    transition: background-position 0.5s ease, transform 0.2s;
-  }
-  .btn-grad:hover { background-position: 100% 0; transform: translateY(-2px); }
-
-  .btn-ghost {
-    font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
-    color: var(--gris); text-decoration: none; transition: color 0.3s;
-    display: flex; align-items: center; gap: 8px;
-  }
-  .btn-ghost:hover { color: var(--ocre-suave); }
-
-  /* SEP */
-  .sep {
-    width: 100%; height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(184,134,11,0.2) 30%, rgba(90,140,92,0.15) 70%, transparent);
-  }
-
-  /* QUÉ ES */
-  .que-es {
-    padding: 140px 48px;
-    display: grid; grid-template-columns: 1fr 1fr;
-    gap: 100px; align-items: start;
-  }
-  .que-es-left { position: sticky; top: 120px; }
-
-  .seccion-label {
-    font-size: 11px; letter-spacing: 0.35em; text-transform: uppercase;
-    color: var(--ocre-suave); margin-bottom: 24px; display: block;
-  }
-  .que-es-titulo {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(30px, 3.2vw, 48px);
-    font-weight: 300; line-height: 1.15; letter-spacing: -0.01em;
-  }
-  .que-es-titulo em {
+    font-size: 22px;
     font-style: italic;
-    background: linear-gradient(90deg, var(--ocre-suave), var(--verde-claro));
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    font-weight: 300;
+    color: var(--gris);
+    line-height: 34px;
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(240,237,230,0.08);
   }
+  .hero-cita:last-child { border-bottom: none; }
+  .hero-ctas { display: flex; gap: 24px; align-items: center; }
 
-  .que-es-parrafo {
-    font-size: 15px; line-height: 2.2;
-    color: rgba(240,237,230,0.75); margin-bottom: 24px;
-  }
-  .que-es-parrafo strong { color: var(--blanco); font-weight: 700; }
-
-  .que-es-cita {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 20px; font-style: italic; font-weight: 300; line-height: 1.65;
-    padding-left: 24px; margin: 40px 0;
-    color: rgba(240,237,230,0.9);
-    border-left: 2px solid transparent;
-    border-image: linear-gradient(to bottom, var(--ocre), var(--verde-claro)) 1;
-  }
-
-  /* NO ES */
-  .no-es {
-    display: flex; flex-direction: column; gap: 8px; margin-top: 32px;
-  }
-  .no-es-item {
-    font-size: 14px; line-height: 1.7;
-    color: rgba(240,237,230,0.5);
-    padding-left: 20px; position: relative;
-    font-style: italic;
-  }
-  .no-es-item::before {
-    content: '×'; position: absolute; left: 0;
-    color: rgba(196,118,58,0.5); font-style: normal;
-  }
-
-  /* EL DÚO */
-  .duo {
-    padding: 100px 48px;
+  /* ── PARA QUIÉN ── */
+  .para-quien {
+    padding: 64px 64px;
     background: var(--fondo-medio);
-    position: relative; overflow: hidden;
   }
-  .duo::before {
-    content: ''; position: absolute; top:50%; left:50%;
-    transform: translate(-50%,-50%);
-    width: 800px; height: 500px;
-    background: radial-gradient(ellipse, rgba(184,134,11,0.05) 0%, transparent 70%);
-    pointer-events: none;
+  .para-quien-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+  .para-quien h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 48px;
+    font-weight: 300;
+    line-height: 50.4px;
+    letter-spacing: -0.96px;
+    color: var(--blanco);
+    margin-bottom: 28px;
+  }
+  .para-quien p {
+    font-size: 15px;
+    line-height: 33px;
+    color: var(--gris);
+    margin-bottom: 16px;
+  }
+  .para-quien p strong { color: var(--blanco); font-weight: 400; }
+  .tipos {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .tipo {
+    background: #111;
+    padding: 20px 24px;
+    border-left: 2px solid #1f1f1f;
+    transition: border-color 0.2s;
+    cursor: default;
+  }
+  .tipo:nth-child(1):hover { border-color: var(--purpura); }
+  .tipo:nth-child(1):hover .tipo-nombre { color: var(--purpura); }
+  .tipo:nth-child(2):hover { border-color: var(--dorado); }
+  .tipo:nth-child(2):hover .tipo-nombre { color: var(--dorado); }
+  .tipo:nth-child(3):hover { border-color: var(--teal); }
+  .tipo:nth-child(3):hover .tipo-nombre { color: var(--teal); }
+  .tipo:nth-child(4):hover { border-color: var(--coral); }
+  .tipo:nth-child(4):hover .tipo-nombre { color: var(--coral); }
+  .tipo:nth-child(5):hover { border-color: rgb(142,196,78); }
+  .tipo:nth-child(5):hover .tipo-nombre { color: rgb(142,196,78); }
+  .tipo-nombre {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--blanco);
+    margin-bottom: 4px;
+    transition: color 0.2s;
+  }
+  .tipo-desc {
+    font-size: 12px;
+    color: var(--gris-suave);
+    line-height: 1.7;
   }
 
-  .duo-header { margin-bottom: 64px; position: relative; z-index: 1; }
-  .duo-titulo {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(32px, 4vw, 54px);
-    font-weight: 300; line-height: 1.05; letter-spacing: -0.02em;
+  /* ── NEUROARTE ── */
+  .neuroarte {
+    padding: 64px 64px;
+    background: var(--negro);
   }
-  .duo-titulo em {
+  .neuroarte-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .neuroarte h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 48px;
+    font-weight: 300;
+    line-height: 50.4px;
+    letter-spacing: -0.96px;
+    color: var(--blanco);
+    margin-bottom: 28px;
+    max-width: 700px;
+  }
+  .neuroarte .blockquote {
+    border-left: 2px solid rgba(156,111,255,0.5);
+    padding: 16px 28px;
+    margin: 28px 0;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 21px;
     font-style: italic;
-    background: linear-gradient(90deg, var(--ocre-suave), var(--verde-claro));
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    font-weight: 300;
+    color: rgba(240,237,230,0.92);
+    line-height: 34px;
+    max-width: 700px;
   }
-
-  .duo-grid {
-    display: grid; grid-template-columns: 1fr 1fr;
-    gap: 2px; position: relative; z-index: 1;
+  .neuroarte p {
+    font-size: 15px;
+    line-height: 33px;
+    color: var(--gris);
+    max-width: 680px;
   }
-
-  .facilitador {
-    padding: 56px 48px; position: relative; overflow: hidden;
-    display: flex; flex-direction: column; gap: 20px;
-    transition: background 0.4s;
+  .neuroarte p strong { color: var(--blanco); font-weight: 400; }
+  .neuroarte-tag {
+    display: inline-block;
+    border: 1px solid rgba(156,111,255,0.35);
+    color: var(--purpura);
+    font-family: 'Courier Prime', monospace;
+    font-size: 9px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    padding: 6px 16px;
+    margin-bottom: 24px;
   }
-  .facilitador:first-child { background: #0d0d0a; }
-  .facilitador:last-child  { background: #0a0d0a; }
-  .facilitador:hover { background: #131310; }
-
-  .facilitador::after {
-    content: ''; position: absolute; bottom:0; left:0; right:0; height:2px;
-    transform: scaleX(0); transform-origin: left; transition: transform 0.5s ease;
-  }
-  .facilitador:first-child::after { background: linear-gradient(90deg, var(--ocre), var(--ocre-suave)); }
-  .facilitador:last-child::after  { background: linear-gradient(90deg, var(--verde), var(--verde-claro)); }
-  .facilitador:hover::after { transform: scaleX(1); }
-
-  .fac-rol {
-    font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase;
-  }
-  .facilitador:first-child .fac-rol { color: var(--ocre-suave); }
-  .facilitador:last-child .fac-rol  { color: var(--verde-claro); }
-
-  .fac-nombre {
+  .neuroarte-palabra {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 32px; font-weight: 400; line-height: 1.1;
-  }
-
-  .fac-funcion {
-    font-size: 15px; line-height: 1.9;
-    color: rgba(240,237,230,0.8);
-    font-style: italic;
-  }
-
-  .fac-desc {
-    font-size: 14px; line-height: 1.9;
-    color: rgba(240,237,230,0.55);
-    flex: 1;
-  }
-
-  /* EL PROCESO — 6 semanas */
-  .proceso {
-    padding: 120px 48px;
-    position: relative;
-  }
-
-  .proceso-header { margin-bottom: 64px; }
-  .proceso-titulo {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(32px, 4vw, 54px);
-    font-weight: 300; line-height: 1.05; letter-spacing: -0.02em;
-  }
-  .proceso-titulo em {
-    font-style: italic;
-    background: linear-gradient(90deg, var(--ocre-suave), var(--verde-claro));
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-  }
-  .proceso-sub {
-    margin-top: 16px; font-size: 15px;
-    color: rgba(240,237,230,0.55); line-height: 1.8; font-style: italic;
-  }
-
-  .semanas { display: flex; flex-direction: column; gap: 2px; }
-
-  .semana {
-    display: grid; grid-template-columns: 64px 120px 1fr;
-    gap: 0 32px; align-items: center;
-    padding: 40px 40px 40px 0;
-    border-bottom: 1px solid rgba(240,237,230,0.05);
-    transition: background 0.3s;
-    position: relative;
-  }
-  .semana:hover { background: rgba(240,237,230,0.02); }
-
-  .semana-num {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 48px; font-weight: 300; line-height: 1;
-    color: rgba(240,237,230,0.07); text-align: center;
-    transition: color 0.4s;
-  }
-  .semana:hover .semana-num { color: var(--ocre-suave); opacity: 0.3; }
-
-  .semana-fac {
-    font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
-    padding: 5px 12px; border: 1px solid; text-align: center;
-    white-space: nowrap;
-  }
-  .semana-fac.ronald { border-color: rgba(184,134,11,0.4); color: var(--ocre-suave); }
-  .semana-fac.marre  { border-color: rgba(90,140,92,0.4); color: var(--verde-claro); }
-
-  .semana-contenido {}
-  .semana-eje {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 22px; font-weight: 400; line-height: 1.2; margin-bottom: 8px;
-  }
-  .semana-desc { font-size: 13px; line-height: 1.8; color: rgba(240,237,230,0.55); }
-
-  /* A QUIÉN */
-  .a-quien {
-    padding: 100px 48px;
-    background: var(--fondo-medio);
-    position: relative;
-  }
-
-  .a-quien-header { margin-bottom: 56px; }
-  .a-quien-titulo {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(28px, 3.5vw, 48px);
-    font-weight: 300; line-height: 1.1; letter-spacing: -0.01em;
-  }
-  .a-quien-titulo em {
-    font-style: italic;
-    background: linear-gradient(90deg, var(--ocre-suave), var(--verde-claro));
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-  }
-
-  .perfiles {
-    display: grid; grid-template-columns: repeat(3,1fr); gap: 2px;
-  }
-
-  .perfil {
-    background: #0a0a08; padding: 44px 36px;
-    position: relative; overflow: hidden; transition: background 0.4s;
-    display: flex; flex-direction: column; gap: 16px; min-height: 200px;
-  }
-  .perfil::before {
-    content: ''; position: absolute; top:0; left:0; right:0; height:1px;
-    background: linear-gradient(90deg, var(--ocre), var(--verde-claro));
-    transform: scaleX(0); transform-origin: left; transition: transform 0.45s ease;
-  }
-  .perfil:hover { background: #111110; }
-  .perfil:hover::before { transform: scaleX(1); }
-
-  .perfil-icono { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ocre-suave); }
-  .perfil-texto {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 20px; font-weight: 300; font-style: italic; line-height: 1.4; flex: 1;
-    color: rgba(240,237,230,0.88);
-  }
-
-  /* INVERSIÓN */
-  .inversion {
-    padding: 120px 48px;
-    display: grid; grid-template-columns: 1fr 1fr;
-    gap: 80px; align-items: center;
-  }
-
-  .inv-texto {}
-  .inv-titulo {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(32px, 4vw, 52px);
-    font-weight: 300; line-height: 1.05; letter-spacing: -0.02em;
+    font-size: 96px;
+    font-weight: 300;
+    line-height: 0.9;
+    letter-spacing: -2px;
     margin-bottom: 32px;
-  }
-  .inv-titulo em {
-    font-style: italic;
-    background: linear-gradient(90deg, var(--ocre-suave), var(--verde-claro));
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-  }
-  .inv-parrafo {
-    font-size: 15px; line-height: 2.1;
-    color: rgba(240,237,230,0.7); margin-bottom: 20px;
-  }
-  .inv-parrafo strong { color: var(--blanco); }
-
-  .inv-precio {
-    background: var(--fondo-medio); padding: 48px 40px;
-    display: flex; flex-direction: column; gap: 20px;
-    position: relative; overflow: hidden;
-  }
-  .inv-precio::before {
-    content: ''; position: absolute; top:0; left:0; right:0; height:2px;
-    background: linear-gradient(90deg, var(--ocre), var(--ocre-suave), var(--verde-claro));
+    background: linear-gradient(100deg, rgb(156,111,255), rgb(78,205,196), rgb(212,184,74));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: block;
   }
 
-  .precio-num {
+  /* ── EL DÚO — fotos como fondo ── */
+  .duo {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 70vh;
+  }
+  .duo-persona {
+    position: relative;
+    overflow: hidden;
+    min-height: 500px;
+  }
+  .duo-persona-foto {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center top;
+    filter: brightness(0.22) contrast(1.1);
+    transition: filter 0.4s;
+  }
+  .duo-marre:hover .duo-persona-foto {
+    filter: brightness(0.5) contrast(1.1);
+  }
+  .duo-ronald:hover .duo-persona-foto {
+    filter: brightness(0.7) contrast(1.1);
+  }
+  .duo-persona-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 30%, rgba(8,8,10,0.92) 100%);
+  }
+  .duo-persona-contenido {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 40px 40px;
+    z-index: 2;
+  }
+  .duo-persona-rol {
+    font-family: 'Courier Prime', monospace;
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .duo-marre .duo-persona-rol { color: var(--purpura); }
+  .duo-ronald .duo-persona-rol { color: var(--teal); }
+  .duo-ronald:hover h3 { color: var(--teal); transition: color 0.3s; }
+  .duo-marre:hover h3 { color: var(--purpura); transition: color 0.3s; }
+  .duo-persona h3 {
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(48px, 6vw, 72px);
-    font-weight: 300; line-height: 1;
-    background: linear-gradient(90deg, var(--ocre-suave), var(--verde-claro));
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    font-size: 32px;
+    font-weight: 400;
+    color: var(--blanco);
+    margin-bottom: 10px;
   }
-  .precio-label {
-    font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gris);
+  .duo-persona p {
+    font-size: 13px;
+    line-height: 1.75;
+    color: var(--gris-suave);
+    max-width: 380px;
   }
-  .precio-incluye { display: flex; flex-direction: column; gap: 10px; }
-  .precio-item {
-    font-size: 14px; line-height: 1.7; color: rgba(240,237,230,0.65);
-    padding-left: 16px; position: relative;
-  }
-  .precio-item::before {
-    content: '·'; position: absolute; left: 0; color: var(--ocre-suave);
-  }
-  .precio-nota {
-    font-size: 13px; color: var(--gris); font-style: italic;
-    border-top: 1px solid rgba(240,237,230,0.06); padding-top: 16px;
+  .duo-separador {
+    width: 1px;
+    background: #1a1a1a;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
   }
 
-  /* CTA */
+  /* ── EL PROCESO — 6 sesiones ── */
+  .proceso {
+    padding: 64px 64px;
+    background: var(--fondo-medio);
+  }
+  .proceso-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .proceso h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 48px;
+    font-weight: 300;
+    line-height: 50.4px;
+    letter-spacing: -0.96px;
+    color: var(--blanco);
+    margin-bottom: 56px;
+  }
+  .ejes {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    margin-bottom: 2px;
+  }
+  .eje {
+    background: #111;
+    padding: 36px 28px;
+    border-top: 2px solid #1f1f1f;
+    transition: border-color 0.2s;
+  }
+  .eje:nth-child(1):hover { border-color: var(--purpura); }
+  .eje:nth-child(2):hover { border-color: var(--dorado); }
+  .eje:nth-child(3):hover { border-color: var(--teal); }
+  .eje-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 48px;
+    font-weight: 300;
+    color: #3a3a3a;
+    line-height: 1;
+    margin-bottom: 12px;
+  }
+  .eje-tag {
+    font-family: 'Courier Prime', monospace;
+    font-size: 9px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .eje:nth-child(1) .eje-tag { color: var(--purpura); }
+  .eje:nth-child(2) .eje-tag { color: var(--dorado); }
+  .eje:nth-child(3) .eje-tag { color: var(--teal); }
+  .eje h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--blanco);
+    margin-bottom: 8px;
+  }
+  .eje p {
+    font-size: 13px;
+    line-height: 1.75;
+    color: var(--gris-suave);
+  }
+  .proceso-nota {
+    background: #111;
+    padding: 28px 32px;
+    font-size: 13px;
+    color: var(--gris-medio);
+    line-height: 1.8;
+    border-left: 2px solid #1f1f1f;
+  }
+  .proceso-nota strong { color: var(--gris-suave); font-weight: 400; }
+
+  /* ── EL ACTO DE CREAR ── */
+  .acto {
+    padding: 80px 64px;
+    border-top: 1px solid #1a1a1a;
+    background: var(--negro);
+  }
+  .acto-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+  }
+  .acto h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 38px;
+    font-weight: 300;
+    line-height: 44px;
+    color: var(--blanco);
+    margin-bottom: 16px;
+  }
+  .acto p {
+    font-size: 14px;
+    line-height: 1.85;
+    color: var(--gris-suave);
+    margin-bottom: 32px;
+    max-width: 440px;
+  }
+  .acto-card {
+    background: var(--fondo-medio);
+    padding: 44px 40px;
+    border-left: 1px solid #1a1a1a;
+  }
+  .acto-card img {
+    width: 52px;
+    margin-bottom: 20px;
+    opacity: 0.75;
+    display: block;
+  }
+  .acto-card-label {
+    font-family: 'Courier Prime', monospace;
+    font-size: 9px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--purpura);
+    margin-bottom: 10px;
+  }
+  .acto-card-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-style: italic;
+    font-weight: 300;
+    color: var(--gris);
+    line-height: 1.5;
+    margin-bottom: 16px;
+  }
+  .acto-card-nota {
+    font-family: 'Courier Prime', monospace;
+    font-size: 11px;
+    color: var(--gris-medio);
+    letter-spacing: 1px;
+  }
+
+  /* ── CTA FINAL ── */
   .cta-final {
-    padding: 120px 48px; text-align: center;
-    position: relative; overflow: hidden;
+    padding: 120px 64px;
+    text-align: center;
+    background: var(--fondo-medio);
   }
-  .cta-final::before {
-    content: ''; position: absolute; top:50%; left:50%;
-    transform: translate(-50%,-50%);
-    width: 700px; height: 500px;
-    background: radial-gradient(ellipse, rgba(184,134,11,0.07) 0%, rgba(61,90,62,0.06) 50%, transparent 75%);
-    pointer-events: none; animation: ctaGlow 7s ease-in-out infinite;
+  .cta-final .label {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 28px;
   }
-  @keyframes ctaGlow {
-    0%,100% { transform: translate(-50%,-50%) scale(1); opacity:1; }
-    50%      { transform: translate(-50%,-50%) scale(1.1); opacity:0.7; }
-  }
-
-  .cta-pretitulo {
-    font-size: 11px; letter-spacing: 0.35em; text-transform: uppercase;
-    color: var(--ocre-suave); margin-bottom: 32px; display: block; position: relative;
-  }
-  .cta-titulo {
+  .cta-final h2 {
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(36px, 6vw, 72px);
-    font-weight: 300; line-height: 1.05; margin-bottom: 24px; position: relative;
+    font-size: 72px;
+    font-weight: 300;
+    line-height: 75.6px;
+    color: var(--blanco);
+    margin-bottom: 16px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
   }
-  .cta-titulo em {
-    font-style: italic;
-    background: linear-gradient(120deg, var(--ocre), var(--ocre-suave), var(--verde-claro));
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  .cta-final p {
+    font-size: 14px;
+    color: var(--gris-suave);
+    margin-bottom: 48px;
+    line-height: 1.8;
   }
-  .cta-sub {
-    font-size: 15px; color: rgba(240,237,230,0.6);
-    margin-bottom: 48px; line-height: 1.8; position: relative;
+  .cta-acciones {
+    display: flex;
+    gap: 24px;
+    justify-content: center;
+    flex-wrap: wrap;
   }
-  .cta-botones { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; position: relative; }
 
+  /* ── FOOTER ── */
   footer {
-    padding: 28px 48px; border-top: 1px solid var(--linea);
-    display: flex; justify-content: space-between; align-items: center;
-    font-size: 11px; color: var(--gris); letter-spacing: 0.08em;
+    border-top: 1px solid #1a1a1a;
+    padding: 24px 64px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Courier Prime', monospace;
+    font-size: 10px;
+    color: #333;
+    letter-spacing: 1px;
   }
-  .footer-grad {
-    background: linear-gradient(90deg, var(--ocre-suave), var(--verde-claro));
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-  }
+  footer a { color: #333; text-decoration: none; }
+  footer a:hover { color: #666; }
+  footer span:nth-child(2) { color: #222; }
 
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(28px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-  .reveal {
-    opacity: 0; transform: translateY(28px);
-    transition: opacity 0.85s ease, transform 0.85s ease;
-  }
-  .reveal.visible { opacity: 1; transform: translateY(0); }
-
+  /* ── RESPONSIVE ── */
   @media (max-width: 840px) {
     nav { padding: 18px 24px; }
-    .hero { padding: 100px 24px 60px; }
-    .que-es { grid-template-columns: 1fr; padding: 80px 24px; gap: 40px; }
-    .que-es-left { position: static; }
-    .duo-grid { grid-template-columns: 1fr; }
-    .semana { grid-template-columns: 48px 1fr; gap: 0 16px; padding: 32px 0; }
-    .semana-fac { display: none; }
-    .perfiles { grid-template-columns: 1fr; }
-    .inversion { grid-template-columns: 1fr; padding: 80px 24px; }
-    .proceso, .a-quien, .cta-final { padding: 80px 24px; }
+
+    .hero { padding: 60px 24px 48px; min-height: 80vh; }
+    .hero-titulo { font-size: 64px; letter-spacing: -1.5px; line-height: 60px; }
+    .hero-cita { font-size: 18px; }
+
+    .para-quien { padding: 64px 24px; }
+    .para-quien-inner { grid-template-columns: 1fr; gap: 40px; }
+    .para-quien h2 { font-size: 32px; }
+
+    .neuroarte { padding: 64px 24px; }
+    .neuroarte h2 { font-size: 32px; }
+
+    .duo { grid-template-columns: 1fr; }
+    .duo-persona { min-height: 420px; }
+
+    .proceso { padding: 64px 24px; }
+    .proceso h2 { font-size: 32px; }
+    .ejes { grid-template-columns: 1fr; }
+
+    .acto { padding: 64px 24px; }
+    .acto-inner { grid-template-columns: 1fr; gap: 32px; }
+    .acto h2 { font-size: 28px; }
+
+    .cta-final { padding: 80px 24px; }
+    .cta-final h2 { font-size: 36px; }
+    .cta-acciones { flex-direction: column; align-items: center; }
+
     footer { padding: 24px; flex-direction: column; gap: 10px; text-align: center; }
   }
-</style>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Physician",
-  "name": "Dr. Ronald Escobar",
-  "description": "Psiquiatra en Guatemala City. Logos Psyche — Neurociencia, Arte, Humanidad.",
-  "url": "https://ronaldescobar.com",
-  "telephone": "+50230607168",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "Integra Medical Center, Clínica 810",
-    "addressLocality": "Ciudad de Guatemala",
-    "addressCountry": "GT"
-  },
-  "medicalSpecialty": "Psychiatry",
-  "availableService": {
-    "@type": "MedicalTherapy",
-    "name": "Consulta psiquiátrica presencial y online"
+
+  @media (max-width: 480px) {
+    .hero-titulo { font-size: 48px; }
+    .hero-cita { font-size: 16px; }
   }
-}
-</script>
+</style>
 </head>
 <body>
 
+<!-- NAV -->
 <nav>
-  <a href="https://ronaldescobar.com" class="nav-back">Ronald Escobar</a>
-  <a href="https://ronaldescobar.com" class="nav-logo">Ronald Escobar</a>
+  <a href="https://ronaldescobar.com" class="nav-back">← Ronald Escobar</a>
+  <a href="https://ronaldescobar.com" class="nav-marca">Ronald Escobar</a>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-wm">ReConectar</div>
-
-  <div class="hero-content">
-    <span class="hero-eyebrow">Dúo Clínico-Creativo · Proceso individual</span>
-    <h1 class="hero-h1">
-      <span class="re">Re</span><span class="conectar">Conectar</span>
-    </h1>
+  <div class="hero-bg" style="background: radial-gradient(ellipse at 30% 50%, #1a1508 0%, #0a0806 50%, #08080a 100%);"></div>
+  <div class="hero-contenido">
+    <div class="hero-eyebrow">Dúo clínico-creativo · Proceso individual · Para artistas</div>
+    <h1 class="hero-titulo"><span class="re">Re</span><em class="gt">Conectar</em></h1>
     <div class="hero-citas">
-      <p class="hero-cita">El arte es el inconsciente hallando un lenguaje.</p>
-      <p class="hero-cita">Crear no es hacer. Crear es exponerse.</p>
-      <p class="hero-cita">ReConectar no es aprender. Es recordar.</p>
+      <div class="hero-cita">El arte es el inconsciente hallando un lenguaje.</div>
+      <div class="hero-cita">Crear no es hacer. Crear es exponerse.</div>
+      <div class="hero-cita">ReConectar no es aprender. Es recordar.</div>
     </div>
-    <div class="hero-cta">
-      <a href="https://wa.me/50230607168?text=Hola,%20me%20interesa%20ReConectar." target="_blank" rel="noopener" class="btn-grad">Conversemos</a>
+    <div class="hero-ctas">
+      <a href="https://wa.me/50230607168?text=Hola,%20quisiera%20saber%20más%20sobre%20ReConectar." class="btn">Conversemos</a>
       <a href="#proceso" class="btn-ghost">Ver el proceso →</a>
     </div>
   </div>
 </section>
 
-<div class="sep"></div>
-
-<!-- QUÉ ES -->
-<section class="que-es">
-  <div class="que-es-left reveal">
-    <span class="seccion-label">El espacio</span>
-    <h2 class="que-es-titulo">
-      Para los que<br>
-      sienten pero<br>
-      no <em>logran crear.</em>
-    </h2>
-  </div>
-
-  <div class="que-es-right">
-    <p class="que-es-parrafo reveal">
-      ReConectar es un proceso individual, cuidado y cerrado para artistas y personas sensibles con bloqueo creativo. <strong>Combina contención terapéutica y activación creativa</strong> — dos cosas que casi nunca ocurren en el mismo espacio.
-    </p>
-
-    <blockquote class="que-es-cita reveal">
-      "Crear es exponerse. Y casi nadie quiere hacer eso sin anestesia."
-    </blockquote>
-
-    <p class="que-es-parrafo reveal">
-      Esto no es productividad. No es bienestar. No es una técnica para crear más. <strong>Es un espacio para mirar lo que evitás cuando sentís que estás bloqueado.</strong> El bloqueo creativo casi siempre no es técnico — es emocional. Aquí se trabaja desde ahí.
-    </p>
-
-    <div class="no-es reveal">
-      <div class="no-es-item">No es un taller.</div>
-      <div class="no-es-item">No es un curso.</div>
-      <div class="no-es-item">No sustituye procesos colectivos.</div>
-      <div class="no-es-item">No es terapia artística.</div>
+<!-- PARA QUIÉN -->
+<div class="para-quien">
+  <div class="para-quien-inner">
+    <div>
+      <div class="label">Para quién es</div>
+      <h2>Para los que sienten pero <em class="gt">no logran expresarlo.</em></h2>
+      <p>El bloqueo creativo no es pereza. No es falta de talento. Es casi siempre una señal de algo más profundo que el proceso creativo no puede resolver solo — y que la clínica tampoco puede resolver sin entender el lenguaje del arte.</p>
+      <p><strong>ReConectar existe en ese cruce.</strong> Neurociencia y neuroarte. Clínica y creación. Un psiquiatra y un artista. Juntos.</p>
+    </div>
+    <div class="tipos">
+      <div class="tipo">
+        <div class="tipo-nombre">Pintores · Ilustradores · Artistas visuales</div>
+        <div class="tipo-desc">Cuando la obra deja de fluir y no sabés por qué.</div>
+      </div>
+      <div class="tipo">
+        <div class="tipo-nombre">Músicos · Compositores · Intérpretes</div>
+        <div class="tipo-desc">Cuando el instrumento se vuelve obstáculo, no canal.</div>
+      </div>
+      <div class="tipo">
+        <div class="tipo-nombre">Escritores · Poetas · Guionistas</div>
+        <div class="tipo-desc">Cuando las palabras se secan justo cuando más las necesitás.</div>
+      </div>
+      <div class="tipo">
+        <div class="tipo-nombre">Actores · Bailarines · Performers</div>
+        <div class="tipo-desc">Cuando el cuerpo deja de ser vehículo y empieza a ser barrera.</div>
+      </div>
+      <div class="tipo">
+        <div class="tipo-nombre">Directores creativos · Diseñadores</div>
+        <div class="tipo-desc">Cuando la creatividad profesional empieza a costarle demasiado a la personal.</div>
+      </div>
     </div>
   </div>
-</section>
+</div>
 
-<div class="sep"></div>
+<!-- NEUROARTE -->
+<div class="neuroarte">
+  <div class="neuroarte-inner">
+    <div class="label">El fundamento</div>
+    <div class="neuroarte-palabra">Neuroarte</div>
+    <h2>El cerebro que crea <em class="gt">es el mismo cerebro que sufre.</em></h2>
+    <div class="blockquote">"El neuroarte fusiona neurociencia y arte para entender cómo el cerebro procesa las experiencias estéticas — cómo la creación y la emoción se construyen en el mismo lugar."</div>
+    <p>ReConectar parte de ese fundamento: <strong>crear no es solo un acto estético. Es un acto neurológico.</strong> Cuando el proceso creativo se bloquea, el cerebro está diciendo algo. Algo que la clínica puede escuchar — y que el arte puede traducir.<br><br>Por eso este proceso no es terapia de arte ni coaching creativo. Es un dúo clínico-creativo que trabaja desde los dos frentes al mismo tiempo.</p>
+  </div>
+</div>
 
 <!-- EL DÚO -->
-<section class="duo">
-  <div class="duo-header reveal">
-    <h2 class="duo-titulo">
-      Dos voces.<br>
-      <em>Un proceso.</em>
-    </h2>
-  </div>
-
-  <div class="duo-grid">
-    <div class="facilitador reveal">
-      <span class="fac-rol">Contención clínica · Integración</span>
-      <h3 class="fac-nombre">Ronald Escobar</h3>
-      <p class="fac-funcion">Psiquiatría, arte y vínculo.</p>
-      <p class="fac-desc">Prepara el terreno emocional. Identifica el bloqueo, trabaja las resistencias y acompaña la integración del proceso. Incorpora herramientas terapéuticas especializadas para artistas — incluyendo el uso de inteligencia artificial como espejo creativo y espacio de exploración entre sesiones.</p>
-    </div>
-
-    <div class="facilitador reveal">
-      <span class="fac-rol">Activación creativa · Cierre simbólico</span>
-      <h3 class="fac-nombre">Alejandro Marré</h3>
-      <p class="fac-funcion">Artista, poeta y comunicador.</p>
-      <p class="fac-desc">Activa creativamente lo que Ronald ya ha movilizado. Explora el gesto creativo como territorio de verdad — ahí donde la palabra falla y la imagen todavía resiste.</p>
+<div class="duo">
+  <div class="duo-persona duo-marre">
+    <div class="duo-persona-foto" style="background-image: url('https://ronaldescobar.com/assets/marre.jpg');"></div>
+    <div class="duo-persona-overlay"></div>
+    <div class="duo-persona-contenido">
+      <div class="duo-persona-rol">El lado creativo</div>
+      <h3>Alejandro Marré</h3>
+      <p>Artista visual, director creativo, escritor. Pintor y performer con trayectoria en el arte contemporáneo centroamericano. CEO de Work and Feeling. Conoce el bloqueo creativo desde adentro — no como observador, sino como practicante.</p>
     </div>
   </div>
-</section>
-
-<div class="sep"></div>
+  <div class="duo-persona duo-ronald">
+    <div class="duo-persona-foto" style="background-image: url('https://ronaldescobar.com/assets/documental-portada.jpg');"></div>
+    <div class="duo-persona-overlay"></div>
+    <div class="duo-persona-contenido">
+      <div class="duo-persona-rol">El lado clínico</div>
+      <h3>Dr. Ronald Escobar</h3>
+      <p>Psiquiatra, logoterapeuta, escritor. Fundador de Logos Psyche. Conoce la psiquiatría desde los dos lados — como médico y como paciente. Entiende que el sufrimiento creativo no es metáfora: tiene raíces que se trabajan.</p>
+    </div>
+  </div>
+</div>
 
 <!-- EL PROCESO -->
-<section class="proceso" id="proceso">
-  <div class="proceso-header reveal">
-    <h2 class="proceso-titulo">
-      Seis semanas.<br>
-      <em>Tres momentos.</em>
-    </h2>
-    <p class="proceso-sub">
-      Pasado, presente y futuro creativo. Ronald prepara el terreno. Marré activa lo que ya está movilizado.
-    </p>
-  </div>
-
-  <div class="semanas reveal">
-    <div class="semana">
-      <div class="semana-num">1</div>
-      <div class="semana-fac ronald">Ronald</div>
-      <div class="semana-contenido">
-        <h3 class="semana-eje">Apertura — El bloqueo tiene nombre</h3>
-        <p class="semana-desc">Evaluación clínica suave. Identificación del bloqueo. Definición del ritmo del proceso.</p>
+<div class="proceso" id="proceso">
+  <div class="proceso-inner">
+    <div class="label">El proceso</div>
+    <h2>Seis sesiones. <em class="gt">Tres ejes temporales.</em></h2>
+    <div class="ejes">
+      <div class="eje">
+        <div class="eje-num">01 · 02</div>
+        <div class="eje-tag">Pasado · Sesiones 1 y 2</div>
+        <h3>Conexión, Creación e Historia personal</h3>
+        <p>De dónde venís como creativo. Qué historias cargás. Qué aprendiste sobre el arte — y qué aprendiste a temer. El pasado no se entierra. Se convierte en material.</p>
+      </div>
+      <div class="eje">
+        <div class="eje-num">03 · 04</div>
+        <div class="eje-tag">Presente · Sesiones 3 y 4</div>
+        <h3>Activación creativa · Fuego y Combustible</h3>
+        <p>Qué está pasando ahora. Dónde está el bloqueo, dónde está la energía. Trabajo experiencial sobre el proceso creativo actual — con herramientas clínicas y artísticas.</p>
+      </div>
+      <div class="eje">
+        <div class="eje-num">05 · 06</div>
+        <div class="eje-tag">Futuro · Sesiones 5 y 6</div>
+        <h3>Quién querés ser como creativo</h3>
+        <p>No el artista ideal — el artista real. El que podés sostener. Plan de trabajo, recursos internos, y el camino de regreso a la creación desde un lugar más honesto.</p>
       </div>
     </div>
-
-    <div class="semana">
-      <div class="semana-num">2</div>
-      <div class="semana-fac marre">Marré</div>
-      <div class="semana-contenido">
-        <h3 class="semana-eje">Activación creativa — Pasado</h3>
-        <p class="semana-desc">Lo que fuiste como creador. Lo que dejaste de hacer. Lo que todavía espera.</p>
-      </div>
-    </div>
-
-    <div class="semana">
-      <div class="semana-num">3</div>
-      <div class="semana-fac ronald">Ronald</div>
-      <div class="semana-contenido">
-        <h3 class="semana-eje">Elaboración — Las resistencias tienen raíz</h3>
-        <p class="semana-desc">Identificación de miedos y resistencias. Lo que el bloqueo protege — y a qué precio.</p>
-      </div>
-    </div>
-
-    <div class="semana">
-      <div class="semana-num">4</div>
-      <div class="semana-fac marre">Marré</div>
-      <div class="semana-contenido">
-        <h3 class="semana-eje">Activación creativa — Presente</h3>
-        <p class="semana-desc">Lo que sos ahora. Lo que podés hacer desde aquí. Sin comparación con quien fuiste.</p>
-      </div>
-    </div>
-
-    <div class="semana">
-      <div class="semana-num">5</div>
-      <div class="semana-fac ronald">Ronald</div>
-      <div class="semana-contenido">
-        <h3 class="semana-eje">Conexión — Creación e historia personal</h3>
-        <p class="semana-desc">El vínculo entre lo que creás y lo que vivís. Preparación para el cierre.</p>
-      </div>
-    </div>
-
-    <div class="semana">
-      <div class="semana-num">6</div>
-      <div class="semana-fac marre">Marré</div>
-      <div class="semana-contenido">
-        <h3 class="semana-eje">Activación creativa — Futuro · Cierre simbólico</h3>
-        <p class="semana-desc">Lo que viene. Un acto simbólico de cierre. El proceso termina — la creación continúa.</p>
-      </div>
+    <div class="proceso-nota">
+      <strong>Formato:</strong> 6 sesiones individuales · Alternadas entre Ronald y Alejandro · Quincenal cuando el proceso es intenso, mensual cuando se necesita mayor tiempo de decantación. <strong>Piloto activo</strong> — primeras plazas disponibles para quienes quieran ser parte del proceso inicial.
     </div>
   </div>
-</section>
+</div>
 
-<div class="sep"></div>
-
-<!-- A QUIÉN -->
-<section class="a-quien">
-  <div class="a-quien-header reveal">
-    <h2 class="a-quien-titulo">¿Para <em>quién</em> es esto?</h2>
-  </div>
-
-  <div class="perfiles">
-    <div class="perfil reveal">
-      <span class="perfil-icono">Escritura</span>
-      <p class="perfil-texto">"Tengo algo adentro pero no sale. Llevo meses sin escribir una línea."</p>
+<!-- EL ACTO DE CREAR -->
+<div class="acto">
+  <div class="acto-inner">
+    <div>
+      <div class="label">Exclusivo para participantes activos</div>
+      <h2>El Acto de Crear.<em class="gt"> La herramienta que acompaña el proceso.</em></h2>
+      <p>Un asistente de inteligencia artificial diseñado por el Dr. Ronald Escobar con el enfoque clínico-creativo de ReConectar. Para los momentos entre sesiones donde la creación aparece — o desaparece — y necesitás un espacio para pensarlo. No reemplaza el proceso. Es una extensión de él.</p>
+      <a href="https://ronaldescobar.com/asistente-artistas.html" class="btn">Acceder al espacio</a>
     </div>
-
-    <div class="perfil reveal">
-      <span class="perfil-icono">Música · Visual · Escena</span>
-      <p class="perfil-texto">"Antes creaba sin esfuerzo. Ahora cada intento me paraliza."</p>
-    </div>
-
-    <div class="perfil reveal">
-      <span class="perfil-icono">Síndrome del impostor</span>
-      <p class="perfil-texto">"Tengo una exposición, un lanzamiento. Y siento que no merezco estar ahí."</p>
-    </div>
-
-    <div class="perfil reveal">
-      <span class="perfil-icono">Vergüenza creativa</span>
-      <p class="perfil-texto">"Me da miedo mostrar lo que hago. El juicio me detiene antes de empezar."</p>
-    </div>
-
-    <div class="perfil reveal">
-      <span class="perfil-icono">Persona sensible</span>
-      <p class="perfil-texto">"No me siento lista para un grupo. Pero sé que necesito moverme."</p>
-    </div>
-
-    <div class="perfil reveal">
-      <span class="perfil-icono">Desorientación creativa</span>
-      <p class="perfil-texto">"Ya no sé qué quiero crear ni para qué. Perdí el hilo."</p>
+    <div class="acto-card">
+      <img src="https://ronaldescobar.com/assets/cerebro-isotipo.png" alt="El Acto de Crear">
+      <div class="acto-card-label">El Acto de Crear · Asistente creativo-clínico</div>
+      <div class="acto-card-quote">"Para los momentos donde el proceso aparece — o desaparece — entre sesiones."</div>
+      <div class="acto-card-nota">Disponible · Solo para participantes activos de ReConectar</div>
     </div>
   </div>
-</section>
+</div>
 
-<div class="sep"></div>
-
-<!-- CÓMO FUNCIONA -->
-<section class="inversion">
-  <div class="inv-texto reveal">
-    <h2 class="inv-titulo">
-      Un proceso.<br>
-      <em>No sesiones sueltas.</em>
-    </h2>
-    <p class="inv-parrafo">
-      ReConectar funciona como unidad. El proceso tiene inicio, desarrollo e integración — y eso requiere continuidad. <strong>No se puede fragmentar sin perder lo que lo hace funcionar.</strong>
-    </p>
-    <p class="inv-parrafo">
-      El ritmo se define según quien llega: semanal cuando el bloqueo es intenso y el sostén es necesario, quincenal cuando se necesita mayor tiempo de decantación.
-    </p>
-    <p class="inv-parrafo">
-      <strong>Piloto activo</strong> — primeras plazas disponibles para quienes quieran ser parte del proceso inicial.
-    </p>
+<!-- CTA FINAL -->
+<div class="cta-final">
+  <div class="label">Plazas limitadas · Proceso piloto</div>
+  <h2>Si sentís que este espacio <em class="gt">es para vos,</em> conversemos.</h2>
+  <p>Una primera conversación permite saberlo.<br>Sin compromiso. Con toda la honestidad.</p>
+  <div class="cta-acciones">
+    <a href="https://wa.me/50230607168?text=Hola,%20quisiera%20saber%20más%20sobre%20ReConectar." class="btn">WhatsApp · 3060-7168</a>
+    <a href="mailto:clinicalogos@ronaldescobar.com" class="btn-ghost">clinicalogos@ronaldescobar.com →</a>
   </div>
-</section>
+</div>
 
-<!-- CTA -->
-<section class="cta-final">
-  <span class="cta-pretitulo reveal">Plazas limitadas · Proceso piloto</span>
-  <h2 class="cta-titulo reveal">
-    Si sentís que<br>
-    <em>este espacio es para vos,</em><br>
-    conversemos.
-  </h2>
-  <p class="cta-sub reveal">
-    Una primera conversación sin compromiso<br>
-    para ver si este es el encuadre adecuado.
-  </p>
-  <div class="cta-botones reveal">
-    <a href="https://wa.me/50230607168?text=Hola,%20me%20interesa%20ReConectar." target="_blank" rel="noopener" class="btn-grad">Hablar por WhatsApp</a>
-    <a href="mailto:clinicalogos@ronaldescobar.com?subject=ReConectar" class="btn-ghost" style="color:var(--gris)">Escribir email →</a>
-  </div>
-</section>
-
+<!-- FOOTER -->
 <footer>
   <span>© Ronald Escobar · ReConectar</span>
-  <span class="footer-grad">Clínica · Arte · Proceso</span>
-  <span>ronaldescobar.com</span>
+  <span>Neurociencia · Arte · Humanidad</span>
+  <a href="https://ronaldescobar.com">ronaldescobar.com</a>
 </footer>
 
-<script>
-  const obs=new IntersectionObserver(entries=>{ entries.forEach((e,i)=>{ if(e.isIntersecting){ setTimeout(()=>e.target.classList.add('visible'),i*70); obs.unobserve(e.target); } }); },{threshold:0.1});
-  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
-</script>
 </body>
 </html>
