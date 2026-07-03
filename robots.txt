@@ -1,5 +1,5 @@
 User-agent: *
 Allow: /
-Disallow: /quiniela/
-
+Disallow: /asistente.html
+Disallow: /asistente-artistas.html
 Sitemap: https://ronaldescobar.com/sitemap.xml
