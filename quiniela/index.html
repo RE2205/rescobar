@@ -888,22 +888,44 @@ body::before {
 <script>
 // ─── DATA ───────────────────────────────────────────────────────────
 const allMatches = [
-  {id:'m73', t1:'Sudáfrica',   f1:'🇿🇦', t2:'Canadá',      f2:'🇨🇦', s1:0, s2:0, done:false, date:'Jun 28', hora:'13:00', grupo:'Round of 32'},
-  {id:'m76', t1:'Brasil',      f1:'🇧🇷', t2:'Japón',        f2:'🇯🇵', s1:0, s2:0, done:false, date:'Jun 29', hora:'11:00', grupo:'Round of 32'},
-  {id:'m74', t1:'Alemania',    f1:'🇩🇪', t2:'Paraguay',     f2:'🇵🇾', s1:0, s2:0, done:false, date:'Jun 29', hora:'14:30', grupo:'Round of 32'},
-  {id:'m75', t1:'Países Bajos',f1:'🇳🇱', t2:'Marruecos',   f2:'🇲🇦', s1:0, s2:0, done:false, date:'Jun 29', hora:'19:00', grupo:'Round of 32'},
-  {id:'m78', t1:'C. de Marfil',f1:'🇨🇮', t2:'Noruega',     f2:'🇳🇴', s1:0, s2:0, done:false, date:'Jun 30', hora:'11:00', grupo:'Round of 32'},
-  {id:'m77', t1:'Francia',     f1:'🇫🇷', t2:'Suecia',      f2:'🇸🇪', s1:0, s2:0, done:false, date:'Jun 30', hora:'15:00', grupo:'Round of 32'},
-  {id:'m79', t1:'México',      f1:'🇲🇽', t2:'Ecuador',     f2:'🇪🇨', s1:0, s2:0, done:false, date:'Jun 30', hora:'19:00', grupo:'Round of 32'},
-  {id:'m80', t1:'Inglaterra',  f1:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', t2:'RD Congo',   f2:'🇨🇩', s1:0, s2:0, done:false, date:'Jul 1',  hora:'10:00', grupo:'Round of 32'},
-  {id:'m82', t1:'Bélgica',     f1:'🇧🇪', t2:'Senegal',     f2:'🇸🇳', s1:0, s2:0, done:false, date:'Jul 1',  hora:'14:00', grupo:'Round of 32'},
-  {id:'m81', t1:'EE.UU.',      f1:'🇺🇸', t2:'Bosnia',      f2:'🇧🇦', s1:0, s2:0, done:false, date:'Jul 1',  hora:'18:00', grupo:'Round of 32'},
-  {id:'m84', t1:'España',      f1:'🇪🇸', t2:'Austria',     f2:'🇦🇹', s1:0, s2:0, done:false, date:'Jul 2',  hora:'13:00', grupo:'Round of 32'},
-  {id:'m83', t1:'Portugal',    f1:'🇵🇹', t2:'Croacia',     f2:'🇭🇷', s1:0, s2:0, done:false, date:'Jul 2',  hora:'17:00', grupo:'Round of 32'},
-  {id:'m85', t1:'Suiza',       f1:'🇨🇭', t2:'Argelia',     f2:'🇩🇿', s1:0, s2:0, done:false, date:'Jul 2',  hora:'21:00', grupo:'Round of 32'},
-  {id:'m88', t1:'Australia',   f1:'🇦🇺', t2:'Egipto',      f2:'🇪🇬', s1:0, s2:0, done:false, date:'Jul 3',  hora:'12:00', grupo:'Round of 32'},
-  {id:'m86', t1:'Argentina',   f1:'🇦🇷', t2:'Cabo Verde',  f2:'🇨🇻', s1:0, s2:0, done:false, date:'Jul 3',  hora:'16:00', grupo:'Round of 32'},
-  {id:'m87', t1:'Colombia',    f1:'🇨🇴', t2:'Ghana',       f2:'🇬🇭', s1:0, s2:0, done:false, date:'Jul 3',  hora:'19:30', grupo:'Round of 32'},
+  // ROUND OF 32
+  {id:'m73',t1:'Sudáfrica',   f1:'🇿🇦',t2:'Canadá',     f2:'🇨🇦',s1:0,s2:1,done:true, date:'Jun 28',hora:'13:00',grupo:'Round of 32'},
+  {id:'m76',t1:'Brasil',      f1:'🇧🇷',t2:'Japón',       f2:'🇯🇵',s1:2,s2:1,done:true, date:'Jun 29',hora:'11:00',grupo:'Round of 32'},
+  {id:'m74',t1:'Alemania',    f1:'🇩🇪',t2:'Paraguay',    f2:'🇵🇾',s1:0,s2:1,done:true, date:'Jun 29',hora:'14:30',grupo:'Round of 32'},
+  {id:'m75',t1:'Países Bajos',f1:'🇳🇱',t2:'Marruecos',  f2:'🇲🇦',s1:0,s2:1,done:true, date:'Jun 29',hora:'19:00',grupo:'Round of 32'},
+  {id:'m78',t1:'C. de Marfil',f1:'🇨🇮',t2:'Noruega',    f2:'🇳🇴',s1:0,s2:1,done:true, date:'Jun 30',hora:'11:00',grupo:'Round of 32'},
+  {id:'m77',t1:'Francia',     f1:'🇫🇷',t2:'Suecia',     f2:'🇸🇪',s1:1,s2:0,done:true, date:'Jun 30',hora:'15:00',grupo:'Round of 32'},
+  {id:'m79',t1:'México',      f1:'🇲🇽',t2:'Ecuador',    f2:'🇪🇨',s1:1,s2:0,done:true, date:'Jun 30',hora:'19:00',grupo:'Round of 32'},
+  {id:'m80',t1:'Inglaterra',  f1:'🏴󠁧󠁢󠁥󠁮󠁧󠁿',t2:'RD Congo',  f2:'🇨🇩',s1:1,s2:0,done:true, date:'Jul 1', hora:'10:00',grupo:'Round of 32'},
+  {id:'m82',t1:'Bélgica',     f1:'🇧🇪',t2:'Senegal',    f2:'🇸🇳',s1:1,s2:0,done:true, date:'Jul 1', hora:'14:00',grupo:'Round of 32'},
+  {id:'m81',t1:'EE.UU.',      f1:'🇺🇸',t2:'Bosnia',     f2:'🇧🇦',s1:1,s2:0,done:true, date:'Jul 1', hora:'18:00',grupo:'Round of 32'},
+  {id:'m84',t1:'España',      f1:'🇪🇸',t2:'Austria',    f2:'🇦🇹',s1:1,s2:0,done:true, date:'Jul 2', hora:'13:00',grupo:'Round of 32'},
+  {id:'m83',t1:'Portugal',    f1:'🇵🇹',t2:'Croacia',    f2:'🇭🇷',s1:1,s2:0,done:true, date:'Jul 2', hora:'17:00',grupo:'Round of 32'},
+  {id:'m85',t1:'Suiza',       f1:'🇨🇭',t2:'Argelia',    f2:'🇩🇿',s1:1,s2:0,done:true, date:'Jul 2', hora:'21:00',grupo:'Round of 32'},
+  {id:'m88',t1:'Australia',   f1:'🇦🇺',t2:'Egipto',     f2:'🇪🇬',s1:1,s2:0,done:true, date:'Jul 3', hora:'12:00',grupo:'Round of 32'},
+  {id:'m86',t1:'Argentina',   f1:'🇦🇷',t2:'Cabo Verde', f2:'🇨🇻',s1:1,s2:0,done:true, date:'Jul 3', hora:'16:00',grupo:'Round of 32'},
+  {id:'m87',t1:'Colombia',    f1:'🇨🇴',t2:'Ghana',      f2:'🇬🇭',s1:1,s2:0,done:true, date:'Jul 3', hora:'19:30',grupo:'Round of 32'},
+  // OCTAVOS DE FINAL
+  {id:'r01',t1:'Brasil',      f1:'🇧🇷',t2:'Noruega',    f2:'🇳🇴',s1:0,s2:0,done:false,date:'Jul 4', hora:'14:00',grupo:'Octavos de Final'},
+  {id:'r02',t1:'Francia',     f1:'🇫🇷',t2:'Paraguay',   f2:'🇵🇾',s1:0,s2:0,done:false,date:'Jul 4', hora:'15:00',grupo:'Octavos de Final'},
+  {id:'r03',t1:'México',      f1:'🇲🇽',t2:'Inglaterra', f2:'🏴󠁧󠁢󠁥󠁮󠁧󠁿',s1:0,s2:0,done:false,date:'Jul 5', hora:'18:00',grupo:'Octavos de Final'},
+  {id:'r04',t1:'Colombia',    f1:'🇨🇴',t2:'Bélgica',    f2:'🇧🇪',s1:0,s2:0,done:false,date:'Jul 5', hora:'19:00',grupo:'Octavos de Final'},
+  {id:'r05',t1:'Portugal',    f1:'🇵🇹',t2:'España',     f2:'🇪🇸',s1:0,s2:0,done:false,date:'Jul 6', hora:'13:00',grupo:'Octavos de Final'},
+  {id:'r06',t1:'EE.UU.',      f1:'🇺🇸',t2:'Bélgica',    f2:'🇧🇪',s1:0,s2:0,done:false,date:'Jul 6', hora:'18:00',grupo:'Octavos de Final'},
+  {id:'r07',t1:'Argentina',   f1:'🇦🇷',t2:'Australia',  f2:'🇦🇺',s1:0,s2:0,done:false,date:'Jul 7', hora:'10:00',grupo:'Octavos de Final'},
+  {id:'r08',t1:'Canadá',      f1:'🇨🇦',t2:'Marruecos',  f2:'🇲🇦',s1:0,s2:0,done:false,date:'Jul 7', hora:'14:00',grupo:'Octavos de Final'},
+  // CUARTOS DE FINAL
+  {id:'q01',t1:'Por definir', f1:'🏳',t2:'Por definir', f2:'🏳',s1:0,s2:0,done:false,date:'Jul 9', hora:'14:00',grupo:'Cuartos de Final'},
+  {id:'q02',t1:'Por definir', f1:'🏳',t2:'Por definir', f2:'🏳',s1:0,s2:0,done:false,date:'Jul 9', hora:'18:00',grupo:'Cuartos de Final'},
+  {id:'q03',t1:'Por definir', f1:'🏳',t2:'Por definir', f2:'🏳',s1:0,s2:0,done:false,date:'Jul 10',hora:'13:00',grupo:'Cuartos de Final'},
+  {id:'q04',t1:'Por definir', f1:'🏳',t2:'Por definir', f2:'🏳',s1:0,s2:0,done:false,date:'Jul 11',hora:'19:00',grupo:'Cuartos de Final'},
+  // SEMIFINALES
+  {id:'s01',t1:'Por definir', f1:'🏳',t2:'Por definir', f2:'🏳',s1:0,s2:0,done:false,date:'Jul 14',hora:'13:00',grupo:'Semifinal'},
+  {id:'s02',t1:'Por definir', f1:'🏳',t2:'Por definir', f2:'🏳',s1:0,s2:0,done:false,date:'Jul 15',hora:'13:00',grupo:'Semifinal'},
+  // TERCER PUESTO
+  {id:'t01',t1:'Por definir', f1:'🏳',t2:'Por definir', f2:'🏳',s1:0,s2:0,done:false,date:'Jul 18',hora:'15:00',grupo:'Tercer Puesto'},
+  // FINAL
+  {id:'f01',t1:'Por definir', f1:'🏳',t2:'Por definir', f2:'🏳',s1:0,s2:0,done:false,date:'Jul 19',hora:'13:00',grupo:'Final'},
 ];
 
 const champVotes = {
@@ -1288,24 +1310,45 @@ function renderMatches() {
   const container = document.getElementById('matches-container');
 
   // Schedule: next match start times (Guatemala time, UTC-6)
-  // Horarios oficiales Guatemala (Prensa Libre / ClaroSports)
+  // Horarios oficiales Guatemala (CT = UTC-6)
   const schedule = {
-    'm73': new Date('2026-06-28T13:00:00-06:00'), // Sudáfrica vs Canadá — 13:00 GT
-    'm76': new Date('2026-06-29T11:00:00-06:00'), // Brasil vs Japón — 11:00 GT
-    'm74': new Date('2026-06-29T14:30:00-06:00'), // Alemania vs Paraguay — 14:30 GT
-    'm75': new Date('2026-06-29T19:00:00-06:00'), // Países Bajos vs Marruecos — 19:00 GT
-    'm78': new Date('2026-06-30T11:00:00-06:00'), // C. de Marfil vs Noruega — 11:00 GT
-    'm77': new Date('2026-06-30T15:00:00-06:00'), // Francia vs Suecia — 15:00 GT
-    'm79': new Date('2026-06-30T19:00:00-06:00'), // México vs Ecuador — 19:00 GT
-    'm80': new Date('2026-07-01T10:00:00-06:00'), // Inglaterra vs RD Congo — 10:00 GT
-    'm82': new Date('2026-07-01T14:00:00-06:00'), // Bélgica vs Senegal — 14:00 GT
-    'm81': new Date('2026-07-01T18:00:00-06:00'), // EE.UU. vs Bosnia — 18:00 GT
-    'm84': new Date('2026-07-02T13:00:00-06:00'), // España vs Austria — 13:00 GT
-    'm83': new Date('2026-07-02T17:00:00-06:00'), // Portugal vs Croacia — 17:00 GT
-    'm85': new Date('2026-07-02T21:00:00-06:00'), // Suiza vs Argelia — 21:00 GT
-    'm88': new Date('2026-07-03T12:00:00-06:00'), // Australia vs Egipto — 12:00 GT
-    'm86': new Date('2026-07-03T16:00:00-06:00'), // Argentina vs Cabo Verde — 16:00 GT
-    'm87': new Date('2026-07-03T19:30:00-06:00'), // Colombia vs Ghana — 19:30 GT
+    // Round of 32
+    'm73': new Date('2026-06-28T13:00:00-06:00'),
+    'm76': new Date('2026-06-29T11:00:00-06:00'),
+    'm74': new Date('2026-06-29T14:30:00-06:00'),
+    'm75': new Date('2026-06-29T19:00:00-06:00'),
+    'm78': new Date('2026-06-30T11:00:00-06:00'),
+    'm77': new Date('2026-06-30T15:00:00-06:00'),
+    'm79': new Date('2026-06-30T19:00:00-06:00'),
+    'm80': new Date('2026-07-01T10:00:00-06:00'),
+    'm82': new Date('2026-07-01T14:00:00-06:00'),
+    'm81': new Date('2026-07-01T18:00:00-06:00'),
+    'm84': new Date('2026-07-02T13:00:00-06:00'),
+    'm83': new Date('2026-07-02T17:00:00-06:00'),
+    'm85': new Date('2026-07-02T21:00:00-06:00'),
+    'm88': new Date('2026-07-03T12:00:00-06:00'),
+    'm86': new Date('2026-07-03T16:00:00-06:00'),
+    'm87': new Date('2026-07-03T19:30:00-06:00'),
+    // Octavos de Final
+    'r01': new Date('2026-07-04T14:00:00-06:00'),
+    'r02': new Date('2026-07-04T15:00:00-06:00'),
+    'r03': new Date('2026-07-05T18:00:00-06:00'),
+    'r04': new Date('2026-07-05T19:00:00-06:00'),
+    'r05': new Date('2026-07-06T13:00:00-06:00'),
+    'r06': new Date('2026-07-06T18:00:00-06:00'),
+    'r07': new Date('2026-07-07T10:00:00-06:00'),
+    'r08': new Date('2026-07-07T14:00:00-06:00'),
+    // Cuartos
+    'q01': new Date('2026-07-09T14:00:00-06:00'),
+    'q02': new Date('2026-07-09T18:00:00-06:00'),
+    'q03': new Date('2026-07-10T13:00:00-06:00'),
+    'q04': new Date('2026-07-11T19:00:00-06:00'),
+    // Semis
+    's01': new Date('2026-07-14T13:00:00-06:00'),
+    's02': new Date('2026-07-15T13:00:00-06:00'),
+    // Final
+    't01': new Date('2026-07-18T15:00:00-06:00'),
+    'f01': new Date('2026-07-19T13:00:00-06:00'),
   };
 
   const now = new Date();
