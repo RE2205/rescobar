@@ -865,9 +865,7 @@ body::before {
       <span class="section-title">KO Stage 2026</span>
       <span class="section-badge">Round of 32</span>
     </div>
-    <div class="bracket-wrapper">
-      <div class="bracket" id="bracket-visual"></div>
-    </div>
+    <div id="bracket-visual"></div>
   </div>
 
   <!-- SISTEMA -->
@@ -1133,77 +1131,70 @@ function renderBracket() {
   const el = document.getElementById('bracket-visual');
   if (!el) return;
 
-  // Orden real del cuadro eliminatorio (verificado vs ESPN bracket):
-  const bracketLeftIds  = ['m74','m77','m73','m75','m83','m84','m81','m82'];
-  const bracketRightIds = ['m76','m78','m79','m80','m86','m88','m85','m87'];
-  const leftMatches = bracketLeftIds.map(id => allMatches.find(m => m.id === id)).filter(Boolean);
-  const rightMatches = bracketRightIds.map(id => allMatches.find(m => m.id === id)).filter(Boolean);
+  const rounds = [
+    { label: '⚽ Round of 32', ids: ['m73','m76','m74','m75','m78','m77','m79','m80','m82','m81','m84','m83','m85','m88','m86','m87'] },
+    { label: '⚔️ Octavos de Final', ids: ['r01','r02','r03','r04','r05','r06','r07','r08'] },
+    { label: '🏅 Cuartos de Final', ids: ['q01','q02','q03','q04'] },
+    { label: '🔥 Semifinales', ids: ['s01','s02'] },
+    { label: '🥉 Tercer Puesto', ids: ['t01'] },
+    { label: '🏆 Final', ids: ['f01'] },
+  ];
 
-  function bMatchHtml(m) {
-    const s1 = m.done ? m.s1 : '';
-    const s2 = m.done ? m.s2 : '';
+  function bCard(m) {
+    if (!m) return '';
+    const isLive = m.live && !m.done;
     const w1 = m.done && m.s1 > m.s2;
     const w2 = m.done && m.s2 > m.s1;
-    const scoreClass = m.done ? '' : 'pending';
-    const cardClass = m.done ? 'done' : (!m.t1.includes('?') ? '' : 'tbd');
-    return `<div class="b-match ${cardClass}">
-      <div class="b-team ${w1 ? 'winner' : m.done ? 'loser' : ''}">
-        <span class="b-flag">${m.f1}</span>
-        <span class="b-name">${m.t1}</span>
-        <span class="b-score ${scoreClass}">${s1}</span>
+    const isPending = !m.done && !isLive && m.t1 !== 'Por definir';
+    const isTbd = m.t1 === 'Por definir';
+
+    const cardCls = m.done ? 'done' : isLive ? 'live' : '';
+    const scoreHtml = m.done
+      ? `<div class="score-box" style="font-size:20px;">${m.s1}–${m.s2}</div>`
+      : isLive
+      ? `<div class="score-box" style="font-size:20px;color:var(--red);">${m.s1}–${m.s2}</div>`
+      : `<div class="score-box pending" style="font-size:14px;">vs</div>`;
+
+    const statusHtml = m.done
+      ? `<span class="match-status status-done">✓ Final</span>`
+      : isLive
+      ? `<span class="live-badge"><span class="live-dot"></span>En Vivo</span>`
+      : isTbd
+      ? `<span class="match-status" style="color:var(--muted);">Por definir</span>`
+      : `<span class="match-status status-next">${m.hora}</span>`;
+
+    return `<div class="match-card ${cardCls}" style="margin-bottom:8px;">
+      <div class="team-side">
+        <div class="team-flag">${m.f1}</div>
+        <div class="team-name" style="${w1?'color:var(--gold);':''}">${m.t1}</div>
       </div>
-      <div class="b-team ${w2 ? 'winner' : m.done ? 'loser' : ''}">
-        <span class="b-flag">${m.f2}</span>
-        <span class="b-name">${m.t2}</span>
-        <span class="b-score ${scoreClass}">${s2}</span>
+      <div class="match-center">
+        ${scoreHtml}
+        ${statusHtml}
+        <div class="match-meta">${m.date}</div>
       </div>
-      <div class="b-date">${m.date} · ${m.hora}</div>
+      <div class="team-side right">
+        <div class="team-flag">${m.f2}</div>
+        <div class="team-name" style="${w2?'color:var(--gold);':''}">${m.t2}</div>
+      </div>
     </div>`;
   }
 
-  const leftHtml = leftMatches.map(m => `
-    <div class="bracket-match-wrap">${bMatchHtml(m)}</div>
-  `).join('');
-
-  const rightHtml = rightMatches.map(m => `
-    <div class="bracket-match-wrap">${bMatchHtml(m)}</div>
-  `).join('');
-
-  el.innerHTML = `
-    <div class="bracket-round">
-      <div class="bracket-round-title">Round of 32</div>
-      <div class="bracket-matches">${leftHtml}</div>
-    </div>
-    <div class="bracket-round" style="max-width:80px;flex:0;">
-      <div class="bracket-round-title">R16</div>
-      <div class="bracket-matches">
-        ${[0,1,2,3].map(() => `<div class="bracket-match-wrap">
-          <div class="b-match tbd">
-            <div class="b-team"><span class="b-flag">🏳</span><span class="b-name">Por definir</span></div>
-            <div class="b-team"><span class="b-flag">🏳</span><span class="b-name">Por definir</span></div>
-          </div>
-        </div>`).join('')}
+  let html = '';
+  rounds.forEach(round => {
+    const matches = round.ids.map(id => allMatches.find(m => m.id === id)).filter(Boolean);
+    const doneCount = matches.filter(m => m.done).length;
+    const total = matches.length;
+    html += `<div class="bracket-section">
+      <div class="bracket-title">
+        ${round.label}
+        <span style="font-size:10px;color:var(--muted);font-weight:400;margin-left:8px;">${doneCount}/${total} jugados</span>
       </div>
-    </div>
-    <div class="bracket-trophy">
-      <div class="trophy-icon">🏆</div>
-      <div class="trophy-label">WC 2026</div>
-    </div>
-    <div class="bracket-round" style="max-width:80px;flex:0;">
-      <div class="bracket-round-title">R16</div>
-      <div class="bracket-matches">
-        ${[0,1,2,3].map(() => `<div class="bracket-match-wrap">
-          <div class="b-match tbd">
-            <div class="b-team"><span class="b-flag">🏳</span><span class="b-name">Por definir</span></div>
-            <div class="b-team"><span class="b-flag">🏳</span><span class="b-name">Por definir</span></div>
-          </div>
-        </div>`).join('')}
-      </div>
-    </div>
-    <div class="bracket-round">
-      <div class="bracket-round-title">Round of 32</div>
-      <div class="bracket-matches">${rightHtml}</div>
+      ${matches.map(bCard).join('')}
     </div>`;
+  });
+
+  el.innerHTML = html;
 }
 
 // ─── RENDER STANDINGS ─────────────────────────────────────────────────
