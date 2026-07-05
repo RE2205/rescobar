@@ -1033,13 +1033,36 @@ footer {
   }, { threshold: 0.08 });
   document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
-  // Hero video — asegurar autoplay en Chrome desktop (a veces bloquea sin interacción)
   const heroVideo = document.querySelector('.hero-video');
   if (heroVideo) {
     heroVideo.muted = true;
+    heroVideo.defaultMuted = true;
+    heroVideo.setAttribute('muted', '');
+    heroVideo.setAttribute('playsinline', '');
+    heroVideo.setAttribute('webkit-playsinline', '');
+
     const tryPlay = () => heroVideo.play().catch(() => {});
+
     tryPlay();
-    ['click', 'touchstart', 'keydown', 'scroll'].forEach(evt =>
+    setTimeout(tryPlay, 100);
+    setTimeout(tryPlay, 500);
+    setTimeout(tryPlay, 1500);
+
+    heroVideo.addEventListener('loadedmetadata', tryPlay);
+    heroVideo.addEventListener('loadeddata', tryPlay);
+    heroVideo.addEventListener('canplay', tryPlay);
+    heroVideo.addEventListener('canplaythrough', tryPlay);
+    heroVideo.addEventListener('stalled', tryPlay);
+    heroVideo.addEventListener('waiting', tryPlay);
+
+    window.addEventListener('load', tryPlay);
+    window.addEventListener('pageshow', tryPlay);
+
+    document.addEventListener('visibilitychange', () => {
+      if (!document.hidden) tryPlay();
+    });
+
+    ['click', 'touchstart', 'touchend', 'keydown', 'scroll'].forEach(evt =>
       document.addEventListener(evt, tryPlay, { once: true, passive: true })
     );
   }
