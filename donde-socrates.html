@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Dónde Sócrates — Hablar con un psiquiatra en Guatemala antes de decidir | Logos Psyche</title>
-    <meta name="description" content="Dónde Sócrates — Conversá con una IA antes de decidir si querés una consulta psiquiátrica. Diseñado por el Dr. Ronald Escobar. Gratuito y anónimo.">
+    <title>Dónde Sócrates · Logos Psyche | Dr. Ronald Escobar, Psiquiatra en Guatemala</title>
+    <meta name="description" content="No necesitás saber qué tenés. Solo empezar a hablar. Logos Psyche — Neurociencia, Arte, Humanidad.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
@@ -293,31 +293,32 @@
             .btn-send { padding: 12px 14px; font-size: 9px; }
             .wa-fijo { flex-direction: column; align-items: flex-start; }
         }
+        .resumen-box {
+            background: rgba(212,184,74,0.05);
+            border: 1px solid rgba(212,184,74,0.2);
+            padding: 24px 28px;
+            margin: 16px 0;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 17px;
+            line-height: 1.9;
+            color: rgba(240,237,230,0.88);
+            white-space: pre-wrap;
+        }
+        .resumen-acciones {
+            display: flex; gap: 12px; margin-top: 12px; flex-wrap: wrap;
+        }
+        .resumen-btn {
+            font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase;
+            padding: 8px 18px; border: none; cursor: pointer;
+            font-family: 'Courier Prime', monospace;
+        }
+        .resumen-btn.copiar { background: var(--amarillo); color: var(--negro); }
+        .resumen-btn.wa { background: #25D366; color: var(--negro); }
+
         @media (prefers-reduced-motion: reduce) {
             *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
         }
     </style>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Physician",
-  "name": "Dr. Ronald Escobar",
-  "description": "Psiquiatra en Guatemala City. Logos Psyche — Neurociencia, Arte, Humanidad.",
-  "url": "https://ronaldescobar.com",
-  "telephone": "+50230607168",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "Integra Medical Center, Clínica 810",
-    "addressLocality": "Ciudad de Guatemala",
-    "addressCountry": "GT"
-  },
-  "medicalSpecialty": "Psychiatry",
-  "availableService": {
-    "@type": "MedicalTherapy",
-    "name": "Consulta psiquiátrica presencial y online"
-  }
-}
-</script>
 </head>
 <body>
 
@@ -331,7 +332,7 @@
 
     <section class="hero" id="hero">
         <div class="hero-img-wrapper">
-            <img src="assets/ronald_v2.webp" alt="Dr. Ronald Escobar — Logos Psyche, Guatemala" class="hero-img" loading="eager">
+            <img src="assets/ronald_v2.jpg" alt="Dr. Ronald Escobar — Logos Psyche, Guatemala" class="hero-img" loading="eager">
         </div>
         <div class="hero-content">
             <span class="hero-eyebrow">Primera conversación</span>
@@ -341,7 +342,7 @@
             </h1>
             <div class="hero-doctor-card">
                 <div class="hero-doctor-avatar">
-                    <img src="assets/portada4.webp" alt="Dr. Ronald Escobar">
+                    <img src="assets/portada4.PNG" alt="Dr. Ronald Escobar">
                 </div>
                 <div>
                     <div class="hero-doctor-nombre">Dr. Ronald Escobar</div>
@@ -358,7 +359,7 @@
     <div class="chat-section">
         <div class="chat-header">
             <div style="width:48px;height:48px;flex-shrink:0;">
-                <img src="https://ronaldescobar.com/assets/cerebro-isotipo.webp" alt="Dónde Sócrates" style="width:48px;height:auto;">
+                <img src="https://ronaldescobar.com/assets/cerebro-isotipo.png" alt="Dónde Sócrates" style="width:48px;height:auto;">
             </div>
             <div class="chat-header-info">
                 <div class="chat-header-title">Dónde Sócrates</div>
@@ -370,9 +371,9 @@
 
         <div class="messages" id="messages">
             <div class="chat-disclaimer">
-                <p>Este espacio es para pensar, no para diagnosticar.<br>
-                Lo que hablés acá puede abrirte las preguntas correctas para tu primera consulta.<br>
-                Logos Psyche no almacena tus conversaciones.</p>
+                <p>Lo que escribís acá no lo leo yo. Esta conversación es tuya.<br>
+                No queda guardada en ningún servidor.<br>
+                Al final, podés pedirle un resumen — para quedártelo como mapa, o para traerlo a consulta.</p>
             </div>
         </div>
 
@@ -381,6 +382,11 @@
                 <span class="cta-bar-label">Siguiente paso</span>
                 <p>¿Querés continuar esto con el Dr. Escobar?</p>
                 <a href="https://wa.me/50230607168?text=Hola,%20quisiera%20iniciar%20proceso%20clínico." target="_blank" class="cta-bar-btn">WhatsApp · Agendar consulta</a>
+            </div>
+            <div class="cta-bar" id="resumenBar" style="display:none;border-top:1px solid rgba(78,205,196,0.1);margin-top:8px;">
+                <span class="cta-bar-label" style="color:var(--amarillo);">Tu mapa</span>
+                <p>¿Querés un resumen de esta conversación?</p>
+                <button onclick="pedirResumen()" class="cta-bar-btn" style="background:transparent;border:1px solid rgba(212,184,74,0.4);color:var(--amarillo);cursor:pointer;font-family:'Courier Prime',monospace;">Generar resumen</button>
             </div>
 
             <div class="input-row">
@@ -421,7 +427,7 @@
         });
 
         window.addEventListener('DOMContentLoaded', () => {
-            const bienvenida = "Hola. Soy Dónde Sócrates.\n\nNo soy el Dr. Escobar — soy una herramienta creada por él para que puedas pensar antes de decidir.\n\n¿Qué te trajo hasta acá?";
+            const bienvenida = "Hola. No tenés que saber qué te pasa para estar acá.\n\nLo que escribás queda entre vos y este espacio — nadie más lo lee.\n\n¿Qué traés hoy?";
             addMessage('assistant', bienvenida);
             messages.push({ role: 'assistant', content: bienvenida });
         });
@@ -482,6 +488,58 @@
             isTyping = false;
             inputField.focus();
             if (messageCount >= 3) ctaBar.classList.add('visible');
+        }
+
+        let resumenGenerado = false;
+
+        function mostrarResumenBar() {
+            const bar = document.getElementById('resumenBar');
+            if (bar && messageCount >= 4) bar.style.display = 'block';
+        }
+
+        async function pedirResumen() {
+            if (resumenGenerado) return;
+            resumenGenerado = true;
+
+            const resumenPrompt = [
+                ...messages,
+                { role: 'user', content: 'Por favor hacé un resumen breve de esta conversación como si fuera un mapa: qué traje, qué apareció, qué preguntas quedaron abiertas. Máximo 150 palabras. Sin diagnósticos.' }
+            ];
+
+            addMessage('assistant', 'Preparando tu mapa...');
+
+            try {
+                const res = await fetch(API_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ messages: resumenPrompt })
+                });
+                const data = await res.json();
+                const resumenTexto = data.content?.[0]?.text || data.response || '';
+
+                // Remove "Preparando..." bubble
+                const bubbles = messagesDiv.querySelectorAll('.msg.assistant');
+                if (bubbles.length) bubbles[bubbles.length - 1].remove();
+
+                // Show resumen box
+                const box = document.createElement('div');
+                box.className = 'resumen-box';
+                box.innerHTML = `<strong style="font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--amarillo);font-family:'Courier Prime',monospace;">Tu mapa</strong><br><br>${resumenTexto}<div class="resumen-acciones"><button class="resumen-btn copiar" onclick="copiarResumen(this)">Copiar</button><a href="https://wa.me/50230607168?text=${encodeURIComponent('Mi resumen de Dónde Sócrates:\n\n' + resumenTexto)}" target="_blank" class="resumen-btn wa" style="text-decoration:none;display:inline-block;">Enviar al Dr. Escobar</a></div>`;
+                messagesDiv.appendChild(box);
+                box.scrollIntoView({ behavior: 'smooth', block: 'end' });
+
+            } catch(e) {
+                addMessage('assistant', 'No pude generar el resumen ahora. Podés copiar la conversación manualmente.');
+            }
+        }
+
+        function copiarResumen(btn) {
+            const box = btn.closest('.resumen-box');
+            const texto = box.innerText.replace('Tu mapa', '').replace('Copiar', '').replace('Enviar al Dr. Escobar', '').trim();
+            navigator.clipboard.writeText(texto).then(() => {
+                btn.textContent = '¡Copiado!';
+                setTimeout(() => btn.textContent = 'Copiar', 2000);
+            });
         }
     </script>
 </body>
