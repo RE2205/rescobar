@@ -647,7 +647,7 @@ async function handleLogin() {
     if (res.status === 401) { showError("Clave no reconocida. Contacta a tu terapeuta."); btn.disabled = false; btn.textContent = "Entrar"; return; }
     if (!res.ok) { showError("Error de conexión. Intentá de nuevo."); btn.disabled = false; btn.textContent = "Entrar"; return; }
     const data = await res.json();
-    const bienvenida = data.text || "Hola. Estoy acá.\n\nNadie más lee esto — es solo tuyo. No tenés que tener todo claro para escribir.\n\n¿Qué estás cargando hoy?";
+    const bienvenida = "Hola.\n\nEstoy acá.\n\nNadie más lee esto — es solo tuyo. No tenés que tener todo claro para escribir.\n\n¿Qué estás cargando hoy?";
     document.getElementById("landing").style.display = "none";
     document.getElementById("chat").style.display = "block";
     messages.push({ role: "assistant", content: bienvenida });
