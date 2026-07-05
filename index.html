@@ -125,9 +125,8 @@ nav.scrolled {
 .hero-video {
   position: absolute; inset: 0;
   width: 100%; height: 100%;
-  object-fit: contain;
-  object-position: center;
-  background: var(--negro);
+  object-fit: cover;
+  object-position: center center;
   z-index: 0;
 }
 
@@ -643,7 +642,6 @@ footer {
 
 /* ─── RESPONSIVE ─── */
 @media (max-width: 900px) {
-  .hero-video { object-fit: cover; object-position: center 30%; }
   nav { padding: 18px 24px; }
   .nav-links { gap: 18px; }
   .nav-links a { font-size: 9px; }
