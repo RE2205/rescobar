@@ -778,7 +778,7 @@ body::before {
   <div id="tabla" class="panel active">
     <div class="section-header">
       <span class="section-title">Tabla de Posiciones</span>
-      <span class="section-badge" id="jornada-badge">Round of 32 · Fase Eliminatoria</span>
+      <span class="section-badge" id="jornada-badge">Octavos de Final · Fase Eliminatoria</span>
     </div>
 
     <div id="next-match-section"></div>
@@ -808,7 +808,7 @@ body::before {
   <div id="partidos" class="panel">
     <div class="section-header">
       <span class="section-title">Partidos</span>
-      <span class="section-badge">Round of 32</span>
+      <span class="section-badge">Round of 16 · Octavos</span>
     </div>
     <div id="matches-container">
       <div class="loading-pulse">Cargando partidos</div>
@@ -862,7 +862,7 @@ body::before {
   <div id="bracket" class="panel">
     <div class="section-header">
       <span class="section-title">KO Stage 2026</span>
-      <span class="section-badge">Round of 32</span>
+      <span class="section-badge">Round of 16 · Octavos</span>
     </div>
     <div class="bracket-wrapper">
       <div class="bracket" id="bracket-visual"></div>
@@ -903,6 +903,15 @@ const allMatches = [
   {id:'m88', t1:'Australia',   f1:'🇦🇺', t2:'Egipto',      f2:'🇪🇬', s1:0, s2:0, done:false, date:'Jul 3',  hora:'12:00', grupo:'Round of 32'},
   {id:'m86', t1:'Argentina',   f1:'🇦🇷', t2:'Cabo Verde',  f2:'🇨🇻', s1:0, s2:0, done:false, date:'Jul 3',  hora:'16:00', grupo:'Round of 32'},
   {id:'m87', t1:'Colombia',    f1:'🇨🇴', t2:'Ghana',       f2:'🇬🇭', s1:0, s2:0, done:false, date:'Jul 3',  hora:'19:30', grupo:'Round of 32'},
+  // ── ROUND OF 16 (Octavos) ────────────────────────────────────────
+  {id:'m89', t1:'Canadá',      f1:'🇨🇦', t2:'Marruecos',   f2:'🇲🇦', s1:0, s2:0, done:false, date:'Jul 4',  hora:'11:00', grupo:'Round of 16'},
+  {id:'m90', t1:'Paraguay',    f1:'🇵🇾', t2:'Francia',     f2:'🇫🇷', s1:0, s2:0, done:false, date:'Jul 4',  hora:'15:00', grupo:'Round of 16'},
+  {id:'m91', t1:'Brasil',      f1:'🇧🇷', t2:'Noruega',     f2:'🇳🇴', s1:0, s2:0, done:false, date:'Jul 5',  hora:'14:00', grupo:'Round of 16'},
+  {id:'m92', t1:'México',      f1:'🇲🇽', t2:'Inglaterra',  f2:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', s1:0, s2:0, done:false, date:'Jul 5',  hora:'18:00', grupo:'Round of 16'},
+  {id:'m93', t1:'Portugal',    f1:'🇵🇹', t2:'España',      f2:'🇪🇸', s1:0, s2:0, done:false, date:'Jul 6',  hora:'13:00', grupo:'Round of 16'},
+  {id:'m94', t1:'EE.UU.',      f1:'🇺🇸', t2:'Bélgica',     f2:'🇧🇪', s1:0, s2:0, done:false, date:'Jul 6',  hora:'18:00', grupo:'Round of 16'},
+  {id:'m95', t1:'Argentina',   f1:'🇦🇷', t2:'Egipto',      f2:'🇪🇬', s1:0, s2:0, done:false, date:'Jul 7',  hora:'12:00', grupo:'Round of 16'},
+  {id:'m96', t1:'Suiza',       f1:'🇨🇭', t2:'Colombia',    f2:'🇨🇴', s1:0, s2:0, done:false, date:'Jul 7',  hora:'16:00', grupo:'Round of 16'},
 ];
 
 const champVotes = {
@@ -1110,19 +1119,25 @@ function renderBracket() {
   const el = document.getElementById('bracket-visual');
   if (!el) return;
 
-  // Orden real del cuadro eliminatorio (verificado vs ESPN bracket):
+  // Round of 32 — orden correcto según ESPN bracket
   const bracketLeftIds  = ['m74','m77','m73','m75','m83','m84','m81','m82'];
   const bracketRightIds = ['m76','m78','m79','m80','m86','m88','m85','m87'];
-  const leftMatches = bracketLeftIds.map(id => allMatches.find(m => m.id === id)).filter(Boolean);
+  const leftMatches  = bracketLeftIds.map(id => allMatches.find(m => m.id === id)).filter(Boolean);
   const rightMatches = bracketRightIds.map(id => allMatches.find(m => m.id === id)).filter(Boolean);
 
+  // Round of 16 — emparejados según el cuadro oficial
+  const r16LeftIds  = ['m89','m90','m93','m94'];  // ganadores lado izquierdo
+  const r16RightIds = ['m91','m92','m95','m96'];  // ganadores lado derecho
+  const r16Left  = r16LeftIds.map(id => allMatches.find(m => m.id === id)).filter(Boolean);
+  const r16Right = r16RightIds.map(id => allMatches.find(m => m.id === id)).filter(Boolean);
+
   function bMatchHtml(m) {
-    const s1 = m.done ? m.s1 : '';
-    const s2 = m.done ? m.s2 : '';
+    const s1 = m.done ? m.s1 : (m.live ? m.s1 : '');
+    const s2 = m.done ? m.s2 : (m.live ? m.s2 : '');
     const w1 = m.done && m.s1 > m.s2;
     const w2 = m.done && m.s2 > m.s1;
-    const scoreClass = m.done ? '' : 'pending';
-    const cardClass = m.done ? 'done' : (!m.t1.includes('?') ? '' : 'tbd');
+    const scoreClass = (m.done || m.live) ? (m.live ? 'live-score' : '') : 'pending';
+    const cardClass = m.done ? 'done' : (m.live ? 'live' : (!m.t1.includes('?') ? '' : 'tbd'));
     return `<div class="b-match ${cardClass}">
       <div class="b-team ${w1 ? 'winner' : m.done ? 'loser' : ''}">
         <span class="b-flag">${m.f1}</span>
@@ -1138,44 +1153,27 @@ function renderBracket() {
     </div>`;
   }
 
-  const leftHtml = leftMatches.map(m => `
-    <div class="bracket-match-wrap">${bMatchHtml(m)}</div>
-  `).join('');
-
-  const rightHtml = rightMatches.map(m => `
-    <div class="bracket-match-wrap">${bMatchHtml(m)}</div>
-  `).join('');
+  const leftHtml   = leftMatches.map(m => `<div class="bracket-match-wrap">${bMatchHtml(m)}</div>`).join('');
+  const rightHtml  = rightMatches.map(m => `<div class="bracket-match-wrap">${bMatchHtml(m)}</div>`).join('');
+  const r16LHtml   = r16Left.map(m => `<div class="bracket-match-wrap">${bMatchHtml(m)}</div>`).join('');
+  const r16RHtml   = r16Right.map(m => `<div class="bracket-match-wrap">${bMatchHtml(m)}</div>`).join('');
 
   el.innerHTML = `
     <div class="bracket-round">
       <div class="bracket-round-title">Round of 32</div>
       <div class="bracket-matches">${leftHtml}</div>
     </div>
-    <div class="bracket-round" style="max-width:80px;flex:0;">
-      <div class="bracket-round-title">R16</div>
-      <div class="bracket-matches">
-        ${[0,1,2,3].map(() => `<div class="bracket-match-wrap">
-          <div class="b-match tbd">
-            <div class="b-team"><span class="b-flag">🏳</span><span class="b-name">Por definir</span></div>
-            <div class="b-team"><span class="b-flag">🏳</span><span class="b-name">Por definir</span></div>
-          </div>
-        </div>`).join('')}
-      </div>
+    <div class="bracket-round">
+      <div class="bracket-round-title">Round of 16</div>
+      <div class="bracket-matches">${r16LHtml}</div>
     </div>
     <div class="bracket-trophy">
       <div class="trophy-icon">🏆</div>
       <div class="trophy-label">WC 2026</div>
     </div>
-    <div class="bracket-round" style="max-width:80px;flex:0;">
-      <div class="bracket-round-title">R16</div>
-      <div class="bracket-matches">
-        ${[0,1,2,3].map(() => `<div class="bracket-match-wrap">
-          <div class="b-match tbd">
-            <div class="b-team"><span class="b-flag">🏳</span><span class="b-name">Por definir</span></div>
-            <div class="b-team"><span class="b-flag">🏳</span><span class="b-name">Por definir</span></div>
-          </div>
-        </div>`).join('')}
-      </div>
+    <div class="bracket-round">
+      <div class="bracket-round-title">Round of 16</div>
+      <div class="bracket-matches">${r16RHtml}</div>
     </div>
     <div class="bracket-round">
       <div class="bracket-round-title">Round of 32</div>
@@ -1303,6 +1301,14 @@ function renderMatches() {
     'm83': new Date('2026-07-02T17:00:00-06:00'), // Portugal vs Croacia — 17:00 GT
     'm85': new Date('2026-07-02T21:00:00-06:00'), // Suiza vs Argelia — 21:00 GT
     'm88': new Date('2026-07-03T12:00:00-06:00'), // Australia vs Egipto — 12:00 GT
+    'm89': new Date('2026-07-04T11:00:00-06:00'), // Canadá vs Marruecos — 11:00 GT
+    'm90': new Date('2026-07-04T15:00:00-06:00'), // Paraguay vs Francia — 15:00 GT
+    'm91': new Date('2026-07-05T14:00:00-06:00'), // Brasil vs Noruega — 14:00 GT
+    'm92': new Date('2026-07-05T18:00:00-06:00'), // México vs Inglaterra — 18:00 GT
+    'm93': new Date('2026-07-06T13:00:00-06:00'), // Portugal vs España — 13:00 GT
+    'm94': new Date('2026-07-06T18:00:00-06:00'), // EE.UU. vs Bélgica — 18:00 GT
+    'm95': new Date('2026-07-07T12:00:00-06:00'), // Argentina vs Egipto — 12:00 GT
+    'm96': new Date('2026-07-07T16:00:00-06:00'), // Suiza vs Colombia — 16:00 GT
     'm86': new Date('2026-07-03T16:00:00-06:00'), // Argentina vs Cabo Verde — 16:00 GT
     'm87': new Date('2026-07-03T19:30:00-06:00'), // Colombia vs Ghana — 19:30 GT
   };
