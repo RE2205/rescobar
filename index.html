@@ -67,13 +67,17 @@
 }
 
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
 
 body {
   background: var(--negro);
   color: var(--blanco);
   font-family: 'Courier Prime', monospace;
   overflow-x: hidden;
+  max-width: 100%;
 }
 
 /* GRAIN */
@@ -679,7 +683,7 @@ footer {
 
 <!-- S1: HERO -->
 <section class="hero" id="inicio">
-  <video class="hero-video" autoplay muted loop playsinline poster="assets/ronald-hero.jpg">
+  <video class="hero-video" autoplay muted loop playsinline preload="auto" disablepictureinpicture poster="assets/ronald-hero.jpg">
     <source src="assets/hero.webm" type="video/webm">
     <source src="assets/hero.mp4" type="video/mp4">
   </video>
@@ -974,8 +978,16 @@ footer {
   }, { threshold: 0.08 });
   document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
-  // Cuando el video esté listo, descomentar el bloque <video> y comentar el div .hero-poster
-  // El video debe estar en assets/hero.mp4
+  // Hero video — asegurar autoplay en Chrome desktop (a veces bloquea sin interacción)
+  const heroVideo = document.querySelector('.hero-video');
+  if (heroVideo) {
+    heroVideo.muted = true;
+    const tryPlay = () => heroVideo.play().catch(() => {});
+    tryPlay();
+    ['click', 'touchstart', 'keydown', 'scroll'].forEach(evt =>
+      document.addEventListener(evt, tryPlay, { once: true, passive: true })
+    );
+  }
 </script>
 </body>
 </html>
