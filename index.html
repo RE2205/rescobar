@@ -642,7 +642,7 @@ footer {
 
 /* ─── RESPONSIVE ─── */
 @media (min-width: 768px) and (max-width: 1024px) {
-  .hero-video { object-position: center 25%; }
+  .hero-video { object-position: center 40%; }
 }
 @media (max-width: 900px) {
   .hero { align-items: center; min-height: 100dvh; }
@@ -987,17 +987,28 @@ footer {
   }, { threshold: 0.08 });
   document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
-  // Hero video — asegurar autoplay en Chrome desktop e iOS Safari (iPad)
+  // Hero video — asegurar autoplay en Chrome desktop e iOS Safari (iPad/iPhone)
   const heroVideo = document.querySelector('.hero-video');
   if (heroVideo) {
+    // Setear props críticos para autoplay en iOS (además de los atributos HTML)
     heroVideo.muted = true;
+    heroVideo.defaultMuted = true;
+    heroVideo.setAttribute('muted', '');
+    heroVideo.setAttribute('playsinline', '');
+    heroVideo.setAttribute('webkit-playsinline', '');
+
     const tryPlay = () => heroVideo.play().catch(() => {});
+
     tryPlay();
-    // Reintentar cuando el video reporta que está listo (iOS Safari clave)
+    // Triggers del propio video (iOS Safari a veces recién autoriza play acá)
     heroVideo.addEventListener('loadedmetadata', tryPlay);
+    heroVideo.addEventListener('loadeddata', tryPlay);
     heroVideo.addEventListener('canplay', tryPlay);
-    // Fallback: cualquier interacción del usuario
-    ['click', 'touchstart', 'keydown', 'scroll'].forEach(evt =>
+    // Triggers de la página (pageshow captura back-forward cache de iOS)
+    window.addEventListener('load', tryPlay);
+    window.addEventListener('pageshow', tryPlay);
+    // Fallback final: cualquier interacción del usuario
+    ['click', 'touchstart', 'touchend', 'keydown', 'scroll'].forEach(evt =>
       document.addEventListener(evt, tryPlay, { once: true, passive: true })
     );
   }
