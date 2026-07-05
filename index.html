@@ -641,9 +641,11 @@ footer {
 }
 
 /* ─── RESPONSIVE ─── */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .hero-video { object-position: center 25%; }
+}
 @media (max-width: 900px) {
   .hero { align-items: center; }
-  .hero-video { object-position: center 30%; }
   nav { padding: 18px 24px; }
   .nav-links { gap: 18px; }
   .nav-links a { font-size: 9px; }
@@ -690,7 +692,7 @@ footer {
 
 <!-- S1: HERO -->
 <section class="hero" id="inicio">
-  <video class="hero-video" autoplay muted loop playsinline preload="auto" disablepictureinpicture poster="assets/ronald-hero.jpg">
+  <video class="hero-video" autoplay muted loop playsinline webkit-playsinline preload="auto" disablepictureinpicture poster="assets/ronald-hero.jpg">
     <source src="assets/hero.mp4" type="video/mp4">
     <img src="assets/ronald-hero.jpg" alt="Dr. Ronald Escobar" class="hero-video">
   </video>
@@ -985,12 +987,16 @@ footer {
   }, { threshold: 0.08 });
   document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
-  // Hero video — asegurar autoplay en Chrome desktop (a veces bloquea sin interacción)
+  // Hero video — asegurar autoplay en Chrome desktop e iOS Safari (iPad)
   const heroVideo = document.querySelector('.hero-video');
   if (heroVideo) {
     heroVideo.muted = true;
     const tryPlay = () => heroVideo.play().catch(() => {});
     tryPlay();
+    // Reintentar cuando el video reporta que está listo (iOS Safari clave)
+    heroVideo.addEventListener('loadedmetadata', tryPlay);
+    heroVideo.addEventListener('canplay', tryPlay);
+    // Fallback: cualquier interacción del usuario
     ['click', 'touchstart', 'keydown', 'scroll'].forEach(evt =>
       document.addEventListener(evt, tryPlay, { once: true, passive: true })
     );
