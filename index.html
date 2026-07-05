@@ -661,11 +661,9 @@ footer {
 }
 
 /* ─── RESPONSIVE ─── */
-@media (min-width: 768px) and (max-width: 1024px) {
-  .hero-video { object-fit: contain; object-position: center; background: var(--negro); }
-}
 @media (max-width: 900px) {
-  .hero { align-items: center; min-height: 100dvh; }
+  .hero { align-items: center; }
+  .hero-video { object-position: center 30%; }
   nav { padding: 18px 24px; }
   .nav-toggle { display: block; }
   .nav-links {
@@ -700,9 +698,6 @@ footer {
   .contacto { grid-template-columns: 1fr; padding: 80px 24px; gap: 48px; }
   footer { padding: 24px; flex-direction: column; gap: 10px; text-align: center; }
 }
-@media (max-width: 768px) {
-  .hero-video { object-position: center 15%; }
-}
 @media (max-width: 520px) {
   .tentaculos { grid-template-columns: 1fr; }
 }
@@ -731,7 +726,7 @@ footer {
 
 <!-- S1: HERO -->
 <section class="hero" id="inicio">
-  <video class="hero-video" autoplay muted loop playsinline webkit-playsinline preload="auto" disablepictureinpicture poster="assets/ronald-hero.jpg">
+  <video class="hero-video" autoplay muted loop playsinline preload="auto" disablepictureinpicture poster="assets/ronald-hero.jpg">
     <source src="assets/hero.mp4" type="video/mp4">
     <img src="assets/ronald-hero.jpg" alt="Dr. Ronald Escobar" class="hero-video">
   </video>
@@ -1038,42 +1033,13 @@ footer {
   }, { threshold: 0.08 });
   document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
-  // Hero video — asegurar autoplay en Chrome desktop e iOS Safari (iPad/iPhone)
+  // Hero video — asegurar autoplay en Chrome desktop (a veces bloquea sin interacción)
   const heroVideo = document.querySelector('.hero-video');
   if (heroVideo) {
-    // Setear props críticos para autoplay en iOS (además de los atributos HTML)
     heroVideo.muted = true;
-    heroVideo.defaultMuted = true;
-    heroVideo.autoplay = true;
-    heroVideo.setAttribute('muted', '');
-    heroVideo.setAttribute('playsinline', '');
-    heroVideo.setAttribute('webkit-playsinline', '');
-
     const tryPlay = () => heroVideo.play().catch(() => {});
-
     tryPlay();
-    // Reintentos con delay (iPadOS a veces necesita un tick extra)
-    setTimeout(tryPlay, 100);
-    setTimeout(tryPlay, 500);
-    setTimeout(tryPlay, 1500);
-
-    // Triggers del propio video (iOS Safari a veces recién autoriza play acá)
-    heroVideo.addEventListener('loadedmetadata', tryPlay);
-    heroVideo.addEventListener('loadeddata', tryPlay);
-    heroVideo.addEventListener('canplay', tryPlay);
-    heroVideo.addEventListener('stalled', tryPlay);
-    heroVideo.addEventListener('waiting', tryPlay);
-
-    // Triggers de la página (pageshow captura back-forward cache de iOS)
-    window.addEventListener('load', tryPlay);
-    window.addEventListener('pageshow', tryPlay);
-    // Al volver a la pestaña (Safari a veces pausa videos ocultos)
-    document.addEventListener('visibilitychange', () => {
-      if (!document.hidden) tryPlay();
-    });
-
-    // Fallback final: cualquier interacción del usuario
-    ['click', 'touchstart', 'touchend', 'keydown', 'scroll'].forEach(evt =>
+    ['click', 'touchstart', 'keydown', 'scroll'].forEach(evt =>
       document.addEventListener(evt, tryPlay, { once: true, passive: true })
     );
   }
