@@ -537,7 +537,7 @@ body::after {
 <!-- CHAT (hidden until login) -->
 <div id="chat" style="display:none;">
   <section class="chat-hero">
-    <img src="https://ronaldescobar.com/assets/acompaname-hero.webp" alt="" class="chat-hero-img" loading="eager">
+    <img src="https://ronaldescobar.com/assets/acompaname-hero.webp" alt="" class="chat-hero-img" loading="lazy">
     <div class="chat-hero-content">
       <h1 class="chat-hero-title">
         Acompáñame<br>
@@ -647,7 +647,7 @@ async function handleLogin() {
     if (res.status === 401) { showError("Clave no reconocida. Contacta a tu terapeuta."); btn.disabled = false; btn.textContent = "Entrar"; return; }
     if (!res.ok) { showError("Error de conexión. Intentá de nuevo."); btn.disabled = false; btn.textContent = "Entrar"; return; }
     const data = await res.json();
-    const bienvenida = "Hola.\n\nEstoy acá.\n\nNadie más lee esto — es solo tuyo. No tenés que tener todo claro para escribir.\n\n¿Qué estás cargando hoy?";
+    const bienvenida = data.text || "Hola. Estoy acá.\n\nNadie más lee esto — es solo tuyo. No tenés que tener todo claro para escribir.\n\n¿Qué estás cargando hoy?";
     document.getElementById("landing").style.display = "none";
     document.getElementById("chat").style.display = "block";
     messages.push({ role: "assistant", content: bienvenida });
