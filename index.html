@@ -125,7 +125,10 @@ nav.scrolled {
 .hero-video {
   position: absolute; inset: 0;
   width: 100%; height: 100%;
-  object-fit: cover; z-index: 0;
+  object-fit: contain;
+  object-position: center;
+  background: var(--negro);
+  z-index: 0;
 }
 
 .hero-poster {
@@ -640,7 +643,6 @@ footer {
 
 /* ─── RESPONSIVE ─── */
 @media (max-width: 900px) {
-  .hero-video { object-fit: contain; object-position: center; background: var(--negro); }
   nav { padding: 18px 24px; }
   .nav-links { gap: 18px; }
   .nav-links a { font-size: 9px; }
@@ -685,8 +687,9 @@ footer {
 <!-- S1: HERO -->
 <section class="hero" id="inicio">
   <video class="hero-video" autoplay muted loop playsinline preload="auto" disablepictureinpicture poster="assets/ronald-hero.jpg">
-    <source src="assets/hero.webm" type="video/webm">
     <source src="assets/hero.mp4" type="video/mp4">
+    <source src="assets/hero.webm" type="video/webm">
+    <img src="assets/ronald-hero.jpg" alt="Dr. Ronald Escobar" class="hero-video">
   </video>
   <div class="hero-overlay"></div>
   <div class="hero-content">
