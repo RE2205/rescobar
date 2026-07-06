@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>El Acto de Crear · ReConectar | Dr. Ronald Escobar</title>
+<meta name="description" content="Un espacio terapéutico entre sesiones para artistas y creativos. ReConectar — Logos Psyche, Guatemala.">
+<meta name="robots" content="noindex">
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JH9BQK27RM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date()); gtag('config', 'G-JH9BQK27RM');
+</script>
+
+<link rel="icon" href="/assets/logo-image.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --negro: #08080a;
+  --blanco: #f0ede6;
+  --teal: #4ecdc4;
+  --rojo: #c44a2a;
+  --amarillo: #d4b84a;
+  --naranja: #c4763a;
+  --gris: #908c86;
+  --linea: rgba(78,205,196,0.12);
+  --grad: linear-gradient(100deg, #4ecdc4, #8ec44e, #d4b84a, #c4763a, #c44a2a);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Courier Prime', monospace;
+  background: var(--negro);
+  color: var(--blanco);
+  overflow-x: hidden;
+}
+
+/* GRAIN */
+body::after {
+  content: ''; position: fixed; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+  pointer-events: none; z-index: 100; opacity: 0.4;
+}
+
+/* GATE — split layout */
+#gate {
+  position: fixed; inset: 0; z-index: 200;
+  background: var(--negro);
+  display: flex; flex-direction: row;
+  transition: opacity 0.8s ease, visibility 0.8s ease;
+}
+#gate.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+
+/* Columna izquierda — logo */
+.gate-left {
+  width: 45%; display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  padding: 60px 48px;
+  border-right: 1px solid rgba(212,184,74,0.08);
+  position: relative; overflow: hidden;
+}
+.gate-left::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse at center, rgba(212,184,74,0.03) 0%, transparent 65%);
+  pointer-events: none;
+}
+.gate-brand-logo {
+  width: min(260px, 70%);
+  filter: drop-shadow(0 0 40px rgba(212,184,74,0.06));
+  animation: fadeUp 1s ease 0.3s both;
+}
+.gate-brand-tagline {
+  font-size: 10px; letter-spacing: 0.32em; text-transform: uppercase;
+  color: rgba(144,140,134,0.45); margin-top: 28px;
+  animation: fadeUp 0.8s ease 0.6s both;
+}
+
+/* Columna derecha — formulario */
+.gate-right {
+  width: 55%; display: flex; flex-direction: column;
+  align-items: flex-start; justify-content: center;
+  padding: 60px 56px; overflow-y: auto;
+}
+.gate-glow {
+  position: absolute; top: 50%; left: 45%; transform: translate(-50%, -50%);
+  width: 400px; height: 400px;
+  background: radial-gradient(ellipse, rgba(212,184,74,0.02), transparent 70%);
+  pointer-events: none;
+}
+.gate-eyebrow {
+  font-size: 10px; letter-spacing: 0.38em; text-transform: uppercase;
+  color: var(--amarillo); margin-bottom: 16px;
+  animation: fadeUp 0.8s ease 0.3s both;
+}
+.gate-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(26px, 3.2vw, 42px); font-weight: 300;
+  line-height: 1.12; margin-bottom: 10px;
+  animation: fadeUp 0.8s ease 0.4s both;
+}
+.gate-title em {
+  font-style: italic;
+  background: linear-gradient(100deg, var(--amarillo) 0%, var(--naranja) 60%, var(--rojo) 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.gate-desc {
+  font-size: 12px; color: rgba(240,237,230,0.45); line-height: 1.9;
+  margin-bottom: 32px; max-width: 380px;
+  animation: fadeUp 0.8s ease 0.5s both;
+}
+.gate-form {
+  width: 100%; max-width: 360px;
+  animation: fadeUp 0.8s ease 0.6s both;
+}
+.gate-privacy {
+  background: rgba(212,184,74,0.03);
+  border: 1px solid rgba(212,184,74,0.1);
+  padding: 16px 18px; margin-bottom: 24px;
+}
+.gate-privacy-title {
+  font-size: 9px; letter-spacing: 0.24em; text-transform: uppercase;
+  color: var(--amarillo); margin-bottom: 10px; display: block;
+}
+.gate-privacy p {
+  font-size: 11px; color: rgba(240,237,230,0.4);
+  line-height: 1.85; margin-bottom: 3px;
+}
+.gate-privacy p:last-child { margin-bottom: 0; }
+.gate-label {
+  display: block; font-size: 9px; letter-spacing: 0.28em;
+  text-transform: uppercase; color: var(--gris);
+  margin-bottom: 12px;
+}
+.gate-input {
+  width: 100%; padding: 14px 0; background: transparent;
+  border: none; border-bottom: 1px solid rgba(212,184,74,0.25);
+  color: var(--blanco); font-family: 'Courier Prime', monospace;
+  font-size: 17px; letter-spacing: 0.18em;
+  outline: none; transition: border-color 0.3s; caret-color: var(--amarillo);
+}
+.gate-input:focus { border-bottom-color: var(--amarillo); }
+.gate-hint {
+  font-size: 11px; color: rgba(240,237,230,0.3);
+  margin-top: 8px; font-style: italic;
+}
+.gate-error {
+  font-size: 12px; color: var(--rojo); margin-top: 10px;
+  font-style: italic; display: none;
+}
+.gate-btn {
+  width: 100%; margin-top: 24px; padding: 15px 32px;
+  font-size: 10px; letter-spacing: 0.24em; text-transform: uppercase;
+  font-weight: 700; font-family: 'Courier Prime', monospace;
+  background: linear-gradient(100deg, #d4b84a, #c4763a, #c44a2a);
+  background-size: 200% 100%; color: var(--negro); border: none; cursor: pointer;
+  transition: background-position 0.5s ease, transform 0.2s, opacity 0.3s;
+}
+.gate-btn:hover { background-position: 100% 0; transform: translateY(-1px); }
+.gate-btn:disabled { opacity: 0.55; cursor: wait; }
+.gate-footer {
+  margin-top: 32px; font-size: 11px; color: rgba(144,140,134,0.4);
+  line-height: 1.9; max-width: 360px;
+  animation: fadeUp 0.8s ease 0.8s both;
+}
+.gate-footer a { color: rgba(212,184,74,0.45); text-decoration: none; }
+
+/* Mobile */
+@media (max-width: 700px) {
+  #gate { flex-direction: column; overflow-y: auto; }
+  .gate-left {
+    width: 100%; border-right: none;
+    border-bottom: 1px solid rgba(212,184,74,0.08);
+    padding: 48px 32px 36px;
+  }
+  .gate-brand-logo { width: min(180px, 60%); }
+  .gate-right { width: 100%; padding: 40px 28px 60px; align-items: center; }
+}
+
+/* NAV */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  padding: 20px 36px;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.nav::before {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(to bottom, rgba(8,8,10,0.9) 0%, transparent 100%);
+  pointer-events: none;
+}
+.nav-brand {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 15px; font-weight: 300;
+  letter-spacing: 0.12em; color: var(--blanco);
+  text-decoration: none; position: relative; z-index: 1;
+}
+.nav-links { display: flex; gap: 28px; position: relative; z-index: 1; }
+.nav-links a {
+  font-size: 10px; letter-spacing: 0.22em;
+  text-transform: uppercase; color: rgba(240,237,230,0.65);
+  text-decoration: none; transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--amarillo); }
+
+/* HERO */
+.hero { position: relative; display: flex; flex-direction: column; overflow: hidden; }
+.hero-img-wrapper { position: relative; width: 100%; height: 88vh; overflow: hidden; }
+.hero-img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center 40%;
+  display: block;
+  filter: brightness(0.6) grayscale(10%);
+}
+.hero-img-wrapper::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(8,8,10,0.15) 0%,
+    rgba(8,8,10,0.0) 30%,
+    rgba(8,8,10,0.7) 75%,
+    rgba(8,8,10,1) 100%
+  );
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative; z-index: 2;
+  padding: 32px 56px 40px;
+  margin-top: -220px;
+}
+
+.hero-eyebrow {
+  display: inline-block; margin-bottom: 20px;
+  font-size: 10px; letter-spacing: 0.4em;
+  text-transform: uppercase; color: var(--amarillo);
+  opacity: 0; animation: fadeUp 0.8s ease 0.3s forwards;
+}
+
+.hero-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(38px, 6.5vw, 78px);
+  font-weight: 300; line-height: 1.08;
+  letter-spacing: -0.02em; margin-bottom: 28px;
+  opacity: 0; animation: fadeUp 1s ease 0.5s forwards;
+}
+.hero-title em {
+  font-style: italic;
+  background: linear-gradient(100deg, var(--amarillo) 0%, var(--naranja) 55%, var(--rojo) 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+
+.hero-doctor-card {
+  display: flex; align-items: center; gap: 18px;
+  margin-top: 28px; margin-bottom: 10px;
+  opacity: 0; animation: fadeUp 0.8s ease 0.7s forwards;
+}
+.hero-doctor-avatar {
+  width: 56px; height: 56px; border-radius: 50%;
+  overflow: hidden; flex-shrink: 0;
+  border: 1px solid rgba(212,184,74,0.25);
+}
+.hero-doctor-avatar img {
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center 18%;
+}
+.hero-doctor-nombre {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 17px; font-weight: 300; letter-spacing: 0.05em;
+}
+.hero-doctor-sub {
+  font-size: 10px; letter-spacing: 0.18em;
+  text-transform: uppercase; color: rgba(240,237,230,0.5); margin-top: 3px;
+}
+.hero-doctor-declaracion {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 13px; font-style: italic; font-weight: 300;
+  color: rgba(212,184,74,0.75); margin-top: 5px;
+}
+.hero-loc {
+  font-size: 12px; color: rgba(240,237,230,0.6);
+  letter-spacing: 0.06em; margin-top: 12px;
+  opacity: 0; animation: fadeUp 0.8s ease 0.9s forwards;
+}
+
+/* DIVIDER */
+.section-divider {
+  padding: 36px 52px 28px;
+  display: flex; align-items: center; gap: 20px;
+  border-bottom: 1px solid var(--linea);
+}
+.section-divider::before, .section-divider::after {
+  content: ''; flex: 1; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(212,184,74,0.18));
+}
+.section-divider::after {
+  background: linear-gradient(90deg, rgba(212,184,74,0.18), transparent);
+}
+.section-divider span {
+  font-size: 9px; letter-spacing: 0.32em;
+  text-transform: uppercase; color: rgba(144,140,134,0.5);
+  white-space: nowrap;
+}
+
+/* CHAT */
+.chat-section { padding: 0 52px 56px; max-width: 760px; }
+
+.chat-header {
+  display: flex; align-items: center; gap: 16px;
+  padding: 28px 0 20px;
+  border-bottom: 1px solid rgba(212,184,74,0.08);
+  margin-bottom: 0;
+}
+.chat-header-info { flex: 1; }
+.chat-header-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px; font-weight: 300; letter-spacing: 0.05em;
+}
+.chat-header-sub {
+  font-size: 10px; letter-spacing: 0.18em;
+  text-transform: uppercase; color: rgba(144,140,134,0.9); margin-top: 4px;
+}
+.chat-header-autor {
+  font-size: 10px; letter-spacing: 0.12em;
+  color: rgba(212,184,74,0.7); margin-top: 3px;
+}
+.status-dot {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 9px; letter-spacing: 0.18em;
+  text-transform: uppercase; color: rgba(212,184,74,0.6);
+}
+.status-dot::before {
+  content: ''; width: 6px; height: 6px; border-radius: 50%;
+  background: var(--amarillo); animation: pulse 2.5s ease-in-out infinite;
+}
+
+/* MESSAGES */
+.messages {
+  min-height: 200px; padding: 24px 0;
+  display: flex; flex-direction: column; gap: 20px;
+}
+.chat-disclaimer {
+  background: rgba(212,184,74,0.03);
+  border: 1px solid rgba(212,184,74,0.12);
+  padding: 18px 22px; margin-bottom: 8px;
+}
+.chat-disclaimer p {
+  font-size: 12px; color: rgba(240,237,230,0.52);
+  line-height: 2; font-style: italic;
+}
+
+.msg { display: flex; flex-direction: column; }
+.msg.user { align-items: flex-end; padding-left: 60px; }
+.msg.assistant { align-items: flex-start; padding-right: 60px; }
+.msg-bubble { padding: 20px 26px; line-height: 1.95; color: rgba(240,237,230,0.92); }
+.msg.user .msg-bubble {
+  background: rgba(212,184,74,0.06);
+  border: 1px solid rgba(212,184,74,0.15);
+  font-size: 14px;
+}
+.msg.assistant .msg-bubble {
+  font-size: 20px;
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300; color: rgba(240,237,230,0.95);
+}
+.msg.assistant .msg-bubble p { margin-bottom: 16px; }
+.msg.assistant .msg-bubble p:last-child { margin-bottom: 0; }
+
+/* TYPING */
+.typing-indicator {
+  display: flex; gap: 5px; align-items: center;
+  padding: 20px 26px;
+}
+.typing-indicator span {
+  width: 5px; height: 5px; border-radius: 50%;
+  background: var(--amarillo); opacity: 0.4;
+  animation: typeDot 1.2s ease-in-out infinite;
+}
+.typing-indicator span:nth-child(2) { animation-delay: 0.2s; }
+.typing-indicator span:nth-child(3) { animation-delay: 0.4s; }
+
+/* INPUT */
+.input-area { padding-top: 8px; border-top: 1px solid rgba(212,184,74,0.08); }
+
+.cta-bar {
+  display: none; padding: 16px 0; margin-bottom: 12px;
+  border-bottom: 1px solid rgba(212,184,74,0.08);
+}
+.cta-bar-label {
+  font-size: 9px; letter-spacing: 0.24em; text-transform: uppercase;
+  color: var(--amarillo); display: block; margin-bottom: 6px;
+}
+.cta-bar p { font-size: 13px; color: rgba(240,237,230,0.7); margin-bottom: 10px; }
+.cta-bar-btn {
+  font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase;
+  padding: 9px 20px;
+  background: linear-gradient(100deg, #d4b84a, #c4763a, #c44a2a);
+  background-size: 200% 100%; color: var(--negro);
+  font-weight: 700; text-decoration: none;
+  font-family: 'Courier Prime', monospace; display: inline-block;
+  border: none; cursor: pointer;
+}
+
+.input-row {
+  display: flex; gap: 10px; align-items: flex-end;
+  padding: 16px 0 12px;
+}
+.input-field {
+  flex: 1; background: transparent;
+  border: none; border-bottom: 1px solid rgba(144,140,134,0.25);
+  color: var(--blanco); font-family: 'Courier Prime', monospace;
+  font-size: 14px; padding: 10px 0; outline: none;
+  transition: border-color 0.3s; line-height: 1.6; resize: none;
+}
+.input-field:focus { border-bottom-color: var(--amarillo); }
+.input-field::placeholder { color: rgba(240,237,230,0.38); }
+.btn-send {
+  font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase;
+  padding: 10px 18px; background: transparent;
+  border: 1px solid rgba(144,140,134,0.25); color: var(--gris);
+  cursor: pointer; font-family: 'Courier Prime', monospace;
+  transition: all 0.3s; white-space: nowrap;
+}
+.btn-send.ready { border-color: var(--amarillo); color: var(--amarillo); }
+
+/* RESUMEN */
+.resumen-box {
+  background: rgba(212,184,74,0.04);
+  border: 1px solid rgba(212,184,74,0.2);
+  padding: 24px 28px; margin: 16px 0;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px; line-height: 1.9;
+  color: rgba(240,237,230,0.88);
+  white-space: pre-wrap;
+}
+.resumen-acciones { display: flex; gap: 12px; margin-top: 16px; flex-wrap: wrap; }
+.resumen-btn {
+  font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase;
+  padding: 9px 18px; border: none; cursor: pointer;
+  font-family: 'Courier Prime', monospace; font-weight: 700;
+}
+.resumen-btn.copiar { background: var(--amarillo); color: var(--negro); }
+.resumen-btn.wa { background: #25D366; color: var(--negro); }
+
+/* WA FIJO */
+.wa-fijo {
+  display: flex; align-items: center; gap: 16px;
+  padding: 14px 0; border-top: 1px solid rgba(212,184,74,0.06);
+  flex-wrap: wrap;
+}
+.wa-fijo-texto { font-size: 11px; color: rgba(240,237,230,0.55); letter-spacing: 0.06em; }
+.wa-fijo-btn {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--amarillo); text-decoration: none; transition: opacity 0.2s;
+}
+.wa-fijo-btn:hover { opacity: 0.75; }
+.wa-dot { width: 7px; height: 7px; border-radius: 50%; background: #25D366; }
+
+/* FOOTER */
+.page-footer {
+  padding: 32px 52px;
+  border-top: 1px solid var(--linea);
+  text-align: center;
+}
+.page-footer p { font-size: 11px; color: rgba(240,237,230,0.42); line-height: 2.2; }
+.page-footer a { color: rgba(212,184,74,0.55); text-decoration: none; }
+.page-footer a:hover { color: var(--amarillo); }
+
+/* KEYFRAMES */
+@keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes pulse { 0%,100% { box-shadow: 0 0 5px rgba(212,184,74,0.4); } 50% { box-shadow: 0 0 12px rgba(212,184,74,0.7); } }
+@keyframes typeDot { 0%,100% { opacity: 0.2; transform: translateY(0); } 50% { opacity: 0.8; transform: translateY(-3px); } }
+@keyframes msgIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+@media (max-width: 600px) {
+  .nav { padding: 16px 18px; }
+  .hero-content { padding: 0 24px 40px; margin-top: -180px; }
+  .hero-title { font-size: clamp(34px, 9vw, 52px); }
+  .section-divider { padding: 32px 20px 24px; }
+  .chat-section { padding: 0 20px 56px; }
+  .msg.user { padding-left: 20px; }
+  .msg.assistant { padding-right: 20px; }
+  .msg.assistant .msg-bubble { font-size: 18px; }
+  .btn-send { padding: 10px 12px; font-size: 9px; }
+  .page-footer { padding: 24px; }
+  .gate-title { font-size: clamp(26px, 8vw, 38px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+</style>
+</head>
+<body>
+
+<!-- GATE DE ACCESO -->
+<div id="gate">
+  <div class="gate-glow"></div>
+
+  <!-- Izquierda: logo Logos Psyche -->
+  <div class="gate-left">
+    <img src="https://ronaldescobar.com/assets/logos-psyche.png"
+         alt="Logos Psyche" class="gate-brand-logo">
+    <p class="gate-brand-tagline">Neurociencia · Arte · Humanidad</p>
+  </div>
+
+  <!-- Derecha: formulario -->
+  <div class="gate-right">
+    <p class="gate-eyebrow">Entre sesiones · ReConectar · Logos Psyche</p>
+    <h1 class="gate-title">El Acto<br>de Crear.<br><em>aunque no sepas qué va a salir.</em></h1>
+    <p class="gate-desc">Un espacio terapéutico para artistas y creativos entre sesiones de ReConectar.</p>
+
+    <div class="gate-form">
+      <div class="gate-privacy">
+        <span class="gate-privacy-title">Tu privacidad</span>
+        <p>• Esta conversación no se almacena en ningún servidor.</p>
+        <p>• El Dr. Escobar no tiene acceso a lo que escribís acá.</p>
+        <p>• Al cerrar la pestaña, la conversación desaparece.</p>
+        <p>• Solo vos decidís si compartir algo con tu terapeuta.</p>
+      </div>
+
+      <label class="gate-label" for="gate-clave">Clave de acceso</label>
+      <input type="password" id="gate-clave" class="gate-input"
+             placeholder=""
+             autocomplete="off"
+             onkeydown="if(event.key==='Enter')handleGateLogin()">
+      <p class="gate-hint">Tu clave te la entrega el Dr. Escobar en consulta.</p>
+      <p class="gate-error" id="gate-error"></p>
+      <button class="gate-btn" id="gate-btn" onclick="handleGateLogin()">Entrar</button>
+    </div>
+
+    <p class="gate-footer">
+      Este espacio no sustituye la sesión con tu terapeuta.<br>
+      Si estás en crisis, contactá directamente al <a href="https://wa.me/50230607168">+502 3060-7168</a>
+    </p>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="https://ronaldescobar.com/" class="nav-brand">Logos Psyche</a>
+  <div class="nav-links">
+    <a href="https://ronaldescobar.com/">Inicio</a>
+    <a href="https://ronaldescobar.com/logos-psyche.html">Clínica</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-img-wrapper">
+    <img src="assets/elactodecrear-hero.webp"
+         alt="El Acto de Crear — Dr. Ronald Escobar"
+         class="hero-img" loading="eager">
+  </div>
+
+  <div class="hero-content">
+    <span class="hero-eyebrow">Entre sesiones · ReConectar · Logos Psyche</span>
+    <h1 class="hero-title">
+      El Acto<br>
+      <em>de Crear.</em>
+    </h1>
+    <div class="hero-doctor-card">
+      <div class="hero-doctor-avatar">
+        <img src="assets/portada4.PNG" alt="Dr. Ronald Escobar">
+      </div>
+      <div>
+        <div class="hero-doctor-nombre">Dr. Ronald Escobar</div>
+        <div class="hero-doctor-sub">Psiquiatra · ReConectar · Guatemala</div>
+        <div class="hero-doctor-declaracion">Crear no es saber. Es empezar.</div>
+      </div>
+    </div>
+    <p class="hero-loc">Integra Medical Center · Clínica 810 · Ciudad de Guatemala</p>
+  </div>
+</section>
+
+<!-- DIVIDER -->
+<div class="section-divider"><span>Tu espacio entre sesiones</span></div>
+
+<!-- CHAT -->
+<div class="chat-section">
+  <div class="chat-header">
+    <div style="width:44px;height:44px;flex-shrink:0;">
+      <img src="https://ronaldescobar.com/assets/cerebro-isotipo.png"
+           alt="Logos Psyche" style="width:44px;height:auto;">
+    </div>
+    <div class="chat-header-info">
+      <div class="chat-header-title">El Acto de Crear</div>
+      <div class="chat-header-sub">Entre sesiones · ReConectar</div>
+      <div class="chat-header-autor">Creado por el Dr. Ronald Escobar</div>
+    </div>
+    <div class="status-dot"><span>Disponible</span></div>
+  </div>
+
+  <div class="messages" id="messages">
+    <div class="chat-disclaimer">
+      <p>Nadie más lee esto. Es solo entre vos y este espacio.<br>
+      No queda guardado en ningún servidor.<br>
+      Si algo de lo que aparece acá te parece útil — podés pedirle un resumen,<br>
+      guardarlo como mapa, o enviármelo. Pero la decisión es tuya.</p>
+    </div>
+  </div>
+
+  <div class="input-area">
+    <div class="cta-bar" id="ctaBar">
+      <span class="cta-bar-label">Siguiente paso</span>
+      <p>¿Necesitás hablar con el Dr. Escobar?</p>
+      <a href="https://wa.me/50230607168?text=Hola,%20quisiera%20hablar%20con%20el%20Dr.%20Escobar." target="_blank" class="cta-bar-btn">WhatsApp · Contactar</a>
+    </div>
+
+    <div class="cta-bar" id="resumenBar" style="display:none;border-top:1px solid rgba(212,184,74,0.1);margin-top:4px;">
+      <span class="cta-bar-label">Tu mapa</span>
+      <p>¿Querés un resumen de esta conversación?</p>
+      <button onclick="pedirResumen()" class="cta-bar-btn" style="background:transparent;border:1px solid rgba(212,184,74,0.4);color:var(--amarillo);cursor:pointer;font-family:'Courier Prime',monospace;">Generar resumen</button>
+    </div>
+
+    <div class="input-row">
+      <input type="text" class="input-field" id="inputField"
+             placeholder="¿Qué estás creando — o sin poder crear — hoy?"
+             autocomplete="off" onkeydown="if(event.key==='Enter')sendMessage()">
+      <button class="btn-send" id="btnSend" onclick="sendMessage()">Enviar</button>
+    </div>
+
+    <div class="wa-fijo">
+      <span class="wa-fijo-texto">¿Necesitás hablar directo con el consultorio?</span>
+      <a href="https://wa.me/50230607168?text=Hola,%20quisiera%20hablar%20con%20el%20Dr.%20Escobar."
+         target="_blank" class="wa-fijo-btn">
+        <div class="wa-dot"></div>WhatsApp · 3060-7168
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="page-footer">
+  <p>
+    ReConectar · Logos Psyche · Neurociencia · Arte · Humanidad<br>
+    Integra Medical Center · Clínica 810 · Ciudad de Guatemala<br>
+    <a href="https://wa.me/50230607168">+502 3060-7168</a> ·
+    <a href="mailto:clinicalogos@ronaldescobar.com">clinicalogos@ronaldescobar.com</a> ·
+    <a href="https://ronaldescobar.com">ronaldescobar.com</a>
+  </p>
+</footer>
+
+<script>
+const API_URL = 'https://logos-psyche-api.vercel.app/api/chat';
+let clave = '';
+let messages = [], isTyping = false, messageCount = 0, resumenGenerado = false;
+
+// ── GATE ──────────────────────────────────────────────────────────────────────
+
+async function handleGateLogin() {
+  const input   = document.getElementById('gate-clave');
+  const errorEl = document.getElementById('gate-error');
+  const btn     = document.getElementById('gate-btn');
+
+  clave = input.value.trim().toUpperCase();
+
+  if (!clave) { showGateError('Ingresá tu clave de acceso.'); return; }
+
+  // Validación de prefijo en cliente — solo LP-A acepta esta página
+  if (!clave.startsWith('LP-A')) {
+    showGateError('Esta clave no corresponde a este espacio. Verificá con el Dr. Escobar.');
+    return;
+  }
+
+  btn.disabled = true; btn.textContent = 'Verificando...'; errorEl.style.display = 'none';
+
+  try {
+    const res = await fetch(API_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ clave, messages: [{ role: 'user', content: 'Hola' }] })
+    });
+
+    if (res.status === 401) {
+      showGateError('Clave no reconocida. Contactá al Dr. Escobar.');
+      btn.disabled = false; btn.textContent = 'Entrar'; return;
+    }
+    if (!res.ok) {
+      showGateError('Error de conexión. Intentá de nuevo.');
+      btn.disabled = false; btn.textContent = 'Entrar'; return;
+    }
+
+    const data = await res.json();
+    const bienvenida = data.text || data.content?.[0]?.text || "Hola. Estoy acá.\n\nEste es tu espacio — no tenés que saber qué crear para empezar a hablar.\n\n¿Qué estás cargando hoy como artista?";
+
+    // Cerrar gate
+    document.getElementById('gate').classList.add('hidden');
+
+    // Iniciar chat
+    addMessage('assistant', bienvenida);
+    messages.push({ role: 'assistant', content: bienvenida });
+
+    setTimeout(() => document.getElementById('inputField').focus(), 900);
+
+  } catch(e) {
+    showGateError('No se pudo conectar. Verificá tu conexión.');
+    btn.disabled = false; btn.textContent = 'Entrar';
+  }
+}
+
+function showGateError(msg) {
+  const el = document.getElementById('gate-error');
+  el.textContent = msg; el.style.display = 'block';
+}
+
+// ── CHAT ──────────────────────────────────────────────────────────────────────
+
+const inputField  = document.getElementById('inputField');
+const btnSend     = document.getElementById('btnSend');
+const messagesDiv = document.getElementById('messages');
+const ctaBar      = document.getElementById('ctaBar');
+
+inputField.addEventListener('input', () => {
+  btnSend.classList.toggle('ready', inputField.value.trim().length > 0 && !isTyping);
+});
+
+function addMessage(role, text) {
+  const wrapper = document.createElement('div');
+  wrapper.className = 'msg ' + role;
+  wrapper.style.animation = 'msgIn 0.4s ease forwards';
+  const bubble = document.createElement('div');
+  bubble.className = 'msg-bubble';
+  text.split('\n\n').filter(p => p.trim()).forEach(para => {
+    const p = document.createElement('p');
+    p.innerHTML = para.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>').replace(/\n/g, '<br>');
+    bubble.appendChild(p);
+  });
+  wrapper.appendChild(bubble);
+  messagesDiv.appendChild(wrapper);
+  wrapper.scrollIntoView({ behavior: 'smooth', block: 'end' });
+}
+
+function showTyping() {
+  const t = document.createElement('div');
+  t.className = 'msg assistant'; t.id = 'typing';
+  t.innerHTML = '<div class="typing-indicator"><span></span><span></span><span></span></div>';
+  messagesDiv.appendChild(t);
+  t.scrollIntoView({ behavior: 'smooth', block: 'end' });
+}
+function removeTyping() {
+  const t = document.getElementById('typing');
+  if (t) t.remove();
+}
+
+function mostrarResumenBar() {
+  const bar = document.getElementById('resumenBar');
+  if (bar && messageCount >= 4) bar.style.display = 'block';
+}
+
+async function sendMessage() {
+  const text = inputField.value.trim();
+  if (!text || isTyping) return;
+
+  addMessage('user', text);
+  messages.push({ role: 'user', content: text });
+  inputField.value = '';
+  btnSend.classList.remove('ready');
+  isTyping = true;
+  showTyping();
+
+  try {
+    const res = await fetch(API_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ clave, messages })
+    });
+    const data = await res.json();
+    removeTyping();
+    const reply = data.text || data.content?.[0]?.text || 'Algo salió mal. Intentá de nuevo.';
+    addMessage('assistant', reply);
+    messages.push({ role: 'assistant', content: reply });
+    messageCount++;
+    mostrarResumenBar();
+    if (messageCount >= 3) ctaBar.style.display = 'block';
+  } catch(e) {
+    removeTyping();
+    addMessage('assistant', 'Hubo un problema de conexión. Intentá de nuevo en un momento.');
+  }
+  isTyping = false;
+  inputField.addEventListener('input', () => {
+    btnSend.classList.toggle('ready', inputField.value.trim().length > 0 && !isTyping);
+  });
+}
+
+async function pedirResumen() {
+  if (resumenGenerado) return;
+  resumenGenerado = true;
+
+  const resumenPrompt = [
+    ...messages,
+    { role: 'user', content: 'Hacé un resumen breve de esta conversación como si fuera un mapa creativo-terapéutico: qué traje, qué apareció, qué preguntas quedaron abiertas en relación a mi proceso creativo. Máximo 150 palabras. Sin diagnósticos. Primera persona.' }
+  ];
+
+  addMessage('assistant', 'Preparando tu mapa...');
+
+  try {
+    const res = await fetch(API_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ clave, messages: resumenPrompt })
+    });
+    const data = await res.json();
+    const resumenTexto = data.text || data.content?.[0]?.text || '';
+
+    const bubbles = messagesDiv.querySelectorAll('.msg.assistant');
+    if (bubbles.length) bubbles[bubbles.length - 1].remove();
+
+    const box = document.createElement('div');
+    box.className = 'resumen-box';
+    box.innerHTML = `<strong style="font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--amarillo);font-family:'Courier Prime',monospace;">Tu mapa</strong><br><br>${resumenTexto}<div class="resumen-acciones"><button class="resumen-btn copiar" onclick="copiarResumen(this)">Copiar</button><a href="https://wa.me/50230607168?text=${encodeURIComponent('Mi mapa creativo:\n\n' + resumenTexto)}" target="_blank" class="resumen-btn wa" style="text-decoration:none;display:inline-block;">Enviar al Dr. Escobar</a></div>`;
+    messagesDiv.appendChild(box);
+    box.scrollIntoView({ behavior: 'smooth', block: 'end' });
+  } catch(e) {
+    addMessage('assistant', 'No pude generar el resumen ahora. Podés copiar la conversación manualmente.');
+  }
+}
+
+function copiarResumen(btn) {
+  const box = btn.closest('.resumen-box');
+  const texto = box.innerText.replace('Tu mapa','').replace('Copiar','').replace('Enviar al Dr. Escobar','').trim();
+  navigator.clipboard.writeText(texto).then(() => {
+    btn.textContent = '¡Copiado!';
+    setTimeout(() => btn.textContent = 'Copiar', 2000);
+  });
+}
+</script>
+</body>
+</html>
