@@ -687,7 +687,7 @@ async function handleGateLogin() {
     }
 
     const data = await res.json();
-    const bienvenida = data.text || data.content?.[0]?.text || "Hola. Estoy acá.\n\nEste es tu espacio — no tenés que saber qué crear para empezar a hablar.\n\n¿Qué estás cargando hoy como artista?";
+    const bienvenida = data.text || data.content?.[0]?.text || "Hola. Estoy acá.\n\n¿Qué estás creando — o qué no podés crear todavía?";
 
     // Cerrar gate
     document.getElementById('gate').classList.add('hidden');
