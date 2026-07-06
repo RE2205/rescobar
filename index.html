@@ -675,13 +675,15 @@ footer {
     align-items: center;
     gap: 36px;
     transform: translateY(-100%);
-    transition: transform 0.4s ease;
+    transition: transform 0.4s ease, visibility 0.4s ease;
     z-index: 55;
     padding: 0;
     margin: 0;
+    visibility: hidden;
+    pointer-events: none;
   }
   .nav-links a { font-size: 14px; letter-spacing: 0.28em; }
-  nav.nav-open .nav-links { transform: translateY(0); }
+  nav.nav-open .nav-links { transform: translateY(0); visibility: visible; pointer-events: auto; }
   .hero-content { padding: 0 24px 64px; }
   .voz { grid-template-columns: 1fr; padding: 80px 24px; gap: 0; }
   .voz-lateral { position: static; }
@@ -987,7 +989,7 @@ footer {
       <div style="margin-top:8px;">
         <a href="https://wa.me/50230607168?text=Hola,%20quisiera%20iniciar%20proceso%20cl%C3%ADnico."
            target="_blank" class="btn-grad">
-          Escribir a Yeinmy
+          Agenda una cita
         </a>
       </div>
     </div>
