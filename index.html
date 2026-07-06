@@ -1032,48 +1032,46 @@ footer {
 
   const heroVideo = document.querySelector('.hero-video');
   if (heroVideo) {
-    // Safari requires these attributes set programmatically as well
+    // Atributos obligatorios para Safari — también vía JS
     heroVideo.muted = true;
     heroVideo.defaultMuted = true;
     heroVideo.setAttribute('muted', '');
     heroVideo.setAttribute('playsinline', '');
     heroVideo.setAttribute('webkit-playsinline', '');
 
-    // Detect Safari (including iOS Safari)
-    const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent)
-      || /iPad|iPhone|iPod/.test(navigator.userAgent);
+    let played = false;
 
     const tryPlay = () => {
-      if (heroVideo.paused) {
-        const p = heroVideo.play();
-        if (p !== undefined) p.catch(() => {});
+      if (played || !heroVideo.paused) return;
+      const p = heroVideo.play();
+      if (p !== undefined) {
+        p.then(() => { played = true; }).catch(() => {});
       }
     };
 
-    if (isSafari) {
-      // Safari: load() first, then play on canplaythrough
-      heroVideo.load();
-      heroVideo.addEventListener('canplaythrough', tryPlay, { once: true });
-      // Fallback: attempt on first user gesture (required on iOS)
-      const safariGesture = () => { tryPlay(); };
-      ['touchstart', 'touchend', 'click'].forEach(evt =>
-        document.addEventListener(evt, safariGesture, { once: true, passive: true })
-      );
-    } else {
-      // Chrome / Firefox — standard approach
-      const tryPlayNonSafari = () => heroVideo.play().catch(() => {});
-      tryPlayNonSafari();
-      heroVideo.addEventListener('canplay', tryPlayNonSafari);
-      window.addEventListener('load', tryPlayNonSafari);
-    }
+    // Intento 1: inmediato
+    tryPlay();
 
-    // Universal: resume if tab regains visibility
+    // Intento 2: en canplay (cualquier browser)
+    heroVideo.addEventListener('canplay', tryPlay, { once: true });
+
+    // Intento 3: en loadeddata (Safari suele disparar esto antes que canplaythrough)
+    heroVideo.addEventListener('loadeddata', tryPlay, { once: true });
+
+    // Intento 4: timeout 300ms — Safari macOS desktop a veces necesita esto
+    setTimeout(tryPlay, 300);
+
+    // Intento 5: timeout 800ms — fallback extra
+    setTimeout(tryPlay, 800);
+
+    // Intento 6: cuando la página termina de cargar
+    window.addEventListener('load', tryPlay, { once: true });
+
+    // Reanudar si vuelve la visibilidad o pageshow (bfcache)
     document.addEventListener('visibilitychange', () => {
-      if (!document.hidden && heroVideo.paused) tryPlay();
+      if (!document.hidden) { played = false; tryPlay(); }
     });
-
-    // Universal: resume on pageshow (back/forward cache)
-    window.addEventListener('pageshow', tryPlay);
+    window.addEventListener('pageshow', () => { played = false; tryPlay(); });
   }
 </script>
 </body>
