@@ -358,9 +358,187 @@ body::after {
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
 }
+
+/* GATE */
+/* GATE — split layout */
+#gate {
+  position: fixed; inset: 0; z-index: 200;
+  background: var(--negro);
+  display: flex; flex-direction: row;
+  transition: opacity 0.8s ease, visibility 0.8s ease;
+}
+#gate.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+
+/* Columna izquierda — logo */
+.gate-left {
+  width: 45%; display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  padding: 60px 48px;
+  border-right: 1px solid rgba(78,205,196,0.08);
+  position: relative; overflow: hidden;
+}
+.gate-left::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse at center, rgba(78,205,196,0.04) 0%, transparent 65%);
+  pointer-events: none;
+}
+.gate-brand-logo {
+  width: min(260px, 70%);
+  filter: drop-shadow(0 0 40px rgba(78,205,196,0.08));
+  animation: fadeUp 1s ease 0.3s both;
+}
+.gate-brand-tagline {
+  font-size: 10px; letter-spacing: 0.32em; text-transform: uppercase;
+  color: rgba(144,140,134,0.45); margin-top: 28px;
+  animation: fadeUp 0.8s ease 0.6s both;
+}
+
+/* Columna derecha — formulario */
+.gate-right {
+  width: 55%; display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  padding: 60px 56px; text-align: left; overflow-y: auto;
+}
+.gate-glow {
+  position: absolute; top: 50%; left: 45%; transform: translate(-50%, -50%);
+  width: 400px; height: 400px;
+  background: radial-gradient(ellipse, rgba(78,205,196,0.03), transparent 70%);
+  pointer-events: none;
+}
+.gate-eyebrow {
+  font-size: 10px; letter-spacing: 0.38em; text-transform: uppercase;
+  color: var(--teal); margin-bottom: 16px;
+  animation: fadeUp 0.8s ease 0.3s both;
+}
+.gate-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(26px, 3.2vw, 42px); font-weight: 300;
+  line-height: 1.12; margin-bottom: 10px;
+  animation: fadeUp 0.8s ease 0.4s both;
+}
+.gate-title em {
+  font-style: italic;
+  background: linear-gradient(100deg, var(--teal) 0%, var(--amarillo) 60%, var(--naranja) 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.gate-desc {
+  font-size: 12px; color: rgba(240,237,230,0.45); line-height: 1.9;
+  margin-bottom: 32px; max-width: 380px;
+  animation: fadeUp 0.8s ease 0.5s both;
+}
+.gate-form {
+  width: 100%; max-width: 360px;
+  animation: fadeUp 0.8s ease 0.6s both;
+}
+.gate-privacy {
+  background: rgba(78,205,196,0.03);
+  border: 1px solid rgba(78,205,196,0.1);
+  padding: 16px 18px; margin-bottom: 24px;
+}
+.gate-privacy-title {
+  font-size: 9px; letter-spacing: 0.24em; text-transform: uppercase;
+  color: var(--teal); margin-bottom: 10px; display: block;
+}
+.gate-privacy p {
+  font-size: 11px; color: rgba(240,237,230,0.4);
+  line-height: 1.85; margin-bottom: 3px;
+}
+.gate-privacy p:last-child { margin-bottom: 0; }
+.gate-label {
+  display: block; font-size: 9px; letter-spacing: 0.28em;
+  text-transform: uppercase; color: var(--gris);
+  margin-bottom: 12px;
+}
+.gate-input {
+  width: 100%; padding: 14px 0; background: transparent;
+  border: none; border-bottom: 1px solid rgba(78,205,196,0.25);
+  color: var(--blanco); font-family: 'Courier Prime', monospace;
+  font-size: 17px; letter-spacing: 0.18em;
+  outline: none; transition: border-color 0.3s; caret-color: var(--teal);
+}
+.gate-input:focus { border-bottom-color: var(--teal); }
+.gate-hint {
+  font-size: 11px; color: rgba(240,237,230,0.3);
+  margin-top: 8px; font-style: italic;
+}
+.gate-error {
+  font-size: 12px; color: var(--rojo); margin-top: 10px;
+  font-style: italic; display: none;
+}
+.gate-btn {
+  width: 100%; margin-top: 24px; padding: 15px 32px;
+  font-size: 10px; letter-spacing: 0.24em; text-transform: uppercase;
+  font-weight: 700; font-family: 'Courier Prime', monospace;
+  background: linear-gradient(100deg, #4ecdc4, #8ec44e, #d4b84a, #c4763a, #c44a2a);
+  background-size: 200% 100%; color: var(--negro); border: none; cursor: pointer;
+  transition: background-position 0.5s ease, transform 0.2s, opacity 0.3s;
+}
+.gate-btn:hover { background-position: 100% 0; transform: translateY(-1px); }
+.gate-btn:disabled { opacity: 0.55; cursor: wait; }
+.gate-footer {
+  margin-top: 32px; font-size: 11px; color: rgba(144,140,134,0.4);
+  line-height: 1.9; max-width: 360px;
+  animation: fadeUp 0.8s ease 0.8s both;
+}
+.gate-footer a { color: rgba(78,205,196,0.45); text-decoration: none; }
+
+/* Mobile — vuelve a columna */
+@media (max-width: 700px) {
+  #gate { flex-direction: column; overflow-y: auto; }
+  .gate-left {
+    width: 100%; border-right: none;
+    border-bottom: 1px solid rgba(78,205,196,0.08);
+    padding: 48px 32px 36px;
+  }
+  .gate-brand-logo { width: min(180px, 60%); }
+  .gate-right { width: 100%; padding: 40px 28px 60px; }
+}
 </style>
 </head>
 <body>
+
+<!-- GATE DE ACCESO -->
+<div id="gate">
+  <div class="gate-glow"></div>
+
+  <!-- Izquierda: logo Logos Psyche -->
+  <div class="gate-left">
+    <img src="https://ronaldescobar.com/assets/logos-psyche.png"
+         alt="Logos Psyche" class="gate-brand-logo">
+    <p class="gate-brand-tagline">Neurociencia · Arte · Humanidad</p>
+  </div>
+
+  <!-- Derecha: formulario -->
+  <div class="gate-right">
+    <p class="gate-eyebrow">Entre sesiones · Logos Psyche</p>
+    <h1 class="gate-title">Acompáñame<br><em>a estar solo.</em></h1>
+    <p class="gate-desc">Un espacio terapéutico para cuando no estás en sesión.<br>Disponible para pacientes de Logos Psyche.</p>
+
+    <div class="gate-form">
+      <div class="gate-privacy">
+        <span class="gate-privacy-title">Tu privacidad</span>
+        <p>• Esta conversación no se almacena en ningún servidor.</p>
+        <p>• El Dr. Escobar no tiene acceso a lo que escribís acá.</p>
+        <p>• Al cerrar la pestaña, la conversación desaparece.</p>
+        <p>• Solo vos decidís si compartir algo con tu terapeuta.</p>
+      </div>
+
+      <label class="gate-label" for="gate-clave">Clave de acceso</label>
+      <input type="password" id="gate-clave" class="gate-input"
+             placeholder=""
+             autocomplete="off"
+             onkeydown="if(event.key==='Enter')handleGateLogin()">
+      <p class="gate-hint">Tu clave te la entrega el Dr. Escobar en consulta.</p>
+      <p class="gate-error" id="gate-error"></p>
+      <button class="gate-btn" id="gate-btn" onclick="handleGateLogin()">Entrar</button>
+    </div>
+
+    <p class="gate-footer">
+      Este espacio no sustituye la consulta con tu terapeuta.<br>
+      Si estás en crisis, contactá directamente al <a href="https://wa.me/50230607168">+502 3060-7168</a>
+    </p>
+  </div>
+</div>
 
 <!-- NAV -->
 <nav class="nav">
@@ -469,7 +647,69 @@ body::after {
 
 <script>
 const API_URL = 'https://logos-psyche-api.vercel.app/api/chat';
+let clave = '';
 let messages = [], isTyping = false, messageCount = 0, resumenGenerado = false;
+
+// ── GATE ──────────────────────────────────────────────────────────────────────
+
+async function handleGateLogin() {
+  const input   = document.getElementById('gate-clave');
+  const errorEl = document.getElementById('gate-error');
+  const btn     = document.getElementById('gate-btn');
+
+  clave = input.value.trim().toUpperCase();
+
+  if (!clave) { showGateError('Ingresá tu clave de acceso.'); return; }
+
+  // Validación de prefijo en cliente — solo LP-G acepta esta página
+  if (!clave.startsWith('LP-G')) {
+    showGateError('Esta clave no corresponde a este espacio. Verificá con el Dr. Escobar.');
+    return;
+  }
+
+  btn.disabled = true; btn.textContent = 'Verificando...'; errorEl.style.display = 'none';
+
+  try {
+    const res = await fetch(API_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ clave, messages: [{ role: 'user', content: 'Hola' }] })
+    });
+
+    if (res.status === 401) {
+      showGateError('Clave no reconocida. Contactá al Dr. Escobar.');
+      btn.disabled = false; btn.textContent = 'Entrar'; return;
+    }
+    if (!res.ok) {
+      showGateError('Error de conexión. Intentá de nuevo.');
+      btn.disabled = false; btn.textContent = 'Entrar'; return;
+    }
+
+    const data = await res.json();
+    const bienvenida = data.text || data.content?.[0]?.text || "Hola. Estoy acá.\n\nNadie más lee esto — es solo tuyo. No tenés que tener todo claro para escribir.\n\n¿Qué estás cargando hoy?";
+
+    // Cerrar gate
+    document.getElementById('gate').classList.add('hidden');
+
+    // Iniciar chat
+    addMessage('assistant', bienvenida);
+    messages.push({ role: 'assistant', content: bienvenida });
+
+    // Focus en input
+    setTimeout(() => document.getElementById('inputField').focus(), 900);
+
+  } catch(e) {
+    showGateError('No se pudo conectar. Verificá tu conexión.');
+    btn.disabled = false; btn.textContent = 'Entrar';
+  }
+}
+
+function showGateError(msg) {
+  const el = document.getElementById('gate-error');
+  el.textContent = msg; el.style.display = 'block';
+}
+
+// ── CHAT ──────────────────────────────────────────────────────────────────────
 
 const inputField  = document.getElementById('inputField');
 const btnSend     = document.getElementById('btnSend');
@@ -478,12 +718,6 @@ const ctaBar      = document.getElementById('ctaBar');
 
 inputField.addEventListener('input', () => {
   btnSend.classList.toggle('ready', inputField.value.trim().length > 0 && !isTyping);
-});
-
-window.addEventListener('DOMContentLoaded', () => {
-  const bienvenida = "Hola. Estoy acá.\n\nNadie más lee esto — es solo tuyo. No tenés que tener todo claro para escribir.\n\n¿Qué estás cargando hoy?";
-  addMessage('assistant', bienvenida);
-  messages.push({ role: 'assistant', content: bienvenida });
 });
 
 function addMessage(role, text) {
@@ -534,11 +768,11 @@ async function sendMessage() {
     const res = await fetch(API_URL, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ messages })
+      body: JSON.stringify({ clave, messages })
     });
     const data = await res.json();
     removeTyping();
-    const reply = data.content?.[0]?.text || data.response || 'Algo salió mal. Intentá de nuevo.';
+    const reply = data.text || data.content?.[0]?.text || 'Algo salió mal. Intentá de nuevo.';
     addMessage('assistant', reply);
     messages.push({ role: 'assistant', content: reply });
     messageCount++;
@@ -569,17 +803,17 @@ async function pedirResumen() {
     const res = await fetch(API_URL, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ messages: resumenPrompt })
+      body: JSON.stringify({ clave, messages: resumenPrompt })
     });
     const data = await res.json();
-    const resumenTexto = data.content?.[0]?.text || data.response || '';
+    const resumenTexto = data.text || data.content?.[0]?.text || '';
 
     const bubbles = messagesDiv.querySelectorAll('.msg.assistant');
     if (bubbles.length) bubbles[bubbles.length - 1].remove();
 
     const box = document.createElement('div');
     box.className = 'resumen-box';
-    box.innerHTML = `<strong style="font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--amarillo);font-family:'Courier Prime',monospace;">Tu mapa</strong><br><br>${resumenTexto}<div class="resumen-acciones"><button class="resumen-btn copiar" onclick="copiarResumen(this)">Copiar</button><a href="https://wa.me/50230607168?text=${encodeURIComponent('Mi resumen:\\n\\n' + resumenTexto)}" target="_blank" class="resumen-btn wa" style="text-decoration:none;display:inline-block;">Enviar al Dr. Escobar</a></div>`;
+    box.innerHTML = `<strong style="font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--amarillo);font-family:'Courier Prime',monospace;">Tu mapa</strong><br><br>${resumenTexto}<div class="resumen-acciones"><button class="resumen-btn copiar" onclick="copiarResumen(this)">Copiar</button><a href="https://wa.me/50230607168?text=${encodeURIComponent('Mi resumen:\n\n' + resumenTexto)}" target="_blank" class="resumen-btn wa" style="text-decoration:none;display:inline-block;">Enviar al Dr. Escobar</a></div>`;
     messagesDiv.appendChild(box);
     box.scrollIntoView({ behavior: 'smooth', block: 'end' });
   } catch(e) {
