@@ -5,7 +5,7 @@
   ],
   "headers": [
     {
-      "source": "/assets/(.*\\.mp4)",
+      "source": "/assets/:file*.mp4",
       "headers": [
         { "key": "Content-Type", "value": "video/mp4" },
         { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" },
@@ -13,7 +13,7 @@
       ]
     },
     {
-      "source": "/assets/(.*\\.(webp|jpg|jpeg|png|svg|gif|ico|woff2|woff|ttf|otf|css|js))",
+      "source": "/assets/:file*",
       "headers": [
         { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
       ]
