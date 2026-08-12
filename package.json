@@ -2,6 +2,23 @@
   "name": "rescobar",
   "version": "1.0.0",
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.115.0",
     "@upstash/redis": "^1.34.0"
-  }
+  },
+  "description": "",
+  "main": "admin.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RE2205/rescobar.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RE2205/rescobar/issues"
+  },
+  "homepage": "https://github.com/RE2205/rescobar#readme"
 }

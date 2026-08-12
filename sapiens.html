@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>SAPIENS — Logos Psyche</title>
+<meta name="description" content="SAPIENS. Un sistema de pensamiento. Logos Psyche · Dr. Ronald Escobar.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --negro:#08080a;
+  --blanco:#f0ede6;
+  --teal:#4ecdc4;
+  --rojo:#c44a2a;
+  --amarillo:#d4b84a;
+  --naranja:#c4763a;
+  --gris:#908c86;
+  --linea:rgba(78,205,196,0.12);
+  --grad:linear-gradient(100deg,#4ecdc4,#8ec44e,#d4b84a,#c4763a,#c44a2a);
+  --superficie:#101014;
+  --superficie-2:#16161b;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+html{-webkit-text-size-adjust:100%}
+
+body{
+  background:var(--negro);
+  color:var(--blanco);
+  font-family:'IBM Plex Sans',system-ui,-apple-system,sans-serif;
+  font-size:16px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  overflow:hidden;
+}
+
+.mono{font-family:'IBM Plex Mono',ui-monospace,monospace}
+
+/* ══════════════ PUERTA ══════════════ */
+#puerta{
+  position:fixed;inset:0;z-index:50;
+  display:flex;align-items:center;justify-content:center;
+  padding:1.5rem;
+  background:var(--negro);
+  overflow-y:auto;
+}
+#puerta::before{
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(110vw 60vh at 50% -10%,rgba(78,205,196,.10),transparent 60%);
+}
+.puerta-caja{position:relative;width:100%;max-width:26rem;padding:2rem 0}
+
+.marca{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:.66rem;letter-spacing:.24em;text-transform:uppercase;
+  color:var(--teal);margin-bottom:2.4rem;display:block;
+}
+.puerta-caja h1{
+  font-size:1.9rem;font-weight:500;letter-spacing:-.02em;
+  line-height:1.2;margin-bottom:.7rem;
+}
+.puerta-caja .lema{color:var(--gris);font-size:.95rem;margin-bottom:2.2rem;max-width:22rem}
+
+.campo{margin-bottom:1.1rem}
+.campo label{
+  display:block;font-family:'IBM Plex Mono',monospace;
+  font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--gris);margin-bottom:.5rem;
+}
+.campo input[type=text]{
+  width:100%;background:var(--superficie);
+  border:1px solid var(--linea);border-radius:3px;
+  color:var(--blanco);
+  font-family:'IBM Plex Mono',monospace;font-size:1rem;letter-spacing:.06em;
+  padding:.85rem .95rem;
+  transition:border-color .18s;
+}
+.campo input[type=text]::placeholder{color:#4a4a52;letter-spacing:.04em}
+.campo input[type=text]:focus{outline:none;border-color:var(--teal)}
+
+.terminos{
+  display:flex;gap:.65rem;align-items:flex-start;
+  margin:1.4rem 0 1.6rem;font-size:.84rem;color:var(--gris);line-height:1.5;
+}
+.terminos input{
+  flex:0 0 auto;width:1rem;height:1rem;margin-top:.18rem;
+  accent-color:var(--teal);cursor:pointer;
+}
+.terminos label{cursor:pointer}
+.terminos a{color:var(--teal);text-decoration:underline;text-underline-offset:2px}
+
+.boton{
+  width:100%;background:var(--blanco);color:var(--negro);
+  border:1px solid var(--blanco);border-radius:3px;
+  font-family:'IBM Plex Sans',sans-serif;font-size:.95rem;font-weight:600;
+  padding:.85rem 1rem;cursor:pointer;
+  transition:background .18s,border-color .18s,opacity .18s;
+}
+.boton:hover:not(:disabled){background:var(--teal);border-color:var(--teal)}
+.boton:disabled{opacity:.45;cursor:not-allowed}
+
+.pista{font-size:.8rem;color:#5e5a55;margin-top:1.2rem;line-height:1.55}
+.error{
+  font-size:.87rem;color:var(--rojo);margin-top:.9rem;min-height:1.2em;line-height:1.5;
+}
+.error:empty{margin-top:0;min-height:0}
+
+:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
+
+/* ══════════════ SALA ══════════════ */
+#sala{display:none;flex-direction:column;height:100dvh}
+#sala.visible{display:flex}
+
+.barra{
+  flex:0 0 auto;
+  display:flex;align-items:center;justify-content:space-between;gap:1rem;
+  padding:.85rem 1.25rem;
+  border-bottom:1px solid var(--linea);
+  background:rgba(8,8,10,.92);
+  backdrop-filter:blur(12px);
+  position:relative;
+}
+/* firma: la línea de estado. Solo se enciende con un modo privado abierto. */
+.barra::after{
+  content:'';position:absolute;left:0;right:0;bottom:-1px;height:1px;
+  background:var(--grad);opacity:0;transition:opacity .5s ease;
+}
+body.privado .barra::after{opacity:1}
+
+.barra-izq{display:flex;align-items:baseline;gap:.7rem;min-width:0}
+.barra-nombre{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--teal);
+}
+.barra-meta{
+  font-family:'IBM Plex Mono',monospace;font-size:.66rem;
+  letter-spacing:.09em;color:#5e5a55;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.salir{
+  flex:0 0 auto;background:none;border:none;
+  font-family:'IBM Plex Mono',monospace;font-size:.66rem;
+  letter-spacing:.14em;text-transform:uppercase;color:#5e5a55;
+  cursor:pointer;padding:.35rem;transition:color .18s;
+}
+.salir:hover{color:var(--blanco)}
+
+.hilo{
+  flex:1 1 auto;overflow-y:auto;overscroll-behavior:contain;
+  padding:2rem 1.25rem 1rem;
+  scroll-behavior:smooth;
+}
+.hilo-interno{max-width:44rem;margin:0 auto;display:flex;flex-direction:column;gap:1.9rem}
+
+.turno{display:flex;flex-direction:column;gap:.45rem}
+.turno .quien{
+  font-family:'IBM Plex Mono',monospace;font-size:.62rem;
+  letter-spacing:.2em;text-transform:uppercase;
+}
+.turno.yo .quien{color:var(--gris)}
+.turno.sapiens .quien{color:var(--teal)}
+.turno .dice{white-space:pre-wrap;word-wrap:break-word;line-height:1.72}
+.turno.yo .dice{color:#c9c5be}
+.turno.sapiens .dice{color:var(--blanco)}
+
+.aviso-sistema{
+  border-left:2px solid var(--naranja);
+  padding:.85rem 0 .85rem 1rem;
+  font-size:.9rem;color:#c9c5be;line-height:1.6;
+}
+.aviso-sistema.grave{border-left-color:var(--rojo)}
+.aviso-sistema a{color:var(--teal)}
+
+/* respiración mientras piensa */
+.pensando{display:flex;align-items:center;gap:.4rem;height:1.2rem}
+.pensando span{
+  width:5px;height:5px;border-radius:50%;background:var(--teal);
+  animation:respirar 1.3s ease-in-out infinite;
+}
+.pensando span:nth-child(2){animation-delay:.18s}
+.pensando span:nth-child(3){animation-delay:.36s}
+@keyframes respirar{0%,100%{opacity:.2;transform:translateY(0)}50%{opacity:1;transform:translateY(-3px)}}
+
+/* ══════════════ COMPOSITOR ══════════════ */
+.compositor{
+  flex:0 0 auto;
+  border-top:1px solid var(--linea);
+  background:rgba(8,8,10,.96);
+  backdrop-filter:blur(12px);
+  padding:.9rem 1.25rem calc(.9rem + env(safe-area-inset-bottom));
+}
+.compositor-interno{
+  max-width:44rem;margin:0 auto;
+  display:flex;gap:.6rem;align-items:flex-end;
+  background:var(--superficie);
+  border:1px solid var(--linea);border-radius:6px;
+  padding:.55rem .55rem .55rem .9rem;
+  transition:border-color .18s;
+}
+.compositor-interno:focus-within{border-color:rgba(78,205,196,.4)}
+
+#texto{
+  flex:1 1 auto;background:none;border:none;resize:none;
+  color:var(--blanco);
+  font-family:'IBM Plex Sans',sans-serif;font-size:1rem;line-height:1.6;
+  padding:.4rem 0;max-height:11rem;min-height:1.6rem;
+}
+#texto:focus{outline:none}
+#texto::placeholder{color:#4a4a52}
+#texto:disabled{opacity:.4}
+
+#enviar{
+  flex:0 0 auto;width:2.3rem;height:2.3rem;
+  display:flex;align-items:center;justify-content:center;
+  background:var(--teal);color:var(--negro);
+  border:none;border-radius:4px;cursor:pointer;
+  transition:opacity .18s,background .18s;
+}
+#enviar:disabled{opacity:.25;cursor:not-allowed}
+#enviar svg{width:1.05rem;height:1.05rem}
+
+.pie{
+  max-width:44rem;margin:.6rem auto 0;
+  font-size:.71rem;color:#4a4a52;line-height:1.5;text-align:center;
+}
+
+@media (max-width:620px){
+  .hilo{padding:1.4rem 1rem .8rem}
+  .hilo-interno{gap:1.6rem}
+  .compositor{padding:.7rem 1rem calc(.7rem + env(safe-area-inset-bottom))}
+  .barra{padding:.7rem 1rem}
+  .barra-meta{display:none}
+  .puerta-caja h1{font-size:1.6rem}
+}
+
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  .hilo{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════ PUERTA ═══════════ -->
+<div id="puerta">
+  <div class="puerta-caja">
+    <span class="marca">Logos Psyche</span>
+    <h1>SAPIENS</h1>
+    <p class="lema">Lo que traigas, no hace falta ordenarlo antes.</p>
+
+    <div class="campo">
+      <label for="llave">Llave de acceso</label>
+      <input type="text" id="llave" placeholder="SAPIENS00-XXXXXX"
+             autocomplete="off" autocapitalize="characters"
+             spellcheck="false" enterkeyhint="go">
+    </div>
+
+    <div class="terminos">
+      <input type="checkbox" id="acepta">
+      <label for="acepta">Leí y acepto los <a href="/terminos.html" target="_blank" rel="noopener">términos de uso</a>. Entiendo que SAPIENS no es terapia, no diagnostica y no reemplaza atención profesional.</label>
+    </div>
+
+    <button class="boton" id="entrar" disabled>Entrar</button>
+    <p class="error" id="error-puerta" role="alert"></p>
+
+    <p class="pista">Tu llave te la entrega el Dr. Escobar. Si estás en una crisis, esto no alcanza: llamá al 1554 o acudí a una emergencia.</p>
+  </div>
+</div>
+
+<!-- ═══════════ SALA ═══════════ -->
+<div id="sala">
+  <div class="barra">
+    <div class="barra-izq">
+      <span class="barra-nombre" id="etiqueta">SAPIENS</span>
+      <span class="barra-meta" id="meta"></span>
+    </div>
+    <button class="salir" id="salir">Salir</button>
+  </div>
+
+  <div class="hilo" id="hilo">
+    <div class="hilo-interno" id="hilo-interno"></div>
+  </div>
+
+  <div class="compositor">
+    <div class="compositor-interno">
+      <textarea id="texto" rows="1" placeholder="Escribí acá…"
+                enterkeyhint="send" autocomplete="off"></textarea>
+      <button id="enviar" aria-label="Enviar mensaje" disabled>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+             stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12 19V5M5 12l7-7 7 7"/>
+        </svg>
+      </button>
+    </div>
+    <p class="pie">SAPIENS no diagnostica ni receta. En una crisis, llamá al 1554 o acudí a una emergencia.</p>
+  </div>
+</div>
+
+<script>
+(function(){
+'use strict';
+
+const API = 'https://logos-psyche-api.vercel.app/api/sapiens';
+const MAX_TURNOS = 20;          // turnos que se reenvían como contexto
+const CLAVE_LLAVE = 'sapiens.llave';
+const CLAVE_SESION = 'sapiens.sesion';
+
+// ── almacenamiento tolerante (modo privado del navegador lo bloquea) ──
+const guardar = (k,v) => { try{ localStorage.setItem(k,v); }catch(e){} };
+const leer    = k     => { try{ return localStorage.getItem(k); }catch(e){ return null; } };
+const borrar  = k     => { try{ localStorage.removeItem(k); }catch(e){} };
+
+// ── identidad de sesión: sin esto el contador de Light no distingue a nadie ──
+function sesionID(){
+  let s = leer(CLAVE_SESION);
+  if (!s) {
+    s = (crypto.randomUUID && crypto.randomUUID()) ||
+        (Date.now().toString(36) + Math.random().toString(36).slice(2,12));
+    guardar(CLAVE_SESION, s);
+  }
+  return s;
+}
+
+const $ = id => document.getElementById(id);
+const puerta = $('puerta'), sala = $('sala'), hilo = $('hilo'), lienzo = $('hilo-interno');
+const campoLlave = $('llave'), acepta = $('acepta'), btnEntrar = $('entrar'), errPuerta = $('error-puerta');
+const texto = $('texto'), btnEnviar = $('enviar'), etiqueta = $('etiqueta'), meta = $('meta');
+
+let llave = '';
+let historial = [];
+let ocupado = false;
+let cerrado = false;   // límite alcanzado o membresía vencida
+
+const ETIQUETAS = {
+  light:'SAPIENS · Light', pacientes:'SAPIENS', artistas:'SAPIENS · Artistas',
+  premium:'SAPIENS · Premium', fundador:'LA FORJA', winypeg:'SAPIENS', andrea:'SAPIENS'
+};
+const PRIVADOS = ['fundador','winypeg','andrea'];
+
+// ══════════════ PUERTA ══════════════
+function revisarPuerta(){
+  btnEntrar.disabled = !(campoLlave.value.trim().length >= 4 && acepta.checked);
+}
+campoLlave.addEventListener('input', () => {
+  const p = campoLlave.selectionStart;
+  campoLlave.value = campoLlave.value.toUpperCase();
+  campoLlave.setSelectionRange(p, p);
+  errPuerta.textContent = '';
+  revisarPuerta();
+});
+acepta.addEventListener('change', revisarPuerta);
+campoLlave.addEventListener('keydown', e => {
+  if (e.key === 'Enter' && !btnEntrar.disabled) entrar();
+});
+btnEntrar.addEventListener('click', entrar);
+
+async function entrar(){
+  const candidata = campoLlave.value.trim().toUpperCase();
+  errPuerta.textContent = '';
+  btnEntrar.disabled = true;
+  btnEntrar.textContent = 'Verificando…';
+
+  try {
+    const r = await pedir(candidata, 'Hola');
+    if (r.error) { fallarPuerta(r.error); return; }
+
+    llave = candidata;
+    guardar(CLAVE_LLAVE, llave);
+    abrirSala();
+    aplicarEstado(r);
+    if (r.respuesta) escribir('sapiens', r.respuesta);
+    historial.push({role:'user', content:'Hola'});
+    if (r.respuesta) historial.push({role:'assistant', content:r.respuesta});
+  } catch (e) {
+    fallarPuerta('No se pudo conectar. Revisá tu conexión y probá de nuevo.');
+  }
+}
+
+function fallarPuerta(msj){
+  errPuerta.textContent = msj;
+  btnEntrar.disabled = false;
+  btnEntrar.textContent = 'Entrar';
+  revisarPuerta();
+  campoLlave.focus();
+}
+
+function abrirSala(){
+  puerta.style.display = 'none';
+  sala.classList.add('visible');
+  texto.disabled = false;
+  texto.focus();
+}
+
+// ══════════════ LLAMADA ══════════════
+async function pedir(conLlave, mensaje){
+  const res = await fetch(API, {
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body: JSON.stringify({
+      llave: conLlave,
+      mensaje,
+      sesion: sesionID(),
+      historial: historial.slice(-MAX_TURNOS)
+    })
+  });
+
+  let datos = {};
+  try { datos = await res.json(); } catch(e){}
+
+  if (!res.ok) {
+    return { error: datos.mensaje || datos.error || 'Algo falló. Probá de nuevo.',
+             estado: datos.estado, renovable: datos.renovable };
+  }
+  return datos;
+}
+
+// ══════════════ HILO ══════════════
+function escribir(quien, contenido){
+  const t = document.createElement('div');
+  t.className = 'turno ' + (quien === 'yo' ? 'yo' : 'sapiens');
+
+  const q = document.createElement('span');
+  q.className = 'quien';
+  q.textContent = quien === 'yo' ? 'Vos' : etiqueta.textContent;
+
+  const d = document.createElement('div');
+  d.className = 'dice';
+  d.textContent = contenido;
+
+  t.append(q, d);
+  lienzo.appendChild(t);
+  alFondo();
+  return t;
+}
+
+function sistema(contenido, grave){
+  const a = document.createElement('div');
+  a.className = 'aviso-sistema' + (grave ? ' grave' : '');
+  a.textContent = contenido;
+  lienzo.appendChild(a);
+  alFondo();
+}
+
+function esperar(){
+  const t = document.createElement('div');
+  t.className = 'turno sapiens';
+  t.innerHTML = '<span class="quien">' + etiqueta.textContent +
+    '</span><div class="pensando"><span></span><span></span><span></span></div>';
+  lienzo.appendChild(t);
+  alFondo();
+  return t;
+}
+
+function alFondo(){
+  requestAnimationFrame(() => { hilo.scrollTop = hilo.scrollHeight; });
+}
+
+// ══════════════ ESTADO ══════════════
+function aplicarEstado(r){
+  const modo = r.modo || r.membresia;
+  if (modo) etiqueta.textContent = ETIQUETAS[modo] || 'SAPIENS';
+
+  document.body.classList.toggle('privado', PRIVADOS.includes(r.modo));
+
+  const partes = [];
+  if (r.nombre) partes.push(r.nombre);
+  if (typeof r.interaccionesRestantes === 'number') {
+    partes.push(r.interaccionesRestantes + ' de 15');
+  } else if (typeof r.diasRestantes === 'number') {
+    partes.push(r.diasRestantes + (r.diasRestantes === 1 ? ' día' : ' días'));
+  }
+  meta.textContent = partes.join(' · ');
+}
+
+function cerrar(){
+  cerrado = true;
+  texto.disabled = true;
+  btnEnviar.disabled = true;
+  texto.placeholder = 'Esta conversación está cerrada.';
+}
+
+// ══════════════ ENVIAR ══════════════
+function ajustarAlto(){
+  texto.style.height = 'auto';
+  texto.style.height = Math.min(texto.scrollHeight, 176) + 'px';
+}
+
+texto.addEventListener('input', () => {
+  ajustarAlto();
+  btnEnviar.disabled = ocupado || cerrado || !texto.value.trim();
+});
+
+texto.addEventListener('keydown', e => {
+  if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); enviar(); }
+});
+btnEnviar.addEventListener('click', enviar);
+
+async function enviar(){
+  const mensaje = texto.value.trim();
+  if (!mensaje || ocupado || cerrado) return;
+
+  ocupado = true;
+  btnEnviar.disabled = true;
+  texto.value = '';
+  ajustarAlto();
+
+  const mio = escribir('yo', mensaje);
+  const espera = esperar();
+
+  try {
+    const r = await pedir(llave, mensaje);
+    espera.remove();
+
+    if (r.error) {
+      if (r.estado === 'expirada' || r.estado === 'desactivada') {
+        sistema(r.error, true);
+        cerrar();
+      } else {
+        sistema(r.error, false);
+      }
+      ocupado = false;
+      texto.focus();
+      return;
+    }
+
+    // Palabra maestra: no queda escrita en el hilo.
+    if (r.estado === 'modo-abierto') {
+      mio.remove();
+      aplicarEstado(r);
+      escribir('sapiens', r.respuesta);
+      historial = [];
+      ocupado = false;
+      texto.focus();
+      return;
+    }
+
+    if (r.estado === 'modo-cerrado') {
+      mio.remove();
+      document.body.classList.remove('privado');
+      sistema(r.respuesta, false);
+      historial = [];
+      ocupado = false;
+      texto.focus();
+      return;
+    }
+
+    if (r.estado === 'limite') {
+      sistema(r.respuesta, false);
+      cerrar();
+      ocupado = false;
+      return;
+    }
+
+    aplicarEstado(r);
+    escribir('sapiens', r.respuesta);
+    historial.push({role:'user', content:mensaje});
+    historial.push({role:'assistant', content:r.respuesta});
+    if (historial.length > MAX_TURNOS) historial = historial.slice(-MAX_TURNOS);
+
+  } catch (e) {
+    espera.remove();
+    sistema('No se pudo enviar. Revisá tu conexión y probá de nuevo.', false);
+  }
+
+  ocupado = false;
+  texto.focus();
+}
+
+// ══════════════ SALIR ══════════════
+$('salir').addEventListener('click', () => {
+  if (!confirm('¿Cerrar la sesión? La conversación no se guarda.')) return;
+  borrar(CLAVE_LLAVE);
+  location.reload();
+});
+
+// ══════════════ ARRANQUE ══════════════
+const recordada = leer(CLAVE_LLAVE);
+if (recordada) { campoLlave.value = recordada; revisarPuerta(); }
+campoLlave.focus();
+
+})();
+</script>
+</body>
+</html>
