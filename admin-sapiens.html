@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SAPIENS — Llaves</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --negro:#08080a; --blanco:#f0ede6; --teal:#4ecdc4; --rojo:#c44a2a;
+  --amarillo:#d4b84a; --naranja:#c4763a; --gris:#908c86;
+  --linea:rgba(78,205,196,0.12); --superficie:#101014;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  background:var(--negro);color:var(--blanco);
+  font-family:'IBM Plex Sans',system-ui,sans-serif;font-size:15px;line-height:1.6;
+  -webkit-font-smoothing:antialiased;padding:2rem 1.25rem 5rem;
+}
+.env{max-width:60rem;margin:0 auto}
+.mono{font-family:'IBM Plex Mono',monospace}
+
+h1{font-size:1.5rem;font-weight:500;letter-spacing:-.01em}
+.marca{
+  font-family:'IBM Plex Mono',monospace;font-size:.64rem;letter-spacing:.24em;
+  text-transform:uppercase;color:var(--teal);display:block;margin-bottom:.5rem;
+}
+header{margin-bottom:2.5rem}
+
+/* ── puerta ── */
+#puerta{max-width:26rem;margin:5rem auto}
+label{
+  display:block;font-family:'IBM Plex Mono',monospace;font-size:.62rem;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--gris);margin-bottom:.4rem;
+}
+input,select{
+  width:100%;background:var(--superficie);border:1px solid var(--linea);
+  border-radius:3px;color:var(--blanco);
+  font-family:'IBM Plex Sans',sans-serif;font-size:.95rem;
+  padding:.7rem .8rem;transition:border-color .18s;
+}
+input.mono{font-family:'IBM Plex Mono',monospace;letter-spacing:.04em}
+input:focus,select:focus{outline:none;border-color:var(--teal)}
+input::placeholder{color:#4a4a52}
+
+.boton{
+  background:var(--blanco);color:var(--negro);border:1px solid var(--blanco);
+  border-radius:3px;font-family:'IBM Plex Sans',sans-serif;
+  font-size:.9rem;font-weight:600;padding:.7rem 1.2rem;cursor:pointer;
+  transition:background .18s,border-color .18s,opacity .18s;
+}
+.boton:hover:not(:disabled){background:var(--teal);border-color:var(--teal)}
+.boton:disabled{opacity:.4;cursor:not-allowed}
+.boton.sec{
+  background:none;color:var(--gris);border-color:var(--linea);
+  font-size:.72rem;font-weight:500;padding:.35rem .7rem;
+}
+.boton.sec:hover:not(:disabled){background:none;border-color:var(--teal);color:var(--teal)}
+.boton.sec.peligro:hover:not(:disabled){border-color:var(--rojo);color:var(--rojo)}
+
+/* ── crear ── */
+.tarjeta{
+  background:var(--superficie);border:1px solid var(--linea);
+  border-radius:5px;padding:1.4rem;margin-bottom:2.5rem;
+}
+.tarjeta h2{
+  font-size:.68rem;font-family:'IBM Plex Mono',monospace;font-weight:500;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--teal);margin-bottom:1.2rem;
+}
+.rejilla{display:grid;grid-template-columns:repeat(auto-fit,minmax(11rem,1fr));gap:1rem;margin-bottom:1.1rem}
+.fila-inferior{display:flex;gap:1.2rem;align-items:center;flex-wrap:wrap}
+.casilla{display:flex;align-items:center;gap:.5rem;font-size:.86rem;color:var(--gris)}
+.casilla input{width:auto;accent-color:var(--teal);cursor:pointer}
+.casilla label{margin:0;text-transform:none;letter-spacing:0;font-size:.86rem;
+  font-family:'IBM Plex Sans',sans-serif;color:var(--gris);cursor:pointer}
+
+/* ── resultado ── */
+#nueva{
+  display:none;margin-top:1.2rem;padding:1rem;
+  border:1px solid var(--teal);border-radius:4px;
+  background:rgba(78,205,196,.05);
+}
+#nueva.visible{display:block}
+#nueva .llave{
+  font-family:'IBM Plex Mono',monospace;font-size:1.3rem;
+  letter-spacing:.1em;color:var(--teal);margin-bottom:.5rem;
+}
+#nueva .detalle{font-size:.84rem;color:var(--gris)}
+
+/* ── tabla ── */
+.cabecera-lista{display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;gap:1rem;flex-wrap:wrap}
+.cabecera-lista h2{
+  font-size:.68rem;font-family:'IBM Plex Mono',monospace;font-weight:500;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--teal);
+}
+table{width:100%;border-collapse:collapse;font-size:.88rem}
+th{
+  text-align:left;font-family:'IBM Plex Mono',monospace;font-size:.6rem;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--gris);
+  font-weight:500;padding:.5rem .6rem;border-bottom:1px solid var(--linea);
+}
+td{padding:.75rem .6rem;border-bottom:1px solid rgba(78,205,196,.06);vertical-align:middle}
+tr:hover td{background:rgba(78,205,196,.03)}
+td.llave{font-family:'IBM Plex Mono',monospace;letter-spacing:.05em;cursor:pointer}
+td.llave:hover{color:var(--teal)}
+.pastilla{
+  display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:.6rem;
+  letter-spacing:.1em;text-transform:uppercase;padding:.2rem .5rem;border-radius:2px;
+}
+.p-activa{background:rgba(78,205,196,.12);color:var(--teal)}
+.p-expirada{background:rgba(196,74,42,.14);color:var(--rojo)}
+.p-permanente{background:rgba(212,184,74,.12);color:var(--amarillo)}
+.p-light{background:rgba(144,140,134,.14);color:var(--gris)}
+.p-pacientes{background:rgba(78,205,196,.10);color:var(--teal)}
+.p-artistas{background:rgba(196,118,58,.14);color:var(--naranja)}
+.p-premium{background:rgba(212,184,74,.12);color:var(--amarillo)}
+td.acciones{text-align:right;white-space:nowrap}
+td.acciones .boton{margin-left:.35rem}
+
+.aviso{font-size:.86rem;margin-top:.9rem;min-height:1.2em}
+.aviso.mal{color:var(--rojo)}
+.aviso.bien{color:var(--teal)}
+.vacio{color:var(--gris);font-size:.9rem;padding:2rem 0;text-align:center}
+
+.pie{margin-top:2.5rem;font-size:.74rem;color:#4a4a52;line-height:1.6}
+
+:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
+
+@media (max-width:680px){
+  body{padding:1.5rem 1rem 4rem}
+  .rejilla{grid-template-columns:1fr}
+  table{font-size:.8rem}
+  th:nth-child(4),td:nth-child(4){display:none}
+  td.acciones{text-align:left;padding-top:.3rem}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<!-- ═══ PUERTA ═══ -->
+<div id="puerta">
+  <span class="marca">Logos Psyche</span>
+  <h1 style="margin-bottom:1.8rem">Llaves SAPIENS</h1>
+
+  <label for="secreto">Secreto de administración</label>
+  <input type="password" id="secreto" class="mono" placeholder="•••" autocomplete="off" enterkeyhint="go">
+
+  <button class="boton" id="abrir" style="width:100%;margin-top:1rem">Entrar</button>
+  <p class="aviso" id="aviso-puerta" role="alert"></p>
+  <p class="pie">El secreto se guarda solo en esta pestaña. Al cerrarla, se borra.</p>
+</div>
+
+<!-- ═══ PANEL ═══ -->
+<div class="env" id="panel" style="display:none">
+  <header>
+    <span class="marca">Logos Psyche</span>
+    <h1>Llaves SAPIENS</h1>
+  </header>
+
+  <!-- crear -->
+  <div class="tarjeta">
+    <h2>Emitir llave</h2>
+
+    <div class="rejilla">
+      <div>
+        <label for="nombre">Nombre</label>
+        <input type="text" id="nombre" placeholder="María" autocomplete="off">
+      </div>
+      <div>
+        <label for="membresia">Membresía</label>
+        <select id="membresia">
+          <option value="premium">Premium — 30 días</option>
+          <option value="pacientes">Pacientes — 30 días</option>
+          <option value="artistas">Artistas — 30 días</option>
+          <option value="light">Light — 15 días</option>
+        </select>
+      </div>
+      <div>
+        <label for="pronombre">Pronombre</label>
+        <select id="pronombre">
+          <option value="">—</option>
+          <option value="ella">ella</option>
+          <option value="él">él</option>
+          <option value="elle">elle</option>
+        </select>
+      </div>
+      <div>
+        <label for="edad">Edad</label>
+        <input type="number" id="edad" placeholder="opcional" min="1" max="120">
+      </div>
+    </div>
+
+    <div class="fila-inferior">
+      <button class="boton" id="crear">Emitir</button>
+      <div class="casilla">
+        <input type="checkbox" id="permanente">
+        <label for="permanente">Permanente (no vence)</label>
+      </div>
+    </div>
+
+    <p class="aviso" id="aviso-crear" role="status"></p>
+
+    <div id="nueva">
+      <div class="llave mono" id="nueva-llave"></div>
+      <div class="detalle" id="nueva-detalle"></div>
+      <button class="boton sec" id="copiar" style="margin-top:.7rem">Copiar</button>
+    </div>
+  </div>
+
+  <!-- lista -->
+  <div class="cabecera-lista">
+    <h2>Llaves emitidas <span id="total" style="color:var(--gris)"></span></h2>
+    <button class="boton sec" id="recargar">Actualizar</button>
+  </div>
+
+  <div id="contenedor-tabla"><p class="vacio">Cargando…</p></div>
+
+  <p class="pie">
+    Clic sobre una llave para copiarla. Renovar extiende 30 días desde hoy.
+    Revocar es permanente y no se puede deshacer.
+  </p>
+</div>
+
+<script>
+(function(){
+'use strict';
+
+const API = 'https://logos-psyche-api.vercel.app/api/llaves';
+const CLAVE_SESION = 'sapiens.admin';
+
+const $ = id => document.getElementById(id);
+let secreto = '';
+
+const ETIQUETAS = {light:'Light', pacientes:'Pacientes', artistas:'Artistas', premium:'Premium'};
+
+function decir(nodo, texto, clase){
+  nodo.textContent = texto;
+  nodo.className = 'aviso ' + (clase || '');
+}
+
+// ── llamadas ──
+async function pedir(metodo, cuerpo, consulta){
+  const url = consulta ? `${API}?${consulta}` : API;
+  const opciones = {
+    method: metodo,
+    headers: { 'Content-Type':'application/json', 'X-Admin-Secret': secreto }
+  };
+  if (cuerpo) opciones.body = JSON.stringify(cuerpo);
+
+  const res = await fetch(url, opciones);
+  let datos = {};
+  try { datos = await res.json(); } catch(e){}
+  if (!res.ok) throw new Error(datos.error || datos.mensaje || `Error ${res.status}`);
+  return datos;
+}
+
+// ── puerta ──
+async function abrir(){
+  const valor = $('secreto').value.trim();
+  if (!valor) return;
+
+  secreto = valor;
+  $('abrir').disabled = true;
+  $('abrir').textContent = 'Verificando…';
+  decir($('aviso-puerta'), '', '');
+
+  try {
+    await pedir('GET', null, 'listar=true');
+    try { sessionStorage.setItem(CLAVE_SESION, secreto); } catch(e){}
+    $('puerta').style.display = 'none';
+    $('panel').style.display = 'block';
+    listar();
+  } catch (e) {
+    secreto = '';
+    decir($('aviso-puerta'), 'Secreto incorrecto.', 'mal');
+    $('abrir').disabled = false;
+    $('abrir').textContent = 'Entrar';
+    $('secreto').select();
+  }
+}
+
+$('abrir').addEventListener('click', abrir);
+$('secreto').addEventListener('keydown', e => { if (e.key === 'Enter') abrir(); });
+
+// ── crear ──
+$('crear').addEventListener('click', async () => {
+  const nombre = $('nombre').value.trim();
+  if (!nombre) { decir($('aviso-crear'), 'El nombre es obligatorio.', 'mal'); $('nombre').focus(); return; }
+
+  const cuerpo = {
+    membresia: $('membresia').value,
+    nombre,
+    pronombre: $('pronombre').value || null,
+    edad: $('edad').value ? Number($('edad').value) : null
+  };
+  if ($('permanente').checked) cuerpo.permanente = true;
+
+  $('crear').disabled = true;
+  $('crear').textContent = 'Emitiendo…';
+  decir($('aviso-crear'), '', '');
+  $('nueva').classList.remove('visible');
+
+  try {
+    const r = await pedir('POST', cuerpo);
+    $('nueva-llave').textContent = r.llave;
+    $('nueva-detalle').textContent =
+      `${r.etiqueta} · ${r.perfil.nombre}` +
+      (r.permanente ? ' · permanente' : ` · vence ${r.expiracion}`);
+    $('nueva').classList.add('visible');
+    copiar(r.llave);
+
+    $('nombre').value = '';
+    $('edad').value = '';
+    $('permanente').checked = false;
+    listar();
+  } catch (e) {
+    decir($('aviso-crear'), e.message, 'mal');
+  }
+
+  $('crear').disabled = false;
+  $('crear').textContent = 'Emitir';
+});
+
+function copiar(texto){
+  if (navigator.clipboard) navigator.clipboard.writeText(texto).catch(()=>{});
+}
+
+$('copiar').addEventListener('click', () => {
+  copiar($('nueva-llave').textContent);
+  $('copiar').textContent = 'Copiada';
+  setTimeout(() => { $('copiar').textContent = 'Copiar'; }, 1500);
+});
+
+// ── listar ──
+async function listar(){
+  const caja = $('contenedor-tabla');
+  caja.innerHTML = '<p class="vacio">Cargando…</p>';
+
+  try {
+    const r = await pedir('GET', null, 'listar=true');
+    const filas = r.llaves || [];
+    $('total').textContent = filas.length ? `(${filas.length})` : '';
+
+    if (!filas.length) {
+      caja.innerHTML = '<p class="vacio">Todavía no hay llaves emitidas.</p>';
+      return;
+    }
+
+    const tabla = document.createElement('table');
+    tabla.innerHTML =
+      '<thead><tr><th>Llave</th><th>Nombre</th><th>Tipo</th><th>Vence</th><th>Estado</th><th></th></tr></thead>';
+
+    const cuerpo = document.createElement('tbody');
+
+    for (const f of filas) {
+      const tr = document.createElement('tr');
+
+      const tdLlave = document.createElement('td');
+      tdLlave.className = 'llave';
+      tdLlave.textContent = f.llave;
+      tdLlave.title = 'Clic para copiar';
+      tdLlave.addEventListener('click', () => {
+        copiar(f.llave);
+        const antes = tdLlave.textContent;
+        tdLlave.textContent = 'copiada';
+        setTimeout(() => { tdLlave.textContent = antes; }, 900);
+      });
+
+      const tdNombre = document.createElement('td');
+      tdNombre.textContent = f.nombre || '—';
+
+      const tdTipo = document.createElement('td');
+      tdTipo.innerHTML = `<span class="pastilla p-${f.membresia}">${ETIQUETAS[f.membresia] || f.membresia}</span>`;
+
+      const tdVence = document.createElement('td');
+      tdVence.style.color = 'var(--gris)';
+      tdVence.style.fontSize = '.82rem';
+      tdVence.textContent = f.permanente ? '—'
+        : (f.expiracion + (f.diasRestantes > 0 ? ` · ${f.diasRestantes}d` : ''));
+
+      const tdEstado = document.createElement('td');
+      tdEstado.innerHTML = f.permanente
+        ? '<span class="pastilla p-permanente">Permanente</span>'
+        : `<span class="pastilla p-${f.estado}">${f.estado}</span>`;
+
+      const tdAcc = document.createElement('td');
+      tdAcc.className = 'acciones';
+
+      if (!f.permanente && f.membresia !== 'light') {
+        const bRen = document.createElement('button');
+        bRen.className = 'boton sec';
+        bRen.textContent = 'Renovar';
+        bRen.addEventListener('click', () => renovar(f.llave, bRen));
+        tdAcc.appendChild(bRen);
+      }
+
+      const bRev = document.createElement('button');
+      bRev.className = 'boton sec peligro';
+      bRev.textContent = 'Revocar';
+      bRev.addEventListener('click', () => revocar(f.llave, f.nombre));
+      tdAcc.appendChild(bRev);
+
+      tr.append(tdLlave, tdNombre, tdTipo, tdVence, tdEstado, tdAcc);
+      cuerpo.appendChild(tr);
+    }
+
+    tabla.appendChild(cuerpo);
+    caja.innerHTML = '';
+    caja.appendChild(tabla);
+
+  } catch (e) {
+    caja.innerHTML = `<p class="vacio" style="color:var(--rojo)">${e.message}</p>`;
+  }
+}
+
+$('recargar').addEventListener('click', listar);
+
+// ── renovar / revocar ──
+async function renovar(llave, boton){
+  boton.disabled = true;
+  boton.textContent = '…';
+  try {
+    await pedir('PUT', { llave });
+    listar();
+  } catch (e) {
+    boton.disabled = false;
+    boton.textContent = 'Renovar';
+    alert(e.message);
+  }
+}
+
+async function revocar(llave, nombre){
+  if (!confirm(`¿Revocar la llave de ${nombre || llave}?\n\nEsta acción no se puede deshacer.`)) return;
+  try {
+    await pedir('DELETE', null, 'llave=' + encodeURIComponent(llave));
+    listar();
+  } catch (e) {
+    alert(e.message);
+  }
+}
+
+// ── arranque ──
+try {
+  const guardado = sessionStorage.getItem(CLAVE_SESION);
+  if (guardado) { $('secreto').value = guardado; abrir(); }
+} catch(e){}
+$('secreto').focus();
+
+})();
+</script>
+</body>
+</html>
